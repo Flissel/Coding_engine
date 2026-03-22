@@ -1,0 +1,8 @@
+stateDiagram-v2
+    [*] --> Operational
+    Operational --> Degraded : Performance issues
+    Operational --> Outage : Critical failure
+    Degraded --> Operational : Issues resolved
+    Degraded --> Outage : Escalation
+    Outage --> Degraded : Recovery initiated
+    Outage --> [*] : Service restored

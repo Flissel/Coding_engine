@@ -1,0 +1,12 @@
+%%{init: {"theme": "default"}}%%
+graph TD
+    A[User] -->|Initiates Backup| B[Verschluesseltes Backup System]
+    B -->|Stores Encrypted Data| C[Backup Storage]
+    B -->|Sends Encryption Keys| D[Key Management Service]
+    A -->|Restores Backup| B
+    B -->|Provides Decrypted Data| A
+
+    subgraph External Systems
+        C
+        D
+    end

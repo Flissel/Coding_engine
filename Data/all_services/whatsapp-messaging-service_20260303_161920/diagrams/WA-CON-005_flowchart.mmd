@@ -1,0 +1,9 @@
+flowchart TD
+    A[Unbekannte Absender] --> B{System}
+    B -->|MUSS gesondert behandeln| C[Identifikation]
+    C --> D{Ist Absender bekannt?}
+    D -->|Ja| E[Normale Verarbeitung]
+    D -->|Nein| F[Zusätzliche Überprüfung]
+    F --> G[Entscheidung treffen]
+    G -->|Vertrauenswürdig| H[Zulassen]
+    G -->|Nicht vertrauenswürdig| I[Blockieren]

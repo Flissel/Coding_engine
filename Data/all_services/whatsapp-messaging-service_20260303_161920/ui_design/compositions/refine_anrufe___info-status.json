@@ -1,0 +1,10 @@
+{
+  "route": "/calls",
+  "screen_name": "Anrufe / Info-Status",
+  "linked_user_stories": [
+    "US-080"
+  ],
+  "user_stories": [
+    "US-080"
+  ]
+}

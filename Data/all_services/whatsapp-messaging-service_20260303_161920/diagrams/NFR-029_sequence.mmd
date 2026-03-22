@@ -1,0 +1,12 @@
+sequenceDiagram
+    participant User as User
+    participant App as Messaging App
+    participant Server as Message Server
+    participant Recipient as Recipient User
+
+    User->>App: Send Message
+    App->>Server: Forward Message
+    Server->>Recipient: Deliver Message
+    Recipient-->>Server: Acknowledge Receipt
+    Server-->>App: Acknowledge Delivery
+    App-->>User: Confirm Delivery

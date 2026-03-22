@@ -1,0 +1,14 @@
+%%{init: {"theme": "default"}}%%
+graph TD
+    A[User] -->|Uses| B[Typing Indicators and Presence System]
+    B -->|Sends typing status| C[Messaging Service]
+    B -->|Sends online status| D[User Status Database]
+    B -->|Privacy controls| E[Privacy Settings]
+    C -->|Delivers messages| F[Recipient User]
+    D -->|Stores user status| G[User Status Management]
+    E -->|Manages user preferences| H[User Interface]
+
+    subgraph "External Systems"
+        F
+        G
+    end

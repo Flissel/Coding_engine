@@ -1,0 +1,14 @@
+flowchart TD
+    A[Start] --> B{Profilbild hochladen?}
+    B -- Ja --> C[Profilbild auswählen]
+    C --> D[Profilbild hochladen]
+    D --> E{Profilbild erfolgreich?}
+    E -- Ja --> F[Profilbild speichern]
+    E -- Nein --> G[Fehler anzeigen]
+    G --> C
+    F --> H{Profilbild verwalten?}
+    H -- Ja --> I[Profilbild ändern]
+    I --> D
+    H -- Nein --> J[Prozess beenden]
+    B -- Nein --> J
+    J --> K[Ende]

@@ -1,0 +1,18 @@
+%%{init: {'theme': 'default'}}%%
+graph TD
+    A[Anruflink System] -->|Provides| B[User Interface]
+    A -->|Integrates with| C[Calendar Service]
+    A -->|Sends Notifications| D[Notification Service]
+    A -->|Stores Data in| E[Database]
+    B -->|Interacts with| F[User]
+    C -->|Provides Events| F
+    D -->|Notifies| F
+
+    subgraph "External Systems"
+        C
+        D
+    end
+
+    subgraph "Users"
+        F[User]
+    end

@@ -1,0 +1,10 @@
+{
+  "route": "/chats/:chatId/settings",
+  "screen_name": "Chat-Einstellungen mit Status erstellen",
+  "linked_user_stories": [
+    "US-032"
+  ],
+  "user_stories": [
+    "US-032"
+  ]
+}

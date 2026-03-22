@@ -1,0 +1,19 @@
+sequenceDiagram
+    participant User as User
+    participant System as System
+    participant Database as Database
+
+    User->>System: Initiate search query
+    System->>Database: Perform full-text search
+    Database-->>System: Return search results
+    System->>User: Display search results
+
+    User->>System: Apply filters (media, contacts)
+    System->>Database: Fetch filtered results
+    Database-->>System: Return filtered results
+    System->>User: Display filtered results
+
+    User->>System: Request chat history
+    System->>Database: Retrieve chat history
+    Database-->>System: Return chat history
+    System->>User: Display chat history

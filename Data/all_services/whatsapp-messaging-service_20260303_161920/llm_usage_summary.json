@@ -1,0 +1,183 @@
+{
+  "total_calls": 936,
+  "successful_calls": 936,
+  "failed_calls": 0,
+  "total_input_tokens": 556314,
+  "total_output_tokens": 2081363,
+  "total_tokens": 2637677,
+  "total_cost_usd": 21.8887,
+  "avg_latency_ms": 23892.3,
+  "by_component": {
+    "self_critique": {
+      "calls": 12,
+      "tokens": 32750,
+      "input_tokens": 20974,
+      "output_tokens": 11776,
+      "cost_usd": 0.1702,
+      "models": {
+        "openai/gpt-5.2-codex": 12
+      }
+    },
+    "nfr_generator": {
+      "calls": 1,
+      "tokens": 3242,
+      "input_tokens": 1348,
+      "output_tokens": 1894,
+      "cost_usd": 0.0223,
+      "models": {
+        "openai/gpt-5.2-codex": 1
+      }
+    },
+    "user_story_generator": {
+      "calls": 176,
+      "tokens": 127877,
+      "input_tokens": 69212,
+      "output_tokens": 58665,
+      "cost_usd": 0.7597,
+      "models": {
+        "openai/gpt-5.2-codex": 176
+      }
+    },
+    "api_spec_generator": {
+      "calls": 139,
+      "tokens": 1195906,
+      "input_tokens": 119058,
+      "output_tokens": 1076848,
+      "cost_usd": 11.0661,
+      "models": {
+        "openai/gpt-5.2-codex": 139
+      }
+    },
+    "realtime_spec_generator": {
+      "calls": 4,
+      "tokens": 15646,
+      "input_tokens": 2252,
+      "output_tokens": 13394,
+      "cost_usd": 0.1396,
+      "models": {
+        "openai/gpt-5.2-codex": 4
+      }
+    },
+    "data_dictionary_generator": {
+      "calls": 17,
+      "tokens": 139920,
+      "input_tokens": 15136,
+      "output_tokens": 124784,
+      "cost_usd": 1.2857,
+      "models": {
+        "openai/gpt-5.2-codex": 17
+      }
+    },
+    "tech_stack_generator": {
+      "calls": 1,
+      "tokens": 3212,
+      "input_tokens": 1665,
+      "output_tokens": 1547,
+      "cost_usd": 0.0196,
+      "models": {
+        "openai/gpt-5.2-codex": 1
+      }
+    },
+    "architecture_generator": {
+      "calls": 1,
+      "tokens": 8601,
+      "input_tokens": 3262,
+      "output_tokens": 5339,
+      "cost_usd": 0.0899,
+      "models": {
+        "anthropic/claude-sonnet-4": 1
+      }
+    },
+    "test_case_generator": {
+      "calls": 328,
+      "tokens": 721392,
+      "input_tokens": 176172,
+      "output_tokens": 545220,
+      "cost_usd": 5.8926,
+      "models": {
+        "openai/gpt-5.2-codex": 328
+      }
+    },
+    "state_machine_generator": {
+      "calls": 13,
+      "tokens": 23123,
+      "input_tokens": 11467,
+      "output_tokens": 11656,
+      "cost_usd": 0.2092,
+      "models": {
+        "anthropic/claude-sonnet-4": 13
+      }
+    },
+    "ux_design_generator": {
+      "calls": 33,
+      "tokens": 123754,
+      "input_tokens": 20045,
+      "output_tokens": 103709,
+      "cost_usd": 1.0872,
+      "models": {
+        "openai/gpt-5.2-codex": 33
+      }
+    },
+    "ui_design_generator": {
+      "calls": 42,
+      "tokens": 121460,
+      "input_tokens": 54207,
+      "output_tokens": 67253,
+      "cost_usd": 0.2939,
+      "models": {
+        "openai/gpt-5.2-codex": 2,
+        "anthropic/claude-opus-4.6": 40
+      }
+    },
+    "component_composition_generator": {
+      "calls": 29,
+      "tokens": 64394,
+      "input_tokens": 41916,
+      "output_tokens": 22478,
+      "cost_usd": 0.4629,
+      "models": {
+        "anthropic/claude-sonnet-4": 29
+      }
+    },
+    "task_generator": {
+      "calls": 14,
+      "tokens": 46943,
+      "input_tokens": 10769,
+      "output_tokens": 36174,
+      "cost_usd": 0.3887,
+      "models": {
+        "openai/gpt-5.2-codex": 14
+      }
+    },
+    "presentation_agent_ContentAnalyzer": {
+      "calls": 1,
+      "tokens": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "cost_usd": 0.0,
+      "models": {
+        "anthropic/claude-opus-4.6": 1
+      }
+    },
+    "presentation_agent_ScreenGenerator": {
+      "calls": 120,
+      "tokens": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "cost_usd": 0.0,
+      "models": {
+        "anthropic/claude-opus-4.6": 120
+      }
+    },
+    "refinement_invoker": {
+      "calls": 5,
+      "tokens": 9457,
+      "input_tokens": 8831,
+      "output_tokens": 626,
+      "cost_usd": 0.0011,
+      "models": {
+        "google/gemini-3-flash-preview": 5
+      }
+    }
+  }
+}

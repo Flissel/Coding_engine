@@ -1,0 +1,11 @@
+sequenceDiagram
+    participant User as Benutzer
+    participant System as System
+    participant Auth as Authentifizierung
+
+    User->>System: Anfrage zur App-Sperre
+    System->>Auth: Authentifizierung anfordern
+    Auth->>User: Authentifizierungsanfrage senden
+    User->>Auth: Authentifizierung durchführen
+    Auth->>System: Authentifizierung bestätigen
+    System->>User: App-Sperre aktivieren

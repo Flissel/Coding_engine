@@ -1,0 +1,9 @@
+stateDiagram-v2
+    [*] --> Hidden
+    [*] --> Visible
+
+    Hidden --> Configuring : Configure Status
+    Visible --> Configuring : Configure Status
+
+    Configuring --> Hidden : Save Configuration
+    Configuring --> Visible : Save Configuration

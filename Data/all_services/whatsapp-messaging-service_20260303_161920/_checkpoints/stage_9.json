@@ -1,0 +1,2335 @@
+{
+  "ux_spec": {
+    "project_name": "whatsapp-messaging-service",
+    "personas": [
+      {
+        "id": "PERSONA-001",
+        "name": "Lena Fischer",
+        "role": "Product Managerin (Power User)",
+        "age_range": "28-35",
+        "goals": [
+          "Nahtlose Kommunikation auf mehreren Geräten",
+          "Schnelle und sichere Anmeldung via Biometrie und Passkey",
+          "Personalisierung des Profils für bessere Wiedererkennbarkeit"
+        ],
+        "pain_points": [
+          "Verzögerte Zustellung von Nachrichten",
+          "Zu viele Schritte bei Sicherheits-Einstellungen",
+          "Inkonsistente Synchronisation zwischen Geräten"
+        ],
+        "tech_savviness": "high",
+        "frequency_of_use": "daily",
+        "quote": "Ich will ohne Unterbrechung auf all meinen Geräten erreichbar sein – sicher und schnell.",
+        "background": "Arbeitet in einem schnelllebigen Tech-Umfeld, nutzt Messaging intensiv für Team- und Kundenkommunikation."
+      },
+      {
+        "id": "PERSONA-002",
+        "name": "Erik Scholz",
+        "role": "Gelegenheitsnutzer (Familienkommunikation)",
+        "age_range": "45-55",
+        "goals": [
+          "Einfache Bedienung ohne technisches Vorwissen",
+          "Schnelle Verifizierung per Telefonnummer",
+          "Kontaktaufnahme per QR-Code ohne manuelle Eingabe"
+        ],
+        "pain_points": [
+          "Komplexe Menüs und Einstellungen",
+          "Sicherheitsbedenken bei der Anmeldung",
+          "Unklare Fehlermeldungen"
+        ],
+        "tech_savviness": "low",
+        "frequency_of_use": "weekly",
+        "quote": "Ich möchte einfach nur schnell meiner Familie schreiben können.",
+        "background": "Nutzt Messaging hauptsächlich für private Zwecke und vermeidet komplizierte Apps."
+      },
+      {
+        "id": "PERSONA-003",
+        "name": "Sofia Neumann",
+        "role": "Neuer Nutzer (Onboarding)",
+        "age_range": "18-24",
+        "goals": [
+          "Schnelle Registrierung und Verifizierung",
+          "Datenschutz und klare Infos zur Sicherheit",
+          "Passwortlose Anmeldung mit Passkey"
+        ],
+        "pain_points": [
+          "Wartezeiten bei SMS-OTP",
+          "Unklare Datenschutzhinweise",
+          "Zu viele Pflichtangaben beim Profil"
+        ],
+        "tech_savviness": "medium",
+        "frequency_of_use": "first-time",
+        "quote": "Wenn ich mich nicht in zwei Minuten anmelden kann, nutze ich eine andere App.",
+        "background": "Studentin, probiert neue Apps schnell aus, erwartet moderne Login-Methoden."
+      },
+      {
+        "id": "PERSONA-004",
+        "name": "Helmut Kramer",
+        "role": "Barrierefreier Nutzer (Sehbeeinträchtigung)",
+        "age_range": "50-65",
+        "goals": [
+          "Kompatibilität mit Screenreadern",
+          "Große, kontrastreiche Bedienelemente",
+          "Biometrisches Entsperren statt Passworteingabe"
+        ],
+        "pain_points": [
+          "Kleine Schaltflächen und Texte",
+          "QR-Codes ohne alternative Textbeschreibung",
+          "Unzugängliche Sicherheitsdialoge"
+        ],
+        "tech_savviness": "medium",
+        "frequency_of_use": "daily",
+        "quote": "Wenn die App nicht barrierefrei ist, kann ich sie nicht nutzen.",
+        "background": "Arbeitet im öffentlichen Dienst, nutzt Hilfstechnologien und bevorzugt klare UI-Strukturen."
+      },
+      {
+        "id": "PERSONA-005",
+        "name": "Mira Patel",
+        "role": "Business Owner (KMU)",
+        "age_range": "30-40",
+        "goals": [
+          "Professionelle Kommunikation mit Kunden",
+          "Automatisierte Antworten und Katalogintegration",
+          "Verifiziertes Business-Profil und Analytics"
+        ],
+        "pain_points": [
+          "Fehlende Einblicke in Kundenanfragen",
+          "Unübersichtliche Business-Funktionen",
+          "Manuelle Beantwortung bei hohem Anfragevolumen"
+        ],
+        "tech_savviness": "medium-high",
+        "frequency_of_use": "daily",
+        "quote": "Ich brauche einen Messaging-Kanal, der mein Geschäft wirklich unterstützt.",
+        "background": "Betreibt einen Online-Shop, nutzt Messaging als primären Kundensupport-Kanal."
+      },
+      {
+        "id": "PERSONA-006",
+        "name": "Jonas Weber",
+        "role": "Content & Compliance Admin",
+        "age_range": "32-45",
+        "goals": [
+          "Effiziente Nutzerverwaltung und Moderation",
+          "Missbrauchsprävention und Compliance-Einhaltung",
+          "Zuverlässiges System-Monitoring"
+        ],
+        "pain_points": [
+          "Zu wenig Transparenz bei Missbrauchsfällen",
+          "Fehlende Tools zur schnellen Eskalation",
+          "Hoher manueller Aufwand bei Prüfprozessen"
+        ],
+        "tech_savviness": "high",
+        "frequency_of_use": "daily",
+        "quote": "Ich brauche klare Workflows, um Verstöße schnell und fair zu behandeln.",
+        "background": "Leitet ein Trust-&-Safety-Team, arbeitet mit Moderationsrichtlinien und Audit-Prozessen."
+      },
+      {
+        "id": "PERSONA-007",
+        "name": "Anika Schreiber",
+        "role": "Technical Integrator (Developer)",
+        "age_range": "26-35",
+        "goals": [
+          "Stabile APIs und klare Webhook-Events",
+          "Gut dokumentierte SDKs",
+          "Vorhersehbare Rate-Limits"
+        ],
+        "pain_points": [
+          "Unvollständige oder veraltete Dokumentation",
+          "Inkonsistente Webhook-Payloads",
+          "Fehlende Testumgebungen"
+        ],
+        "tech_savviness": "high",
+        "frequency_of_use": "weekly",
+        "quote": "Wenn die API nicht zuverlässig ist, kann ich nichts bauen.",
+        "background": "Full-Stack-Entwicklerin in einem SaaS-Team, integriert Messaging in Kundenprodukte."
+      }
+    ],
+    "user_flows": [
+      {
+        "id": "FLOW-001",
+        "name": "Flow 1",
+        "description": "",
+        "actor": "Erik Scholz",
+        "trigger": "",
+        "steps": [],
+        "success_criteria": "",
+        "error_scenarios": [],
+        "mermaid_diagram": "flowchart TD\n    Start([Start: Flow])\n    Start --> End([End])\n",
+        "linked_persona_id": "",
+        "linked_screen_ids": [],
+        "linked_user_story_ids": []
+      },
+      {
+        "id": "FLOW-002",
+        "name": "Flow 2",
+        "description": "",
+        "actor": "Sofia Neumann",
+        "trigger": "",
+        "steps": [],
+        "success_criteria": "",
+        "error_scenarios": [],
+        "mermaid_diagram": "flowchart TD\n    Start([Start: Flow])\n    Start --> End([End])\n",
+        "linked_persona_id": "",
+        "linked_screen_ids": [],
+        "linked_user_story_ids": []
+      },
+      {
+        "id": "FLOW-003",
+        "name": "Flow 3",
+        "description": "",
+        "actor": "Helmut Kramer",
+        "trigger": "",
+        "steps": [],
+        "success_criteria": "",
+        "error_scenarios": [],
+        "mermaid_diagram": "flowchart TD\n    Start([Start: Flow])\n    Start --> End([End])\n",
+        "linked_persona_id": "",
+        "linked_screen_ids": [],
+        "linked_user_story_ids": []
+      },
+      {
+        "id": "FLOW-004",
+        "name": "Flow 4",
+        "description": "",
+        "actor": "Mira Patel",
+        "trigger": "",
+        "steps": [],
+        "success_criteria": "",
+        "error_scenarios": [],
+        "mermaid_diagram": "flowchart TD\n    Start([Start: Flow])\n    Start --> End([End])\n",
+        "linked_persona_id": "",
+        "linked_screen_ids": [],
+        "linked_user_story_ids": []
+      },
+      {
+        "id": "FLOW-005",
+        "name": "Verschlüsselten Videoanruf starten und empfangen",
+        "description": "Flow zum Starten eines E2E-verschlüsselten Videoanrufs inklusive Onboarding, Error-Recovery und Edge-Cases",
+        "actor": "Jonas Weber",
+        "trigger": "User tippt in einem Chat auf das Videoanruf-Icon",
+        "steps": [
+          {
+            "step_number": 1,
+            "action": "User öffnet die App",
+            "screen": "Start/Login",
+            "expected_result": "App lädt und prüft den Login-Status",
+            "decision_point": true,
+            "error_scenario": "App kann nicht geladen werden wegen fehlender Netzwerkverbindung"
+          },
+          {
+            "step_number": 2,
+            "action": "Wenn First-Time-User: Onboarding wird angezeigt und erklärt Videoanruf-Funktionen",
+            "screen": "Onboarding",
+            "expected_result": "User versteht Grundlagen und wird zu Berechtigungen geführt",
+            "decision_point": true,
+            "error_scenario": "Onboarding kann nicht geladen werden, Fallback auf Hilfe-Seite"
+          },
+          {
+            "step_number": 3,
+            "action": "User erteilt Kamera- und Mikrofonberechtigungen",
+            "screen": "Berechtigungsdialog",
+            "expected_result": "Berechtigungen werden erteilt und gespeichert",
+            "decision_point": true,
+            "error_scenario": "User verweigert Berechtigungen, Hinweis auf Einstellungen mit Abbruchoption"
+          },
+          {
+            "step_number": 4,
+            "action": "System prüft Kontostatus und Session-Gültigkeit",
+            "screen": "Session-Check",
+            "expected_result": "User ist eingeloggt und Account gültig",
+            "decision_point": true,
+            "error_scenario": "Session abgelaufen → Account-Recovery-Flow wird angeboten"
+          },
+          {
+            "step_number": 5,
+            "action": "System prüft Netzwerkstatus",
+            "screen": "Netzwerk-Check",
+            "expected_result": "Netzwerk ist verfügbar und stabil",
+            "decision_point": true,
+            "error_scenario": "Offline-Modus erkannt → Hinweis 'Videoanruf nicht verfügbar'"
+          },
+          {
+            "step_number": 6,
+            "action": "User öffnet einen Chat und tippt auf Videoanruf-Icon",
+            "screen": "Chat",
+            "expected_result": "Anrufanfrage wird initiiert",
+            "decision_point": false,
+            "error_scenario": "Button deaktiviert bei gesperrtem Kontakt oder fehlenden Berechtigungen"
+          },
+          {
+            "step_number": 7,
+            "action": "System prüft Verfügbarkeit des Empfängers",
+            "screen": "Anruf wird aufgebaut",
+            "expected_result": "Empfänger ist online und erhält die Anrufanfrage",
+            "decision_point": true,
+            "error_scenario": "Empfänger offline/nicht verfügbar → Benachrichtigung 'nicht erreichbar'"
+          },
+          {
+            "step_number": 8,
+            "action": "Empfänger nimmt den Videoanruf an",
+            "screen": "Eingehender Anruf",
+            "expected_result": "Anruf wird akzeptiert",
+            "decision_point": true,
+            "error_scenario": "Empfänger lehnt ab oder verpasst → Hinweis 'Anruf nicht angenommen'"
+          },
+          {
+            "step_number": 9,
+            "action": "System baut E2E-verschlüsselten Videoanruf auf",
+            "screen": "Verbindungsaufbau",
+            "expected_result": "Beide Nutzer sehen und hören sich in hoher Qualität",
+            "decision_point": false,
+            "error_scenario": "Schlüssel-Austausch fehlgeschlagen → Verbindung wird abgebrochen"
+          },
+          {
+            "step_number": 10,
+            "action": "Während des Anrufs überwacht das System die Netzwerkqualität",
+            "screen": "Aktiver Anruf",
+            "expected_result": "Stabile Verbindung bleibt bestehen",
+            "decision_point": true,
+            "error_scenario": "Instabile Verbindung → Reconnect-Versuch mit Statusanzeige"
+          },
+          {
+            "step_number": 11,
+            "action": "Wenn Reconnect fehlschlägt, informiert das System und beendet den Anruf",
+            "screen": "Verbindungsfehler",
+            "expected_result": "User erhält verständliche Fehlermeldung und Option zum erneuten Versuch",
+            "decision_point": true,
+            "error_scenario": "Mehrfache Fehlschläge → automatische Beendigung und Protokollierung"
+          },
+          {
+            "step_number": 12,
+            "action": "Edge-Case: User wechselt Gerät während des aktiven Anrufs",
+            "screen": "Gerätewechsel-Hinweis",
+            "expected_result": "System zeigt Hinweis, dass Anruf nicht übertragen werden kann oder bietet Übergabe an",
+            "decision_point": true,
+            "error_scenario": "Gerätewechsel wird abgebrochen → Anruf bleibt auf Ursprungsgerät"
+          }
+        ],
+        "success_criteria": "Der Videoanruf wird erfolgreich mit Ende-zu-Ende-Verschlüsselung aufgebaut und beide Teilnehmer können sehen und hören",
+        "error_scenarios": [
+          "Empfänger offline oder nicht verfügbar",
+          "Netzwerkverbindung instabil oder unterbrochen",
+          "Kamera-/Mikrofonberechtigung verweigert",
+          "Session abgelaufen → Account-Recovery erforderlich",
+          "Gerätewechsel während aktivem Anruf nicht möglich"
+        ],
+        "mermaid_diagram": "flowchart TD\n    Start([Start: Verschlüsselten Videoanruf starten und empfangen])\n    S1{User öffnet die App}\n    Start --> S1\n    E1[/App kann nicht geladen werden wegen fehlender Netzwerkverbindung/]\n    S1 -.-> E1\n    S2{Wenn First-Time-User: Onboarding wird angezeigt und erklärt Videoanruf-Funktionen}\n    S1 --> S2\n    E2[/Onboarding kann nicht geladen werden, Fallback auf Hilfe-Seite/]\n    S2 -.-> E2\n    S3{User erteilt Kamera- und Mikrofonberechtigungen}\n    S2 --> S3\n    E3[/User verweigert Berechtigungen, Hinweis auf Einstellungen mit Abbruchoption/]\n    S3 -.-> E3\n    S4{System prüft Kontostatus und Session-Gültigkeit}\n    S3 --> S4\n    E4[/Session abgelaufen → Account-Recovery-Flow wird angeboten/]\n    S4 -.-> E4\n    S5{System prüft Netzwerkstatus}\n    S4 --> S5\n    E5[/Offline-Modus erkannt → Hinweis 'Videoanruf nicht verfügbar'/]\n    S5 -.-> E5\n    S6[User öffnet einen Chat und tippt auf Videoanruf-Icon]\n    S5 --> S6\n    E6[/Button deaktiviert bei gesperrtem Kontakt oder fehlenden Berechtigungen/]\n    S6 -.-> E6\n    S7{System prüft Verfügbarkeit des Empfängers}\n    S6 --> S7\n    E7[/Empfänger offline/nicht verfügbar → Benachrichtigung 'nicht erreichbar'/]\n    S7 -.-> E7\n    S8{Empfänger nimmt den Videoanruf an}\n    S7 --> S8\n    E8[/Empfänger lehnt ab oder verpasst → Hinweis 'Anruf nicht angenommen'/]\n    S8 -.-> E8\n    S9[System baut E2E-verschlüsselten Videoanruf auf]\n    S8 --> S9\n    E9[/Schlüssel-Austausch fehlgeschlagen → Verbindung wird abgebrochen/]\n    S9 -.-> E9\n    S10{Während des Anrufs überwacht das System die Netzwerkqualität}\n    S9 --> S10\n    E10[/Instabile Verbindung → Reconnect-Versuch mit Statusanzeige/]\n    S10 -.-> E10\n    S11{Wenn Reconnect fehlschlägt, informiert das System und beendet den Anruf}\n    S10 --> S11\n    E11[/Mehrfache Fehlschläge → automatische Beendigung und Protokollierung/]\n    S11 -.-> E11\n    S12{Edge-Case: User wechselt Gerät während des aktiven Anrufs}\n    S11 --> S12\n    E12[/Gerätewechsel wird abgebrochen → Anruf bleibt auf Ursprungsgerät/]\n    S12 -.-> E12\n    S12 --> End([End])\n",
+        "linked_persona_id": "",
+        "linked_screen_ids": [],
+        "linked_user_story_ids": []
+      },
+      {
+        "id": "FLOW-006",
+        "name": "Kontakt blockieren",
+        "description": "Flow zum Blockieren eines Kontakts, inklusive Onboarding, Error-Recovery und Edge-Cases",
+        "actor": "Anika Schreiber",
+        "trigger": "User waehlt im Kontaktprofil die Option 'Blockieren'",
+        "steps": [
+          {
+            "step_number": 1,
+            "action": "User oeffnet die App und sieht den Startbildschirm",
+            "screen": "Start/Chats",
+            "expected_result": "App laedt und zeigt Chatliste",
+            "decision_point": true,
+            "error_scenario": "Offline-Modus: Chatliste kann nicht geladen werden, Hinweis 'Keine Verbindung'"
+          },
+          {
+            "step_number": 2,
+            "action": "System prueft, ob dies die erste Nutzung der Blockierfunktion ist",
+            "screen": "Hinweis-Overlay",
+            "expected_result": "Onboarding-Hinweis zur Blockierfunktion wird optional angezeigt",
+            "decision_point": true,
+            "error_scenario": "Onboarding-Overlay laesst sich nicht laden; Funktion bleibt dennoch zugaenglich"
+          },
+          {
+            "step_number": 3,
+            "action": "User oeffnet einen bestehenden Kontakt oder Chat",
+            "screen": "Kontaktprofil/Chat",
+            "expected_result": "Kontaktprofil wird angezeigt",
+            "decision_point": true,
+            "error_scenario": "Kontakt existiert nicht (z.B. geloescht): Fehlermeldung 'Kontakt nicht gefunden'"
+          },
+          {
+            "step_number": 4,
+            "action": "User tippt auf 'Mehr' und waehlt 'Blockieren'",
+            "screen": "Kontaktoptionen",
+            "expected_result": "Bestaetigungsdialog wird angezeigt",
+            "decision_point": false,
+            "error_scenario": "Button deaktiviert, wenn keine Berechtigung oder Contact-Status unbekannt"
+          },
+          {
+            "step_number": 5,
+            "action": "User bestaetigt die Blockierung",
+            "screen": "Bestaetigungsdialog",
+            "expected_result": "Blockierungsanfrage wird an den Server gesendet",
+            "decision_point": true,
+            "error_scenario": "Verlorene Verbindung: Anfrage wird in Warteschlange gestellt und Retry angeboten"
+          },
+          {
+            "step_number": 6,
+            "action": "System verarbeitet die Blockierung",
+            "screen": "System/Backend",
+            "expected_result": "Kontakt wird blockiert und Status aktualisiert",
+            "decision_point": true,
+            "error_scenario": "Serverfehler oder fehlgeschlagener Versand: Meldung 'Blockierung fehlgeschlagen' mit Retry"
+          },
+          {
+            "step_number": 7,
+            "action": "UI aktualisiert den Kontaktstatus",
+            "screen": "Kontaktprofil/Chat",
+            "expected_result": "Kontakt wird als blockiert angezeigt; Eingabe gesperrt",
+            "decision_point": false,
+            "error_scenario": "Status-Refresh fehlgeschlagen: Hinweis 'Status konnte nicht aktualisiert werden'"
+          },
+          {
+            "step_number": 8,
+            "action": "Blockierter Kontakt versucht eine Nachricht zu senden",
+            "screen": "Absender-Client",
+            "expected_result": "Nachricht wird nicht zugestellt; Absender erhaelt Rueckmeldung 'Nachricht nicht zugestellt'",
+            "decision_point": false,
+            "error_scenario": "Absender-Client kann Rueckmeldung nicht anzeigen: Nachricht bleibt im 'Nicht zugestellt'-Status"
+          },
+          {
+            "step_number": 9,
+            "action": "Edge-Case: User wechselt Geraet oder stellt Account wieder her",
+            "screen": "Login/Account-Recovery",
+            "expected_result": "Blockierliste wird synchronisiert und bleibt erhalten",
+            "decision_point": true,
+            "error_scenario": "Sync fehlgeschlagen: Blockierliste nicht aktuell, Hinweis 'Bitte erneut synchronisieren'"
+          }
+        ],
+        "success_criteria": "Kontakt ist blockiert, kann keine Nachrichten senden, und der Absender erhaelt eine Rueckmeldung",
+        "error_scenarios": [
+          "Kontakt existiert nicht: Fehlermeldung und keine Aenderung",
+          "Offline-Modus: Blockierung wird nicht gesendet, Retry-Option",
+          "Serverfehler: Blockierung fehlgeschlagen, Wiederholung moeglich",
+          "Synchronisationsfehler bei Geraetewechsel: Blockierliste nicht aktuell",
+          "Status-Refresh fehlgeschlagen: UI zeigt veralteten Zustand"
+        ],
+        "mermaid_diagram": "flowchart TD\n    Start([Start: Kontakt blockieren])\n    S1{User oeffnet die App und sieht den Startbildschirm}\n    Start --> S1\n    E1[/Offline-Modus: Chatliste kann nicht geladen werden, Hinweis 'Keine Verbindung'/]\n    S1 -.-> E1\n    S2{System prueft, ob dies die erste Nutzung der Blockierfunktion ist}\n    S1 --> S2\n    E2[/Onboarding-Overlay laesst sich nicht laden; Funktion bleibt dennoch zugaenglich/]\n    S2 -.-> E2\n    S3{User oeffnet einen bestehenden Kontakt oder Chat}\n    S2 --> S3\n    E3[/Kontakt existiert nicht (z.B. geloescht): Fehlermeldung 'Kontakt nicht gefunden'/]\n    S3 -.-> E3\n    S4[User tippt auf 'Mehr' und waehlt 'Blockieren']\n    S3 --> S4\n    E4[/Button deaktiviert, wenn keine Berechtigung oder Contact-Status unbekannt/]\n    S4 -.-> E4\n    S5{User bestaetigt die Blockierung}\n    S4 --> S5\n    E5[/Verlorene Verbindung: Anfrage wird in Warteschlange gestellt und Retry angeboten/]\n    S5 -.-> E5\n    S6{System verarbeitet die Blockierung}\n    S5 --> S6\n    E6[/Serverfehler oder fehlgeschlagener Versand: Meldung 'Blockierung fehlgeschlagen' mit Retry/]\n    S6 -.-> E6\n    S7[UI aktualisiert den Kontaktstatus]\n    S6 --> S7\n    E7[/Status-Refresh fehlgeschlagen: Hinweis 'Status konnte nicht aktualisiert werden'/]\n    S7 -.-> E7\n    S8[Blockierter Kontakt versucht eine Nachricht zu senden]\n    S7 --> S8\n    E8[/Absender-Client kann Rueckmeldung nicht anzeigen: Nachricht bleibt im 'Nicht zugestellt'-Status/]\n    S8 -.-> E8\n    S9{Edge-Case: User wechselt Geraet oder stellt Account wieder her}\n    S8 --> S9\n    E9[/Sync fehlgeschlagen: Blockierliste nicht aktuell, Hinweis 'Bitte erneut synchronisieren'/]\n    S9 -.-> E9\n    S9 --> End([End])\n",
+        "linked_persona_id": "",
+        "linked_screen_ids": [],
+        "linked_user_story_ids": []
+      },
+      {
+        "id": "FLOW-008",
+        "name": "Flow 8",
+        "description": "",
+        "actor": "Erik Scholz",
+        "trigger": "",
+        "steps": [],
+        "success_criteria": "",
+        "error_scenarios": [],
+        "mermaid_diagram": "flowchart TD\n    Start([Start: Flow])\n    Start --> End([End])\n",
+        "linked_persona_id": "",
+        "linked_screen_ids": [],
+        "linked_user_story_ids": []
+      },
+      {
+        "id": "FLOW-009",
+        "name": "Business-Profil erstellen und verwalten (Onboarding)",
+        "description": "Flow zur erstmaligen Erstellung und späteren Verwaltung eines erweiterten Business-Profils inkl. Validierung, Upload-Pruefung, Synchronisation und Error-Recovery.",
+        "actor": "Sofia Neumann",
+        "trigger": "User oeffnet erstmals die Profilverwaltung als Business-Nutzer",
+        "steps": [
+          {
+            "step_number": 1,
+            "action": "User oeffnet die App und landet im Dashboard",
+            "screen": "Dashboard",
+            "expected_result": "Dashboard wird angezeigt",
+            "decision_point": false,
+            "error_scenario": "App startet im Offline-Modus; Hinweisbanner erscheint"
+          },
+          {
+            "step_number": 2,
+            "action": "System prueft, ob Session gueltig ist",
+            "screen": "Session Check",
+            "expected_result": "User bleibt eingeloggt und kann fortfahren",
+            "decision_point": true,
+            "error_scenario": "Session abgelaufen -> Redirect zu Login/Account-Recovery"
+          },
+          {
+            "step_number": 3,
+            "action": "User navigiert zu 'Business-Profil verwalten'",
+            "screen": "Profilverwaltung",
+            "expected_result": "Profilverwaltung wird angezeigt",
+            "decision_point": false,
+            "error_scenario": "Keine Berechtigung -> Zugriff verweigert Hinweis"
+          },
+          {
+            "step_number": 4,
+            "action": "Onboarding-Hinweis wird angezeigt und User startet das Erstellen",
+            "screen": "Onboarding/Intro",
+            "expected_result": "User sieht kurze Einfuehrung und startet den Flow",
+            "decision_point": false,
+            "error_scenario": "Intro kann nicht geladen werden -> Skip-Option anzeigen"
+          },
+          {
+            "step_number": 5,
+            "action": "User fuellt Pflichtfelder (Name, Kategorie, Kontakt) aus",
+            "screen": "Business-Profil Formular",
+            "expected_result": "Pflichtfelder sind befuellt",
+            "decision_point": false,
+            "error_scenario": "Eingabeformat ungueltig -> Inline-Fehleranzeige"
+          },
+          {
+            "step_number": 6,
+            "action": "System validiert Pflichtfelder",
+            "screen": "Business-Profil Formular",
+            "expected_result": "Validierung erfolgreich; User kann fortfahren",
+            "decision_point": true,
+            "error_scenario": "Pflichtfelder fehlen/ungueltig -> Speichern deaktiviert, Fehlertexte sichtbar"
+          },
+          {
+            "step_number": 7,
+            "action": "User fuegt optionale Infos hinzu und laedt Profilbild/Dokument hoch",
+            "screen": "Business-Profil Formular",
+            "expected_result": "Uploads werden hinzugefuegt und Vorschau angezeigt",
+            "decision_point": true,
+            "error_scenario": "Upload verstoesst gegen Richtlinien -> Upload abgelehnt, Begruendung angezeigt"
+          },
+          {
+            "step_number": 8,
+            "action": "User klickt auf 'Speichern'",
+            "screen": "Business-Profil Formular",
+            "expected_result": "Profil wird gespeichert",
+            "decision_point": true,
+            "error_scenario": "Verbindung verloren -> Speichern fehlgeschlagen, Retry & Offline-Entwurf anbieten"
+          },
+          {
+            "step_number": 9,
+            "action": "Profil wird im Profilbereich angezeigt",
+            "screen": "Profilbereich",
+            "expected_result": "Erweitertes Business-Profil ist sichtbar",
+            "decision_point": true,
+            "error_scenario": "Synchronisation fehlgeschlagen -> Hinweisbanner, erneuter Sync-Button"
+          },
+          {
+            "step_number": 10,
+            "action": "User bearbeitet spaeter das Profil auf einem anderen Geraet und speichert",
+            "screen": "Profilverwaltung (anderes Geraet)",
+            "expected_result": "Aenderungen werden sofort uebernommen und plattformuebergreifend sichtbar",
+            "decision_point": true,
+            "error_scenario": "Konflikt/Device-Wechsel -> Re-Login erforderlich oder Konfliktloesung anzeigen"
+          }
+        ],
+        "success_criteria": "Das erweiterte Business-Profil wurde erfolgreich erstellt/aktualisiert und ist plattformuebergreifend sichtbar.",
+        "error_scenarios": [
+          "Validierungsfehler bei Pflichtfeldern verhindern das Speichern",
+          "Upload abgelehnt wegen Richtlinienverstoss",
+          "Verbindung verloren waehrend des Speicherns -> Retry/Draft",
+          "Synchronisation/Plattform-Sync fehlgeschlagen",
+          "Session abgelaufen -> Login/Account-Recovery erforderlich",
+          "Offline-Modus verhindert den Abschluss des Flows"
+        ],
+        "mermaid_diagram": "flowchart TD\n    Start([Start: Business-Profil erstellen und verwalten (Onboarding)])\n    S1[User oeffnet die App und landet im Dashboard]\n    Start --> S1\n    E1[/App startet im Offline-Modus; Hinweisbanner erscheint/]\n    S1 -.-> E1\n    S2{System prueft, ob Session gueltig ist}\n    S1 --> S2\n    E2[/Session abgelaufen -> Redirect zu Login/Account-Recovery/]\n    S2 -.-> E2\n    S3[User navigiert zu 'Business-Profil verwalten']\n    S2 --> S3\n    E3[/Keine Berechtigung -> Zugriff verweigert Hinweis/]\n    S3 -.-> E3\n    S4[Onboarding-Hinweis wird angezeigt und User startet das Erstellen]\n    S3 --> S4\n    E4[/Intro kann nicht geladen werden -> Skip-Option anzeigen/]\n    S4 -.-> E4\n    S5[User fuellt Pflichtfelder (Name, Kategorie, Kontakt) aus]\n    S4 --> S5\n    E5[/Eingabeformat ungueltig -> Inline-Fehleranzeige/]\n    S5 -.-> E5\n    S6{System validiert Pflichtfelder}\n    S5 --> S6\n    E6[/Pflichtfelder fehlen/ungueltig -> Speichern deaktiviert, Fehlertexte sichtbar/]\n    S6 -.-> E6\n    S7{User fuegt optionale Infos hinzu und laedt Profilbild/Dokument hoch}\n    S6 --> S7\n    E7[/Upload verstoesst gegen Richtlinien -> Upload abgelehnt, Begruendung angezeigt/]\n    S7 -.-> E7\n    S8{User klickt auf 'Speichern'}\n    S7 --> S8\n    E8[/Verbindung verloren -> Speichern fehlgeschlagen, Retry & Offline-Entwurf anbieten/]\n    S8 -.-> E8\n    S9{Profil wird im Profilbereich angezeigt}\n    S8 --> S9\n    E9[/Synchronisation fehlgeschlagen -> Hinweisbanner, erneuter Sync-Button/]\n    S9 -.-> E9\n    S10{User bearbeitet spaeter das Profil auf einem anderen Geraet und speichert}\n    S9 --> S10\n    E10[/Konflikt/Device-Wechsel -> Re-Login erforderlich oder Konfliktloesung anzeigen/]\n    S10 -.-> E10\n    S10 --> End([End])\n",
+        "linked_persona_id": "",
+        "linked_screen_ids": [],
+        "linked_user_story_ids": []
+      },
+      {
+        "id": "FLOW-010",
+        "name": "Flow 10",
+        "description": "",
+        "actor": "Helmut Kramer",
+        "trigger": "",
+        "steps": [],
+        "success_criteria": "",
+        "error_scenarios": [],
+        "mermaid_diagram": "flowchart TD\n    Start([Start: Flow])\n    Start --> End([End])\n",
+        "linked_persona_id": "",
+        "linked_screen_ids": [],
+        "linked_user_story_ids": []
+      },
+      {
+        "id": "FLOW-011",
+        "name": "Passkey-Login",
+        "description": "Flow zur Anmeldung mit Passkey inkl. Onboarding, Fehlerbehandlung und Edge-Cases",
+        "actor": "Mira Patel",
+        "trigger": "User waehlt auf dem Login-Screen die Option 'Mit Passkey anmelden'",
+        "steps": [
+          {
+            "step_number": 1,
+            "action": "User oeffnet Login-Screen",
+            "screen": "Login",
+            "expected_result": "Login-Optionen (Passkey, Passwort, SSO) werden angezeigt",
+            "decision_point": false,
+            "error_scenario": "Screen laedt nicht bei Verbindungsproblemen"
+          },
+          {
+            "step_number": 2,
+            "action": "User klickt 'Mit Passkey anmelden'",
+            "screen": "Login",
+            "expected_result": "System prueft, ob ein Passkey fuer das Konto existiert",
+            "decision_point": true,
+            "error_scenario": "Pruefung scheitert bei Servertimeout"
+          },
+          {
+            "step_number": 3,
+            "action": "If Passkey vorhanden: System startet Passkey-Dialog",
+            "screen": "Passkey-Dialog (OS)",
+            "expected_result": "Biometrie/PIN-Abfrage erscheint",
+            "decision_point": true,
+            "error_scenario": "Dialog erscheint nicht bei Geraetekompatibilitaet/Offline-Modus"
+          },
+          {
+            "step_number": 4,
+            "action": "User bestaetigt Passkey (Biometrie/PIN)",
+            "screen": "Passkey-Dialog (OS)",
+            "expected_result": "Authentifizierung wird in <=3 Sekunden abgeschlossen",
+            "decision_point": true,
+            "error_scenario": "Authentifizierung fehlgeschlagen oder abgebrochen"
+          },
+          {
+            "step_number": 5,
+            "action": "System erstellt Session und leitet ins Dashboard",
+            "screen": "Dashboard",
+            "expected_result": "User ist eingeloggt und Session aktiv",
+            "decision_point": false,
+            "error_scenario": "Session-Erstellung scheitert bei Serverfehler"
+          },
+          {
+            "step_number": 6,
+            "action": "If kein Passkey vorhanden: System zeigt Hinweis und bietet Alternativen",
+            "screen": "Login",
+            "expected_result": "Hinweismeldung + Optionen 'Passwort' und 'Passkey einrichten'",
+            "decision_point": true,
+            "error_scenario": "Hinweis wird nicht angezeigt oder CTA ist nicht klickbar"
+          },
+          {
+            "step_number": 7,
+            "action": "Onboarding: User waehlt 'Passkey einrichten'",
+            "screen": "Passkey-Onboarding",
+            "expected_result": "Setup-Assistent erklaert Nutzen und startet Registrierung",
+            "decision_point": true,
+            "error_scenario": "Setup wird unterbrochen bei Geraetewechsel/Session-Timeout"
+          },
+          {
+            "step_number": 8,
+            "action": "Edge-Case: User ist offline waehrend Passkey-Login",
+            "screen": "Login",
+            "expected_result": "Offline-Hinweis mit 'Erneut versuchen' und 'Passwort' Option",
+            "decision_point": true,
+            "error_scenario": "Kein Offline-Hinweis, Login haengt"
+          },
+          {
+            "step_number": 9,
+            "action": "Error-Recovery: Passkey-Authentifizierung fehlgeschlagen",
+            "screen": "Login",
+            "expected_result": "Klare Fehlermeldung + Button 'Erneut versuchen' und 'Alternativer Login'",
+            "decision_point": true,
+            "error_scenario": "Keine erneute Versuchsmöglichkeit"
+          },
+          {
+            "step_number": 10,
+            "action": "Edge-Case: User wechselt Geraet ohne Passkey",
+            "screen": "Account Recovery",
+            "expected_result": "User kann ueber E-Mail/OTP Passkey neu einrichten",
+            "decision_point": true,
+            "error_scenario": "Recovery-Link kommt nicht an oder OTP abgelaufen"
+          }
+        ],
+        "success_criteria": "User meldet sich innerhalb von 3 Sekunden erfolgreich mit Passkey an und Session wird erstellt",
+        "error_scenarios": [
+          "Servertimeout bei Passkey-Pruefung",
+          "Passkey-Dialog erscheint nicht (Geraet inkompatibel)",
+          "Authentifizierung fehlgeschlagen/abgebrochen",
+          "Keine Verbindung (Offline-Modus)",
+          "Session-Erstellung fehlgeschlagen",
+          "Passkey nicht vorhanden",
+          "Geraetewechsel ohne Passkey",
+          "Account-Recovery fehlgeschlagen (OTP abgelaufen)"
+        ],
+        "mermaid_diagram": "flowchart TD\n    Start([Start: Passkey-Login])\n    S1[User oeffnet Login-Screen]\n    Start --> S1\n    E1[/Screen laedt nicht bei Verbindungsproblemen/]\n    S1 -.-> E1\n    S2{User klickt 'Mit Passkey anmelden'}\n    S1 --> S2\n    E2[/Pruefung scheitert bei Servertimeout/]\n    S2 -.-> E2\n    S3{If Passkey vorhanden: System startet Passkey-Dialog}\n    S2 --> S3\n    E3[/Dialog erscheint nicht bei Geraetekompatibilitaet/Offline-Modus/]\n    S3 -.-> E3\n    S4{User bestaetigt Passkey (Biometrie/PIN)}\n    S3 --> S4\n    E4[/Authentifizierung fehlgeschlagen oder abgebrochen/]\n    S4 -.-> E4\n    S5[System erstellt Session und leitet ins Dashboard]\n    S4 --> S5\n    E5[/Session-Erstellung scheitert bei Serverfehler/]\n    S5 -.-> E5\n    S6{If kein Passkey vorhanden: System zeigt Hinweis und bietet Alternativen}\n    S5 --> S6\n    E6[/Hinweis wird nicht angezeigt oder CTA ist nicht klickbar/]\n    S6 -.-> E6\n    S7{Onboarding: User waehlt 'Passkey einrichten'}\n    S6 --> S7\n    E7[/Setup wird unterbrochen bei Geraetewechsel/Session-Timeout/]\n    S7 -.-> E7\n    S8{Edge-Case: User ist offline waehrend Passkey-Login}\n    S7 --> S8\n    E8[/Kein Offline-Hinweis, Login haengt/]\n    S8 -.-> E8\n    S9{Error-Recovery: Passkey-Authentifizierung fehlgeschlagen}\n    S8 --> S9\n    E9[/Keine erneute Versuchsmöglichkeit/]\n    S9 -.-> E9\n    S10{Edge-Case: User wechselt Geraet ohne Passkey}\n    S9 --> S10\n    E10[/Recovery-Link kommt nicht an oder OTP abgelaufen/]\n    S10 -.-> E10\n    S10 --> End([End])\n",
+        "linked_persona_id": "",
+        "linked_screen_ids": [],
+        "linked_user_story_ids": []
+      },
+      {
+        "id": "FLOW-012",
+        "name": "Flow 12",
+        "description": "",
+        "actor": "Jonas Weber",
+        "trigger": "",
+        "steps": [],
+        "success_criteria": "",
+        "error_scenarios": [],
+        "mermaid_diagram": "flowchart TD\n    Start([Start: Flow])\n    Start --> End([End])\n",
+        "linked_persona_id": "",
+        "linked_screen_ids": [],
+        "linked_user_story_ids": []
+      },
+      {
+        "id": "FLOW-013",
+        "name": "Flow 13",
+        "description": "",
+        "actor": "Anika Schreiber",
+        "trigger": "",
+        "steps": [],
+        "success_criteria": "",
+        "error_scenarios": [],
+        "mermaid_diagram": "flowchart TD\n    Start([Start: Flow])\n    Start --> End([End])\n",
+        "linked_persona_id": "",
+        "linked_screen_ids": [],
+        "linked_user_story_ids": []
+      },
+      {
+        "id": "FLOW-014",
+        "name": "Flow 14",
+        "description": "",
+        "actor": "Lena Fischer",
+        "trigger": "",
+        "steps": [],
+        "success_criteria": "",
+        "error_scenarios": [],
+        "mermaid_diagram": "flowchart TD\n    Start([Start: Flow])\n    Start --> End([End])\n",
+        "linked_persona_id": "",
+        "linked_screen_ids": [],
+        "linked_user_story_ids": []
+      },
+      {
+        "id": "FLOW-015",
+        "name": "Flow 15",
+        "description": "",
+        "actor": "Erik Scholz",
+        "trigger": "",
+        "steps": [],
+        "success_criteria": "",
+        "error_scenarios": [],
+        "mermaid_diagram": "flowchart TD\n    Start([Start: Flow])\n    Start --> End([End])\n",
+        "linked_persona_id": "",
+        "linked_screen_ids": [],
+        "linked_user_story_ids": []
+      },
+      {
+        "id": "FLOW-016",
+        "name": "End-to-End Encryption Onboarding und sichere Nachrichten",
+        "description": "Onboarding, Schluesselverwaltung und sicheres Senden/Empfangen mit E2EE inklusive Fehler- und Edge-Case-Behandlung",
+        "actor": "Sofia Neumann",
+        "trigger": "User schliesst Registrierung ab und oeffnet erstmals den Chat",
+        "steps": [
+          {
+            "step_number": 1,
+            "action": "User oeffnet die App und startet das Onboarding",
+            "screen": "Welcome / Onboarding",
+            "expected_result": "Onboarding wird angezeigt und fordert zur Einrichtung von E2EE auf",
+            "decision_point": false,
+            "error_scenario": "App startet nicht oder laeuft in einen Crash-Loop"
+          },
+          {
+            "step_number": 2,
+            "action": "User bestaetigt E2EE-Einrichtung und startet Schluesselgenerierung",
+            "screen": "E2EE Setup",
+            "expected_result": "Schluesselpaar wird generiert und sicher im Key Store abgelegt",
+            "decision_point": true,
+            "error_scenario": "Schluesselgenerierung fehlgeschlagen oder kein Zugriff auf sicheren Speicher"
+          },
+          {
+            "step_number": 3,
+            "action": "System prueft Netzwerkverbindung und synchronisiert Public Key mit Server",
+            "screen": "E2EE Setup",
+            "expected_result": "Public Key wird hochgeladen und mit Konto verknuepft",
+            "decision_point": true,
+            "error_scenario": "Keine Verbindung: Upload wird in Warteschlange gesetzt"
+          },
+          {
+            "step_number": 4,
+            "action": "User oeffnet einen Chat und tippt eine Nachricht oder waehlt Medien",
+            "screen": "Chat",
+            "expected_result": "Nachricht/Medien sind zum Senden vorbereitet",
+            "decision_point": false,
+            "error_scenario": "Medienzugriff verweigert oder Anhang zu gross"
+          },
+          {
+            "step_number": 5,
+            "action": "User tippt auf Senden; System verschluesselt Nachricht mit Empfaenger-Public-Key",
+            "screen": "Chat",
+            "expected_result": "Nachricht wird E2EE verschluesselt und in die Outbox gestellt",
+            "decision_point": true,
+            "error_scenario": "Empfaenger-Key fehlt/ungueltig, Senden wird blockiert"
+          },
+          {
+            "step_number": 6,
+            "action": "System versucht Nachricht zu senden; bei Offline-Modus wird sie gepuffert",
+            "screen": "Chat",
+            "expected_result": "Nachricht gesendet oder als 'Wartet auf Verbindung' markiert",
+            "decision_point": true,
+            "error_scenario": "Verlorene Verbindung oder Versand fehlgeschlagen"
+          },
+          {
+            "step_number": 7,
+            "action": "Empfaenger erhaelt Nachricht; System validiert Sender-Key",
+            "screen": "Chat",
+            "expected_result": "Nachricht wird entschluesselt, falls Key verifiziert",
+            "decision_point": true,
+            "error_scenario": "Unverifizierter/mismatch Key: Entschluesselung blockiert und Warnung angezeigt"
+          },
+          {
+            "step_number": 8,
+            "action": "System startet automatische Schluesselrotation bei Ablauf",
+            "screen": "Sicherheitseinstellungen (im Hintergrund)",
+            "expected_result": "Neue Schluessel werden generiert, gespeichert und synchronisiert ohne Unterbrechung",
+            "decision_point": true,
+            "error_scenario": "Rotation scheitert: alte Schluessel bleiben aktiv, Hinweis wird angezeigt"
+          },
+          {
+            "step_number": 9,
+            "action": "User wechselt Geraet und startet Wiederherstellung",
+            "screen": "Geraetewechsel / Account-Recovery",
+            "expected_result": "Identitaet wird verifiziert und neue Schluessel werden erzeugt",
+            "decision_point": true,
+            "error_scenario": "Verifizierung fehlgeschlagen oder Backup nicht verfuegbar"
+          },
+          {
+            "step_number": 10,
+            "action": "User bestaetigt Sicherheitswarnung bei Key-Mismatch oder verifiziert Kontakt",
+            "screen": "Sicherheitswarnung",
+            "expected_result": "Kommunikation wird erst nach Verifizierung fortgesetzt",
+            "decision_point": true,
+            "error_scenario": "User ignoriert Warnung: Nachricht bleibt gesperrt"
+          }
+        ],
+        "success_criteria": "User kann Nachrichten/Medien E2EE senden und empfangen, Schluessel werden sicher verwaltet und Warnungen bei Key-Problemen korrekt angezeigt",
+        "error_scenarios": [
+          "Schluesselgenerierung fehlgeschlagen",
+          "Keine Netzwerkverbindung beim Key-Upload",
+          "Versand fehlgeschlagen wegen Offline-Modus",
+          "Empfaenger-Key fehlt oder ist ungueltig",
+          "Unverifizierter/mismatch Key blockiert Entschluesselung",
+          "Schluesselrotation fehlschlaegt",
+          "Account-Recovery oder Geraetewechsel scheitert"
+        ],
+        "mermaid_diagram": "flowchart TD\n    Start([Start: End-to-End Encryption Onboarding und sichere Nachrichten])\n    S1[User oeffnet die App und startet das Onboarding]\n    Start --> S1\n    E1[/App startet nicht oder laeuft in einen Crash-Loop/]\n    S1 -.-> E1\n    S2{User bestaetigt E2EE-Einrichtung und startet Schluesselgenerierung}\n    S1 --> S2\n    E2[/Schluesselgenerierung fehlgeschlagen oder kein Zugriff auf sicheren Speicher/]\n    S2 -.-> E2\n    S3{System prueft Netzwerkverbindung und synchronisiert Public Key mit Server}\n    S2 --> S3\n    E3[/Keine Verbindung: Upload wird in Warteschlange gesetzt/]\n    S3 -.-> E3\n    S4[User oeffnet einen Chat und tippt eine Nachricht oder waehlt Medien]\n    S3 --> S4\n    E4[/Medienzugriff verweigert oder Anhang zu gross/]\n    S4 -.-> E4\n    S5{User tippt auf Senden; System verschluesselt Nachricht mit Empfaenger-Public-Key}\n    S4 --> S5\n    E5[/Empfaenger-Key fehlt/ungueltig, Senden wird blockiert/]\n    S5 -.-> E5\n    S6{System versucht Nachricht zu senden; bei Offline-Modus wird sie gepuffert}\n    S5 --> S6\n    E6[/Verlorene Verbindung oder Versand fehlgeschlagen/]\n    S6 -.-> E6\n    S7{Empfaenger erhaelt Nachricht; System validiert Sender-Key}\n    S6 --> S7\n    E7[/Unverifizierter/mismatch Key: Entschluesselung blockiert und Warnung angezeigt/]\n    S7 -.-> E7\n    S8{System startet automatische Schluesselrotation bei Ablauf}\n    S7 --> S8\n    E8[/Rotation scheitert: alte Schluessel bleiben aktiv, Hinweis wird angezeigt/]\n    S8 -.-> E8\n    S9{User wechselt Geraet und startet Wiederherstellung}\n    S8 --> S9\n    E9[/Verifizierung fehlgeschlagen oder Backup nicht verfuegbar/]\n    S9 -.-> E9\n    S10{User bestaetigt Sicherheitswarnung bei Key-Mismatch oder verifiziert Kontakt}\n    S9 --> S10\n    E10[/User ignoriert Warnung: Nachricht bleibt gesperrt/]\n    S10 -.-> E10\n    S10 --> End([End])\n",
+        "linked_persona_id": "",
+        "linked_screen_ids": [],
+        "linked_user_story_ids": []
+      },
+      {
+        "id": "FLOW-017",
+        "name": "Flow 17",
+        "description": "",
+        "actor": "Helmut Kramer",
+        "trigger": "",
+        "steps": [],
+        "success_criteria": "",
+        "error_scenarios": [],
+        "mermaid_diagram": "flowchart TD\n    Start([Start: Flow])\n    Start --> End([End])\n",
+        "linked_persona_id": "",
+        "linked_screen_ids": [],
+        "linked_user_story_ids": []
+      },
+      {
+        "id": "FLOW-018",
+        "name": "Flow 18",
+        "description": "",
+        "actor": "Mira Patel",
+        "trigger": "",
+        "steps": [],
+        "success_criteria": "",
+        "error_scenarios": [],
+        "mermaid_diagram": "flowchart TD\n    Start([Start: Flow])\n    Start --> End([End])\n",
+        "linked_persona_id": "",
+        "linked_screen_ids": [],
+        "linked_user_story_ids": []
+      },
+      {
+        "id": "FLOW-019",
+        "name": "Verify Authentication Hardening",
+        "description": "Flow zur Ueberpruefung von MFA-Enforcement, Lockout-Policy, Audit-Logging und Log-Retention im Rahmen eines Security Reviews",
+        "actor": "Jonas Weber",
+        "trigger": "Jonas startet ein Security Review fuer Authentifizierung",
+        "steps": [
+          {
+            "step_number": 1,
+            "action": "Jonas oeffnet das Security-Dashboard",
+            "screen": "Security Dashboard",
+            "expected_result": "Dashboard mit Authentifizierungs- und Logging-Kennzahlen wird angezeigt",
+            "decision_point": false,
+            "error_scenario": "Dashboard laedt nicht wegen fehlender Verbindung"
+          },
+          {
+            "step_number": 2,
+            "action": "Jonas waehlt den Bereich 'Authentication Hardening Review'",
+            "screen": "Security Dashboard",
+            "expected_result": "Review-Ansicht mit Testsuite und Konfigurationen wird geladen",
+            "decision_point": false,
+            "error_scenario": "Zugriff verweigert wegen fehlender Admin-Rechte"
+          },
+          {
+            "step_number": 3,
+            "action": "Jonas startet den MFA-Enforcement-Test fuer privilegierte und Standard-Accounts",
+            "screen": "Auth Review – MFA Tests",
+            "expected_result": "System fuehrt Test-Logins aus und sammelt MFA-Enforcement-Rate",
+            "decision_point": false,
+            "error_scenario": "Test-Accounts fehlen oder sind deaktiviert"
+          },
+          {
+            "step_number": 4,
+            "action": "Jonas vergleicht die MFA-Enforcement-Rate mit den Zielwerten",
+            "screen": "Auth Review – MFA Results",
+            "expected_result": "Anzeige: Privileged 100%, Standard ≥95%",
+            "decision_point": true,
+            "error_scenario": "Ergebnis unter Zielwerten"
+          },
+          {
+            "step_number": 5,
+            "action": "Jonas startet den Lockout-Test mit 5 Fehlversuchen in 10 Minuten",
+            "screen": "Auth Review – Lockout Tests",
+            "expected_result": "Account wird nach 5 Fehlversuchen gesperrt",
+            "decision_point": false,
+            "error_scenario": "Lockout greift nicht oder erst spaeter"
+          },
+          {
+            "step_number": 6,
+            "action": "Jonas prueft Audit-Logs gegen Test-Events (Login, Logout, Failure, Passwortwechsel)",
+            "screen": "Audit Log Viewer",
+            "expected_result": "100% der Events mit User, Timestamp, Source IP und Outcome vorhanden",
+            "decision_point": true,
+            "error_scenario": "Einzelne Events fehlen oder Felder unvollstaendig"
+          },
+          {
+            "step_number": 7,
+            "action": "Jonas prueft Log-Retention und Tamper-Evidence-Konfiguration",
+            "screen": "Logging & Retention Settings",
+            "expected_result": "Retention >= 365 Tage, tamper-evident aktiviert",
+            "decision_point": true,
+            "error_scenario": "Retention unter 365 Tagen oder Tamper-Protection deaktiviert"
+          },
+          {
+            "step_number": 8,
+            "action": "Jonas generiert den Compliance-Report",
+            "screen": "Review Summary",
+            "expected_result": "Report mit Pass/Fail je Kriterium wird erzeugt und gespeichert",
+            "decision_point": false,
+            "error_scenario": "Report-Generierung fehlgeschlagen"
+          }
+        ],
+        "success_criteria": "Alle Authentifizierungs- und Logging-Kriterien erfuellen die Hardening-Standards und der Report ist gespeichert",
+        "error_scenarios": [
+          "MFA-Enforcement unter Zielwerten",
+          "Lockout-Policy greift nicht korrekt",
+          "Audit-Logs unvollstaendig",
+          "Retention-Policy unter Mindestdauer",
+          "Report konnte nicht gespeichert werden"
+        ],
+        "mermaid_diagram": "flowchart TD\n    Start([Start: Verify Authentication Hardening])\n    S1[Jonas oeffnet das Security-Dashboard]\n    Start --> S1\n    E1[/Dashboard laedt nicht wegen fehlender Verbindung/]\n    S1 -.-> E1\n    S2[Jonas waehlt den Bereich 'Authentication Hardening Review']\n    S1 --> S2\n    E2[/Zugriff verweigert wegen fehlender Admin-Rechte/]\n    S2 -.-> E2\n    S3[Jonas startet den MFA-Enforcement-Test fuer privilegierte und Standard-Accounts]\n    S2 --> S3\n    E3[/Test-Accounts fehlen oder sind deaktiviert/]\n    S3 -.-> E3\n    S4{Jonas vergleicht die MFA-Enforcement-Rate mit den Zielwerten}\n    S3 --> S4\n    E4[/Ergebnis unter Zielwerten/]\n    S4 -.-> E4\n    S5[Jonas startet den Lockout-Test mit 5 Fehlversuchen in 10 Minuten]\n    S4 --> S5\n    E5[/Lockout greift nicht oder erst spaeter/]\n    S5 -.-> E5\n    S6{Jonas prueft Audit-Logs gegen Test-Events (Login, Logout, Failure, Passwortwechsel)}\n    S5 --> S6\n    E6[/Einzelne Events fehlen oder Felder unvollstaendig/]\n    S6 -.-> E6\n    S7{Jonas prueft Log-Retention und Tamper-Evidence-Konfiguration}\n    S6 --> S7\n    E7[/Retention unter 365 Tagen oder Tamper-Protection deaktiviert/]\n    S7 -.-> E7\n    S8[Jonas generiert den Compliance-Report]\n    S7 --> S8\n    E8[/Report-Generierung fehlgeschlagen/]\n    S8 -.-> E8\n    S8 --> End([End])\n",
+        "linked_persona_id": "",
+        "linked_screen_ids": [],
+        "linked_user_story_ids": []
+      },
+      {
+        "id": "FLOW-020",
+        "name": "Bild in bestehendem Chat senden",
+        "description": "Flow zum Senden eines Bildes inkl. Onboarding, Fehlerbehandlung und Edge-Cases",
+        "actor": "Anika Schreiber",
+        "trigger": "User tippt im Chat auf das Attachment-Icon",
+        "steps": [
+          {
+            "step_number": 1,
+            "action": "User öffnet App und prüft, ob er angemeldet ist",
+            "screen": "Login/Chat-Übersicht",
+            "expected_result": "Bei gültiger Session wird die Chat-Übersicht angezeigt",
+            "decision_point": true,
+            "error_scenario": "Session abgelaufen -> Weiterleitung zum Login"
+          },
+          {
+            "step_number": 2,
+            "action": "First-Time-User Onboarding für Medienzugriff wird angezeigt (Berechtigungen)",
+            "screen": "Onboarding/Permission Prompt",
+            "expected_result": "User erteilt Zugriff auf Fotos/Dateien",
+            "decision_point": true,
+            "error_scenario": "Berechtigung verweigert -> Hinweis mit Anleitung zur Aktivierung in Einstellungen"
+          },
+          {
+            "step_number": 3,
+            "action": "User öffnet einen bestehenden Chat",
+            "screen": "Chat-Übersicht",
+            "expected_result": "Chat-Thread wird geöffnet",
+            "decision_point": false,
+            "error_scenario": "Chat nicht ladbar wegen Offline-Modus -> Offline-Banner mit Retry"
+          },
+          {
+            "step_number": 4,
+            "action": "User tippt auf Attachment-Icon und wählt Bildquelle (Galerie/Kamera)",
+            "screen": "Chat-Thread / Attachment-Menü",
+            "expected_result": "Dateiauswahl öffnet sich",
+            "decision_point": true,
+            "error_scenario": "Kein Zugriff auf Kamera/Galerie -> Fehlermeldung und Verlinkung zu Einstellungen"
+          },
+          {
+            "step_number": 5,
+            "action": "User wählt eine Bilddatei",
+            "screen": "Dateiauswahl",
+            "expected_result": "Bild wird als Vorschau im Chat angezeigt",
+            "decision_point": true,
+            "error_scenario": "Nicht unterstütztes Dateiformat -> Senden verhindert, Fehlermeldung angezeigt"
+          },
+          {
+            "step_number": 6,
+            "action": "System prüft Dateigröße gegen Maximalgröße",
+            "screen": "Bildvorschau",
+            "expected_result": "Bild ist sendebereit",
+            "decision_point": true,
+            "error_scenario": "Datei zu groß -> Hinweis zur Größenbegrenzung und Option zur Neuauswahl"
+          },
+          {
+            "step_number": 7,
+            "action": "User tippt auf „Senden“",
+            "screen": "Chat-Thread",
+            "expected_result": "Upload startet mit Fortschrittsanzeige",
+            "decision_point": true,
+            "error_scenario": "Instabile Verbindung -> Upload fehlgeschlagen, Retry-Option angezeigt"
+          },
+          {
+            "step_number": 8,
+            "action": "System bestätigt Versand und zeigt Bild im Chat für Sender",
+            "screen": "Chat-Thread",
+            "expected_result": "Bildnachricht erscheint im Chat mit Status „gesendet“",
+            "decision_point": false,
+            "error_scenario": "Serverfehler -> Status „nicht gesendet“ mit erneuter Senden-Option"
+          },
+          {
+            "step_number": 9,
+            "action": "Empfänger erhält Bildnachricht",
+            "screen": "Chat-Thread (Empfänger)",
+            "expected_result": "Bild wird im Chat angezeigt",
+            "decision_point": false,
+            "error_scenario": "Gerätewechsel/Account-Recovery beim Empfänger -> Nachricht wird nach Re-Login synchronisiert"
+          }
+        ],
+        "success_criteria": "Bild wurde erfolgreich gesendet und ist im Chat bei Sender und Empfänger sichtbar",
+        "error_scenarios": [
+          "Session abgelaufen -> Login erforderlich",
+          "Berechtigungen für Medienzugriff verweigert",
+          "Nicht unterstütztes Dateiformat",
+          "Bilddatei überschreitet Maximalgröße",
+          "Instabile Netzwerkverbindung -> Versand fehlgeschlagen",
+          "Offline-Modus verhindert Chat-Laden",
+          "Serverfehler beim Versand",
+          "Gerätewechsel/Account-Recovery führt zu verzögerter Synchronisierung"
+        ],
+        "mermaid_diagram": "flowchart TD\n    Start([Start: Bild in bestehendem Chat senden])\n    S1{User öffnet App und prüft, ob er angemeldet ist}\n    Start --> S1\n    E1[/Session abgelaufen -> Weiterleitung zum Login/]\n    S1 -.-> E1\n    S2{First-Time-User Onboarding für Medienzugriff wird angezeigt (Berechtigungen)}\n    S1 --> S2\n    E2[/Berechtigung verweigert -> Hinweis mit Anleitung zur Aktivierung in Einstellungen/]\n    S2 -.-> E2\n    S3[User öffnet einen bestehenden Chat]\n    S2 --> S3\n    E3[/Chat nicht ladbar wegen Offline-Modus -> Offline-Banner mit Retry/]\n    S3 -.-> E3\n    S4{User tippt auf Attachment-Icon und wählt Bildquelle (Galerie/Kamera)}\n    S3 --> S4\n    E4[/Kein Zugriff auf Kamera/Galerie -> Fehlermeldung und Verlinkung zu Einstellungen/]\n    S4 -.-> E4\n    S5{User wählt eine Bilddatei}\n    S4 --> S5\n    E5[/Nicht unterstütztes Dateiformat -> Senden verhindert, Fehlermeldung angezeigt/]\n    S5 -.-> E5\n    S6{System prüft Dateigröße gegen Maximalgröße}\n    S5 --> S6\n    E6[/Datei zu groß -> Hinweis zur Größenbegrenzung und Option zur Neuauswahl/]\n    S6 -.-> E6\n    S7{User tippt auf „Senden“}\n    S6 --> S7\n    E7[/Instabile Verbindung -> Upload fehlgeschlagen, Retry-Option angezeigt/]\n    S7 -.-> E7\n    S8[System bestätigt Versand und zeigt Bild im Chat für Sender]\n    S7 --> S8\n    E8[/Serverfehler -> Status „nicht gesendet“ mit erneuter Senden-Option/]\n    S8 -.-> E8\n    S9[Empfänger erhält Bildnachricht]\n    S8 --> S9\n    E9[/Gerätewechsel/Account-Recovery beim Empfänger -> Nachricht wird nach Re-Login synchronisiert/]\n    S9 -.-> E9\n    S9 --> End([End])\n",
+        "linked_persona_id": "",
+        "linked_screen_ids": [],
+        "linked_user_story_ids": []
+      },
+      {
+        "id": "FLOW-021",
+        "name": "Flow 21",
+        "description": "",
+        "actor": "Lena Fischer",
+        "trigger": "",
+        "steps": [],
+        "success_criteria": "",
+        "error_scenarios": [],
+        "mermaid_diagram": "flowchart TD\n    Start([Start: Flow])\n    Start --> End([End])\n",
+        "linked_persona_id": "",
+        "linked_screen_ids": [],
+        "linked_user_story_ids": []
+      },
+      {
+        "id": "FLOW-022",
+        "name": "Flow 22",
+        "description": "",
+        "actor": "Erik Scholz",
+        "trigger": "",
+        "steps": [],
+        "success_criteria": "",
+        "error_scenarios": [],
+        "mermaid_diagram": "flowchart TD\n    Start([Start: Flow])\n    Start --> End([End])\n",
+        "linked_persona_id": "",
+        "linked_screen_ids": [],
+        "linked_user_story_ids": []
+      },
+      {
+        "id": "FLOW-023",
+        "name": "Admin Analytics & Audit Logs anzeigen (Onboarding)",
+        "description": "Flow für einen neuen Administrator, der erstmals das Analytics-Dashboard und Audit-Logs aufruft, filtert und mögliche Fehlerfälle behandelt",
+        "actor": "Sofia Neumann",
+        "trigger": "User startet Onboarding und wählt 'Analytics & Audit Logs'",
+        "steps": [
+          {
+            "step_number": 1,
+            "action": "User öffnet Admin-Konsole über Onboarding-Hinweis",
+            "screen": "Onboarding > Admin-Konsole",
+            "expected_result": "Admin-Konsole lädt mit Hinweis auf Analytics-Bereich",
+            "decision_point": false,
+            "error_scenario": "Falls Offline-Modus erkannt wird, wird ein Offline-Banner angezeigt und der Zugriff blockiert"
+          },
+          {
+            "step_number": 2,
+            "action": "System prüft Admin-Berechtigungen des Users",
+            "screen": "Berechtigungsprüfung",
+            "expected_result": "User wird als Admin erkannt und Zugriff erlaubt",
+            "decision_point": true,
+            "error_scenario": "Bei fehlender Berechtigung wird Zugriff verweigert und ein Autorisierungsfehler angezeigt"
+          },
+          {
+            "step_number": 3,
+            "action": "User öffnet Analytics-Dashboard und wählt Zeitraum",
+            "screen": "Analytics Dashboard",
+            "expected_result": "System lädt Durchsatzmetriken, Zustellraten und System Health für den Zeitraum",
+            "decision_point": true,
+            "error_scenario": "Bei fehlender Verbindung wird ein Wiederholen-Dialog angezeigt (Error-Recovery: 'Erneut versuchen')"
+          },
+          {
+            "step_number": 4,
+            "action": "System prüft, ob Daten für Zeitraum vorhanden sind",
+            "screen": "Analytics Dashboard",
+            "expected_result": "Bei vorhandenen Daten werden Metriken angezeigt; bei fehlenden Daten wird Empty State angezeigt",
+            "decision_point": true,
+            "error_scenario": "Falls keine Daten vorhanden sind, zeigt das System eine Empty-State-Nachricht ohne veraltete Daten"
+          },
+          {
+            "step_number": 5,
+            "action": "User navigiert zu Audit Logs und setzt Filter (User, Eventtyp, Zeitraum)",
+            "screen": "Audit Logs",
+            "expected_result": "Gefilterte Log-Einträge mit Zeitstempel, Actor, Aktion und Ergebnis werden angezeigt",
+            "decision_point": true,
+            "error_scenario": "Bei Filterfehlern oder ungültigem Zeitraum wird eine Validierungsmeldung angezeigt"
+          },
+          {
+            "step_number": 6,
+            "action": "User exportiert Logs oder aktualisiert Filter",
+            "screen": "Audit Logs",
+            "expected_result": "Export startet oder Logs werden neu geladen",
+            "decision_point": true,
+            "error_scenario": "Bei fehlgeschlagenem Export wird ein Retry angeboten (Error-Recovery: 'Erneut versuchen')"
+          },
+          {
+            "step_number": 7,
+            "action": "User wechselt Gerät und meldet sich erneut an",
+            "screen": "Login > Admin-Konsole",
+            "expected_result": "Session wird wiederhergestellt und Analytics-Dashboard ist zugänglich",
+            "decision_point": true,
+            "error_scenario": "Bei fehlgeschlagener Session-Wiederherstellung wird Account-Recovery angeboten"
+          }
+        ],
+        "success_criteria": "Administrator kann Analytics-Metriken und Audit-Logs für einen gewählten Zeitraum einsehen und filtern",
+        "error_scenarios": [
+          "Autorisierungsfehler bei fehlenden Admin-Rechten",
+          "Keine Daten im gewählten Zeitraum (Empty State)",
+          "Verlorene Verbindung beim Laden der Analytics (Retry-Dialog)",
+          "Fehlgeschlagener Export der Logs (Retry-Option)",
+          "Offline-Modus blockiert Zugriff",
+          "Gerätewechsel erfordert Account-Recovery"
+        ],
+        "mermaid_diagram": "flowchart TD\n    Start([Start: Admin Analytics & Audit Logs anzeigen (Onboarding)])\n    S1[User öffnet Admin-Konsole über Onboarding-Hinweis]\n    Start --> S1\n    E1[/Falls Offline-Modus erkannt wird, wird ein Offline-Banner angezeigt und der Zugriff blockiert/]\n    S1 -.-> E1\n    S2{System prüft Admin-Berechtigungen des Users}\n    S1 --> S2\n    E2[/Bei fehlender Berechtigung wird Zugriff verweigert und ein Autorisierungsfehler angezeigt/]\n    S2 -.-> E2\n    S3{User öffnet Analytics-Dashboard und wählt Zeitraum}\n    S2 --> S3\n    E3[/Bei fehlender Verbindung wird ein Wiederholen-Dialog angezeigt (Error-Recovery: 'Erneut versuchen')/]\n    S3 -.-> E3\n    S4{System prüft, ob Daten für Zeitraum vorhanden sind}\n    S3 --> S4\n    E4[/Falls keine Daten vorhanden sind, zeigt das System eine Empty-State-Nachricht ohne veraltete Daten/]\n    S4 -.-> E4\n    S5{User navigiert zu Audit Logs und setzt Filter (User, Eventtyp, Zeitraum)}\n    S4 --> S5\n    E5[/Bei Filterfehlern oder ungültigem Zeitraum wird eine Validierungsmeldung angezeigt/]\n    S5 -.-> E5\n    S6{User exportiert Logs oder aktualisiert Filter}\n    S5 --> S6\n    E6[/Bei fehlgeschlagenem Export wird ein Retry angeboten (Error-Recovery: 'Erneut versuchen')/]\n    S6 -.-> E6\n    S7{User wechselt Gerät und meldet sich erneut an}\n    S6 --> S7\n    E7[/Bei fehlgeschlagener Session-Wiederherstellung wird Account-Recovery angeboten/]\n    S7 -.-> E7\n    S7 --> End([End])\n",
+        "linked_persona_id": "",
+        "linked_screen_ids": [],
+        "linked_user_story_ids": []
+      },
+      {
+        "id": "FLOW-024",
+        "name": "Flow 24",
+        "description": "",
+        "actor": "Helmut Kramer",
+        "trigger": "",
+        "steps": [],
+        "success_criteria": "",
+        "error_scenarios": [],
+        "mermaid_diagram": "flowchart TD\n    Start([Start: Flow])\n    Start --> End([End])\n",
+        "linked_persona_id": "",
+        "linked_screen_ids": [],
+        "linked_user_story_ids": []
+      },
+      {
+        "id": "FLOW-025",
+        "name": "Flow 25",
+        "description": "",
+        "actor": "Mira Patel",
+        "trigger": "",
+        "steps": [],
+        "success_criteria": "",
+        "error_scenarios": [],
+        "mermaid_diagram": "flowchart TD\n    Start([Start: Flow])\n    Start --> End([End])\n",
+        "linked_persona_id": "",
+        "linked_screen_ids": [],
+        "linked_user_story_ids": []
+      },
+      {
+        "id": "FLOW-026",
+        "name": "Flow 26",
+        "description": "",
+        "actor": "Jonas Weber",
+        "trigger": "",
+        "steps": [],
+        "success_criteria": "",
+        "error_scenarios": [],
+        "mermaid_diagram": "flowchart TD\n    Start([Start: Flow])\n    Start --> End([End])\n",
+        "linked_persona_id": "",
+        "linked_screen_ids": [],
+        "linked_user_story_ids": []
+      },
+      {
+        "id": "FLOW-027",
+        "name": "Status-Antwort senden",
+        "description": "Flow zum Antworten auf eine eingehende Statusnachricht mit Validierung des Antwortfensters, Fehlerbehandlung und Edge-Cases",
+        "actor": "Anika Schreiber",
+        "trigger": "Kundenservice-Mitarbeiter öffnet einen Chat mit einer eingehenden Statusnachricht",
+        "steps": [
+          {
+            "step_number": 1,
+            "action": "User öffnet die Messaging-App",
+            "screen": "Login / Session Check",
+            "expected_result": "App prüft aktive Session und Berechtigungen",
+            "decision_point": true,
+            "error_scenario": "Session abgelaufen → Login erforderlich"
+          },
+          {
+            "step_number": 2,
+            "action": "User meldet sich an (falls Session abgelaufen)",
+            "screen": "Login",
+            "expected_result": "Erfolgreiche Authentifizierung und Zugriff auf Chats",
+            "decision_point": true,
+            "error_scenario": "Account-Recovery notwendig bei fehlgeschlagenem Login"
+          },
+          {
+            "step_number": 3,
+            "action": "System prüft, ob es der erste Login auf diesem Gerät ist",
+            "screen": "Onboarding",
+            "expected_result": "Onboarding-Hinweise zu Status-Antworten werden angezeigt",
+            "decision_point": true,
+            "error_scenario": "Onboarding übersprungen → Hinweis bleibt im Hilfe-Menü verfügbar"
+          },
+          {
+            "step_number": 4,
+            "action": "User öffnet Chat mit eingehender Statusnachricht",
+            "screen": "Chatliste / Chat",
+            "expected_result": "Chatverlauf mit Statusnachricht wird angezeigt",
+            "decision_point": false,
+            "error_scenario": "Chat nicht geladen → Netzwerkproblem / erneutes Laden"
+          },
+          {
+            "step_number": 5,
+            "action": "User wählt die Statusnachricht und klickt auf 'Status-Antwort'",
+            "screen": "Chat",
+            "expected_result": "Antwortfeld für Status-Antwort wird geöffnet",
+            "decision_point": true,
+            "error_scenario": "Statusnachricht älter als Antwortfenster → Antwortfunktion deaktiviert"
+          },
+          {
+            "step_number": 6,
+            "action": "System prüft Antwortfenster-Zeitlimit",
+            "screen": "Chat",
+            "expected_result": "Antwort erlaubt, wenn innerhalb des Zeitfensters",
+            "decision_point": true,
+            "error_scenario": "Senden verhindert und Hinweis 'Antwortfenster abgelaufen'"
+          },
+          {
+            "step_number": 7,
+            "action": "User verfasst die Status-Antwort und klickt 'Senden'",
+            "screen": "Chat",
+            "expected_result": "System startet Sendevorgang",
+            "decision_point": true,
+            "error_scenario": "Verbindung unterbrochen → Fehlermeldung mit Option 'Erneut senden'"
+          },
+          {
+            "step_number": 8,
+            "action": "System sendet Nachricht und bestätigt Zustellung",
+            "screen": "Chat",
+            "expected_result": "Antwort wird zugestellt und als Status-Antwort gekennzeichnet",
+            "decision_point": false,
+            "error_scenario": "Serverfehler → Nachricht wird als 'Nicht zugestellt' markiert"
+          },
+          {
+            "step_number": 9,
+            "action": "User versucht bei Fehlern erneut zu senden",
+            "screen": "Chat",
+            "expected_result": "Nachricht wird erneut gesendet und erfolgreich zugestellt",
+            "decision_point": true,
+            "error_scenario": "Weiterhin offline → Nachricht bleibt in Warteschlange"
+          },
+          {
+            "step_number": 10,
+            "action": "System erkennt Gerätewechsel und fordert Re-Authentifizierung an",
+            "screen": "Security Check",
+            "expected_result": "User bestätigt Identität und setzt Flow fort",
+            "decision_point": true,
+            "error_scenario": "Re-Authentifizierung fehlgeschlagen → Zugriff gesperrt"
+          }
+        ],
+        "success_criteria": "Status-Antwort wurde erfolgreich gesendet, zugestellt und im Chatverlauf als Status-Antwort gekennzeichnet angezeigt",
+        "error_scenarios": [
+          "Antwortfenster abgelaufen → Senden verhindert und Hinweis angezeigt",
+          "Verbindung unterbrochen → Fehlermeldung mit Option 'Erneut senden'",
+          "Serverfehler → Nachricht bleibt als 'Nicht zugestellt' markiert",
+          "Offline-Modus → Nachricht wird in Warteschlange gehalten",
+          "Gerätewechsel → Re-Authentifizierung erforderlich",
+          "Account-Recovery notwendig bei fehlgeschlagenem Login"
+        ],
+        "mermaid_diagram": "flowchart TD\n    Start([Start: Status-Antwort senden])\n    S1{User öffnet die Messaging-App}\n    Start --> S1\n    E1[/Session abgelaufen → Login erforderlich/]\n    S1 -.-> E1\n    S2{User meldet sich an (falls Session abgelaufen)}\n    S1 --> S2\n    E2[/Account-Recovery notwendig bei fehlgeschlagenem Login/]\n    S2 -.-> E2\n    S3{System prüft, ob es der erste Login auf diesem Gerät ist}\n    S2 --> S3\n    E3[/Onboarding übersprungen → Hinweis bleibt im Hilfe-Menü verfügbar/]\n    S3 -.-> E3\n    S4[User öffnet Chat mit eingehender Statusnachricht]\n    S3 --> S4\n    E4[/Chat nicht geladen → Netzwerkproblem / erneutes Laden/]\n    S4 -.-> E4\n    S5{User wählt die Statusnachricht und klickt auf 'Status-Antwort'}\n    S4 --> S5\n    E5[/Statusnachricht älter als Antwortfenster → Antwortfunktion deaktiviert/]\n    S5 -.-> E5\n    S6{System prüft Antwortfenster-Zeitlimit}\n    S5 --> S6\n    E6[/Senden verhindert und Hinweis 'Antwortfenster abgelaufen'/]\n    S6 -.-> E6\n    S7{User verfasst die Status-Antwort und klickt 'Senden'}\n    S6 --> S7\n    E7[/Verbindung unterbrochen → Fehlermeldung mit Option 'Erneut senden'/]\n    S7 -.-> E7\n    S8[System sendet Nachricht und bestätigt Zustellung]\n    S7 --> S8\n    E8[/Serverfehler → Nachricht wird als 'Nicht zugestellt' markiert/]\n    S8 -.-> E8\n    S9{User versucht bei Fehlern erneut zu senden}\n    S8 --> S9\n    E9[/Weiterhin offline → Nachricht bleibt in Warteschlange/]\n    S9 -.-> E9\n    S10{System erkennt Gerätewechsel und fordert Re-Authentifizierung an}\n    S9 --> S10\n    E10[/Re-Authentifizierung fehlgeschlagen → Zugriff gesperrt/]\n    S10 -.-> E10\n    S10 --> End([End])\n",
+        "linked_persona_id": "",
+        "linked_screen_ids": [],
+        "linked_user_story_ids": []
+      },
+      {
+        "id": "FLOW-028",
+        "name": "Media-Upload-Throughput verifizieren",
+        "description": "Flow zur Validierung von Upload-Throughput und Completion Times unter erwarteter und Peak-Last inkl. Error-Recovery, Onboarding und Edge Cases",
+        "actor": "Lena Fischer",
+        "trigger": "User startet neue Performance-Test-Session",
+        "steps": [
+          {
+            "step_number": 1,
+            "action": "User oeffnet das Performance QA Portal zum ersten Mal und startet Onboarding",
+            "screen": "Welcome / Onboarding",
+            "expected_result": "Onboarding erklaert Testziele, Metriken und benoetigte Zugriffe",
+            "decision_point": true,
+            "error_scenario": "Onboarding kann nicht geladen werden bei Offline-Modus; User bekommt Hinweis und Option 'Offline-Demo'"
+          },
+          {
+            "step_number": 2,
+            "action": "User meldet sich an oder stellt Account wieder her",
+            "screen": "Login / Account Recovery",
+            "expected_result": "User ist authentifiziert und sieht Dashboard",
+            "decision_point": true,
+            "error_scenario": "Account gesperrt oder Passwort vergessen; Recovery-Flow wird gestartet"
+          },
+          {
+            "step_number": 3,
+            "action": "User wechselt Geraet und verknuepft neues Testgeraet fuer Instrumentierung",
+            "screen": "Device Management",
+            "expected_result": "Neues Geraet ist registriert und Instrumentierungsstatus ist 'bereit'",
+            "decision_point": true,
+            "error_scenario": "Geraetewechsel fehlgeschlagen wegen fehlender Berechtigung; Support-Request wird erzeugt"
+          },
+          {
+            "step_number": 4,
+            "action": "User erstellt eine neue Test-Session und waehlt Lastprofil 'Expected' und 'Peak'",
+            "screen": "New Test Session",
+            "expected_result": "Testkonfiguration gespeichert mit Dateigroessen (Voice/Media, 10 MB) und Metriken",
+            "decision_point": true,
+            "error_scenario": "Konfiguration unvollstaendig; Pflichtfelder fuer Dateigroesse oder Lastprofil fehlen"
+          },
+          {
+            "step_number": 5,
+            "action": "User fordert Testressourcen/Cloud-Credits an",
+            "screen": "Resources & Billing",
+            "expected_result": "Ressourcen sind genehmigt und Testumgebung wird provisioniert",
+            "decision_point": true,
+            "error_scenario": "Zahlung/Abrechnung abgelehnt; User sieht Hinweis und kann andere Kostenstelle waehlen"
+          },
+          {
+            "step_number": 6,
+            "action": "User startet Instrumentierung und fuehrt einen Netzwerk-Check durch",
+            "screen": "Instrumentation Setup",
+            "expected_result": "Per-Client Throughput Messung aktiv und Status 'Ready'",
+            "decision_point": true,
+            "error_scenario": "Netzwerkinstrumentierung fehlgeschlagen oder Verbindung verloren; Retry und Diagnosen werden angeboten"
+          },
+          {
+            "step_number": 7,
+            "action": "User startet Upload-Tests (Expected Load) und misst Durchschnitts-Throughput",
+            "screen": "Run Test - Expected Load",
+            "expected_result": "Durchschnitts-Throughput ≥ 2.5 Mbps und Ergebnisse werden protokolliert",
+            "decision_point": true,
+            "error_scenario": "Upload fehlgeschlagen; automatische Wiederholung und Log-Anhang starten"
+          },
+          {
+            "step_number": 8,
+            "action": "User startet Upload-Tests (Peak Load) und misst Durchschnitts-Throughput",
+            "screen": "Run Test - Peak Load",
+            "expected_result": "Durchschnitts-Throughput ≥ 1.5 Mbps und Ergebnisse werden protokolliert",
+            "decision_point": true,
+            "error_scenario": "Verlorene Verbindung im Peak Test; Test wird pausiert und nach Wiederverbindung fortgesetzt"
+          },
+          {
+            "step_number": 9,
+            "action": "User fuehrt timed Uploads fuer 10 MB aus und berechnet 95. Perzentil Completion Time",
+            "screen": "Timed Uploads - Expected Load",
+            "expected_result": "95. Perzentil ≤ 20 Sekunden",
+            "decision_point": true,
+            "error_scenario": "Ausreisser oder unvollstaendige Daten; User kann Test erneut ausfuehren"
+          },
+          {
+            "step_number": 10,
+            "action": "User fuehrt Stress-Tests mit hoher Konkurrenz aus und berechnet 99. Perzentil Completion Time",
+            "screen": "Stress Test - Peak Load",
+            "expected_result": "99. Perzentil ≤ 35 Sekunden",
+            "decision_point": true,
+            "error_scenario": "Queue Overload; System empfiehlt Reduktion der Parallelitaet oder Split der Runs"
+          },
+          {
+            "step_number": 11,
+            "action": "User startet 1-stuendigen Sustained Concurrency Test und misst Erfolgsrate",
+            "screen": "Sustained Test",
+            "expected_result": "Upload Success Rate ≥ 99.5%",
+            "decision_point": true,
+            "error_scenario": "Fehlgeschlagene Uploads > 0.5%; Alarm wird ausgeloest und Root-Cause-Analyse gestartet"
+          },
+          {
+            "step_number": 12,
+            "action": "User exportiert Bericht und teilt ihn mit Stakeholdern",
+            "screen": "Results & Reporting",
+            "expected_result": "Bericht enthaelt Durchsatz, Perzentile, Fehlerquote und Empfehlung",
+            "decision_point": false,
+            "error_scenario": "Export fehlgeschlagen; Alternative 'CSV herunterladen' oder erneuter Versuch"
+          }
+        ],
+        "success_criteria": "Alle Zielmetriken sind erreicht und der Bericht wird erfolgreich gespeichert und geteilt",
+        "error_scenarios": [
+          "Offline-Modus verhindert Onboarding oder Instrumentierung",
+          "Account-Recovery erforderlich wegen Login-Fehler",
+          "Geraetewechsel fehlgeschlagen",
+          "Zahlung/Abrechnung abgelehnt bei Ressourcen-Anforderung",
+          "Netzwerkverbindung verloren waehrend Tests",
+          "Upload fehlgeschlagen mit automatischem Retry"
+        ],
+        "mermaid_diagram": "flowchart TD\n    Start([Start: Media-Upload-Throughput verifizieren])\n    S1{User oeffnet das Performance QA Portal zum ersten Mal und startet Onboarding}\n    Start --> S1\n    E1[/Onboarding kann nicht geladen werden bei Offline-Modus; User bekommt Hinweis und Option 'Offline-Demo'/]\n    S1 -.-> E1\n    S2{User meldet sich an oder stellt Account wieder her}\n    S1 --> S2\n    E2[/Account gesperrt oder Passwort vergessen; Recovery-Flow wird gestartet/]\n    S2 -.-> E2\n    S3{User wechselt Geraet und verknuepft neues Testgeraet fuer Instrumentierung}\n    S2 --> S3\n    E3[/Geraetewechsel fehlgeschlagen wegen fehlender Berechtigung; Support-Request wird erzeugt/]\n    S3 -.-> E3\n    S4{User erstellt eine neue Test-Session und waehlt Lastprofil 'Expected' und 'Peak'}\n    S3 --> S4\n    E4[/Konfiguration unvollstaendig; Pflichtfelder fuer Dateigroesse oder Lastprofil fehlen/]\n    S4 -.-> E4\n    S5{User fordert Testressourcen/Cloud-Credits an}\n    S4 --> S5\n    E5[/Zahlung/Abrechnung abgelehnt; User sieht Hinweis und kann andere Kostenstelle waehlen/]\n    S5 -.-> E5\n    S6{User startet Instrumentierung und fuehrt einen Netzwerk-Check durch}\n    S5 --> S6\n    E6[/Netzwerkinstrumentierung fehlgeschlagen oder Verbindung verloren; Retry und Diagnosen werden angeboten/]\n    S6 -.-> E6\n    S7{User startet Upload-Tests (Expected Load) und misst Durchschnitts-Throughput}\n    S6 --> S7\n    E7[/Upload fehlgeschlagen; automatische Wiederholung und Log-Anhang starten/]\n    S7 -.-> E7\n    S8{User startet Upload-Tests (Peak Load) und misst Durchschnitts-Throughput}\n    S7 --> S8\n    E8[/Verlorene Verbindung im Peak Test; Test wird pausiert und nach Wiederverbindung fortgesetzt/]\n    S8 -.-> E8\n    S9{User fuehrt timed Uploads fuer 10 MB aus und berechnet 95. Perzentil Completion Time}\n    S8 --> S9\n    E9[/Ausreisser oder unvollstaendige Daten; User kann Test erneut ausfuehren/]\n    S9 -.-> E9\n    S10{User fuehrt Stress-Tests mit hoher Konkurrenz aus und berechnet 99. Perzentil Completion Time}\n    S9 --> S10\n    E10[/Queue Overload; System empfiehlt Reduktion der Parallelitaet oder Split der Runs/]\n    S10 -.-> E10\n    S11{User startet 1-stuendigen Sustained Concurrency Test und misst Erfolgsrate}\n    S10 --> S11\n    E11[/Fehlgeschlagene Uploads > 0.5%; Alarm wird ausgeloest und Root-Cause-Analyse gestartet/]\n    S11 -.-> E11\n    S12[User exportiert Bericht und teilt ihn mit Stakeholdern]\n    S11 --> S12\n    E12[/Export fehlgeschlagen; Alternative 'CSV herunterladen' oder erneuter Versuch/]\n    S12 -.-> E12\n    S12 --> End([End])\n",
+        "linked_persona_id": "",
+        "linked_screen_ids": [],
+        "linked_user_story_ids": []
+      },
+      {
+        "id": "FLOW-029",
+        "name": "Flow 29",
+        "description": "",
+        "actor": "Erik Scholz",
+        "trigger": "",
+        "steps": [],
+        "success_criteria": "",
+        "error_scenarios": [],
+        "mermaid_diagram": "flowchart TD\n    Start([Start: Flow])\n    Start --> End([End])\n",
+        "linked_persona_id": "",
+        "linked_screen_ids": [],
+        "linked_user_story_ids": []
+      },
+      {
+        "id": "FLOW-030",
+        "name": "Flow 30",
+        "description": "",
+        "actor": "Sofia Neumann",
+        "trigger": "",
+        "steps": [],
+        "success_criteria": "",
+        "error_scenarios": [],
+        "mermaid_diagram": "flowchart TD\n    Start([Start: Flow])\n    Start --> End([End])\n",
+        "linked_persona_id": "",
+        "linked_screen_ids": [],
+        "linked_user_story_ids": []
+      },
+      {
+        "id": "FLOW-REFINE-030",
+        "name": "Authentifizierung und Kontoschutz Flow",
+        "description": "User flow for epic: Bereitstellung sicherer Kontoerstellung, Anmeldung und Wiederherstellung inklusive Telefon-Registrierung, 2FA, biometrischer Entsperrung und Passkeys.",
+        "actor": "Endnutzer",
+        "trigger": "User initiates authentifizierung und kontoschutz",
+        "steps": [
+          {
+            "step_number": 1,
+            "action": "Navigate to authentifizierung und kontoschutz section",
+            "screen": "Authentifizierung und Kontoschutz Screen",
+            "expected_result": "Authentifizierung und Kontoschutz view is displayed",
+            "decision_point": false,
+            "error_scenario": ""
+          },
+          {
+            "step_number": 2,
+            "action": "Complete authentifizierung und kontoschutz action",
+            "screen": "Authentifizierung und Kontoschutz Screen",
+            "expected_result": "Action completes successfully",
+            "decision_point": false,
+            "error_scenario": ""
+          }
+        ],
+        "success_criteria": "Authentifizierung und Kontoschutz completed successfully",
+        "error_scenarios": [],
+        "mermaid_diagram": "",
+        "linked_persona_id": "",
+        "linked_screen_ids": [],
+        "linked_user_story_ids": [
+          "US-001",
+          "US-002",
+          "US-003",
+          "US-005",
+          "US-062",
+          "US-133",
+          "US-147"
+        ]
+      },
+      {
+        "id": "FLOW-REFINE-031",
+        "name": "Profil, Kontakte und Suche Flow",
+        "description": "User flow for epic: Profilverwaltung, Kontaktabgleich und leistungsfähige Suche über Chats, Nachrichten und Medien.",
+        "actor": "registrierter Benutzer",
+        "trigger": "User initiates profil, kontakte und suche",
+        "steps": [
+          {
+            "step_number": 1,
+            "action": "Navigate to profil, kontakte und suche section",
+            "screen": "Profil, Kontakte und Suche Screen",
+            "expected_result": "Profil, Kontakte und Suche view is displayed",
+            "decision_point": false,
+            "error_scenario": ""
+          },
+          {
+            "step_number": 2,
+            "action": "Complete profil, kontakte und suche action",
+            "screen": "Profil, Kontakte und Suche Screen",
+            "expected_result": "Action completes successfully",
+            "decision_point": false,
+            "error_scenario": ""
+          }
+        ],
+        "success_criteria": "Profil, Kontakte und Suche completed successfully",
+        "error_scenarios": [],
+        "mermaid_diagram": "",
+        "linked_persona_id": "",
+        "linked_screen_ids": [],
+        "linked_user_story_ids": [
+          "US-006",
+          "US-007",
+          "US-008",
+          "US-009",
+          "US-010",
+          "US-071",
+          "US-072",
+          "US-073",
+          "US-074",
+          "US-075"
+        ]
+      },
+      {
+        "id": "FLOW-REFINE-032",
+        "name": "Einstellungen, Barrierefreiheit und Lokalisierung Flow",
+        "description": "User flow for epic: Konfigurierbare Datenschutz- und App-Einstellungen sowie vollständige Barrierefreiheit und Lokalisierung.",
+        "actor": "registrierter Endnutzer",
+        "trigger": "User initiates einstellungen, barrierefreiheit und lokalisierung",
+        "steps": [
+          {
+            "step_number": 1,
+            "action": "Navigate to einstellungen, barrierefreiheit und lokalisierung section",
+            "screen": "Einstellungen, Barrierefreiheit und Lokalisierung Screen",
+            "expected_result": "Einstellungen, Barrierefreiheit und Lokalisierung view is displayed",
+            "decision_point": false,
+            "error_scenario": ""
+          },
+          {
+            "step_number": 2,
+            "action": "Complete einstellungen, barrierefreiheit und lokalisierung action",
+            "screen": "Einstellungen, Barrierefreiheit und Lokalisierung Screen",
+            "expected_result": "Action completes successfully",
+            "decision_point": false,
+            "error_scenario": ""
+          }
+        ],
+        "success_criteria": "Einstellungen, Barrierefreiheit und Lokalisierung completed successfully",
+        "error_scenarios": [],
+        "mermaid_diagram": "",
+        "linked_persona_id": "",
+        "linked_screen_ids": [],
+        "linked_user_story_ids": [
+          "US-080",
+          "US-081",
+          "US-082",
+          "US-083",
+          "US-084",
+          "US-085",
+          "US-086",
+          "US-087",
+          "US-088",
+          "US-089"
+        ]
+      },
+      {
+        "id": "FLOW-REFINE-033",
+        "name": "Erweiterte Nachrichten und Status Flow",
+        "description": "User flow for epic: Erweiterte Messaging-Funktionen, Broadcasts, Spezialinhalte und Status-Updates.",
+        "actor": "registrierter Nutzer",
+        "trigger": "User initiates erweiterte nachrichten und status",
+        "steps": [
+          {
+            "step_number": 1,
+            "action": "Navigate to erweiterte nachrichten und status section",
+            "screen": "Erweiterte Nachrichten und Status Screen",
+            "expected_result": "Erweiterte Nachrichten und Status view is displayed",
+            "decision_point": false,
+            "error_scenario": ""
+          },
+          {
+            "step_number": 2,
+            "action": "Complete erweiterte nachrichten und status action",
+            "screen": "Erweiterte Nachrichten und Status Screen",
+            "expected_result": "Action completes successfully",
+            "decision_point": false,
+            "error_scenario": ""
+          }
+        ],
+        "success_criteria": "Erweiterte Nachrichten und Status completed successfully",
+        "error_scenarios": [],
+        "mermaid_diagram": "",
+        "linked_persona_id": "",
+        "linked_screen_ids": [],
+        "linked_user_story_ids": [
+          "US-018",
+          "US-019",
+          "US-020",
+          "US-021",
+          "US-023",
+          "US-024",
+          "US-025",
+          "US-042",
+          "US-043",
+          "US-044"
+        ]
+      },
+      {
+        "id": "FLOW-REFINE-034",
+        "name": "Medien und Anhänge Flow",
+        "description": "User flow for epic: Versand, Verwaltung und Bearbeitung von Medien und Dateien inklusive Qualitäts- und Größenkontrollen.",
+        "actor": "registrierter Nutzer",
+        "trigger": "User initiates medien und anhänge",
+        "steps": [
+          {
+            "step_number": 1,
+            "action": "Navigate to medien und anhänge section",
+            "screen": "Medien und Anhänge Screen",
+            "expected_result": "Medien und Anhänge view is displayed",
+            "decision_point": false,
+            "error_scenario": ""
+          },
+          {
+            "step_number": 2,
+            "action": "Complete medien und anhänge action",
+            "screen": "Medien und Anhänge Screen",
+            "expected_result": "Action completes successfully",
+            "decision_point": false,
+            "error_scenario": ""
+          }
+        ],
+        "success_criteria": "Medien und Anhänge completed successfully",
+        "error_scenarios": [],
+        "mermaid_diagram": "",
+        "linked_persona_id": "",
+        "linked_screen_ids": [],
+        "linked_user_story_ids": [
+          "US-047",
+          "US-048",
+          "US-049",
+          "US-050",
+          "US-051",
+          "US-052",
+          "US-053",
+          "US-054",
+          "US-055",
+          "US-056"
+        ]
+      }
+    ],
+    "information_architecture": [
+      {
+        "id": "IA-001",
+        "name": "Start",
+        "path": "/",
+        "parent_id": "",
+        "children": [
+          "IA-002",
+          "IA-003",
+          "IA-004"
+        ],
+        "content_types": [
+          "dashboard",
+          "quick-actions",
+          "recent-chats"
+        ]
+      },
+      {
+        "id": "IA-002",
+        "name": "Chats",
+        "path": "/chats",
+        "parent_id": "IA-001",
+        "children": [
+          "IA-005"
+        ],
+        "content_types": [
+          "list",
+          "search",
+          "filters"
+        ]
+      },
+      {
+        "id": "IA-003",
+        "name": "Anrufe",
+        "path": "/calls",
+        "parent_id": "IA-001",
+        "children": [
+          "IA-006"
+        ],
+        "content_types": [
+          "list",
+          "history",
+          "quick-actions"
+        ]
+      },
+      {
+        "id": "IA-004",
+        "name": "Einstellungen",
+        "path": "/settings",
+        "parent_id": "IA-001",
+        "children": [
+          "IA-007",
+          "IA-008",
+          "IA-009",
+          "IA-010"
+        ],
+        "content_types": [
+          "list",
+          "toggles",
+          "navigation"
+        ]
+      },
+      {
+        "id": "IA-005",
+        "name": "Chat-Detail",
+        "path": "/chats/:chatId",
+        "parent_id": "IA-002",
+        "children": [
+          "IA-011",
+          "IA-012"
+        ],
+        "content_types": [
+          "messages",
+          "composer",
+          "attachments"
+        ]
+      },
+      {
+        "id": "IA-006",
+        "name": "Verschlüsselter Videoanruf",
+        "path": "/calls/video/:callId",
+        "parent_id": "IA-003",
+        "children": [
+          "IA-013",
+          "IA-014",
+          "IA-015"
+        ],
+        "content_types": [
+          "call-ui",
+          "permissions",
+          "status"
+        ]
+      },
+      {
+        "id": "IA-007",
+        "name": "Profil",
+        "path": "/settings/profile",
+        "parent_id": "IA-004",
+        "children": [
+          "IA-016",
+          "IA-017",
+          "IA-018",
+          "IA-019",
+          "IA-020"
+        ],
+        "content_types": [
+          "form",
+          "avatar",
+          "qr-code"
+        ]
+      },
+      {
+        "id": "IA-008",
+        "name": "Konto & Sicherheit",
+        "path": "/settings/security",
+        "parent_id": "IA-004",
+        "children": [
+          "IA-021",
+          "IA-022",
+          "IA-023",
+          "IA-024"
+        ],
+        "content_types": [
+          "toggles",
+          "verification",
+          "auth"
+        ]
+      },
+      {
+        "id": "IA-009",
+        "name": "Geraete",
+        "path": "/settings/devices",
+        "parent_id": "IA-004",
+        "children": [
+          "IA-025",
+          "IA-026"
+        ],
+        "content_types": [
+          "list",
+          "device-management"
+        ]
+      },
+      {
+        "id": "IA-010",
+        "name": "Hilfe",
+        "path": "/settings/help",
+        "parent_id": "IA-004",
+        "children": [
+          "IA-027"
+        ],
+        "content_types": [
+          "faq",
+          "support"
+        ]
+      },
+      {
+        "id": "IA-011",
+        "name": "Chat-Info",
+        "path": "/chats/:chatId/info",
+        "parent_id": "IA-005",
+        "children": [],
+        "content_types": [
+          "details",
+          "media",
+          "actions"
+        ]
+      },
+      {
+        "id": "IA-012",
+        "name": "Chat-Einstellungen",
+        "path": "/chats/:chatId/settings",
+        "parent_id": "IA-005",
+        "children": [],
+        "content_types": [
+          "toggles",
+          "privacy"
+        ]
+      },
+      {
+        "id": "IA-013",
+        "name": "Anruf-Onboarding",
+        "path": "/calls/video/:callId/onboarding",
+        "parent_id": "IA-006",
+        "children": [],
+        "content_types": [
+          "permissions",
+          "education",
+          "checklist"
+        ]
+      },
+      {
+        "id": "IA-014",
+        "name": "Anruf-Fehlerbehebung",
+        "path": "/calls/video/:callId/recovery",
+        "parent_id": "IA-006",
+        "children": [],
+        "content_types": [
+          "error-states",
+          "retry",
+          "troubleshooting"
+        ]
+      },
+      {
+        "id": "IA-015",
+        "name": "Edge-Case Handling",
+        "path": "/calls/video/:callId/edge-cases",
+        "parent_id": "IA-006",
+        "children": [],
+        "content_types": [
+          "fallbacks",
+          "network",
+          "device-change"
+        ]
+      },
+      {
+        "id": "IA-016",
+        "name": "Profilbild",
+        "path": "/settings/profile/avatar",
+        "parent_id": "IA-007",
+        "children": [],
+        "content_types": [
+          "upload",
+          "crop",
+          "preview"
+        ]
+      },
+      {
+        "id": "IA-017",
+        "name": "Anzeigename",
+        "path": "/settings/profile/display-name",
+        "parent_id": "IA-007",
+        "children": [],
+        "content_types": [
+          "form",
+          "validation"
+        ]
+      },
+      {
+        "id": "IA-018",
+        "name": "Info/Status",
+        "path": "/settings/profile/status",
+        "parent_id": "IA-007",
+        "children": [],
+        "content_types": [
+          "form",
+          "char-limit"
+        ]
+      },
+      {
+        "id": "IA-019",
+        "name": "Telefonnummer",
+        "path": "/settings/profile/phone",
+        "parent_id": "IA-007",
+        "children": [],
+        "content_types": [
+          "readonly",
+          "verification-status"
+        ]
+      },
+      {
+        "id": "IA-020",
+        "name": "QR-Code Profil",
+        "path": "/settings/profile/qr",
+        "parent_id": "IA-007",
+        "children": [],
+        "content_types": [
+          "qr-code",
+          "share",
+          "scan"
+        ]
+      },
+      {
+        "id": "IA-021",
+        "name": "Telefonnummer-Registrierung",
+        "path": "/auth/phone",
+        "parent_id": "IA-008",
+        "children": [
+          "IA-028"
+        ],
+        "content_types": [
+          "form",
+          "verification"
+        ]
+      },
+      {
+        "id": "IA-022",
+        "name": "Zwei-Faktor-Authentifizierung",
+        "path": "/settings/security/2fa",
+        "parent_id": "IA-008",
+        "children": [
+          "IA-029"
+        ],
+        "content_types": [
+          "toggle",
+          "pin-setup"
+        ]
+      },
+      {
+        "id": "IA-023",
+        "name": "Biometrische Entsperrung",
+        "path": "/settings/security/biometrics",
+        "parent_id": "IA-008",
+        "children": [],
+        "content_types": [
+          "toggle",
+          "permissions"
+        ]
+      },
+      {
+        "id": "IA-024",
+        "name": "Passkeys",
+        "path": "/settings/security/passkeys",
+        "parent_id": "IA-008",
+        "children": [],
+        "content_types": [
+          "list",
+          "create",
+          "delete"
+        ]
+      },
+      {
+        "id": "IA-025",
+        "name": "Multi-Device Uebersicht",
+        "path": "/settings/devices/overview",
+        "parent_id": "IA-009",
+        "children": [],
+        "content_types": [
+          "list",
+          "status",
+          "last-active"
+        ]
+      },
+      {
+        "id": "IA-026",
+        "name": "Neues Geraet verbinden",
+        "path": "/settings/devices/link",
+        "parent_id": "IA-009",
+        "children": [],
+        "content_types": [
+          "qr-scan",
+          "pairing"
+        ]
+      },
+      {
+        "id": "IA-027",
+        "name": "Support kontaktieren",
+        "path": "/settings/help/support",
+        "parent_id": "IA-010",
+        "children": [],
+        "content_types": [
+          "form",
+          "attachments"
+        ]
+      },
+      {
+        "id": "IA-028",
+        "name": "SMS/Anruf-Verifizierung",
+        "path": "/auth/phone/verify",
+        "parent_id": "IA-021",
+        "children": [],
+        "content_types": [
+          "otp-input",
+          "timer",
+          "resend"
+        ]
+      },
+      {
+        "id": "IA-029",
+        "name": "PIN-Verifizierung",
+        "path": "/settings/security/2fa/verify",
+        "parent_id": "IA-022",
+        "children": [],
+        "content_types": [
+          "pin-input",
+          "recovery"
+        ]
+      }
+    ],
+    "accessibility_requirements": [
+      "WCAG 2.1 Level AA Compliance",
+      "Keyboard Navigation fuer alle Funktionen",
+      "Screen Reader Support",
+      "Kontrastverhaeltnis mindestens 4.5:1",
+      "Unterstuetzung fuer Dynamic Type/Schriftgroessen"
+    ],
+    "interaction_patterns": [
+      "Infinite Scroll fuer Listen",
+      "Modal Dialoge fuer Formulare",
+      "Toast Notifications fuer Feedback",
+      "Drag & Drop fuer Datei-Upload",
+      "QR-Code Scanner Overlay",
+      "Bottom Sheets fuer Quick-Actions"
+    ],
+    "design_principles": [
+      "Mobile First",
+      "Progressive Disclosure",
+      "Consistency ueber alle Screens",
+      "Fehlertoleranz",
+      "Security & Privacy by Design"
+    ],
+    "validation_rules": [
+      {
+        "field": "phone_number",
+        "screen": "Telefonnummer-Registrierung",
+        "rules": [
+          {
+            "type": "required",
+            "message": "Telefonnummer ist erforderlich"
+          },
+          {
+            "type": "format",
+            "pattern": "E.164",
+            "message": "Muss im E.164-Format sein"
+          },
+          {
+            "type": "min_length",
+            "value": 9,
+            "message": "Zu kurz"
+          },
+          {
+            "type": "max_length",
+            "value": 15,
+            "message": "Zu lang"
+          }
+        ]
+      },
+      {
+        "field": "country_code",
+        "screen": "Telefonnummer-Registrierung",
+        "rules": [
+          {
+            "type": "required",
+            "message": "Ländercode ist erforderlich"
+          },
+          {
+            "type": "pattern",
+            "pattern": "^\\+[1-9]\\d{0,2}$",
+            "message": "Ungültiger Ländercode"
+          }
+        ]
+      },
+      {
+        "field": "sms_otp",
+        "screen": "Telefonnummer-Registrierung",
+        "rules": [
+          {
+            "type": "required",
+            "message": "Bestätigungscode ist erforderlich"
+          },
+          {
+            "type": "pattern",
+            "pattern": "^\\d{6}$",
+            "message": "Muss 6-stellig sein"
+          }
+        ]
+      },
+      {
+        "field": "pin",
+        "screen": "Zwei-Faktor-Authentifizierung",
+        "rules": [
+          {
+            "type": "required",
+            "message": "PIN ist erforderlich"
+          },
+          {
+            "type": "pattern",
+            "pattern": "^\\d{6}$",
+            "message": "PIN muss 6-stellig sein"
+          }
+        ]
+      },
+      {
+        "field": "pin_confirm",
+        "screen": "Zwei-Faktor-Authentifizierung",
+        "rules": [
+          {
+            "type": "required",
+            "message": "PIN-Bestätigung ist erforderlich"
+          },
+          {
+            "type": "pattern",
+            "pattern": "^\\d{6}$",
+            "message": "PIN muss 6-stellig sein"
+          },
+          {
+            "type": "depends_on",
+            "field": "pin",
+            "rule": "match",
+            "message": "PINs stimmen nicht überein"
+          }
+        ]
+      },
+      {
+        "field": "biometric_enabled",
+        "screen": "Biometrische Entsperrung",
+        "rules": [
+          {
+            "type": "required",
+            "message": "Auswahl erforderlich"
+          },
+          {
+            "type": "depends_on",
+            "field": "device_biometric_available",
+            "rule": "true",
+            "message": "Biometrie auf Gerät nicht verfügbar"
+          }
+        ]
+      },
+      {
+        "field": "device_name",
+        "screen": "Multi-Device Support",
+        "rules": [
+          {
+            "type": "required",
+            "message": "Gerätename ist erforderlich"
+          },
+          {
+            "type": "min_length",
+            "value": 2,
+            "message": "Zu kurz"
+          },
+          {
+            "type": "max_length",
+            "value": 32,
+            "message": "Zu lang"
+          }
+        ]
+      },
+      {
+        "field": "device_limit",
+        "screen": "Multi-Device Support",
+        "rules": [
+          {
+            "type": "required",
+            "message": "Geräteanzahl ist erforderlich"
+          },
+          {
+            "type": "min",
+            "value": 1,
+            "message": "Mindestens 1 Gerät"
+          },
+          {
+            "type": "max",
+            "value": 4,
+            "message": "Maximal 4 Geräte"
+          }
+        ]
+      },
+      {
+        "field": "passkey_login",
+        "screen": "Passkey-Unterstuetzung",
+        "rules": [
+          {
+            "type": "required",
+            "message": "Passkey erforderlich"
+          },
+          {
+            "type": "depends_on",
+            "field": "device_passkey_supported",
+            "rule": "true",
+            "message": "Passkey wird nicht unterstützt"
+          }
+        ]
+      },
+      {
+        "field": "profile_photo",
+        "screen": "Profilbild",
+        "rules": [
+          {
+            "type": "required",
+            "message": "Profilbild ist erforderlich"
+          },
+          {
+            "type": "format",
+            "pattern": "image",
+            "message": "Nur Bildformate erlaubt"
+          },
+          {
+            "type": "max_size",
+            "value": 5242880,
+            "message": "Maximal 5 MB"
+          },
+          {
+            "type": "pattern",
+            "pattern": "^(image/jpeg|image/png)$",
+            "message": "Nur JPG oder PNG"
+          }
+        ]
+      },
+      {
+        "field": "display_name",
+        "screen": "Anzeigename",
+        "rules": [
+          {
+            "type": "required",
+            "message": "Anzeigename ist erforderlich"
+          },
+          {
+            "type": "min_length",
+            "value": 2,
+            "message": "Zu kurz"
+          },
+          {
+            "type": "max_length",
+            "value": 50,
+            "message": "Zu lang"
+          },
+          {
+            "type": "pattern",
+            "pattern": "^[\\p{L}\\p{N} _.-]+$",
+            "message": "Ungültige Zeichen"
+          }
+        ]
+      },
+      {
+        "field": "status_text",
+        "screen": "Info/Status Text",
+        "rules": [
+          {
+            "type": "max_length",
+            "value": 140,
+            "message": "Maximal 140 Zeichen"
+          },
+          {
+            "type": "pattern",
+            "pattern": "^[^\\n\\r]*$",
+            "message": "Keine Zeilenumbrüche erlaubt"
+          }
+        ]
+      },
+      {
+        "field": "profile_phone_number",
+        "screen": "Telefonnummer anzeigen",
+        "rules": [
+          {
+            "type": "format",
+            "pattern": "E.164",
+            "message": "Ungültiges Format"
+          }
+        ]
+      },
+      {
+        "field": "qr_code_visibility",
+        "screen": "QR-Code Profil",
+        "rules": [
+          {
+            "type": "required",
+            "message": "Sichtbarkeit ist erforderlich"
+          }
+        ]
+      },
+      {
+        "field": "callee_id",
+        "screen": "Verschlüsselten Videoanruf starten und empfangen",
+        "rules": [
+          {
+            "type": "required",
+            "message": "Kontakt ist erforderlich"
+          },
+          {
+            "type": "format",
+            "pattern": "uuid",
+            "message": "Ungültige Kontakt-ID"
+          }
+        ]
+      },
+      {
+        "field": "camera_permission",
+        "screen": "Verschlüsselten Videoanruf starten und empfangen",
+        "rules": [
+          {
+            "type": "required",
+            "message": "Kamerazugriff erforderlich"
+          },
+          {
+            "type": "depends_on",
+            "field": "permission_granted",
+            "rule": "true",
+            "message": "Kamerazugriff nicht erteilt"
+          }
+        ]
+      },
+      {
+        "field": "microphone_permission",
+        "screen": "Verschlüsselten Videoanruf starten und empfangen",
+        "rules": [
+          {
+            "type": "required",
+            "message": "Mikrofonzugriff erforderlich"
+          },
+          {
+            "type": "depends_on",
+            "field": "permission_granted",
+            "rule": "true",
+            "message": "Mikrofonzugriff nicht erteilt"
+          }
+        ]
+      },
+      {
+        "field": "network_state",
+        "screen": "Verschlüsselten Videoanruf starten und empfangen",
+        "rules": [
+          {
+            "type": "required",
+            "message": "Netzwerkstatus erforderlich"
+          },
+          {
+            "type": "depends_on",
+            "field": "network_state",
+            "rule": "connected",
+            "message": "Keine Netzwerkverbindung"
+          }
+        ]
+      }
+    ]
+  }
+}

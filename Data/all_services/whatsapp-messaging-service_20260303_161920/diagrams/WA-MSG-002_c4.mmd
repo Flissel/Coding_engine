@@ -1,0 +1,11 @@
+%%{ init : { "theme" : "default" } }%%
+C4Context
+    title System Context Diagram for Sprachnachricht
+    Person(user, "User", "A user who sends and receives voice messages.")
+    System(sprachnachricht, "Sprachnachricht", "A system that supports sending voice messages.")
+    System_Ext(emailService, "Email Service", "An external service for sending notifications via email.")
+    System_Ext(smsService, "SMS Service", "An external service for sending notifications via SMS.")
+    
+    Rel(user, sprachnachricht, "Sends and receives voice messages")
+    Rel(sprachnachricht, emailService, "Sends notifications via email")
+    Rel(sprachnachricht, smsService, "Sends notifications via SMS")

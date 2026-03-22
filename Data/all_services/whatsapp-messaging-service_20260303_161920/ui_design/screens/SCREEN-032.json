@@ -1,0 +1,109 @@
+{
+  "id": "SCREEN-032",
+  "name": "Dashboard - Status Stumm Schalten",
+  "route": "/dashboard",
+  "layout": "sidebar",
+  "description": "Dashboard-Ansicht mit Status-Liste der Kontakte. Ermoeglicht das Stummschalten einzelner Kontakt-Status ueber Kontextoption oder Long-Press auf den Status-Eintrag.",
+  "components": [
+    "COMP-001",
+    "COMP-002",
+    "COMP-003",
+    "COMP-009",
+    "COMP-010"
+  ],
+  "component_layout": [
+    {
+      "id": "COMP-001",
+      "name": "MuteButton",
+      "x": 40,
+      "y": 14,
+      "w": 18,
+      "h": 3
+    },
+    {
+      "id": "COMP-002",
+      "name": "SearchBar",
+      "x": 0,
+      "y": 4,
+      "w": 20,
+      "h": 3
+    },
+    {
+      "id": "COMP-003",
+      "name": "ChatListItem",
+      "x": 0,
+      "y": 7,
+      "w": 20,
+      "h": 17
+    },
+    {
+      "id": "COMP-009",
+      "name": "ContactCard",
+      "x": 22,
+      "y": 4,
+      "w": 38,
+      "h": 9
+    },
+    {
+      "id": "COMP-010",
+      "name": "StatusIndicator",
+      "x": 22,
+      "y": 13,
+      "w": 16,
+      "h": 4
+    }
+  ],
+  "data_requirements": [
+    "GET /api/contacts",
+    "GET /api/contacts/{id}/status",
+    "PUT /api/contacts/{id}/status/mute",
+    "DELETE /api/contacts/{id}/status/mute"
+  ],
+  "parent_user_story": "US-046",
+  "wireframe_mermaid": "flowchart TD\n    subgraph Dashboard_-_Status_Stumm_Schalten\n        Header[Header / Navigation]\n        Main[Main Content Area]\n        Sidebar[Sidebar / Filters]\n        Footer[Footer / Actions]\n    end\n\n    Header --> Main\n    Sidebar --> Main\n    Main --> Footer\n\n    %% \n",
+  "wireframe_ascii": "     0    5   10   15   20   25   30   35   40   45   50   55   60\n   0 +------------------------------------------------------------+\n     |  [Logo]   Dashboard    [Chats | Status | Calls]   [Menu] |\n   2 |                         Header                            |\n     +------------------------------------------------------------+\n   4 | [SearchBar         ] |  +----------------------------------+\n     |  COMP-002            |  |  [ContactCard]   COMP-009       |\n   6 |                      |  |  +-----+                        |\n     +----------------------+  |  |Photo|  Max Mustermann        |\n   8 | [ChatListItem]       |  |  +-----+  +49 170 1234567       |\n     |  COMP-003             |  |           Zuletzt online: 14:32|\n  10 | +------------------+ |  |                                 |\n     | | O Anna  - 10 min | |  +----------------------------------+\n  12 | | O Ben   - 25 min | |                                    |\n     | | O Clara - 1 Std  | |  +---------------+  +--------------+\n  14 | | O David - 3 Std  | |  |[StatusIndic.] |  |[Mute Button] |\n     | | O Emma  - 5 Std  | |  | COMP-010      |  | COMP-001     |\n  16 | |                  | |  | Status: Aktiv  |  | [🔇 Status  ]|\n     | | (O = StatusRing)  | |  | Heute, 14:30   |  | stumm       |\n  18 | |                  | |  +---------------+  | schalten    ]|\n     | |  Ausgewaehlter   | |                     +--------------+\n  20 | |  Kontakt wird    | |  +----------------------------------+\n     | |  hervorgehoben   | |  | Stummgeschaltete Status:        |\n  22 | |                  | |  | [x] Frank  [x] Greta  [x] Hans  |\n     | +------------------+ |  +----------------------------------+\n  24 +----------------------+-------------------------------------+",
+  "state_bindings": {
+    "COMP-002": "dashboard.searchQuery",
+    "COMP-003": "dashboard.contactStatusList",
+    "COMP-009": "dashboard.selectedContact",
+    "COMP-010": "dashboard.selectedContact.statusInfo",
+    "COMP-001": "dashboard.selectedContact.muteAction"
+  },
+  "navigation_rules": [
+    {
+      "trigger": "contact_click",
+      "target": "/dashboard",
+      "condition": "contact.hasStatus"
+    },
+    {
+      "trigger": "mute_btn_click",
+      "target": "",
+      "condition": "selectedContact !== null"
+    },
+    {
+      "trigger": "unmute_tag_click",
+      "target": "",
+      "condition": "contact.isMuted"
+    },
+    {
+      "trigger": "contact_long_press",
+      "target": "",
+      "condition": "contact.hasStatus"
+    }
+  ],
+  "responsive": {
+    "mobile": {
+      "layout": "stack",
+      "hidden_components": [
+        "COMP-009"
+      ]
+    },
+    "tablet": {
+      "layout": "sidebar-collapsed"
+    },
+    "desktop": {
+      "layout": "sidebar"
+    }
+  },
+  "auth_required": true
+}

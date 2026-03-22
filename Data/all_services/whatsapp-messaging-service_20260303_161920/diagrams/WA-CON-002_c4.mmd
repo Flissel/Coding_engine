@@ -1,0 +1,16 @@
+%%{ init : { "theme" : "default" } }%%
+C4Context
+    title System Context Diagram for Kontakt Hinzufuegen
+
+    Person(customer, "Kunde", "Ein Benutzer, der Kontakte hinzufügen möchte.")
+    System(system, "Kontakt Hinzufuegen System", "Ein System, das verschiedene Wege zum Kontakt-Hinzufügen bietet.")
+
+    Person(mobileApp, "Mobile App", "Eine mobile Anwendung, die es Benutzern ermöglicht, Kontakte hinzuzufügen.")
+    Person(webApp, "Webanwendung", "Eine Webanwendung, die es Benutzern ermöglicht, Kontakte hinzuzufügen.")
+    Person(api, "API", "Eine Schnittstelle, die es externen Systemen ermöglicht, Kontakte hinzuzufügen.")
+
+    Rel(customer, mobileApp, "Verwendet")
+    Rel(customer, webApp, "Verwendet")
+    Rel(mobileApp, system, "Kommuniziert mit")
+    Rel(webApp, system, "Kommuniziert mit")
+    Rel(api, system, "Kommuniziert mit")

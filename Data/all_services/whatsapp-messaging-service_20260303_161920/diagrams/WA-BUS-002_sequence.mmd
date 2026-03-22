@@ -1,0 +1,9 @@
+sequenceDiagram
+    participant User as User
+    participant System as System
+    participant Verifier as Verifier
+
+    User->>System: Request Business Verification
+    System->>Verifier: Send Verification Request
+    Verifier-->>System: Verify Business Details
+    System-->>User: Verification Result

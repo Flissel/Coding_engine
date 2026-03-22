@@ -1,0 +1,128 @@
+{
+  "id": "SCREEN-002",
+  "name": "Chat List & Messaging",
+  "route": "/chats",
+  "layout": "split",
+  "description": "Chat-Übersicht mit Suchmöglichkeit und aktivem Chat-Fenster zum Senden von Textnachrichten in Echtzeit",
+  "components": [
+    "COMP-002",
+    "COMP-003",
+    "COMP-004",
+    "COMP-005",
+    "COMP-008",
+    "COMP-010"
+  ],
+  "component_layout": [
+    {
+      "id": "COMP-002",
+      "name": "SearchBar",
+      "x": 0,
+      "y": 0,
+      "w": 20,
+      "h": 3
+    },
+    {
+      "id": "COMP-003",
+      "name": "ChatListItem",
+      "x": 0,
+      "y": 3,
+      "w": 20,
+      "h": 21
+    },
+    {
+      "id": "COMP-010",
+      "name": "StatusIndicator",
+      "x": 21,
+      "y": 0,
+      "w": 39,
+      "h": 3
+    },
+    {
+      "id": "COMP-004",
+      "name": "ChatBubble",
+      "x": 21,
+      "y": 3,
+      "w": 39,
+      "h": 17
+    },
+    {
+      "id": "COMP-008",
+      "name": "EmojiPicker",
+      "x": 21,
+      "y": 20,
+      "w": 5,
+      "h": 2
+    },
+    {
+      "id": "COMP-005",
+      "name": "MessageInput",
+      "x": 26,
+      "y": 20,
+      "w": 34,
+      "h": 4
+    }
+  ],
+  "data_requirements": [
+    "GET /api/chats",
+    "GET /api/chats/{chatId}/messages",
+    "POST /api/chats/{chatId}/messages",
+    "GET /api/users/{userId}/status",
+    "WS /ws/chats/{chatId}"
+  ],
+  "parent_user_story": "US-011",
+  "wireframe_mermaid": "flowchart TD\n    subgraph Chat_List_&_Messaging\n        Header[Header / Navigation]\n        Main[Main Content Area]\n        Sidebar[Sidebar / Filters]\n        Footer[Footer / Actions]\n    end\n\n    Header --> Main\n    Sidebar --> Main\n    Main --> Footer\n\n    %% \n",
+  "wireframe_ascii": "     0    5   10   15   20   25   30   35   40   45   50   55   60\n   0 +-------------------+----------------------------------------+\n     | [🔍 Search...   ] | [Avatar] Max Mustermann                |\n   2 |  COMP-002         |  COMP-010 ● Online    [📞] [📎] [⋮]  |\n     +-------------------+----------------------------------------+\n   3 | [ChatListItem]    |                                        |\n     | +---------------+ |  +----------------------------------+  |\n   5 | | 👤 Anna B.    | |  |  Hallo, wie geht's?       14:01 |  |\n     | | Letzte Nachr..| |  |  COMP-004 (received)             |  |\n   7 | | 14:32  ✓✓  2  | |  +----------------------------------+  |\n     | +---------------+ |                                        |\n   9 | +---------------+ |         +---------------------------+   |\n     | | 👤 Max M.     | |         | Mir geht's gut, danke!   |   |\n  11 | | Hey, schau... | |         | 14:02  ✓✓                |   |\n     | | 13:15  ✓✓     | |         | COMP-004 (sent)          |   |\n  13 | +---------------+ |         +---------------------------+   |\n     | +---------------+ |                                        |\n  15 | | 👤 Gruppe Dev | |  +----------------------------------+  |\n     | | Tom: Build... | |  |  Hast du Zeit heute Abend? 14:05 |  |\n  17 | | 12:00  ✓✓     | |  |  COMP-004 (received)             |  |\n     | +---------------+ |  +----------------------------------+  |\n  19 | |  COMP-003     | |                                        |\n     | | (weitere      | +----------------------------------------+\n  20 | |  Chats...)    | | [😀]  [Nachricht eingeben...   ] [➤]  |\n     | |               | | COMP  COMP-005                         |\n  22 | |               | | -008  (MessageInput)                    |\n     +-------------------+----------------------------------------+\n  24 +------------------------------------------------------------+",
+  "state_bindings": {
+    "COMP-002": "chats.searchQuery",
+    "COMP-003": "chats.list",
+    "COMP-004": "chats.activeChat.messages",
+    "COMP-005": "chats.activeChat.draftMessage",
+    "COMP-008": "chats.activeChat.emojiPickerOpen",
+    "COMP-010": "chats.activeChat.contact.status"
+  },
+  "navigation_rules": [
+    {
+      "trigger": "chat_list_item_click",
+      "target": "/chats/{chatId}",
+      "condition": ""
+    },
+    {
+      "trigger": "send_message",
+      "target": "",
+      "condition": "message.text.trim().length > 0"
+    },
+    {
+      "trigger": "emoji_select",
+      "target": "",
+      "condition": "chats.activeChat.emojiPickerOpen === true"
+    },
+    {
+      "trigger": "search_input",
+      "target": "/chats?q={query}",
+      "condition": ""
+    },
+    {
+      "trigger": "back_button",
+      "target": "/chats",
+      "condition": "viewport === 'mobile'"
+    }
+  ],
+  "responsive": {
+    "mobile": {
+      "layout": "stack",
+      "hidden_components": [
+        "COMP-003"
+      ],
+      "notes": "Chat-Liste und Chat-Ansicht als separate Screens; Swipe-Back zur Liste"
+    },
+    "tablet": {
+      "layout": "split-narrow",
+      "notes": "Chat-Liste schmaler (30%), Chat-Fenster breiter (70%)"
+    },
+    "desktop": {
+      "layout": "split",
+      "notes": "Chat-Liste (33%) und Chat-Fenster (67%) nebeneinander"
+    }
+  },
+  "auth_required": true
+}

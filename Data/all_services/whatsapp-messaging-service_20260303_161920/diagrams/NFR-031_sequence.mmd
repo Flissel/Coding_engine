@@ -1,0 +1,20 @@
+sequenceDiagram
+    participant User as User
+    participant LoadBalancer as Load Balancer
+    participant Server1 as Server 1
+    participant Server2 as Server 2
+    participant Database as Database
+
+    User->>LoadBalancer: Request
+    LoadBalancer->>Server1: Forward request
+    Server1->>Database: Query data
+    Database-->>Server1: Return data
+    Server1-->>LoadBalancer: Response
+    LoadBalancer-->>User: Response
+
+    User->>LoadBalancer: Concurrent request
+    LoadBalancer->>Server2: Forward request
+    Server2->>Database: Query data
+    Database-->>Server2: Return data
+    Server2-->>LoadBalancer: Response
+    LoadBalancer-->>User: Response

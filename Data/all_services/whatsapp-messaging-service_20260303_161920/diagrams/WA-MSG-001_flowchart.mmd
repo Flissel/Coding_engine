@@ -1,0 +1,11 @@
+flowchart TD
+    A[Start] --> B{Nachricht verfassen}
+    B --> C{Nachricht überprüfen}
+    C -->|Korrekt| D[Nachricht senden]
+    C -->|Fehler| E[Fehler anzeigen]
+    E --> B
+    D --> F{Nachricht gesendet?}
+    F -->|Ja| G[Bestätigung anzeigen]
+    F -->|Nein| H[Fehler beim Senden]
+    H --> B
+    G --> I[Ende]

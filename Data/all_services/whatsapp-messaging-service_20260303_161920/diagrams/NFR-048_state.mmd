@@ -1,0 +1,9 @@
+stateDiagram-v2
+    [*] --> Device_Ready
+    Device_Ready --> OS_Version_Check
+    OS_Version_Check --> Compatible : Compatible_OS
+    OS_Version_Check --> Incompatible : Incompatible_OS
+    Compatible --> Multi_Device_Support
+    Incompatible --> Error_State
+    Multi_Device_Support --> [*]
+    Error_State --> [*]

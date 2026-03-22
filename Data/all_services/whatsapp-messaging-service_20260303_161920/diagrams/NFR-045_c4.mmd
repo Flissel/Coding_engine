@@ -1,0 +1,10 @@
+%%{ init : { "theme" : "default" } }%%
+C4Context
+    title WCAG Compliance System Architecture
+
+    Person(user, "User", "A user with disabilities accessing the system.")
+    System(system, "Web Application", "A web application that needs to be WCAG compliant.")
+    System_Ext(thirdPartyService, "Third-Party Accessibility Tools", "External tools to evaluate and enhance accessibility.")
+
+    Rel(user, system, "Uses")
+    Rel(system, thirdPartyService, "Integrates with")

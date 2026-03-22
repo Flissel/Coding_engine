@@ -1,0 +1,119 @@
+{
+  "id": "SCREEN-015",
+  "name": "Video Call Edge-Case Handling",
+  "route": "/calls/video/:callId/edge-cases",
+  "layout": "fullscreen-overlay",
+  "description": "Edge-Case Handling Screen für Video-Calls mit End-to-End-Verschlüsselung: zeigt Fallbacks bei Netzwerkproblemen, Gerätewechsel und Verschlüsselungs-Fehlern an. Ermöglicht dem Nutzer, den Verschlüsselungsstatus zu prüfen und bei Problemen Aktionen auszuführen.",
+  "components": [
+    "COMP-001",
+    "COMP-004",
+    "COMP-007",
+    "COMP-009",
+    "COMP-010"
+  ],
+  "component_layout": [
+    {
+      "id": "COMP-010",
+      "name": "EncryptionStatusIndicator",
+      "x": 0,
+      "y": 0,
+      "w": 60,
+      "h": 4
+    },
+    {
+      "id": "COMP-007",
+      "name": "VideoFallbackViewer",
+      "x": 0,
+      "y": 4,
+      "w": 40,
+      "h": 14
+    },
+    {
+      "id": "COMP-009",
+      "name": "PeerContactCard",
+      "x": 41,
+      "y": 4,
+      "w": 19,
+      "h": 8
+    },
+    {
+      "id": "COMP-004",
+      "name": "EdgeCaseNotification",
+      "x": 41,
+      "y": 12,
+      "w": 19,
+      "h": 6
+    },
+    {
+      "id": "COMP-001",
+      "name": "ActionButtons",
+      "x": 0,
+      "y": 18,
+      "w": 60,
+      "h": 6
+    }
+  ],
+  "data_requirements": [
+    "GET /api/calls/video/{callId}",
+    "GET /api/calls/video/{callId}/encryption-status",
+    "GET /api/calls/video/{callId}/network-quality",
+    "POST /api/calls/video/{callId}/rekey",
+    "POST /api/calls/video/{callId}/fallback",
+    "GET /api/contacts/{peerId}/keys"
+  ],
+  "parent_user_story": "US-127",
+  "wireframe_mermaid": "flowchart TD\n    subgraph Video_Call_Edge-Case_Handling\n        Header[Header / Navigation]\n        Main[Main Content Area]\n        Sidebar[Sidebar / Filters]\n        Footer[Footer / Actions]\n    end\n\n    Header --> Main\n    Sidebar --> Main\n    Main --> Footer\n\n    %% \n",
+  "wireframe_ascii": "     0    5   10   15   20   25   30   35   40   45   50   55   60\n   0 +------------------------------------------------------------+\n     | 🔒 End-to-End Encrypted  |  Status: ⚠ Key Renegotiation  |\n   2 |  COMP-010 (EncryptionStatusIndicator)                      |\n     |  [🟡 Verifying...]  Security Code: 48293-19472-83741      |\n   3 +------------------------------------------------------------+\n   4 +----------------------------------------+-------------------+\n     |                                        | [PeerContactCard] |\n   5 |   +----------------------------------+ | COMP-009          |\n     |   |                                  | |                   |\n   6 |   |    VIDEO FALLBACK AREA           | | 👤 John Doe       |\n     |   |                                  | | +49 170 ****123   |\n   8 |   |   ⚠ Network Degraded             | | 🔑 Key: Verified  |\n     |   |   Switching to audio-only...      | | 📱 Device: iPhone |\n  10 |   |                                  | | 🔄 Device Changed |\n     |   |   COMP-007 (VideoFallbackViewer) | +-------------------+\n  12 |   |                                  | | [EdgeCaseNotif]   |\n     |   |   [🔇 Camera Off Fallback]       | | COMP-004          |\n  13 |   |   [📶 Low bandwidth: 120kbps]    | |                   |\n  14 |   +----------------------------------+ | ⚠ Peer device     |\n     |                                        | changed. New key  |\n  16 |                                        | exchange needed.  |\n     |                                        | Trust new device? |\n  17 +----------------------------------------+-------------------+\n  18 +------------------------------------------------------------+\n     |                    ACTION BUTTONS                          |\n  19 |  COMP-001                                                  |\n     |                                                            |\n  20 | [🔄 Re-establish]  [📞 Audio Only]  [🔑 Verify Keys]      |\n     |   Encryption         Fallback          Manually            |\n  22 |                                                            |\n     | [❌ End Call]                    [⚙ Connection Settings]   |\n  24 +------------------------------------------------------------+",
+  "state_bindings": {
+    "COMP-010": "call.encryptionStatus",
+    "COMP-007": "call.videoFallback",
+    "COMP-009": "call.peerContact",
+    "COMP-004": "call.edgeCaseNotifications",
+    "COMP-001": "call.availableActions"
+  },
+  "navigation_rules": [
+    {
+      "trigger": "end_call_click",
+      "target": "/chats/{contactId}",
+      "condition": ""
+    },
+    {
+      "trigger": "re_establish_click",
+      "target": "/calls/video/:callId",
+      "condition": "call.encryptionStatus !== 'failed'"
+    },
+    {
+      "trigger": "audio_only_click",
+      "target": "/calls/audio/:callId",
+      "condition": "call.networkQuality === 'degraded'"
+    },
+    {
+      "trigger": "verify_keys_click",
+      "target": "/calls/video/:callId/verify-keys",
+      "condition": "call.encryptionStatus === 'key_renegotiation'"
+    },
+    {
+      "trigger": "device_trust_accept",
+      "target": "/calls/video/:callId",
+      "condition": "call.peerDeviceChanged === true"
+    },
+    {
+      "trigger": "device_trust_reject",
+      "target": "/chats/{contactId}",
+      "condition": "call.peerDeviceChanged === true"
+    }
+  ],
+  "responsive": {
+    "mobile": {
+      "layout": "stack",
+      "hidden_components": []
+    },
+    "tablet": {
+      "layout": "fullscreen-overlay"
+    },
+    "desktop": {
+      "layout": "fullscreen-overlay"
+    }
+  },
+  "auth_required": true
+}

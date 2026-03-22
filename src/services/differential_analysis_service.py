@@ -45,7 +45,7 @@ from .mcmp_background import (
     MCMPBackgroundSimulation,
     SimulationConfig,
 )
-from src.llm_config import get_model
+from src.llm_config import get_model, get_openrouter_model
 
 logger = structlog.get_logger(__name__)
 
@@ -839,7 +839,7 @@ class DifferentialAnalysisService:
                             "Content-Type": "application/json",
                         },
                         json={
-                            "model": get_model("judge"),
+                            "model": get_openrouter_model("judge"),
                             "messages": [{"role": "user", "content": prompt}],
                             "temperature": 0.1,
                         },

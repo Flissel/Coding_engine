@@ -1,0 +1,85 @@
+{
+  "route": "/settings/profile/qr",
+  "screen_name": "QR-Code Profil",
+  "description": "",
+  "user_stories": [
+    "US-010",
+    "US-096",
+    "US-152"
+  ],
+  "components": [
+    {
+      "component_id": "COMP-023",
+      "component_name": "ProfileHeader",
+      "props": {
+        "variant": "default",
+        "showQRCode": true
+      },
+      "position": "header",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-001",
+      "component_name": "Button",
+      "props": {
+        "variant": "primary",
+        "text": "QR-Code teilen"
+      },
+      "position": "main",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-001",
+      "component_name": "Button",
+      "props": {
+        "variant": "outline",
+        "text": "QR-Code speichern"
+      },
+      "position": "main",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-001",
+      "component_name": "Button",
+      "props": {
+        "variant": "secondary",
+        "text": "QR-Code scannen"
+      },
+      "position": "main",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-026",
+      "component_name": "ToastNotification",
+      "props": {
+        "variant": "success",
+        "message": "QR-Code erfolgreich geteilt"
+      },
+      "position": "modal",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    }
+  ],
+  "layout": "flex column, centered, max-width 400px",
+  "data_sources": [],
+  "state_shape": {
+    "qrCodeData": "string",
+    "isSharing": "boolean",
+    "showToast": "boolean",
+    "toastMessage": "string"
+  }
+}

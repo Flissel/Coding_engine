@@ -1,0 +1,14 @@
+flowchart TD
+    A[Start] --> B[User Initiates Search]
+    B --> C[Full-text Search Across Chats]
+    C --> D{Filters Applied?}
+    D -->|Yes| E[Apply Filters for Media]
+    D -->|Yes| F[Apply Filters for Contacts]
+    D -->|No| G[Display All Results]
+    E --> G
+    F --> G
+    G --> H[Display Search Results]
+    H --> I[User Selects a Chat]
+    I --> J[View Chat History]
+    J --> K[User Can Save or Share Results]
+    K --> L[End]

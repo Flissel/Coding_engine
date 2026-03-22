@@ -1,0 +1,9 @@
+flowchart TD
+    A[Start] --> B{Favoriten-Kontakte?}
+    B -- Ja --> C[Kontakt hinzufügen]
+    B -- Nein --> D[Prozess beenden]
+    C --> E[Kontakt speichern]
+    E --> F[Bestätigung anzeigen]
+    F --> G[Prozess beenden]
+    D --> H[Ende]
+    G --> H

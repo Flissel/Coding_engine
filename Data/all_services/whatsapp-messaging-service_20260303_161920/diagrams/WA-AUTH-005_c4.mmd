@@ -1,0 +1,12 @@
+%%{ init : { "theme" : "default" } }%%
+C4Context
+    title Passkey-Unterstuetzung System Architecture
+
+    Person(user, "Benutzer", "Ein Benutzer, der passwortlose Anmeldung nutzen möchte.")
+    System(system, "Passkey-Unterstützung", "Ein System, das passwortlose Anmeldungen über Passkeys ermöglicht.")
+    System_Ext(authenticationService, "Authentifizierungsdienst", "Ein externer Dienst zur Authentifizierung von Benutzern.")
+    System_Ext(device, "Gerät", "Ein Gerät, das Passkeys generiert und speichert.")
+
+    Rel(user, system, "Nutzen")
+    Rel(system, authenticationService, "Kommuniziert mit")
+    Rel(system, device, "Interagiert mit")

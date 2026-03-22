@@ -1,0 +1,14 @@
+%%{ init : { "theme" : "default" } }%%
+C4Context
+    title End-to-End Encryption and Key Management System Architecture
+
+    Person(user, "User", "A user who sends and receives messages.")
+    System(system, "E2E Encryption System", "Provides end-to-end encryption for messages and media.")
+
+    System_Ext(keyManager, "Key Management Service", "Handles key generation, rotation, and secure storage.")
+    System_Ext(storage, "Secure Storage", "Stores encrypted messages and media securely.")
+
+    Rel(user, system, "Sends and receives encrypted messages and media")
+    Rel(system, keyManager, "Requests key generation and rotation")
+    Rel(system, storage, "Stores and retrieves encrypted messages and media")
+    Rel(keyManager, storage, "Stores encryption keys securely")

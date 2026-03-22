@@ -1,0 +1,10 @@
+%%{ init : { "theme" : "default" } }%%
+C4Context
+    title Push-Benachrichtigungen System Architecture
+
+    Person(user, "Benutzer", "Ein Benutzer, der Push-Benachrichtigungen erhält.")
+    System(pushNotificationSystem, "Push-Benachrichtigungen System", "Ein System, das zuverlässige Push-Benachrichtigungen liefert.")
+    System_Ext(externalService, "Externer Benachrichtigungsdienst", "Ein externer Dienst, der Push-Benachrichtigungen sendet.")
+
+    Rel(user, pushNotificationSystem, "Empfängt Push-Benachrichtigungen von")
+    Rel(pushNotificationSystem, externalService, "Sendet Benachrichtigungen an")

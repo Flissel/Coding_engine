@@ -1,0 +1,14 @@
+classDiagram
+    class Gruppe {
+        +String name
+        +List<Benutzer> mitglieder
+        +void gruppeErstellen(String name, List<Benutzer> mitglieder)
+    }
+
+    class Benutzer {
+        +String benutzername
+        +String email
+        +void einladen(Gruppe gruppe)
+    }
+
+    Gruppe "1" -- "*" Benutzer : enthält

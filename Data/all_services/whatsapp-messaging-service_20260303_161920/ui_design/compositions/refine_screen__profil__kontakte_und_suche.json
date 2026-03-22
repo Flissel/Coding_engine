@@ -1,0 +1,13 @@
+{
+  "route": "/profil,_kontakte_und",
+  "screen_name": "Screen: Profil, Kontakte und Suche",
+  "description": "Auto-generated composition for 2 stories",
+  "linked_user_stories": [
+    "US-079",
+    "US-077"
+  ],
+  "user_stories": [
+    "US-079",
+    "US-077"
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "screens_reviewed": 40,
+  "dimension_scores": {
+    "wireframe_quality": 1.0,
+    "component_coverage": 1.0,
+    "story_coverage": 1.0,
+    "layout_coherence": 1.0,
+    "data_completeness": 0.9914285714285714
+  },
+  "overall_score": 0.9982857142857142,
+  "targets": {
+    "wireframe_quality": 0.8,
+    "component_coverage": 0.9,
+    "story_coverage": 0.85,
+    "layout_coherence": 0.8,
+    "data_completeness": 0.75
+  },
+  "issues_count": 2,
+  "issues": [
+    {
+      "severity": "minor",
+      "dimension": "data_completeness",
+      "screen_id": "SCREEN-002",
+      "description": "1 non-standard endpoint(s) in SCREEN-002",
+      "fix_hint": "Use format: 'GET /api/resource' or '/api/resource'"
+    },
+    {
+      "severity": "minor",
+      "dimension": "data_completeness",
+      "screen_id": "SCREEN-005",
+      "description": "1 non-standard endpoint(s) in SCREEN-005",
+      "fix_hint": "Use format: 'GET /api/resource' or '/api/resource'"
+    }
+  ],
+  "needs_improvement": false
+}

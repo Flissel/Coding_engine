@@ -1,0 +1,28 @@
+classDiagram
+    class Nachricht {
+        +String id
+        +String inhalt
+        +Date zeitstempel
+        +User autor
+        +List<Antwort> antworten
+        +void zitieren()
+    }
+
+    class User {
+        +String id
+        +String name
+        +List<Nachricht> nachrichten
+    }
+
+    class Antwort {
+        +String id
+        +String inhalt
+        +Date zeitstempel
+        +User autor
+        +Nachricht originalNachricht
+    }
+
+    Nachricht "1" -- "*" Antwort : enthält >
+    User "1" -- "*" Nachricht : erstellt >
+    User "1" -- "*" Antwort : erstellt >
+    Antwort "1" -- "1" Nachricht : bezieht sich auf >

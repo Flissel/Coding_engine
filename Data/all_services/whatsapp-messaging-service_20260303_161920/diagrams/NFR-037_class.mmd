@@ -1,0 +1,27 @@
+classDiagram
+    class PersonalData {
+        +String dataType
+        +String dataValue
+        +DateTime createdAt
+        +DateTime updatedAt
+        +Boolean isDeletable
+        +void retainData()
+        +void deleteData()
+    }
+
+    class DataRetentionPolicy {
+        +String policyName
+        +DateTime retentionPeriod
+        +Boolean isActive
+        +void applyPolicy()
+        +void reviewPolicy()
+    }
+
+    class UserRequest {
+        +String requestType
+        +DateTime requestDate
+        +void processRequest()
+    }
+
+    PersonalData "1" -- "1" DataRetentionPolicy : follows
+    PersonalData "1" -- "0..*" UserRequest : receives

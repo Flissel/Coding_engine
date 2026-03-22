@@ -1,0 +1,106 @@
+{
+  "id": "SCREEN-025",
+  "name": "Multi-Device Übersicht",
+  "route": "/settings/devices/overview",
+  "layout": "single-column",
+  "description": "Übersicht aller verbundenen Geräte mit Status, letzter Aktivität und Media-Upload-Durchsatz-Indikatoren zur Validierung von Upload-Performance unter Last",
+  "components": [
+    "COMP-001",
+    "COMP-002",
+    "COMP-003",
+    "COMP-010"
+  ],
+  "component_layout": [
+    {
+      "id": "COMP-001",
+      "name": "ActionBar (Buttons: Refresh, Remove Device)",
+      "x": 0,
+      "y": 0,
+      "w": 60,
+      "h": 4
+    },
+    {
+      "id": "COMP-002",
+      "name": "SearchBar (Device Search)",
+      "x": 0,
+      "y": 4,
+      "w": 60,
+      "h": 3
+    },
+    {
+      "id": "COMP-010",
+      "name": "StatusIndicator (Upload Throughput Summary)",
+      "x": 0,
+      "y": 7,
+      "w": 60,
+      "h": 5
+    },
+    {
+      "id": "COMP-003",
+      "name": "DeviceListItem (Repeating Device Entries)",
+      "x": 0,
+      "y": 12,
+      "w": 60,
+      "h": 14
+    }
+  ],
+  "data_requirements": [
+    "GET /api/settings/devices",
+    "GET /api/settings/devices/{deviceId}/status",
+    "GET /api/settings/devices/{deviceId}/media-throughput",
+    "GET /api/metrics/media-upload/throughput-summary",
+    "DELETE /api/settings/devices/{deviceId}"
+  ],
+  "parent_user_story": "US-141",
+  "wireframe_mermaid": "flowchart TD\n    subgraph Multi-Device_Übersicht\n        Header[Header / Navigation]\n        Main[Main Content Area]\n        Sidebar[Sidebar / Filters]\n        Footer[Footer / Actions]\n    end\n\n    Header --> Main\n    Sidebar --> Main\n    Main --> Footer\n\n    %% \n",
+  "wireframe_ascii": "     0    5   10   15   20   25   30   35   40   45   50   55   60\n   0 +------------------------------------------------------------+\n     |  [<- Back]   Multi-Device Übersicht     [Refresh][+Add]  |\n   2 |  COMP-001 (ActionBar)                                     |\n     +------------------------------------------------------------+\n   4 |  [🔍 Search devices by name or ID...                   ] |\n     |  COMP-002 (SearchBar)                                     |\n   6 +------------------------------------------------------------+\n   7 |  ┌─ Upload Throughput Summary ─────────────────────────┐  |\n     |  │  ● Current:  12.4 MB/s    Peak: 48.2 MB/s          │  |\n   9 |  │  ● Avg Completion: 2.3s   Under Load: 5.1s         │  |\n     |  │  COMP-010 (StatusIndicator)  Status: [● Normal]     │  |\n  11 |  └─────────────────────────────────────────────────────┘  |\n  12 +------------------------------------------------------------+\n     |  Connected Devices (3)                    [Sort: Recent ▼] |\n  14 |  +--------------------------------------------------------+|\n     |  | 📱 iPhone 14 Pro          COMP-003 (DeviceListItem)   ||\n  16 |  |    Status: [● Online]  COMP-010   Last: 2 min ago     ||\n     |  |    Upload: 14.2 MB/s | Completion: 1.8s | Load: Norm  ||\n  18 |  +--------------------------------------------------------+|\n     |  | 💻 MacBook Pro 16\"        COMP-003 (DeviceListItem)   ||\n  20 |  |    Status: [● Online]  COMP-010   Last: Just now      ||\n     |  |    Upload: 22.1 MB/s | Completion: 0.9s | Load: Norm  ||\n  22 |  +--------------------------------------------------------+|\n     |  | 🌐 WhatsApp Web           COMP-003 (DeviceListItem)   ||\n  24 |  |    Status: [○ Idle]    COMP-010   Last: 1 hour ago    ||\n     |  |    Upload:  3.8 MB/s | Completion: 4.2s | Load: Peak  ||\n  26 +------------------------------------------------------------+",
+  "state_bindings": {
+    "COMP-001": "devices.actions",
+    "COMP-002": "devices.searchQuery",
+    "COMP-003": "devices.list",
+    "COMP-010": "devices.throughputStatus"
+  },
+  "navigation_rules": [
+    {
+      "trigger": "back_btn_click",
+      "target": "/settings",
+      "condition": ""
+    },
+    {
+      "trigger": "device_item_click",
+      "target": "/settings/devices/{deviceId}",
+      "condition": ""
+    },
+    {
+      "trigger": "add_btn_click",
+      "target": "/settings/devices/link",
+      "condition": "user.canManageDevices"
+    },
+    {
+      "trigger": "refresh_btn_click",
+      "target": "",
+      "condition": "action:reload_throughput_metrics"
+    },
+    {
+      "trigger": "remove_device_swipe",
+      "target": "",
+      "condition": "user.canManageDevices && device.status !== 'primary'"
+    }
+  ],
+  "responsive": {
+    "mobile": {
+      "layout": "stack",
+      "hidden_components": [],
+      "notes": "Throughput summary collapses to single-line compact view; device list items stack vertically with truncated metrics"
+    },
+    "tablet": {
+      "layout": "single-column",
+      "notes": "Full layout with slightly reduced padding"
+    },
+    "desktop": {
+      "layout": "single-column",
+      "notes": "Full layout as shown, max-width 720px centered"
+    }
+  },
+  "auth_required": true
+}

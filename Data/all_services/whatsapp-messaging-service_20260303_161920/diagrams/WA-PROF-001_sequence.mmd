@@ -1,0 +1,12 @@
+sequenceDiagram
+    participant User
+    participant System
+
+    User->>System: Upload Profilbild
+    System-->>User: Bestätigung des Uploads
+    User->>System: Anfordern von Profilbild
+    System-->>User: Profilbild anzeigen
+    User->>System: Profilbild löschen
+    System-->>User: Bestätigung des Löschens
+    User->>System: Profilbild aktualisieren
+    System-->>User: Bestätigung der Aktualisierung

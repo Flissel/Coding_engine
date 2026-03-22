@@ -1,0 +1,11 @@
+{
+  "route": "/gruppen,_communities_und",
+  "screen_name": "Screen: Gruppen, Communities und Kanäle",
+  "description": "Auto-generated composition for 1 stories",
+  "linked_user_stories": [
+    "US-030"
+  ],
+  "user_stories": [
+    "US-030"
+  ]
+}

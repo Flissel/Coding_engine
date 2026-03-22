@@ -519,6 +519,9 @@ build_project() {
         fi
     fi
 
+    # Save build output for Claude Code auto-fix
+    echo "$build_output" > /tmp/last_build_output.log
+
     # Check if build failed
     if [ $build_exit_code -ne 0 ]; then
         echo "=== Build FAILED (exit code: $build_exit_code) ==="
@@ -527,9 +530,6 @@ build_project() {
         # Report error to Coding Engine for auto-fix
         report_error "build_failed" "$build_output" $build_exit_code
 
-        # Don't exit - let the system try to fix it
-        # The ContinuousDebugAgent will sync fixes and trigger rebuild
-        echo "Waiting for auto-fix from Coding Engine..."
         return 1
     fi
 
@@ -764,11 +764,14 @@ check_health() {
     fi
 
     # For web apps, check HTTP endpoint
+    # NOTE: We use curl -so (not -sf) because APIs like NestJS return 404 on /
+    # which is valid — any HTTP response means the server is alive.
     while [ $attempt -le $max_attempts ]; do
         echo "Health check attempt $attempt/$max_attempts: $health_url"
-        if curl -sf "$health_url" > /dev/null 2>&1; then
-            echo "Health check PASSED!"
-            # Store the working URL for browser
+        local http_code
+        http_code=$(curl -so /dev/null -w '%{http_code}' "$health_url" 2>/dev/null || echo "000")
+        if [ "$http_code" != "000" ]; then
+            echo "Health check PASSED! (HTTP $http_code)"
             APP_URL="$health_url"
             return 0
         fi
@@ -776,9 +779,9 @@ check_health() {
         # Also try common alternative URLs
         for alt_url in "http://localhost:5173" "http://localhost:3000" "http://localhost:4173" "http://localhost:8000" "http://localhost:5000"; do
             if [ "$alt_url" != "$health_url" ]; then
-                if curl -sf "$alt_url" > /dev/null 2>&1; then
-                    echo "Health check PASSED on $alt_url!"
-                    # Store the working URL for browser
+                http_code=$(curl -so /dev/null -w '%{http_code}' "$alt_url" 2>/dev/null || echo "000")
+                if [ "$http_code" != "000" ]; then
+                    echo "Health check PASSED on $alt_url! (HTTP $http_code)"
                     APP_URL="$alt_url"
                     return 0
                 fi
@@ -809,13 +812,12 @@ main() {
         start_loading_browser
     fi
 
-    # Build with retry loop for auto-fix
+    # Build with Claude Code auto-fix loop
     while [ $fix_attempt -lt $max_fix_attempts ]; do
         fix_attempt=$((fix_attempt + 1))
         echo "=== Build Attempt $fix_attempt/$max_fix_attempts ==="
 
         # Check if package.json changed and reinstall if needed
-        # This handles cases where the generation system adds missing dependencies
         reinstall_deps_if_changed
 
         if build_project; then
@@ -823,24 +825,40 @@ main() {
             break
         fi
 
-        # Build failed - wait for fix from Coding Engine
-        echo "Build failed. Waiting for auto-fix (30 seconds)..."
-        echo "The ContinuousDebugAgent will sync fixed files via docker cp"
-        sleep 30
+        # Build failed — use KiloCLI to fix errors automatically
+        if command -v kilocode &>/dev/null && [ -f /root/.kilocode/cli/config.json ]; then
+            echo "=== KiloCLI auto-fix (attempt $fix_attempt) ==="
+            local build_errors
+            build_errors=$(cat /tmp/last_build_output.log 2>/dev/null | tail -60)
 
-        # Check if files were modified (indicating a fix was applied)
-        # This is a simple heuristic - real fix detection could be more sophisticated
-        echo "Checking for updated files..."
+            timeout 180 kilocode --auto --yolo -w /app -m debug \
+                "Fix these build errors. Only fix errors, do not refactor or add features.
+If a Prisma model is missing, add it to prisma/schema.prisma.
+If an import is wrong, fix the import path.
+
+BUILD ERRORS:
+$build_errors" 2>&1 | tail -20
+
+            echo "KiloCLI fix applied, retrying build..."
+            reinstall_deps_if_changed
+        else
+            echo "KiloCLI not available — waiting 30s for external fix..."
+            sleep 30
+        fi
     done
 
     if [ "$build_success" = "false" ]; then
         echo "=== Build FAILED after $max_fix_attempts attempts ==="
-        echo "Manual intervention required."
+        echo "Starting continuous debug loop for ongoing auto-fix..."
 
-        # Keep container running for debugging if VNC enabled
+        # Even on total failure, start debug loop + keep container alive
         if [ "$ENABLE_VNC" = "true" ]; then
-            echo "VNC enabled - keeping container running for debugging"
-            echo "Access via: http://localhost:${NOVNC_PORT:-6080}/vnc.html"
+            /usr/local/bin/continuous-debug-loop.sh &
+            echo "Debug loop started in background"
+            echo "VNC: http://localhost:${NOVNC_PORT:-6080}/vnc.html"
+
+            # Try starting the app anyway (it may partially work)
+            start_app || true
             tail -f /dev/null
         fi
         exit 1
@@ -871,6 +889,12 @@ main() {
             echo "VNC enabled - keeping container running for screen streaming"
             echo "Access via: http://localhost:${NOVNC_PORT:-6080}/vnc.html"
 
+            # Start continuous debug loop (Claude Code auto-fix + live reload)
+            echo "Starting continuous debug loop..."
+            /usr/local/bin/continuous-debug-loop.sh &
+            DEBUG_LOOP_PID=$!
+            echo "Debug loop started with PID: $DEBUG_LOOP_PID"
+
             # Start background error monitor to detect runtime database errors
             echo "Starting background database error monitor..."
             while true; do
@@ -899,6 +923,13 @@ main() {
         # Keep container running for debugging if VNC enabled
         if [ "$ENABLE_VNC" = "true" ]; then
             echo "VNC enabled - keeping container running for debugging"
+
+            # Start continuous debug loop even on failure — Claude Code will fix errors
+            echo "Starting continuous debug loop (auto-fix mode)..."
+            /usr/local/bin/continuous-debug-loop.sh &
+            DEBUG_LOOP_PID=$!
+            echo "Debug loop started with PID: $DEBUG_LOOP_PID"
+
             tail -f /dev/null
         fi
         exit 1

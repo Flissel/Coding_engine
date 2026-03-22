@@ -1,0 +1,11 @@
+flowchart TD
+    A[Start Mediensuche] --> B{Medientypen wählen}
+    B -->|Bücher| C[Filtere nach Büchern]
+    B -->|Zeitschriften| D[Filtere nach Zeitschriften]
+    B -->|Videos| E[Filtere nach Videos]
+    B -->|Audios| F[Filtere nach Audios]
+    C --> G[Ergebnisse anzeigen]
+    D --> G
+    E --> G
+    F --> G
+    G --> H[Ende Mediensuche]

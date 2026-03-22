@@ -1,0 +1,101 @@
+{
+  "route": "/settings/help/support",
+  "screen_name": "Support kontaktieren",
+  "description": "",
+  "user_stories": [
+    "US-004",
+    "US-157"
+  ],
+  "components": [
+    {
+      "component_id": "COMP-025",
+      "component_name": "HelpArticleCard",
+      "props": {
+        "variant": "default",
+        "title": "Häufige Probleme",
+        "description": "Schnelle Lösungen für bekannte Probleme"
+      },
+      "position": "main",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-025",
+      "component_name": "HelpArticleCard",
+      "props": {
+        "variant": "default",
+        "title": "Chat mit Support",
+        "description": "Direkte Hilfe von unserem Support-Team"
+      },
+      "position": "main",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-025",
+      "component_name": "HelpArticleCard",
+      "props": {
+        "variant": "default",
+        "title": "E-Mail Support",
+        "description": "Senden Sie uns eine detaillierte Anfrage"
+      },
+      "position": "main",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-001",
+      "component_name": "Button",
+      "props": {
+        "variant": "primary",
+        "text": "Live Chat starten"
+      },
+      "position": "main",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-001",
+      "component_name": "Button",
+      "props": {
+        "variant": "outline",
+        "text": "E-Mail senden"
+      },
+      "position": "main",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-026",
+      "component_name": "ToastNotification",
+      "props": {
+        "variant": "info",
+        "message": "Support-Anfrage wurde gesendet"
+      },
+      "position": "modal",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    }
+  ],
+  "layout": "flex column, centered, max-width 600px, gap-4, padding-4",
+  "data_sources": [],
+  "state_shape": {
+    "supportOptions": "array",
+    "selectedOption": "string",
+    "isLoading": "boolean",
+    "showToast": "boolean",
+    "toastMessage": "string"
+  }
+}

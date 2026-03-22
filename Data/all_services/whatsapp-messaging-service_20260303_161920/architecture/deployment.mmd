@@ -1,0 +1,30 @@
+graph TB
+    subgraph "AWS EU-West-1 (Primary)"
+        subgraph "EKS Cluster"
+            A1[API Gateway]
+            A2[Auth Service]
+            A3[Messaging Service]
+            A4[Group Service]
+            A5[Call Service]
+        end
+        B1[RDS PostgreSQL]
+        B2[ElastiCache Redis]
+        B3[MSK Kafka]
+        B4[S3 Bucket]
+        B5[CloudFront CDN]
+    end
+    
+    subgraph "AWS US-East-1 (Failover)"
+        subgraph "EKS Cluster Standby"
+            C1[API Gateway]
+            C2[Auth Service]
+            C3[Messaging Service]
+        end
+        D1[RDS Read Replica]
+        D2[S3 Cross-Region Replication]
+    end
+    
+    E[Route 53] --> B5
+    B5 --> A1
+    A1 --> A2
+    A1 --> A3

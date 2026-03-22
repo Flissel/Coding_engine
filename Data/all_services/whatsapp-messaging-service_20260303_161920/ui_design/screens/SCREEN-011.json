@@ -1,0 +1,149 @@
+{
+  "id": "SCREEN-011",
+  "name": "Chat Info - Chat sperren",
+  "route": "/chats/:chatId/info",
+  "layout": "single-column",
+  "description": "Chat-Info Screen mit Details, Medien und Aktionen. Ermoeglicht das Sperren eines einzelnen Chats mit zusaetzlicher Authentifizierung (PIN/Biometrie). Zeigt Kontaktinformationen, geteilte Medien und Chat-Aktionen an.",
+  "components": [
+    "COMP-009",
+    "COMP-010",
+    "COMP-007",
+    "COMP-001"
+  ],
+  "component_layout": [
+    {
+      "id": "COMP-001_back",
+      "name": "BackButton",
+      "x": 0,
+      "y": 0,
+      "w": 60,
+      "h": 4
+    },
+    {
+      "id": "COMP-009",
+      "name": "ContactCard",
+      "x": 5,
+      "y": 4,
+      "w": 50,
+      "h": 10
+    },
+    {
+      "id": "COMP-010",
+      "name": "StatusIndicator",
+      "x": 20,
+      "y": 8,
+      "w": 20,
+      "h": 2
+    },
+    {
+      "id": "COMP-007",
+      "name": "MediaViewer",
+      "x": 2,
+      "y": 15,
+      "w": 56,
+      "h": 8
+    },
+    {
+      "id": "COMP-001_lock",
+      "name": "LockChatButton",
+      "x": 5,
+      "y": 24,
+      "w": 50,
+      "h": 4
+    },
+    {
+      "id": "COMP-001_confirm",
+      "name": "ConfirmAuthButton",
+      "x": 10,
+      "y": 34,
+      "w": 40,
+      "h": 4
+    },
+    {
+      "id": "COMP-001_cancel",
+      "name": "CancelAuthButton",
+      "x": 10,
+      "y": 39,
+      "w": 40,
+      "h": 4
+    }
+  ],
+  "data_requirements": [
+    "GET /api/chats/:chatId/info",
+    "GET /api/chats/:chatId/media",
+    "GET /api/chats/:chatId/lock-status",
+    "POST /api/chats/:chatId/lock",
+    "POST /api/chats/:chatId/unlock",
+    "POST /api/auth/verify-pin",
+    "POST /api/auth/verify-biometric"
+  ],
+  "parent_user_story": "US-020",
+  "wireframe_mermaid": "flowchart TD\n    subgraph Chat_Info_-_Chat_sperren\n        Header[Header / Navigation]\n        Main[Main Content Area]\n        Sidebar[Sidebar / Filters]\n        Footer[Footer / Actions]\n    end\n\n    Header --> Main\n    Sidebar --> Main\n    Main --> Footer\n\n    %% \n",
+  "wireframe_ascii": "     0    5   10   15   20   25   30   35   40   45   50   55   60\n   0 +------------------------------------------------------------+\n     |  [<- Back]          Chat Info                              |\n   2 |  COMP-001 (BackButton)                                     |\n     +------------------------------------------------------------+\n   4 |     +--------------------------------------------------+   |\n     |     |  +--------+                                      |   |\n   6 |     |  | Avatar |   Kontaktname                        |   |\n     |     |  |  Foto  |   +49 170 1234567                    |   |\n   8 |     |  +--------+   [Online] COMP-010 (StatusIndicator)|   |\n     |     |               (StatusIndicator)                  |   |\n  10 |     |          COMP-009 (ContactCard)                  |   |\n     |     +--------------------------------------------------+   |\n  12 |                                                            |\n     |  ---- Medien, Links, Dokumente ---------------------------|\n  14 |                                                            |\n  15 |  +--------------------------------------------------------+|\n     |  | [Bild1]  [Bild2]  [Bild3]  [Bild4]  [Bild5]  [>>]     ||\n  17 |  |                                                        ||\n     |  |  COMP-007 (MediaViewer)                                ||\n  19 |  |  Geteilte Medien Vorschau                              ||\n     |  +--------------------------------------------------------+|\n  21 |                                                            |\n     |  ---- Aktionen -------------------------------------------|\n  23 |                                                            |\n  24 |     +--------------------------------------------------+   |\n     |     |  [🔒 Chat sperren]                               |   |\n  26 |     |  COMP-001 (LockChatButton)                       |   |\n     |     +--------------------------------------------------+   |\n  28 |                                                            |\n     |  ==========================================================|\n  30 |  ||          Authentifizierung erforderlich              |||\n     |  ||                                                      |||\n  32 |  ||   Um diesen Chat zu sperren, bestaetigen Sie        |||\n     |  ||   Ihre Identitaet mit PIN oder Biometrie.           |||\n  34 |  ||     +----------------------------------------+      |||\n     |  ||     | [✓ Mit PIN/Biometrie bestaetigen]       |      |||\n  36 |  ||     |  COMP-001 (ConfirmAuthButton)           |      |||\n     |  ||     +----------------------------------------+      |||\n  38 |  ||                                                      |||\n  39 |  ||     +----------------------------------------+      |||\n     |  ||     | [Abbrechen]                             |      |||\n  41 |  ||     |  COMP-001 (CancelAuthButton)            |      |||\n     |  ||     +----------------------------------------+      |||\n  43 |  ||          Auth-Dialog (Modal Overlay)                 |||\n     |  ==========================================================|\n  45 +------------------------------------------------------------+",
+  "state_bindings": {
+    "COMP-009": "chat.contactInfo",
+    "COMP-010": "chat.contactInfo.onlineStatus",
+    "COMP-007": "chat.sharedMedia",
+    "COMP-001_lock": "chat.lockStatus",
+    "COMP-001_confirm": "auth.verificationState",
+    "COMP-001_cancel": "auth.dialogVisible"
+  },
+  "navigation_rules": [
+    {
+      "trigger": "back_btn_click",
+      "target": "/chats/:chatId",
+      "condition": ""
+    },
+    {
+      "trigger": "lock_btn_click",
+      "target": "",
+      "condition": "chat.lockStatus === 'unlocked'",
+      "action": "show_auth_dialog"
+    },
+    {
+      "trigger": "lock_btn_click",
+      "target": "",
+      "condition": "chat.lockStatus === 'locked'",
+      "action": "show_auth_dialog_for_unlock"
+    },
+    {
+      "trigger": "confirm_auth_click",
+      "target": "",
+      "condition": "auth.verified === true",
+      "action": "toggle_chat_lock"
+    },
+    {
+      "trigger": "cancel_auth_click",
+      "target": "",
+      "condition": "",
+      "action": "dismiss_auth_dialog"
+    },
+    {
+      "trigger": "media_thumbnail_click",
+      "target": "/chats/:chatId/media",
+      "condition": ""
+    },
+    {
+      "trigger": "auth_success",
+      "target": "/chats/:chatId/info",
+      "condition": "chat.lockStatus toggled",
+      "action": "show_success_toast"
+    }
+  ],
+  "responsive": {
+    "mobile": {
+      "layout": "stack",
+      "hidden_components": [],
+      "notes": "Full-screen modal fuer Auth-Dialog, Media-Grid 3 Spalten"
+    },
+    "tablet": {
+      "layout": "single-column",
+      "notes": "Zentrierter Content mit max-width, Media-Grid 5 Spalten"
+    },
+    "desktop": {
+      "layout": "single-column",
+      "notes": "Zentrierter Content 480px max-width, Auth-Dialog als zentriertes Modal"
+    }
+  },
+  "auth_required": true
+}

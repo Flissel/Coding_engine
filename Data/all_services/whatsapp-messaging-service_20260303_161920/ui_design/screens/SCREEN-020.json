@@ -1,0 +1,174 @@
+{
+  "id": "SCREEN-020",
+  "name": "QR-Code Profil",
+  "route": "/settings/profile/qr",
+  "layout": "single",
+  "description": "QR-Code Profilseite mit Möglichkeit den eigenen QR-Code zu teilen oder einen QR-Code zu scannen. Enthält auch Schnellzugriff auf Voice/Video-Call-Funktionen mit Steuerung für Mute, Kamera und Lautsprecher.",
+  "components": [
+    "COMP-001",
+    "COMP-009",
+    "COMP-010"
+  ],
+  "component_layout": [
+    {
+      "id": "header_bar",
+      "name": "HeaderBar",
+      "x": 0,
+      "y": 0,
+      "w": 60,
+      "h": 4
+    },
+    {
+      "id": "COMP-009",
+      "name": "ContactCard (Profil)",
+      "x": 10,
+      "y": 4,
+      "w": 40,
+      "h": 6
+    },
+    {
+      "id": "COMP-010",
+      "name": "StatusIndicator (Online)",
+      "x": 25,
+      "y": 5,
+      "w": 10,
+      "h": 2
+    },
+    {
+      "id": "qr_display",
+      "name": "QR-Code Display",
+      "x": 15,
+      "y": 11,
+      "w": 30,
+      "h": 14
+    },
+    {
+      "id": "COMP-001_share",
+      "name": "Button (Share)",
+      "x": 5,
+      "y": 26,
+      "w": 16,
+      "h": 4
+    },
+    {
+      "id": "COMP-001_scan",
+      "name": "Button (Scan)",
+      "x": 23,
+      "y": 26,
+      "w": 16,
+      "h": 4
+    },
+    {
+      "id": "COMP-001_call",
+      "name": "Button (Voice Call)",
+      "x": 41,
+      "y": 26,
+      "w": 16,
+      "h": 4
+    },
+    {
+      "id": "call_controls",
+      "name": "Call Controls Bar",
+      "x": 0,
+      "y": 31,
+      "w": 60,
+      "h": 5
+    },
+    {
+      "id": "COMP-001_mute",
+      "name": "Button (Mute)",
+      "x": 5,
+      "y": 32,
+      "w": 12,
+      "h": 3
+    },
+    {
+      "id": "COMP-001_camera",
+      "name": "Button (Camera)",
+      "x": 24,
+      "y": 32,
+      "w": 12,
+      "h": 3
+    },
+    {
+      "id": "COMP-001_speaker",
+      "name": "Button (Speaker)",
+      "x": 43,
+      "y": 32,
+      "w": 12,
+      "h": 3
+    }
+  ],
+  "data_requirements": [
+    "GET /api/settings/profile",
+    "GET /api/settings/profile/qr-code",
+    "POST /api/calls/voice",
+    "POST /api/calls/video",
+    "PUT /api/calls/{id}/mute",
+    "PUT /api/calls/{id}/camera",
+    "PUT /api/calls/{id}/speaker"
+  ],
+  "parent_user_story": "US-137",
+  "wireframe_mermaid": "flowchart TD\n    subgraph QR-Code_Profil\n        Header[Header / Navigation]\n        Main[Main Content Area]\n        Sidebar[Sidebar / Filters]\n        Footer[Footer / Actions]\n    end\n\n    Header --> Main\n    Sidebar --> Main\n    Main --> Footer\n\n    %% \n",
+  "wireframe_ascii": "     0    5   10   15   20   25   30   35   40   45   50   55   60\n   0 +------------------------------------------------------------+\n     |  [<Back]     QR-Code Profil            [···Menu]          |\n   2 |                    HeaderBar                               |\n     +------------------------------------------------------------+\n   4 |          +----------------------------------------+        |\n     |          |  [Avatar]   Benutzername                |        |\n   6 |          |  COMP-009   +--------COMP-010--------+ |        |\n     |          |  ContactCard| StatusIndicator: Online| |        |\n   8 |          |             +------------------------+ |        |\n     |          +----------------------------------------+        |\n  10 |                                                            |\n     |               +----------------------------+               |\n  12 |               |                            |               |\n     |               |                            |               |\n  14 |               |      ██████████████        |               |\n     |               |      ██ QR-CODE  ██        |               |\n  16 |               |      ██          ██        |               |\n     |               |      ██████████████        |               |\n  18 |               |                            |               |\n     |               |     QR-Code Display        |               |\n  20 |               |                            |               |\n     |               +----------------------------+               |\n  22 |                                                            |\n     |                                                            |\n  24 |                                                            |\n     |                                                            |\n  26 |   +---------------+ +---------------+ +---------------+   |\n     |   | 📤 Share      | | 📷 Scan       | | 📞 Voice Call |   |\n  28 |   | COMP-001      | | COMP-001      | | COMP-001      |   |\n     |   +---------------+ +---------------+ +---------------+   |\n  30 |                                                            |\n     +------------------------------------------------------------+\n  32 |   +----------+    +----------+    +----------+             |\n     |   | 🔇 Mute  |    | 📹 Camera|    | 🔊Speaker|             |\n  34 |   | COMP-001 |    | COMP-001 |    | COMP-001 |             |\n     |   +----------+    +----------+    +----------+             |\n  36 |              Call Controls Bar                             |\n     +------------------------------------------------------------+",
+  "state_bindings": {
+    "COMP-009": "profile.user",
+    "COMP-010": "profile.onlineStatus",
+    "COMP-001_share": "qr.shareAction",
+    "COMP-001_scan": "qr.scanAction",
+    "COMP-001_call": "call.initiateAction",
+    "COMP-001_mute": "call.controls.mute",
+    "COMP-001_camera": "call.controls.camera",
+    "COMP-001_speaker": "call.controls.speaker"
+  },
+  "navigation_rules": [
+    {
+      "trigger": "back_btn_click",
+      "target": "/settings/profile",
+      "condition": ""
+    },
+    {
+      "trigger": "share_btn_click",
+      "target": "native_share_sheet",
+      "condition": ""
+    },
+    {
+      "trigger": "scan_btn_click",
+      "target": "/settings/profile/qr/scan",
+      "condition": "camera.permission_granted"
+    },
+    {
+      "trigger": "voice_call_btn_click",
+      "target": "/call/voice/{contactId}",
+      "condition": "contact.selected"
+    },
+    {
+      "trigger": "camera_btn_click",
+      "target": "/call/video/{contactId}",
+      "condition": "call.active"
+    },
+    {
+      "trigger": "mute_toggle",
+      "target": "",
+      "condition": "call.active"
+    },
+    {
+      "trigger": "speaker_toggle",
+      "target": "",
+      "condition": "call.active"
+    }
+  ],
+  "responsive": {
+    "mobile": {
+      "layout": "stack",
+      "hidden_components": []
+    },
+    "tablet": {
+      "layout": "single-centered"
+    },
+    "desktop": {
+      "layout": "single-centered"
+    }
+  },
+  "auth_required": true
+}

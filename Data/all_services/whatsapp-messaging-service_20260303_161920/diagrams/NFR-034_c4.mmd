@@ -1,0 +1,19 @@
+%%{init: {'theme': 'default'}}%%
+C4Context
+    title Failover Time System Architecture
+
+    Person(user, "User", "A user of the system")
+    
+    System_Boundary(s1, "Failover System") {
+        System(f1, "Primary Node", "Handles user requests and data processing")
+        System(f2, "Secondary Node", "Backup node that takes over during failover")
+        System(f3, "Load Balancer", "Distributes requests between primary and secondary nodes")
+        System(f4, "Monitoring Service", "Monitors node health and triggers failover")
+    }
+
+    Rel(user, f3, "Uses")
+    Rel(f3, f1, "Routes requests to")
+    Rel(f3, f2, "Routes requests to")
+    Rel(f4, f1, "Monitors health of")
+    Rel(f4, f2, "Monitors health of")
+    Rel(f1, f2, "Replicates data to")

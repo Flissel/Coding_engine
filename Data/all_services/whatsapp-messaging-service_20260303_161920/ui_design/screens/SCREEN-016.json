@@ -1,0 +1,113 @@
+{
+  "id": "SCREEN-016",
+  "name": "Profilbild / Biometrische Entsperrung",
+  "route": "/settings/profile/avatar",
+  "layout": "stack",
+  "description": "Screen zum Hochladen, Zuschneiden und Vorschauen des Profilbilds. Zugang erfordert biometrische Authentifizierung (Fingerabdruck oder Face ID). Nach erfolgreicher Entsperrung wird der Avatar-Editor angezeigt.",
+  "components": [
+    "COMP-001",
+    "COMP-007",
+    "COMP-010"
+  ],
+  "component_layout": [
+    {
+      "id": "COMP-010",
+      "name": "BiometricStatus",
+      "x": 0,
+      "y": 0,
+      "w": 60,
+      "h": 4
+    },
+    {
+      "id": "COMP-007",
+      "name": "AvatarViewer",
+      "x": 5,
+      "y": 5,
+      "w": 50,
+      "h": 16
+    },
+    {
+      "id": "COMP-001-upload",
+      "name": "UploadButton",
+      "x": 5,
+      "y": 22,
+      "w": 15,
+      "h": 3
+    },
+    {
+      "id": "COMP-001-crop",
+      "name": "CropButton",
+      "x": 22,
+      "y": 22,
+      "w": 15,
+      "h": 3
+    },
+    {
+      "id": "COMP-001-save",
+      "name": "SaveButton",
+      "x": 39,
+      "y": 22,
+      "w": 16,
+      "h": 3
+    }
+  ],
+  "data_requirements": [
+    "GET /api/settings/profile/avatar",
+    "POST /api/settings/profile/avatar/upload",
+    "PUT /api/settings/profile/avatar/crop",
+    "POST /api/auth/biometric/verify"
+  ],
+  "parent_user_story": "US-003",
+  "wireframe_mermaid": "flowchart TD\n    subgraph Profilbild_/_Biometrische_Entsperrung\n        Header[Header / Navigation]\n        Main[Main Content Area]\n        Sidebar[Sidebar / Filters]\n        Footer[Footer / Actions]\n    end\n\n    Header --> Main\n    Sidebar --> Main\n    Main --> Footer\n\n    %% \n",
+  "wireframe_ascii": "     0    5   10   15   20   25   30   35   40   45   50   55   60\n   0 +------------------------------------------------------------+\n     |  [🔒 Biometrische Entsperrung]                            |\n   2 |  COMP-010 (BiometricStatus)                                |\n     |  Status: ✅ Entsperrt via Face ID / Fingerabdruck         |\n   4 +------------------------------------------------------------+\n     |                                                            |\n   5 |     +------------------------------------------------+    |\n     |     |                                                |    |\n   7 |     |                                                |    |\n     |     |                                                |    |\n   9 |     |          +------------------+                  |    |\n     |     |          |                  |                  |    |\n  11 |     |          |   [Profilbild]   |                  |    |\n     |     |          |    Vorschau /    |                  |    |\n  13 |     |          |    Zuschnitt     |                  |    |\n     |     |          |                  |                  |    |\n  15 |     |          +------------------+                  |    |\n     |     |                                                |    |\n  17 |     |        COMP-007 (AvatarViewer / MediaViewer)   |    |\n     |     |        [Crop-Rahmen ziehbar]                   |    |\n  19 |     |                                                |    |\n     |     +------------------------------------------------+    |\n  21 |                                                            |\n  22 |     +-------------+  +-------------+  +--------------+    |\n     |     | 📁 Upload   |  | ✂ Zuschnei |  | 💾 Speichern |    |\n  24 |     |  COMP-001   |  |  COMP-001   |  |  COMP-001    |    |\n     |     +-------------+  +-------------+  +--------------+    |\n  26 +------------------------------------------------------------+",
+  "state_bindings": {
+    "COMP-010": "auth.biometric.status",
+    "COMP-007": "profile.avatar.preview",
+    "COMP-001-upload": "profile.avatar.uploadAction",
+    "COMP-001-crop": "profile.avatar.cropAction",
+    "COMP-001-save": "profile.avatar.saveAction"
+  },
+  "navigation_rules": [
+    {
+      "trigger": "biometric_fail",
+      "target": "/lock",
+      "condition": "auth.biometric.status === 'failed'"
+    },
+    {
+      "trigger": "biometric_success",
+      "target": "/settings/profile/avatar",
+      "condition": "auth.biometric.status === 'verified'"
+    },
+    {
+      "trigger": "upload_click",
+      "target": "",
+      "condition": "auth.biometric.status === 'verified'"
+    },
+    {
+      "trigger": "save_click",
+      "target": "/settings/profile",
+      "condition": "profile.avatar.cropped === true"
+    },
+    {
+      "trigger": "back_swipe",
+      "target": "/settings/profile",
+      "condition": ""
+    }
+  ],
+  "responsive": {
+    "mobile": {
+      "layout": "stack",
+      "hidden_components": [],
+      "notes": "Biometric-Prompt als natives Overlay, Avatar-Viewer nimmt volle Breite ein, Buttons gestapelt vertikal"
+    },
+    "tablet": {
+      "layout": "stack",
+      "notes": "Zentrierter Avatar-Viewer mit mehr Padding"
+    },
+    "desktop": {
+      "layout": "stack",
+      "notes": "Maximale Viewer-Breite 500px, zentriert"
+    }
+  },
+  "auth_required": true
+}

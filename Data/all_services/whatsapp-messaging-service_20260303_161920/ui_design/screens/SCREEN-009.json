@@ -1,0 +1,142 @@
+{
+  "id": "SCREEN-009",
+  "name": "Geräte-Verwaltung",
+  "route": "/settings/devices",
+  "layout": "stack",
+  "description": "Übersicht und Verwaltung aller verknüpften Geräte des Nutzers. Zeigt aktive Sessions, erlaubt das Entfernen von Geräten und das Verknüpfen neuer Geräte via QR-Code oder Telefonnummer-Verifizierung.",
+  "components": [
+    "COMP-001",
+    "COMP-002",
+    "COMP-003",
+    "COMP-010"
+  ],
+  "component_layout": [
+    {
+      "id": "COMP-001",
+      "name": "BackButton",
+      "x": 0,
+      "y": 0,
+      "w": 6,
+      "h": 3
+    },
+    {
+      "id": "COMP-001-2",
+      "name": "LinkDeviceButton",
+      "x": 38,
+      "y": 0,
+      "w": 22,
+      "h": 3
+    },
+    {
+      "id": "COMP-002",
+      "name": "DeviceSearchBar",
+      "x": 0,
+      "y": 3,
+      "w": 60,
+      "h": 3
+    },
+    {
+      "id": "COMP-010",
+      "name": "ThisDeviceStatus",
+      "x": 0,
+      "y": 7,
+      "w": 60,
+      "h": 5
+    },
+    {
+      "id": "COMP-003",
+      "name": "LinkedDeviceItem1",
+      "x": 0,
+      "y": 13,
+      "w": 60,
+      "h": 4
+    },
+    {
+      "id": "COMP-003-2",
+      "name": "LinkedDeviceItem2",
+      "x": 0,
+      "y": 17,
+      "w": 60,
+      "h": 4
+    },
+    {
+      "id": "COMP-003-3",
+      "name": "LinkedDeviceItem3",
+      "x": 0,
+      "y": 21,
+      "w": 60,
+      "h": 4
+    },
+    {
+      "id": "COMP-001-3",
+      "name": "LogOutAllButton",
+      "x": 10,
+      "y": 26,
+      "w": 40,
+      "h": 3
+    }
+  ],
+  "data_requirements": [
+    "GET /api/settings/devices",
+    "POST /api/settings/devices/link",
+    "DELETE /api/settings/devices/{deviceId}",
+    "POST /api/auth/verify-phone",
+    "POST /api/auth/verify-code"
+  ],
+  "parent_user_story": "US-001",
+  "wireframe_mermaid": "flowchart TD\n    subgraph Geräte-Verwaltung\n        Header[Header / Navigation]\n        Main[Main Content Area]\n        Sidebar[Sidebar / Filters]\n        Footer[Footer / Actions]\n    end\n\n    Header --> Main\n    Sidebar --> Main\n    Main --> Footer\n\n    %% \n",
+  "wireframe_ascii": "     0    5   10   15   20   25   30   35   40   45   50   55   60\n   0 +------------------------------------------------------------+\n     | [< Back]       Verknüpfte Geräte       [+ Gerät verknüpfen]|\n   1 |  COMP-001                                    COMP-001      |\n   2 |                                          (LinkDeviceBtn)   |\n   3 +------------------------------------------------------------+\n     | [🔍 Gerät suchen...]                                       |\n   4 |  COMP-002 (DeviceSearchBar)                                |\n   5 |                                                            |\n   6 +------------------------------------------------------------+\n   7 |  DIESES GERÄT                                              |\n   8 |  +--------------------------------------------------------+|\n   9 |  | 📱 iPhone 14 Pro          COMP-010 (StatusIndicator)   ||\n  10 |  |    ● Aktiv  ·  Zuletzt: Jetzt  ·  +49 170 ****1234    ||\n  11 |  +--------------------------------------------------------+|\n  12 +------------------------------------------------------------+\n  13 |  VERKNÜPFTE GERÄTE                                         |\n  14 |  +--------------------------------------------------------+|\n  15 |  | 💻 WhatsApp Web - Chrome    · Aktiv seit 12.01.2025    ||\n  16 |  |    COMP-003 (LinkedDeviceItem)        ● Online         ||\n  17 +--+--------------------------------------------------------+|\n  18 |  | 🖥️  WhatsApp Desktop - Mac   · Aktiv seit 05.01.2025   ||\n  19 |  |    COMP-003 (LinkedDeviceItem)        ○ Offline        ||\n  20 |  |                                      Zuletzt: 2 Std   ||\n  21 +--+--------------------------------------------------------+|\n  22 |  | 📱 WhatsApp Web - Firefox   · Aktiv seit 20.12.2024    ||\n  23 |  |    COMP-003 (LinkedDeviceItem)        ○ Offline        ||\n  24 |  |                                      Zuletzt: 3 Tage  ||\n  25 +--+--------------------------------------------------------+|\n  26 |                                                            |\n  27 |          [  Von allen Geräten abmelden  ]                  |\n  28 |                    COMP-001 (LogOutAllBtn)                  |\n  29 +------------------------------------------------------------+",
+  "state_bindings": {
+    "COMP-002": "devices.searchQuery",
+    "COMP-003": "devices.linkedDevicesList",
+    "COMP-010": "devices.currentDevice",
+    "COMP-001": "navigation.back"
+  },
+  "navigation_rules": [
+    {
+      "trigger": "back_btn_click",
+      "target": "/settings",
+      "condition": ""
+    },
+    {
+      "trigger": "link_device_btn_click",
+      "target": "/settings/devices/link",
+      "condition": "user.isVerified"
+    },
+    {
+      "trigger": "device_item_click",
+      "target": "/settings/devices/{deviceId}",
+      "condition": ""
+    },
+    {
+      "trigger": "device_item_swipe_left",
+      "target": "",
+      "condition": "device.id !== currentDevice.id"
+    },
+    {
+      "trigger": "logout_all_click",
+      "target": "/settings/devices",
+      "condition": "devices.linkedDevicesList.length > 0"
+    },
+    {
+      "trigger": "link_device_btn_click",
+      "target": "/auth/verify-phone",
+      "condition": "!user.isVerified"
+    }
+  ],
+  "responsive": {
+    "mobile": {
+      "layout": "stack",
+      "hidden_components": []
+    },
+    "tablet": {
+      "layout": "stack",
+      "hidden_components": []
+    },
+    "desktop": {
+      "layout": "centered-card",
+      "hidden_components": []
+    }
+  },
+  "auth_required": true
+}

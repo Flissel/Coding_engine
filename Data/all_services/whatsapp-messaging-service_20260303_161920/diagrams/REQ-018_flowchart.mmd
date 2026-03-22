@@ -1,0 +1,18 @@
+flowchart TD
+    A[User Receives New Message] --> B{Check Notification Settings}
+    B -->|Enabled| C[Send Push Notification]
+    B -->|Disabled| D[Do Not Send Notification]
+    C --> E{Notification Type}
+    E -->|Chat| F[Send Chat Notification]
+    E -->|System| G[Send System Notification]
+    E -->|Promotional| H[Send Promotional Notification]
+    F --> I[User Clicks Notification]
+    G --> I
+    H --> I
+    I --> J[Open Chat or App]
+    J --> K{User Notification Controls}
+    K -->|Per-Chat Settings| L[Adjust Notification for Specific Chat]
+    K -->|Global Settings| M[Adjust Global Notification Preferences]
+    L --> N[Save Changes]
+    M --> N
+    N --> O[Update Notification Preferences]

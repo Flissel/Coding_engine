@@ -1,0 +1,12 @@
+stateDiagram-v2
+    [*] --> pending
+    pending --> active : reaction_added [valid_emoji_and_message_exists] / store_reaction_and_notify_participants
+    pending --> failed : reaction_rejected [invalid_emoji_or_message_not_found] / log_error_and_notify_user
+    active --> updated : reaction_changed [valid_new_emoji] / update_reaction_and_notify_participants
+    active --> removed : reaction_removed / delete_reaction_and_notify_participants
+    active --> failed : reaction_update_failed [system_error_or_permission_denied] / log_error_and_rollback
+    updated --> updated : reaction_changed [valid_new_emoji] / update_reaction_and_notify_participants
+    updated --> removed : reaction_removed / delete_reaction_and_notify_participants
+    updated --> failed : reaction_update_failed [system_error_or_permission_denied] / log_error_and_rollback
+    removed --> [*]
+    failed --> [*]

@@ -1,0 +1,13 @@
+%%{ init : { "theme" : "default" } }%%
+%%{ c4: { "title" : "Melden System Context Diagram", "version" : "1.0" } }%%
+C4Context
+    Person(person, "User", "Ein Benutzer, der Nachrichten/Kontakte meldet.")
+    System(system, "Melden System", "Das System, das das Melden von Nachrichten/Kontakten ermöglicht.")
+    
+    Person(person2, "Admin", "Ein Administrator, der die gemeldeten Nachrichten/Kontakte verwaltet.")
+    
+    System_Ext(externalSystem, "Externe Datenbank", "Eine externe Datenbank zur Speicherung von gemeldeten Informationen.")
+
+    Rel(person, system, "meldet Nachrichten/Kontakte")
+    Rel(system, person2, "benachrichtigt über neue Meldungen")
+    Rel(system, externalSystem, "speichert gemeldete Informationen")

@@ -1,0 +1,10 @@
+{
+  "route": "/status/reply",
+  "screen_name": "Status-Antwort",
+  "linked_user_stories": [
+    "US-107"
+  ],
+  "user_stories": [
+    "US-107"
+  ]
+}

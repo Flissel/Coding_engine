@@ -1,0 +1,19 @@
+{
+  "route": "/nachrichten,_präsenz_und",
+  "screen_name": "Screen: Nachrichten, Präsenz und Benachrichtigungen",
+  "description": "Auto-generated composition for 5 stories",
+  "linked_user_stories": [
+    "US-128",
+    "US-066",
+    "US-014",
+    "US-070",
+    "US-122"
+  ],
+  "user_stories": [
+    "US-128",
+    "US-066",
+    "US-014",
+    "US-070",
+    "US-122"
+  ]
+}

@@ -1,0 +1,7 @@
+stateDiagram-v2
+    [*] --> Idle
+    Idle --> AwaitingStatusResponse : Request Status
+    AwaitingStatusResponse --> StatusReceived : Receive Status
+    StatusReceived --> Idle : Acknowledge Status
+    StatusReceived --> Error : Status Error
+    Error --> Idle : Resolve Error

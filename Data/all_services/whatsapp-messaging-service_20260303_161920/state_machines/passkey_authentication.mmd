@@ -1,0 +1,20 @@
+stateDiagram-v2
+    [*] --> not_configured
+    not_configured --> registration_initiated : initiate_passkey_registration [user_authenticated_with_password] / generate_registration_challenge
+    registration_initiated --> registration_pending : send_registration_challenge / send_challenge_to_client
+    registration_pending --> configured : complete_registration [registration_response_valid] / store_passkey_credentials
+    registration_pending --> registration_failed : registration_timeout / cleanup_registration_session
+    registration_pending --> registration_failed : invalid_registration_response / log_registration_failure
+    registration_failed --> not_configured : retry_registration [retry_attempts_available] / increment_retry_counter
+    configured --> authentication_initiated : initiate_passkey_authentication / generate_authentication_challenge
+    authentication_initiated --> authentication_pending : send_authentication_challenge / send_challenge_to_client
+    authentication_pending --> authenticated : complete_authentication [authentication_response_valid] / create_user_session
+    authentication_pending --> authentication_failed : authentication_timeout / cleanup_authentication_session
+    authentication_pending --> authentication_failed : invalid_authentication_response / log_authentication_failure
+    authentication_failed --> configured : retry_authentication [retry_attempts_available] / increment_retry_counter
+    authentication_failed --> disabled : max_retries_exceeded / disable_passkey_temporarily
+    authenticated --> configured : session_expired / cleanup_user_session
+    configured --> not_configured : revoke_passkey [user_authorized] / delete_passkey_credentials
+    disabled --> configured : re_enable_passkey [cooldown_period_expired] / reset_retry_counter
+    authenticated --> [*]
+    disabled --> [*]

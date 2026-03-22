@@ -1,0 +1,11 @@
+%%{ init : { "theme" : "default" } }%%
+graph TD
+    A[Business-Statistiken] 
+
+    B[Business User] 
+    C[External Data Source] 
+    D[Reporting Tool] 
+
+    A -->|provides statistics| B
+    A -->|fetches data from| C
+    A -->|exports data to| D

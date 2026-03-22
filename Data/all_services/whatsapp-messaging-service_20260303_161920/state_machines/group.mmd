@@ -1,0 +1,18 @@
+stateDiagram-v2
+    [*] --> draft
+    draft --> active : create_group [valid_group_data] / initialize_group_settings
+    draft --> error : create_group [invalid_group_data] / log_creation_error
+    active --> active : add_member [is_admin_or_creator] / send_member_added_notification
+    active --> active : remove_member [is_admin_or_creator] / send_member_removed_notification
+    active --> active : update_group_settings [is_admin_or_creator] / apply_settings_changes
+    active --> active : promote_to_admin [is_creator] / grant_admin_privileges
+    active --> active : demote_admin [is_creator] / revoke_admin_privileges
+    active --> suspended : suspend_group [is_admin_or_creator] / disable_messaging
+    active --> left : leave_group [is_member_not_creator] / remove_member_silently
+    active --> dissolved : dissolve_group [is_creator_or_all_members_left] / notify_dissolution
+    suspended --> active : reactivate_group [is_admin_or_creator] / enable_messaging
+    suspended --> left : leave_group [is_member_not_creator] / remove_member_silently
+    suspended --> dissolved : dissolve_group [is_creator_or_all_members_left] / notify_dissolution
+    error --> draft : retry_creation / reset_group_data
+    left --> [*]
+    dissolved --> [*]

@@ -1,0 +1,10 @@
+{
+  "route": "/auth/phone/verify",
+  "screen_name": "SMS/Anruf-Verifizierung",
+  "linked_user_stories": [
+    "US-071"
+  ],
+  "user_stories": [
+    "US-071"
+  ]
+}

@@ -1,0 +1,11 @@
+sequenceDiagram
+    participant User as Benutzer
+    participant System as System
+    participant AI as KI
+
+    User->>System: Anfrage senden
+    System->>AI: Anfrage analysieren
+    AI-->>System: Antwortvorschläge generieren
+    System-->>User: Antwortvorschläge anzeigen
+    User->>System: Auswahl treffen
+    System->>User: Bestätigung der Auswahl

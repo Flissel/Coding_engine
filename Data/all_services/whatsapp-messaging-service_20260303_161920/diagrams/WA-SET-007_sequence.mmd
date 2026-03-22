@@ -1,0 +1,11 @@
+sequenceDiagram
+    participant User as Benutzer
+    participant System as System
+    participant Data as Datenverbrauch
+
+    User->>System: Anfrage zur Datennutzung
+    System->>Data: Abruf der Datenverbrauchsdaten
+    Data-->>System: Rückgabe der Datenverbrauchsdaten
+    System-->>User: Anzeige der Datenverbrauchsinformationen
+    User->>System: Feedback zur Datennutzung
+    System->>User: Bestätigung des Feedbacks

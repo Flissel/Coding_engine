@@ -1,0 +1,9 @@
+sequenceDiagram
+    participant User as Nutzer
+    participant System as System
+    participant Notification as Benachrichtigung
+
+    User->>Notification: Erhalte Benachrichtigung
+    Notification-->>User: Zeige Benachrichtigung an
+    User->>System: Antwort direkt aus Benachrichtigung
+    System-->>User: Bestätige Antwort

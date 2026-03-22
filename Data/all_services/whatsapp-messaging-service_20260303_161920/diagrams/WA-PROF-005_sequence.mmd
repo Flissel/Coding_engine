@@ -1,0 +1,9 @@
+sequenceDiagram
+    participant User
+    participant System
+
+    User->>System: Anfrage zum Generieren eines QR-Codes
+    System->>System: QR-Code generieren
+    System-->>User: QR-Code bereitstellen
+    User->>System: QR-Code scannen
+    System->>User: Profil erfolgreich hinzugefügt

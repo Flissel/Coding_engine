@@ -1,0 +1,14 @@
+%%{init: {'theme': 'default'}}%%
+graph TD
+  %%{style: { 'fill': '#f9f9f9', 'stroke': '#333', 'stroke-width': 1 } }%%
+  C4Context
+    title Verschwindende Nachrichten System Context Diagram
+
+    Person(User, "User", "A user who sends and receives self-destructing messages.")
+    System(VerschwindendeNachrichten, "Verschwindende Nachrichten", "A system that supports self-destructing messages.")
+
+    Person(ExternalSystem, "External Messaging System", "An external system for message delivery.")
+
+    User -->|Sends messages| VerschwindendeNachrichten
+    VerschwindendeNachrichten -->|Delivers messages| ExternalSystem
+    ExternalSystem -->|Receives messages| User

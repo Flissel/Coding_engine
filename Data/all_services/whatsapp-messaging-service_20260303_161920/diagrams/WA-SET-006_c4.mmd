@@ -1,0 +1,8 @@
+%%{ init : { "theme" : "default" } }%%
+C4Context
+    title Speichernutzung System Architecture
+
+    Person(user, "User", "A user who manages storage usage")
+    System(speichernutzung, "Speichernutzung", "A system for overview and management of storage usage")
+
+    Rel(user, speichernutzung, "Uses", "Provides overview and management features")

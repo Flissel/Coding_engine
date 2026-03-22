@@ -1,0 +1,31 @@
+flowchart TD
+    Start([Start: Admin Analytics & Audit Logs anzeigen (Onboarding)])
+    S1[User öffnet Admin-Konsole über Onboarding-Hinweis]
+    Start --> S1
+    E1[/Falls Offline-Modus erkannt wird, wird ein Offline-Banner angezeigt und der Zugriff blockiert/]
+    S1 -.-> E1
+    S2{System prüft Admin-Berechtigungen des Users}
+    S1 --> S2
+    E2[/Bei fehlender Berechtigung wird Zugriff verweigert und ein Autorisierungsfehler angezeigt/]
+    S2 -.-> E2
+    S3{User öffnet Analytics-Dashboard und wählt Zeitraum}
+    S2 --> S3
+    E3[/Bei fehlender Verbindung wird ein Wiederholen-Dialog angezeigt (Error-Recovery: 'Erneut versuchen')/]
+    S3 -.-> E3
+    S4{System prüft, ob Daten für Zeitraum vorhanden sind}
+    S3 --> S4
+    E4[/Falls keine Daten vorhanden sind, zeigt das System eine Empty-State-Nachricht ohne veraltete Daten/]
+    S4 -.-> E4
+    S5{User navigiert zu Audit Logs und setzt Filter (User, Eventtyp, Zeitraum)}
+    S4 --> S5
+    E5[/Bei Filterfehlern oder ungültigem Zeitraum wird eine Validierungsmeldung angezeigt/]
+    S5 -.-> E5
+    S6{User exportiert Logs oder aktualisiert Filter}
+    S5 --> S6
+    E6[/Bei fehlgeschlagenem Export wird ein Retry angeboten (Error-Recovery: 'Erneut versuchen')/]
+    S6 -.-> E6
+    S7{User wechselt Gerät und meldet sich erneut an}
+    S6 --> S7
+    E7[/Bei fehlgeschlagener Session-Wiederherstellung wird Account-Recovery angeboten/]
+    S7 -.-> E7
+    S7 --> End([End])

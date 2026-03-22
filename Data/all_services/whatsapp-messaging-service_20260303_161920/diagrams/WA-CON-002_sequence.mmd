@@ -1,0 +1,23 @@
+sequenceDiagram
+    participant User as Benutzer
+    participant System as System
+    participant ContactService as Kontaktdienst
+
+    User->>System: Kontakt hinzufügen
+    alt Über Formular
+        System->>User: Formular anzeigen
+        User->>System: Formular ausfüllen
+        System->>ContactService: Kontakt speichern
+        ContactService-->>System: Bestätigung
+        System-->>User: Kontakt erfolgreich hinzugefügt
+    else Über Import
+        User->>System: Importdatei auswählen
+        System->>ContactService: Kontakte importieren
+        ContactService-->>System: Import abgeschlossen
+        System-->>User: Kontakte erfolgreich hinzugefügt
+    else Über API
+        User->>System: API-Anfrage senden
+        System->>ContactService: Kontakt über API speichern
+        ContactService-->>System: Bestätigung
+        System-->>User: Kontakt erfolgreich hinzugefügt
+    end

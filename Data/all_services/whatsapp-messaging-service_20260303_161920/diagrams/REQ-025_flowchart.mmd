@@ -1,0 +1,15 @@
+flowchart TD
+    A[Start] --> B[User Initiates Payment or P2P Transfer]
+    B --> C{Is User Authenticated?}
+    C -->|Yes| D[Proceed to Payment Processing]
+    C -->|No| E[Prompt User to Authenticate]
+    E --> B
+    D --> F[Secure Payment Gateway]
+    F --> G[Transaction Success?]
+    G -->|Yes| H[Update Transaction History]
+    G -->|No| I[Handle Payment Failure]
+    H --> J[Ensure Compliance Checks]
+    J --> K[Notify User of Successful Transaction]
+    I --> L[Notify User of Payment Failure]
+    K --> M[End]
+    L --> M

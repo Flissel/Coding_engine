@@ -1,0 +1,108 @@
+{
+  "id": "SCREEN-030",
+  "name": "Dashboard mit Anzeigename-Konfiguration",
+  "route": "/dashboard",
+  "layout": "sidebar",
+  "description": "Dashboard-Ansicht mit Chat-Liste, Suchfunktion und Profil-Bereich zum Festlegen und Speichern eines konfigurierbaren Anzeigenamens",
+  "components": [
+    "COMP-001",
+    "COMP-002",
+    "COMP-003",
+    "COMP-009",
+    "COMP-010"
+  ],
+  "component_layout": [
+    {
+      "id": "COMP-009",
+      "name": "ProfileCard (Anzeigename)",
+      "x": 0,
+      "y": 0,
+      "w": 60,
+      "h": 8
+    },
+    {
+      "id": "COMP-010",
+      "name": "StatusIndicator",
+      "x": 2,
+      "y": 2,
+      "w": 4,
+      "h": 2
+    },
+    {
+      "id": "COMP-001",
+      "name": "SaveButton",
+      "x": 40,
+      "y": 5,
+      "w": 18,
+      "h": 2
+    },
+    {
+      "id": "COMP-002",
+      "name": "SearchBar",
+      "x": 0,
+      "y": 8,
+      "w": 20,
+      "h": 3
+    },
+    {
+      "id": "COMP-003",
+      "name": "ChatListItem",
+      "x": 0,
+      "y": 11,
+      "w": 20,
+      "h": 13
+    }
+  ],
+  "data_requirements": [
+    "GET /api/profile",
+    "PUT /api/profile/display-name",
+    "GET /api/chats"
+  ],
+  "parent_user_story": "US-007",
+  "wireframe_mermaid": "flowchart TD\n    subgraph Dashboard_mit_Anzeigename-Konfiguration\n        Header[Header / Navigation]\n        Main[Main Content Area]\n        Sidebar[Sidebar / Filters]\n        Footer[Footer / Actions]\n    end\n\n    Header --> Main\n    Sidebar --> Main\n    Main --> Footer\n\n    %% \n",
+  "wireframe_ascii": "     0    5   10   15   20   25   30   35   40   45   50   55   60\n   0 +------------------------------------------------------------+\n     |  COMP-009 (ProfileCard - Anzeigename)                      |\n   2 |  [O] COMP-010   Profil & Anzeigename                      |\n     |  (StatusInd.)                                              |\n   4 |  +------------------------------------------------------+ |\n     |  | Anzeigename: [____Max Mustermann__________________ ]  | |\n   6 |  +------------------------------------------------------+ |\n     |                                    [ Speichern ] COMP-001  |\n   8 +--------------------+---------------------------------------+\n     | [🔍 Suche...]      |                                       |\n  10 |  COMP-002          |        Willkommen, Max Mustermann!    |\n     |  (SearchBar)       |                                       |\n  12 +--------------------+   Dein Anzeigename wird in allen      |\n     | [Avatar] Chat 1    |   Konversationen angezeigt.           |\n  14 |  Letzte Nachricht  |                                       |\n     |  12:30  ✓✓         |   +---------------------------------+ |\n  16 |--------------------|   | Vorschau:                       | |\n     | [Avatar] Chat 2    |   |                                 | |\n  18 |  Hallo, wie geht.. |   |  +---------------------------+  | |\n     |  11:45  ✓          |   |  | Max Mustermann            |  | |\n  20 |--------------------|   |  | Online                    |  | |\n     | [Avatar] Chat 3    |   |  +---------------------------+  | |\n  22 |  Dokument erhalten |   |                                 | |\n     |  Gestern           |   +---------------------------------+ |\n  24 |  COMP-003          |                                       |\n     |  (ChatListItems)   |                                       |\n  26 +--------------------+---------------------------------------+",
+  "state_bindings": {
+    "COMP-009": "profile.displayName",
+    "COMP-010": "profile.onlineStatus",
+    "COMP-001": "profile.saveAction",
+    "COMP-002": "chats.searchQuery",
+    "COMP-003": "chats.list"
+  },
+  "navigation_rules": [
+    {
+      "trigger": "save_btn_click",
+      "target": "PUT /api/profile/display-name",
+      "condition": "displayName.length > 0 && displayName.length <= 50"
+    },
+    {
+      "trigger": "chat_item_click",
+      "target": "/chat/{chatId}",
+      "condition": ""
+    },
+    {
+      "trigger": "search_submit",
+      "target": "/dashboard?q={query}",
+      "condition": "query.length > 0"
+    },
+    {
+      "trigger": "save_success",
+      "target": "/dashboard",
+      "condition": "response.status === 200"
+    }
+  ],
+  "responsive": {
+    "mobile": {
+      "layout": "stack",
+      "hidden_components": [
+        "COMP-003"
+      ]
+    },
+    "tablet": {
+      "layout": "sidebar-collapsed"
+    },
+    "desktop": {
+      "layout": "sidebar"
+    }
+  },
+  "auth_required": true
+}

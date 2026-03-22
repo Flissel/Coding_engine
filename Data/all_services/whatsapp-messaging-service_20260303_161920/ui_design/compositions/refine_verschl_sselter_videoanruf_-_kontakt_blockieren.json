@@ -1,0 +1,10 @@
+{
+  "route": "/calls/video/:callId",
+  "screen_name": "Verschlüsselter Videoanruf - Kontakt blockieren",
+  "linked_user_stories": [
+    "US-102"
+  ],
+  "user_stories": [
+    "US-102"
+  ]
+}

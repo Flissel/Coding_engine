@@ -1,0 +1,8 @@
+stateDiagram-v2
+    [*] --> Satisfied
+    [*] --> Breached
+
+    Satisfied --> Breached : Error budget exceeded
+    Breached --> Satisfied : Error budget reset
+    Breached --> Breached : Monitor and report
+    Satisfied --> Satisfied : Continuous monitoring

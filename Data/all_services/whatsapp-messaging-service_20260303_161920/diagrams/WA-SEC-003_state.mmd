@@ -1,0 +1,7 @@
+stateDiagram-v2
+    [*] --> Unauthenticated
+    Unauthenticated --> Authenticated : Authenticate
+    Authenticated --> AppBlocked : Block App
+    AppBlocked --> Unauthenticated : Logout
+    AppBlocked --> Authenticated : Unblock App
+    Authenticated --> Unauthenticated : Logout

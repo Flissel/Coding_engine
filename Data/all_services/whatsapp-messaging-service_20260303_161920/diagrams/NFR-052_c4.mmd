@@ -1,0 +1,15 @@
+%%{ init : { "theme" : "default" } }%%
+C4Context
+    title RPO/RTO Targets System Architecture
+
+    Person(customer, "Customer", "A user who relies on the system.")
+    System(system, "RPO/RTO Management System", "Defines recovery objectives for catastrophic failure.")
+
+    System_Ext(database, "Database", "Stores critical data.")
+    System_Ext(backupSystem, "Backup System", "Handles data backups for recovery.")
+    System_Ext(monitoringTool, "Monitoring Tool", "Monitors system health and performance.")
+
+    Rel(customer, system, "Uses")
+    Rel(system, database, "Reads from and writes to")
+    Rel(system, backupSystem, "Coordinates backup operations")
+    Rel(system, monitoringTool, "Sends alerts and receives status updates")

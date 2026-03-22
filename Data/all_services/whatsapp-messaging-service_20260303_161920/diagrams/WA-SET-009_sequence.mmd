@@ -1,0 +1,10 @@
+sequenceDiagram
+    participant User as User
+    participant System as System
+
+    User->>System: Request Dark Mode
+    System-->>User: Display Dark Mode options
+    User->>System: Select Dark Mode
+    System-->>User: Apply Dark Mode
+    User->>System: Confirm Dark Mode is active
+    System-->>User: Dark Mode activated

@@ -1,0 +1,29 @@
+classDiagram
+    class FormattedText {
+        +String content
+        +String formatType
+        +void applyFormatting()
+        +void removeFormatting()
+    }
+
+    class TextFormatter {
+        +void formatText(FormattedText text)
+        +void unformatText(FormattedText text)
+    }
+
+    class BoldFormatter {
+        +void formatText(FormattedText text)
+    }
+
+    class ItalicFormatter {
+        +void formatText(FormattedText text)
+    }
+
+    class UnderlineFormatter {
+        +void formatText(FormattedText text)
+    }
+
+    FormattedText --> TextFormatter
+    TextFormatter <|-- BoldFormatter
+    TextFormatter <|-- ItalicFormatter
+    TextFormatter <|-- UnderlineFormatter

@@ -1,0 +1,11 @@
+flowchart TD
+    A[Start] --> B{Dokumente auswählen}
+    B -->|Ja| C[Dokumente hochladen]
+    B -->|Nein| D[Prozess abbrechen]
+    C --> E{Dokumente überprüfen}
+    E -->|Valid| F[Dokumente senden]
+    E -->|Invalid| G[Fehler anzeigen]
+    F --> H[Bestätigung erhalten]
+    G --> B
+    H --> I[Ende]
+    D --> I

@@ -1,0 +1,10 @@
+{
+  "route": "/calls/video/:callId/onboarding",
+  "screen_name": "Anruf-Onboarding (Video Call Permissions)",
+  "linked_user_stories": [
+    "US-025"
+  ],
+  "user_stories": [
+    "US-025"
+  ]
+}

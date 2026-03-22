@@ -107,14 +107,20 @@ class DockerManager {
       const isExistingProject = await this.fileExists(path.join(requirementsPath, "app")) || await this.fileExists(path.join(requirementsPath, "package.json")) || await this.fileExists(path.join(requirementsPath, "requirements.txt"));
       const mountPath = path.resolve(isExistingProject ? requirementsPath : outputDir);
       console.log(`[Project] Mount path: ${mountPath} (existing project: ${isExistingProject})`);
+      const kiloConfigDir = path.join(process.env.HOME || process.env.USERPROFILE || "", ".kilocode", "cli");
+      const databaseUrl = process.env.DATABASE_URL || "postgresql://engine:engine_secret@coding-engine-postgres:5432/coding_engine";
       const dockerCmd = [
         "docker",
         "run",
         "-d",
         "--name",
         containerName,
+        "--network",
+        "coding-engine-network",
         "-v",
         `${mountPath}:/app`,
+        "-v",
+        `${kiloConfigDir}:/root/.kilocode/cli`,
         "-p",
         `${vncPort}:6080`,
         "-p",
@@ -123,6 +129,8 @@ class DockerManager {
         "ENABLE_VNC=true",
         "-e",
         "NODE_ENV=development",
+        "-e",
+        `DATABASE_URL=${databaseUrl}`,
         "coding-engine/sandbox:latest",
         // IMPORTANT: Use //bin/bash with double slash to prevent Git Bash from mangling
         // the path to C:/Program Files/Git/usr/bin/bash on Windows
@@ -400,14 +408,20 @@ class DockerManager {
       const projectType = isFullstack ? "fullstack" : isNodeFullstack ? "node_fullstack" : isPythonOnly ? "python_fastapi" : hasPackageJson ? "react" : "auto";
       console.log(`[VNC] Detected project type: ${projectType} (fullstack: ${isFullstack}, nodeFullstack: ${isNodeFullstack})`);
       const portMappings = isFullstack ? ["-p", `${appPort}:5173`, "-p", `${appPort + 1}:8000`] : isPythonOnly ? ["-p", `${appPort}:8000`] : ["-p", `${appPort}:5173`];
+      const kiloConfigDir = path.join(process.env.HOME || process.env.USERPROFILE || "", ".kilocode", "cli");
+      const databaseUrl = process.env.DATABASE_URL || "postgresql://engine:engine_secret@coding-engine-postgres:5432/coding_engine";
       const dockerCmd = [
         "docker",
         "run",
         "-d",
         "--name",
         containerName,
+        "--network",
+        "coding-engine-network",
         "-v",
         `${mountPath}:/app`,
+        "-v",
+        `${kiloConfigDir}:/root/.kilocode/cli`,
         "-p",
         `${vncPort}:6080`,
         ...portMappings,
@@ -421,6 +435,8 @@ class DockerManager {
         `PROJECT_ID=${projectId}`,
         "-e",
         `CONTAINER_NAME=${containerName}`,
+        "-e",
+        `DATABASE_URL=${databaseUrl}`,
         // Engine API URL for error reporting (host.docker.internal resolves to host machine)
         "-e",
         "ENGINE_API_URL=http://host.docker.internal:8000",

@@ -1,0 +1,12 @@
+%%{init: {'theme': 'default'}}%%
+graph TD
+    A[User] -->|Searches for GIFs| B[GIF Search System]
+    A -->|Sends GIFs| C[GIF Delivery System]
+    B -->|Fetches GIFs| D[GIF Database]
+    C -->|Delivers GIFs| E[Messaging Platform]
+
+    style A fill:#f9f,stroke:#333,stroke-width:2px;
+    style B fill:#bbf,stroke:#333,stroke-width:2px;
+    style C fill:#bbf,stroke:#333,stroke-width:2px;
+    style D fill:#fff,stroke:#333,stroke-width:2px;
+    style E fill:#fff,stroke:#333,stroke-width:2px;

@@ -1,0 +1,32 @@
+classDiagram
+    class Widget {
+        +String id
+        +String name
+        +String description
+        +String type
+        +String position
+        +display()
+        +update()
+        +remove()
+    }
+
+    class HomeScreen {
+        +String id
+        +String userId
+        +List<Widget> widgets
+        +addWidget(widget: Widget)
+        +removeWidget(widgetId: String)
+        +arrangeWidgets()
+    }
+
+    class User {
+        +String id
+        +String username
+        +String email
+        +HomeScreen homeScreen
+        +createHomeScreen()
+        +deleteHomeScreen()
+    }
+
+    User "1" -- "1" HomeScreen : owns
+    HomeScreen "1" -- "*" Widget : contains

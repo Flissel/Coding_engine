@@ -1,0 +1,6 @@
+stateDiagram-v2
+    [*] --> Regionale_Formate_Respektieren
+    Regionale_Formate_Respektieren --> Validierung
+    Validierung --> [*]
+    Validierung --> Fehler
+    Fehler --> Regionale_Formate_Respektieren

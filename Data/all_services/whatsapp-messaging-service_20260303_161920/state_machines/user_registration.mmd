@@ -1,0 +1,16 @@
+stateDiagram-v2
+    [*] --> unregistered
+    unregistered --> phone_number_entered : enter_phone_number [phone_number_valid] / validate_phone_format
+    phone_number_entered --> verification_code_sent : request_verification [phone_number_not_blocked] / generate_and_send_verification_code
+    verification_code_sent --> verification_pending : code_delivered / start_verification_timer
+    verification_pending --> fully_registered : submit_verification_code [verification_code_valid] / create_user_account
+    verification_pending --> verification_failed : submit_verification_code [verification_code_invalid] / increment_failed_attempts
+    verification_pending --> registration_expired : verification_timeout / cleanup_verification_data
+    verification_failed --> verification_pending : retry_verification [max_attempts_not_reached] / allow_retry
+    verification_failed --> registration_expired : retry_verification [max_attempts_reached] / block_phone_temporarily
+    verification_code_sent --> verification_code_sent : resend_code [resend_limit_not_reached] / generate_and_send_new_code
+    phone_number_entered --> unregistered : cancel_registration / clear_phone_number
+    verification_pending --> unregistered : cancel_registration / cleanup_verification_data
+    verification_failed --> unregistered : cancel_registration / cleanup_verification_data
+    fully_registered --> [*]
+    registration_expired --> [*]

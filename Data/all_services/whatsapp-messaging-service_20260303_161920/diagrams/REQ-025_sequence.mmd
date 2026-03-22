@@ -1,0 +1,21 @@
+sequenceDiagram
+    participant User as User
+    participant App as Mobile App
+    participant PaymentGateway as Payment Gateway
+    participant Database as Transaction Database
+    participant Compliance as Compliance System
+
+    User->>App: Initiate Payment/P2P Transfer
+    App->>PaymentGateway: Process Payment
+    PaymentGateway-->>App: Payment Confirmation
+    App->>Database: Record Transaction
+    Database-->>App: Transaction Recorded
+    App->>User: Show Payment Confirmation
+
+    User->>App: Request Transaction History
+    App->>Database: Retrieve Transaction History
+    Database-->>App: Transaction History Data
+    App->>User: Display Transaction History
+
+    App->>Compliance: Verify Compliance
+    Compliance-->>App: Compliance Check Passed

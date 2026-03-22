@@ -1,0 +1,19 @@
+sequenceDiagram
+    participant User as Nutzer
+    participant System as System
+    participant Database as Datenbank
+
+    User->>System: Favoriten-Kontakt hinzufügen
+    System->>Database: Kontakt speichern
+    Database-->>System: Bestätigung
+    System-->>User: Kontakt erfolgreich hinzugefügt
+
+    User->>System: Favoriten-Kontakt anzeigen
+    System->>Database: Kontakte abrufen
+    Database-->>System: Kontakte zurückgeben
+    System-->>User: Kontakte anzeigen
+
+    User->>System: Favoriten-Kontakt entfernen
+    System->>Database: Kontakt löschen
+    Database-->>System: Bestätigung
+    System-->>User: Kontakt erfolgreich entfernt

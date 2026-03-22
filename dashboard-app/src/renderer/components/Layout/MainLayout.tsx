@@ -3,6 +3,7 @@ import { ProjectList } from '../Sidebar/ProjectList'
 import { ProjectSpace } from '../ProjectSpace/ProjectSpace'
 import { GenerationMonitor } from '../GenerationMonitor/GenerationMonitor'
 import { LivePreview } from '../LivePreview/LivePreview'
+import { VibeChat } from '../VibeChat'
 import { PortalPage } from '../Portal/PortalPage'
 import { ServiceStatusBar } from '../ServiceStatusBar/ServiceStatusBar'
 import {
@@ -25,7 +26,7 @@ type ActiveView = 'projects' | 'portal'
 export function MainLayout() {
   const [activeView, setActiveView] = useState<ActiveView>('projects')
   const { engineRunning, wsConnected, startEngine, stopEngine } = useEngineStore()
-  const { previewProjectId } = useProjectStore()
+  const { previewProjectId, selectedREProject } = useProjectStore()
 
   // Clarification state
   const {
@@ -155,22 +156,44 @@ export function MainLayout() {
             <ProjectList />
           </aside>
 
-          {/* Center - Project Space & Generation Monitor */}
+          {/* Left Panel - Project Space + Generation Monitor (single card) */}
           <main className="flex-1 flex flex-col overflow-hidden">
-            <div className="flex-1 overflow-auto">
-              <ProjectSpace />
-            </div>
-            <div className="h-48 border-t border-gray-700">
-              <GenerationMonitor />
-            </div>
+            {selectedREProject ? (
+              /* RE project selected: single full-height card, no separate monitor */
+              <div className="flex-1 overflow-hidden">
+                <ProjectSpace />
+              </div>
+            ) : (
+              <>
+                {/* Non-RE: compact project header + monitor below */}
+                <div className="shrink-0 overflow-auto border-b border-gray-700">
+                  <ProjectSpace />
+                </div>
+                <div className="flex-1 overflow-hidden">
+                  <GenerationMonitor />
+                </div>
+              </>
+            )}
           </main>
 
-          {/* Right Panel - Live Preview */}
-          {previewProjectId && (
-            <aside className="w-[500px] bg-engine-dark border-l border-gray-700">
-              <LivePreview />
-            </aside>
-          )}
+          {/* Right Panel - VNC Preview + Vibe Chat (always visible) */}
+          <aside className="w-[520px] bg-engine-dark border-l border-gray-700 flex flex-col">
+            {/* VNC Preview (upper half) */}
+            <div className={previewProjectId ? 'flex-1 min-h-0' : 'flex-1 min-h-0 flex items-center justify-center text-gray-600'}>
+              {previewProjectId ? (
+                <LivePreview />
+              ) : (
+                <p className="text-sm">No preview active</p>
+              )}
+            </div>
+            {/* Vibe Chat (lower portion) */}
+            <div className="h-64 border-t border-gray-700 overflow-hidden">
+              <VibeChat
+                projectId={useProjectStore.getState().activeProjectId || 'default'}
+                outputDir={useProjectStore.getState().getProject(useProjectStore.getState().activeProjectId || '')?.outputDir || '.'}
+              />
+            </div>
+          </aside>
         </div>
       ) : (
         <PortalPage />

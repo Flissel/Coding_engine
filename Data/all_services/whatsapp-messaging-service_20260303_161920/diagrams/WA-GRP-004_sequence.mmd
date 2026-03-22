@@ -1,0 +1,10 @@
+sequenceDiagram
+    participant User as Benutzer
+    participant System as System
+
+    User->>System: Anfrage für Gruppeneinladung
+    System-->>User: Generierung des Einladungslinks
+    User->>User: Link kopieren
+    User->>User: Link teilen
+    User->>System: Zugriff auf die Gruppe über den Link
+    System-->>User: Bestätigung des Zugriffs auf die Gruppe

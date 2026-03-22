@@ -1,0 +1,9 @@
+flowchart TD
+    A[User Action] -->|Block User| B[User Blocked]
+    A -->|Report Abuse| C[Report Submitted]
+    C --> D[Admin Review]
+    D -->|Action Taken| E[User Warned]
+    D -->|No Action| F[Report Closed]
+    B --> G[User Cannot Interact]
+    E --> H[User Monitored]
+    H -->|Further Issues| C

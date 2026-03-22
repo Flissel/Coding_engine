@@ -8,16 +8,20 @@
       "type": "schema_model",
       "title": "Create Prisma model: chat",
       "description": "Define chat model in prisma/schema.prisma with all required attributes and types.",
-      "status": "pending",
+      "status": "failed",
       "dependencies": [],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "/bin/sh: 1: claude: not found\n",
       "output_files": [
         "prisma/schema.prisma#chat"
       ],
-      "related_requirements": [],
-      "related_user_stories": [],
+      "related_requirements": [
+        "WA-MSG-010"
+      ],
+      "related_user_stories": [
+        "US-020"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -28,10 +32,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Prisma model defined with all attributes, correct types, and @id field; User can: einen einzelnen Chat mit zusaetzlicher Authentifizierung sperren",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-SCHEMA-chat-relations",
@@ -39,18 +42,22 @@
       "type": "schema_relations",
       "title": "Define relations for: chat",
       "description": "Set up Prisma relations for chat with other entities.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-SCHEMA-chat-model"
       ],
       "estimated_minutes": 3,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "Dependency failed: ['EPIC-003-SCHEMA-chat-model']",
       "output_files": [
         "prisma/schema.prisma#chat_relations"
       ],
-      "related_requirements": [],
-      "related_user_stories": [],
+      "related_requirements": [
+        "WA-MSG-010"
+      ],
+      "related_user_stories": [
+        "US-020"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -61,10 +68,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "All Prisma relations defined with correct cardinality and referential actions; User can: einen einzelnen Chat mit zusaetzlicher Authentifizierung sperren",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-SCHEMA-chat-migration",
@@ -72,7 +78,7 @@
       "type": "schema_migration",
       "title": "Run migration for: chat",
       "description": "Execute prisma migrate dev for chat changes.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-SCHEMA-chat-relations"
       ],
@@ -82,8 +88,12 @@
       "output_files": [
         "prisma/migrations/*_chat/"
       ],
-      "related_requirements": [],
-      "related_user_stories": [],
+      "related_requirements": [
+        "WA-MSG-010"
+      ],
+      "related_user_stories": [
+        "US-020"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -94,10 +104,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Migration generated and validated with prisma validate; User can: einen einzelnen Chat mit zusaetzlicher Authentifizierung sperren",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-SCHEMA-message-model",
@@ -105,16 +114,30 @@
       "type": "schema_model",
       "title": "Create Prisma model: message",
       "description": "Define message model in prisma/schema.prisma with all required attributes and types.",
-      "status": "pending",
+      "status": "failed",
       "dependencies": [],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "/bin/sh: 1: claude: not found\n",
       "output_files": [
         "prisma/schema.prisma#message"
       ],
-      "related_requirements": [],
-      "related_user_stories": [],
+      "related_requirements": [
+        "WA-MSG-001",
+        "WA-MSG-002",
+        "WA-MSG-003",
+        "WA-MSG-004",
+        "WA-MSG-005",
+        "WA-MSG-006",
+        "WA-MSG-008"
+      ],
+      "related_user_stories": [
+        "US-011",
+        "US-012",
+        "US-013",
+        "US-014",
+        "US-015"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -125,10 +148,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Prisma model defined with all attributes, correct types, and @id field; User can: eine Textnachricht in Echtzeit an einen Kontakt senden; User can: eine Sprachnachricht aufnehmen und senden; User can: eine gesendete oder empfangene Nachricht loeschen; Address: Spezifizieren Sie Sync-Mechanismen, Konfliktl\u00f6sung und Offline-Queueing.; Address: Erg\u00e4nzen Sie Zustellstatus (gesendet/zugestellt/gelesen), Retry-Policy und Offline-Queue.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-SCHEMA-message-relations",
@@ -136,18 +158,32 @@
       "type": "schema_relations",
       "title": "Define relations for: message",
       "description": "Set up Prisma relations for message with other entities.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-SCHEMA-message-model"
       ],
       "estimated_minutes": 3,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "Dependency failed: ['EPIC-003-SCHEMA-message-model']",
       "output_files": [
         "prisma/schema.prisma#message_relations"
       ],
-      "related_requirements": [],
-      "related_user_stories": [],
+      "related_requirements": [
+        "WA-MSG-001",
+        "WA-MSG-002",
+        "WA-MSG-003",
+        "WA-MSG-004",
+        "WA-MSG-005",
+        "WA-MSG-006",
+        "WA-MSG-008"
+      ],
+      "related_user_stories": [
+        "US-011",
+        "US-012",
+        "US-013",
+        "US-014",
+        "US-015"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -158,10 +194,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "All Prisma relations defined with correct cardinality and referential actions; User can: eine Textnachricht in Echtzeit an einen Kontakt senden; User can: eine Sprachnachricht aufnehmen und senden; User can: eine gesendete oder empfangene Nachricht loeschen; Address: Spezifizieren Sie Sync-Mechanismen, Konfliktl\u00f6sung und Offline-Queueing.; Address: Erg\u00e4nzen Sie Zustellstatus (gesendet/zugestellt/gelesen), Retry-Policy und Offline-Queue.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-SCHEMA-message-migration",
@@ -169,7 +204,7 @@
       "type": "schema_migration",
       "title": "Run migration for: message",
       "description": "Execute prisma migrate dev for message changes.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-SCHEMA-message-relations"
       ],
@@ -179,8 +214,22 @@
       "output_files": [
         "prisma/migrations/*_message/"
       ],
-      "related_requirements": [],
-      "related_user_stories": [],
+      "related_requirements": [
+        "WA-MSG-001",
+        "WA-MSG-002",
+        "WA-MSG-003",
+        "WA-MSG-004",
+        "WA-MSG-005",
+        "WA-MSG-006",
+        "WA-MSG-008"
+      ],
+      "related_user_stories": [
+        "US-011",
+        "US-012",
+        "US-013",
+        "US-014",
+        "US-015"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -191,10 +240,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Migration generated and validated with prisma validate; User can: eine Textnachricht in Echtzeit an einen Kontakt senden; User can: eine Sprachnachricht aufnehmen und senden; User can: eine gesendete oder empfangene Nachricht loeschen; Address: Spezifizieren Sie Sync-Mechanismen, Konfliktl\u00f6sung und Offline-Queueing.; Address: Erg\u00e4nzen Sie Zustellstatus (gesendet/zugestellt/gelesen), Retry-Policy und Offline-Queue.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-SCHEMA-message_media-model",
@@ -202,16 +250,22 @@
       "type": "schema_model",
       "title": "Create Prisma model: message_media",
       "description": "Define message_media model in prisma/schema.prisma with all required attributes and types.",
-      "status": "pending",
+      "status": "failed",
       "dependencies": [],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "/bin/sh: 1: claude: not found\n",
       "output_files": [
         "prisma/schema.prisma#message_media"
       ],
-      "related_requirements": [],
-      "related_user_stories": [],
+      "related_requirements": [
+        "WA-MSG-002",
+        "WA-MSG-009"
+      ],
+      "related_user_stories": [
+        "US-012",
+        "US-019"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -222,10 +276,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Prisma model defined with all attributes, correct types, and @id field; User can: eine Sprachnachricht aufnehmen und senden; User can: View-Once-Medien in einem Chat einmalig ansehen; Address: Erg\u00e4nzen Sie Zustellstatus (gesendet/zugestellt/gelesen), Retry-Policy und Offline-Queue.; Address: Spezifizieren Sie Verhalten bei Screenshots/Backups/Offline und Weiterleitung.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-SCHEMA-message_media-relations",
@@ -233,7 +286,7 @@
       "type": "schema_relations",
       "title": "Define relations for: message_media",
       "description": "Set up Prisma relations for message_media with other entities.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-SCHEMA-message_media-model"
       ],
@@ -243,8 +296,14 @@
       "output_files": [
         "prisma/schema.prisma#message_media_relations"
       ],
-      "related_requirements": [],
-      "related_user_stories": [],
+      "related_requirements": [
+        "WA-MSG-002",
+        "WA-MSG-009"
+      ],
+      "related_user_stories": [
+        "US-012",
+        "US-019"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -255,10 +314,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "All Prisma relations defined with correct cardinality and referential actions; User can: eine Sprachnachricht aufnehmen und senden; User can: View-Once-Medien in einem Chat einmalig ansehen; Address: Erg\u00e4nzen Sie Zustellstatus (gesendet/zugestellt/gelesen), Retry-Policy und Offline-Queue.; Address: Spezifizieren Sie Verhalten bei Screenshots/Backups/Offline und Weiterleitung.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-SCHEMA-message_media-migration",
@@ -266,7 +324,7 @@
       "type": "schema_migration",
       "title": "Run migration for: message_media",
       "description": "Execute prisma migrate dev for message_media changes.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-SCHEMA-message_media-relations"
       ],
@@ -276,8 +334,14 @@
       "output_files": [
         "prisma/migrations/*_message_media/"
       ],
-      "related_requirements": [],
-      "related_user_stories": [],
+      "related_requirements": [
+        "WA-MSG-002",
+        "WA-MSG-009"
+      ],
+      "related_user_stories": [
+        "US-012",
+        "US-019"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -288,10 +352,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Migration generated and validated with prisma validate; User can: eine Sprachnachricht aufnehmen und senden; User can: View-Once-Medien in einem Chat einmalig ansehen; Address: Erg\u00e4nzen Sie Zustellstatus (gesendet/zugestellt/gelesen), Retry-Policy und Offline-Queue.; Address: Spezifizieren Sie Verhalten bei Screenshots/Backups/Offline und Weiterleitung.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-SCHEMA-message_mention-model",
@@ -299,16 +362,20 @@
       "type": "schema_model",
       "title": "Create Prisma model: message_mention",
       "description": "Define message_mention model in prisma/schema.prisma with all required attributes and types.",
-      "status": "pending",
+      "status": "failed",
       "dependencies": [],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "/bin/sh: 1: claude: not found\n",
       "output_files": [
         "prisma/schema.prisma#message_mention"
       ],
-      "related_requirements": [],
-      "related_user_stories": [],
+      "related_requirements": [
+        "WA-MSG-013"
+      ],
+      "related_user_stories": [
+        "US-023"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -319,10 +386,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Prisma model defined with all attributes, correct types, and @id field; User can: andere Teilnehmer in einem Gruppenchats per @-Erwaehnung adressieren; Address: Create user stories that explicitly link to each of these requirements.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-SCHEMA-message_mention-relations",
@@ -330,18 +396,22 @@
       "type": "schema_relations",
       "title": "Define relations for: message_mention",
       "description": "Set up Prisma relations for message_mention with other entities.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-SCHEMA-message_mention-model"
       ],
       "estimated_minutes": 3,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "Dependency failed: ['EPIC-003-SCHEMA-message_mention-model']",
       "output_files": [
         "prisma/schema.prisma#message_mention_relations"
       ],
-      "related_requirements": [],
-      "related_user_stories": [],
+      "related_requirements": [
+        "WA-MSG-013"
+      ],
+      "related_user_stories": [
+        "US-023"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -352,10 +422,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "All Prisma relations defined with correct cardinality and referential actions; User can: andere Teilnehmer in einem Gruppenchats per @-Erwaehnung adressieren; Address: Create user stories that explicitly link to each of these requirements.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-SCHEMA-message_mention-migration",
@@ -363,7 +432,7 @@
       "type": "schema_migration",
       "title": "Run migration for: message_mention",
       "description": "Execute prisma migrate dev for message_mention changes.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-SCHEMA-message_mention-relations"
       ],
@@ -373,8 +442,12 @@
       "output_files": [
         "prisma/migrations/*_message_mention/"
       ],
-      "related_requirements": [],
-      "related_user_stories": [],
+      "related_requirements": [
+        "WA-MSG-013"
+      ],
+      "related_user_stories": [
+        "US-023"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -385,10 +458,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Migration generated and validated with prisma validate; User can: andere Teilnehmer in einem Gruppenchats per @-Erwaehnung adressieren; Address: Create user stories that explicitly link to each of these requirements.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-SCHEMA-message_reaction-model",
@@ -396,16 +468,20 @@
       "type": "schema_model",
       "title": "Create Prisma model: message_reaction",
       "description": "Define message_reaction model in prisma/schema.prisma with all required attributes and types.",
-      "status": "pending",
+      "status": "failed",
       "dependencies": [],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "/bin/sh: 1: claude: not found\n",
       "output_files": [
         "prisma/schema.prisma#message_reaction"
       ],
-      "related_requirements": [],
-      "related_user_stories": [],
+      "related_requirements": [
+        "WA-MSG-007"
+      ],
+      "related_user_stories": [
+        "US-017"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -416,10 +492,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Prisma model defined with all attributes, correct types, and @id field; User can: auf eine Nachricht mit einem Emoji reagieren",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-SCHEMA-message_reaction-relations",
@@ -427,7 +502,7 @@
       "type": "schema_relations",
       "title": "Define relations for: message_reaction",
       "description": "Set up Prisma relations for message_reaction with other entities.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-SCHEMA-message_reaction-model"
       ],
@@ -437,8 +512,12 @@
       "output_files": [
         "prisma/schema.prisma#message_reaction_relations"
       ],
-      "related_requirements": [],
-      "related_user_stories": [],
+      "related_requirements": [
+        "WA-MSG-007"
+      ],
+      "related_user_stories": [
+        "US-017"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -449,10 +528,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "All Prisma relations defined with correct cardinality and referential actions; User can: auf eine Nachricht mit einem Emoji reagieren",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-SCHEMA-message_reaction-migration",
@@ -460,7 +538,7 @@
       "type": "schema_migration",
       "title": "Run migration for: message_reaction",
       "description": "Execute prisma migrate dev for message_reaction changes.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-SCHEMA-message_reaction-relations"
       ],
@@ -470,8 +548,12 @@
       "output_files": [
         "prisma/migrations/*_message_reaction/"
       ],
-      "related_requirements": [],
-      "related_user_stories": [],
+      "related_requirements": [
+        "WA-MSG-007"
+      ],
+      "related_user_stories": [
+        "US-017"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -482,10 +564,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Migration generated and validated with prisma validate; User can: auf eine Nachricht mit einem Emoji reagieren",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-VERIFY-schema",
@@ -493,7 +574,7 @@
       "type": "verify_schema",
       "title": "Validate Prisma schema",
       "description": "Run prisma validate to check schema integrity.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-SCHEMA-message_reaction-model",
         "EPIC-003-SCHEMA-message_reaction-relations",
@@ -517,8 +598,7 @@
       "command": "npx prisma validate",
       "success_criteria": "prisma validate exits with code 0",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-CHECKPOINT-schema",
@@ -526,7 +606,7 @@
       "type": "checkpoint_schema",
       "title": "Checkpoint: Review Schema",
       "description": "User approval required before continuing. Review the schema phase results.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-VERIFY-schema"
       ],
@@ -548,8 +628,7 @@
       "command": null,
       "success_criteria": "User approved checkpoint",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-POST-api_v1_conversations_conversationId_messages-controller",
@@ -557,7 +636,7 @@
       "type": "api_controller",
       "title": "Controller: POST /api/v1/conversations/{conversationId}/messages",
       "description": "Send a text message\nImplement controller method with 1 parameters.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-CHECKPOINT-schema"
       ],
@@ -570,7 +649,9 @@
       "related_requirements": [
         "WA-MSG-001"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-011"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -581,10 +662,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "NestJS controller with correct decorators, DTOs, and route paths; User can: eine Textnachricht in Echtzeit an einen Kontakt senden; Address: Spezifizieren Sie Sync-Mechanismen, Konfliktl\u00f6sung und Offline-Queueing.; Address: Erg\u00e4nzen Sie Zustellstatus (gesendet/zugestellt/gelesen), Retry-Policy und Offline-Queue.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-POST-api_v1_conversations_conversationId_messages-service",
@@ -592,7 +672,7 @@
       "type": "api_service",
       "title": "Service: POST /api/v1/conversations/{conversationId}/messages",
       "description": "Business logic for Send a text message",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-API-POST-api_v1_conversations_conversationId_messages-controller"
       ],
@@ -605,7 +685,9 @@
       "related_requirements": [
         "WA-MSG-001"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-011"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -616,10 +698,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Service with Prisma CRUD operations, error handling, and proper return types; User can: eine Textnachricht in Echtzeit an einen Kontakt senden; Address: Spezifizieren Sie Sync-Mechanismen, Konfliktl\u00f6sung und Offline-Queueing.; Address: Erg\u00e4nzen Sie Zustellstatus (gesendet/zugestellt/gelesen), Retry-Policy und Offline-Queue.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-POST-api_v1_conversations_conversationId_messages-dto",
@@ -627,7 +708,7 @@
       "type": "api_dto",
       "title": "DTO: SendTextMessageRequest",
       "description": "Request/Response DTO for POST /api/v1/conversations/{conversationId}/messages",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-API-POST-api_v1_conversations_conversationId_messages-controller"
       ],
@@ -640,7 +721,9 @@
       "related_requirements": [
         "WA-MSG-001"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-011"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -651,10 +734,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "DTOs with class-validator decorators matching OpenAPI schema; User can: eine Textnachricht in Echtzeit an einen Kontakt senden; Address: Spezifizieren Sie Sync-Mechanismen, Konfliktl\u00f6sung und Offline-Queueing.; Address: Erg\u00e4nzen Sie Zustellstatus (gesendet/zugestellt/gelesen), Retry-Policy und Offline-Queue.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-POST-api_v1_conversations_conversationId_messages-guard",
@@ -662,7 +744,7 @@
       "type": "api_guard",
       "title": "Auth Guard: /api/v1/conversations/{conversationId}/messages",
       "description": "JWT authentication guard for POST /api/v1/conversations/{conversationId}/messages",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-API-POST-api_v1_conversations_conversationId_messages-controller"
       ],
@@ -675,7 +757,9 @@
       "related_requirements": [
         "WA-MSG-001"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-011"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -686,10 +770,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Guard with JWT validation and role-based access control; User can: eine Textnachricht in Echtzeit an einen Kontakt senden; Address: Spezifizieren Sie Sync-Mechanismen, Konfliktl\u00f6sung und Offline-Queueing.; Address: Erg\u00e4nzen Sie Zustellstatus (gesendet/zugestellt/gelesen), Retry-Policy und Offline-Queue.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-POST-api_v1_conversations_conversationId_messages-validation",
@@ -697,7 +780,7 @@
       "type": "api_validation",
       "title": "Validation: POST /api/v1/conversations/{conversationId}/messages",
       "description": "Input validation for 1 parameters",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-API-POST-api_v1_conversations_conversationId_messages-dto"
       ],
@@ -710,7 +793,9 @@
       "related_requirements": [
         "WA-MSG-001"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-011"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -721,10 +806,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Validation pipe with all input constraints from the DTO; User can: eine Textnachricht in Echtzeit an einen Kontakt senden; Address: Spezifizieren Sie Sync-Mechanismen, Konfliktl\u00f6sung und Offline-Queueing.; Address: Erg\u00e4nzen Sie Zustellstatus (gesendet/zugestellt/gelesen), Retry-Policy und Offline-Queue.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-POST-api_v1_messages_voice-controller",
@@ -732,7 +816,7 @@
       "type": "api_controller",
       "title": "Controller: POST /api/v1/messages/voice",
       "description": "Send a voice message\nImplement controller method with 0 parameters.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-CHECKPOINT-schema"
       ],
@@ -745,7 +829,9 @@
       "related_requirements": [
         "WA-MSG-002"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-012"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -756,10 +842,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "NestJS controller with correct decorators, DTOs, and route paths; User can: eine Sprachnachricht aufnehmen und senden; Address: Erg\u00e4nzen Sie Zustellstatus (gesendet/zugestellt/gelesen), Retry-Policy und Offline-Queue.; Address: Erg\u00e4nzen Sie Push-Integrationen und erforderliche OS-Permissions.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-POST-api_v1_messages_voice-service",
@@ -767,7 +852,7 @@
       "type": "api_service",
       "title": "Service: POST /api/v1/messages/voice",
       "description": "Business logic for Send a voice message",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-API-POST-api_v1_messages_voice-controller"
       ],
@@ -780,7 +865,9 @@
       "related_requirements": [
         "WA-MSG-002"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-012"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -791,10 +878,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Service with Prisma CRUD operations, error handling, and proper return types; User can: eine Sprachnachricht aufnehmen und senden; Address: Erg\u00e4nzen Sie Zustellstatus (gesendet/zugestellt/gelesen), Retry-Policy und Offline-Queue.; Address: Erg\u00e4nzen Sie Push-Integrationen und erforderliche OS-Permissions.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-POST-api_v1_messages_voice-dto",
@@ -802,7 +888,7 @@
       "type": "api_dto",
       "title": "DTO: CreateVoiceMessageRequest",
       "description": "Request/Response DTO for POST /api/v1/messages/voice",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-API-POST-api_v1_messages_voice-controller"
       ],
@@ -815,7 +901,9 @@
       "related_requirements": [
         "WA-MSG-002"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-012"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -826,10 +914,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "DTOs with class-validator decorators matching OpenAPI schema; User can: eine Sprachnachricht aufnehmen und senden; Address: Erg\u00e4nzen Sie Zustellstatus (gesendet/zugestellt/gelesen), Retry-Policy und Offline-Queue.; Address: Erg\u00e4nzen Sie Push-Integrationen und erforderliche OS-Permissions.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-POST-api_v1_messages_voice-guard",
@@ -837,7 +924,7 @@
       "type": "api_guard",
       "title": "Auth Guard: /api/v1/messages/voice",
       "description": "JWT authentication guard for POST /api/v1/messages/voice",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-API-POST-api_v1_messages_voice-controller"
       ],
@@ -850,7 +937,9 @@
       "related_requirements": [
         "WA-MSG-002"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-012"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -861,10 +950,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Guard with JWT validation and role-based access control; User can: eine Sprachnachricht aufnehmen und senden; Address: Erg\u00e4nzen Sie Zustellstatus (gesendet/zugestellt/gelesen), Retry-Policy und Offline-Queue.; Address: Erg\u00e4nzen Sie Push-Integrationen und erforderliche OS-Permissions.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-DELETE-api_v1_messages_messageId-controller",
@@ -872,7 +960,7 @@
       "type": "api_controller",
       "title": "Controller: DELETE /api/v1/messages/{messageId}",
       "description": "Nachricht loeschen\nImplement controller method with 1 parameters.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-CHECKPOINT-schema"
       ],
@@ -885,7 +973,9 @@
       "related_requirements": [
         "WA-MSG-003"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-013"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -896,10 +986,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "NestJS controller with correct decorators, DTOs, and route paths; User can: eine gesendete oder empfangene Nachricht loeschen; Address: Definieren Sie Zeitfenster, Geltung (alle/ich), Kennzeichnung und Sync.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-DELETE-api_v1_messages_messageId-service",
@@ -907,7 +996,7 @@
       "type": "api_service",
       "title": "Service: DELETE /api/v1/messages/{messageId}",
       "description": "Business logic for Nachricht loeschen",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-API-DELETE-api_v1_messages_messageId-controller"
       ],
@@ -920,7 +1009,9 @@
       "related_requirements": [
         "WA-MSG-003"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-013"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -931,10 +1022,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Service with Prisma CRUD operations, error handling, and proper return types; User can: eine gesendete oder empfangene Nachricht loeschen; Address: Definieren Sie Zeitfenster, Geltung (alle/ich), Kennzeichnung und Sync.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-DELETE-api_v1_messages_messageId-dto",
@@ -942,7 +1032,7 @@
       "type": "api_dto",
       "title": "DTO: DeleteMessageRequest",
       "description": "Request/Response DTO for DELETE /api/v1/messages/{messageId}",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-API-DELETE-api_v1_messages_messageId-controller"
       ],
@@ -955,7 +1045,9 @@
       "related_requirements": [
         "WA-MSG-003"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-013"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -966,10 +1058,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "DTOs with class-validator decorators matching OpenAPI schema; User can: eine gesendete oder empfangene Nachricht loeschen; Address: Definieren Sie Zeitfenster, Geltung (alle/ich), Kennzeichnung und Sync.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-DELETE-api_v1_messages_messageId-guard",
@@ -977,7 +1068,7 @@
       "type": "api_guard",
       "title": "Auth Guard: /api/v1/messages/{messageId}",
       "description": "JWT authentication guard for DELETE /api/v1/messages/{messageId}",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-API-DELETE-api_v1_messages_messageId-controller"
       ],
@@ -990,7 +1081,9 @@
       "related_requirements": [
         "WA-MSG-003"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-013"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -1001,10 +1094,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Guard with JWT validation and role-based access control; User can: eine gesendete oder empfangene Nachricht loeschen; Address: Definieren Sie Zeitfenster, Geltung (alle/ich), Kennzeichnung und Sync.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-DELETE-api_v1_messages_messageId-validation",
@@ -1012,7 +1104,7 @@
       "type": "api_validation",
       "title": "Validation: DELETE /api/v1/messages/{messageId}",
       "description": "Input validation for 1 parameters",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-API-DELETE-api_v1_messages_messageId-dto"
       ],
@@ -1025,7 +1117,9 @@
       "related_requirements": [
         "WA-MSG-003"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-013"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -1036,10 +1130,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Validation pipe with all input constraints from the DTO; User can: eine gesendete oder empfangene Nachricht loeschen; Address: Definieren Sie Zeitfenster, Geltung (alle/ich), Kennzeichnung und Sync.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-PUT-api_v1_messages_messageId-controller",
@@ -1047,7 +1140,7 @@
       "type": "api_controller",
       "title": "Controller: PUT /api/v1/messages/{messageId}",
       "description": "Edit a sent message\nImplement controller method with 1 parameters.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-CHECKPOINT-schema"
       ],
@@ -1060,7 +1153,9 @@
       "related_requirements": [
         "WA-MSG-004"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-014"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -1071,10 +1166,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "NestJS controller with correct decorators, DTOs, and route paths; User can: eine bereits gesendete Nachricht bearbeiten; Address: Definieren Sie Zeitfenster, Geltung (alle/ich), Kennzeichnung und Sync.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-PUT-api_v1_messages_messageId-service",
@@ -1082,7 +1176,7 @@
       "type": "api_service",
       "title": "Service: PUT /api/v1/messages/{messageId}",
       "description": "Business logic for Edit a sent message",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-API-PUT-api_v1_messages_messageId-controller"
       ],
@@ -1095,7 +1189,9 @@
       "related_requirements": [
         "WA-MSG-004"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-014"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -1106,10 +1202,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Service with Prisma CRUD operations, error handling, and proper return types; User can: eine bereits gesendete Nachricht bearbeiten; Address: Definieren Sie Zeitfenster, Geltung (alle/ich), Kennzeichnung und Sync.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-PUT-api_v1_messages_messageId-dto",
@@ -1117,7 +1212,7 @@
       "type": "api_dto",
       "title": "DTO: EditMessageRequest",
       "description": "Request/Response DTO for PUT /api/v1/messages/{messageId}",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-API-PUT-api_v1_messages_messageId-controller"
       ],
@@ -1130,7 +1225,9 @@
       "related_requirements": [
         "WA-MSG-004"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-014"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -1141,10 +1238,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "DTOs with class-validator decorators matching OpenAPI schema; User can: eine bereits gesendete Nachricht bearbeiten; Address: Definieren Sie Zeitfenster, Geltung (alle/ich), Kennzeichnung und Sync.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-PUT-api_v1_messages_messageId-guard",
@@ -1152,7 +1248,7 @@
       "type": "api_guard",
       "title": "Auth Guard: /api/v1/messages/{messageId}",
       "description": "JWT authentication guard for PUT /api/v1/messages/{messageId}",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-API-PUT-api_v1_messages_messageId-controller"
       ],
@@ -1165,7 +1261,9 @@
       "related_requirements": [
         "WA-MSG-004"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-014"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -1176,10 +1274,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Guard with JWT validation and role-based access control; User can: eine bereits gesendete Nachricht bearbeiten; Address: Definieren Sie Zeitfenster, Geltung (alle/ich), Kennzeichnung und Sync.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-PUT-api_v1_messages_messageId-validation",
@@ -1187,7 +1284,7 @@
       "type": "api_validation",
       "title": "Validation: PUT /api/v1/messages/{messageId}",
       "description": "Input validation for 1 parameters",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-API-PUT-api_v1_messages_messageId-dto"
       ],
@@ -1200,7 +1297,9 @@
       "related_requirements": [
         "WA-MSG-004"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-014"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -1211,10 +1310,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Validation pipe with all input constraints from the DTO; User can: eine bereits gesendete Nachricht bearbeiten; Address: Definieren Sie Zeitfenster, Geltung (alle/ich), Kennzeichnung und Sync.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-POST-api_v1_messages_messageId_forward-controller",
@@ -1222,7 +1320,7 @@
       "type": "api_controller",
       "title": "Controller: POST /api/v1/messages/{messageId}/forward",
       "description": "Forward a message\nImplement controller method with 1 parameters.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-CHECKPOINT-schema"
       ],
@@ -1235,7 +1333,9 @@
       "related_requirements": [
         "WA-MSG-005"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-015"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -1246,10 +1346,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "NestJS controller with correct decorators, DTOs, and route paths; User can: eine empfangene Nachricht an einen oder mehrere Kontakte weiterleiten",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-POST-api_v1_messages_messageId_forward-service",
@@ -1257,7 +1356,7 @@
       "type": "api_service",
       "title": "Service: POST /api/v1/messages/{messageId}/forward",
       "description": "Business logic for Forward a message",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-API-POST-api_v1_messages_messageId_forward-controller"
       ],
@@ -1270,7 +1369,9 @@
       "related_requirements": [
         "WA-MSG-005"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-015"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -1281,10 +1382,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Service with Prisma CRUD operations, error handling, and proper return types; User can: eine empfangene Nachricht an einen oder mehrere Kontakte weiterleiten",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-POST-api_v1_messages_messageId_forward-dto",
@@ -1292,7 +1392,7 @@
       "type": "api_dto",
       "title": "DTO: ForwardMessageRequest",
       "description": "Request/Response DTO for POST /api/v1/messages/{messageId}/forward",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-API-POST-api_v1_messages_messageId_forward-controller"
       ],
@@ -1305,7 +1405,9 @@
       "related_requirements": [
         "WA-MSG-005"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-015"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -1316,10 +1418,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "DTOs with class-validator decorators matching OpenAPI schema; User can: eine empfangene Nachricht an einen oder mehrere Kontakte weiterleiten",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-POST-api_v1_messages_messageId_forward-guard",
@@ -1327,7 +1428,7 @@
       "type": "api_guard",
       "title": "Auth Guard: /api/v1/messages/{messageId}/forward",
       "description": "JWT authentication guard for POST /api/v1/messages/{messageId}/forward",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-API-POST-api_v1_messages_messageId_forward-controller"
       ],
@@ -1340,7 +1441,9 @@
       "related_requirements": [
         "WA-MSG-005"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-015"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -1351,10 +1454,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Guard with JWT validation and role-based access control; User can: eine empfangene Nachricht an einen oder mehrere Kontakte weiterleiten",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-POST-api_v1_messages_messageId_forward-validation",
@@ -1362,7 +1464,7 @@
       "type": "api_validation",
       "title": "Validation: POST /api/v1/messages/{messageId}/forward",
       "description": "Input validation for 1 parameters",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-API-POST-api_v1_messages_messageId_forward-dto"
       ],
@@ -1375,7 +1477,9 @@
       "related_requirements": [
         "WA-MSG-005"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-015"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -1386,10 +1490,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Validation pipe with all input constraints from the DTO; User can: eine empfangene Nachricht an einen oder mehrere Kontakte weiterleiten",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-POST-api_v1_messages-controller",
@@ -1397,7 +1500,7 @@
       "type": "api_controller",
       "title": "Controller: POST /api/v1/messages",
       "description": "Send a message with optional quote\nImplement controller method with 0 parameters.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-CHECKPOINT-schema"
       ],
@@ -1410,7 +1513,9 @@
       "related_requirements": [
         "WA-MSG-006"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-016"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -1421,10 +1526,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "NestJS controller with correct decorators, DTOs, and route paths; User can: eine spezifische Nachricht in einem Chat zitieren und darauf antworten",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-POST-api_v1_messages-service",
@@ -1432,7 +1536,7 @@
       "type": "api_service",
       "title": "Service: POST /api/v1/messages",
       "description": "Business logic for Send a message with optional quote",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-API-POST-api_v1_messages-controller"
       ],
@@ -1445,7 +1549,9 @@
       "related_requirements": [
         "WA-MSG-006"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-016"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -1456,10 +1562,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Service with Prisma CRUD operations, error handling, and proper return types; User can: eine spezifische Nachricht in einem Chat zitieren und darauf antworten",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-POST-api_v1_messages-dto",
@@ -1467,7 +1572,7 @@
       "type": "api_dto",
       "title": "DTO: CreateMessageRequest",
       "description": "Request/Response DTO for POST /api/v1/messages",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-API-POST-api_v1_messages-controller"
       ],
@@ -1480,7 +1585,9 @@
       "related_requirements": [
         "WA-MSG-006"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-016"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -1491,10 +1598,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "DTOs with class-validator decorators matching OpenAPI schema; User can: eine spezifische Nachricht in einem Chat zitieren und darauf antworten",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-POST-api_v1_messages-guard",
@@ -1502,7 +1608,7 @@
       "type": "api_guard",
       "title": "Auth Guard: /api/v1/messages",
       "description": "JWT authentication guard for POST /api/v1/messages",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-API-POST-api_v1_messages-controller"
       ],
@@ -1515,7 +1621,9 @@
       "related_requirements": [
         "WA-MSG-006"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-016"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -1526,10 +1634,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Guard with JWT validation and role-based access control; User can: eine spezifische Nachricht in einem Chat zitieren und darauf antworten",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-POST-api_v1_messages_messageId_reactions-controller",
@@ -1537,7 +1644,7 @@
       "type": "api_controller",
       "title": "Controller: POST /api/v1/messages/{messageId}/reactions",
       "description": "Add an emoji reaction to a message\nImplement controller method with 1 parameters.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-CHECKPOINT-schema"
       ],
@@ -1550,7 +1657,9 @@
       "related_requirements": [
         "WA-MSG-007"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-017"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -1561,10 +1670,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "NestJS controller with correct decorators, DTOs, and route paths; User can: auf eine Nachricht mit einem Emoji reagieren",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-POST-api_v1_messages_messageId_reactions-service",
@@ -1572,7 +1680,7 @@
       "type": "api_service",
       "title": "Service: POST /api/v1/messages/{messageId}/reactions",
       "description": "Business logic for Add an emoji reaction to a message",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-API-POST-api_v1_messages_messageId_reactions-controller"
       ],
@@ -1585,7 +1693,9 @@
       "related_requirements": [
         "WA-MSG-007"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-017"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -1596,10 +1706,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Service with Prisma CRUD operations, error handling, and proper return types; User can: auf eine Nachricht mit einem Emoji reagieren",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-POST-api_v1_messages_messageId_reactions-dto",
@@ -1607,7 +1716,7 @@
       "type": "api_dto",
       "title": "DTO: CreateReactionRequest",
       "description": "Request/Response DTO for POST /api/v1/messages/{messageId}/reactions",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-API-POST-api_v1_messages_messageId_reactions-controller"
       ],
@@ -1620,7 +1729,9 @@
       "related_requirements": [
         "WA-MSG-007"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-017"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -1631,10 +1742,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "DTOs with class-validator decorators matching OpenAPI schema; User can: auf eine Nachricht mit einem Emoji reagieren",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-POST-api_v1_messages_messageId_reactions-guard",
@@ -1642,7 +1752,7 @@
       "type": "api_guard",
       "title": "Auth Guard: /api/v1/messages/{messageId}/reactions",
       "description": "JWT authentication guard for POST /api/v1/messages/{messageId}/reactions",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-API-POST-api_v1_messages_messageId_reactions-controller"
       ],
@@ -1655,7 +1765,9 @@
       "related_requirements": [
         "WA-MSG-007"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-017"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -1666,10 +1778,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Guard with JWT validation and role-based access control; User can: auf eine Nachricht mit einem Emoji reagieren",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-POST-api_v1_messages_messageId_reactions-validation",
@@ -1677,7 +1788,7 @@
       "type": "api_validation",
       "title": "Validation: POST /api/v1/messages/{messageId}/reactions",
       "description": "Input validation for 1 parameters",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-API-POST-api_v1_messages_messageId_reactions-dto"
       ],
@@ -1690,7 +1801,9 @@
       "related_requirements": [
         "WA-MSG-007"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-017"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -1701,10 +1814,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Validation pipe with all input constraints from the DTO; User can: auf eine Nachricht mit einem Emoji reagieren",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-GET-api_v1_messages_messageId_reactions-controller",
@@ -1712,7 +1824,7 @@
       "type": "api_controller",
       "title": "Controller: GET /api/v1/messages/{messageId}/reactions",
       "description": "List emoji reactions for a message\nImplement controller method with 3 parameters.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-CHECKPOINT-schema"
       ],
@@ -1725,7 +1837,9 @@
       "related_requirements": [
         "WA-MSG-007"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-017"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -1736,10 +1850,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "NestJS controller with correct decorators, DTOs, and route paths; User can: auf eine Nachricht mit einem Emoji reagieren",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-GET-api_v1_messages_messageId_reactions-service",
@@ -1747,7 +1860,7 @@
       "type": "api_service",
       "title": "Service: GET /api/v1/messages/{messageId}/reactions",
       "description": "Business logic for List emoji reactions for a message",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-API-GET-api_v1_messages_messageId_reactions-controller"
       ],
@@ -1760,7 +1873,9 @@
       "related_requirements": [
         "WA-MSG-007"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-017"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -1771,10 +1886,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Service with Prisma CRUD operations, error handling, and proper return types; User can: auf eine Nachricht mit einem Emoji reagieren",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-GET-api_v1_messages_messageId_reactions-dto",
@@ -1782,7 +1896,7 @@
       "type": "api_dto",
       "title": "DTO: ListReactionsRequest",
       "description": "Request/Response DTO for GET /api/v1/messages/{messageId}/reactions",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-API-GET-api_v1_messages_messageId_reactions-controller"
       ],
@@ -1795,7 +1909,9 @@
       "related_requirements": [
         "WA-MSG-007"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-017"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -1806,10 +1922,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "DTOs with class-validator decorators matching OpenAPI schema; User can: auf eine Nachricht mit einem Emoji reagieren",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-GET-api_v1_messages_messageId_reactions-guard",
@@ -1817,7 +1932,7 @@
       "type": "api_guard",
       "title": "Auth Guard: /api/v1/messages/{messageId}/reactions",
       "description": "JWT authentication guard for GET /api/v1/messages/{messageId}/reactions",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-API-GET-api_v1_messages_messageId_reactions-controller"
       ],
@@ -1830,7 +1945,9 @@
       "related_requirements": [
         "WA-MSG-007"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-017"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -1841,10 +1958,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Guard with JWT validation and role-based access control; User can: auf eine Nachricht mit einem Emoji reagieren",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-GET-api_v1_messages_messageId_reactions-validation",
@@ -1852,7 +1968,7 @@
       "type": "api_validation",
       "title": "Validation: GET /api/v1/messages/{messageId}/reactions",
       "description": "Input validation for 3 parameters",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-API-GET-api_v1_messages_messageId_reactions-dto"
       ],
@@ -1865,7 +1981,9 @@
       "related_requirements": [
         "WA-MSG-007"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-017"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -1876,10 +1994,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Validation pipe with all input constraints from the DTO; User can: auf eine Nachricht mit einem Emoji reagieren",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-DELETE-api_v1_messages_messageId_reactions_reactionId-controller",
@@ -1887,7 +2004,7 @@
       "type": "api_controller",
       "title": "Controller: DELETE /api/v1/messages/{messageId}/reactions/{reactionId}",
       "description": "Remove an emoji reaction from a message\nImplement controller method with 2 parameters.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-CHECKPOINT-schema"
       ],
@@ -1900,7 +2017,9 @@
       "related_requirements": [
         "WA-MSG-007"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-017"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -1911,10 +2030,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "NestJS controller with correct decorators, DTOs, and route paths; User can: auf eine Nachricht mit einem Emoji reagieren",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-DELETE-api_v1_messages_messageId_reactions_reactionId-service",
@@ -1922,7 +2040,7 @@
       "type": "api_service",
       "title": "Service: DELETE /api/v1/messages/{messageId}/reactions/{reactionId}",
       "description": "Business logic for Remove an emoji reaction from a message",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-API-DELETE-api_v1_messages_messageId_reactions_reactionId-controller"
       ],
@@ -1935,7 +2053,9 @@
       "related_requirements": [
         "WA-MSG-007"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-017"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -1946,10 +2066,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Service with Prisma CRUD operations, error handling, and proper return types; User can: auf eine Nachricht mit einem Emoji reagieren",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-DELETE-api_v1_messages_messageId_reactions_reactionId-dto",
@@ -1957,7 +2076,7 @@
       "type": "api_dto",
       "title": "DTO: DeleteReactionRequest",
       "description": "Request/Response DTO for DELETE /api/v1/messages/{messageId}/reactions/{reactionId}",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-API-DELETE-api_v1_messages_messageId_reactions_reactionId-controller"
       ],
@@ -1970,7 +2089,9 @@
       "related_requirements": [
         "WA-MSG-007"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-017"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -1981,10 +2102,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "DTOs with class-validator decorators matching OpenAPI schema; User can: auf eine Nachricht mit einem Emoji reagieren",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-DELETE-api_v1_messages_messageId_reactions_reactionId-guard",
@@ -1992,7 +2112,7 @@
       "type": "api_guard",
       "title": "Auth Guard: /api/v1/messages/{messageId}/reactions/{reactionId}",
       "description": "JWT authentication guard for DELETE /api/v1/messages/{messageId}/reactions/{reactionId}",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-API-DELETE-api_v1_messages_messageId_reactions_reactionId-controller"
       ],
@@ -2005,7 +2125,9 @@
       "related_requirements": [
         "WA-MSG-007"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-017"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -2016,10 +2138,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Guard with JWT validation and role-based access control; User can: auf eine Nachricht mit einem Emoji reagieren",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-DELETE-api_v1_messages_messageId_reactions_reactionId-validation",
@@ -2027,7 +2148,7 @@
       "type": "api_validation",
       "title": "Validation: DELETE /api/v1/messages/{messageId}/reactions/{reactionId}",
       "description": "Input validation for 2 parameters",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-API-DELETE-api_v1_messages_messageId_reactions_reactionId-dto"
       ],
@@ -2040,7 +2161,9 @@
       "related_requirements": [
         "WA-MSG-007"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-017"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -2051,10 +2174,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Validation pipe with all input constraints from the DTO; User can: auf eine Nachricht mit einem Emoji reagieren",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-PATCH-api_v1_messages_messageId_self-destruct-controller",
@@ -2062,7 +2184,7 @@
       "type": "api_controller",
       "title": "Controller: PATCH /api/v1/messages/{messageId}/self-destruct",
       "description": "Update self-destruct policy for a message\nImplement controller method with 1 parameters.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-CHECKPOINT-schema"
       ],
@@ -2075,7 +2197,9 @@
       "related_requirements": [
         "WA-MSG-008"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-018"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -2086,10 +2210,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "NestJS controller with correct decorators, DTOs, and route paths; User can: selbstloeschende Nachrichten mit einer festgelegten Ablaufzeit senden; Address: Spezifizieren Sie Verhalten bei Screenshots/Backups/Offline und Weiterleitung.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-PATCH-api_v1_messages_messageId_self-destruct-service",
@@ -2097,7 +2220,7 @@
       "type": "api_service",
       "title": "Service: PATCH /api/v1/messages/{messageId}/self-destruct",
       "description": "Business logic for Update self-destruct policy for a message",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-API-PATCH-api_v1_messages_messageId_self-destruct-controller"
       ],
@@ -2110,7 +2233,9 @@
       "related_requirements": [
         "WA-MSG-008"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-018"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -2121,10 +2246,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Service with Prisma CRUD operations, error handling, and proper return types; User can: selbstloeschende Nachrichten mit einer festgelegten Ablaufzeit senden; Address: Spezifizieren Sie Verhalten bei Screenshots/Backups/Offline und Weiterleitung.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-PATCH-api_v1_messages_messageId_self-destruct-dto",
@@ -2132,7 +2256,7 @@
       "type": "api_dto",
       "title": "DTO: UpdateSelfDestructRequest",
       "description": "Request/Response DTO for PATCH /api/v1/messages/{messageId}/self-destruct",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-API-PATCH-api_v1_messages_messageId_self-destruct-controller"
       ],
@@ -2145,7 +2269,9 @@
       "related_requirements": [
         "WA-MSG-008"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-018"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -2156,10 +2282,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "DTOs with class-validator decorators matching OpenAPI schema; User can: selbstloeschende Nachrichten mit einer festgelegten Ablaufzeit senden; Address: Spezifizieren Sie Verhalten bei Screenshots/Backups/Offline und Weiterleitung.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-PATCH-api_v1_messages_messageId_self-destruct-guard",
@@ -2167,7 +2292,7 @@
       "type": "api_guard",
       "title": "Auth Guard: /api/v1/messages/{messageId}/self-destruct",
       "description": "JWT authentication guard for PATCH /api/v1/messages/{messageId}/self-destruct",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-API-PATCH-api_v1_messages_messageId_self-destruct-controller"
       ],
@@ -2180,7 +2305,9 @@
       "related_requirements": [
         "WA-MSG-008"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-018"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -2191,10 +2318,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Guard with JWT validation and role-based access control; User can: selbstloeschende Nachrichten mit einer festgelegten Ablaufzeit senden; Address: Spezifizieren Sie Verhalten bei Screenshots/Backups/Offline und Weiterleitung.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-PATCH-api_v1_messages_messageId_self-destruct-validation",
@@ -2202,7 +2328,7 @@
       "type": "api_validation",
       "title": "Validation: PATCH /api/v1/messages/{messageId}/self-destruct",
       "description": "Input validation for 1 parameters",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-API-PATCH-api_v1_messages_messageId_self-destruct-dto"
       ],
@@ -2215,7 +2341,9 @@
       "related_requirements": [
         "WA-MSG-008"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-018"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -2226,10 +2354,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Validation pipe with all input constraints from the DTO; User can: selbstloeschende Nachrichten mit einer festgelegten Ablaufzeit senden; Address: Spezifizieren Sie Verhalten bei Screenshots/Backups/Offline und Weiterleitung.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-POST-api_v1_media-controller",
@@ -2237,7 +2364,7 @@
       "type": "api_controller",
       "title": "Controller: POST /api/v1/media",
       "description": "Upload encrypted media for view-once use\nImplement controller method with 0 parameters.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-CHECKPOINT-schema"
       ],
@@ -2250,7 +2377,9 @@
       "related_requirements": [
         "WA-MSG-009"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-019"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -2261,10 +2390,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "NestJS controller with correct decorators, DTOs, and route paths; User can: View-Once-Medien in einem Chat einmalig ansehen; Address: Spezifizieren Sie Verhalten bei Screenshots/Backups/Offline und Weiterleitung.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-POST-api_v1_media-service",
@@ -2272,7 +2400,7 @@
       "type": "api_service",
       "title": "Service: POST /api/v1/media",
       "description": "Business logic for Upload encrypted media for view-once use",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-API-POST-api_v1_media-controller"
       ],
@@ -2285,7 +2413,9 @@
       "related_requirements": [
         "WA-MSG-009"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-019"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -2296,10 +2426,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Service with Prisma CRUD operations, error handling, and proper return types; User can: View-Once-Medien in einem Chat einmalig ansehen; Address: Spezifizieren Sie Verhalten bei Screenshots/Backups/Offline und Weiterleitung.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-POST-api_v1_media-dto",
@@ -2307,7 +2436,7 @@
       "type": "api_dto",
       "title": "DTO: UploadMediaRequest",
       "description": "Request/Response DTO for POST /api/v1/media",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-API-POST-api_v1_media-controller"
       ],
@@ -2320,7 +2449,9 @@
       "related_requirements": [
         "WA-MSG-009"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-019"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -2331,10 +2462,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "DTOs with class-validator decorators matching OpenAPI schema; User can: View-Once-Medien in einem Chat einmalig ansehen; Address: Spezifizieren Sie Verhalten bei Screenshots/Backups/Offline und Weiterleitung.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-POST-api_v1_media-guard",
@@ -2342,7 +2472,7 @@
       "type": "api_guard",
       "title": "Auth Guard: /api/v1/media",
       "description": "JWT authentication guard for POST /api/v1/media",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-API-POST-api_v1_media-controller"
       ],
@@ -2355,7 +2485,9 @@
       "related_requirements": [
         "WA-MSG-009"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-019"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -2366,10 +2498,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Guard with JWT validation and role-based access control; User can: View-Once-Medien in einem Chat einmalig ansehen; Address: Spezifizieren Sie Verhalten bei Screenshots/Backups/Offline und Weiterleitung.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-GET-api_v1_media_mediaId_view-once-controller",
@@ -2377,7 +2508,7 @@
       "type": "api_controller",
       "title": "Controller: GET /api/v1/media/{mediaId}/view-once",
       "description": "Retrieve and consume view-once media\nImplement controller method with 1 parameters.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-CHECKPOINT-schema"
       ],
@@ -2390,7 +2521,9 @@
       "related_requirements": [
         "WA-MSG-009"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-019"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -2401,10 +2534,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "NestJS controller with correct decorators, DTOs, and route paths; User can: View-Once-Medien in einem Chat einmalig ansehen; Address: Spezifizieren Sie Verhalten bei Screenshots/Backups/Offline und Weiterleitung.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-GET-api_v1_media_mediaId_view-once-service",
@@ -2412,7 +2544,7 @@
       "type": "api_service",
       "title": "Service: GET /api/v1/media/{mediaId}/view-once",
       "description": "Business logic for Retrieve and consume view-once media",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-API-GET-api_v1_media_mediaId_view-once-controller"
       ],
@@ -2425,7 +2557,9 @@
       "related_requirements": [
         "WA-MSG-009"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-019"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -2436,10 +2570,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Service with Prisma CRUD operations, error handling, and proper return types; User can: View-Once-Medien in einem Chat einmalig ansehen; Address: Spezifizieren Sie Verhalten bei Screenshots/Backups/Offline und Weiterleitung.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-GET-api_v1_media_mediaId_view-once-dto",
@@ -2447,7 +2580,7 @@
       "type": "api_dto",
       "title": "DTO: GetViewOnceMediaRequest",
       "description": "Request/Response DTO for GET /api/v1/media/{mediaId}/view-once",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-API-GET-api_v1_media_mediaId_view-once-controller"
       ],
@@ -2460,7 +2593,9 @@
       "related_requirements": [
         "WA-MSG-009"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-019"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -2471,10 +2606,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "DTOs with class-validator decorators matching OpenAPI schema; User can: View-Once-Medien in einem Chat einmalig ansehen; Address: Spezifizieren Sie Verhalten bei Screenshots/Backups/Offline und Weiterleitung.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-GET-api_v1_media_mediaId_view-once-guard",
@@ -2482,7 +2616,7 @@
       "type": "api_guard",
       "title": "Auth Guard: /api/v1/media/{mediaId}/view-once",
       "description": "JWT authentication guard for GET /api/v1/media/{mediaId}/view-once",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-API-GET-api_v1_media_mediaId_view-once-controller"
       ],
@@ -2495,7 +2629,9 @@
       "related_requirements": [
         "WA-MSG-009"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-019"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -2506,10 +2642,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Guard with JWT validation and role-based access control; User can: View-Once-Medien in einem Chat einmalig ansehen; Address: Spezifizieren Sie Verhalten bei Screenshots/Backups/Offline und Weiterleitung.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-GET-api_v1_media_mediaId_view-once-validation",
@@ -2517,7 +2652,7 @@
       "type": "api_validation",
       "title": "Validation: GET /api/v1/media/{mediaId}/view-once",
       "description": "Input validation for 1 parameters",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-API-GET-api_v1_media_mediaId_view-once-dto"
       ],
@@ -2530,7 +2665,9 @@
       "related_requirements": [
         "WA-MSG-009"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-019"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -2541,10 +2678,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Validation pipe with all input constraints from the DTO; User can: View-Once-Medien in einem Chat einmalig ansehen; Address: Spezifizieren Sie Verhalten bei Screenshots/Backups/Offline und Weiterleitung.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-PUT-api_v1_chats_chatId_lock-controller",
@@ -2552,7 +2688,7 @@
       "type": "api_controller",
       "title": "Controller: PUT /api/v1/chats/{chatId}/lock",
       "description": "Lock a chat with additional authentication\nImplement controller method with 1 parameters.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-CHECKPOINT-schema"
       ],
@@ -2565,7 +2701,9 @@
       "related_requirements": [
         "WA-MSG-010"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-020"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -2576,10 +2714,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "NestJS controller with correct decorators, DTOs, and route paths; User can: einen einzelnen Chat mit zusaetzlicher Authentifizierung sperren",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-PUT-api_v1_chats_chatId_lock-service",
@@ -2587,7 +2724,7 @@
       "type": "api_service",
       "title": "Service: PUT /api/v1/chats/{chatId}/lock",
       "description": "Business logic for Lock a chat with additional authentication",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-API-PUT-api_v1_chats_chatId_lock-controller"
       ],
@@ -2600,7 +2737,9 @@
       "related_requirements": [
         "WA-MSG-010"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-020"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -2611,10 +2750,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Service with Prisma CRUD operations, error handling, and proper return types; User can: einen einzelnen Chat mit zusaetzlicher Authentifizierung sperren",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-PUT-api_v1_chats_chatId_lock-dto",
@@ -2622,7 +2760,7 @@
       "type": "api_dto",
       "title": "DTO: LockChatRequest",
       "description": "Request/Response DTO for PUT /api/v1/chats/{chatId}/lock",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-API-PUT-api_v1_chats_chatId_lock-controller"
       ],
@@ -2635,7 +2773,9 @@
       "related_requirements": [
         "WA-MSG-010"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-020"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -2646,10 +2786,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "DTOs with class-validator decorators matching OpenAPI schema; User can: einen einzelnen Chat mit zusaetzlicher Authentifizierung sperren",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-PUT-api_v1_chats_chatId_lock-guard",
@@ -2657,7 +2796,7 @@
       "type": "api_guard",
       "title": "Auth Guard: /api/v1/chats/{chatId}/lock",
       "description": "JWT authentication guard for PUT /api/v1/chats/{chatId}/lock",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-API-PUT-api_v1_chats_chatId_lock-controller"
       ],
@@ -2670,7 +2809,9 @@
       "related_requirements": [
         "WA-MSG-010"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-020"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -2681,10 +2822,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Guard with JWT validation and role-based access control; User can: einen einzelnen Chat mit zusaetzlicher Authentifizierung sperren",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-PUT-api_v1_chats_chatId_lock-validation",
@@ -2692,7 +2832,7 @@
       "type": "api_validation",
       "title": "Validation: PUT /api/v1/chats/{chatId}/lock",
       "description": "Input validation for 1 parameters",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-API-PUT-api_v1_chats_chatId_lock-dto"
       ],
@@ -2705,7 +2845,9 @@
       "related_requirements": [
         "WA-MSG-010"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-020"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -2716,10 +2858,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Validation pipe with all input constraints from the DTO; User can: einen einzelnen Chat mit zusaetzlicher Authentifizierung sperren",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-PUT-api_v1_chats_chatId_unlock-controller",
@@ -2727,7 +2868,7 @@
       "type": "api_controller",
       "title": "Controller: PUT /api/v1/chats/{chatId}/unlock",
       "description": "Unlock a chat with additional authentication\nImplement controller method with 1 parameters.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-CHECKPOINT-schema"
       ],
@@ -2740,7 +2881,9 @@
       "related_requirements": [
         "WA-MSG-010"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-020"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -2751,10 +2894,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "NestJS controller with correct decorators, DTOs, and route paths; User can: einen einzelnen Chat mit zusaetzlicher Authentifizierung sperren",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-PUT-api_v1_chats_chatId_unlock-service",
@@ -2762,7 +2904,7 @@
       "type": "api_service",
       "title": "Service: PUT /api/v1/chats/{chatId}/unlock",
       "description": "Business logic for Unlock a chat with additional authentication",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-API-PUT-api_v1_chats_chatId_unlock-controller"
       ],
@@ -2775,7 +2917,9 @@
       "related_requirements": [
         "WA-MSG-010"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-020"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -2786,10 +2930,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Service with Prisma CRUD operations, error handling, and proper return types; User can: einen einzelnen Chat mit zusaetzlicher Authentifizierung sperren",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-PUT-api_v1_chats_chatId_unlock-dto",
@@ -2797,7 +2940,7 @@
       "type": "api_dto",
       "title": "DTO: UnlockChatRequest",
       "description": "Request/Response DTO for PUT /api/v1/chats/{chatId}/unlock",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-API-PUT-api_v1_chats_chatId_unlock-controller"
       ],
@@ -2810,7 +2953,9 @@
       "related_requirements": [
         "WA-MSG-010"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-020"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -2821,10 +2966,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "DTOs with class-validator decorators matching OpenAPI schema; User can: einen einzelnen Chat mit zusaetzlicher Authentifizierung sperren",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-PUT-api_v1_chats_chatId_unlock-guard",
@@ -2832,7 +2976,7 @@
       "type": "api_guard",
       "title": "Auth Guard: /api/v1/chats/{chatId}/unlock",
       "description": "JWT authentication guard for PUT /api/v1/chats/{chatId}/unlock",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-API-PUT-api_v1_chats_chatId_unlock-controller"
       ],
@@ -2845,7 +2989,9 @@
       "related_requirements": [
         "WA-MSG-010"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-020"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -2856,10 +3002,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Guard with JWT validation and role-based access control; User can: einen einzelnen Chat mit zusaetzlicher Authentifizierung sperren",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-PUT-api_v1_chats_chatId_unlock-validation",
@@ -2867,7 +3012,7 @@
       "type": "api_validation",
       "title": "Validation: PUT /api/v1/chats/{chatId}/unlock",
       "description": "Input validation for 1 parameters",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-API-PUT-api_v1_chats_chatId_unlock-dto"
       ],
@@ -2880,7 +3025,9 @@
       "related_requirements": [
         "WA-MSG-010"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-020"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -2891,10 +3038,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Validation pipe with all input constraints from the DTO; User can: einen einzelnen Chat mit zusaetzlicher Authentifizierung sperren",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-POST-api_v1_broadcast-lists-controller",
@@ -2902,7 +3048,7 @@
       "type": "api_controller",
       "title": "Controller: POST /api/v1/broadcast-lists",
       "description": "Create a broadcast list\nImplement controller method with 0 parameters.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-CHECKPOINT-schema"
       ],
@@ -2915,7 +3061,9 @@
       "related_requirements": [
         "WA-MSG-011"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-021"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -2926,10 +3074,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "NestJS controller with correct decorators, DTOs, and route paths; User can: eine Broadcast-Liste erstellen und an mehrere Empf\u00e4nger gleichzeitig eine Massen-Nachricht senden; Address: Create user stories that explicitly link to each of these requirements.; Address: Definieren Sie Limits, Sichtbarkeit und Fehler-/Opt-out-Verhalten.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-POST-api_v1_broadcast-lists-service",
@@ -2937,7 +3084,7 @@
       "type": "api_service",
       "title": "Service: POST /api/v1/broadcast-lists",
       "description": "Business logic for Create a broadcast list",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-API-POST-api_v1_broadcast-lists-controller"
       ],
@@ -2950,7 +3097,9 @@
       "related_requirements": [
         "WA-MSG-011"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-021"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -2961,10 +3110,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Service with Prisma CRUD operations, error handling, and proper return types; User can: eine Broadcast-Liste erstellen und an mehrere Empf\u00e4nger gleichzeitig eine Massen-Nachricht senden; Address: Create user stories that explicitly link to each of these requirements.; Address: Definieren Sie Limits, Sichtbarkeit und Fehler-/Opt-out-Verhalten.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-POST-api_v1_broadcast-lists-dto",
@@ -2972,7 +3120,7 @@
       "type": "api_dto",
       "title": "DTO: CreateBroadcastListRequest",
       "description": "Request/Response DTO for POST /api/v1/broadcast-lists",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-API-POST-api_v1_broadcast-lists-controller"
       ],
@@ -2985,7 +3133,9 @@
       "related_requirements": [
         "WA-MSG-011"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-021"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -2996,10 +3146,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "DTOs with class-validator decorators matching OpenAPI schema; User can: eine Broadcast-Liste erstellen und an mehrere Empf\u00e4nger gleichzeitig eine Massen-Nachricht senden; Address: Create user stories that explicitly link to each of these requirements.; Address: Definieren Sie Limits, Sichtbarkeit und Fehler-/Opt-out-Verhalten.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-POST-api_v1_broadcast-lists-guard",
@@ -3007,7 +3156,7 @@
       "type": "api_guard",
       "title": "Auth Guard: /api/v1/broadcast-lists",
       "description": "JWT authentication guard for POST /api/v1/broadcast-lists",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-API-POST-api_v1_broadcast-lists-controller"
       ],
@@ -3020,7 +3169,9 @@
       "related_requirements": [
         "WA-MSG-011"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-021"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -3031,10 +3182,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Guard with JWT validation and role-based access control; User can: eine Broadcast-Liste erstellen und an mehrere Empf\u00e4nger gleichzeitig eine Massen-Nachricht senden; Address: Create user stories that explicitly link to each of these requirements.; Address: Definieren Sie Limits, Sichtbarkeit und Fehler-/Opt-out-Verhalten.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-GET-api_v1_broadcast-lists-controller",
@@ -3042,7 +3192,7 @@
       "type": "api_controller",
       "title": "Controller: GET /api/v1/broadcast-lists",
       "description": "List broadcast lists\nImplement controller method with 2 parameters.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-CHECKPOINT-schema"
       ],
@@ -3055,7 +3205,9 @@
       "related_requirements": [
         "WA-MSG-011"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-021"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -3066,10 +3218,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "NestJS controller with correct decorators, DTOs, and route paths; User can: eine Broadcast-Liste erstellen und an mehrere Empf\u00e4nger gleichzeitig eine Massen-Nachricht senden; Address: Create user stories that explicitly link to each of these requirements.; Address: Definieren Sie Limits, Sichtbarkeit und Fehler-/Opt-out-Verhalten.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-GET-api_v1_broadcast-lists-service",
@@ -3077,7 +3228,7 @@
       "type": "api_service",
       "title": "Service: GET /api/v1/broadcast-lists",
       "description": "Business logic for List broadcast lists",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-API-GET-api_v1_broadcast-lists-controller"
       ],
@@ -3090,7 +3241,9 @@
       "related_requirements": [
         "WA-MSG-011"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-021"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -3101,10 +3254,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Service with Prisma CRUD operations, error handling, and proper return types; User can: eine Broadcast-Liste erstellen und an mehrere Empf\u00e4nger gleichzeitig eine Massen-Nachricht senden; Address: Create user stories that explicitly link to each of these requirements.; Address: Definieren Sie Limits, Sichtbarkeit und Fehler-/Opt-out-Verhalten.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-GET-api_v1_broadcast-lists-dto",
@@ -3112,7 +3264,7 @@
       "type": "api_dto",
       "title": "DTO: ListBroadcastListsRequest",
       "description": "Request/Response DTO for GET /api/v1/broadcast-lists",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-API-GET-api_v1_broadcast-lists-controller"
       ],
@@ -3125,7 +3277,9 @@
       "related_requirements": [
         "WA-MSG-011"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-021"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -3136,10 +3290,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "DTOs with class-validator decorators matching OpenAPI schema; User can: eine Broadcast-Liste erstellen und an mehrere Empf\u00e4nger gleichzeitig eine Massen-Nachricht senden; Address: Create user stories that explicitly link to each of these requirements.; Address: Definieren Sie Limits, Sichtbarkeit und Fehler-/Opt-out-Verhalten.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-GET-api_v1_broadcast-lists-guard",
@@ -3147,7 +3300,7 @@
       "type": "api_guard",
       "title": "Auth Guard: /api/v1/broadcast-lists",
       "description": "JWT authentication guard for GET /api/v1/broadcast-lists",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-API-GET-api_v1_broadcast-lists-controller"
       ],
@@ -3160,7 +3313,9 @@
       "related_requirements": [
         "WA-MSG-011"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-021"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -3171,10 +3326,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Guard with JWT validation and role-based access control; User can: eine Broadcast-Liste erstellen und an mehrere Empf\u00e4nger gleichzeitig eine Massen-Nachricht senden; Address: Create user stories that explicitly link to each of these requirements.; Address: Definieren Sie Limits, Sichtbarkeit und Fehler-/Opt-out-Verhalten.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-GET-api_v1_broadcast-lists-validation",
@@ -3182,7 +3336,7 @@
       "type": "api_validation",
       "title": "Validation: GET /api/v1/broadcast-lists",
       "description": "Input validation for 2 parameters",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-API-GET-api_v1_broadcast-lists-dto"
       ],
@@ -3195,7 +3349,9 @@
       "related_requirements": [
         "WA-MSG-011"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-021"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -3206,10 +3362,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Validation pipe with all input constraints from the DTO; User can: eine Broadcast-Liste erstellen und an mehrere Empf\u00e4nger gleichzeitig eine Massen-Nachricht senden; Address: Create user stories that explicitly link to each of these requirements.; Address: Definieren Sie Limits, Sichtbarkeit und Fehler-/Opt-out-Verhalten.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-GET-api_v1_broadcast-lists_broadcastListId-controller",
@@ -3217,7 +3372,7 @@
       "type": "api_controller",
       "title": "Controller: GET /api/v1/broadcast-lists/{broadcastListId}",
       "description": "Get broadcast list details\nImplement controller method with 1 parameters.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-CHECKPOINT-schema"
       ],
@@ -3230,7 +3385,9 @@
       "related_requirements": [
         "WA-MSG-011"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-021"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -3241,10 +3398,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "NestJS controller with correct decorators, DTOs, and route paths; User can: eine Broadcast-Liste erstellen und an mehrere Empf\u00e4nger gleichzeitig eine Massen-Nachricht senden; Address: Create user stories that explicitly link to each of these requirements.; Address: Definieren Sie Limits, Sichtbarkeit und Fehler-/Opt-out-Verhalten.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-GET-api_v1_broadcast-lists_broadcastListId-service",
@@ -3252,7 +3408,7 @@
       "type": "api_service",
       "title": "Service: GET /api/v1/broadcast-lists/{broadcastListId}",
       "description": "Business logic for Get broadcast list details",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-API-GET-api_v1_broadcast-lists_broadcastListId-controller"
       ],
@@ -3265,7 +3421,9 @@
       "related_requirements": [
         "WA-MSG-011"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-021"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -3276,10 +3434,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Service with Prisma CRUD operations, error handling, and proper return types; User can: eine Broadcast-Liste erstellen und an mehrere Empf\u00e4nger gleichzeitig eine Massen-Nachricht senden; Address: Create user stories that explicitly link to each of these requirements.; Address: Definieren Sie Limits, Sichtbarkeit und Fehler-/Opt-out-Verhalten.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-GET-api_v1_broadcast-lists_broadcastListId-dto",
@@ -3287,7 +3444,7 @@
       "type": "api_dto",
       "title": "DTO: GetBroadcastListRequest",
       "description": "Request/Response DTO for GET /api/v1/broadcast-lists/{broadcastListId}",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-API-GET-api_v1_broadcast-lists_broadcastListId-controller"
       ],
@@ -3300,7 +3457,9 @@
       "related_requirements": [
         "WA-MSG-011"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-021"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -3311,10 +3470,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "DTOs with class-validator decorators matching OpenAPI schema; User can: eine Broadcast-Liste erstellen und an mehrere Empf\u00e4nger gleichzeitig eine Massen-Nachricht senden; Address: Create user stories that explicitly link to each of these requirements.; Address: Definieren Sie Limits, Sichtbarkeit und Fehler-/Opt-out-Verhalten.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-GET-api_v1_broadcast-lists_broadcastListId-guard",
@@ -3322,7 +3480,7 @@
       "type": "api_guard",
       "title": "Auth Guard: /api/v1/broadcast-lists/{broadcastListId}",
       "description": "JWT authentication guard for GET /api/v1/broadcast-lists/{broadcastListId}",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-API-GET-api_v1_broadcast-lists_broadcastListId-controller"
       ],
@@ -3335,7 +3493,9 @@
       "related_requirements": [
         "WA-MSG-011"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-021"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -3346,10 +3506,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Guard with JWT validation and role-based access control; User can: eine Broadcast-Liste erstellen und an mehrere Empf\u00e4nger gleichzeitig eine Massen-Nachricht senden; Address: Create user stories that explicitly link to each of these requirements.; Address: Definieren Sie Limits, Sichtbarkeit und Fehler-/Opt-out-Verhalten.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-GET-api_v1_broadcast-lists_broadcastListId-validation",
@@ -3357,7 +3516,7 @@
       "type": "api_validation",
       "title": "Validation: GET /api/v1/broadcast-lists/{broadcastListId}",
       "description": "Input validation for 1 parameters",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-API-GET-api_v1_broadcast-lists_broadcastListId-dto"
       ],
@@ -3370,7 +3529,9 @@
       "related_requirements": [
         "WA-MSG-011"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-021"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -3381,10 +3542,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Validation pipe with all input constraints from the DTO; User can: eine Broadcast-Liste erstellen und an mehrere Empf\u00e4nger gleichzeitig eine Massen-Nachricht senden; Address: Create user stories that explicitly link to each of these requirements.; Address: Definieren Sie Limits, Sichtbarkeit und Fehler-/Opt-out-Verhalten.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-PUT-api_v1_broadcast-lists_broadcastListId-controller",
@@ -3392,7 +3552,7 @@
       "type": "api_controller",
       "title": "Controller: PUT /api/v1/broadcast-lists/{broadcastListId}",
       "description": "Update broadcast list\nImplement controller method with 1 parameters.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-CHECKPOINT-schema"
       ],
@@ -3405,7 +3565,9 @@
       "related_requirements": [
         "WA-MSG-011"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-021"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -3416,10 +3578,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "NestJS controller with correct decorators, DTOs, and route paths; User can: eine Broadcast-Liste erstellen und an mehrere Empf\u00e4nger gleichzeitig eine Massen-Nachricht senden; Address: Create user stories that explicitly link to each of these requirements.; Address: Definieren Sie Limits, Sichtbarkeit und Fehler-/Opt-out-Verhalten.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-PUT-api_v1_broadcast-lists_broadcastListId-service",
@@ -3427,7 +3588,7 @@
       "type": "api_service",
       "title": "Service: PUT /api/v1/broadcast-lists/{broadcastListId}",
       "description": "Business logic for Update broadcast list",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-API-PUT-api_v1_broadcast-lists_broadcastListId-controller"
       ],
@@ -3440,7 +3601,9 @@
       "related_requirements": [
         "WA-MSG-011"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-021"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -3451,10 +3614,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Service with Prisma CRUD operations, error handling, and proper return types; User can: eine Broadcast-Liste erstellen und an mehrere Empf\u00e4nger gleichzeitig eine Massen-Nachricht senden; Address: Create user stories that explicitly link to each of these requirements.; Address: Definieren Sie Limits, Sichtbarkeit und Fehler-/Opt-out-Verhalten.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-PUT-api_v1_broadcast-lists_broadcastListId-dto",
@@ -3462,7 +3624,7 @@
       "type": "api_dto",
       "title": "DTO: UpdateBroadcastListRequest",
       "description": "Request/Response DTO for PUT /api/v1/broadcast-lists/{broadcastListId}",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-API-PUT-api_v1_broadcast-lists_broadcastListId-controller"
       ],
@@ -3475,7 +3637,9 @@
       "related_requirements": [
         "WA-MSG-011"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-021"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -3486,10 +3650,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "DTOs with class-validator decorators matching OpenAPI schema; User can: eine Broadcast-Liste erstellen und an mehrere Empf\u00e4nger gleichzeitig eine Massen-Nachricht senden; Address: Create user stories that explicitly link to each of these requirements.; Address: Definieren Sie Limits, Sichtbarkeit und Fehler-/Opt-out-Verhalten.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-PUT-api_v1_broadcast-lists_broadcastListId-guard",
@@ -3497,7 +3660,7 @@
       "type": "api_guard",
       "title": "Auth Guard: /api/v1/broadcast-lists/{broadcastListId}",
       "description": "JWT authentication guard for PUT /api/v1/broadcast-lists/{broadcastListId}",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-API-PUT-api_v1_broadcast-lists_broadcastListId-controller"
       ],
@@ -3510,7 +3673,9 @@
       "related_requirements": [
         "WA-MSG-011"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-021"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -3521,10 +3686,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Guard with JWT validation and role-based access control; User can: eine Broadcast-Liste erstellen und an mehrere Empf\u00e4nger gleichzeitig eine Massen-Nachricht senden; Address: Create user stories that explicitly link to each of these requirements.; Address: Definieren Sie Limits, Sichtbarkeit und Fehler-/Opt-out-Verhalten.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-PUT-api_v1_broadcast-lists_broadcastListId-validation",
@@ -3532,7 +3696,7 @@
       "type": "api_validation",
       "title": "Validation: PUT /api/v1/broadcast-lists/{broadcastListId}",
       "description": "Input validation for 1 parameters",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-API-PUT-api_v1_broadcast-lists_broadcastListId-dto"
       ],
@@ -3545,7 +3709,9 @@
       "related_requirements": [
         "WA-MSG-011"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-021"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -3556,10 +3722,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Validation pipe with all input constraints from the DTO; User can: eine Broadcast-Liste erstellen und an mehrere Empf\u00e4nger gleichzeitig eine Massen-Nachricht senden; Address: Create user stories that explicitly link to each of these requirements.; Address: Definieren Sie Limits, Sichtbarkeit und Fehler-/Opt-out-Verhalten.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-DELETE-api_v1_broadcast-lists_broadcastListId-controller",
@@ -3567,7 +3732,7 @@
       "type": "api_controller",
       "title": "Controller: DELETE /api/v1/broadcast-lists/{broadcastListId}",
       "description": "Delete broadcast list\nImplement controller method with 1 parameters.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-CHECKPOINT-schema"
       ],
@@ -3580,7 +3745,9 @@
       "related_requirements": [
         "WA-MSG-011"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-021"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -3591,10 +3758,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "NestJS controller with correct decorators, DTOs, and route paths; User can: eine Broadcast-Liste erstellen und an mehrere Empf\u00e4nger gleichzeitig eine Massen-Nachricht senden; Address: Create user stories that explicitly link to each of these requirements.; Address: Definieren Sie Limits, Sichtbarkeit und Fehler-/Opt-out-Verhalten.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-DELETE-api_v1_broadcast-lists_broadcastListId-service",
@@ -3602,7 +3768,7 @@
       "type": "api_service",
       "title": "Service: DELETE /api/v1/broadcast-lists/{broadcastListId}",
       "description": "Business logic for Delete broadcast list",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-API-DELETE-api_v1_broadcast-lists_broadcastListId-controller"
       ],
@@ -3615,7 +3781,9 @@
       "related_requirements": [
         "WA-MSG-011"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-021"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -3626,10 +3794,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Service with Prisma CRUD operations, error handling, and proper return types; User can: eine Broadcast-Liste erstellen und an mehrere Empf\u00e4nger gleichzeitig eine Massen-Nachricht senden; Address: Create user stories that explicitly link to each of these requirements.; Address: Definieren Sie Limits, Sichtbarkeit und Fehler-/Opt-out-Verhalten.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-DELETE-api_v1_broadcast-lists_broadcastListId-dto",
@@ -3637,7 +3804,7 @@
       "type": "api_dto",
       "title": "DTO: DeleteBroadcastListRequest",
       "description": "Request/Response DTO for DELETE /api/v1/broadcast-lists/{broadcastListId}",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-API-DELETE-api_v1_broadcast-lists_broadcastListId-controller"
       ],
@@ -3650,7 +3817,9 @@
       "related_requirements": [
         "WA-MSG-011"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-021"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -3661,10 +3830,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "DTOs with class-validator decorators matching OpenAPI schema; User can: eine Broadcast-Liste erstellen und an mehrere Empf\u00e4nger gleichzeitig eine Massen-Nachricht senden; Address: Create user stories that explicitly link to each of these requirements.; Address: Definieren Sie Limits, Sichtbarkeit und Fehler-/Opt-out-Verhalten.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-DELETE-api_v1_broadcast-lists_broadcastListId-guard",
@@ -3672,7 +3840,7 @@
       "type": "api_guard",
       "title": "Auth Guard: /api/v1/broadcast-lists/{broadcastListId}",
       "description": "JWT authentication guard for DELETE /api/v1/broadcast-lists/{broadcastListId}",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-API-DELETE-api_v1_broadcast-lists_broadcastListId-controller"
       ],
@@ -3685,7 +3853,9 @@
       "related_requirements": [
         "WA-MSG-011"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-021"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -3696,10 +3866,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Guard with JWT validation and role-based access control; User can: eine Broadcast-Liste erstellen und an mehrere Empf\u00e4nger gleichzeitig eine Massen-Nachricht senden; Address: Create user stories that explicitly link to each of these requirements.; Address: Definieren Sie Limits, Sichtbarkeit und Fehler-/Opt-out-Verhalten.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-DELETE-api_v1_broadcast-lists_broadcastListId-validation",
@@ -3707,7 +3876,7 @@
       "type": "api_validation",
       "title": "Validation: DELETE /api/v1/broadcast-lists/{broadcastListId}",
       "description": "Input validation for 1 parameters",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-API-DELETE-api_v1_broadcast-lists_broadcastListId-dto"
       ],
@@ -3720,7 +3889,9 @@
       "related_requirements": [
         "WA-MSG-011"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-021"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -3731,10 +3902,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Validation pipe with all input constraints from the DTO; User can: eine Broadcast-Liste erstellen und an mehrere Empf\u00e4nger gleichzeitig eine Massen-Nachricht senden; Address: Create user stories that explicitly link to each of these requirements.; Address: Definieren Sie Limits, Sichtbarkeit und Fehler-/Opt-out-Verhalten.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-POST-api_v1_broadcast-lists_broadcastListId_messages-controller",
@@ -3742,7 +3912,7 @@
       "type": "api_controller",
       "title": "Controller: POST /api/v1/broadcast-lists/{broadcastListId}/messages",
       "description": "Send broadcast message\nImplement controller method with 1 parameters.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-CHECKPOINT-schema"
       ],
@@ -3755,7 +3925,9 @@
       "related_requirements": [
         "WA-MSG-011"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-021"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -3766,10 +3938,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "NestJS controller with correct decorators, DTOs, and route paths; User can: eine Broadcast-Liste erstellen und an mehrere Empf\u00e4nger gleichzeitig eine Massen-Nachricht senden; Address: Create user stories that explicitly link to each of these requirements.; Address: Definieren Sie Limits, Sichtbarkeit und Fehler-/Opt-out-Verhalten.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-POST-api_v1_broadcast-lists_broadcastListId_messages-service",
@@ -3777,7 +3948,7 @@
       "type": "api_service",
       "title": "Service: POST /api/v1/broadcast-lists/{broadcastListId}/messages",
       "description": "Business logic for Send broadcast message",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-API-POST-api_v1_broadcast-lists_broadcastListId_messages-controller"
       ],
@@ -3790,7 +3961,9 @@
       "related_requirements": [
         "WA-MSG-011"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-021"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -3801,10 +3974,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Service with Prisma CRUD operations, error handling, and proper return types; User can: eine Broadcast-Liste erstellen und an mehrere Empf\u00e4nger gleichzeitig eine Massen-Nachricht senden; Address: Create user stories that explicitly link to each of these requirements.; Address: Definieren Sie Limits, Sichtbarkeit und Fehler-/Opt-out-Verhalten.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-POST-api_v1_broadcast-lists_broadcastListId_messages-dto",
@@ -3812,7 +3984,7 @@
       "type": "api_dto",
       "title": "DTO: SendBroadcastMessageRequest",
       "description": "Request/Response DTO for POST /api/v1/broadcast-lists/{broadcastListId}/messages",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-API-POST-api_v1_broadcast-lists_broadcastListId_messages-controller"
       ],
@@ -3825,7 +3997,9 @@
       "related_requirements": [
         "WA-MSG-011"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-021"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -3836,10 +4010,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "DTOs with class-validator decorators matching OpenAPI schema; User can: eine Broadcast-Liste erstellen und an mehrere Empf\u00e4nger gleichzeitig eine Massen-Nachricht senden; Address: Create user stories that explicitly link to each of these requirements.; Address: Definieren Sie Limits, Sichtbarkeit und Fehler-/Opt-out-Verhalten.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-POST-api_v1_broadcast-lists_broadcastListId_messages-guard",
@@ -3847,7 +4020,7 @@
       "type": "api_guard",
       "title": "Auth Guard: /api/v1/broadcast-lists/{broadcastListId}/messages",
       "description": "JWT authentication guard for POST /api/v1/broadcast-lists/{broadcastListId}/messages",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-API-POST-api_v1_broadcast-lists_broadcastListId_messages-controller"
       ],
@@ -3860,7 +4033,9 @@
       "related_requirements": [
         "WA-MSG-011"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-021"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -3871,10 +4046,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Guard with JWT validation and role-based access control; User can: eine Broadcast-Liste erstellen und an mehrere Empf\u00e4nger gleichzeitig eine Massen-Nachricht senden; Address: Create user stories that explicitly link to each of these requirements.; Address: Definieren Sie Limits, Sichtbarkeit und Fehler-/Opt-out-Verhalten.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-POST-api_v1_broadcast-lists_broadcastListId_messages-validation",
@@ -3882,7 +4056,7 @@
       "type": "api_validation",
       "title": "Validation: POST /api/v1/broadcast-lists/{broadcastListId}/messages",
       "description": "Input validation for 1 parameters",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-API-POST-api_v1_broadcast-lists_broadcastListId_messages-dto"
       ],
@@ -3895,7 +4069,9 @@
       "related_requirements": [
         "WA-MSG-011"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-021"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -3906,10 +4082,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Validation pipe with all input constraints from the DTO; User can: eine Broadcast-Liste erstellen und an mehrere Empf\u00e4nger gleichzeitig eine Massen-Nachricht senden; Address: Create user stories that explicitly link to each of these requirements.; Address: Definieren Sie Limits, Sichtbarkeit und Fehler-/Opt-out-Verhalten.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-GET-api_v1_conversations_conversationId_messages-controller",
@@ -3917,7 +4092,7 @@
       "type": "api_controller",
       "title": "Controller: GET /api/v1/conversations/{conversationId}/messages",
       "description": "List messages with formatted text metadata\nImplement controller method with 3 parameters.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-CHECKPOINT-schema"
       ],
@@ -3930,7 +4105,9 @@
       "related_requirements": [
         "WA-MSG-012"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-022"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -3941,10 +4118,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "NestJS controller with correct decorators, DTOs, and route paths; User can: Nachrichten mit grundlegender Textformatierung verfassen und senden; Address: Create user stories that explicitly link to each of these requirements.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-GET-api_v1_conversations_conversationId_messages-service",
@@ -3952,7 +4128,7 @@
       "type": "api_service",
       "title": "Service: GET /api/v1/conversations/{conversationId}/messages",
       "description": "Business logic for List messages with formatted text metadata",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-API-GET-api_v1_conversations_conversationId_messages-controller"
       ],
@@ -3965,7 +4141,9 @@
       "related_requirements": [
         "WA-MSG-012"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-022"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -3976,10 +4154,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Service with Prisma CRUD operations, error handling, and proper return types; User can: Nachrichten mit grundlegender Textformatierung verfassen und senden; Address: Create user stories that explicitly link to each of these requirements.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-GET-api_v1_conversations_conversationId_messages-dto",
@@ -3987,7 +4164,7 @@
       "type": "api_dto",
       "title": "DTO: ListMessagesRequest",
       "description": "Request/Response DTO for GET /api/v1/conversations/{conversationId}/messages",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-API-GET-api_v1_conversations_conversationId_messages-controller"
       ],
@@ -4000,7 +4177,9 @@
       "related_requirements": [
         "WA-MSG-012"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-022"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -4011,10 +4190,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "DTOs with class-validator decorators matching OpenAPI schema; User can: Nachrichten mit grundlegender Textformatierung verfassen und senden; Address: Create user stories that explicitly link to each of these requirements.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-GET-api_v1_conversations_conversationId_messages-guard",
@@ -4022,7 +4200,7 @@
       "type": "api_guard",
       "title": "Auth Guard: /api/v1/conversations/{conversationId}/messages",
       "description": "JWT authentication guard for GET /api/v1/conversations/{conversationId}/messages",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-API-GET-api_v1_conversations_conversationId_messages-controller"
       ],
@@ -4035,7 +4213,9 @@
       "related_requirements": [
         "WA-MSG-012"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-022"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -4046,10 +4226,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Guard with JWT validation and role-based access control; User can: Nachrichten mit grundlegender Textformatierung verfassen und senden; Address: Create user stories that explicitly link to each of these requirements.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-GET-api_v1_conversations_conversationId_messages-validation",
@@ -4057,7 +4236,7 @@
       "type": "api_validation",
       "title": "Validation: GET /api/v1/conversations/{conversationId}/messages",
       "description": "Input validation for 3 parameters",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-API-GET-api_v1_conversations_conversationId_messages-dto"
       ],
@@ -4070,7 +4249,9 @@
       "related_requirements": [
         "WA-MSG-012"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-022"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -4081,10 +4262,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Validation pipe with all input constraints from the DTO; User can: Nachrichten mit grundlegender Textformatierung verfassen und senden; Address: Create user stories that explicitly link to each of these requirements.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-POST-api_v1_group-chats_groupId_messages-controller",
@@ -4092,7 +4272,7 @@
       "type": "api_controller",
       "title": "Controller: POST /api/v1/group-chats/{groupId}/messages",
       "description": "Send a group message with @mentions\nImplement controller method with 1 parameters.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-CHECKPOINT-schema"
       ],
@@ -4105,7 +4285,9 @@
       "related_requirements": [
         "WA-MSG-013"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-023"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -4116,10 +4298,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "NestJS controller with correct decorators, DTOs, and route paths; User can: andere Teilnehmer in einem Gruppenchats per @-Erwaehnung adressieren; Address: Create user stories that explicitly link to each of these requirements.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-POST-api_v1_group-chats_groupId_messages-service",
@@ -4127,7 +4308,7 @@
       "type": "api_service",
       "title": "Service: POST /api/v1/group-chats/{groupId}/messages",
       "description": "Business logic for Send a group message with @mentions",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-API-POST-api_v1_group-chats_groupId_messages-controller"
       ],
@@ -4140,7 +4321,9 @@
       "related_requirements": [
         "WA-MSG-013"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-023"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -4151,10 +4334,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Service with Prisma CRUD operations, error handling, and proper return types; User can: andere Teilnehmer in einem Gruppenchats per @-Erwaehnung adressieren; Address: Create user stories that explicitly link to each of these requirements.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-POST-api_v1_group-chats_groupId_messages-dto",
@@ -4162,7 +4344,7 @@
       "type": "api_dto",
       "title": "DTO: CreateGroupMessageRequest",
       "description": "Request/Response DTO for POST /api/v1/group-chats/{groupId}/messages",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-API-POST-api_v1_group-chats_groupId_messages-controller"
       ],
@@ -4175,7 +4357,9 @@
       "related_requirements": [
         "WA-MSG-013"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-023"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -4186,10 +4370,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "DTOs with class-validator decorators matching OpenAPI schema; User can: andere Teilnehmer in einem Gruppenchats per @-Erwaehnung adressieren; Address: Create user stories that explicitly link to each of these requirements.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-POST-api_v1_group-chats_groupId_messages-guard",
@@ -4197,7 +4380,7 @@
       "type": "api_guard",
       "title": "Auth Guard: /api/v1/group-chats/{groupId}/messages",
       "description": "JWT authentication guard for POST /api/v1/group-chats/{groupId}/messages",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-API-POST-api_v1_group-chats_groupId_messages-controller"
       ],
@@ -4210,7 +4393,9 @@
       "related_requirements": [
         "WA-MSG-013"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-023"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -4221,10 +4406,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Guard with JWT validation and role-based access control; User can: andere Teilnehmer in einem Gruppenchats per @-Erwaehnung adressieren; Address: Create user stories that explicitly link to each of these requirements.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-POST-api_v1_group-chats_groupId_messages-validation",
@@ -4232,7 +4416,7 @@
       "type": "api_validation",
       "title": "Validation: POST /api/v1/group-chats/{groupId}/messages",
       "description": "Input validation for 1 parameters",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-API-POST-api_v1_group-chats_groupId_messages-dto"
       ],
@@ -4245,7 +4429,9 @@
       "related_requirements": [
         "WA-MSG-013"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-023"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -4256,10 +4442,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Validation pipe with all input constraints from the DTO; User can: andere Teilnehmer in einem Gruppenchats per @-Erwaehnung adressieren; Address: Create user stories that explicitly link to each of these requirements.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-POST-api_v1_conversations_conversationId_messages_location-controller",
@@ -4267,7 +4452,7 @@
       "type": "api_controller",
       "title": "Controller: POST /api/v1/conversations/{conversationId}/messages/location",
       "description": "Share location in a conversation\nImplement controller method with 1 parameters.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-CHECKPOINT-schema"
       ],
@@ -4280,7 +4465,9 @@
       "related_requirements": [
         "WA-MSG-014"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-024"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -4291,10 +4478,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "NestJS controller with correct decorators, DTOs, and route paths; User can: einen Standort in einer Unterhaltung teilen; Address: Erg\u00e4nzen Sie Zustellstatus (gesendet/zugestellt/gelesen), Retry-Policy und Offline-Queue.; Address: Create user stories that explicitly link to each of these requirements.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-POST-api_v1_conversations_conversationId_messages_location-service",
@@ -4302,7 +4488,7 @@
       "type": "api_service",
       "title": "Service: POST /api/v1/conversations/{conversationId}/messages/location",
       "description": "Business logic for Share location in a conversation",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-API-POST-api_v1_conversations_conversationId_messages_location-controller"
       ],
@@ -4315,7 +4501,9 @@
       "related_requirements": [
         "WA-MSG-014"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-024"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -4326,10 +4514,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Service with Prisma CRUD operations, error handling, and proper return types; User can: einen Standort in einer Unterhaltung teilen; Address: Erg\u00e4nzen Sie Zustellstatus (gesendet/zugestellt/gelesen), Retry-Policy und Offline-Queue.; Address: Create user stories that explicitly link to each of these requirements.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-POST-api_v1_conversations_conversationId_messages_location-dto",
@@ -4337,7 +4524,7 @@
       "type": "api_dto",
       "title": "DTO: CreateLocationMessageRequest",
       "description": "Request/Response DTO for POST /api/v1/conversations/{conversationId}/messages/location",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-API-POST-api_v1_conversations_conversationId_messages_location-controller"
       ],
@@ -4350,7 +4537,9 @@
       "related_requirements": [
         "WA-MSG-014"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-024"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -4361,10 +4550,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "DTOs with class-validator decorators matching OpenAPI schema; User can: einen Standort in einer Unterhaltung teilen; Address: Erg\u00e4nzen Sie Zustellstatus (gesendet/zugestellt/gelesen), Retry-Policy und Offline-Queue.; Address: Create user stories that explicitly link to each of these requirements.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-POST-api_v1_conversations_conversationId_messages_location-guard",
@@ -4372,7 +4560,7 @@
       "type": "api_guard",
       "title": "Auth Guard: /api/v1/conversations/{conversationId}/messages/location",
       "description": "JWT authentication guard for POST /api/v1/conversations/{conversationId}/messages/location",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-API-POST-api_v1_conversations_conversationId_messages_location-controller"
       ],
@@ -4385,7 +4573,9 @@
       "related_requirements": [
         "WA-MSG-014"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-024"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -4396,10 +4586,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Guard with JWT validation and role-based access control; User can: einen Standort in einer Unterhaltung teilen; Address: Erg\u00e4nzen Sie Zustellstatus (gesendet/zugestellt/gelesen), Retry-Policy und Offline-Queue.; Address: Create user stories that explicitly link to each of these requirements.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-POST-api_v1_conversations_conversationId_messages_location-validation",
@@ -4407,7 +4596,7 @@
       "type": "api_validation",
       "title": "Validation: POST /api/v1/conversations/{conversationId}/messages/location",
       "description": "Input validation for 1 parameters",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-API-POST-api_v1_conversations_conversationId_messages_location-dto"
       ],
@@ -4420,7 +4609,9 @@
       "related_requirements": [
         "WA-MSG-014"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-024"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -4431,10 +4622,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Validation pipe with all input constraints from the DTO; User can: einen Standort in einer Unterhaltung teilen; Address: Erg\u00e4nzen Sie Zustellstatus (gesendet/zugestellt/gelesen), Retry-Policy und Offline-Queue.; Address: Create user stories that explicitly link to each of these requirements.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-POST-api_v1_chats_chatId_messages-controller",
@@ -4442,7 +4632,7 @@
       "type": "api_controller",
       "title": "Controller: POST /api/v1/chats/{chatId}/messages",
       "description": "Share a contact in a chat\nImplement controller method with 1 parameters.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-CHECKPOINT-schema"
       ],
@@ -4455,7 +4645,9 @@
       "related_requirements": [
         "WA-MSG-015"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-025"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -4466,10 +4658,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "NestJS controller with correct decorators, DTOs, and route paths; User can: einen Kontakt aus meiner Kontaktliste in einem Chat teilen; Address: Erg\u00e4nzen Sie Zustellstatus (gesendet/zugestellt/gelesen), Retry-Policy und Offline-Queue.; Address: Create user stories that explicitly link to each of these requirements.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-POST-api_v1_chats_chatId_messages-service",
@@ -4477,7 +4668,7 @@
       "type": "api_service",
       "title": "Service: POST /api/v1/chats/{chatId}/messages",
       "description": "Business logic for Share a contact in a chat",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-API-POST-api_v1_chats_chatId_messages-controller"
       ],
@@ -4490,7 +4681,9 @@
       "related_requirements": [
         "WA-MSG-015"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-025"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -4501,10 +4694,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Service with Prisma CRUD operations, error handling, and proper return types; User can: einen Kontakt aus meiner Kontaktliste in einem Chat teilen; Address: Erg\u00e4nzen Sie Zustellstatus (gesendet/zugestellt/gelesen), Retry-Policy und Offline-Queue.; Address: Create user stories that explicitly link to each of these requirements.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-POST-api_v1_chats_chatId_messages-dto",
@@ -4512,7 +4704,7 @@
       "type": "api_dto",
       "title": "DTO: CreateContactShareMessageRequest",
       "description": "Request/Response DTO for POST /api/v1/chats/{chatId}/messages",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-API-POST-api_v1_chats_chatId_messages-controller"
       ],
@@ -4525,7 +4717,9 @@
       "related_requirements": [
         "WA-MSG-015"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-025"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -4536,10 +4730,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "DTOs with class-validator decorators matching OpenAPI schema; User can: einen Kontakt aus meiner Kontaktliste in einem Chat teilen; Address: Erg\u00e4nzen Sie Zustellstatus (gesendet/zugestellt/gelesen), Retry-Policy und Offline-Queue.; Address: Create user stories that explicitly link to each of these requirements.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-POST-api_v1_chats_chatId_messages-guard",
@@ -4547,7 +4740,7 @@
       "type": "api_guard",
       "title": "Auth Guard: /api/v1/chats/{chatId}/messages",
       "description": "JWT authentication guard for POST /api/v1/chats/{chatId}/messages",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-API-POST-api_v1_chats_chatId_messages-controller"
       ],
@@ -4560,7 +4753,9 @@
       "related_requirements": [
         "WA-MSG-015"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-025"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -4571,10 +4766,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Guard with JWT validation and role-based access control; User can: einen Kontakt aus meiner Kontaktliste in einem Chat teilen; Address: Erg\u00e4nzen Sie Zustellstatus (gesendet/zugestellt/gelesen), Retry-Policy und Offline-Queue.; Address: Create user stories that explicitly link to each of these requirements.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-API-POST-api_v1_chats_chatId_messages-validation",
@@ -4582,7 +4776,7 @@
       "type": "api_validation",
       "title": "Validation: POST /api/v1/chats/{chatId}/messages",
       "description": "Input validation for 1 parameters",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-API-POST-api_v1_chats_chatId_messages-dto"
       ],
@@ -4595,7 +4789,9 @@
       "related_requirements": [
         "WA-MSG-015"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-025"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -4606,10 +4802,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Validation pipe with all input constraints from the DTO; User can: einen Kontakt aus meiner Kontaktliste in einem Chat teilen; Address: Erg\u00e4nzen Sie Zustellstatus (gesendet/zugestellt/gelesen), Retry-Policy und Offline-Queue.; Address: Create user stories that explicitly link to each of these requirements.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-VERIFY-build-api",
@@ -4617,7 +4812,7 @@
       "type": "verify_build",
       "title": "Build backend",
       "description": "Run npm run build for NestJS backend.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-API-POST-api_v1_chats_chatId_messages-controller",
         "EPIC-003-API-POST-api_v1_chats_chatId_messages-service",
@@ -4643,8 +4838,7 @@
       "command": "npm run build",
       "success_criteria": "Build completes without errors",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-VERIFY-typecheck-api",
@@ -4652,7 +4846,7 @@
       "type": "verify_typecheck",
       "title": "TypeScript type check (API)",
       "description": "Run tsc --noEmit to verify TypeScript types.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-VERIFY-build-api"
       ],
@@ -4674,8 +4868,7 @@
       "command": "npx tsc --noEmit",
       "success_criteria": "No TypeScript errors",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-VERIFY-integration",
@@ -4683,7 +4876,7 @@
       "type": "verify_integration",
       "title": "Run API integration tests",
       "description": "Execute integration tests against API endpoints.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-VERIFY-typecheck-api"
       ],
@@ -4705,8 +4898,7 @@
       "command": "npm run test:integration",
       "success_criteria": "All integration tests pass",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-DOCKER-build-api",
@@ -4714,7 +4906,7 @@
       "type": "docker_build",
       "title": "Build API Docker image",
       "description": "Build Docker image for NestJS backend.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-VERIFY-typecheck-api",
         "EPIC-003-VERIFY-integration"
@@ -4737,8 +4929,7 @@
       "command": "docker-compose build api",
       "success_criteria": "Docker image built successfully",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-DOCKER-start-api",
@@ -4746,7 +4937,7 @@
       "type": "docker_start",
       "title": "Start API container",
       "description": "Start backend container with docker-compose.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-DOCKER-build-api"
       ],
@@ -4768,8 +4959,7 @@
       "command": "docker-compose up -d api",
       "success_criteria": "API container running",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-DOCKER-health-api",
@@ -4777,7 +4967,7 @@
       "type": "docker_health",
       "title": "API health check",
       "description": "Verify API container is healthy via /health endpoint.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-DOCKER-start-api"
       ],
@@ -4799,8 +4989,7 @@
       "command": "curl -f http://localhost:3000/health",
       "success_criteria": "Health endpoint returns 200 OK",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-CHECKPOINT-api",
@@ -4808,7 +4997,7 @@
       "type": "checkpoint_api",
       "title": "Checkpoint: Review Api",
       "description": "User approval required before continuing. Review the api phase results.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-DOCKER-build-api",
         "EPIC-003-DOCKER-start-api",
@@ -4832,8 +5021,7 @@
       "command": null,
       "success_criteria": "User approved checkpoint",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-FE-ChatList-page",
@@ -4841,7 +5029,7 @@
       "type": "fe_page",
       "title": "Page: ChatList",
       "description": "Create ChatList page component implementing 5 user stories.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-CHECKPOINT-api"
       ],
@@ -4869,10 +5057,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "React page component with routing, state management, and error boundaries",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-FE-ChatList-components",
@@ -4880,7 +5067,7 @@
       "type": "fe_component",
       "title": "Components: ChatList",
       "description": "Create reusable components for ChatList",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-FE-ChatList-page"
       ],
@@ -4902,10 +5089,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Reusable React component with typed props interface",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-FE-ChatList-hook",
@@ -4913,7 +5099,7 @@
       "type": "fe_hook",
       "title": "Hook: useChatList",
       "description": "Create custom hook for ChatList state and logic",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-FE-ChatList-page"
       ],
@@ -4937,8 +5123,7 @@
       "command": null,
       "success_criteria": null,
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-FE-ChatList-api",
@@ -4946,7 +5131,7 @@
       "type": "fe_api_client",
       "title": "API Client: ChatList",
       "description": "Create API client functions for ChatList",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-FE-ChatList-hook"
       ],
@@ -4970,8 +5155,7 @@
       "command": null,
       "success_criteria": null,
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-FE-ChatRoom-page",
@@ -4979,7 +5163,7 @@
       "type": "fe_page",
       "title": "Page: ChatRoom",
       "description": "Create ChatRoom page component implementing 5 user stories.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-CHECKPOINT-api"
       ],
@@ -5007,10 +5191,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "React page component with routing, state management, and error boundaries",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-FE-ChatRoom-components",
@@ -5018,7 +5201,7 @@
       "type": "fe_component",
       "title": "Components: ChatRoom",
       "description": "Create reusable components for ChatRoom",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-FE-ChatRoom-page"
       ],
@@ -5040,10 +5223,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Reusable React component with typed props interface",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-FE-ChatRoom-hook",
@@ -5051,7 +5233,7 @@
       "type": "fe_hook",
       "title": "Hook: useChatRoom",
       "description": "Create custom hook for ChatRoom state and logic",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-FE-ChatRoom-page"
       ],
@@ -5075,8 +5257,7 @@
       "command": null,
       "success_criteria": null,
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-FE-ChatRoom-api",
@@ -5084,7 +5265,7 @@
       "type": "fe_api_client",
       "title": "API Client: ChatRoom",
       "description": "Create API client functions for ChatRoom",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-FE-ChatRoom-hook"
       ],
@@ -5108,8 +5289,7 @@
       "command": null,
       "success_criteria": null,
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-FE-MessageInput-page",
@@ -5117,7 +5297,7 @@
       "type": "fe_page",
       "title": "Page: MessageInput",
       "description": "Create MessageInput page component implementing 5 user stories.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-CHECKPOINT-api"
       ],
@@ -5145,10 +5325,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "React page component with routing, state management, and error boundaries",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-FE-MessageInput-components",
@@ -5156,7 +5335,7 @@
       "type": "fe_component",
       "title": "Components: MessageInput",
       "description": "Create reusable components for MessageInput",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-FE-MessageInput-page"
       ],
@@ -5178,10 +5357,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Reusable React component with typed props interface",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-FE-MessageInput-hook",
@@ -5189,7 +5367,7 @@
       "type": "fe_hook",
       "title": "Hook: useMessageInput",
       "description": "Create custom hook for MessageInput state and logic",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-FE-MessageInput-page"
       ],
@@ -5213,8 +5391,7 @@
       "command": null,
       "success_criteria": null,
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-FE-MessageInput-api",
@@ -5222,7 +5399,7 @@
       "type": "fe_api_client",
       "title": "API Client: MessageInput",
       "description": "Create API client functions for MessageInput",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-FE-MessageInput-hook"
       ],
@@ -5246,8 +5423,7 @@
       "command": null,
       "success_criteria": null,
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-VERIFY-build-fe",
@@ -5255,7 +5431,7 @@
       "type": "verify_build",
       "title": "Build frontend",
       "description": "Run npm run build for React frontend.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-FE-ChatRoom-api",
         "EPIC-003-FE-MessageInput-page",
@@ -5281,8 +5457,7 @@
       "command": "npm run build",
       "success_criteria": "Frontend build completes without errors",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-VERIFY-lint",
@@ -5290,7 +5465,7 @@
       "type": "verify_lint",
       "title": "Run ESLint",
       "description": "Check code quality with ESLint.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-VERIFY-build-fe"
       ],
@@ -5312,8 +5487,7 @@
       "command": "npm run lint",
       "success_criteria": "No linting errors",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-VERIFY-typecheck-fe",
@@ -5321,7 +5495,7 @@
       "type": "verify_typecheck",
       "title": "TypeScript type check (Frontend)",
       "description": "Run tsc --noEmit for frontend.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-VERIFY-lint"
       ],
@@ -5343,8 +5517,7 @@
       "command": "npx tsc --noEmit",
       "success_criteria": "No TypeScript errors",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-VERIFY-unit",
@@ -5352,7 +5525,7 @@
       "type": "verify_unit",
       "title": "Run unit tests",
       "description": "Execute vitest unit tests.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-VERIFY-typecheck-fe"
       ],
@@ -5374,8 +5547,7 @@
       "command": "npm run test:unit",
       "success_criteria": "All unit tests pass",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-CHECKPOINT-frontend",
@@ -5383,7 +5555,7 @@
       "type": "checkpoint_fe",
       "title": "Checkpoint: Review Frontend",
       "description": "User approval required before continuing. Review the frontend phase results.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-VERIFY-lint",
         "EPIC-003-VERIFY-typecheck-fe",
@@ -5407,8 +5579,7 @@
       "command": null,
       "success_criteria": "User approved checkpoint",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-TEST-unit",
@@ -5416,7 +5587,7 @@
       "type": "test",
       "title": "Generate unit tests for EPIC-003",
       "description": "Create Vitest unit tests for all EPIC-003 services and utilities. NO MOCKS - use real implementations.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-CHECKPOINT-frontend"
       ],
@@ -5440,8 +5611,7 @@
       "command": null,
       "success_criteria": null,
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-TEST-integration",
@@ -5449,7 +5619,7 @@
       "type": "test",
       "title": "Generate integration tests for EPIC-003",
       "description": "Create Vitest integration tests for EPIC-003 API endpoints with real database.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-TEST-unit"
       ],
@@ -5473,8 +5643,7 @@
       "command": null,
       "success_criteria": null,
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-TEST-e2e",
@@ -5482,7 +5651,7 @@
       "type": "test",
       "title": "Generate E2E tests for EPIC-003",
       "description": "Create Playwright E2E tests for 15 user stories in EPIC-003.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-TEST-integration"
       ],
@@ -5522,8 +5691,7 @@
       "command": null,
       "success_criteria": null,
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-VERIFY-e2e",
@@ -5531,7 +5699,7 @@
       "type": "verify_e2e",
       "title": "Run E2E tests",
       "description": "Execute Playwright E2E test suite.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-TEST-unit",
         "EPIC-003-TEST-integration",
@@ -5555,8 +5723,7 @@
       "command": "npm run test:e2e",
       "success_criteria": "All E2E tests pass",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-DOCKER-build-prod",
@@ -5564,7 +5731,7 @@
       "type": "docker_build",
       "title": "Build production image",
       "description": "Build optimized production Docker image.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-VERIFY-e2e"
       ],
@@ -5586,8 +5753,7 @@
       "command": "docker-compose -f docker-compose.prod.yml build",
       "success_criteria": "Production image built",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-DOCKER-start-prod",
@@ -5595,7 +5761,7 @@
       "type": "docker_start",
       "title": "Start production container",
       "description": "Start full stack in production mode.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-DOCKER-build-prod"
       ],
@@ -5617,8 +5783,7 @@
       "command": "docker-compose -f docker-compose.prod.yml up -d",
       "success_criteria": "All containers running",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-DOCKER-health-prod",
@@ -5626,7 +5791,7 @@
       "type": "docker_health",
       "title": "Production health check",
       "description": "Verify all services are healthy.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-DOCKER-start-prod"
       ],
@@ -5648,8 +5813,7 @@
       "command": "docker-compose -f docker-compose.prod.yml ps",
       "success_criteria": "All containers healthy",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-DOCKER-logs-prod",
@@ -5657,7 +5821,7 @@
       "type": "docker_logs",
       "title": "Collect production logs",
       "description": "Collect logs from all production containers.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-DOCKER-health-prod"
       ],
@@ -5679,8 +5843,7 @@
       "command": "docker-compose -f docker-compose.prod.yml logs --tail=100",
       "success_criteria": "Logs collected, no critical errors",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-CHECKPOINT-deploy",
@@ -5688,7 +5851,7 @@
       "type": "checkpoint_deploy",
       "title": "Checkpoint: Review Deploy",
       "description": "User approval required before continuing. Review the deploy phase results.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-DOCKER-start-prod",
         "EPIC-003-DOCKER-health-prod",
@@ -5712,8 +5875,7 @@
       "command": null,
       "success_criteria": "User approved checkpoint",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-003-INTEGRATION",
@@ -5721,7 +5883,7 @@
       "type": "integration",
       "title": "Validate and integrate EPIC-003",
       "description": "Run all EPIC-003 tests, validate build, and verify all 15 user stories are implemented.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-003-CHECKPOINT-deploy"
       ],
@@ -5743,16 +5905,15 @@
       "command": null,
       "success_criteria": null,
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     }
   ],
   "total_tasks": 167,
   "completed_tasks": 0,
-  "failed_tasks": 0,
+  "failed_tasks": 5,
   "progress_percent": 0.0,
-  "run_count": 0,
-  "last_run_at": null,
-  "created_at": "2026-02-18T14:56:29.510617",
-  "estimated_total_minutes": 1132
+  "run_count": 1,
+  "last_run_at": "2026-03-17T17:30:52.602877",
+  "created_at": "2026-03-02T10:39:05.610133",
+  "estimated_total_minutes": 0
 }

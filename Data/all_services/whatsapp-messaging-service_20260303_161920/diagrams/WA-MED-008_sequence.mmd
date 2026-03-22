@@ -1,0 +1,9 @@
+sequenceDiagram
+    participant User as Benutzer
+    participant System as System
+    participant Server as Server
+
+    User->>System: Audio-Datei auswählen
+    System->>Server: Audio-Datei hochladen
+    Server-->>System: Bestätigung des Uploads
+    System-->>User: Upload erfolgreich

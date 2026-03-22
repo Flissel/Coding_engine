@@ -1,0 +1,9 @@
+flowchart TD
+    A[Start] --> B{Konfiguration}
+    B -->|Erlauben| C[Benutzer zu Gruppen hinzufügen]
+    B -->|Verweigern| D[Benutzer kann nicht hinzufügen]
+    C --> E[Einladung senden]
+    D --> F[Fehlermeldung anzeigen]
+    E --> G[Einladung erfolgreich]
+    F --> H[Prozess beenden]
+    G --> H

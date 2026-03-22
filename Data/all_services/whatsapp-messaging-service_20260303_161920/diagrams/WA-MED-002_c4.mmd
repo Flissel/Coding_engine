@@ -1,0 +1,8 @@
+%%{ init : { "theme" : "default" } }%%
+C4Context
+    title Videos senden System Context Diagram
+
+    Person(user, "User", "A user who sends videos")
+    System(videosSenden, "Videos senden", "A system that supports sending videos")
+
+    Rel(user, videosSenden, "Sends videos to")

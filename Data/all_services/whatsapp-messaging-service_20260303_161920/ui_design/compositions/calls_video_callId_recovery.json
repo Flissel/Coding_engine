@@ -1,0 +1,130 @@
+{
+  "route": "/calls/video/:callId/recovery",
+  "screen_name": "Anruf-Fehlerbehebung",
+  "description": "",
+  "user_stories": [
+    "US-040",
+    "US-133",
+    "US-137"
+  ],
+  "components": [
+    {
+      "component_id": "COMP-026",
+      "component_name": "ToastNotification",
+      "props": {
+        "variant": "error",
+        "message": "Verbindungsprobleme erkannt"
+      },
+      "position": "header",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-020",
+      "component_name": "VideoTile",
+      "props": {
+        "variant": "remote",
+        "status": "reconnecting"
+      },
+      "position": "main",
+      "responsive": {
+        "mobile": "stacked",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-020",
+      "component_name": "VideoTile",
+      "props": {
+        "variant": "self",
+        "muted": true
+      },
+      "position": "main",
+      "responsive": {
+        "mobile": "stacked",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-013",
+      "component_name": "CallControls",
+      "props": {
+        "variant": "video",
+        "reconnecting": true
+      },
+      "position": "footer",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-001",
+      "component_name": "Button",
+      "props": {
+        "variant": "primary",
+        "text": "Verbindung wiederherstellen"
+      },
+      "position": "footer",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-001",
+      "component_name": "Button",
+      "props": {
+        "variant": "outline",
+        "text": "Netzwerk wechseln"
+      },
+      "position": "footer",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-001",
+      "component_name": "Button",
+      "props": {
+        "variant": "danger",
+        "text": "Anruf beenden"
+      },
+      "position": "footer",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-025",
+      "component_name": "HelpArticleCard",
+      "props": {
+        "variant": "compact",
+        "title": "Verbindungsprobleme lösen"
+      },
+      "position": "sidebar",
+      "responsive": {
+        "mobile": "hidden",
+        "desktop": "visible"
+      }
+    }
+  ],
+  "layout": "flex column, video tiles in grid, controls centered, max-width 800px",
+  "data_sources": [
+    "GET /api/v1/calls/:callId",
+    "POST /api/v1/calls/:callId/reconnect",
+    "GET /api/v1/devices"
+  ],
+  "state_shape": {
+    "callId": "string",
+    "connectionStatus": "string",
+    "reconnectAttempts": "number",
+    "networkQuality": "object",
+    "participants": "array",
+    "troubleshootingSteps": "array"
+  }
+}

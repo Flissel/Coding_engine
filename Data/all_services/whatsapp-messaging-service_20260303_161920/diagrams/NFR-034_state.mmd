@@ -1,0 +1,9 @@
+stateDiagram-v2
+    [*] --> Normal
+    Normal --> FailoverInitiated : Node/Zone Failure Detected
+    FailoverInitiated --> Switching : Initiating Failover
+    Switching --> FailoverComplete : Failover Successful
+    FailoverComplete --> Normal : Return to Normal Operation
+    Switching --> FailoverFailed : Failover Unsuccessful
+    FailoverFailed --> Alerting : Alert Users
+    Alerting --> Normal : Issue Resolved

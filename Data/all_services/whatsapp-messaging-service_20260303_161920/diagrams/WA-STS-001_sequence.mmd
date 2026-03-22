@@ -1,0 +1,14 @@
+sequenceDiagram
+    participant User as Benutzer
+    participant System as System
+
+    Benutzer->>System: Status erstellen anfordern
+    System->>Benutzer: Eingabeformular anzeigen
+    Benutzer->>System: Statusinformationen eingeben
+    System->>System: Status validieren
+    alt Validierung erfolgreich
+        System->>System: Status speichern
+        System->>Benutzer: Bestätigung anzeigen
+    else Validierung fehlgeschlagen
+        System->>Benutzer: Fehlermeldung anzeigen
+    end

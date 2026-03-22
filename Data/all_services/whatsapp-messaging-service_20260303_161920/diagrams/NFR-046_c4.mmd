@@ -1,0 +1,13 @@
+%%{ init : { "theme" : "default" } }%%
+C4Context
+    title Assistive Technology Support System Context Diagram
+
+    Person(user, "User", "A user who relies on assistive technology for navigation.")
+    System(assistiveTech, "Assistive Technology Support", "System that supports screen readers and keyboard navigation.")
+
+    System_Ext(screenReader, "Screen Reader", "Software that converts text to speech for visually impaired users.")
+    System_Ext(keyboardNav, "Keyboard Navigation", "Allows users to navigate using keyboard shortcuts.")
+
+    Rel(user, assistiveTech, "Uses")
+    Rel(assistiveTech, screenReader, "Integrates with")
+    Rel(assistiveTech, keyboardNav, "Provides support for")

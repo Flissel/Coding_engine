@@ -1,0 +1,8 @@
+flowchart TD
+    A[Start] --> B{Sprachnachricht senden?}
+    B -- Ja --> C[Sprachnachricht aufnehmen]
+    C --> D[Sprachnachricht verarbeiten]
+    D --> E[Sprachnachricht senden]
+    E --> F[Bestätigung erhalten]
+    F --> G[Ende]
+    B -- Nein --> G

@@ -1,0 +1,13 @@
+sequenceDiagram
+    participant User
+    participant ServiceA
+    participant ServiceB
+    participant LogAggregator
+
+    User->>ServiceA: Emit structured log
+    ServiceA->>LogAggregator: Send log data
+    LogAggregator-->>ServiceA: Acknowledge receipt
+
+    User->>ServiceB: Emit structured log
+    ServiceB->>LogAggregator: Send log data
+    LogAggregator-->>ServiceB: Acknowledge receipt

@@ -138,15 +138,23 @@ export class DockerManager {
       const mountPath = resolve(isExistingProject ? requirementsPath : outputDir)
       console.log(`[Project] Mount path: ${mountPath} (existing project: ${isExistingProject})`)
 
+      // KiloCLI config + network for auto-fix inside container
+      const kiloConfigDir = join(process.env.HOME || process.env.USERPROFILE || '', '.kilocode', 'cli')
+      const databaseUrl = process.env.DATABASE_URL ||
+        'postgresql://engine:engine_secret@coding-engine-postgres:5432/coding_engine'
+
       // Start new container using spawn to avoid path mangling
       const dockerCmd = [
         'docker', 'run', '-d',
         '--name', containerName,
+        '--network', 'coding-engine-network',
         '-v', `${mountPath}:/app`,
+        '-v', `${kiloConfigDir}:/root/.kilocode/cli`,
         '-p', `${vncPort}:6080`,
         '-p', `${appPort}:5173`,
         '-e', 'ENABLE_VNC=true',
         '-e', 'NODE_ENV=development',
+        '-e', `DATABASE_URL=${databaseUrl}`,
         'coding-engine/sandbox:latest',
         // IMPORTANT: Use //bin/bash with double slash to prevent Git Bash from mangling
         // the path to C:/Program Files/Git/usr/bin/bash on Windows
@@ -547,10 +555,17 @@ export class DockerManager {
           ? ['-p', `${appPort}:8000`]  // API only
           : ['-p', `${appPort}:5173`]  // Frontend only
 
+      // KiloCLI config for auto-fix + database access inside container
+      const kiloConfigDir = join(process.env.HOME || process.env.USERPROFILE || '', '.kilocode', 'cli')
+      const databaseUrl = process.env.DATABASE_URL ||
+        'postgresql://engine:engine_secret@coding-engine-postgres:5432/coding_engine'
+
       const dockerCmd = [
         'docker', 'run', '-d',
         '--name', containerName,
+        '--network', 'coding-engine-network',
         '-v', `${mountPath}:/app`,
+        '-v', `${kiloConfigDir}:/root/.kilocode/cli`,
         '-p', `${vncPort}:6080`,
         ...portMappings,
         '-e', 'ENABLE_VNC=true',
@@ -558,6 +573,7 @@ export class DockerManager {
         '-e', `PROJECT_TYPE=${projectType}`,
         '-e', `PROJECT_ID=${projectId}`,
         '-e', `CONTAINER_NAME=${containerName}`,
+        '-e', `DATABASE_URL=${databaseUrl}`,
         // Engine API URL for error reporting (host.docker.internal resolves to host machine)
         '-e', 'ENGINE_API_URL=http://host.docker.internal:8000',
         'coding-engine/sandbox:latest',

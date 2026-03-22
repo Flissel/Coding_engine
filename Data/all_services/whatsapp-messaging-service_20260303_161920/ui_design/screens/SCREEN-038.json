@@ -1,0 +1,126 @@
+{
+  "id": "SCREEN-038",
+  "name": "Dashboard - Sprachnachricht",
+  "route": "/dashboard",
+  "layout": "split",
+  "description": "Dashboard-Ansicht mit Chat-Liste und aktivem Chat-Fenster inkl. Sprachnachricht-Aufnahme und -Versand",
+  "components": [
+    "COMP-002",
+    "COMP-003",
+    "COMP-004",
+    "COMP-005",
+    "COMP-006",
+    "COMP-010"
+  ],
+  "component_layout": [
+    {
+      "id": "COMP-002",
+      "name": "SearchBar",
+      "x": 0,
+      "y": 0,
+      "w": 18,
+      "h": 3
+    },
+    {
+      "id": "COMP-003",
+      "name": "ChatListItem",
+      "x": 0,
+      "y": 3,
+      "w": 18,
+      "h": 21
+    },
+    {
+      "id": "COMP-010",
+      "name": "StatusIndicator",
+      "x": 19,
+      "y": 0,
+      "w": 41,
+      "h": 3
+    },
+    {
+      "id": "COMP-004",
+      "name": "ChatBubble",
+      "x": 19,
+      "y": 3,
+      "w": 41,
+      "h": 17
+    },
+    {
+      "id": "COMP-005",
+      "name": "MessageInput",
+      "x": 19,
+      "y": 20,
+      "w": 30,
+      "h": 4
+    },
+    {
+      "id": "COMP-006",
+      "name": "VoiceRecorder",
+      "x": 49,
+      "y": 20,
+      "w": 11,
+      "h": 4
+    }
+  ],
+  "data_requirements": [
+    "GET /api/chats",
+    "GET /api/chats/{id}/messages",
+    "POST /api/chats/{id}/messages/voice",
+    "GET /api/contacts/{id}/status"
+  ],
+  "parent_user_story": "US-012",
+  "wireframe_mermaid": "flowchart TD\n    subgraph Dashboard_-_Sprachnachricht\n        Header[Header / Navigation]\n        Main[Main Content Area]\n        Sidebar[Sidebar / Filters]\n        Footer[Footer / Actions]\n    end\n\n    Header --> Main\n    Sidebar --> Main\n    Main --> Footer\n\n    %% \n",
+  "wireframe_ascii": "     0    5   10   15   20   25   30   35   40   45   50   55   60\n   0 +------------------+------------------------------------------+\n     | [🔍 Search...   ]| [Avatar] Max Mustermann                  |\n   2 |  COMP-002        |  COMP-010 ● Online    StatusIndicator    |\n     +------------------+------------------------------------------+\n   3 | [ChatListItem]   |                                          |\n     | +==============+ |  +------------------------------------+  |\n   5 | | 📷 Anna B.   | |  | Hallo, wie geht's?       14:02   |  |\n     | |  Letzte Nach.| |  |          COMP-004 (incoming)      |  |\n   7 | | COMP-003     | |  +------------------------------------+  |\n     | +--------------+ |                                          |\n   9 | | 📷 Max M.    | |       +-----------------------------+   |\n     | |  Sprachnach..| |       | 🎤 Sprachnachricht 0:23     |   |\n  11 | | COMP-003     | |       |  ▶ ━━━━━━━━━━━━━ 14:05  ✓✓  |   |\n     | +--------------+ |       |     COMP-004 (outgoing/voice)|   |\n  13 | | 📷 Lisa K.   | |       +-----------------------------+   |\n     | |  Hallo!      | |                                          |\n  15 | | COMP-003     | |  +------------------------------------+  |\n     | +--------------+ |  | Gut, danke! Und dir?     14:07   |  |\n  17 | | 📷 Tom S.    | |  |          COMP-004 (incoming)      |  |\n     | |  Ok, bis dann| |  +------------------------------------+  |\n  19 | | COMP-003     | |                                          |\n     +------------------+------------------------------+-----------+\n  20 |                  | [💬 Nachricht eingeben... ] | [🎤 REC ] |\n     |                  |  COMP-005 MessageInput       | COMP-006  |\n  22 |                  |                              | VoiceRec  |\n     |                  |  [😀] [📎]  [Send ➤]        | [⏹ Stop] |\n  24 +------------------+------------------------------+-----------+",
+  "state_bindings": {
+    "COMP-002": "chats.searchQuery",
+    "COMP-003": "chats.list",
+    "COMP-004": "chats.activeChat.messages",
+    "COMP-005": "chats.activeChat.inputText",
+    "COMP-006": "chats.activeChat.voiceRecorder",
+    "COMP-010": "chats.activeChat.contact.status"
+  },
+  "navigation_rules": [
+    {
+      "trigger": "chat_list_item_click",
+      "target": "/dashboard/chat/{chatId}",
+      "condition": ""
+    },
+    {
+      "trigger": "voice_record_press",
+      "target": "",
+      "condition": "device.hasMicrophone"
+    },
+    {
+      "trigger": "voice_record_release",
+      "target": "",
+      "condition": "voiceRecorder.duration > 0"
+    },
+    {
+      "trigger": "voice_send",
+      "target": "",
+      "condition": "voiceRecorder.state === 'recorded'"
+    },
+    {
+      "trigger": "voice_cancel",
+      "target": "",
+      "condition": "voiceRecorder.state === 'recording'"
+    }
+  ],
+  "responsive": {
+    "mobile": {
+      "layout": "stack",
+      "hidden_components": [
+        "COMP-003"
+      ],
+      "notes": "Chat-Liste und Chat-Fenster als separate Views, Swipe-Navigation; VoiceRecorder wird als Overlay angezeigt"
+    },
+    "tablet": {
+      "layout": "split-collapsed",
+      "notes": "Chat-Liste schmal, VoiceRecorder inline"
+    },
+    "desktop": {
+      "layout": "split"
+    }
+  },
+  "auth_required": true
+}

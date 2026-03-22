@@ -1,0 +1,13 @@
+%%{ init : { "theme" : "default" } }%%
+C4Context
+    title Community System Context Diagram
+
+    Person(user, "User", "A member of the community")
+    System(communitySystem, "Community System", "Supports multiple groups within communities")
+
+    System_Ext(groupSystem, "Group Management System", "Manages groups within communities")
+    System_Ext(notificationSystem, "Notification System", "Sends notifications to users")
+
+    Rel(user, communitySystem, "Uses")
+    Rel(communitySystem, groupSystem, "Interacts with")
+    Rel(communitySystem, notificationSystem, "Sends notifications to")

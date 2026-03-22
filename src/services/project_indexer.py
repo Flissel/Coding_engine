@@ -335,12 +335,12 @@ class ProjectIndexer:
     def __init__(
         self,
         project_dir: str,
-        qdrant_url: str = "http://localhost:6333",
+        qdrant_url: str = None,
         collection_prefix: str = "project_",
         embedding_model: str = "google/embeddinggemma-300m",
     ):
         self.project_dir = Path(project_dir)
-        self.qdrant_url = qdrant_url
+        self.qdrant_url = qdrant_url or os.environ.get("QDRANT_URL", "http://localhost:6340")
         self.collection_prefix = collection_prefix
         self.embedding_model = embedding_model
 
@@ -356,10 +356,27 @@ class ProjectIndexer:
         project_name = self.project_dir.name.replace('-', '_')
         return f"{self.collection_prefix}{project_name}"
 
+    def _get_vector_dim(self) -> int:
+        """Get expected vector dimension based on embedding model."""
+        model = self.embedding_model.lower()
+        if "minilm" in model or "l6" in model:
+            return 384
+        elif "gemma" in model:
+            return 768
+        elif "mpnet" in model:
+            return 768
+        elif "openai" in model or "embedding-3" in model:
+            return 1536
+        return 768  # Default for sentence-transformers
+
     async def _init_qdrant(self) -> bool:
-        """Initialize Qdrant client and ensure collection exists."""
+        """Initialize Qdrant client and ensure collection exists with correct dimensions."""
         if self._qdrant_client is not None:
             return True
+
+        # Initialize embedder first so we know the actual dimension
+        if not await self._init_embedder():
+            return False
 
         try:
             from qdrant_client import QdrantClient
@@ -371,12 +388,38 @@ class ProjectIndexer:
             collections = self._qdrant_client.get_collections().collections
             collection_names = [c.name for c in collections]
 
+            # Detect actual dimension from embedder if possible
+            if hasattr(self._embedder, 'get_sentence_embedding_dimension'):
+                vector_dim = self._embedder.get_sentence_embedding_dimension()
+            else:
+                vector_dim = self._get_vector_dim()
+
             if collection_name not in collection_names:
                 self._qdrant_client.create_collection(
                     collection_name=collection_name,
-                    vectors_config=VectorParams(size=768, distance=Distance.COSINE),
+                    vectors_config=VectorParams(size=vector_dim, distance=Distance.COSINE),
                 )
-                self.logger.info("collection_created", name=collection_name)
+                self.logger.info("collection_created", name=collection_name, dim=vector_dim)
+            else:
+                # Check dimension matches — recreate if mismatched
+                try:
+                    info = self._qdrant_client.get_collection(collection_name)
+                    existing_dim = info.config.params.vectors.size
+                    if existing_dim != vector_dim:
+                        self.logger.warning(
+                            "dimension_mismatch_detected",
+                            collection=collection_name,
+                            existing=existing_dim,
+                            expected=vector_dim,
+                        )
+                        self._qdrant_client.delete_collection(collection_name)
+                        self._qdrant_client.create_collection(
+                            collection_name=collection_name,
+                            vectors_config=VectorParams(size=vector_dim, distance=Distance.COSINE),
+                        )
+                        self.logger.info("collection_recreated", name=collection_name, dim=vector_dim)
+                except Exception:
+                    pass
 
             return True
         except Exception as e:
@@ -800,7 +843,7 @@ async def main():
 
     parser = argparse.ArgumentParser(description="Index a project for semantic search")
     parser.add_argument("project_dir", help="Project directory to index")
-    parser.add_argument("--qdrant-url", default="http://localhost:6333", help="Qdrant URL")
+    parser.add_argument("--qdrant-url", default=os.environ.get("QDRANT_URL", "http://localhost:6340"), help="Qdrant URL")
     parser.add_argument("--search", type=str, help="Search query (optional)")
 
     args = parser.parse_args()

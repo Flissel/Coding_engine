@@ -1,0 +1,10 @@
+{
+  "route": "/chat/{chatId}/send-image",
+  "screen_name": "Image Send Screen",
+  "linked_user_stories": [
+    "US-053"
+  ],
+  "user_stories": [
+    "US-053"
+  ]
+}

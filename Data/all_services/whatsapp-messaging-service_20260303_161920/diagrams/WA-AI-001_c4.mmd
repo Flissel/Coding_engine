@@ -1,0 +1,12 @@
+%%{ init : { "theme" : "default" } }%%
+C4Context
+    title Meta AI Chat System Context Diagram
+
+    Person(user, "User", "A user interacting with the Meta AI Chat")
+    System(metaAIChat, "Meta AI Chat", "A system providing AI assistant integration")
+    System_Ext(thirdPartyAPI, "Third Party APIs", "External APIs for additional functionalities")
+    System_Ext(dataStorage, "Data Storage", "Storage for user data and chat history")
+
+    Rel(user, metaAIChat, "Interacts with")
+    Rel(metaAIChat, thirdPartyAPI, "Integrates with", "REST API")
+    Rel(metaAIChat, dataStorage, "Stores and retrieves data from")

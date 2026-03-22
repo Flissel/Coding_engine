@@ -431,14 +431,24 @@ async def start_project_container(request: ProjectStartRequest) -> SuccessRespon
         await run_command(f'docker stop {container_name} 2>NUL || true')
         await run_command(f'docker rm {container_name} 2>NUL || true')
 
-        # Build docker run command
+        # KiloCLI config for auto-fix inside container
+        kilo_config_dir = str(Path.home() / ".kilocode" / "cli")
+        database_url = os.environ.get(
+            "DATABASE_URL",
+            "postgresql://engine:engine_secret@coding-engine-postgres:5432/coding_engine",
+        )
+
+        # Build docker run command with network, KiloCLI config, and DB access
         cmd = f'''docker run -d \
             --name {container_name} \
+            --network coding-engine-network \
             -v "{request.outputDir}:/app" \
+            -v "{kilo_config_dir}:/root/.kilocode/cli" \
             -p {request.vncPort}:6080 \
             -p {request.appPort}:5173 \
             -e ENABLE_VNC=true \
             -e NODE_ENV=development \
+            -e "DATABASE_URL={database_url}" \
             coding-engine/sandbox:latest'''
 
         stdout, stderr, rc = await run_command(cmd.replace('\n', ' ').replace('\\', ''))

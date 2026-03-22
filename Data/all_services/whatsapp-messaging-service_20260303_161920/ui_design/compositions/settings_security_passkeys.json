@@ -1,0 +1,106 @@
+{
+  "route": "/settings/security/passkeys",
+  "screen_name": "Passkeys",
+  "description": "",
+  "user_stories": [],
+  "components": [
+    {
+      "component_id": "COMP-023",
+      "component_name": "ProfileHeader",
+      "props": {
+        "variant": "default",
+        "title": "Passkeys",
+        "showBackButton": true
+      },
+      "position": "header",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-001",
+      "component_name": "Button",
+      "props": {
+        "variant": "primary",
+        "text": "Add Passkey",
+        "icon": "plus"
+      },
+      "position": "main",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-024",
+      "component_name": "DeviceListItem",
+      "props": {
+        "variant": "active",
+        "showActions": true,
+        "allowDelete": true
+      },
+      "position": "main",
+      "responsive": {
+        "mobile": "stacked",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-001",
+      "component_name": "Button",
+      "props": {
+        "variant": "danger",
+        "text": "Delete",
+        "size": "small"
+      },
+      "position": "main",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-021",
+      "component_name": "EncryptionBadge",
+      "props": {
+        "variant": "secure"
+      },
+      "position": "main",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-026",
+      "component_name": "ToastNotification",
+      "props": {
+        "variant": "success",
+        "message": "Passkey added successfully"
+      },
+      "position": "modal",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    }
+  ],
+  "layout": "flex column, max-width 600px, padding 16px",
+  "data_sources": [
+    "GET /api/v1/passkeys",
+    "POST /api/v1/passkeys",
+    "DELETE /api/v1/passkeys/{id}",
+    "POST /api/v1/auth/passkeys/registration/options",
+    "POST /api/v1/auth/passkeys/registration/verify",
+    "GET /api/v1/devices"
+  ],
+  "state_shape": {
+    "passkeys": "array",
+    "isLoading": "boolean",
+    "error": "string|null",
+    "showAddPasskeyModal": "boolean",
+    "registrationOptions": "object|null",
+    "selectedPasskey": "object|null"
+  }
+}

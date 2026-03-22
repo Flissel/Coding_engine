@@ -1,0 +1,11 @@
+sequenceDiagram
+    participant Admin as Enterprise/Admin
+    participant System as Analytics System
+    participant Audit as Audit Log System
+
+    Admin->>System: Request system-level analytics
+    System-->>Admin: Provide analytics data
+    Admin->>System: Request message throughput metrics
+    System-->>Admin: Provide throughput metrics
+    Admin->>Audit: Request audit logs for compliance
+    Audit-->>Admin: Provide audit logs

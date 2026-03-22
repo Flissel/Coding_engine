@@ -1,0 +1,25 @@
+sequenceDiagram
+    participant User as User
+    participant Device1 as Device 1
+    participant Device2 as Device 2
+    participant System as System
+
+    User->>Device1: Initiate session
+    Device1->>System: Connect to system
+    System-->>Device1: Acknowledge connection
+
+    User->>Device2: Initiate session
+    Device2->>System: Connect to system
+    System-->>Device2: Acknowledge connection
+
+    Device1->>System: Send data from Device 1
+    System-->>Device1: Process data
+
+    Device2->>System: Send data from Device 2
+    System-->>Device2: Process data
+
+    User->>Device1: Request data
+    System-->>Device1: Return data
+
+    User->>Device2: Request data
+    System-->>Device2: Return data

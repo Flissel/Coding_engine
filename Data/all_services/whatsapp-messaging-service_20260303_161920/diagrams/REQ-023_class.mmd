@@ -1,0 +1,33 @@
+classDiagram
+    class User {
+        +String userId
+        +String username
+        +List<User> blockedUsers
+        +List<Report> reports
+        +blockUser(User user)
+        +reportAbuse(String reason)
+    }
+
+    class Report {
+        +String reportId
+        +String reason
+        +User reportedUser
+        +User reportingUser
+        +DateTime createdAt
+        +String status
+        +reviewReport()
+    }
+
+    class Moderator {
+        +String moderatorId
+        +String name
+        +List<Report> reviews
+        +reviewReport(Report report)
+        +takeAction(Report report, String action)
+    }
+
+    User "1" -- "*" User : blocks
+    User "1" -- "*" Report : creates
+    Report "*" -- "1" User : reported by
+    Report "*" -- "1" User : reported
+    Moderator "1" -- "*" Report : reviews

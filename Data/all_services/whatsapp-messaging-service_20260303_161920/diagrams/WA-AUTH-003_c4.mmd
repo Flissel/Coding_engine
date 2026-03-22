@@ -1,0 +1,12 @@
+%%{init: {'theme': 'default'}}%%
+C4Context
+    title Biometrische Entsperrung System Architecture
+
+    Person(user, "Benutzer", "Ein Benutzer, der biometrische Authentifizierung verwendet.")
+    System(biometricSystem, "Biometrische Entsperrung", "Ein System zur Unterstützung biometrischer Authentifizierung (Fingerabdruck, Face ID).")
+    System_Ext(biometricDevice, "Biometrisches Gerät", "Gerät zur Erfassung biometrischer Daten (z.B. Fingerabdruckscanner, Kamera).")
+    System_Ext(authenticationService, "Authentifizierungsdienst", "Externer Dienst zur Validierung biometrischer Daten.")
+
+    Rel(user, biometricSystem, "Verwendet")
+    Rel(biometricSystem, biometricDevice, "Erfasst biometrische Daten von")
+    Rel(biometricSystem, authenticationService, "Sendet biometrische Daten zur Validierung an")

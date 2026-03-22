@@ -1,0 +1,10 @@
+{
+  "route": "/dashboard",
+  "screen_name": "Dashboard - QR-Code Profil",
+  "linked_user_stories": [
+    "US-104"
+  ],
+  "user_stories": [
+    "US-104"
+  ]
+}

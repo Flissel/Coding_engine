@@ -1,0 +1,3528 @@
+{
+  "comp_matrix": {
+    "project_name": "whatsapp-messaging-service",
+    "screens": [
+      {
+        "route": "/",
+        "screen_name": "Start",
+        "description": "",
+        "user_stories": [
+          "US-111"
+        ],
+        "components": [
+          {
+            "component_id": "COMP-001",
+            "component_name": "Button",
+            "props": {
+              "variant": "primary",
+              "text": "Mit Passkey anmelden"
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-001",
+            "component_name": "Button",
+            "props": {
+              "variant": "secondary",
+              "text": "Neuen Passkey erstellen"
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-026",
+            "component_name": "ToastNotification",
+            "props": {
+              "variant": "error",
+              "message": "Anmeldung fehlgeschlagen"
+            },
+            "position": "modal",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          }
+        ],
+        "layout": "flex column, centered, max-width 400px, gap-4, padding-6",
+        "data_sources": [
+          "POST /api/v1/auth/passkeys/authentication/options",
+          "POST /api/v1/auth/passkeys/authentication/verify",
+          "POST /api/v1/auth/passkeys/registration/options",
+          "POST /api/v1/auth/passkeys/registration/verify"
+        ],
+        "state_shape": {
+          "isLoading": "boolean",
+          "authenticationOptions": "object",
+          "registrationOptions": "object",
+          "error": "string",
+          "isAuthenticated": "boolean"
+        }
+      },
+      {
+        "route": "/chats",
+        "screen_name": "Chats",
+        "description": "",
+        "user_stories": [],
+        "components": [
+          {
+            "component_id": "COMP-002",
+            "component_name": "SearchBar",
+            "props": {
+              "variant": "default",
+              "placeholder": "Chats durchsuchen"
+            },
+            "position": "header",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-001",
+            "component_name": "Button",
+            "props": {
+              "variant": "primary",
+              "text": "Neuer Chat"
+            },
+            "position": "header",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-003",
+            "component_name": "ChatListItem",
+            "props": {
+              "variant": "default"
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-003",
+            "component_name": "ChatListItem",
+            "props": {
+              "variant": "unread"
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-003",
+            "component_name": "ChatListItem",
+            "props": {
+              "variant": "muted"
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-010",
+            "component_name": "StatusIndicator",
+            "props": {
+              "variant": "online"
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-014",
+            "component_name": "GroupAvatar",
+            "props": {
+              "variant": "3-users"
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          }
+        ],
+        "layout": "flex column, full-height, header fixed, main scrollable",
+        "data_sources": [],
+        "state_shape": {
+          "chats": "array",
+          "searchQuery": "string",
+          "selectedChat": "object|null",
+          "loading": "boolean"
+        }
+      },
+      {
+        "route": "/calls",
+        "screen_name": "Anrufe",
+        "description": "",
+        "user_stories": [],
+        "components": [
+          {
+            "component_id": "COMP-002",
+            "component_name": "SearchBar",
+            "props": {
+              "variant": "default",
+              "placeholder": "Anrufe durchsuchen"
+            },
+            "position": "header",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-018",
+            "component_name": "CallListItem",
+            "props": {
+              "variant": "incoming"
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-018",
+            "component_name": "CallListItem",
+            "props": {
+              "variant": "outgoing"
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-018",
+            "component_name": "CallListItem",
+            "props": {
+              "variant": "missed"
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-001",
+            "component_name": "Button",
+            "props": {
+              "variant": "primary",
+              "text": "Neuer Anruf"
+            },
+            "position": "footer",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          }
+        ],
+        "layout": "flex column, full height, header fixed, main scrollable, footer fixed",
+        "data_sources": [],
+        "state_shape": {
+          "calls": "array",
+          "searchQuery": "string",
+          "filteredCalls": "array",
+          "isLoading": "boolean"
+        }
+      },
+      {
+        "route": "/settings",
+        "screen_name": "Einstellungen",
+        "description": "",
+        "user_stories": [],
+        "components": [
+          {
+            "component_id": "COMP-023",
+            "component_name": "ProfileHeader",
+            "props": {
+              "variant": "editable"
+            },
+            "position": "header",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-022",
+            "component_name": "SettingsListItem",
+            "props": {
+              "variant": "default",
+              "title": "Account",
+              "icon": "user"
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-022",
+            "component_name": "SettingsListItem",
+            "props": {
+              "variant": "default",
+              "title": "Privacy & Security",
+              "icon": "shield"
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-022",
+            "component_name": "SettingsListItem",
+            "props": {
+              "variant": "default",
+              "title": "Notifications",
+              "icon": "bell"
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-022",
+            "component_name": "SettingsListItem",
+            "props": {
+              "variant": "default",
+              "title": "Devices",
+              "icon": "device"
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-024",
+            "component_name": "DeviceListItem",
+            "props": {
+              "variant": "active"
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-022",
+            "component_name": "SettingsListItem",
+            "props": {
+              "variant": "default",
+              "title": "Passkeys",
+              "icon": "key"
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-022",
+            "component_name": "SettingsListItem",
+            "props": {
+              "variant": "default",
+              "title": "Help & Support",
+              "icon": "help"
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-022",
+            "component_name": "SettingsListItem",
+            "props": {
+              "variant": "danger",
+              "title": "Sign Out",
+              "icon": "logout"
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-001",
+            "component_name": "Button",
+            "props": {
+              "variant": "primary",
+              "text": "Add Passkey"
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          }
+        ],
+        "layout": "flex column, full-width, padding 16px",
+        "data_sources": [
+          "GET /api/v1/passkeys",
+          "GET /api/v1/devices"
+        ],
+        "state_shape": {
+          "userProfile": "object",
+          "passkeys": "array",
+          "devices": "array",
+          "isLoading": "boolean",
+          "error": "string"
+        }
+      },
+      {
+        "route": "/chats/:chatId",
+        "screen_name": "Chat-Detail",
+        "description": "",
+        "user_stories": [
+          "US-020",
+          "US-078",
+          "US-087",
+          "US-092",
+          "US-094",
+          "US-095",
+          "US-121",
+          "US-131"
+        ],
+        "components": [
+          {
+            "component_id": "COMP-023",
+            "component_name": "ProfileHeader",
+            "props": {
+              "variant": "default",
+              "showBackButton": true,
+              "showMenuButton": true
+            },
+            "position": "header",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-010",
+            "component_name": "StatusIndicator",
+            "props": {
+              "variant": "online",
+              "size": "small"
+            },
+            "position": "header",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-013",
+            "component_name": "CallControls",
+            "props": {
+              "variant": "compact",
+              "showAudio": true,
+              "showVideo": true
+            },
+            "position": "header",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-004",
+            "component_name": "ChatBubble",
+            "props": {
+              "variant": "sent"
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-004",
+            "component_name": "ChatBubble",
+            "props": {
+              "variant": "received"
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-004",
+            "component_name": "ChatBubble",
+            "props": {
+              "variant": "system"
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-012",
+            "component_name": "ReadReceipts",
+            "props": {
+              "variant": "read"
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-011",
+            "component_name": "TypingIndicator",
+            "props": {
+              "variant": "default"
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-015",
+            "component_name": "LinkPreview",
+            "props": {
+              "variant": "default"
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-021",
+            "component_name": "EncryptionBadge",
+            "props": {
+              "variant": "secure"
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-005",
+            "component_name": "MessageInput",
+            "props": {
+              "variant": "default",
+              "placeholder": "Type a message..."
+            },
+            "position": "footer",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-006",
+            "component_name": "VoiceRecorder",
+            "props": {
+              "variant": "idle"
+            },
+            "position": "footer",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-008",
+            "component_name": "EmojiPicker",
+            "props": {
+              "variant": "compact"
+            },
+            "position": "footer",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-016",
+            "component_name": "ReactionPicker",
+            "props": {
+              "variant": "default"
+            },
+            "position": "modal",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-017",
+            "component_name": "ForwardDialog",
+            "props": {
+              "variant": "default"
+            },
+            "position": "modal",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-007",
+            "component_name": "MediaViewer",
+            "props": {
+              "variant": "image"
+            },
+            "position": "modal",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-026",
+            "component_name": "ToastNotification",
+            "props": {
+              "variant": "info"
+            },
+            "position": "modal",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          }
+        ],
+        "layout": "flex column, full height, header fixed top, main scrollable, footer fixed bottom",
+        "data_sources": [],
+        "state_shape": {
+          "chatId": "string",
+          "messages": "array",
+          "chatInfo": "object",
+          "isTyping": "boolean",
+          "selectedMessage": "object",
+          "showEmojiPicker": "boolean",
+          "showReactionPicker": "boolean",
+          "isRecording": "boolean",
+          "mediaToView": "object",
+          "forwardDialogOpen": "boolean"
+        }
+      },
+      {
+        "route": "/calls/video/:callId",
+        "screen_name": "Verschlüsselter Videoanruf",
+        "description": "",
+        "user_stories": [
+          "US-036",
+          "US-137"
+        ],
+        "components": [
+          {
+            "component_id": "COMP-019",
+            "component_name": "CallScreen",
+            "props": {
+              "variant": "video"
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-020",
+            "component_name": "VideoTile",
+            "props": {
+              "variant": "remote"
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-020",
+            "component_name": "VideoTile",
+            "props": {
+              "variant": "self"
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-013",
+            "component_name": "CallControls",
+            "props": {
+              "variant": "video"
+            },
+            "position": "footer",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-021",
+            "component_name": "EncryptionBadge",
+            "props": {
+              "variant": "secure"
+            },
+            "position": "header",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-026",
+            "component_name": "ToastNotification",
+            "props": {
+              "variant": "info"
+            },
+            "position": "modal",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          }
+        ],
+        "layout": "flex column, full-height, video tiles stacked/grid, controls fixed bottom",
+        "data_sources": [],
+        "state_shape": {
+          "callId": "string",
+          "localStream": "MediaStream",
+          "remoteStream": "MediaStream",
+          "isVideoEnabled": "boolean",
+          "isAudioEnabled": "boolean",
+          "isScreenSharing": "boolean",
+          "callDuration": "number",
+          "encryptionStatus": "string",
+          "connectionStatus": "string",
+          "participants": "array"
+        }
+      },
+      {
+        "route": "/settings/profile",
+        "screen_name": "Profil",
+        "description": "",
+        "user_stories": [
+          "US-010",
+          "US-096"
+        ],
+        "components": [
+          {
+            "component_id": "COMP-023",
+            "component_name": "ProfileHeader",
+            "props": {
+              "variant": "editable"
+            },
+            "position": "header",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-022",
+            "component_name": "SettingsListItem",
+            "props": {
+              "variant": "default",
+              "title": "Name",
+              "type": "input"
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-022",
+            "component_name": "SettingsListItem",
+            "props": {
+              "variant": "default",
+              "title": "Status",
+              "type": "input"
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-022",
+            "component_name": "SettingsListItem",
+            "props": {
+              "variant": "default",
+              "title": "QR-Code anzeigen",
+              "type": "action"
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-022",
+            "component_name": "SettingsListItem",
+            "props": {
+              "variant": "default",
+              "title": "Business-Profil",
+              "type": "toggle"
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-022",
+            "component_name": "SettingsListItem",
+            "props": {
+              "variant": "default",
+              "title": "Passkeys verwalten",
+              "type": "action"
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-022",
+            "component_name": "SettingsListItem",
+            "props": {
+              "variant": "default",
+              "title": "Geräte verwalten",
+              "type": "action"
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-001",
+            "component_name": "Button",
+            "props": {
+              "variant": "primary",
+              "text": "Speichern"
+            },
+            "position": "footer",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-026",
+            "component_name": "ToastNotification",
+            "props": {
+              "variant": "success",
+              "message": "Profil gespeichert"
+            },
+            "position": "modal",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          }
+        ],
+        "layout": "flex column, gap-16, max-width 600px, padding 24px",
+        "data_sources": [
+          "GET /api/v1/passkeys",
+          "GET /api/v1/devices"
+        ],
+        "state_shape": {
+          "profile": "object",
+          "name": "string",
+          "status": "string",
+          "businessProfile": "boolean",
+          "passkeys": "array",
+          "devices": "array",
+          "isLoading": "boolean",
+          "showQRCode": "boolean"
+        }
+      },
+      {
+        "route": "/settings/security",
+        "screen_name": "Konto & Sicherheit",
+        "description": "",
+        "user_stories": [],
+        "components": [
+          {
+            "component_id": "COMP-023",
+            "component_name": "ProfileHeader",
+            "props": {
+              "variant": "default",
+              "title": "Konto & Sicherheit",
+              "showBackButton": true
+            },
+            "position": "header",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-022",
+            "component_name": "SettingsListItem",
+            "props": {
+              "variant": "default",
+              "title": "Passwort ändern",
+              "icon": "key",
+              "hasChevron": true
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-022",
+            "component_name": "SettingsListItem",
+            "props": {
+              "variant": "default",
+              "title": "Zwei-Faktor-Authentifizierung",
+              "subtitle": "Zusätzliche Sicherheit",
+              "icon": "shield",
+              "hasChevron": true
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-022",
+            "component_name": "SettingsListItem",
+            "props": {
+              "variant": "default",
+              "title": "Passkeys verwalten",
+              "subtitle": "Biometrische Anmeldung",
+              "icon": "fingerprint",
+              "hasChevron": true
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-024",
+            "component_name": "DeviceListItem",
+            "props": {
+              "variant": "active",
+              "deviceName": "iPhone 15 Pro",
+              "lastSeen": "Jetzt aktiv",
+              "location": "München, Deutschland"
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-024",
+            "component_name": "DeviceListItem",
+            "props": {
+              "variant": "inactive",
+              "deviceName": "MacBook Pro",
+              "lastSeen": "vor 2 Stunden",
+              "location": "München, Deutschland"
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-022",
+            "component_name": "SettingsListItem",
+            "props": {
+              "variant": "default",
+              "title": "Anmeldeaktivitäten",
+              "subtitle": "Letzte Anmeldungen anzeigen",
+              "icon": "history",
+              "hasChevron": true
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-021",
+            "component_name": "EncryptionBadge",
+            "props": {
+              "variant": "secure",
+              "text": "Ende-zu-Ende verschlüsselt"
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-022",
+            "component_name": "SettingsListItem",
+            "props": {
+              "variant": "danger",
+              "title": "Konto löschen",
+              "icon": "trash",
+              "hasChevron": true
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          }
+        ],
+        "layout": "flex column, full-width, padding 16px, gap 8px",
+        "data_sources": [
+          "GET /api/v1/passkeys",
+          "GET /api/v1/devices"
+        ],
+        "state_shape": {
+          "passkeys": "array",
+          "devices": "array",
+          "userProfile": "object",
+          "securitySettings": "object",
+          "loading": "boolean"
+        }
+      },
+      {
+        "route": "/settings/devices",
+        "screen_name": "Geraete",
+        "description": "",
+        "user_stories": [],
+        "components": [
+          {
+            "component_id": "COMP-023",
+            "component_name": "ProfileHeader",
+            "props": {
+              "title": "Geräte",
+              "variant": "default",
+              "showBackButton": true
+            },
+            "position": "header",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-002",
+            "component_name": "SearchBar",
+            "props": {
+              "variant": "default",
+              "placeholder": "Geräte durchsuchen..."
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-024",
+            "component_name": "DeviceListItem",
+            "props": {
+              "variant": "active",
+              "showActions": true
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "stacked",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-001",
+            "component_name": "Button",
+            "props": {
+              "variant": "primary",
+              "text": "Neues Gerät hinzufügen"
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-001",
+            "component_name": "Button",
+            "props": {
+              "variant": "danger",
+              "text": "Gerät entfernen"
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-026",
+            "component_name": "ToastNotification",
+            "props": {
+              "variant": "success",
+              "message": "Gerät erfolgreich hinzugefügt"
+            },
+            "position": "modal",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          }
+        ],
+        "layout": "flex column, padding 16px, max-width 800px, centered",
+        "data_sources": [
+          "GET /api/v1/devices",
+          "POST /api/v1/devices",
+          "PUT /api/v1/devices/{id}",
+          "DELETE /api/v1/devices/{id}"
+        ],
+        "state_shape": {
+          "devices": "array",
+          "selectedDevice": "object|null",
+          "searchQuery": "string",
+          "isLoading": "boolean",
+          "error": "string|null",
+          "showDeleteConfirm": "boolean"
+        }
+      },
+      {
+        "route": "/settings/help",
+        "screen_name": "Hilfe",
+        "description": "",
+        "user_stories": [],
+        "components": [
+          {
+            "component_id": "COMP-002",
+            "component_name": "SearchBar",
+            "props": {
+              "variant": "default",
+              "placeholder": "Hilfe durchsuchen..."
+            },
+            "position": "header",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-025",
+            "component_name": "HelpArticleCard",
+            "props": {
+              "variant": "default",
+              "title": "Erste Schritte",
+              "description": "Grundlagen der App kennenlernen"
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "stacked",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-025",
+            "component_name": "HelpArticleCard",
+            "props": {
+              "variant": "default",
+              "title": "Sicherheit & Verschlüsselung",
+              "description": "Ihre Privatsphäre schützen"
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "stacked",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-025",
+            "component_name": "HelpArticleCard",
+            "props": {
+              "variant": "default",
+              "title": "Passkeys verwalten",
+              "description": "Sichere Anmeldung einrichten"
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "stacked",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-025",
+            "component_name": "HelpArticleCard",
+            "props": {
+              "variant": "default",
+              "title": "Geräte verwalten",
+              "description": "Verbundene Geräte überwachen"
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "stacked",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-001",
+            "component_name": "Button",
+            "props": {
+              "variant": "outline",
+              "text": "Support kontaktieren"
+            },
+            "position": "footer",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          }
+        ],
+        "layout": "flex column, gap-4, max-width 600px, padding 16px",
+        "data_sources": [],
+        "state_shape": {
+          "searchQuery": "string",
+          "filteredArticles": "array",
+          "selectedCategory": "string"
+        }
+      },
+      {
+        "route": "/chats/:chatId/info",
+        "screen_name": "Chat-Info",
+        "description": "",
+        "user_stories": [
+          "US-008",
+          "US-020",
+          "US-078",
+          "US-083",
+          "US-087",
+          "US-092",
+          "US-094",
+          "US-095",
+          "US-121",
+          "US-131"
+        ],
+        "components": [
+          {
+            "component_id": "COMP-023",
+            "component_name": "ProfileHeader",
+            "props": {
+              "variant": "default",
+              "showBackButton": true,
+              "title": "Chat Info"
+            },
+            "position": "header",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-009",
+            "component_name": "ContactCard",
+            "props": {
+              "variant": "default",
+              "showStatus": true,
+              "showLastSeen": true
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-021",
+            "component_name": "EncryptionBadge",
+            "props": {
+              "variant": "secure"
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-022",
+            "component_name": "SettingsListItem",
+            "props": {
+              "variant": "default",
+              "title": "Chat-Hintergrund",
+              "icon": "background"
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-022",
+            "component_name": "SettingsListItem",
+            "props": {
+              "variant": "default",
+              "title": "Chat-Suche",
+              "icon": "search"
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-022",
+            "component_name": "SettingsListItem",
+            "props": {
+              "variant": "default",
+              "title": "Chat anpinnen",
+              "icon": "pin",
+              "toggle": true
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-022",
+            "component_name": "SettingsListItem",
+            "props": {
+              "variant": "default",
+              "title": "Chat archivieren",
+              "icon": "archive"
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-022",
+            "component_name": "SettingsListItem",
+            "props": {
+              "variant": "default",
+              "title": "Chat exportieren",
+              "icon": "export"
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-022",
+            "component_name": "SettingsListItem",
+            "props": {
+              "variant": "danger",
+              "title": "Chat sperren",
+              "icon": "block"
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          }
+        ],
+        "layout": "flex column, full-height, max-width 600px, centered",
+        "data_sources": [
+          "GET /api/v1/chats/{chatId}",
+          "GET /api/v1/chats/{chatId}/settings",
+          "PUT /api/v1/chats/{chatId}/settings"
+        ],
+        "state_shape": {
+          "chatInfo": "object",
+          "isPinned": "boolean",
+          "isArchived": "boolean",
+          "isBlocked": "boolean",
+          "encryptionStatus": "string",
+          "loading": "boolean",
+          "error": "string"
+        }
+      },
+      {
+        "route": "/chats/:chatId/settings",
+        "screen_name": "Chat-Einstellungen",
+        "description": "",
+        "user_stories": [
+          "US-020",
+          "US-078",
+          "US-087",
+          "US-092",
+          "US-094",
+          "US-095",
+          "US-121",
+          "US-131"
+        ],
+        "components": [
+          {
+            "component_id": "COMP-023",
+            "component_name": "ProfileHeader",
+            "props": {
+              "variant": "default",
+              "showBackButton": true,
+              "title": "Chat-Einstellungen"
+            },
+            "position": "header",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-022",
+            "component_name": "SettingsListItem",
+            "props": {
+              "variant": "default",
+              "title": "Chat durchsuchen",
+              "icon": "search",
+              "hasChevron": true
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-022",
+            "component_name": "SettingsListItem",
+            "props": {
+              "variant": "default",
+              "title": "Chat anpinnen",
+              "icon": "pin",
+              "hasToggle": true
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-022",
+            "component_name": "SettingsListItem",
+            "props": {
+              "variant": "default",
+              "title": "Chat-Hintergrund",
+              "icon": "background",
+              "hasChevron": true
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-022",
+            "component_name": "SettingsListItem",
+            "props": {
+              "variant": "default",
+              "title": "Chat archivieren",
+              "icon": "archive",
+              "hasChevron": true
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-022",
+            "component_name": "SettingsListItem",
+            "props": {
+              "variant": "default",
+              "title": "Chat exportieren",
+              "icon": "export",
+              "hasChevron": true
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-022",
+            "component_name": "SettingsListItem",
+            "props": {
+              "variant": "danger",
+              "title": "Chat sperren",
+              "icon": "lock",
+              "hasChevron": true
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-021",
+            "component_name": "EncryptionBadge",
+            "props": {
+              "variant": "secure",
+              "text": "Ende-zu-Ende verschlüsselt"
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          }
+        ],
+        "layout": "flex column, full-height, max-width 400px",
+        "data_sources": [],
+        "state_shape": {
+          "chatId": "string",
+          "chatSettings": "object",
+          "isPinned": "boolean",
+          "isArchived": "boolean",
+          "isBlocked": "boolean"
+        }
+      },
+      {
+        "route": "/calls/video/:callId/onboarding",
+        "screen_name": "Anruf-Onboarding",
+        "description": "",
+        "user_stories": [
+          "US-040",
+          "US-137"
+        ],
+        "components": [
+          {
+            "component_id": "COMP-020",
+            "component_name": "VideoTile",
+            "props": {
+              "variant": "self",
+              "muted": true,
+              "preview": true
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-013",
+            "component_name": "CallControls",
+            "props": {
+              "variant": "video",
+              "micEnabled": true,
+              "cameraEnabled": true,
+              "showSettings": true
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-001",
+            "component_name": "Button",
+            "props": {
+              "variant": "primary",
+              "text": "Anruf beitreten",
+              "size": "large"
+            },
+            "position": "footer",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-001",
+            "component_name": "Button",
+            "props": {
+              "variant": "outline",
+              "text": "Ablehnen",
+              "size": "medium"
+            },
+            "position": "footer",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-026",
+            "component_name": "ToastNotification",
+            "props": {
+              "variant": "info",
+              "message": "Überprüfe deine Kamera und Mikrofon Einstellungen"
+            },
+            "position": "modal",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          }
+        ],
+        "layout": "flex column, centered, max-width 600px, padding 24px",
+        "data_sources": [
+          "GET /api/v1/devices"
+        ],
+        "state_shape": {
+          "callId": "string",
+          "micEnabled": "boolean",
+          "cameraEnabled": "boolean",
+          "devicePermissions": "object",
+          "isJoining": "boolean",
+          "previewStream": "MediaStream"
+        }
+      },
+      {
+        "route": "/calls/video/:callId/recovery",
+        "screen_name": "Anruf-Fehlerbehebung",
+        "description": "",
+        "user_stories": [
+          "US-040",
+          "US-133",
+          "US-137"
+        ],
+        "components": [
+          {
+            "component_id": "COMP-026",
+            "component_name": "ToastNotification",
+            "props": {
+              "variant": "error",
+              "message": "Verbindungsprobleme erkannt"
+            },
+            "position": "header",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-020",
+            "component_name": "VideoTile",
+            "props": {
+              "variant": "remote",
+              "status": "reconnecting"
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "stacked",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-020",
+            "component_name": "VideoTile",
+            "props": {
+              "variant": "self",
+              "muted": true
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "stacked",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-013",
+            "component_name": "CallControls",
+            "props": {
+              "variant": "video",
+              "reconnecting": true
+            },
+            "position": "footer",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-001",
+            "component_name": "Button",
+            "props": {
+              "variant": "primary",
+              "text": "Verbindung wiederherstellen"
+            },
+            "position": "footer",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-001",
+            "component_name": "Button",
+            "props": {
+              "variant": "outline",
+              "text": "Netzwerk wechseln"
+            },
+            "position": "footer",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-001",
+            "component_name": "Button",
+            "props": {
+              "variant": "danger",
+              "text": "Anruf beenden"
+            },
+            "position": "footer",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-025",
+            "component_name": "HelpArticleCard",
+            "props": {
+              "variant": "compact",
+              "title": "Verbindungsprobleme lösen"
+            },
+            "position": "sidebar",
+            "responsive": {
+              "mobile": "hidden",
+              "desktop": "visible"
+            }
+          }
+        ],
+        "layout": "flex column, video tiles in grid, controls centered, max-width 800px",
+        "data_sources": [
+          "GET /api/v1/calls/:callId",
+          "POST /api/v1/calls/:callId/reconnect",
+          "GET /api/v1/devices"
+        ],
+        "state_shape": {
+          "callId": "string",
+          "connectionStatus": "string",
+          "reconnectAttempts": "number",
+          "networkQuality": "object",
+          "participants": "array",
+          "troubleshootingSteps": "array"
+        }
+      },
+      {
+        "route": "/calls/video/:callId/edge-cases",
+        "screen_name": "Edge-Case Handling",
+        "description": "",
+        "user_stories": [
+          "US-137"
+        ],
+        "components": [
+          {
+            "component_id": "COMP-019",
+            "component_name": "CallScreen",
+            "props": {
+              "variant": "video",
+              "callId": ":callId"
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-020",
+            "component_name": "VideoTile",
+            "props": {
+              "variant": "remote"
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "stacked",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-020",
+            "component_name": "VideoTile",
+            "props": {
+              "variant": "self"
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-013",
+            "component_name": "CallControls",
+            "props": {
+              "variant": "video"
+            },
+            "position": "footer",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-026",
+            "component_name": "ToastNotification",
+            "props": {
+              "variant": "error",
+              "message": "Connection lost"
+            },
+            "position": "modal",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-026",
+            "component_name": "ToastNotification",
+            "props": {
+              "variant": "warning",
+              "message": "Poor network quality"
+            },
+            "position": "modal",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-001",
+            "component_name": "Button",
+            "props": {
+              "variant": "primary",
+              "text": "Retry Connection"
+            },
+            "position": "modal",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-001",
+            "component_name": "Button",
+            "props": {
+              "variant": "secondary",
+              "text": "Switch to Audio"
+            },
+            "position": "modal",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-001",
+            "component_name": "Button",
+            "props": {
+              "variant": "danger",
+              "text": "End Call"
+            },
+            "position": "modal",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          }
+        ],
+        "layout": "flex column, full-height, video overlay layout",
+        "data_sources": [],
+        "state_shape": {
+          "callId": "string",
+          "connectionStatus": "string",
+          "networkQuality": "string",
+          "errorState": "object",
+          "retryAttempts": "number",
+          "fallbackOptions": "array"
+        }
+      },
+      {
+        "route": "/settings/profile/avatar",
+        "screen_name": "Profilbild",
+        "description": "",
+        "user_stories": [
+          "US-006",
+          "US-082"
+        ],
+        "components": [
+          {
+            "component_id": "COMP-023",
+            "component_name": "ProfileHeader",
+            "props": {
+              "variant": "editable",
+              "title": "Profilbild",
+              "showBackButton": true
+            },
+            "position": "header",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-001",
+            "component_name": "Button",
+            "props": {
+              "variant": "primary",
+              "text": "Foto aufnehmen",
+              "icon": "camera"
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-001",
+            "component_name": "Button",
+            "props": {
+              "variant": "secondary",
+              "text": "Aus Galerie wählen",
+              "icon": "gallery"
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-001",
+            "component_name": "Button",
+            "props": {
+              "variant": "outline",
+              "text": "Aktuelles Bild löschen",
+              "icon": "trash"
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-022",
+            "component_name": "SettingsListItem",
+            "props": {
+              "variant": "default",
+              "title": "Wer kann mein Profilbild sehen",
+              "subtitle": "Alle Kontakte",
+              "showChevron": true
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-026",
+            "component_name": "ToastNotification",
+            "props": {
+              "variant": "success",
+              "message": "Profilbild erfolgreich aktualisiert"
+            },
+            "position": "modal",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          }
+        ],
+        "layout": "flex column, centered, max-width 400px, padding 16px",
+        "data_sources": [],
+        "state_shape": {
+          "currentAvatar": "string|null",
+          "isUploading": "boolean",
+          "visibilitySettings": "string",
+          "showToast": "boolean",
+          "toastMessage": "string"
+        }
+      },
+      {
+        "route": "/settings/profile/display-name",
+        "screen_name": "Anzeigename",
+        "description": "",
+        "user_stories": [
+          "US-007"
+        ],
+        "components": [
+          {
+            "component_id": "COMP-023",
+            "component_name": "ProfileHeader",
+            "props": {
+              "variant": "editable",
+              "title": "Anzeigename",
+              "showBackButton": true
+            },
+            "position": "header",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-001",
+            "component_name": "Button",
+            "props": {
+              "variant": "primary",
+              "text": "Speichern",
+              "disabled": false
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-001",
+            "component_name": "Button",
+            "props": {
+              "variant": "secondary",
+              "text": "Abbrechen"
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-026",
+            "component_name": "ToastNotification",
+            "props": {
+              "variant": "success",
+              "message": "Anzeigename erfolgreich gespeichert",
+              "visible": false
+            },
+            "position": "modal",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-026",
+            "component_name": "ToastNotification",
+            "props": {
+              "variant": "error",
+              "message": "Fehler beim Speichern",
+              "visible": false
+            },
+            "position": "modal",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          }
+        ],
+        "layout": "flex column, centered, max-width 400px, padding 16px",
+        "data_sources": [],
+        "state_shape": {
+          "displayName": "string",
+          "originalDisplayName": "string",
+          "isLoading": "boolean",
+          "error": "string|null",
+          "isDirty": "boolean"
+        }
+      },
+      {
+        "route": "/settings/profile/status",
+        "screen_name": "Info/Status",
+        "description": "",
+        "user_stories": [
+          "US-008",
+          "US-042",
+          "US-043",
+          "US-044",
+          "US-045",
+          "US-046",
+          "US-083"
+        ],
+        "components": [
+          {
+            "component_id": "COMP-023",
+            "component_name": "ProfileHeader",
+            "props": {
+              "variant": "editable",
+              "showStatus": true
+            },
+            "position": "header",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-010",
+            "component_name": "StatusIndicator",
+            "props": {
+              "variant": "online",
+              "size": "large",
+              "editable": true
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-001",
+            "component_name": "Button",
+            "props": {
+              "variant": "primary",
+              "text": "Status erstellen"
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-022",
+            "component_name": "SettingsListItem",
+            "props": {
+              "variant": "default",
+              "title": "Status-Datenschutz",
+              "icon": "privacy"
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-022",
+            "component_name": "SettingsListItem",
+            "props": {
+              "variant": "default",
+              "title": "Status stumm schalten",
+              "icon": "mute",
+              "toggle": true
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-022",
+            "component_name": "SettingsListItem",
+            "props": {
+              "variant": "default",
+              "title": "Info-Sichtbarkeit",
+              "icon": "visibility"
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-026",
+            "component_name": "ToastNotification",
+            "props": {
+              "variant": "success",
+              "message": "Status aktualisiert"
+            },
+            "position": "modal",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          }
+        ],
+        "layout": "flex column, gap-16, padding-24, max-width 600px, centered",
+        "data_sources": [],
+        "state_shape": {
+          "currentStatus": "string",
+          "statusPrivacy": "string",
+          "statusMuted": "boolean",
+          "infoVisibility": "string",
+          "isEditing": "boolean",
+          "showToast": "boolean"
+        }
+      },
+      {
+        "route": "/settings/profile/phone",
+        "screen_name": "Telefonnummer",
+        "description": "",
+        "user_stories": [
+          "US-001",
+          "US-009"
+        ],
+        "components": [
+          {
+            "component_id": "COMP-023",
+            "component_name": "ProfileHeader",
+            "props": {
+              "variant": "default",
+              "title": "Telefonnummer",
+              "showBackButton": true
+            },
+            "position": "header",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-022",
+            "component_name": "SettingsListItem",
+            "props": {
+              "variant": "default",
+              "label": "Aktuelle Telefonnummer",
+              "value": "+49 123 456789",
+              "editable": true
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-001",
+            "component_name": "Button",
+            "props": {
+              "variant": "primary",
+              "text": "Telefonnummer ändern"
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-001",
+            "component_name": "Button",
+            "props": {
+              "variant": "danger",
+              "text": "Telefonnummer entfernen"
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-026",
+            "component_name": "ToastNotification",
+            "props": {
+              "variant": "success",
+              "message": "Telefonnummer erfolgreich aktualisiert"
+            },
+            "position": "modal",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          }
+        ],
+        "layout": "flex column, gap-16, max-width 600px, padding 16px",
+        "data_sources": [
+          "GET /api/v1/profile/phone",
+          "PUT /api/v1/profile/phone",
+          "DELETE /api/v1/profile/phone"
+        ],
+        "state_shape": {
+          "phoneNumber": "string",
+          "isEditing": "boolean",
+          "isLoading": "boolean",
+          "error": "string|null",
+          "showToast": "boolean"
+        }
+      },
+      {
+        "route": "/settings/profile/qr",
+        "screen_name": "QR-Code Profil",
+        "description": "",
+        "user_stories": [
+          "US-010",
+          "US-096",
+          "US-152"
+        ],
+        "components": [
+          {
+            "component_id": "COMP-023",
+            "component_name": "ProfileHeader",
+            "props": {
+              "variant": "default",
+              "showQRCode": true
+            },
+            "position": "header",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-001",
+            "component_name": "Button",
+            "props": {
+              "variant": "primary",
+              "text": "QR-Code teilen"
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-001",
+            "component_name": "Button",
+            "props": {
+              "variant": "outline",
+              "text": "QR-Code speichern"
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-001",
+            "component_name": "Button",
+            "props": {
+              "variant": "secondary",
+              "text": "QR-Code scannen"
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-026",
+            "component_name": "ToastNotification",
+            "props": {
+              "variant": "success",
+              "message": "QR-Code erfolgreich geteilt"
+            },
+            "position": "modal",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          }
+        ],
+        "layout": "flex column, centered, max-width 400px",
+        "data_sources": [],
+        "state_shape": {
+          "qrCodeData": "string",
+          "isSharing": "boolean",
+          "showToast": "boolean",
+          "toastMessage": "string"
+        }
+      },
+      {
+        "route": "/auth/phone",
+        "screen_name": "Telefonnummer-Registrierung",
+        "description": "",
+        "user_stories": [
+          "US-001",
+          "US-009"
+        ],
+        "components": [
+          {
+            "component_id": "COMP-001",
+            "component_name": "Button",
+            "props": {
+              "variant": "primary",
+              "text": "Telefonnummer bestätigen",
+              "disabled": false
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-001",
+            "component_name": "Button",
+            "props": {
+              "variant": "outline",
+              "text": "Code erneut senden",
+              "disabled": false
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-026",
+            "component_name": "ToastNotification",
+            "props": {
+              "variant": "error",
+              "message": "Ungültiger Bestätigungscode",
+              "visible": false
+            },
+            "position": "modal",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-026",
+            "component_name": "ToastNotification",
+            "props": {
+              "variant": "success",
+              "message": "Telefonnummer erfolgreich bestätigt",
+              "visible": false
+            },
+            "position": "modal",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          }
+        ],
+        "layout": "flex column, centered, max-width 400px, padding 24px, gap 16px",
+        "data_sources": [
+          "POST /api/v1/devices"
+        ],
+        "state_shape": {
+          "phoneNumber": "string",
+          "verificationCode": "string",
+          "isLoading": "boolean",
+          "error": "string | null",
+          "isCodeSent": "boolean",
+          "resendTimer": "number"
+        }
+      },
+      {
+        "route": "/settings/security/2fa",
+        "screen_name": "Zwei-Faktor-Authentifizierung",
+        "description": "",
+        "user_stories": [
+          "US-002",
+          "US-062"
+        ],
+        "components": [
+          {
+            "component_id": "COMP-022",
+            "component_name": "SettingsListItem",
+            "props": {
+              "title": "Zwei-Faktor-Authentifizierung",
+              "description": "Zusätzliche Sicherheit für Ihr Konto",
+              "variant": "default",
+              "hasToggle": true,
+              "isEnabled": false
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-022",
+            "component_name": "SettingsListItem",
+            "props": {
+              "title": "Authenticator-App",
+              "description": "Google Authenticator, Authy oder ähnliche Apps",
+              "variant": "default",
+              "hasAction": true,
+              "actionText": "Einrichten"
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-022",
+            "component_name": "SettingsListItem",
+            "props": {
+              "title": "Passkeys",
+              "description": "Biometrische Authentifizierung oder Hardware-Schlüssel",
+              "variant": "default",
+              "hasAction": true,
+              "actionText": "Verwalten"
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-024",
+            "component_name": "DeviceListItem",
+            "props": {
+              "deviceName": "iPhone 15 Pro",
+              "deviceType": "mobile",
+              "lastSeen": "Jetzt aktiv",
+              "variant": "active",
+              "hasRemoveAction": true
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-024",
+            "component_name": "DeviceListItem",
+            "props": {
+              "deviceName": "MacBook Pro",
+              "deviceType": "desktop",
+              "lastSeen": "Vor 2 Stunden",
+              "variant": "inactive",
+              "hasRemoveAction": true
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-001",
+            "component_name": "Button",
+            "props": {
+              "text": "Backup-Codes generieren",
+              "variant": "outline",
+              "fullWidth": true
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-001",
+            "component_name": "Button",
+            "props": {
+              "text": "2FA deaktivieren",
+              "variant": "danger",
+              "fullWidth": true
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-026",
+            "component_name": "ToastNotification",
+            "props": {
+              "message": "2FA erfolgreich aktiviert",
+              "variant": "success",
+              "autoHide": true
+            },
+            "position": "modal",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          }
+        ],
+        "layout": "flex column, gap-16, max-width 600px, padding 24px",
+        "data_sources": [
+          "GET /api/v1/passkeys",
+          "POST /api/v1/passkeys",
+          "DELETE /api/v1/passkeys/{id}",
+          "GET /api/v1/devices",
+          "DELETE /api/v1/devices/{id}",
+          "POST /api/v1/auth/passkeys/registration/options",
+          "POST /api/v1/auth/passkeys/registration/verify"
+        ],
+        "state_shape": {
+          "is2FAEnabled": "boolean",
+          "passkeys": "array",
+          "devices": "array",
+          "isLoading": "boolean",
+          "showBackupCodes": "boolean",
+          "backupCodes": "array",
+          "qrCode": "string",
+          "totpSecret": "string"
+        }
+      },
+      {
+        "route": "/settings/security/biometrics",
+        "screen_name": "Biometrische Entsperrung",
+        "description": "",
+        "user_stories": [
+          "US-003"
+        ],
+        "components": [
+          {
+            "component_id": "COMP-022",
+            "component_name": "SettingsListItem",
+            "props": {
+              "variant": "default",
+              "title": "Fingerabdruck hinzufügen",
+              "subtitle": "Entsperren mit Fingerabdruck",
+              "icon": "fingerprint",
+              "hasAction": true
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-022",
+            "component_name": "SettingsListItem",
+            "props": {
+              "variant": "default",
+              "title": "Gesichtserkennung",
+              "subtitle": "Entsperren mit Face ID",
+              "icon": "face",
+              "hasAction": true
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-024",
+            "component_name": "DeviceListItem",
+            "props": {
+              "variant": "active",
+              "deviceName": "iPhone 15",
+              "lastUsed": "Heute",
+              "biometricType": "Face ID"
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-024",
+            "component_name": "DeviceListItem",
+            "props": {
+              "variant": "inactive",
+              "deviceName": "MacBook Pro",
+              "lastUsed": "Vor 2 Tagen",
+              "biometricType": "Touch ID"
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-001",
+            "component_name": "Button",
+            "props": {
+              "variant": "primary",
+              "text": "Neues Gerät hinzufügen",
+              "fullWidth": true
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-001",
+            "component_name": "Button",
+            "props": {
+              "variant": "danger",
+              "text": "Alle biometrischen Daten löschen",
+              "fullWidth": true
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-026",
+            "component_name": "ToastNotification",
+            "props": {
+              "variant": "success",
+              "message": "Biometrische Entsperrung aktiviert"
+            },
+            "position": "modal",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          }
+        ],
+        "layout": "flex column, gap-16, padding-24, max-width 600px",
+        "data_sources": [
+          "GET /api/v1/passkeys",
+          "POST /api/v1/passkeys",
+          "DELETE /api/v1/passkeys/{id}",
+          "POST /api/v1/passkeys/registration/options",
+          "POST /api/v1/passkeys/registration/verify",
+          "GET /api/v1/devices"
+        ],
+        "state_shape": {
+          "passkeys": "array",
+          "devices": "array",
+          "isLoading": "boolean",
+          "showToast": "boolean",
+          "toastMessage": "string",
+          "biometricSupport": "object"
+        }
+      },
+      {
+        "route": "/settings/security/passkeys",
+        "screen_name": "Passkeys",
+        "description": "",
+        "user_stories": [],
+        "components": [
+          {
+            "component_id": "COMP-023",
+            "component_name": "ProfileHeader",
+            "props": {
+              "variant": "default",
+              "title": "Passkeys",
+              "showBackButton": true
+            },
+            "position": "header",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-001",
+            "component_name": "Button",
+            "props": {
+              "variant": "primary",
+              "text": "Add Passkey",
+              "icon": "plus"
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-024",
+            "component_name": "DeviceListItem",
+            "props": {
+              "variant": "active",
+              "showActions": true,
+              "allowDelete": true
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "stacked",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-001",
+            "component_name": "Button",
+            "props": {
+              "variant": "danger",
+              "text": "Delete",
+              "size": "small"
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-021",
+            "component_name": "EncryptionBadge",
+            "props": {
+              "variant": "secure"
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-026",
+            "component_name": "ToastNotification",
+            "props": {
+              "variant": "success",
+              "message": "Passkey added successfully"
+            },
+            "position": "modal",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          }
+        ],
+        "layout": "flex column, max-width 600px, padding 16px",
+        "data_sources": [
+          "GET /api/v1/passkeys",
+          "POST /api/v1/passkeys",
+          "DELETE /api/v1/passkeys/{id}",
+          "POST /api/v1/auth/passkeys/registration/options",
+          "POST /api/v1/auth/passkeys/registration/verify",
+          "GET /api/v1/devices"
+        ],
+        "state_shape": {
+          "passkeys": "array",
+          "isLoading": "boolean",
+          "error": "string|null",
+          "showAddPasskeyModal": "boolean",
+          "registrationOptions": "object|null",
+          "selectedPasskey": "object|null"
+        }
+      },
+      {
+        "route": "/settings/devices/overview",
+        "screen_name": "Multi-Device Uebersicht",
+        "description": "",
+        "user_stories": [
+          "US-004",
+          "US-132",
+          "US-159"
+        ],
+        "components": [
+          {
+            "component_id": "COMP-023",
+            "component_name": "ProfileHeader",
+            "props": {
+              "title": "Geräte-Übersicht",
+              "variant": "default"
+            },
+            "position": "header",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-002",
+            "component_name": "SearchBar",
+            "props": {
+              "placeholder": "Geräte durchsuchen...",
+              "variant": "default"
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-024",
+            "component_name": "DeviceListItem",
+            "props": {
+              "variant": "active",
+              "showStatus": true,
+              "showLastSeen": true
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "stacked",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-024",
+            "component_name": "DeviceListItem",
+            "props": {
+              "variant": "inactive",
+              "showStatus": true,
+              "showLastSeen": true
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "stacked",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-021",
+            "component_name": "EncryptionBadge",
+            "props": {
+              "variant": "secure"
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-001",
+            "component_name": "Button",
+            "props": {
+              "variant": "primary",
+              "text": "Neues Gerät hinzufügen"
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-001",
+            "component_name": "Button",
+            "props": {
+              "variant": "outline",
+              "text": "Alle Geräte synchronisieren"
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-001",
+            "component_name": "Button",
+            "props": {
+              "variant": "danger",
+              "text": "Gerät entfernen"
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-026",
+            "component_name": "ToastNotification",
+            "props": {
+              "variant": "success",
+              "message": "Gerät erfolgreich hinzugefügt"
+            },
+            "position": "modal",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          }
+        ],
+        "layout": "flex column, gap-4, max-width 800px, padding 16px",
+        "data_sources": [
+          "GET /api/v1/devices",
+          "POST /api/v1/devices",
+          "PUT /api/v1/devices/{id}",
+          "DELETE /api/v1/devices/{id}"
+        ],
+        "state_shape": {
+          "devices": "Device[]",
+          "searchQuery": "string",
+          "selectedDevice": "Device | null",
+          "isLoading": "boolean",
+          "error": "string | null",
+          "showAddDeviceDialog": "boolean"
+        }
+      },
+      {
+        "route": "/settings/devices/link",
+        "screen_name": "Neues Geraet verbinden",
+        "description": "",
+        "user_stories": [],
+        "components": [
+          {
+            "component_id": "COMP-001",
+            "component_name": "Button",
+            "props": {
+              "variant": "ghost",
+              "text": "Zurück",
+              "icon": "arrow-left"
+            },
+            "position": "header",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-001",
+            "component_name": "Button",
+            "props": {
+              "variant": "primary",
+              "text": "QR-Code scannen",
+              "icon": "qr-code"
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-001",
+            "component_name": "Button",
+            "props": {
+              "variant": "outline",
+              "text": "Manuell verbinden",
+              "icon": "link"
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-001",
+            "component_name": "Button",
+            "props": {
+              "variant": "secondary",
+              "text": "Passkey verwenden",
+              "icon": "key"
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-021",
+            "component_name": "EncryptionBadge",
+            "props": {
+              "variant": "secure",
+              "text": "Ende-zu-Ende verschlüsselt"
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-026",
+            "component_name": "ToastNotification",
+            "props": {
+              "variant": "error",
+              "message": "Verbindung fehlgeschlagen"
+            },
+            "position": "modal",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          }
+        ],
+        "layout": "flex column, centered, max-width 400px, padding 24px, gap 16px",
+        "data_sources": [
+          "GET /api/v1/devices",
+          "POST /api/v1/devices",
+          "POST /api/v1/auth/passkeys/registration/options",
+          "POST /api/v1/auth/passkeys/registration/verify"
+        ],
+        "state_shape": {
+          "connectionMethod": "string",
+          "isConnecting": "boolean",
+          "qrCodeData": "string",
+          "manualCode": "string",
+          "error": "string",
+          "devices": "array"
+        }
+      },
+      {
+        "route": "/settings/help/support",
+        "screen_name": "Support kontaktieren",
+        "description": "",
+        "user_stories": [
+          "US-004",
+          "US-157"
+        ],
+        "components": [
+          {
+            "component_id": "COMP-025",
+            "component_name": "HelpArticleCard",
+            "props": {
+              "variant": "default",
+              "title": "Häufige Probleme",
+              "description": "Schnelle Lösungen für bekannte Probleme"
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-025",
+            "component_name": "HelpArticleCard",
+            "props": {
+              "variant": "default",
+              "title": "Chat mit Support",
+              "description": "Direkte Hilfe von unserem Support-Team"
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-025",
+            "component_name": "HelpArticleCard",
+            "props": {
+              "variant": "default",
+              "title": "E-Mail Support",
+              "description": "Senden Sie uns eine detaillierte Anfrage"
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-001",
+            "component_name": "Button",
+            "props": {
+              "variant": "primary",
+              "text": "Live Chat starten"
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-001",
+            "component_name": "Button",
+            "props": {
+              "variant": "outline",
+              "text": "E-Mail senden"
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-026",
+            "component_name": "ToastNotification",
+            "props": {
+              "variant": "info",
+              "message": "Support-Anfrage wurde gesendet"
+            },
+            "position": "modal",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          }
+        ],
+        "layout": "flex column, centered, max-width 600px, gap-4, padding-4",
+        "data_sources": [],
+        "state_shape": {
+          "supportOptions": "array",
+          "selectedOption": "string",
+          "isLoading": "boolean",
+          "showToast": "boolean",
+          "toastMessage": "string"
+        }
+      },
+      {
+        "route": "/auth/phone/verify",
+        "screen_name": "SMS/Anruf-Verifizierung",
+        "description": "",
+        "user_stories": [
+          "US-040",
+          "US-058",
+          "US-062",
+          "US-140",
+          "US-141",
+          "US-142",
+          "US-143",
+          "US-144",
+          "US-145",
+          "US-146"
+        ],
+        "components": [
+          {
+            "component_id": "COMP-001",
+            "component_name": "Button",
+            "props": {
+              "variant": "outline",
+              "text": "SMS erneut senden"
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-001",
+            "component_name": "Button",
+            "props": {
+              "variant": "outline",
+              "text": "Anrufen"
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-001",
+            "component_name": "Button",
+            "props": {
+              "variant": "primary",
+              "text": "Verifizieren"
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-001",
+            "component_name": "Button",
+            "props": {
+              "variant": "ghost",
+              "text": "Telefonnummer ändern"
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-026",
+            "component_name": "ToastNotification",
+            "props": {
+              "variant": "error",
+              "message": "Ungültiger Verifizierungscode"
+            },
+            "position": "modal",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-026",
+            "component_name": "ToastNotification",
+            "props": {
+              "variant": "success",
+              "message": "SMS wurde gesendet"
+            },
+            "position": "modal",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          }
+        ],
+        "layout": "flex column, centered, max-width 400px",
+        "data_sources": [
+          "POST /api/v1/devices",
+          "PUT /api/v1/devices/{id}"
+        ],
+        "state_shape": {
+          "phoneNumber": "string",
+          "verificationCode": "string",
+          "isVerifying": "boolean",
+          "resendCooldown": "number",
+          "verificationMethod": "string",
+          "errorMessage": "string"
+        }
+      },
+      {
+        "route": "/settings/security/2fa/verify",
+        "screen_name": "PIN-Verifizierung",
+        "description": "",
+        "user_stories": [
+          "US-058",
+          "US-062",
+          "US-140",
+          "US-141",
+          "US-142",
+          "US-143",
+          "US-144",
+          "US-145",
+          "US-146",
+          "US-147"
+        ],
+        "components": [
+          {
+            "component_id": "COMP-001",
+            "component_name": "Button",
+            "props": {
+              "variant": "ghost",
+              "text": "Zurück",
+              "icon": "arrow-left"
+            },
+            "position": "header",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-021",
+            "component_name": "EncryptionBadge",
+            "props": {
+              "variant": "verifying",
+              "text": "PIN-Verifizierung erforderlich"
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-001",
+            "component_name": "Button",
+            "props": {
+              "variant": "primary",
+              "text": "PIN bestätigen",
+              "disabled": true
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-001",
+            "component_name": "Button",
+            "props": {
+              "variant": "ghost",
+              "text": "Abbrechen"
+            },
+            "position": "main",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          },
+          {
+            "component_id": "COMP-026",
+            "component_name": "ToastNotification",
+            "props": {
+              "variant": "error",
+              "text": "Ungültige PIN",
+              "visible": false
+            },
+            "position": "modal",
+            "responsive": {
+              "mobile": "visible",
+              "desktop": "visible"
+            }
+          }
+        ],
+        "layout": "flex column, centered, max-width 400px, padding 24px, gap 24px",
+        "data_sources": [
+          "POST /api/v1/auth/passkeys/authentication/verify"
+        ],
+        "state_shape": {
+          "pinValue": "string",
+          "isVerifying": "boolean",
+          "verificationError": "string|null",
+          "attempts": "number"
+        }
+      }
+    ],
+    "missing_components": [
+      "Logo",
+      "LoadingSpinner",
+      "WelcomeText",
+      "ChatList",
+      "Avatar",
+      "Timestamp",
+      "LastMessage",
+      "CallHistoryAPI",
+      "SettingsSection",
+      "ToggleSwitch",
+      "Slider",
+      "ChatHeader",
+      "MessageList",
+      "ChatMenuDropdown",
+      "SearchInChat",
+      "ChatBackground",
+      "QRCodeModal",
+      "AvatarUpload",
+      "ProfileForm",
+      "SectionHeader",
+      "DeviceRegistrationDialog",
+      "DeviceDetailsModal",
+      "ConfirmDeleteDialog",
+      "HelpCategoryFilter",
+      "ContactSupportDialog",
+      "ChatSettingsSection",
+      "MediaGallery",
+      "SharedFiles",
+      "SectionDivider",
+      "DevicePermissionCheck",
+      "AudioLevelIndicator",
+      "CallHeader",
+      "NetworkDiagnostics",
+      "ConnectionQualityIndicator",
+      "TroubleshootingSteps",
+      "ConnectionStatusIndicator",
+      "NetworkQualityMeter",
+      "EdgeCaseDialog",
+      "ReconnectionSpinner",
+      "AvatarPreview",
+      "ImageCropper",
+      "VisibilitySelector",
+      "FileUpload",
+      "TextInput",
+      "StatusEditor",
+      "StatusList",
+      "PrivacySettings",
+      "PhoneNumberInput",
+      "VerificationCodeInput",
+      "PhoneNumberFormatter",
+      "QRCodeDisplay",
+      "QRCodeScanner",
+      "FormHeader",
+      "FormDescription",
+      "CountryCodeSelector",
+      "BackupCodesModal",
+      "TOTPSetupWizard",
+      "BiometricSetupDialog",
+      "BiometricTestDialog",
+      "PasskeyRegistrationModal",
+      "EmptyState",
+      "DeviceStatusCard",
+      "SyncProgressIndicator",
+      "DeviceTypeIcon",
+      "ManualCodeInput",
+      "ConnectionProgress",
+      "DeviceTypeSelector",
+      "PageHeader",
+      "SupportForm",
+      "ContactInfo",
+      "OperatingHours",
+      "PhoneNumberDisplay",
+      "CountdownTimer",
+      "VerificationMethodSelector",
+      "PinInput",
+      "SecurityHeader",
+      "VerificationStatus"
+    ],
+    "component_usage_count": {
+      "COMP-001": 52,
+      "COMP-026": 26,
+      "COMP-002": 5,
+      "COMP-003": 3,
+      "COMP-010": 3,
+      "COMP-014": 1,
+      "COMP-018": 3,
+      "COMP-023": 14,
+      "COMP-022": 40,
+      "COMP-024": 11,
+      "COMP-013": 5,
+      "COMP-004": 3,
+      "COMP-012": 1,
+      "COMP-011": 1,
+      "COMP-015": 1,
+      "COMP-021": 9,
+      "COMP-005": 1,
+      "COMP-006": 1,
+      "COMP-008": 1,
+      "COMP-016": 1,
+      "COMP-017": 1,
+      "COMP-007": 1,
+      "COMP-019": 2,
+      "COMP-020": 7,
+      "COMP-025": 8,
+      "COMP-009": 1
+    }
+  }
+}

@@ -1,0 +1,22 @@
+%%{init: {"theme": "default"}}%%
+graph TD
+    A[User] -->|Initiates Payment| B(WhatsApp Pay)
+    B -->|Processes Payment| C[Payment Gateway]
+    B -->|Sends Notification| D[Merchant]
+    B -->|Receives Confirmation| E[User's Bank]
+    B -->|Receives Funds| F[Merchant's Bank]
+
+    subgraph "External Systems"
+        C
+        E
+        F
+    end
+
+    subgraph "WhatsApp Pay"
+        B
+    end
+
+    subgraph "Users"
+        A
+        D
+    end

@@ -1,0 +1,12 @@
+flowchart TD
+    A[Start Compliance Reporting] --> B[Identify Privacy Controls]
+    B --> C[Assess GDPR Requirements]
+    C --> D[Assess CCPA Requirements]
+    D --> E{Are Controls Aligned?}
+    E -->|Yes| F[Document Compliance]
+    E -->|No| G[Implement Necessary Changes]
+    G --> B
+    F --> H[Prepare Compliance Report]
+    H --> I[Review and Approve Report]
+    I --> J[Submit Report]
+    J --> K[End Compliance Reporting]

@@ -1,0 +1,143 @@
+{
+  "route": "/chats/:chatId/settings",
+  "screen_name": "Chat-Einstellungen",
+  "description": "",
+  "user_stories": [
+    "US-020",
+    "US-078",
+    "US-087",
+    "US-092",
+    "US-094",
+    "US-095",
+    "US-121",
+    "US-131"
+  ],
+  "components": [
+    {
+      "component_id": "COMP-023",
+      "component_name": "ProfileHeader",
+      "props": {
+        "variant": "default",
+        "showBackButton": true,
+        "title": "Chat-Einstellungen"
+      },
+      "position": "header",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-022",
+      "component_name": "SettingsListItem",
+      "props": {
+        "variant": "default",
+        "title": "Chat durchsuchen",
+        "icon": "search",
+        "hasChevron": true
+      },
+      "position": "main",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-022",
+      "component_name": "SettingsListItem",
+      "props": {
+        "variant": "default",
+        "title": "Chat anpinnen",
+        "icon": "pin",
+        "hasToggle": true
+      },
+      "position": "main",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-022",
+      "component_name": "SettingsListItem",
+      "props": {
+        "variant": "default",
+        "title": "Chat-Hintergrund",
+        "icon": "background",
+        "hasChevron": true
+      },
+      "position": "main",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-022",
+      "component_name": "SettingsListItem",
+      "props": {
+        "variant": "default",
+        "title": "Chat archivieren",
+        "icon": "archive",
+        "hasChevron": true
+      },
+      "position": "main",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-022",
+      "component_name": "SettingsListItem",
+      "props": {
+        "variant": "default",
+        "title": "Chat exportieren",
+        "icon": "export",
+        "hasChevron": true
+      },
+      "position": "main",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-022",
+      "component_name": "SettingsListItem",
+      "props": {
+        "variant": "danger",
+        "title": "Chat sperren",
+        "icon": "lock",
+        "hasChevron": true
+      },
+      "position": "main",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-021",
+      "component_name": "EncryptionBadge",
+      "props": {
+        "variant": "secure",
+        "text": "Ende-zu-Ende verschlüsselt"
+      },
+      "position": "main",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    }
+  ],
+  "layout": "flex column, full-height, max-width 400px",
+  "data_sources": [],
+  "state_shape": {
+    "chatId": "string",
+    "chatSettings": "object",
+    "isPinned": "boolean",
+    "isArchived": "boolean",
+    "isBlocked": "boolean"
+  }
+}

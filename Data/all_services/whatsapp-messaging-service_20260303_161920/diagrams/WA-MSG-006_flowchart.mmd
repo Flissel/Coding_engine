@@ -1,0 +1,8 @@
+flowchart TD
+    A[Nachricht erhalten] --> B{Nachricht zitieren?}
+    B -- Ja --> C[Zitat auswählen]
+    B -- Nein --> D[Antworten ohne Zitat]
+    C --> E[Zitat einfügen]
+    E --> F[Antwort verfassen]
+    D --> F
+    F --> G[Nachricht senden]

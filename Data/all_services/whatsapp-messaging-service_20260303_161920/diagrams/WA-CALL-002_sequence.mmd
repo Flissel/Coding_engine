@@ -1,0 +1,17 @@
+sequenceDiagram
+    participant User as Benutzer
+    participant System as System
+    participant Server as Server
+
+    User->>System: Initiate Video Call
+    System->>Server: Establish Encrypted Connection
+    Server-->>System: Connection Established
+    System-->>User: Video Call Started
+    User->>System: Send Video Stream
+    System->>Server: Transmit Encrypted Video Stream
+    Server-->>System: Stream Received
+    System-->>User: Stream Acknowledged
+    User->>System: End Video Call
+    System->>Server: Terminate Connection
+    Server-->>System: Connection Terminated
+    System-->>User: Video Call Ended

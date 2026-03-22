@@ -1,0 +1,17 @@
+flowchart TD
+    A[Start] --> B{Backup Type}
+    B -->|Cloud| C[Perform Cloud Backup]
+    B -->|Local| D[Perform Local Backup]
+    C --> E[Backup Complete]
+    D --> E
+    E --> F{Restore Type}
+    F -->|Cloud| G[Restore from Cloud]
+    F -->|Local| H[Restore from Local]
+    G --> I[Restore Complete]
+    H --> I
+    I --> J{Sync Type}
+    J -->|Cross-Device| K[Sync Data Across Devices]
+    J -->|Single Device| L[No Sync Required]
+    K --> M[Sync Complete]
+    L --> M
+    M --> N[End]

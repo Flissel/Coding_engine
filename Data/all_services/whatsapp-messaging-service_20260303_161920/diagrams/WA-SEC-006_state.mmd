@@ -1,0 +1,8 @@
+stateDiagram-v2
+    [*] --> Unauthenticated
+    Unauthenticated --> EnterCredentials : Enter Username and Password
+    EnterCredentials --> AwaitingPIN : Credentials Valid
+    EnterCredentials --> Unauthenticated : Credentials Invalid
+    AwaitingPIN --> Authenticated : Enter PIN
+    AwaitingPIN --> Unauthenticated : PIN Invalid
+    Authenticated --> [*]

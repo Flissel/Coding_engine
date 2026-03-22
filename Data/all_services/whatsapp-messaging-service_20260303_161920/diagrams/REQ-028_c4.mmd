@@ -1,0 +1,13 @@
+%%{ init : { "theme" : "default" } }%%
+C4Context
+    title Third-Party Integrations and Bots Context Diagram
+
+    Person(user, "User", "A user interacting with the system")
+    System(system, "Third-Party Integrations and Bots", "APIs/webhooks for bot integrations and external service connectivity")
+
+    System_Ext(bot, "Bot", "A bot that interacts with the system")
+    System_Ext(externalService, "External Service", "An external service that connects via API/webhook")
+
+    Rel(user, system, "Uses")
+    Rel(system, bot, "Integrates with")
+    Rel(system, externalService, "Connects to")

@@ -1,0 +1,17 @@
+flowchart TD
+    A[Start] --> B[Write Code]
+    B --> C[Code Review]
+    C --> D{Is Code Approved?}
+    D -- Yes --> E[Run Automated Tests]
+    D -- No --> B
+    E --> F{Do Tests Pass?}
+    F -- Yes --> G[Check Code Coverage]
+    F -- No --> H[Fix Issues]
+    H --> E
+    G --> I{Is Coverage Above Threshold?}
+    I -- Yes --> J[Merge Code]
+    I -- No --> K[Increase Coverage]
+    K --> E
+    J --> L[Deploy to Production]
+    L --> M[Monitor Code Quality]
+    M --> N[End]

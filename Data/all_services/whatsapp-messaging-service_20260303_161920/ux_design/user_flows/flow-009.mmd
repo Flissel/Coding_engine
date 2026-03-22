@@ -1,0 +1,43 @@
+flowchart TD
+    Start([Start: Business-Profil erstellen und verwalten (Onboarding)])
+    S1[User oeffnet die App und landet im Dashboard]
+    Start --> S1
+    E1[/App startet im Offline-Modus; Hinweisbanner erscheint/]
+    S1 -.-> E1
+    S2{System prueft, ob Session gueltig ist}
+    S1 --> S2
+    E2[/Session abgelaufen -> Redirect zu Login/Account-Recovery/]
+    S2 -.-> E2
+    S3[User navigiert zu 'Business-Profil verwalten']
+    S2 --> S3
+    E3[/Keine Berechtigung -> Zugriff verweigert Hinweis/]
+    S3 -.-> E3
+    S4[Onboarding-Hinweis wird angezeigt und User startet das Erstellen]
+    S3 --> S4
+    E4[/Intro kann nicht geladen werden -> Skip-Option anzeigen/]
+    S4 -.-> E4
+    S5[User fuellt Pflichtfelder (Name, Kategorie, Kontakt) aus]
+    S4 --> S5
+    E5[/Eingabeformat ungueltig -> Inline-Fehleranzeige/]
+    S5 -.-> E5
+    S6{System validiert Pflichtfelder}
+    S5 --> S6
+    E6[/Pflichtfelder fehlen/ungueltig -> Speichern deaktiviert, Fehlertexte sichtbar/]
+    S6 -.-> E6
+    S7{User fuegt optionale Infos hinzu und laedt Profilbild/Dokument hoch}
+    S6 --> S7
+    E7[/Upload verstoesst gegen Richtlinien -> Upload abgelehnt, Begruendung angezeigt/]
+    S7 -.-> E7
+    S8{User klickt auf 'Speichern'}
+    S7 --> S8
+    E8[/Verbindung verloren -> Speichern fehlgeschlagen, Retry & Offline-Entwurf anbieten/]
+    S8 -.-> E8
+    S9{Profil wird im Profilbereich angezeigt}
+    S8 --> S9
+    E9[/Synchronisation fehlgeschlagen -> Hinweisbanner, erneuter Sync-Button/]
+    S9 -.-> E9
+    S10{User bearbeitet spaeter das Profil auf einem anderen Geraet und speichert}
+    S9 --> S10
+    E10[/Konflikt/Device-Wechsel -> Re-Login erforderlich oder Konfliktloesung anzeigen/]
+    S10 -.-> E10
+    S10 --> End([End])

@@ -1,0 +1,14 @@
+%%{ init : { "theme" : "default" } }%%
+C4Context
+    title Schneller App-Start System Architecture
+
+    Person(user, "User", "A user of the application")
+    
+    System(schnellerAppStart, "Schneller App-Start", "An application that ensures fast startup times")
+
+    System_Ext(cloudService, "Cloud Service", "External cloud service for data storage and retrieval")
+    System_Ext(database, "Database", "Database for storing user preferences and app settings")
+
+    Rel(user, schnellerAppStart, "Uses")
+    Rel(schnellerAppStart, cloudService, "Fetches data from")
+    Rel(schnellerAppStart, database, "Reads and writes user preferences")

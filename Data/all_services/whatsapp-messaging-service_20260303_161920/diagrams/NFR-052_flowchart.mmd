@@ -1,0 +1,14 @@
+flowchart TD
+    A[Define Recovery Objectives] --> B[RPO Targets]
+    A --> C[RTO Targets]
+    B --> D[Identify Data Criticality]
+    B --> E[Set Data Recovery Point]
+    C --> F[Assess Downtime Tolerance]
+    C --> G[Establish Recovery Time]
+    D --> H[Document RPO]
+    E --> H
+    F --> I[Document RTO]
+    G --> I
+    H --> J[Review and Approve Objectives]
+    I --> J
+    J --> K[Implement Recovery Strategies]

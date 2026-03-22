@@ -12,7 +12,7 @@ from typing import Dict, List, Any, Optional
 from dataclasses import dataclass, field
 import structlog
 
-from src.llm_config import get_model
+from src.llm_config import get_model, get_openrouter_model
 
 logger = structlog.get_logger()
 
@@ -170,7 +170,7 @@ OUTPUT FORMAT (JSON):
             model: Model to use (defaults to env or Haiku 4.5)
         """
         self.tool_registry = tool_registry
-        self.model = model or os.getenv("MCP_PLANNER_MODEL") or get_model("judge")
+        self.model = model or os.getenv("MCP_PLANNER_MODEL") or get_openrouter_model("judge")
         self._llm_client = None
         self._use_openai_format = False  # Set by _get_llm_client()
 

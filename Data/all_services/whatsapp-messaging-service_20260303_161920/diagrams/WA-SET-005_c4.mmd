@@ -1,0 +1,10 @@
+%%{init: {"theme": "default"}}%%
+    C4Context
+        title Gruppen-Einladungen System Context Diagram
+
+        Person(person, "Benutzer", "Eine Person, die Gruppen verwaltet und Einladungen sendet.")
+        System(system, "Gruppen-Einladungen", "Ein System zur Verwaltung von Gruppen und Einladungen.")
+        System_Ext(externalSystem, "Externer Dienst", "Ein externer Dienst zur Benachrichtigung von Benutzern.")
+
+        Rel(person, system, "Verwaltet Gruppen und sendet Einladungen")
+        Rel(system, externalSystem, "Sendet Benachrichtigungen über Einladungen")

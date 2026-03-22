@@ -1,0 +1,129 @@
+{
+  "id": "SCREEN-024",
+  "name": "Status-Antwort",
+  "route": "/status/reply",
+  "layout": "fullscreen-overlay",
+  "description": "Screen zur Anzeige einer Statusnachricht mit Möglichkeit, darauf mit einer Antwort (Text, Emoji, Sprache) zu reagieren. Der Status wird im Vollbild angezeigt, unten befindet sich das Eingabefeld für die Antwort.",
+  "components": [
+    "COMP-004",
+    "COMP-005",
+    "COMP-006",
+    "COMP-007",
+    "COMP-008",
+    "COMP-010"
+  ],
+  "component_layout": [
+    {
+      "id": "COMP-010",
+      "name": "StatusIndicator",
+      "x": 0,
+      "y": 0,
+      "w": 60,
+      "h": 3
+    },
+    {
+      "id": "COMP-007",
+      "name": "MediaViewer",
+      "x": 0,
+      "y": 3,
+      "w": 60,
+      "h": 14
+    },
+    {
+      "id": "COMP-004",
+      "name": "ChatBubble (Reply Preview)",
+      "x": 2,
+      "y": 17,
+      "w": 56,
+      "h": 4
+    },
+    {
+      "id": "COMP-008",
+      "name": "EmojiPicker",
+      "x": 0,
+      "y": 21,
+      "w": 6,
+      "h": 3
+    },
+    {
+      "id": "COMP-005",
+      "name": "MessageInput",
+      "x": 6,
+      "y": 21,
+      "w": 42,
+      "h": 3
+    },
+    {
+      "id": "COMP-006",
+      "name": "VoiceRecorder",
+      "x": 48,
+      "y": 21,
+      "w": 12,
+      "h": 3
+    }
+  ],
+  "data_requirements": [
+    "GET /api/status/{statusId}",
+    "GET /api/status/{statusId}/author",
+    "POST /api/status/{statusId}/reply",
+    "POST /api/messages/media/upload"
+  ],
+  "parent_user_story": "US-044",
+  "wireframe_mermaid": "flowchart TD\n    subgraph Status-Antwort\n        Header[Header / Navigation]\n        Main[Main Content Area]\n        Sidebar[Sidebar / Filters]\n        Footer[Footer / Actions]\n    end\n\n    Header --> Main\n    Sidebar --> Main\n    Main --> Footer\n\n    %% \n",
+  "wireframe_ascii": "     0    5   10   15   20   25   30   35   40   45   50   55   60\n   0 +------------------------------------------------------------+\n     | [<Back]  [Avatar] Kontaktname        12:34   [...]        |\n   1 |          COMP-010 (StatusIndicator)                       |\n   2 |  ████████████████████████████████████████████████████████  |\n     +------------------------------------------------------------+\n   3 |                                                            |\n     |                                                            |\n   5 |                                                            |\n     |                                                            |\n   7 |              COMP-007 (MediaViewer)                        |\n     |           ┌──────────────────────────┐                     |\n   9 |           │   Status-Bild / Video    │                     |\n     |           │   oder Text-Status mit   │                     |\n  11 |           │   farbigem Hintergrund   │                     |\n     |           └──────────────────────────┘                     |\n  13 |                                                            |\n     |                                                            |\n  15 |                                                            |\n     +------------------------------------------------------------+\n  17 |  ┌────────────────────────────────────────────────────────┐|\n     |  │ ↩ Antwort auf Status von Kontaktname                  │|\n  18 |  │ COMP-004 (ChatBubble - Reply Preview)                 │|\n     |  │ \"Originale Statusnachricht hier...\"                   │|\n  20 |  └────────────────────────────────────────────────────────┘|\n     +------------------------------------------------------------+\n  21 | [😊]  | [Nachricht eingeben...              ] | [🎤 Mic]  |\n     | COMP  | COMP-005 (MessageInput)               | COMP-006  |\n  22 | -008  |                                       | (Voice    |\n     |Emoji  |                              [📎][➤]  | Recorder) |\n  23 |Picker |                                       |           |\n     +-------+---------------------------------------+-----------+",
+  "state_bindings": {
+    "COMP-010": "status.current.author",
+    "COMP-007": "status.current.media",
+    "COMP-004": "status.current.replyPreview",
+    "COMP-005": "statusReply.inputText",
+    "COMP-006": "statusReply.voiceRecording",
+    "COMP-008": "statusReply.emojiPickerOpen"
+  },
+  "navigation_rules": [
+    {
+      "trigger": "back_btn_click",
+      "target": "/status",
+      "condition": ""
+    },
+    {
+      "trigger": "send_btn_click",
+      "target": "/chat/{contactId}",
+      "condition": "statusReply.inputText.length > 0"
+    },
+    {
+      "trigger": "voice_send_complete",
+      "target": "/chat/{contactId}",
+      "condition": "statusReply.voiceRecording.duration > 0"
+    },
+    {
+      "trigger": "swipe_right",
+      "target": "/status/{prevStatusId}",
+      "condition": "status.hasPrevious"
+    },
+    {
+      "trigger": "swipe_left",
+      "target": "/status/{nextStatusId}",
+      "condition": "status.hasNext"
+    },
+    {
+      "trigger": "more_btn_click",
+      "target": "overlay:status_options",
+      "condition": ""
+    }
+  ],
+  "responsive": {
+    "mobile": {
+      "layout": "fullscreen",
+      "hidden_components": []
+    },
+    "tablet": {
+      "layout": "fullscreen-centered",
+      "hidden_components": []
+    },
+    "desktop": {
+      "layout": "centered-modal",
+      "hidden_components": []
+    }
+  },
+  "auth_required": true
+}

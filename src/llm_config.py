@@ -206,6 +206,23 @@ def get_model_config(role: str) -> Dict[str, Any]:
     }
 
 
+def get_openrouter_model(role: str) -> str:
+    """
+    Get model ID formatted for OpenRouter (adds anthropic/ prefix for Claude models).
+
+    OpenRouter requires provider-prefixed model IDs like 'anthropic/claude-haiku-4-5'
+    while the Anthropic SDK uses bare names like 'claude-haiku-4-5'.
+    """
+    model = get_model(role)
+    # Already has a provider prefix (e.g. "anthropic/claude-sonnet-4.5")
+    if "/" in model:
+        return model
+    # Claude models need the anthropic/ prefix on OpenRouter
+    if model.startswith("claude-"):
+        return f"anthropic/{model}"
+    return model
+
+
 def get_openrouter_headers() -> Dict[str, str]:
     """Get standard OpenRouter HTTP headers."""
     return {

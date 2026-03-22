@@ -1,0 +1,9 @@
+flowchart TD
+    A[Start] --> B[Benutzer gibt Datum ein]
+    B --> C{Ist das Datum gültig?}
+    C -->|Ja| D[Sprung zu bestimmtem Datum]
+    C -->|Nein| E[Fehlermeldung anzeigen]
+    E --> B
+    D --> F[Inhalt für das Datum laden]
+    F --> G[Anzeige der Inhalte]
+    G --> H[Ende]

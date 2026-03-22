@@ -1,0 +1,28 @@
+sequenceDiagram
+    participant UserA as User A
+    participant UserB as User B
+    participant Group as Group Call
+    participant Server as Server
+    participant QualityControl as Quality Control
+
+    UserA->>Server: Initiate call (User B)
+    Server-->>UserB: Notify call (User A)
+    UserB->>Server: Accept call
+    Server-->>UserA: Connect call (User B)
+    
+    UserA->>QualityControl: Monitor call quality
+    UserB->>QualityControl: Monitor call quality
+    QualityControl-->>UserA: Adjust quality settings
+    QualityControl-->>UserB: Adjust quality settings
+
+    UserA->>Server: Add User C to call
+    Server-->>Group: Notify User C to join
+    UserC->>Server: Join call
+    Server-->>Group: Connect User C
+
+    UserA->>Group: Mute microphone
+    UserB->>Group: Turn off video
+    UserC->>Group: Share screen
+
+    UserA->>Server: End call
+    Server-->>Group: Disconnect all participants

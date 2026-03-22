@@ -1,0 +1,82 @@
+{
+  "id": "SCREEN-013",
+  "name": "Anruf-Onboarding (Video Call Permissions)",
+  "route": "/calls/video/:callId/onboarding",
+  "layout": "fullscreen-modal",
+  "description": "Onboarding-Screen vor einem Videoanruf: Berechtigungen (Kamera, Mikrofon) einholen, Nutzer über Medien-/Dateianhänge im Chat aufklären, Checkliste mit Voraussetzungen anzeigen. Unterstützt Media/File Attachment Previews gemäß US-130.",
+  "components": [
+    "COMP-001",
+    "COMP-007",
+    "COMP-010"
+  ],
+  "component_layout": [
+    {
+      "id": "COMP-010",
+      "name": "StatusIndicator (Permission Checklist)",
+      "x": 10,
+      "y": 2,
+      "w": 40,
+      "h": 4
+    },
+    {
+      "id": "COMP-007",
+      "name": "MediaViewer (Camera Preview / Attachment Preview)",
+      "x": 10,
+      "y": 7,
+      "w": 40,
+      "h": 12
+    },
+    {
+      "id": "COMP-001",
+      "name": "Button (Continue / Request Permissions)",
+      "x": 15,
+      "y": 21,
+      "w": 30,
+      "h": 3
+    }
+  ],
+  "data_requirements": [
+    "GET /api/calls/video/:callId",
+    "GET /api/calls/video/:callId/permissions",
+    "POST /api/calls/video/:callId/permissions/grant",
+    "GET /api/media/preview/:attachmentId"
+  ],
+  "parent_user_story": "US-130",
+  "wireframe_mermaid": "flowchart TD\n    subgraph Anruf-Onboarding_(Video_Call_Permissions)\n        Header[Header / Navigation]\n        Main[Main Content Area]\n        Sidebar[Sidebar / Filters]\n        Footer[Footer / Actions]\n    end\n\n    Header --> Main\n    Sidebar --> Main\n    Main --> Footer\n\n    %% \n",
+  "wireframe_ascii": "     0    5   10   15   20   25   30   35   40   45   50   55   60\n   0 +------------------------------------------------------------+\n     |                                                            |\n   2 |          +----------------------------------------+        |\n     |          | COMP-010  StatusIndicator               |        |\n   4 |          | [✓] Kamera-Berechtigung       [Granted] |        |\n     |          | [✗] Mikrofon-Berechtigung     [Denied]  |        |\n   6 |          | [✓] Medien-/Dateianhänge      [Ready]   |        |\n     |          +----------------------------------------+        |\n   7 |          +----------------------------------------+        |\n     |          |                                        |        |\n   9 |          |    COMP-007  MediaViewer                |        |\n     |          |                                        |        |\n  11 |          |   +------------------------------+     |        |\n     |          |   |  📷  Kamera-Vorschau         |     |        |\n  13 |          |   |                              |     |        |\n     |          |   |   [Selbstansicht / Preview]  |     |        |\n  15 |          |   |                              |     |        |\n     |          |   +------------------------------+     |        |\n  17 |          |  📎 Anhang-Preview: foto.jpg  2.1MB    |        |\n     |          |  📄 Anhang-Preview: doc.pdf   540KB    |        |\n  19 |          +----------------------------------------+        |\n     |                                                            |\n  21 |               +------------------------------+             |\n     |               |  COMP-001  Button             |             |\n  23 |               |  [🟢 Berechtigungen erteilen  |             |\n     |               |     & Anruf starten]          |             |\n  25 |               +------------------------------+             |\n     |                                                            |\n  27 |          Hinweis: Du kannst Medien & Dateien               |\n     |          während des Anrufs im Chat teilen.                |\n  29 +------------------------------------------------------------+",
+  "state_bindings": {
+    "COMP-010": "onboarding.permissions",
+    "COMP-007": "onboarding.cameraPreview",
+    "COMP-001": "onboarding.continueAction"
+  },
+  "navigation_rules": [
+    {
+      "trigger": "continue_btn_click",
+      "target": "/calls/video/:callId",
+      "condition": "permissions.camera === true && permissions.microphone === true"
+    },
+    {
+      "trigger": "deny_permissions",
+      "target": "/chats",
+      "condition": ""
+    },
+    {
+      "trigger": "attachment_preview_click",
+      "target": "/calls/video/:callId/onboarding/media/:attachmentId",
+      "condition": "attachment.exists"
+    }
+  ],
+  "responsive": {
+    "mobile": {
+      "layout": "stack",
+      "hidden_components": []
+    },
+    "tablet": {
+      "layout": "centered-card"
+    },
+    "desktop": {
+      "layout": "fullscreen-modal"
+    }
+  },
+  "auth_required": true
+}

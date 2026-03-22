@@ -1,0 +1,32 @@
+classDiagram
+    class ComplianceReport {
+        +String reportID
+        +DateTime creationDate
+        +String status
+        +generateReport()
+        +validateCompliance()
+    }
+
+    class PrivacyControl {
+        +String controlID
+        +String description
+        +boolean isGDPRCompliant
+        +boolean isCCPACompliant
+        +assessCompliance()
+    }
+
+    class GDPR {
+        +String regulationID
+        +String requirements
+        +checkCompliance()
+    }
+
+    class CCPA {
+        +String regulationID
+        +String requirements
+        +checkCompliance()
+    }
+
+    ComplianceReport --> PrivacyControl : includes
+    PrivacyControl --> GDPR : aligns with
+    PrivacyControl --> CCPA : aligns with

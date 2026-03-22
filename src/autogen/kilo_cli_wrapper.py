@@ -102,6 +102,8 @@ class KiloCLI:
         context_files: Optional[list[str]] = None,
         use_mcp: bool = True,  # Ignored for Kilo, kept for API compatibility
         file_context: str = "",  # Used for meaningful file naming
+        agent_name: Optional[str] = None,  # Maps to --mode override if provided
+        max_turns: Optional[int] = None,  # Ignored for Kilo, kept for API compat
     ) -> KiloCLIResponse:
         """
         Execute a prompt using Kilo CLI in autonomous mode.
@@ -114,6 +116,8 @@ class KiloCLI:
             context_files: Optional list of file paths to include as context
             use_mcp: Ignored (for ClaudeCLI compatibility)
             file_context: Context string for meaningful file naming
+            agent_name: Optional agent name (for ClaudeCLI compatibility)
+            max_turns: Ignored (for ClaudeCLI compatibility)
 
         Returns:
             KiloCLIResponse with results

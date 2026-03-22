@@ -1,0 +1,6 @@
+stateDiagram-v2
+    [*] --> Idle
+    Idle --> DisplayInfoText : Info Text Available
+    Idle --> NoInfoText : No Info Text
+    DisplayInfoText --> Idle : User Acknowledges
+    NoInfoText --> Idle : User Acknowledges

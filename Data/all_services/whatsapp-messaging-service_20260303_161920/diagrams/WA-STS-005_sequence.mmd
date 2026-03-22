@@ -1,0 +1,9 @@
+sequenceDiagram
+    participant User as Nutzer
+    participant System as System
+    participant Contact as Kontakt
+
+    User->>System: Stummschalten des Kontakt-Status anfordern
+    System->>Contact: Kontakt-Status stumm schalten
+    Contact-->>System: Status erfolgreich stumm geschaltet
+    System-->>User: Bestätigung des Stummschaltens

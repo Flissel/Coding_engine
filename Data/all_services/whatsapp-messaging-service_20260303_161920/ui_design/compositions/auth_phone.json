@@ -1,0 +1,79 @@
+{
+  "route": "/auth/phone",
+  "screen_name": "Telefonnummer-Registrierung",
+  "description": "",
+  "user_stories": [
+    "US-001",
+    "US-009"
+  ],
+  "components": [
+    {
+      "component_id": "COMP-001",
+      "component_name": "Button",
+      "props": {
+        "variant": "primary",
+        "text": "Telefonnummer bestätigen",
+        "disabled": false
+      },
+      "position": "main",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-001",
+      "component_name": "Button",
+      "props": {
+        "variant": "outline",
+        "text": "Code erneut senden",
+        "disabled": false
+      },
+      "position": "main",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-026",
+      "component_name": "ToastNotification",
+      "props": {
+        "variant": "error",
+        "message": "Ungültiger Bestätigungscode",
+        "visible": false
+      },
+      "position": "modal",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-026",
+      "component_name": "ToastNotification",
+      "props": {
+        "variant": "success",
+        "message": "Telefonnummer erfolgreich bestätigt",
+        "visible": false
+      },
+      "position": "modal",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    }
+  ],
+  "layout": "flex column, centered, max-width 400px, padding 24px, gap 16px",
+  "data_sources": [
+    "POST /api/v1/devices"
+  ],
+  "state_shape": {
+    "phoneNumber": "string",
+    "verificationCode": "string",
+    "isLoading": "boolean",
+    "error": "string | null",
+    "isCodeSent": "boolean",
+    "resendTimer": "number"
+  }
+}

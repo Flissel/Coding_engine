@@ -1,0 +1,13 @@
+{
+  "route": "/medien_und_anhänge",
+  "screen_name": "Screen: Medien und Anhänge",
+  "description": "Auto-generated composition for 2 stories",
+  "linked_user_stories": [
+    "US-161",
+    "US-056"
+  ],
+  "user_stories": [
+    "US-161",
+    "US-056"
+  ]
+}

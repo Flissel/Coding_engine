@@ -65,7 +65,7 @@ class QdrantAgentConfig(BaseModel):
     name: str = "qdrant-session"
     model: str = field(default_factory=lambda: get_model("mcp_agent"))
     working_dir: str = "."
-    qdrant_url: str = "http://localhost:6333"
+    qdrant_url: str = field(default_factory=lambda: os.environ.get("QDRANT_URL", "http://localhost:6340"))
     collection: str = "code_index"
 
 
@@ -104,8 +104,8 @@ When the task is fully validated, say "TASK_COMPLETE".
 class QdrantTools:
     """Custom Qdrant tool implementations."""
 
-    def __init__(self, qdrant_url: str = "http://localhost:6333", collection: str = "code_index"):
-        self.qdrant_url = qdrant_url
+    def __init__(self, qdrant_url: str = None, collection: str = "code_index"):
+        self.qdrant_url = qdrant_url or os.environ.get("QDRANT_URL", "http://localhost:6340")
         self.default_collection = collection
         self._client = None
         self._embedder = None
@@ -544,7 +544,7 @@ async def main():
     parser.add_argument('--model', default=get_model("mcp_agent"), help="Model to use")
     parser.add_argument('--task', default='List all collections', help="Task to execute")
     parser.add_argument('--working-dir', dest='working_dir', default='.', help="Working directory")
-    parser.add_argument('--qdrant-url', default='http://localhost:6333', help="Qdrant URL")
+    parser.add_argument('--qdrant-url', default=os.environ.get("QDRANT_URL", "http://localhost:6340"), help="Qdrant URL")
     parser.add_argument('--collection', default='code_index', help="Default collection")
     parser.add_argument('config_json', nargs='?', help="JSON config (alternative)")
     args = parser.parse_args()

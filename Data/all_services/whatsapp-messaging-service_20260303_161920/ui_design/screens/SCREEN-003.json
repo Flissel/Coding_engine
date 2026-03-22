@@ -1,0 +1,119 @@
+{
+  "id": "SCREEN-003",
+  "name": "Anrufe / Info-Status",
+  "route": "/calls",
+  "layout": "stack",
+  "description": "Anrufliste mit Verlauf und Schnellaktionen. Nutzer kann seinen Info/Status-Text sehen und bearbeiten. Die Anrufliste zeigt vergangene Anrufe mit Kontaktinformationen und Status-Indikatoren.",
+  "components": [
+    "COMP-001",
+    "COMP-002",
+    "COMP-003",
+    "COMP-009",
+    "COMP-010"
+  ],
+  "component_layout": [
+    {
+      "id": "COMP-001",
+      "name": "QuickActionButtons",
+      "x": 0,
+      "y": 0,
+      "w": 60,
+      "h": 4
+    },
+    {
+      "id": "COMP-002",
+      "name": "SearchBar",
+      "x": 0,
+      "y": 4,
+      "w": 60,
+      "h": 3
+    },
+    {
+      "id": "COMP-009",
+      "name": "ProfileStatusCard",
+      "x": 0,
+      "y": 7,
+      "w": 60,
+      "h": 5
+    },
+    {
+      "id": "COMP-010",
+      "name": "StatusIndicator",
+      "x": 45,
+      "y": 8,
+      "w": 12,
+      "h": 2
+    },
+    {
+      "id": "COMP-003",
+      "name": "CallHistoryList",
+      "x": 0,
+      "y": 12,
+      "w": 60,
+      "h": 14
+    }
+  ],
+  "data_requirements": [
+    "GET /api/calls/history",
+    "GET /api/profile/status",
+    "PUT /api/profile/status",
+    "GET /api/contacts/{id}"
+  ],
+  "parent_user_story": "US-008",
+  "wireframe_mermaid": "flowchart TD\n    subgraph Anrufe_/_Info-Status\n        Header[Header / Navigation]\n        Main[Main Content Area]\n        Sidebar[Sidebar / Filters]\n        Footer[Footer / Actions]\n    end\n\n    Header --> Main\n    Sidebar --> Main\n    Main --> Footer\n\n    %% \n",
+  "wireframe_ascii": "     0    5   10   15   20   25   30   35   40   45   50   55   60\n   0 +------------------------------------------------------------+\n     |  [Logo/Back]       Anrufe          [NewCall] [VideoCall]   |\n   2 |                COMP-001 (QuickActionButtons)               |\n     +------------------------------------------------------------+\n   4 |  +--------------------------------------------------------+|\n     |  | [🔍] Anrufe durchsuchen...                             ||\n   6 |  |  COMP-002 (SearchBar)                                  ||\n     +--+--------------------------------------------------------++\n   7 |  +------------------------------------------------------+ |\n     |  | [Avatar]  Mein Status / Info-Text        [Online] ●   | |\n   9 |  |           \"Hey there! I am using WhatsApp\"  COMP-010  | |\n     |  |  COMP-009 (ProfileStatusCard)     [✏️ Bearbeiten]     | |\n  11 |  +------------------------------------------------------+ |\n     +------------------------------------------------------------+\n  12 |  Letzte Anrufe                              [Alle | Verp.] |\n     |  +--------------------------------------------------------+|\n  14 |  | [Avatar] Max Mustermann        ↗ ausgehend  14:32     ||\n     |  |          COMP-003              COMP-010  Heute         ||\n  16 |  |--------------------------------------------------------||\n     |  | [Avatar] Anna Schmidt          ↙ eingehend  12:05     ||\n  18 |  |          COMP-003              COMP-010  Heute         ||\n     |  |--------------------------------------------------------||\n  20 |  | [Avatar] Peter Weber           ✕ verpasst   Gestern   ||\n     |  |          COMP-003              COMP-010                ||\n  22 |  |--------------------------------------------------------||\n     |  | [Avatar] Lisa Mueller          ↗ ausgehend  Mo.       ||\n  24 |  |          COMP-003 (CallHistoryList)  COMP-010          ||\n     |  +--------------------------------------------------------+|\n  26 +------------------------------------------------------------+",
+  "state_bindings": {
+    "COMP-002": "calls.searchQuery",
+    "COMP-003": "calls.historyList",
+    "COMP-009": "profile.statusInfo",
+    "COMP-010": "profile.onlineStatus",
+    "COMP-001": "calls.quickActions"
+  },
+  "navigation_rules": [
+    {
+      "trigger": "call_item_click",
+      "target": "/contacts/{contactId}",
+      "condition": ""
+    },
+    {
+      "trigger": "new_call_click",
+      "target": "/calls/new",
+      "condition": ""
+    },
+    {
+      "trigger": "video_call_click",
+      "target": "/calls/new?type=video",
+      "condition": ""
+    },
+    {
+      "trigger": "edit_status_click",
+      "target": "/profile/edit-status",
+      "condition": "user.isAuthenticated"
+    },
+    {
+      "trigger": "call_item_long_press",
+      "target": "/calls/{callId}/details",
+      "condition": ""
+    },
+    {
+      "trigger": "search_submit",
+      "target": "/calls?q={query}",
+      "condition": ""
+    }
+  ],
+  "responsive": {
+    "mobile": {
+      "layout": "stack",
+      "hidden_components": []
+    },
+    "tablet": {
+      "layout": "stack",
+      "hidden_components": []
+    },
+    "desktop": {
+      "layout": "split",
+      "hidden_components": []
+    }
+  },
+  "auth_required": true
+}

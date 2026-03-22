@@ -1,0 +1,430 @@
+erDiagram
+    User {
+        uuid id PK
+        string phone_number
+        datetime phone_verified_at
+        boolean is_2fa_enabled
+        datetime created_at
+        datetime updated_at
+        datetime deleted_at
+        integer version
+    }
+    UserProfile {
+        uuid id PK
+        uuid user_id FK
+        string display_name
+        text info_text
+        string profile_image_url
+        string qr_code_value
+        boolean show_phone
+        datetime created_at
+        datetime updated_at
+        datetime deleted_at
+        integer version
+    }
+    UserAuthMethod {
+        uuid id PK
+        uuid user_id FK
+        enum method_type
+        string secret_hash
+        boolean is_enabled
+        datetime last_used_at
+        jsonb metadata
+        datetime created_at
+        datetime updated_at
+        datetime deleted_at
+        integer version
+    }
+    Device {
+        uuid id PK
+        uuid user_id FK
+        string device_name
+        enum platform
+        string device_identifier
+        string session_token_hash
+        datetime last_seen_at
+        datetime created_at
+        datetime updated_at
+        datetime deleted_at
+        integer version
+    }
+    EncryptionKey {
+        uuid id PK
+        uuid user_id FK
+        text public_key
+        integer key_version
+        enum algorithm
+        boolean is_active
+        datetime created_at
+        datetime updated_at
+        datetime deleted_at
+        integer version
+    }
+    DeliveryReceipt {
+        uuid id PK
+        uuid message_id
+        uuid recipient_user_id FK
+        enum status
+        datetime status_at
+        datetime created_at
+        datetime updated_at
+        datetime deleted_at
+        integer version
+    }
+    LinkPreview {
+        uuid id PK
+        uuid user_id FK
+        string url
+        string title
+        text description_text
+        string image_url
+        enum media_type
+        datetime fetched_at
+        datetime created_at
+        datetime updated_at
+        datetime deleted_at
+        integer version
+    }
+    AuditLog {
+        uuid id PK
+        string entity_type
+        uuid entity_id
+        enum action
+        jsonb old_value
+        jsonb new_value
+        uuid actor_id FK
+        datetime timestamp
+        datetime created_at
+        datetime updated_at
+    }
+    DeviceSession {
+        uuid id PK
+        uuid user_id FK
+        string device_id
+        string session_token
+        datetime last_active_at
+        datetime deleted_at
+        datetime created_at
+        datetime updated_at
+    }
+    Chat {
+        uuid id PK
+        uuid user_id FK
+        enum chat_type
+        string title
+        boolean is_locked
+        enum lock_auth_method
+        integer version
+        datetime deleted_at
+        datetime created_at
+        datetime updated_at
+    }
+    Message {
+        uuid id PK
+        uuid chat_id FK
+        uuid user_id FK
+        enum message_type
+        text content
+        uuid quoted_message_id FK
+        uuid forwarded_from_message_id FK
+        boolean is_ephemeral
+        datetime expires_at
+        integer version
+        datetime deleted_at
+        datetime created_at
+        datetime updated_at
+    }
+    MessageReaction {
+        uuid id PK
+        uuid message_id FK
+        uuid user_id FK
+        string emoji
+        integer version
+        datetime deleted_at
+        datetime created_at
+        datetime updated_at
+    }
+    MediaMetadata {
+        uuid id PK
+        uuid message_id FK
+        enum media_type
+        string url
+        string mime_type
+        integer size_bytes
+        integer duration_seconds
+        string preview_title
+        text preview_description
+        boolean view_once
+        datetime deleted_at
+        datetime created_at
+        datetime updated_at
+    }
+    Group {
+        uuid id PK
+        uuid user_id FK
+        string group_name
+        jsonb settings
+        string invite_link
+        boolean allow_silent_leave
+        datetime created_at
+        datetime updated_at
+        datetime deleted_at
+        integer version
+    }
+    GroupMember {
+        uuid id PK
+        uuid group_id FK
+        uuid user_id FK
+        enum role
+        boolean left_silently
+        datetime created_at
+        datetime updated_at
+        datetime deleted_at
+        integer version
+    }
+    MessageReceipt {
+        uuid id PK
+        uuid message_id FK
+        uuid user_id FK
+        enum status
+        datetime status_at
+        datetime created_at
+        datetime updated_at
+        datetime deleted_at
+        integer version
+    }
+    device_session {
+        uuid id PK
+        uuid user_id FK
+        string device_name
+        boolean app_lock_enabled
+        enum auth_method
+        datetime last_active_at
+        datetime created_at
+        datetime updated_at
+        datetime deleted_at
+        integer version
+    }
+    encryption_key {
+        uuid id PK
+        uuid user_id FK
+        text public_key
+        integer key_version
+        string algorithm
+        enum verification_status
+        string verification_fingerprint
+        datetime created_at
+        datetime updated_at
+        datetime deleted_at
+        integer version
+    }
+    message_receipt {
+        uuid id PK
+        uuid message_id FK
+        uuid recipient_user_id FK
+        enum status
+        datetime status_at
+        datetime created_at
+        datetime updated_at
+    }
+    media_asset {
+        uuid id PK
+        uuid user_id FK
+        uuid message_id FK
+        enum media_type
+        enum source
+        boolean is_hd
+        string file_url
+        string mime_type
+        integer duration_seconds
+        string preview_title
+        string preview_description
+        string preview_image_url
+        string target_url
+        jsonb metadata
+        datetime created_at
+        datetime updated_at
+        datetime deleted_at
+        integer version
+    }
+    contact_block {
+        uuid id PK
+        uuid blocker_user_id FK
+        uuid blocked_user_id FK
+        string reason
+        datetime created_at
+        datetime updated_at
+        datetime deleted_at
+        integer version
+    }
+    audit_log {
+        uuid id PK
+        string entity_type
+        uuid entity_id
+        enum action
+        jsonb old_value
+        jsonb new_value
+        uuid actor_id FK
+        datetime timestamp
+        datetime created_at
+        datetime updated_at
+    }
+    contact {
+        uuid id PK
+        uuid user_id FK
+        string display_name
+        string phone_number
+        string whatsapp_user_id
+        boolean is_favorite
+        boolean is_unknown_sender
+        jsonb tags
+        integer version
+        datetime created_at
+        datetime updated_at
+        datetime deleted_at
+    }
+    delivery_receipt {
+        uuid id PK
+        uuid message_id FK
+        enum status
+        datetime status_at
+        datetime created_at
+        datetime updated_at
+    }
+    link_preview {
+        uuid id PK
+        uuid message_id FK
+        string url
+        string title
+        string description
+        string image_url
+        enum media_type
+        datetime created_at
+        datetime updated_at
+    }
+    privacy_setting {
+        uuid id PK
+        uuid user_id FK
+        enum online_status_visibility
+        integer version
+        datetime created_at
+        datetime updated_at
+        datetime deleted_at
+    }
+    media_attachment {
+        uuid id PK
+        uuid message_id FK
+        uuid user_id FK
+        enum media_type
+        string file_name
+        integer file_size_bytes
+        string mime_type
+        string storage_url
+        string preview_url
+        string checksum
+        datetime created_at
+        datetime updated_at
+        datetime deleted_at
+        integer version
+    }
+    media {
+        uuid id PK
+        uuid message_id FK
+        uuid user_id FK
+        enum media_type
+        integer size_bytes
+        string storage_url
+        datetime created_at
+        datetime updated_at
+        datetime deleted_at
+        integer version
+    }
+    session {
+        uuid id PK
+        uuid user_id FK
+        uuid device_id FK
+        string session_token
+        datetime started_at
+        datetime ended_at
+        string ip_address
+        datetime created_at
+        datetime updated_at
+        datetime deleted_at
+        integer version
+    }
+    user_storage_limit {
+        uuid id PK
+        uuid user_id FK
+        integer storage_quota_mb
+        integer storage_used_mb
+        enum enforcement_status
+        datetime last_calculated_at
+        datetime created_at
+        datetime updated_at
+        datetime deleted_at
+        integer version
+    }
+    reliability_policy {
+        uuid id PK
+        decimal error_budget_percent
+        integer window_days
+        enum deployment_frequency_target
+        enum logging_standard
+        jsonb metrics_thresholds
+        enum accessibility_standard
+        string api_standard_version
+        datetime created_at
+        datetime updated_at
+        integer version
+    }
+    resilience_policy {
+        uuid id PK
+        enum scope
+        integer backup_frequency_minutes
+        integer retention_days
+        string replication_regions
+        integer rpo_minutes
+        integer rto_minutes
+        integer max_message_size_bytes
+        integer max_media_size_bytes
+        integer version
+        datetime created_at
+        datetime updated_at
+    }
+    User ||--|| UserProfile : "has_profile"
+    User ||--o{ UserAuthMethod : "has_auth_method"
+    User ||--o{ Device : "uses_device"
+    User ||--o{ EncryptionKey : "owns_key"
+    User ||--o{ DeliveryReceipt : "receives_receipt"
+    User ||--o{ LinkPreview : "creates_link_preview"
+    User ||--o{ AuditLog : "acts_in_audit"
+    Chat ||--o{ Message : "has_messages"
+    Message ||--o{ MessageReaction : "has_reactions"
+    Message ||--o{ DeliveryReceipt : "has_receipts"
+    Message ||--o{ MediaMetadata : "has_media"
+    User ||--o{ DeviceSession : "has_sessions"
+    User ||--o{ Group : "owns"
+    Group ||--o{ GroupMember : "has_members"
+    User ||--o{ GroupMember : "is_member"
+    Group ||--o{ Message : "receives"
+    User ||--o{ Message : "sends"
+    Message ||--o{ MessageReceipt : "has_receipts"
+    user ||--o{ device_session : "has_sessions"
+    user ||--o{ encryption_key : "has_keys"
+    user ||--o{ message : "sends"
+    message ||--o{ message_receipt : "has_receipts"
+    message ||--o{ media_asset : "has_media"
+    contact_block {
+        uuid contact_block.blocker_user_id FK
+        uuid contact_block.blocked_user_id FK
+    }
+    user ||--o{ contact_block : ""
+    contact_block }o--|| user : ""
+    contact ||--o{ message : "sends"
+    message ||--o{ delivery_receipt : "has_receipt"
+    message ||--o{ link_preview : "has_preview"
+    message ||--o{ media_attachment : "has_attachments"
+    user ||--o{ delivery_receipt : "receives"
+    user ||--o{ audit_log : "acts_in"
+    message ||--o{ media : "has_media"
+    device ||--o{ session : "has_sessions"

@@ -20,7 +20,7 @@ from dataclasses import dataclass, field
 from enum import Enum
 import structlog
 
-from src.llm_config import get_model
+from src.llm_config import get_model, get_openrouter_model
 
 logger = structlog.get_logger(__name__)
 
@@ -44,8 +44,8 @@ class SimulationConfig:
     judge_every: int = 5        # Run judge every N steps
     steering_every: int = 5     # Run LLM steering every N steps
     judge_provider: str = "openrouter"
-    judge_model: str = field(default_factory=lambda: get_model("judge"))
-    steering_model: str = field(default_factory=lambda: get_model("judge"))  # Fast model for steering
+    judge_model: str = field(default_factory=lambda: get_openrouter_model("judge"))
+    steering_model: str = field(default_factory=lambda: get_openrouter_model("judge"))  # Fast model for steering
     top_k_results: int = 10
     enable_llm_steering: bool = True  # Enable LLM-guided exploration
     # Phase 11: Completeness checking params

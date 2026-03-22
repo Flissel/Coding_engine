@@ -1,0 +1,8 @@
+stateDiagram-v2
+    [*] --> Unmuted
+    Unmuted --> Muted : mute()
+    Muted --> Unmuted : unmute()
+    Muted --> Error : error_occurred()
+    Unmuted --> Error : error_occurred()
+    Error --> Unmuted : resolve_error()
+    Error --> Muted : resolve_error()

@@ -1,0 +1,130 @@
+{
+  "route": "/settings/security/biometrics",
+  "screen_name": "Biometrische Entsperrung",
+  "description": "",
+  "user_stories": [
+    "US-003"
+  ],
+  "components": [
+    {
+      "component_id": "COMP-022",
+      "component_name": "SettingsListItem",
+      "props": {
+        "variant": "default",
+        "title": "Fingerabdruck hinzufügen",
+        "subtitle": "Entsperren mit Fingerabdruck",
+        "icon": "fingerprint",
+        "hasAction": true
+      },
+      "position": "main",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-022",
+      "component_name": "SettingsListItem",
+      "props": {
+        "variant": "default",
+        "title": "Gesichtserkennung",
+        "subtitle": "Entsperren mit Face ID",
+        "icon": "face",
+        "hasAction": true
+      },
+      "position": "main",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-024",
+      "component_name": "DeviceListItem",
+      "props": {
+        "variant": "active",
+        "deviceName": "iPhone 15",
+        "lastUsed": "Heute",
+        "biometricType": "Face ID"
+      },
+      "position": "main",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-024",
+      "component_name": "DeviceListItem",
+      "props": {
+        "variant": "inactive",
+        "deviceName": "MacBook Pro",
+        "lastUsed": "Vor 2 Tagen",
+        "biometricType": "Touch ID"
+      },
+      "position": "main",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-001",
+      "component_name": "Button",
+      "props": {
+        "variant": "primary",
+        "text": "Neues Gerät hinzufügen",
+        "fullWidth": true
+      },
+      "position": "main",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-001",
+      "component_name": "Button",
+      "props": {
+        "variant": "danger",
+        "text": "Alle biometrischen Daten löschen",
+        "fullWidth": true
+      },
+      "position": "main",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-026",
+      "component_name": "ToastNotification",
+      "props": {
+        "variant": "success",
+        "message": "Biometrische Entsperrung aktiviert"
+      },
+      "position": "modal",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    }
+  ],
+  "layout": "flex column, gap-16, padding-24, max-width 600px",
+  "data_sources": [
+    "GET /api/v1/passkeys",
+    "POST /api/v1/passkeys",
+    "DELETE /api/v1/passkeys/{id}",
+    "POST /api/v1/passkeys/registration/options",
+    "POST /api/v1/passkeys/registration/verify",
+    "GET /api/v1/devices"
+  ],
+  "state_shape": {
+    "passkeys": "array",
+    "devices": "array",
+    "isLoading": "boolean",
+    "showToast": "boolean",
+    "toastMessage": "string",
+    "biometricSupport": "object"
+  }
+}

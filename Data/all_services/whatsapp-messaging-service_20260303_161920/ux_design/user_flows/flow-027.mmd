@@ -1,0 +1,43 @@
+flowchart TD
+    Start([Start: Status-Antwort senden])
+    S1{User öffnet die Messaging-App}
+    Start --> S1
+    E1[/Session abgelaufen → Login erforderlich/]
+    S1 -.-> E1
+    S2{User meldet sich an (falls Session abgelaufen)}
+    S1 --> S2
+    E2[/Account-Recovery notwendig bei fehlgeschlagenem Login/]
+    S2 -.-> E2
+    S3{System prüft, ob es der erste Login auf diesem Gerät ist}
+    S2 --> S3
+    E3[/Onboarding übersprungen → Hinweis bleibt im Hilfe-Menü verfügbar/]
+    S3 -.-> E3
+    S4[User öffnet Chat mit eingehender Statusnachricht]
+    S3 --> S4
+    E4[/Chat nicht geladen → Netzwerkproblem / erneutes Laden/]
+    S4 -.-> E4
+    S5{User wählt die Statusnachricht und klickt auf 'Status-Antwort'}
+    S4 --> S5
+    E5[/Statusnachricht älter als Antwortfenster → Antwortfunktion deaktiviert/]
+    S5 -.-> E5
+    S6{System prüft Antwortfenster-Zeitlimit}
+    S5 --> S6
+    E6[/Senden verhindert und Hinweis 'Antwortfenster abgelaufen'/]
+    S6 -.-> E6
+    S7{User verfasst die Status-Antwort und klickt 'Senden'}
+    S6 --> S7
+    E7[/Verbindung unterbrochen → Fehlermeldung mit Option 'Erneut senden'/]
+    S7 -.-> E7
+    S8[System sendet Nachricht und bestätigt Zustellung]
+    S7 --> S8
+    E8[/Serverfehler → Nachricht wird als 'Nicht zugestellt' markiert/]
+    S8 -.-> E8
+    S9{User versucht bei Fehlern erneut zu senden}
+    S8 --> S9
+    E9[/Weiterhin offline → Nachricht bleibt in Warteschlange/]
+    S9 -.-> E9
+    S10{System erkennt Gerätewechsel und fordert Re-Authentifizierung an}
+    S9 --> S10
+    E10[/Re-Authentifizierung fehlgeschlagen → Zugriff gesperrt/]
+    S10 -.-> E10
+    S10 --> End([End])

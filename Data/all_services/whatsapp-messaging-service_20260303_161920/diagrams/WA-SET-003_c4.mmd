@@ -1,0 +1,11 @@
+%%{ init : { "theme" : "default" } }%%
+C4Context
+    title Profilbild-Sichtbarkeit System Architecture
+
+    Person(user, "Benutzer", "Ein Benutzer, der sein Profilbild verwalten möchte.")
+    System(system, "Profilbild-Sichtbarkeit", "Ein System zur Verwaltung der Sichtbarkeit von Profilbildern.")
+
+    System_Ext(thirdPartyService, "Drittanbieter-Service", "Ein externer Dienst zur Authentifizierung und Profilverwaltung.")
+
+    Rel(user, system, "Verwaltet die Sichtbarkeit seines Profilbildes")
+    Rel(system, thirdPartyService, "Kommuniziert zur Authentifizierung und Datenverwaltung")

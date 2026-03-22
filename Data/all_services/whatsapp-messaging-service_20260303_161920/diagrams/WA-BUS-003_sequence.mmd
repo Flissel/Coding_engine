@@ -1,0 +1,9 @@
+sequenceDiagram
+    participant User as Benutzer
+    participant System as System
+    participant Business as Unternehmen
+
+    User->>System: Anfrage nach Schnellantworten
+    System->>Business: Abrufen vordefinierter Schnellantworten
+    Business-->>System: Rückgabe der Schnellantworten
+    System-->>User: Anzeige der Schnellantworten

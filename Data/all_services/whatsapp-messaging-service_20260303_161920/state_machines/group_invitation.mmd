@@ -1,0 +1,17 @@
+stateDiagram-v2
+    [*] --> created
+    created --> sent : send_invitation [recipient_valid] / generate_invitation_link
+    created --> failed : send_invitation [recipient_invalid] / log_error
+    created --> cancelled : cancel_invitation / notify_creator
+    sent --> accepted : accept_invitation [invitation_not_expired] / add_user_to_group
+    sent --> declined : decline_invitation [invitation_not_expired] / notify_group_admin
+    sent --> expired : expire_invitation / cleanup_invitation_link
+    sent --> cancelled : cancel_invitation / invalidate_invitation_link
+    sent --> expired : accept_invitation [invitation_expired] / notify_invitation_expired
+    sent --> expired : decline_invitation [invitation_expired] / notify_invitation_expired
+    failed --> sent : retry_send [retry_limit_not_exceeded] / generate_invitation_link
+    failed --> cancelled : cancel_invitation / notify_creator
+    accepted --> [*]
+    declined --> [*]
+    expired --> [*]
+    cancelled --> [*]

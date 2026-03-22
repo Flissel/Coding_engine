@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Diagrams for whatsapp-messaging-service">
+    <title>Diagrams - whatsapp-messaging-service</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true, theme:'neutral'});</script>
+    <style>
+        :root {
+            --primary-color: #1a73e8;
+            --secondary-color: #5f6368;
+            --background-color: #ffffff;
+            --surface-color: #f8f9fa;
+            --text-color: #202124;
+            --border-color: #dadce0;
+            --success-color: #34a853;
+            --warning-color: #fbbc04;
+            --error-color: #ea4335;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 1.5rem;
+            font-weight: 500;
+        }
+
+        nav {
+            background-color: var(--surface-color);
+            border-bottom: 1px solid var(--border-color);
+            padding: 0.5rem 0;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background-color 0.2s;
+        }
+
+        nav a:hover, nav a.active {
+            background-color: var(--border-color);
+            color: var(--primary-color);
+        }
+
+        main {
+            padding: 2rem 0;
+            min-height: calc(100vh - 200px);
+        }
+
+        .page-header {
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--primary-color);
+        }
+
+        .page-header h2 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .page-header .meta {
+            color: var(--secondary-color);
+            font-size: 0.9rem;
+        }
+
+        section {
+            margin-bottom: 2rem;
+        }
+
+        section h3 {
+            color: var(--text-color);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .card {
+            background-color: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .card h4 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .card .meta {
+            font-size: 0.85rem;
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .requirement-card {
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .story-card {
+            border-left: 4px solid var(--success-color);
+        }
+
+        .test-card {
+            border-left: 4px solid var(--warning-color);
+        }
+
+        .priority-must {
+            border-left-color: var(--error-color);
+        }
+
+        .priority-should {
+            border-left-color: var(--warning-color);
+        }
+
+        .priority-could {
+            border-left-color: var(--success-color);
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            margin-right: 0.25rem;
+            background-color: var(--border-color);
+        }
+
+        .tag-must { background-color: #fce8e6; color: var(--error-color); }
+        .tag-should { background-color: #fef7e0; color: #e37400; }
+        .tag-could { background-color: #e6f4ea; color: #137333; }
+        .tag-wont { background-color: #f1f3f4; color: var(--secondary-color); }
+
+        .diagram-container {
+            background-color: white;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            overflow-x: auto;
+        }
+
+        .mermaid {
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        th, td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        th {
+            background-color: var(--surface-color);
+            font-weight: 600;
+        }
+
+        tr:hover {
+            background-color: var(--surface-color);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background-color: var(--surface-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .stat-card .value {
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .stat-card .label {
+            color: var(--secondary-color);
+            font-size: 0.9rem;
+        }
+
+        footer {
+            background-color: var(--surface-color);
+            border-top: 1px solid var(--border-color);
+            padding: 1rem 0;
+            text-align: center;
+            color: var(--secondary-color);
+            font-size: 0.85rem;
+        }
+
+        .toc {
+            background-color: var(--surface-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .toc h4 {
+            margin-bottom: 1rem;
+        }
+
+        .toc ul {
+            list-style: none;
+            padding-left: 1rem;
+        }
+
+        .toc li {
+            margin: 0.25rem 0;
+        }
+
+        .toc a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .toc a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media print {
+            header, nav, footer {
+                display: none;
+            }
+
+            main {
+                padding: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>whatsapp-messaging-service</h1>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="index.html" class="">Overview</a></li><li><a href="requirements.html" class="">Requirements</a></li><li><a href="user_stories.html" class="">User Stories</a></li><li><a href="diagrams.html" class="active">Diagrams</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <div class="container">
+            
+            <div class="page-header">
+                <h2>Diagrams</h2>
+                <p class="meta">Generated on 2026-03-03 23:02</p>
+            </div>
+        <section id="diagrams"><h3>Diagrams (460)</h3>
+                    <div class="diagram-container">
+                        <pre class="mermaid">%%{ init: { &#x27;theme&#x27;: &#x27;default&#x27; } }%%
+C4Context
+    title Message Send Latency System Architecture
+
+    Person(user, &quot;User&quot;, &quot;A user sending text messages&quot;)
+    System(system, &quot;Messaging System&quot;, &quot;Handles sending and receiving text messages&quot;)
+
+    System_Ext(externalService, &quot;External SMS Gateway&quot;, &quot;Third-party service for SMS delivery&quot;)
+    
+    Rel(user, system, &quot;Sends text messages&quot;)
+    Rel(system, externalService, &quot;Sends messages to&quot;)
+    Rel(externalService, system, &quot;Acknowledges message delivery&quot;)
+    
+    System_Boundary(systemBoundary, &quot;Messaging System&quot;) {
+        Container(database, &quot;Message Database&quot;, &quot;Stores messages and delivery status&quot;)
+        Container(api, &quot;Messaging API&quot;, &quot;Handles incoming message requests&quot;)
+        Container(latencyMonitor, &quot;Latency Monitoring Service&quot;, &quot;Monitors message send latency&quot;)
+        
+        Rel(api, database, &quot;Reads/Writes messages&quot;)
+        Rel(api, latencyMonitor, &quot;Sends latency data for analysis&quot;)
+    }</pre>
+                    </div>
+                
+                    <div class="diagram-container">
+                        <pre class="mermaid">sequenceDiagram
+    participant User as User
+    participant App as Messaging App
+    participant Server as Message Server
+    participant Recipient as Recipient User
+
+    User-&gt;&gt;App: Send Message
+    App-&gt;&gt;Server: Forward Message
+    Server-&gt;&gt;Recipient: Deliver Message
+    Recipient--&gt;&gt;Server: Acknowledge Receipt
+    Server--&gt;&gt;App: Acknowledge Delivery
+    App--&gt;&gt;User: Confirm Delivery</pre>
+                    </div>
+                
+                    <div class="diagram-container">
+                        <pre class="mermaid">stateDiagram-v2
+    [*] --&gt; Idle
+    Idle --&gt; Sending : Send Message
+    Sending --&gt; Acknowledged : Message Delivered
+    Sending --&gt; Timeout : Latency Exceeded
+    Acknowledged --&gt; Idle : Acknowledgment Received
+    Timeout --&gt; Idle : Retry or Cancel</pre>
+                    </div>
+                
+                    <div class="diagram-container">
+                        <pre class="mermaid">%%{ init : { &quot;theme&quot; : &quot;default&quot; } }%%
+C4Context
+    title Media Upload Throughput System Architecture
+
+    Person(user, &quot;User&quot;, &quot;A user who uploads voice and media files.&quot;)
+    System(mediaUploadService, &quot;Media Upload Service&quot;, &quot;Handles the uploading of media files and ensures throughput.&quot;)
+    System(database, &quot;Database&quot;, &quot;Stores uploaded media files and metadata.&quot;)
+    System(externalService, &quot;External Processing Service&quot;, &quot;Processes media files after upload.&quot;)
+
+    Rel(user, mediaUploadService, &quot;Uploads voice and media files&quot;)
+    Rel(mediaUploadService, database, &quot;Stores media files and metadata&quot;)
+    Rel(mediaUploadService, externalService, &quot;Sends files for processing&quot;)
+    Rel(externalService, database, &quot;Updates processing status and results&quot;)</pre>
+                    </div>
+                
+                    <div class="diagram-container">
+                        <pre class="mermaid">sequenceDiagram
+    participant User as User
+    participant MediaServer as Media Server
+    participant Storage as Storage System
+    participant Monitoring as Monitoring System
+
+    User-&gt;&gt;MediaServer: Upload media file
+    MediaServer-&gt;&gt;Storage: Store media file
+    Storage--&gt;&gt;MediaServer: Confirm storage success
+    MediaServer--&gt;&gt;User: Confirm upload completion
+
+    Monitoring-&gt;&gt;MediaServer: Check upload throughput
+    MediaServer--&gt;&gt;Monitoring: Provide throughput metrics
+    Monitoring-&gt;&gt;User: Report upload status and completion time</pre>
+                    </div>
+                
+                    <div class="diagram-container">
+                        <pre class="mermaid">stateDiagram-v2
+    [*] --&gt; Idle
+    Idle --&gt; Uploading : Start Upload
+    Uploading --&gt; InProgress : Media Upload Initiated
+    InProgress --&gt; Completed : Upload Successful
+    InProgress --&gt; Failed : Upload Error
+    Failed --&gt; Retry : Retry Upload
+    Retry --&gt; Uploading : Retry Initiated
+    Completed --&gt; [*]
+    Failed --&gt; [*]</pre>
+                    </div>
+                
+                    <div class="diagram-container">
+                        <pre class="mermaid">%%{ init : { &quot;theme&quot; : &quot;default&quot; } }%%
+C4Context
+    title Concurrent User Scaling System Architecture
+
+    Person(user, &quot;User&quot;, &quot;A user of the system&quot;)
+    
+    System_Boundary(s1, &quot;Concurrent User Scaling System&quot;) {
+        Container(webApp, &quot;Web Application&quot;, &quot;Handles user requests and interactions&quot;, &quot;Java, Spring Boot&quot;)
+        Container(database, &quot;Database&quot;, &quot;Stores user data and application state&quot;, &quot;PostgreSQL&quot;)
+        Container(loadBalancer, &quot;Load Balancer&quot;, &quot;Distributes incoming traffic across multiple instances&quot;, &quot;Nginx&quot;)
+        Container(microservice, &quot;Microservice&quot;, &quot;Handles business logic and processing&quot;, &quot;Node.js&quot;)
+    }
+
+    Rel(user, webApp, &quot;Uses&quot;)
+    Rel(webApp, loadBalancer, &quot;Routes requests to&quot;)
+    Rel(loadBalancer, webApp, &quot;Distributes load to&quot;)
+    Rel(webApp, microservice, &quot;Calls for processing&quot;)
+    Rel(microservice, database, &quot;Reads/Writes data to&quot;)</pre>
+                    </div>
+                
+                    <div class="diagram-container">
+                        <pre class="mermaid">sequenceDiagram
+    participant User as User
+    participant LoadBalancer as Load Balancer
+    participant Server1 as Server 1
+    participant Server2 as Server 2
+    participant Database as Database
+
+    User-&gt;&gt;LoadBalancer: Request
+    LoadBalancer-&gt;&gt;Server1: Forward request
+    Server1-&gt;&gt;Database: Query data
+    Database--&gt;&gt;Server1: Return data
+    Server1--&gt;&gt;LoadBalancer: Response
+    LoadBalancer--&gt;&gt;User: Response
+
+    User-&gt;&gt;LoadBalancer: Concurrent request
+    LoadBalancer-&gt;&gt;Server2: Forward request
+    Server2-&gt;&gt;Database: Query data
+    Database--&gt;&gt;Server2: Return data
+    Server2--&gt;&gt;LoadBalancer: Response
+    LoadBalancer--&gt;&gt;User: Response</pre>
+                    </div>
+                
+                    <div class="diagram-container">
+                        <pre class="mermaid">stateDiagram-v2
+    [*] --&gt; Idle
+    Idle --&gt; Scaling : High concurrency detected
+    Scaling --&gt; Active : Resources provisioned
+    Active --&gt; Idle : Load decreases
+    Active --&gt; Scaling : New high concurrency detected
+    Scaling --&gt; Active : Scaling complete
+    Active --&gt; LatencyImpact : Latency threshold exceeded
+    LatencyImpact --&gt; Scaling : Initiate scaling
+    LatencyImpact --&gt; Active : Latency resolved</pre>
+                    </div>
+                
+                    <div class="diagram-container">
+                        <pre class="mermaid">%%{ init : { &quot;theme&quot; : &quot;default&quot; } }%%
+C4Context
+    title Data Growth Scalability Context Diagram
+
+    Person(user, &quot;User&quot;, &quot;A user interacting with the system&quot;)
+    
+    System_Boundary(s1, &quot;Data Growth Scalability System&quot;) {
+        System(db, &quot;Database&quot;, &quot;Stores messages and media&quot;)
+        System(index, &quot;Indexing Service&quot;, &quot;Indexes messages and media for quick retrieval&quot;)
+        System(storage, &quot;Storage Service&quot;, &quot;Handles storage of messages and media&quot;)
+        System(messaging, &quot;Messaging Service&quot;, &quot;Facilitates message delivery and processing&quot;)
+    }
+
+    Rel(user, messaging, &quot;Uses&quot;)
+    Rel(messaging, db, &quot;Stores messages in&quot;)
+    Rel(messaging, storage, &quot;Stores media in&quot;)
+    Rel(db, index, &quot;Indexes data for&quot;)
+    Rel(storage, index, &quot;Indexes media for&quot;)</pre>
+                    </div>
+                
+                    <div class="diagram-container">
+                        <pre class="mermaid">erDiagram
+    MESSAGE {
+        string id PK
+        string content
+        datetime timestamp
+    }
+    
+    MEDIA {
+        string id PK
+        string type
+        string url
+        datetime created_at
+    }
+    
+    STORAGE {
+        string id PK
+        string type
+        int capacity
+        int used_space
+    }
+    
+    INDEXING {
+        string id PK
+        string strategy
+        int index_size
+    }
+    
+    MESSAGE ||--o{ STORAGE : stores
+    MEDIA ||--o{ STORAGE : stores
+    MESSAGE ||--o{ INDEXING : indexed_by
+    MEDIA ||--o{ INDEXING : indexed_by</pre>
+                    </div>
+                
+                    <div class="diagram-container">
+                        <pre class="mermaid">stateDiagram-v2
+    [*] --&gt; Initial
+    Initial --&gt; ScalingUp : Data growth detected
+    ScalingUp --&gt; StorageOptimized : Storage optimization applied
+    ScalingUp --&gt; IndexingOptimized : Indexing optimization applied
+    StorageOptimized --&gt; Stable : Performance stable
+    IndexingOptimized --&gt; Stable : Performance stable
+    Stable --&gt; ScalingDown : Data growth decreases
+    ScalingDown --&gt; [*] : System returns to normal</pre>
+                    </div>
+                
+                    <div class="diagram-container">
+                        <pre class="mermaid">%%{ init : { &quot;theme&quot; : &quot;default&quot; } }%%
+C4Context
+    title Service Uptime SLA Context Diagram
+
+    Person(admin, &quot;Administrator&quot;, &quot;Manages the system and monitors uptime&quot;)
+    Person(user, &quot;User&quot;, &quot;Uses the messaging and group services&quot;)
+
+    System(system, &quot;Service Uptime SLA System&quot;, &quot;Ensures high availability for messaging, authentication, and group services&quot;)
+
+    System_Ext(messaging, &quot;Messaging Service&quot;, &quot;Handles messaging between users&quot;)
+    System_Ext(auth, &quot;Authentication Service&quot;, &quot;Manages user authentication and authorization&quot;)
+    System_Ext(group, &quot;Group Service&quot;, &quot;Facilitates group management and communication&quot;)
+
+    Rel(admin, system, &quot;Monitors and manages&quot;)
+    Rel(user, system, &quot;Uses&quot;)
+    Rel(system, messaging, &quot;Integrates with&quot;)
+    Rel(system, auth, &quot;Integrates with&quot;)
+    Rel(system, group, &quot;Integrates with&quot;)</pre>
+                    </div>
+                
+                    <div class="diagram-container">
+                        <pre class="mermaid">sequenceDiagram
+    participant User
+    participant MessagingService
+    participant AuthenticationService
+    participant GroupService
+    participant MonitoringSystem
+
+    User-&gt;&gt;MessagingService: Send message
+    MessagingService--&gt;&gt;User: Acknowledge message receipt
+    MessagingService-&gt;&gt;MonitoringSystem: Check uptime status
+    MonitoringSystem--&gt;&gt;MessagingService: Uptime is within SLA
+
+    User-&gt;&gt;AuthenticationService: Request authentication
+    AuthenticationService--&gt;&gt;User: Provide authentication token
+    AuthenticationService-&gt;&gt;MonitoringSystem: Check uptime status
+    MonitoringSystem--&gt;&gt;AuthenticationService: Uptime is within SLA
+
+    User-&gt;&gt;GroupService: Join group
+    GroupService--&gt;&gt;User: Confirm group membership
+    GroupService-&gt;&gt;MonitoringSystem: Check uptime status
+    MonitoringSystem--&gt;&gt;GroupService: Uptime is within SLA</pre>
+                    </div>
+                
+                    <div class="diagram-container">
+                        <pre class="mermaid">stateDiagram-v2
+    [*] --&gt; Operational
+    Operational --&gt; Degraded : Performance issues
+    Operational --&gt; Outage : Critical failure
+    Degraded --&gt; Operational : Issues resolved
+    Degraded --&gt; Outage : Escalation
+    Outage --&gt; Degraded : Recovery initiated
+    Outage --&gt; [*] : Service restored</pre>
+                    </div>
+                
+                    <div class="diagram-container">
+                        <pre class="mermaid">%%{init: {&#x27;theme&#x27;: &#x27;default&#x27;}}%%
+C4Context
+    title Failover Time System Architecture
+
+    Person(user, &quot;User&quot;, &quot;A user of the system&quot;)
+    
+    System_Boundary(s1, &quot;Failover System&quot;) {
+        System(f1, &quot;Primary Node&quot;, &quot;Handles user requests and data processing&quot;)
+        System(f2, &quot;Secondary Node&quot;, &quot;Backup node that takes over during failover&quot;)
+        System(f3, &quot;Load Balancer&quot;, &quot;Distributes requests between primary and secondary nodes&quot;)
+        System(f4, &quot;Monitoring Service&quot;, &quot;Monitors node health and triggers failover&quot;)
+    }
+
+    Rel(user, f3, &quot;Uses&quot;)
+    Rel(f3, f1, &quot;Routes requests to&quot;)
+    Rel(f3, f2, &quot;Routes requests to&quot;)
+    Rel(f4, f1, &quot;Monitors health of&quot;)
+    Rel(f4, f2, &quot;Monitors health of&quot;)
+    Rel(f1, f2, &quot;Replicates data to&quot;)</pre>
+                    </div>
+                
+                    <div class="diagram-container">
+                        <pre class="mermaid">sequenceDiagram
+    participant User
+    participant LoadBalancer
+    participant NodeA
+    participant NodeB
+    participant MonitoringSystem
+
+    User-&gt;&gt;LoadBalancer: Request Service
+    LoadBalancer-&gt;&gt;NodeA: Forward Request
+    NodeA--&gt;&gt;LoadBalancer: Response
+    LoadBalancer--&gt;&gt;User: Deliver Response
+
+    Note over NodeA, MonitoringSystem: NodeA fails
+    MonitoringSystem-&gt;&gt;LoadBalancer: Alert NodeA Failure
+    LoadBalancer-&gt;&gt;NodeB: Forward Request
+    NodeB--&gt;&gt;LoadBalancer: Response
+    LoadBalancer--&gt;&gt;User: Deliver Response
+
+    Note over User: Minimal impact during failover</pre>
+                    </div>
+                
+                    <div class="diagram-container">
+                        <pre class="mermaid">stateDiagram-v2
+    [*] --&gt; Normal
+    Normal --&gt; FailoverInitiated : Node/Zone Failure Detected
+    FailoverInitiated --&gt; Switching : Initiating Failover
+    Switching --&gt; FailoverComplete : Failover Successful
+    FailoverComplete --&gt; Normal : Return to Normal Operation
+    Switching --&gt; FailoverFailed : Failover Unsuccessful
+    FailoverFailed --&gt; Alerting : Alert Users
+    Alerting --&gt; Normal : Issue Resolved</pre>
+                    </div>
+                
+                    <div class="diagram-container">
+                        <pre class="mermaid">%%{ init : { &quot;theme&quot; : &quot;default&quot; } }%%
+C4Context
+    title Transport and At-Rest Encryption System Architecture
+
+    Person(user, &quot;User&quot;, &quot;A user who interacts with the system.&quot;)
+    System(system, &quot;Encryption System&quot;, &quot;Handles encryption of data in transit and at rest.&quot;)
+
+    System_Ext(database, &quot;Database&quot;, &quot;Stores user data and encrypted information.&quot;)
+    System_Ext(transportLayer, &quot;Transport Layer&quot;, &quot;Handles data transmission over the network.&quot;)
+
+    Rel(user, system, &quot;Uses&quot;)
+    Rel(system, transportLayer, &quot;Encrypts data in transit&quot;)
+    Rel(system, database, &quot;Encrypts data at rest&quot;)</pre>
+                    </div>
+                
+                    <div class="diagram-container">
+                        <pre class="mermaid">sequenceDiagram
+    participant User
+    participant Application
+    participant Database
+    participant EncryptionService
+
+    User-&gt;&gt;Application: Send data
+    Application-&gt;&gt;EncryptionService: Encrypt data in transit
+    EncryptionService--&gt;&gt;Application: Return encrypted data
+    Application-&gt;&gt;Database: Store encrypted data
+    Database--&gt;&gt;Application: Acknowledge storage
+    Application-&gt;&gt;User: Confirm data stored securely
+
+    User-&gt;&gt;Application: Request data
+    Application-&gt;&gt;Database: Retrieve encrypted data
+    Database--&gt;&gt;Application: Return encrypted data
+    Application-&gt;&gt;EncryptionService: Decrypt data at rest
+    EncryptionService--&gt;&gt;Application: Return decrypted data
+    Application-&gt;&gt;User: Send decrypted data</pre>
+                    </div>
+                
+                    <div class="diagram-container">
+                        <pre class="mermaid">stateDiagram-v2
+    [*] --&gt; DataInTransit
+    [*] --&gt; DataAtRest
+
+    state DataInTransit {
+        [*] --&gt; Encrypted
+        Encrypted --&gt; Decrypted : &quot;Receive unencrypted data&quot;
+        Decrypted --&gt; Encrypted : &quot;Encrypt data&quot;
+        Encrypted --&gt; [*] : &quot;Data sent securely&quot;
+    }
+
+    state DataAtRest {
+        [*] --&gt; Encrypted
+        Encrypted --&gt; Decrypted : &quot;Access unencrypted data&quot;
+        Decrypted --&gt; Encrypted : &quot;Encrypt data&quot;
+        Encrypted --&gt; [*] : &quot;Data stored securely&quot;
+    }</pre>
+                    </div>
+                
+                    <div class="diagram-container">
+                        <pre class="mermaid">%%{init: {&#x27;theme&#x27;: &#x27;default&#x27;}}%%
+C4Context
+    title Authentication Hardening System Architecture
+
+    Person(admin, &quot;Administrator&quot;, &quot;Manages authentication settings and audits&quot;)
+    Person(user, &quot;User&quot;, &quot;Interacts with the system&quot;)
+
+    System(system, &quot;Authentication System&quot;, &quot;Handles user authentication and audit logging&quot;)
+
+    System_Ext(auditLog, &quot;Audit Log Service&quot;, &quot;Stores audit logs for authentication events&quot;)
+    System_Ext(identityProvider, &quot;Identity Provider&quot;, &quot;External service for identity verification&quot;)
+
+    Rel(admin, system, &quot;Configures and audits&quot;)
+    Rel(user, system, &quot;Authenticates&quot;)
+    Rel(system, auditLog, &quot;Logs authentication events&quot;)
+    Rel(system, identityProvider, &quot;Verifies user identity&quot;)</pre>
+                    </div>
+                
+                    <div class="diagram-container">
+                        <pre class="mermaid">flowchart TD
+    A[Start Authentication Hardening] --&gt; B[Implement Strong Password Policies]
+    B --&gt; C[Enforce Multi-Factor Authentication]
+    C --&gt; D[Use Secure Protocols (e.g., HTTPS)]
+    D --&gt; E[Limit Login Attempts]
+    E --&gt; F[Implement Account Lockout Mechanisms]
+    F --&gt; G[Enable Logging and Monitoring]
+    G --&gt; H[Conduct Regular Security Audits]
+    H --&gt; I[End Authentication Hardening]</pre>
+                    </div>
+                
+                    <div class="diagram-container">
+                        <pre class="mermaid">sequenceDiagram
+    participant User
+    participant AuthenticationService
+    participant AuditLog
+
+    User-&gt;&gt;AuthenticationService: Request login with credentials
+    AuthenticationService-&gt;&gt;AuthenticationService: Validate credentials
+    AuthenticationService--&gt;&gt;User: Return success or failure
+
+    alt Successful authentication
+        AuthenticationService-&gt;&gt;AuditLog: Log successful login attempt
+        AuditLog--&gt;&gt;AuthenticationService: Confirm log entry
+    else Failed authentication
+        AuthenticationService-&gt;&gt;AuditLog: Log failed login attempt
+        AuditLog--&gt;&gt;AuthenticationService: Confirm log entry
+    end
+
+    AuthenticationService-&gt;&gt;User: Provide access or error message</pre>
+                    </div>
+                
+                    <div class="diagram-container">
+                        <pre class="mermaid">classDiagram
+    class PersonalData {
+        +String dataType
+        +String dataValue
+        +DateTime createdAt
+        +DateTime updatedAt
+        +Boolean isDeletable
+        +void retainData()
+        +void deleteData()
+    }
+
+    class DataRetentionPolicy {
+        +String policyName
+        +DateTime retentionPeriod
+        +Boolean isActive
+        +void applyPolicy()
+        +void reviewPolicy()
+    }
+
+    class UserRequest {
+        +String requestType
+        +DateTime requestDate
+        +void processRequest()
+    }
+
+    PersonalData &quot;1&quot; -- &quot;1&quot; DataRetentionPolicy : follows
+    PersonalData &quot;1&quot; -- &quot;0..*&quot; UserRequest : receives</pre>
+                    </div>
+                
+                    <div class="diagram-container">
+                        <pre class="mermaid">flowchart TD
+    A[Start] --&gt; B{Is personal data necessary?}
+    B -- Yes --&gt; C[Retain personal data]
+    B -- No --&gt; D[Delete personal data]
+    C --&gt; E{Is there a deletion request?}
+    E -- Yes --&gt; D
+    E -- No --&gt; F[Continue retention]
+    D --&gt; G[End]
+    F --&gt; G</pre>
+                    </div>
+                
+                    <div class="diagram-container">
+                        <pre class="mermaid">stateDiagram-v2
+    [*] --&gt; Data_Collection
+    Data_Collection --&gt; Data_Storage
+    Data_Storage --&gt; Data_Review
+    Data_Review --&gt; Data_Minimization
+    Data_Minimization --&gt; Data_Retention
+    Data_Retention --&gt; Deletion_Request
+    Deletion_Request --&gt; Data_Deletion
+    Data_Deletion --&gt; [*]
+
+    Data_Storage --&gt;|Review Period| Data_Review
+    Data_Review --&gt;|Data No Longer Needed| Data_Minimization
+    Data_Minimization --&gt;|Retention Period Exceeded| Data_Deletion
+    Data_Minimization --&gt;|Data Still Needed| Data_Retention</pre>
+                    </div>
+                
+                    <div class="diagram-container">
+                        <pre class="mermaid">%%{ init : { &quot;theme&quot; : &quot;default&quot; } }%%
+C4Context
+    title Compliance Reporting System Context Diagram
+    Person(admin, &quot;Compliance Admin&quot;, &quot;Responsible for managing compliance reports.&quot;)
+    Person(auditor, &quot;External Auditor&quot;, &quot;Reviews compliance reports for regulatory adherence.&quot;)
+    System(system, &quot;Compliance Reporting System&quot;, &quot;Generates reports to ensure alignment with GDPR and CCPA.&quot;)
+    System_Ext(gdpr, &quot;GDPR Regulations&quot;, &quot;Regulatory framework for data protection.&quot;)
+    System_Ext(ccpa, &quot;CCPA Regulations&quot;, &quot;California Consumer Privacy Act regulations.&quot;)
+
+    Rel(admin, system, &quot;Uses&quot;)
+    Rel(system, gdpr, &quot;Aligns with&quot;)
+    Rel(system, ccpa, &quot;Aligns with&quot;)
+    Rel(system, auditor, &quot;Provides reports to&quot;)</pre>
+                    </div>
+                
+                    <div class="diagram-container">
+                        <pre class="mermaid">classDiagram
+    class ComplianceReport {
+        +String reportID
+        +DateTime creationDate
+        +String status
+        +generateReport()
+        +validateCompliance()
+    }
+
+    class PrivacyControl {
+        +String controlID
+        +String description
+        +boolean isGDPRCompliant
+        +boolean isCCPACompliant
+        +assessCompliance()
+    }
+
+    class GDPR {
+        +String regulationID
+        +String requirements
+        +checkCompliance()
+    }
+
+    class CCPA {
+        +String regulationID
+        +String requirements
+        +checkCompliance()
+    }
+
+    ComplianceReport --&gt; PrivacyControl : includes
+    PrivacyControl --&gt; GDPR : aligns with
+    PrivacyControl --&gt; CCPA : aligns with</pre>
+                    </div>
+                
+                    <div class="diagram-container">
+                        <pre class="mermaid">flowchart TD
+    A[Start Compliance Reporting] --&gt; B[Identify Privacy Controls]
+    B --&gt; C[Assess GDPR Requirements]
+    C --&gt; D[Assess CCPA Requirements]
+    D --&gt; E{Are Controls Aligned?}
+    E --&gt;|Yes| F[Document Compliance]
+    E --&gt;|No| G[Implement Necessary Changes]
+    G --&gt; B
+    F --&gt; H[Prepare Compliance Report]
+    H --&gt; I[Review and Approve Report]
+    I --&gt; J[Submit Report]
+    J --&gt; K[End Compliance Reporting]</pre>
+                    </div>
+                </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>Generated by RE System - 2026-03-03 23:02:11</p>
+        </div>
+    </footer>
+</body>
+</html>

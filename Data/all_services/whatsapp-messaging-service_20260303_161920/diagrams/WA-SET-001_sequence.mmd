@@ -1,0 +1,12 @@
+sequenceDiagram
+    participant User as Nutzer
+    participant System as System
+    participant Settings as Einstellungen
+
+    User->>Settings: Öffne Einstellungen
+    Settings->>User: Zeige Online-Status-Optionen
+    User->>Settings: Wähle Sichtbarkeitseinstellungen
+    Settings->>System: Aktualisiere Sichtbarkeitseinstellungen
+    System-->>User: Bestätige Änderungen
+    User->>System: Überprüfe Online-Status
+    System-->>User: Zeige aktuellen Online-Status

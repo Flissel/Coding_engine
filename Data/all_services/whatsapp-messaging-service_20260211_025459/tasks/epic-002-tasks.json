@@ -1,6 +1,6 @@
 {
   "epic_id": "EPIC-002",
-  "epic_name": "Profil- und Identitätsverwaltung",
+  "epic_name": "Profil- und Identit\u00e4tsverwaltung",
   "tasks": [
     {
       "id": "EPIC-002-SCHEMA-UserPrivacySetting-model",
@@ -8,16 +8,26 @@
       "type": "schema_model",
       "title": "Create Prisma model: UserPrivacySetting",
       "description": "Define UserPrivacySetting model in prisma/schema.prisma with all required attributes and types.",
-      "status": "pending",
+      "status": "failed",
       "dependencies": [],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "/bin/sh: 1: kilocode: not found\n",
       "output_files": [
         "prisma/schema.prisma#UserPrivacySetting"
       ],
-      "related_requirements": [],
-      "related_user_stories": [],
+      "related_requirements": [
+        "WA-SET-002",
+        "WA-SET-003",
+        "WA-SET-004",
+        "WA-SET-005"
+      ],
+      "related_user_stories": [
+        "US-081",
+        "US-082",
+        "US-083",
+        "US-084"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -28,10 +38,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Prisma model defined with all attributes, correct types, and @id field; User can: Lesebest\u00e4tigungen pro Konversation ein- oder ausschalten; User can: die Sichtbarkeit meines Profilbildes konfigurieren; User can: die Sichtbarkeit von Info- und Status-Texten f\u00fcr definierte Nutzergruppen konfigurieren",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-SCHEMA-UserPrivacySetting-relations",
@@ -39,18 +48,28 @@
       "type": "schema_relations",
       "title": "Define relations for: UserPrivacySetting",
       "description": "Set up Prisma relations for UserPrivacySetting with other entities.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-SCHEMA-UserPrivacySetting-model"
       ],
       "estimated_minutes": 3,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "Dependency failed: ['EPIC-002-SCHEMA-UserPrivacySetting-model']",
       "output_files": [
         "prisma/schema.prisma#UserPrivacySetting_relations"
       ],
-      "related_requirements": [],
-      "related_user_stories": [],
+      "related_requirements": [
+        "WA-SET-002",
+        "WA-SET-003",
+        "WA-SET-004",
+        "WA-SET-005"
+      ],
+      "related_user_stories": [
+        "US-081",
+        "US-082",
+        "US-083",
+        "US-084"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -61,10 +80,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "All Prisma relations defined with correct cardinality and referential actions; User can: Lesebest\u00e4tigungen pro Konversation ein- oder ausschalten; User can: die Sichtbarkeit meines Profilbildes konfigurieren; User can: die Sichtbarkeit von Info- und Status-Texten f\u00fcr definierte Nutzergruppen konfigurieren",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-SCHEMA-UserPrivacySetting-migration",
@@ -72,7 +90,7 @@
       "type": "schema_migration",
       "title": "Run migration for: UserPrivacySetting",
       "description": "Execute prisma migrate dev for UserPrivacySetting changes.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-SCHEMA-UserPrivacySetting-relations"
       ],
@@ -82,8 +100,18 @@
       "output_files": [
         "prisma/migrations/*_userprivacysetting/"
       ],
-      "related_requirements": [],
-      "related_user_stories": [],
+      "related_requirements": [
+        "WA-SET-002",
+        "WA-SET-003",
+        "WA-SET-004",
+        "WA-SET-005"
+      ],
+      "related_user_stories": [
+        "US-081",
+        "US-082",
+        "US-083",
+        "US-084"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -94,10 +122,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Migration generated and validated with prisma validate; User can: Lesebest\u00e4tigungen pro Konversation ein- oder ausschalten; User can: die Sichtbarkeit meines Profilbildes konfigurieren; User can: die Sichtbarkeit von Info- und Status-Texten f\u00fcr definierte Nutzergruppen konfigurieren",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-SCHEMA-user_profile-model",
@@ -105,7 +132,7 @@
       "type": "schema_model",
       "title": "Create Prisma model: user_profile",
       "description": "Define user_profile model in prisma/schema.prisma with all required attributes and types.",
-      "status": "pending",
+      "status": "running",
       "dependencies": [],
       "estimated_minutes": 5,
       "actual_minutes": null,
@@ -113,8 +140,20 @@
       "output_files": [
         "prisma/schema.prisma#user_profile"
       ],
-      "related_requirements": [],
-      "related_user_stories": [],
+      "related_requirements": [
+        "WA-PROF-001",
+        "WA-PROF-002",
+        "WA-PROF-003",
+        "WA-PROF-004",
+        "WA-PROF-005"
+      ],
+      "related_user_stories": [
+        "US-006",
+        "US-007",
+        "US-008",
+        "US-009",
+        "US-010"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -125,10 +164,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Prisma model defined with all attributes, correct types, and @id field; User can: ein Profilbild hochladen und verwalten; User can: einen konfigurierbaren Anzeigenamen f\u00fcr das Profil festlegen und \u00e4ndern; User can: einen kurzen Info-/Status-Text im Profil hinterlegen und anzeigen lassen; Address: Definieren Sie Sichtbarkeitsstufen und Default-Privacy.; Address: Erg\u00e4nzen Sie Dateitypen/Gr\u00f6\u00dfen, Upload-Fehlerbehandlung und Richtlinien.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-SCHEMA-user_profile-relations",
@@ -136,7 +174,7 @@
       "type": "schema_relations",
       "title": "Define relations for: user_profile",
       "description": "Set up Prisma relations for user_profile with other entities.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-SCHEMA-user_profile-model"
       ],
@@ -146,8 +184,20 @@
       "output_files": [
         "prisma/schema.prisma#user_profile_relations"
       ],
-      "related_requirements": [],
-      "related_user_stories": [],
+      "related_requirements": [
+        "WA-PROF-001",
+        "WA-PROF-002",
+        "WA-PROF-003",
+        "WA-PROF-004",
+        "WA-PROF-005"
+      ],
+      "related_user_stories": [
+        "US-006",
+        "US-007",
+        "US-008",
+        "US-009",
+        "US-010"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -158,10 +208,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "All Prisma relations defined with correct cardinality and referential actions; User can: ein Profilbild hochladen und verwalten; User can: einen konfigurierbaren Anzeigenamen f\u00fcr das Profil festlegen und \u00e4ndern; User can: einen kurzen Info-/Status-Text im Profil hinterlegen und anzeigen lassen; Address: Definieren Sie Sichtbarkeitsstufen und Default-Privacy.; Address: Erg\u00e4nzen Sie Dateitypen/Gr\u00f6\u00dfen, Upload-Fehlerbehandlung und Richtlinien.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-SCHEMA-user_profile-migration",
@@ -169,7 +218,7 @@
       "type": "schema_migration",
       "title": "Run migration for: user_profile",
       "description": "Execute prisma migrate dev for user_profile changes.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-SCHEMA-user_profile-relations"
       ],
@@ -179,8 +228,20 @@
       "output_files": [
         "prisma/migrations/*_user_profile/"
       ],
-      "related_requirements": [],
-      "related_user_stories": [],
+      "related_requirements": [
+        "WA-PROF-001",
+        "WA-PROF-002",
+        "WA-PROF-003",
+        "WA-PROF-004",
+        "WA-PROF-005"
+      ],
+      "related_user_stories": [
+        "US-006",
+        "US-007",
+        "US-008",
+        "US-009",
+        "US-010"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -191,10 +252,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Migration generated and validated with prisma validate; User can: ein Profilbild hochladen und verwalten; User can: einen konfigurierbaren Anzeigenamen f\u00fcr das Profil festlegen und \u00e4ndern; User can: einen kurzen Info-/Status-Text im Profil hinterlegen und anzeigen lassen; Address: Definieren Sie Sichtbarkeitsstufen und Default-Privacy.; Address: Erg\u00e4nzen Sie Dateitypen/Gr\u00f6\u00dfen, Upload-Fehlerbehandlung und Richtlinien.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-SCHEMA-whatsapp_user-model",
@@ -202,16 +262,22 @@
       "type": "schema_model",
       "title": "Create Prisma model: whatsapp_user",
       "description": "Define whatsapp_user model in prisma/schema.prisma with all required attributes and types.",
-      "status": "pending",
+      "status": "failed",
       "dependencies": [],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "/bin/sh: 1: kilocode: not found\n",
       "output_files": [
         "prisma/schema.prisma#whatsapp_user"
       ],
-      "related_requirements": [],
-      "related_user_stories": [],
+      "related_requirements": [
+        "WA-CON-001",
+        "WA-SET-001"
+      ],
+      "related_user_stories": [
+        "US-071",
+        "US-080"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -222,10 +288,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Prisma model defined with all attributes, correct types, and @id field; User can: Geraete-Kontakte mit WhatsApp-Nutzern synchronisieren; User can: meine Sichtbarkeit des Zuletzt-online-Status in den Einstellungen konfigurieren",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-SCHEMA-whatsapp_user-relations",
@@ -233,18 +298,24 @@
       "type": "schema_relations",
       "title": "Define relations for: whatsapp_user",
       "description": "Set up Prisma relations for whatsapp_user with other entities.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-SCHEMA-whatsapp_user-model"
       ],
       "estimated_minutes": 3,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "Dependency failed: ['EPIC-002-SCHEMA-whatsapp_user-model']",
       "output_files": [
         "prisma/schema.prisma#whatsapp_user_relations"
       ],
-      "related_requirements": [],
-      "related_user_stories": [],
+      "related_requirements": [
+        "WA-CON-001",
+        "WA-SET-001"
+      ],
+      "related_user_stories": [
+        "US-071",
+        "US-080"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -255,10 +326,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "All Prisma relations defined with correct cardinality and referential actions; User can: Geraete-Kontakte mit WhatsApp-Nutzern synchronisieren; User can: meine Sichtbarkeit des Zuletzt-online-Status in den Einstellungen konfigurieren",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-SCHEMA-whatsapp_user-migration",
@@ -266,7 +336,7 @@
       "type": "schema_migration",
       "title": "Run migration for: whatsapp_user",
       "description": "Execute prisma migrate dev for whatsapp_user changes.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-SCHEMA-whatsapp_user-relations"
       ],
@@ -276,8 +346,14 @@
       "output_files": [
         "prisma/migrations/*_whatsapp_user/"
       ],
-      "related_requirements": [],
-      "related_user_stories": [],
+      "related_requirements": [
+        "WA-CON-001",
+        "WA-SET-001"
+      ],
+      "related_user_stories": [
+        "US-071",
+        "US-080"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -288,10 +364,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Migration generated and validated with prisma validate; User can: Geraete-Kontakte mit WhatsApp-Nutzern synchronisieren; User can: meine Sichtbarkeit des Zuletzt-online-Status in den Einstellungen konfigurieren",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-VERIFY-schema",
@@ -299,7 +374,7 @@
       "type": "verify_schema",
       "title": "Validate Prisma schema",
       "description": "Run prisma validate to check schema integrity.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-SCHEMA-whatsapp_user-model",
         "EPIC-002-SCHEMA-whatsapp_user-relations",
@@ -307,7 +382,7 @@
       ],
       "estimated_minutes": 1,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "Dependency failed: ['EPIC-002-SCHEMA-whatsapp_user-model']",
       "output_files": [],
       "related_requirements": [],
       "related_user_stories": [],
@@ -323,8 +398,7 @@
       "command": "npx prisma validate",
       "success_criteria": "prisma validate exits with code 0",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-CHECKPOINT-schema",
@@ -332,7 +406,7 @@
       "type": "checkpoint_schema",
       "title": "Checkpoint: Review Schema",
       "description": "User approval required before continuing. Review the schema phase results.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-VERIFY-schema"
       ],
@@ -354,8 +428,7 @@
       "command": null,
       "success_criteria": "User approved checkpoint",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-API-POST-api_v1_users_userId_profile-images-controller",
@@ -363,7 +436,7 @@
       "type": "api_controller",
       "title": "Controller: POST /api/v1/users/{userId}/profile-images",
       "description": "Upload profile image\nImplement controller method with 1 parameters.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-CHECKPOINT-schema"
       ],
@@ -376,7 +449,9 @@
       "related_requirements": [
         "WA-PROF-001"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-006"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -387,10 +462,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "NestJS controller with correct decorators, DTOs, and route paths; User can: ein Profilbild hochladen und verwalten; Address: Erg\u00e4nzen Sie Dateitypen/Gr\u00f6\u00dfen, Upload-Fehlerbehandlung und Richtlinien.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-API-POST-api_v1_users_userId_profile-images-service",
@@ -398,7 +472,7 @@
       "type": "api_service",
       "title": "Service: POST /api/v1/users/{userId}/profile-images",
       "description": "Business logic for Upload profile image",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-API-POST-api_v1_users_userId_profile-images-controller"
       ],
@@ -411,7 +485,9 @@
       "related_requirements": [
         "WA-PROF-001"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-006"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -422,10 +498,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Service with Prisma CRUD operations, error handling, and proper return types; User can: ein Profilbild hochladen und verwalten; Address: Erg\u00e4nzen Sie Dateitypen/Gr\u00f6\u00dfen, Upload-Fehlerbehandlung und Richtlinien.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-API-POST-api_v1_users_userId_profile-images-dto",
@@ -433,7 +508,7 @@
       "type": "api_dto",
       "title": "DTO: UploadProfileImageRequest",
       "description": "Request/Response DTO for POST /api/v1/users/{userId}/profile-images",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-API-POST-api_v1_users_userId_profile-images-controller"
       ],
@@ -446,7 +521,9 @@
       "related_requirements": [
         "WA-PROF-001"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-006"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -457,10 +534,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "DTOs with class-validator decorators matching OpenAPI schema; User can: ein Profilbild hochladen und verwalten; Address: Erg\u00e4nzen Sie Dateitypen/Gr\u00f6\u00dfen, Upload-Fehlerbehandlung und Richtlinien.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-API-POST-api_v1_users_userId_profile-images-guard",
@@ -468,7 +544,7 @@
       "type": "api_guard",
       "title": "Auth Guard: /api/v1/users/{userId}/profile-images",
       "description": "JWT authentication guard for POST /api/v1/users/{userId}/profile-images",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-API-POST-api_v1_users_userId_profile-images-controller"
       ],
@@ -481,7 +557,9 @@
       "related_requirements": [
         "WA-PROF-001"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-006"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -492,10 +570,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Guard with JWT validation and role-based access control; User can: ein Profilbild hochladen und verwalten; Address: Erg\u00e4nzen Sie Dateitypen/Gr\u00f6\u00dfen, Upload-Fehlerbehandlung und Richtlinien.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-API-POST-api_v1_users_userId_profile-images-validation",
@@ -503,7 +580,7 @@
       "type": "api_validation",
       "title": "Validation: POST /api/v1/users/{userId}/profile-images",
       "description": "Input validation for 1 parameters",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-API-POST-api_v1_users_userId_profile-images-dto"
       ],
@@ -516,7 +593,9 @@
       "related_requirements": [
         "WA-PROF-001"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-006"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -527,10 +606,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Validation pipe with all input constraints from the DTO; User can: ein Profilbild hochladen und verwalten; Address: Erg\u00e4nzen Sie Dateitypen/Gr\u00f6\u00dfen, Upload-Fehlerbehandlung und Richtlinien.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-API-GET-api_v1_users_userId_profile-images_current-controller",
@@ -538,7 +616,7 @@
       "type": "api_controller",
       "title": "Controller: GET /api/v1/users/{userId}/profile-images/current",
       "description": "Get current profile image\nImplement controller method with 1 parameters.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-CHECKPOINT-schema"
       ],
@@ -551,7 +629,9 @@
       "related_requirements": [
         "WA-PROF-001"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-006"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -562,10 +642,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "NestJS controller with correct decorators, DTOs, and route paths; User can: ein Profilbild hochladen und verwalten; Address: Erg\u00e4nzen Sie Dateitypen/Gr\u00f6\u00dfen, Upload-Fehlerbehandlung und Richtlinien.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-API-GET-api_v1_users_userId_profile-images_current-service",
@@ -573,7 +652,7 @@
       "type": "api_service",
       "title": "Service: GET /api/v1/users/{userId}/profile-images/current",
       "description": "Business logic for Get current profile image",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-API-GET-api_v1_users_userId_profile-images_current-controller"
       ],
@@ -586,7 +665,9 @@
       "related_requirements": [
         "WA-PROF-001"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-006"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -597,10 +678,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Service with Prisma CRUD operations, error handling, and proper return types; User can: ein Profilbild hochladen und verwalten; Address: Erg\u00e4nzen Sie Dateitypen/Gr\u00f6\u00dfen, Upload-Fehlerbehandlung und Richtlinien.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-API-GET-api_v1_users_userId_profile-images_current-dto",
@@ -608,7 +688,7 @@
       "type": "api_dto",
       "title": "DTO: GetProfileImageRequest",
       "description": "Request/Response DTO for GET /api/v1/users/{userId}/profile-images/current",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-API-GET-api_v1_users_userId_profile-images_current-controller"
       ],
@@ -621,7 +701,9 @@
       "related_requirements": [
         "WA-PROF-001"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-006"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -632,10 +714,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "DTOs with class-validator decorators matching OpenAPI schema; User can: ein Profilbild hochladen und verwalten; Address: Erg\u00e4nzen Sie Dateitypen/Gr\u00f6\u00dfen, Upload-Fehlerbehandlung und Richtlinien.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-API-GET-api_v1_users_userId_profile-images_current-guard",
@@ -643,7 +724,7 @@
       "type": "api_guard",
       "title": "Auth Guard: /api/v1/users/{userId}/profile-images/current",
       "description": "JWT authentication guard for GET /api/v1/users/{userId}/profile-images/current",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-API-GET-api_v1_users_userId_profile-images_current-controller"
       ],
@@ -656,7 +737,9 @@
       "related_requirements": [
         "WA-PROF-001"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-006"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -667,10 +750,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Guard with JWT validation and role-based access control; User can: ein Profilbild hochladen und verwalten; Address: Erg\u00e4nzen Sie Dateitypen/Gr\u00f6\u00dfen, Upload-Fehlerbehandlung und Richtlinien.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-API-GET-api_v1_users_userId_profile-images_current-validation",
@@ -678,7 +760,7 @@
       "type": "api_validation",
       "title": "Validation: GET /api/v1/users/{userId}/profile-images/current",
       "description": "Input validation for 1 parameters",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-API-GET-api_v1_users_userId_profile-images_current-dto"
       ],
@@ -691,7 +773,9 @@
       "related_requirements": [
         "WA-PROF-001"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-006"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -702,10 +786,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Validation pipe with all input constraints from the DTO; User can: ein Profilbild hochladen und verwalten; Address: Erg\u00e4nzen Sie Dateitypen/Gr\u00f6\u00dfen, Upload-Fehlerbehandlung und Richtlinien.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-API-PUT-api_v1_users_userId_profile-images_current-controller",
@@ -713,7 +796,7 @@
       "type": "api_controller",
       "title": "Controller: PUT /api/v1/users/{userId}/profile-images/current",
       "description": "Replace current profile image\nImplement controller method with 1 parameters.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-CHECKPOINT-schema"
       ],
@@ -726,7 +809,9 @@
       "related_requirements": [
         "WA-PROF-001"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-006"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -737,10 +822,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "NestJS controller with correct decorators, DTOs, and route paths; User can: ein Profilbild hochladen und verwalten; Address: Erg\u00e4nzen Sie Dateitypen/Gr\u00f6\u00dfen, Upload-Fehlerbehandlung und Richtlinien.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-API-PUT-api_v1_users_userId_profile-images_current-service",
@@ -748,7 +832,7 @@
       "type": "api_service",
       "title": "Service: PUT /api/v1/users/{userId}/profile-images/current",
       "description": "Business logic for Replace current profile image",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-API-PUT-api_v1_users_userId_profile-images_current-controller"
       ],
@@ -761,7 +845,9 @@
       "related_requirements": [
         "WA-PROF-001"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-006"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -772,10 +858,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Service with Prisma CRUD operations, error handling, and proper return types; User can: ein Profilbild hochladen und verwalten; Address: Erg\u00e4nzen Sie Dateitypen/Gr\u00f6\u00dfen, Upload-Fehlerbehandlung und Richtlinien.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-API-PUT-api_v1_users_userId_profile-images_current-dto",
@@ -783,7 +868,7 @@
       "type": "api_dto",
       "title": "DTO: ReplaceProfileImageRequest",
       "description": "Request/Response DTO for PUT /api/v1/users/{userId}/profile-images/current",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-API-PUT-api_v1_users_userId_profile-images_current-controller"
       ],
@@ -796,7 +881,9 @@
       "related_requirements": [
         "WA-PROF-001"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-006"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -807,10 +894,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "DTOs with class-validator decorators matching OpenAPI schema; User can: ein Profilbild hochladen und verwalten; Address: Erg\u00e4nzen Sie Dateitypen/Gr\u00f6\u00dfen, Upload-Fehlerbehandlung und Richtlinien.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-API-PUT-api_v1_users_userId_profile-images_current-guard",
@@ -818,7 +904,7 @@
       "type": "api_guard",
       "title": "Auth Guard: /api/v1/users/{userId}/profile-images/current",
       "description": "JWT authentication guard for PUT /api/v1/users/{userId}/profile-images/current",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-API-PUT-api_v1_users_userId_profile-images_current-controller"
       ],
@@ -831,7 +917,9 @@
       "related_requirements": [
         "WA-PROF-001"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-006"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -842,10 +930,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Guard with JWT validation and role-based access control; User can: ein Profilbild hochladen und verwalten; Address: Erg\u00e4nzen Sie Dateitypen/Gr\u00f6\u00dfen, Upload-Fehlerbehandlung und Richtlinien.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-API-PUT-api_v1_users_userId_profile-images_current-validation",
@@ -853,7 +940,7 @@
       "type": "api_validation",
       "title": "Validation: PUT /api/v1/users/{userId}/profile-images/current",
       "description": "Input validation for 1 parameters",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-API-PUT-api_v1_users_userId_profile-images_current-dto"
       ],
@@ -866,7 +953,9 @@
       "related_requirements": [
         "WA-PROF-001"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-006"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -877,10 +966,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Validation pipe with all input constraints from the DTO; User can: ein Profilbild hochladen und verwalten; Address: Erg\u00e4nzen Sie Dateitypen/Gr\u00f6\u00dfen, Upload-Fehlerbehandlung und Richtlinien.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-API-DELETE-api_v1_users_userId_profile-images_current-controller",
@@ -888,7 +976,7 @@
       "type": "api_controller",
       "title": "Controller: DELETE /api/v1/users/{userId}/profile-images/current",
       "description": "Delete current profile image\nImplement controller method with 1 parameters.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-CHECKPOINT-schema"
       ],
@@ -901,7 +989,9 @@
       "related_requirements": [
         "WA-PROF-001"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-006"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -912,10 +1002,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "NestJS controller with correct decorators, DTOs, and route paths; User can: ein Profilbild hochladen und verwalten; Address: Erg\u00e4nzen Sie Dateitypen/Gr\u00f6\u00dfen, Upload-Fehlerbehandlung und Richtlinien.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-API-DELETE-api_v1_users_userId_profile-images_current-service",
@@ -923,7 +1012,7 @@
       "type": "api_service",
       "title": "Service: DELETE /api/v1/users/{userId}/profile-images/current",
       "description": "Business logic for Delete current profile image",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-API-DELETE-api_v1_users_userId_profile-images_current-controller"
       ],
@@ -936,7 +1025,9 @@
       "related_requirements": [
         "WA-PROF-001"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-006"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -947,10 +1038,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Service with Prisma CRUD operations, error handling, and proper return types; User can: ein Profilbild hochladen und verwalten; Address: Erg\u00e4nzen Sie Dateitypen/Gr\u00f6\u00dfen, Upload-Fehlerbehandlung und Richtlinien.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-API-DELETE-api_v1_users_userId_profile-images_current-dto",
@@ -958,7 +1048,7 @@
       "type": "api_dto",
       "title": "DTO: DeleteProfileImageRequest",
       "description": "Request/Response DTO for DELETE /api/v1/users/{userId}/profile-images/current",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-API-DELETE-api_v1_users_userId_profile-images_current-controller"
       ],
@@ -971,7 +1061,9 @@
       "related_requirements": [
         "WA-PROF-001"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-006"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -982,10 +1074,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "DTOs with class-validator decorators matching OpenAPI schema; User can: ein Profilbild hochladen und verwalten; Address: Erg\u00e4nzen Sie Dateitypen/Gr\u00f6\u00dfen, Upload-Fehlerbehandlung und Richtlinien.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-API-DELETE-api_v1_users_userId_profile-images_current-guard",
@@ -993,7 +1084,7 @@
       "type": "api_guard",
       "title": "Auth Guard: /api/v1/users/{userId}/profile-images/current",
       "description": "JWT authentication guard for DELETE /api/v1/users/{userId}/profile-images/current",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-API-DELETE-api_v1_users_userId_profile-images_current-controller"
       ],
@@ -1006,7 +1097,9 @@
       "related_requirements": [
         "WA-PROF-001"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-006"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -1017,10 +1110,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Guard with JWT validation and role-based access control; User can: ein Profilbild hochladen und verwalten; Address: Erg\u00e4nzen Sie Dateitypen/Gr\u00f6\u00dfen, Upload-Fehlerbehandlung und Richtlinien.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-API-DELETE-api_v1_users_userId_profile-images_current-validation",
@@ -1028,7 +1120,7 @@
       "type": "api_validation",
       "title": "Validation: DELETE /api/v1/users/{userId}/profile-images/current",
       "description": "Input validation for 1 parameters",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-API-DELETE-api_v1_users_userId_profile-images_current-dto"
       ],
@@ -1041,7 +1133,9 @@
       "related_requirements": [
         "WA-PROF-001"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-006"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -1052,10 +1146,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Validation pipe with all input constraints from the DTO; User can: ein Profilbild hochladen und verwalten; Address: Erg\u00e4nzen Sie Dateitypen/Gr\u00f6\u00dfen, Upload-Fehlerbehandlung und Richtlinien.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-API-GET-api_v1_users_userId_profile-controller",
@@ -1063,7 +1156,7 @@
       "type": "api_controller",
       "title": "Controller: GET /api/v1/users/{userId}/profile",
       "description": "Get user profile\nImplement controller method with 1 parameters.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-CHECKPOINT-schema"
       ],
@@ -1076,7 +1169,9 @@
       "related_requirements": [
         "WA-PROF-002"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-007"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -1087,10 +1182,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "NestJS controller with correct decorators, DTOs, and route paths; User can: einen konfigurierbaren Anzeigenamen f\u00fcr das Profil festlegen und \u00e4ndern",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-API-GET-api_v1_users_userId_profile-service",
@@ -1098,7 +1192,7 @@
       "type": "api_service",
       "title": "Service: GET /api/v1/users/{userId}/profile",
       "description": "Business logic for Get user profile",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-API-GET-api_v1_users_userId_profile-controller"
       ],
@@ -1111,7 +1205,9 @@
       "related_requirements": [
         "WA-PROF-002"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-007"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -1122,10 +1218,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Service with Prisma CRUD operations, error handling, and proper return types; User can: einen konfigurierbaren Anzeigenamen f\u00fcr das Profil festlegen und \u00e4ndern",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-API-GET-api_v1_users_userId_profile-guard",
@@ -1133,7 +1228,7 @@
       "type": "api_guard",
       "title": "Auth Guard: /api/v1/users/{userId}/profile",
       "description": "JWT authentication guard for GET /api/v1/users/{userId}/profile",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-API-GET-api_v1_users_userId_profile-controller"
       ],
@@ -1146,7 +1241,9 @@
       "related_requirements": [
         "WA-PROF-002"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-007"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -1157,10 +1254,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Guard with JWT validation and role-based access control; User can: einen konfigurierbaren Anzeigenamen f\u00fcr das Profil festlegen und \u00e4ndern",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-API-GET-api_v1_users_userId_profile-validation",
@@ -1168,7 +1264,7 @@
       "type": "api_validation",
       "title": "Validation: GET /api/v1/users/{userId}/profile",
       "description": "Input validation for 1 parameters",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-API-GET-api_v1_users_userId_profile-controller"
       ],
@@ -1181,7 +1277,9 @@
       "related_requirements": [
         "WA-PROF-002"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-007"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -1192,10 +1290,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Validation pipe with all input constraints from the DTO; User can: einen konfigurierbaren Anzeigenamen f\u00fcr das Profil festlegen und \u00e4ndern",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-API-PUT-api_v1_users_userId_profile_display-name-controller",
@@ -1203,7 +1300,7 @@
       "type": "api_controller",
       "title": "Controller: PUT /api/v1/users/{userId}/profile/display-name",
       "description": "Update display name\nImplement controller method with 1 parameters.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-CHECKPOINT-schema"
       ],
@@ -1216,7 +1313,9 @@
       "related_requirements": [
         "WA-PROF-002"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-007"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -1227,10 +1326,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "NestJS controller with correct decorators, DTOs, and route paths; User can: einen konfigurierbaren Anzeigenamen f\u00fcr das Profil festlegen und \u00e4ndern",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-API-PUT-api_v1_users_userId_profile_display-name-service",
@@ -1238,7 +1336,7 @@
       "type": "api_service",
       "title": "Service: PUT /api/v1/users/{userId}/profile/display-name",
       "description": "Business logic for Update display name",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-API-PUT-api_v1_users_userId_profile_display-name-controller"
       ],
@@ -1251,7 +1349,9 @@
       "related_requirements": [
         "WA-PROF-002"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-007"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -1262,10 +1362,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Service with Prisma CRUD operations, error handling, and proper return types; User can: einen konfigurierbaren Anzeigenamen f\u00fcr das Profil festlegen und \u00e4ndern",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-API-PUT-api_v1_users_userId_profile_display-name-dto",
@@ -1273,7 +1372,7 @@
       "type": "api_dto",
       "title": "DTO: UpdateDisplayNameRequest",
       "description": "Request/Response DTO for PUT /api/v1/users/{userId}/profile/display-name",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-API-PUT-api_v1_users_userId_profile_display-name-controller"
       ],
@@ -1286,7 +1385,9 @@
       "related_requirements": [
         "WA-PROF-002"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-007"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -1297,10 +1398,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "DTOs with class-validator decorators matching OpenAPI schema; User can: einen konfigurierbaren Anzeigenamen f\u00fcr das Profil festlegen und \u00e4ndern",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-API-PUT-api_v1_users_userId_profile_display-name-guard",
@@ -1308,7 +1408,7 @@
       "type": "api_guard",
       "title": "Auth Guard: /api/v1/users/{userId}/profile/display-name",
       "description": "JWT authentication guard for PUT /api/v1/users/{userId}/profile/display-name",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-API-PUT-api_v1_users_userId_profile_display-name-controller"
       ],
@@ -1321,7 +1421,9 @@
       "related_requirements": [
         "WA-PROF-002"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-007"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -1332,10 +1434,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Guard with JWT validation and role-based access control; User can: einen konfigurierbaren Anzeigenamen f\u00fcr das Profil festlegen und \u00e4ndern",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-API-PUT-api_v1_users_userId_profile_display-name-validation",
@@ -1343,7 +1444,7 @@
       "type": "api_validation",
       "title": "Validation: PUT /api/v1/users/{userId}/profile/display-name",
       "description": "Input validation for 1 parameters",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-API-PUT-api_v1_users_userId_profile_display-name-dto"
       ],
@@ -1356,7 +1457,9 @@
       "related_requirements": [
         "WA-PROF-002"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-007"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -1367,10 +1470,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Validation pipe with all input constraints from the DTO; User can: einen konfigurierbaren Anzeigenamen f\u00fcr das Profil festlegen und \u00e4ndern",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-API-GET-api_v1_users_userId_profile_info-text-controller",
@@ -1378,7 +1480,7 @@
       "type": "api_controller",
       "title": "Controller: GET /api/v1/users/{userId}/profile/info-text",
       "description": "Get profile info text\nImplement controller method with 1 parameters.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-CHECKPOINT-schema"
       ],
@@ -1391,7 +1493,9 @@
       "related_requirements": [
         "WA-PROF-003"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-008"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -1402,10 +1506,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "NestJS controller with correct decorators, DTOs, and route paths; User can: einen kurzen Info-/Status-Text im Profil hinterlegen und anzeigen lassen; Address: Erg\u00e4nzen Sie Dateitypen/Gr\u00f6\u00dfen, Upload-Fehlerbehandlung und Richtlinien.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-API-GET-api_v1_users_userId_profile_info-text-service",
@@ -1413,7 +1516,7 @@
       "type": "api_service",
       "title": "Service: GET /api/v1/users/{userId}/profile/info-text",
       "description": "Business logic for Get profile info text",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-API-GET-api_v1_users_userId_profile_info-text-controller"
       ],
@@ -1426,7 +1529,9 @@
       "related_requirements": [
         "WA-PROF-003"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-008"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -1437,10 +1542,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Service with Prisma CRUD operations, error handling, and proper return types; User can: einen kurzen Info-/Status-Text im Profil hinterlegen und anzeigen lassen; Address: Erg\u00e4nzen Sie Dateitypen/Gr\u00f6\u00dfen, Upload-Fehlerbehandlung und Richtlinien.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-API-GET-api_v1_users_userId_profile_info-text-guard",
@@ -1448,7 +1552,7 @@
       "type": "api_guard",
       "title": "Auth Guard: /api/v1/users/{userId}/profile/info-text",
       "description": "JWT authentication guard for GET /api/v1/users/{userId}/profile/info-text",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-API-GET-api_v1_users_userId_profile_info-text-controller"
       ],
@@ -1461,7 +1565,9 @@
       "related_requirements": [
         "WA-PROF-003"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-008"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -1472,10 +1578,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Guard with JWT validation and role-based access control; User can: einen kurzen Info-/Status-Text im Profil hinterlegen und anzeigen lassen; Address: Erg\u00e4nzen Sie Dateitypen/Gr\u00f6\u00dfen, Upload-Fehlerbehandlung und Richtlinien.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-API-GET-api_v1_users_userId_profile_info-text-validation",
@@ -1483,7 +1588,7 @@
       "type": "api_validation",
       "title": "Validation: GET /api/v1/users/{userId}/profile/info-text",
       "description": "Input validation for 1 parameters",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-API-GET-api_v1_users_userId_profile_info-text-controller"
       ],
@@ -1496,7 +1601,9 @@
       "related_requirements": [
         "WA-PROF-003"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-008"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -1507,10 +1614,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Validation pipe with all input constraints from the DTO; User can: einen kurzen Info-/Status-Text im Profil hinterlegen und anzeigen lassen; Address: Erg\u00e4nzen Sie Dateitypen/Gr\u00f6\u00dfen, Upload-Fehlerbehandlung und Richtlinien.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-API-PUT-api_v1_users_userId_profile_info-text-controller",
@@ -1518,7 +1624,7 @@
       "type": "api_controller",
       "title": "Controller: PUT /api/v1/users/{userId}/profile/info-text",
       "description": "Update profile info text\nImplement controller method with 1 parameters.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-CHECKPOINT-schema"
       ],
@@ -1531,7 +1637,9 @@
       "related_requirements": [
         "WA-PROF-003"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-008"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -1542,10 +1650,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "NestJS controller with correct decorators, DTOs, and route paths; User can: einen kurzen Info-/Status-Text im Profil hinterlegen und anzeigen lassen; Address: Erg\u00e4nzen Sie Dateitypen/Gr\u00f6\u00dfen, Upload-Fehlerbehandlung und Richtlinien.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-API-PUT-api_v1_users_userId_profile_info-text-service",
@@ -1553,7 +1660,7 @@
       "type": "api_service",
       "title": "Service: PUT /api/v1/users/{userId}/profile/info-text",
       "description": "Business logic for Update profile info text",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-API-PUT-api_v1_users_userId_profile_info-text-controller"
       ],
@@ -1566,7 +1673,9 @@
       "related_requirements": [
         "WA-PROF-003"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-008"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -1577,10 +1686,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Service with Prisma CRUD operations, error handling, and proper return types; User can: einen kurzen Info-/Status-Text im Profil hinterlegen und anzeigen lassen; Address: Erg\u00e4nzen Sie Dateitypen/Gr\u00f6\u00dfen, Upload-Fehlerbehandlung und Richtlinien.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-API-PUT-api_v1_users_userId_profile_info-text-dto",
@@ -1588,7 +1696,7 @@
       "type": "api_dto",
       "title": "DTO: UpdateUserProfileInfoTextRequest",
       "description": "Request/Response DTO for PUT /api/v1/users/{userId}/profile/info-text",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-API-PUT-api_v1_users_userId_profile_info-text-controller"
       ],
@@ -1601,7 +1709,9 @@
       "related_requirements": [
         "WA-PROF-003"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-008"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -1612,10 +1722,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "DTOs with class-validator decorators matching OpenAPI schema; User can: einen kurzen Info-/Status-Text im Profil hinterlegen und anzeigen lassen; Address: Erg\u00e4nzen Sie Dateitypen/Gr\u00f6\u00dfen, Upload-Fehlerbehandlung und Richtlinien.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-API-PUT-api_v1_users_userId_profile_info-text-guard",
@@ -1623,7 +1732,7 @@
       "type": "api_guard",
       "title": "Auth Guard: /api/v1/users/{userId}/profile/info-text",
       "description": "JWT authentication guard for PUT /api/v1/users/{userId}/profile/info-text",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-API-PUT-api_v1_users_userId_profile_info-text-controller"
       ],
@@ -1636,7 +1745,9 @@
       "related_requirements": [
         "WA-PROF-003"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-008"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -1647,10 +1758,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Guard with JWT validation and role-based access control; User can: einen kurzen Info-/Status-Text im Profil hinterlegen und anzeigen lassen; Address: Erg\u00e4nzen Sie Dateitypen/Gr\u00f6\u00dfen, Upload-Fehlerbehandlung und Richtlinien.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-API-PUT-api_v1_users_userId_profile_info-text-validation",
@@ -1658,7 +1768,7 @@
       "type": "api_validation",
       "title": "Validation: PUT /api/v1/users/{userId}/profile/info-text",
       "description": "Input validation for 1 parameters",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-API-PUT-api_v1_users_userId_profile_info-text-dto"
       ],
@@ -1671,7 +1781,9 @@
       "related_requirements": [
         "WA-PROF-003"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-008"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -1682,10 +1794,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Validation pipe with all input constraints from the DTO; User can: einen kurzen Info-/Status-Text im Profil hinterlegen und anzeigen lassen; Address: Erg\u00e4nzen Sie Dateitypen/Gr\u00f6\u00dfen, Upload-Fehlerbehandlung und Richtlinien.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-API-POST-api_v1_users_userId_qr-codes-controller",
@@ -1693,7 +1804,7 @@
       "type": "api_controller",
       "title": "Controller: POST /api/v1/users/{userId}/qr-codes",
       "description": "Generate a new profile QR code\nImplement controller method with 1 parameters.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-CHECKPOINT-schema"
       ],
@@ -1706,7 +1817,9 @@
       "related_requirements": [
         "WA-PROF-005"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-010"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -1717,10 +1830,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "NestJS controller with correct decorators, DTOs, and route paths; User can: einen scanbaren QR-Code zu meinem Profil anzeigen und herunterladen; Address: Erg\u00e4nzen Sie Kontakt-Sync, Suche, Block/Report und Einladungen.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-API-POST-api_v1_users_userId_qr-codes-service",
@@ -1728,7 +1840,7 @@
       "type": "api_service",
       "title": "Service: POST /api/v1/users/{userId}/qr-codes",
       "description": "Business logic for Generate a new profile QR code",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-API-POST-api_v1_users_userId_qr-codes-controller"
       ],
@@ -1741,7 +1853,9 @@
       "related_requirements": [
         "WA-PROF-005"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-010"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -1752,10 +1866,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Service with Prisma CRUD operations, error handling, and proper return types; User can: einen scanbaren QR-Code zu meinem Profil anzeigen und herunterladen; Address: Erg\u00e4nzen Sie Kontakt-Sync, Suche, Block/Report und Einladungen.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-API-POST-api_v1_users_userId_qr-codes-dto",
@@ -1763,7 +1876,7 @@
       "type": "api_dto",
       "title": "DTO: CreateUserQrCodeRequest",
       "description": "Request/Response DTO for POST /api/v1/users/{userId}/qr-codes",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-API-POST-api_v1_users_userId_qr-codes-controller"
       ],
@@ -1776,7 +1889,9 @@
       "related_requirements": [
         "WA-PROF-005"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-010"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -1787,10 +1902,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "DTOs with class-validator decorators matching OpenAPI schema; User can: einen scanbaren QR-Code zu meinem Profil anzeigen und herunterladen; Address: Erg\u00e4nzen Sie Kontakt-Sync, Suche, Block/Report und Einladungen.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-API-POST-api_v1_users_userId_qr-codes-guard",
@@ -1798,7 +1912,7 @@
       "type": "api_guard",
       "title": "Auth Guard: /api/v1/users/{userId}/qr-codes",
       "description": "JWT authentication guard for POST /api/v1/users/{userId}/qr-codes",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-API-POST-api_v1_users_userId_qr-codes-controller"
       ],
@@ -1811,7 +1925,9 @@
       "related_requirements": [
         "WA-PROF-005"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-010"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -1822,10 +1938,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Guard with JWT validation and role-based access control; User can: einen scanbaren QR-Code zu meinem Profil anzeigen und herunterladen; Address: Erg\u00e4nzen Sie Kontakt-Sync, Suche, Block/Report und Einladungen.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-API-POST-api_v1_users_userId_qr-codes-validation",
@@ -1833,7 +1948,7 @@
       "type": "api_validation",
       "title": "Validation: POST /api/v1/users/{userId}/qr-codes",
       "description": "Input validation for 1 parameters",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-API-POST-api_v1_users_userId_qr-codes-dto"
       ],
@@ -1846,7 +1961,9 @@
       "related_requirements": [
         "WA-PROF-005"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-010"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -1857,10 +1974,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Validation pipe with all input constraints from the DTO; User can: einen scanbaren QR-Code zu meinem Profil anzeigen und herunterladen; Address: Erg\u00e4nzen Sie Kontakt-Sync, Suche, Block/Report und Einladungen.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-API-GET-api_v1_users_userId_qr-codes_qrCodeId-controller",
@@ -1868,7 +1984,7 @@
       "type": "api_controller",
       "title": "Controller: GET /api/v1/users/{userId}/qr-codes/{qrCodeId}",
       "description": "Retrieve a profile QR code\nImplement controller method with 2 parameters.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-CHECKPOINT-schema"
       ],
@@ -1881,7 +1997,9 @@
       "related_requirements": [
         "WA-PROF-005"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-010"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -1892,10 +2010,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "NestJS controller with correct decorators, DTOs, and route paths; User can: einen scanbaren QR-Code zu meinem Profil anzeigen und herunterladen; Address: Erg\u00e4nzen Sie Kontakt-Sync, Suche, Block/Report und Einladungen.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-API-GET-api_v1_users_userId_qr-codes_qrCodeId-service",
@@ -1903,7 +2020,7 @@
       "type": "api_service",
       "title": "Service: GET /api/v1/users/{userId}/qr-codes/{qrCodeId}",
       "description": "Business logic for Retrieve a profile QR code",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-API-GET-api_v1_users_userId_qr-codes_qrCodeId-controller"
       ],
@@ -1916,7 +2033,9 @@
       "related_requirements": [
         "WA-PROF-005"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-010"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -1927,10 +2046,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Service with Prisma CRUD operations, error handling, and proper return types; User can: einen scanbaren QR-Code zu meinem Profil anzeigen und herunterladen; Address: Erg\u00e4nzen Sie Kontakt-Sync, Suche, Block/Report und Einladungen.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-API-GET-api_v1_users_userId_qr-codes_qrCodeId-dto",
@@ -1938,7 +2056,7 @@
       "type": "api_dto",
       "title": "DTO: GetUserQrCodeRequest",
       "description": "Request/Response DTO for GET /api/v1/users/{userId}/qr-codes/{qrCodeId}",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-API-GET-api_v1_users_userId_qr-codes_qrCodeId-controller"
       ],
@@ -1951,7 +2069,9 @@
       "related_requirements": [
         "WA-PROF-005"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-010"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -1962,10 +2082,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "DTOs with class-validator decorators matching OpenAPI schema; User can: einen scanbaren QR-Code zu meinem Profil anzeigen und herunterladen; Address: Erg\u00e4nzen Sie Kontakt-Sync, Suche, Block/Report und Einladungen.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-API-GET-api_v1_users_userId_qr-codes_qrCodeId-guard",
@@ -1973,7 +2092,7 @@
       "type": "api_guard",
       "title": "Auth Guard: /api/v1/users/{userId}/qr-codes/{qrCodeId}",
       "description": "JWT authentication guard for GET /api/v1/users/{userId}/qr-codes/{qrCodeId}",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-API-GET-api_v1_users_userId_qr-codes_qrCodeId-controller"
       ],
@@ -1986,7 +2105,9 @@
       "related_requirements": [
         "WA-PROF-005"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-010"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -1997,10 +2118,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Guard with JWT validation and role-based access control; User can: einen scanbaren QR-Code zu meinem Profil anzeigen und herunterladen; Address: Erg\u00e4nzen Sie Kontakt-Sync, Suche, Block/Report und Einladungen.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-API-GET-api_v1_users_userId_qr-codes_qrCodeId-validation",
@@ -2008,7 +2128,7 @@
       "type": "api_validation",
       "title": "Validation: GET /api/v1/users/{userId}/qr-codes/{qrCodeId}",
       "description": "Input validation for 2 parameters",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-API-GET-api_v1_users_userId_qr-codes_qrCodeId-dto"
       ],
@@ -2021,7 +2141,9 @@
       "related_requirements": [
         "WA-PROF-005"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-010"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -2032,10 +2154,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Validation pipe with all input constraints from the DTO; User can: einen scanbaren QR-Code zu meinem Profil anzeigen und herunterladen; Address: Erg\u00e4nzen Sie Kontakt-Sync, Suche, Block/Report und Einladungen.",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-API-GET-api_v1_users_userId_presence-visibility-controller",
@@ -2043,7 +2164,7 @@
       "type": "api_controller",
       "title": "Controller: GET /api/v1/users/{userId}/presence-visibility",
       "description": "Get online status visibility setting\nImplement controller method with 1 parameters.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-CHECKPOINT-schema"
       ],
@@ -2056,7 +2177,9 @@
       "related_requirements": [
         "WA-SET-001"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-080"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -2067,10 +2190,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "NestJS controller with correct decorators, DTOs, and route paths; User can: meine Sichtbarkeit des Zuletzt-online-Status in den Einstellungen konfigurieren",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-API-GET-api_v1_users_userId_presence-visibility-service",
@@ -2078,7 +2200,7 @@
       "type": "api_service",
       "title": "Service: GET /api/v1/users/{userId}/presence-visibility",
       "description": "Business logic for Get online status visibility setting",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-API-GET-api_v1_users_userId_presence-visibility-controller"
       ],
@@ -2091,7 +2213,9 @@
       "related_requirements": [
         "WA-SET-001"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-080"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -2102,10 +2226,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Service with Prisma CRUD operations, error handling, and proper return types; User can: meine Sichtbarkeit des Zuletzt-online-Status in den Einstellungen konfigurieren",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-API-GET-api_v1_users_userId_presence-visibility-dto",
@@ -2113,7 +2236,7 @@
       "type": "api_dto",
       "title": "DTO: GetPresenceVisibilityRequest",
       "description": "Request/Response DTO for GET /api/v1/users/{userId}/presence-visibility",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-API-GET-api_v1_users_userId_presence-visibility-controller"
       ],
@@ -2126,7 +2249,9 @@
       "related_requirements": [
         "WA-SET-001"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-080"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -2137,10 +2262,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "DTOs with class-validator decorators matching OpenAPI schema; User can: meine Sichtbarkeit des Zuletzt-online-Status in den Einstellungen konfigurieren",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-API-GET-api_v1_users_userId_presence-visibility-guard",
@@ -2148,7 +2272,7 @@
       "type": "api_guard",
       "title": "Auth Guard: /api/v1/users/{userId}/presence-visibility",
       "description": "JWT authentication guard for GET /api/v1/users/{userId}/presence-visibility",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-API-GET-api_v1_users_userId_presence-visibility-controller"
       ],
@@ -2161,7 +2285,9 @@
       "related_requirements": [
         "WA-SET-001"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-080"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -2172,10 +2298,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Guard with JWT validation and role-based access control; User can: meine Sichtbarkeit des Zuletzt-online-Status in den Einstellungen konfigurieren",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-API-GET-api_v1_users_userId_presence-visibility-validation",
@@ -2183,7 +2308,7 @@
       "type": "api_validation",
       "title": "Validation: GET /api/v1/users/{userId}/presence-visibility",
       "description": "Input validation for 1 parameters",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-API-GET-api_v1_users_userId_presence-visibility-dto"
       ],
@@ -2196,7 +2321,9 @@
       "related_requirements": [
         "WA-SET-001"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-080"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -2207,10 +2334,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Validation pipe with all input constraints from the DTO; User can: meine Sichtbarkeit des Zuletzt-online-Status in den Einstellungen konfigurieren",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-API-PUT-api_v1_users_userId_presence-visibility-controller",
@@ -2218,7 +2344,7 @@
       "type": "api_controller",
       "title": "Controller: PUT /api/v1/users/{userId}/presence-visibility",
       "description": "Update online status visibility setting\nImplement controller method with 1 parameters.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-CHECKPOINT-schema"
       ],
@@ -2231,7 +2357,9 @@
       "related_requirements": [
         "WA-SET-001"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-080"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -2242,10 +2370,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "NestJS controller with correct decorators, DTOs, and route paths; User can: meine Sichtbarkeit des Zuletzt-online-Status in den Einstellungen konfigurieren",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-API-PUT-api_v1_users_userId_presence-visibility-service",
@@ -2253,7 +2380,7 @@
       "type": "api_service",
       "title": "Service: PUT /api/v1/users/{userId}/presence-visibility",
       "description": "Business logic for Update online status visibility setting",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-API-PUT-api_v1_users_userId_presence-visibility-controller"
       ],
@@ -2266,7 +2393,9 @@
       "related_requirements": [
         "WA-SET-001"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-080"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -2277,10 +2406,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Service with Prisma CRUD operations, error handling, and proper return types; User can: meine Sichtbarkeit des Zuletzt-online-Status in den Einstellungen konfigurieren",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-API-PUT-api_v1_users_userId_presence-visibility-dto",
@@ -2288,7 +2416,7 @@
       "type": "api_dto",
       "title": "DTO: UpdatePresenceVisibilityRequest",
       "description": "Request/Response DTO for PUT /api/v1/users/{userId}/presence-visibility",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-API-PUT-api_v1_users_userId_presence-visibility-controller"
       ],
@@ -2301,7 +2429,9 @@
       "related_requirements": [
         "WA-SET-001"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-080"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -2312,10 +2442,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "DTOs with class-validator decorators matching OpenAPI schema; User can: meine Sichtbarkeit des Zuletzt-online-Status in den Einstellungen konfigurieren",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-API-PUT-api_v1_users_userId_presence-visibility-guard",
@@ -2323,7 +2452,7 @@
       "type": "api_guard",
       "title": "Auth Guard: /api/v1/users/{userId}/presence-visibility",
       "description": "JWT authentication guard for PUT /api/v1/users/{userId}/presence-visibility",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-API-PUT-api_v1_users_userId_presence-visibility-controller"
       ],
@@ -2336,7 +2465,9 @@
       "related_requirements": [
         "WA-SET-001"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-080"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -2347,10 +2478,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Guard with JWT validation and role-based access control; User can: meine Sichtbarkeit des Zuletzt-online-Status in den Einstellungen konfigurieren",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-API-PUT-api_v1_users_userId_presence-visibility-validation",
@@ -2358,7 +2488,7 @@
       "type": "api_validation",
       "title": "Validation: PUT /api/v1/users/{userId}/presence-visibility",
       "description": "Input validation for 1 parameters",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-API-PUT-api_v1_users_userId_presence-visibility-dto"
       ],
@@ -2371,7 +2501,9 @@
       "related_requirements": [
         "WA-SET-001"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-080"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -2382,10 +2514,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Validation pipe with all input constraints from the DTO; User can: meine Sichtbarkeit des Zuletzt-online-Status in den Einstellungen konfigurieren",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-API-GET-api_v1_users_userId_presence-visibility_allowed-users-controller",
@@ -2393,7 +2524,7 @@
       "type": "api_controller",
       "title": "Controller: GET /api/v1/users/{userId}/presence-visibility/allowed-users",
       "description": "List users allowed to see online status\nImplement controller method with 3 parameters.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-CHECKPOINT-schema"
       ],
@@ -2406,7 +2537,9 @@
       "related_requirements": [
         "WA-SET-001"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-080"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -2417,10 +2550,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "NestJS controller with correct decorators, DTOs, and route paths; User can: meine Sichtbarkeit des Zuletzt-online-Status in den Einstellungen konfigurieren",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-API-GET-api_v1_users_userId_presence-visibility_allowed-users-service",
@@ -2428,7 +2560,7 @@
       "type": "api_service",
       "title": "Service: GET /api/v1/users/{userId}/presence-visibility/allowed-users",
       "description": "Business logic for List users allowed to see online status",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-API-GET-api_v1_users_userId_presence-visibility_allowed-users-controller"
       ],
@@ -2441,7 +2573,9 @@
       "related_requirements": [
         "WA-SET-001"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-080"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -2452,10 +2586,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Service with Prisma CRUD operations, error handling, and proper return types; User can: meine Sichtbarkeit des Zuletzt-online-Status in den Einstellungen konfigurieren",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-API-GET-api_v1_users_userId_presence-visibility_allowed-users-dto",
@@ -2463,7 +2596,7 @@
       "type": "api_dto",
       "title": "DTO: ListPresenceAllowedUsersRequest",
       "description": "Request/Response DTO for GET /api/v1/users/{userId}/presence-visibility/allowed-users",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-API-GET-api_v1_users_userId_presence-visibility_allowed-users-controller"
       ],
@@ -2476,7 +2609,9 @@
       "related_requirements": [
         "WA-SET-001"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-080"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -2487,10 +2622,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "DTOs with class-validator decorators matching OpenAPI schema; User can: meine Sichtbarkeit des Zuletzt-online-Status in den Einstellungen konfigurieren",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-API-GET-api_v1_users_userId_presence-visibility_allowed-users-guard",
@@ -2498,7 +2632,7 @@
       "type": "api_guard",
       "title": "Auth Guard: /api/v1/users/{userId}/presence-visibility/allowed-users",
       "description": "JWT authentication guard for GET /api/v1/users/{userId}/presence-visibility/allowed-users",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-API-GET-api_v1_users_userId_presence-visibility_allowed-users-controller"
       ],
@@ -2511,7 +2645,9 @@
       "related_requirements": [
         "WA-SET-001"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-080"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -2522,10 +2658,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Guard with JWT validation and role-based access control; User can: meine Sichtbarkeit des Zuletzt-online-Status in den Einstellungen konfigurieren",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-API-GET-api_v1_users_userId_presence-visibility_allowed-users-validation",
@@ -2533,7 +2668,7 @@
       "type": "api_validation",
       "title": "Validation: GET /api/v1/users/{userId}/presence-visibility/allowed-users",
       "description": "Input validation for 3 parameters",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-API-GET-api_v1_users_userId_presence-visibility_allowed-users-dto"
       ],
@@ -2546,7 +2681,9 @@
       "related_requirements": [
         "WA-SET-001"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-080"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -2557,10 +2694,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Validation pipe with all input constraints from the DTO; User can: meine Sichtbarkeit des Zuletzt-online-Status in den Einstellungen konfigurieren",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-API-GET-api_v1_users_userId_presence-visibility_denied-users-controller",
@@ -2568,7 +2704,7 @@
       "type": "api_controller",
       "title": "Controller: GET /api/v1/users/{userId}/presence-visibility/denied-users",
       "description": "List users denied to see online status\nImplement controller method with 3 parameters.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-CHECKPOINT-schema"
       ],
@@ -2581,7 +2717,9 @@
       "related_requirements": [
         "WA-SET-001"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-080"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -2592,10 +2730,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "NestJS controller with correct decorators, DTOs, and route paths; User can: meine Sichtbarkeit des Zuletzt-online-Status in den Einstellungen konfigurieren",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-API-GET-api_v1_users_userId_presence-visibility_denied-users-service",
@@ -2603,7 +2740,7 @@
       "type": "api_service",
       "title": "Service: GET /api/v1/users/{userId}/presence-visibility/denied-users",
       "description": "Business logic for List users denied to see online status",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-API-GET-api_v1_users_userId_presence-visibility_denied-users-controller"
       ],
@@ -2616,7 +2753,9 @@
       "related_requirements": [
         "WA-SET-001"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-080"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -2627,10 +2766,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Service with Prisma CRUD operations, error handling, and proper return types; User can: meine Sichtbarkeit des Zuletzt-online-Status in den Einstellungen konfigurieren",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-API-GET-api_v1_users_userId_presence-visibility_denied-users-dto",
@@ -2638,7 +2776,7 @@
       "type": "api_dto",
       "title": "DTO: ListPresenceDeniedUsersRequest",
       "description": "Request/Response DTO for GET /api/v1/users/{userId}/presence-visibility/denied-users",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-API-GET-api_v1_users_userId_presence-visibility_denied-users-controller"
       ],
@@ -2651,7 +2789,9 @@
       "related_requirements": [
         "WA-SET-001"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-080"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -2662,10 +2802,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "DTOs with class-validator decorators matching OpenAPI schema; User can: meine Sichtbarkeit des Zuletzt-online-Status in den Einstellungen konfigurieren",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-API-GET-api_v1_users_userId_presence-visibility_denied-users-guard",
@@ -2673,7 +2812,7 @@
       "type": "api_guard",
       "title": "Auth Guard: /api/v1/users/{userId}/presence-visibility/denied-users",
       "description": "JWT authentication guard for GET /api/v1/users/{userId}/presence-visibility/denied-users",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-API-GET-api_v1_users_userId_presence-visibility_denied-users-controller"
       ],
@@ -2686,7 +2825,9 @@
       "related_requirements": [
         "WA-SET-001"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-080"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -2697,10 +2838,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Guard with JWT validation and role-based access control; User can: meine Sichtbarkeit des Zuletzt-online-Status in den Einstellungen konfigurieren",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-API-GET-api_v1_users_userId_presence-visibility_denied-users-validation",
@@ -2708,7 +2848,7 @@
       "type": "api_validation",
       "title": "Validation: GET /api/v1/users/{userId}/presence-visibility/denied-users",
       "description": "Input validation for 3 parameters",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-API-GET-api_v1_users_userId_presence-visibility_denied-users-dto"
       ],
@@ -2721,7 +2861,9 @@
       "related_requirements": [
         "WA-SET-001"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-080"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -2732,10 +2874,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Validation pipe with all input constraints from the DTO; User can: meine Sichtbarkeit des Zuletzt-online-Status in den Einstellungen konfigurieren",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-API-GET-api_v1_users_userId_settings_read-receipts-controller",
@@ -2743,7 +2884,7 @@
       "type": "api_controller",
       "title": "Controller: GET /api/v1/users/{userId}/settings/read-receipts",
       "description": "Get read receipt settings\nImplement controller method with 1 parameters.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-CHECKPOINT-schema"
       ],
@@ -2756,7 +2897,9 @@
       "related_requirements": [
         "WA-SET-002"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-081"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -2767,10 +2910,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "NestJS controller with correct decorators, DTOs, and route paths; User can: Lesebest\u00e4tigungen pro Konversation ein- oder ausschalten",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-API-GET-api_v1_users_userId_settings_read-receipts-service",
@@ -2778,7 +2920,7 @@
       "type": "api_service",
       "title": "Service: GET /api/v1/users/{userId}/settings/read-receipts",
       "description": "Business logic for Get read receipt settings",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-API-GET-api_v1_users_userId_settings_read-receipts-controller"
       ],
@@ -2791,7 +2933,9 @@
       "related_requirements": [
         "WA-SET-002"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-081"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -2802,10 +2946,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Service with Prisma CRUD operations, error handling, and proper return types; User can: Lesebest\u00e4tigungen pro Konversation ein- oder ausschalten",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-API-GET-api_v1_users_userId_settings_read-receipts-dto",
@@ -2813,7 +2956,7 @@
       "type": "api_dto",
       "title": "DTO: GetReadReceiptSettingsRequest",
       "description": "Request/Response DTO for GET /api/v1/users/{userId}/settings/read-receipts",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-API-GET-api_v1_users_userId_settings_read-receipts-controller"
       ],
@@ -2826,7 +2969,9 @@
       "related_requirements": [
         "WA-SET-002"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-081"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -2837,10 +2982,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "DTOs with class-validator decorators matching OpenAPI schema; User can: Lesebest\u00e4tigungen pro Konversation ein- oder ausschalten",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-API-GET-api_v1_users_userId_settings_read-receipts-guard",
@@ -2848,7 +2992,7 @@
       "type": "api_guard",
       "title": "Auth Guard: /api/v1/users/{userId}/settings/read-receipts",
       "description": "JWT authentication guard for GET /api/v1/users/{userId}/settings/read-receipts",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-API-GET-api_v1_users_userId_settings_read-receipts-controller"
       ],
@@ -2861,7 +3005,9 @@
       "related_requirements": [
         "WA-SET-002"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-081"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -2872,10 +3018,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Guard with JWT validation and role-based access control; User can: Lesebest\u00e4tigungen pro Konversation ein- oder ausschalten",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-API-GET-api_v1_users_userId_settings_read-receipts-validation",
@@ -2883,7 +3028,7 @@
       "type": "api_validation",
       "title": "Validation: GET /api/v1/users/{userId}/settings/read-receipts",
       "description": "Input validation for 1 parameters",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-API-GET-api_v1_users_userId_settings_read-receipts-dto"
       ],
@@ -2896,7 +3041,9 @@
       "related_requirements": [
         "WA-SET-002"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-081"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -2907,10 +3054,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Validation pipe with all input constraints from the DTO; User can: Lesebest\u00e4tigungen pro Konversation ein- oder ausschalten",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-API-PUT-api_v1_users_userId_settings_read-receipts-controller",
@@ -2918,7 +3064,7 @@
       "type": "api_controller",
       "title": "Controller: PUT /api/v1/users/{userId}/settings/read-receipts",
       "description": "Update read receipt settings\nImplement controller method with 1 parameters.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-CHECKPOINT-schema"
       ],
@@ -2931,7 +3077,9 @@
       "related_requirements": [
         "WA-SET-002"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-081"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -2942,10 +3090,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "NestJS controller with correct decorators, DTOs, and route paths; User can: Lesebest\u00e4tigungen pro Konversation ein- oder ausschalten",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-API-PUT-api_v1_users_userId_settings_read-receipts-service",
@@ -2953,7 +3100,7 @@
       "type": "api_service",
       "title": "Service: PUT /api/v1/users/{userId}/settings/read-receipts",
       "description": "Business logic for Update read receipt settings",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-API-PUT-api_v1_users_userId_settings_read-receipts-controller"
       ],
@@ -2966,7 +3113,9 @@
       "related_requirements": [
         "WA-SET-002"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-081"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -2977,10 +3126,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Service with Prisma CRUD operations, error handling, and proper return types; User can: Lesebest\u00e4tigungen pro Konversation ein- oder ausschalten",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-API-PUT-api_v1_users_userId_settings_read-receipts-dto",
@@ -2988,7 +3136,7 @@
       "type": "api_dto",
       "title": "DTO: UpdateReadReceiptSettingsRequest",
       "description": "Request/Response DTO for PUT /api/v1/users/{userId}/settings/read-receipts",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-API-PUT-api_v1_users_userId_settings_read-receipts-controller"
       ],
@@ -3001,7 +3149,9 @@
       "related_requirements": [
         "WA-SET-002"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-081"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -3012,10 +3162,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "DTOs with class-validator decorators matching OpenAPI schema; User can: Lesebest\u00e4tigungen pro Konversation ein- oder ausschalten",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-API-PUT-api_v1_users_userId_settings_read-receipts-guard",
@@ -3023,7 +3172,7 @@
       "type": "api_guard",
       "title": "Auth Guard: /api/v1/users/{userId}/settings/read-receipts",
       "description": "JWT authentication guard for PUT /api/v1/users/{userId}/settings/read-receipts",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-API-PUT-api_v1_users_userId_settings_read-receipts-controller"
       ],
@@ -3036,7 +3185,9 @@
       "related_requirements": [
         "WA-SET-002"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-081"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -3047,10 +3198,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Guard with JWT validation and role-based access control; User can: Lesebest\u00e4tigungen pro Konversation ein- oder ausschalten",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-API-PUT-api_v1_users_userId_settings_read-receipts-validation",
@@ -3058,7 +3208,7 @@
       "type": "api_validation",
       "title": "Validation: PUT /api/v1/users/{userId}/settings/read-receipts",
       "description": "Input validation for 1 parameters",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-API-PUT-api_v1_users_userId_settings_read-receipts-dto"
       ],
@@ -3071,7 +3221,9 @@
       "related_requirements": [
         "WA-SET-002"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-081"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -3082,10 +3234,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Validation pipe with all input constraints from the DTO; User can: Lesebest\u00e4tigungen pro Konversation ein- oder ausschalten",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-API-GET-api_v1_users_userId_settings_profile-picture-visibility-controller",
@@ -3093,7 +3244,7 @@
       "type": "api_controller",
       "title": "Controller: GET /api/v1/users/{userId}/settings/profile-picture-visibility",
       "description": "Get profile picture visibility setting\nImplement controller method with 1 parameters.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-CHECKPOINT-schema"
       ],
@@ -3106,7 +3257,9 @@
       "related_requirements": [
         "WA-SET-003"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-082"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -3117,10 +3270,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "NestJS controller with correct decorators, DTOs, and route paths; User can: die Sichtbarkeit meines Profilbildes konfigurieren",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-API-GET-api_v1_users_userId_settings_profile-picture-visibility-service",
@@ -3128,7 +3280,7 @@
       "type": "api_service",
       "title": "Service: GET /api/v1/users/{userId}/settings/profile-picture-visibility",
       "description": "Business logic for Get profile picture visibility setting",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-API-GET-api_v1_users_userId_settings_profile-picture-visibility-controller"
       ],
@@ -3141,7 +3293,9 @@
       "related_requirements": [
         "WA-SET-003"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-082"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -3152,10 +3306,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Service with Prisma CRUD operations, error handling, and proper return types; User can: die Sichtbarkeit meines Profilbildes konfigurieren",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-API-GET-api_v1_users_userId_settings_profile-picture-visibility-guard",
@@ -3163,7 +3316,7 @@
       "type": "api_guard",
       "title": "Auth Guard: /api/v1/users/{userId}/settings/profile-picture-visibility",
       "description": "JWT authentication guard for GET /api/v1/users/{userId}/settings/profile-picture-visibility",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-API-GET-api_v1_users_userId_settings_profile-picture-visibility-controller"
       ],
@@ -3176,7 +3329,9 @@
       "related_requirements": [
         "WA-SET-003"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-082"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -3187,10 +3342,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Guard with JWT validation and role-based access control; User can: die Sichtbarkeit meines Profilbildes konfigurieren",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-API-GET-api_v1_users_userId_settings_profile-picture-visibility-validation",
@@ -3198,7 +3352,7 @@
       "type": "api_validation",
       "title": "Validation: GET /api/v1/users/{userId}/settings/profile-picture-visibility",
       "description": "Input validation for 1 parameters",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-API-GET-api_v1_users_userId_settings_profile-picture-visibility-controller"
       ],
@@ -3211,7 +3365,9 @@
       "related_requirements": [
         "WA-SET-003"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-082"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -3222,10 +3378,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Validation pipe with all input constraints from the DTO; User can: die Sichtbarkeit meines Profilbildes konfigurieren",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-API-PUT-api_v1_users_userId_settings_profile-picture-visibility-controller",
@@ -3233,7 +3388,7 @@
       "type": "api_controller",
       "title": "Controller: PUT /api/v1/users/{userId}/settings/profile-picture-visibility",
       "description": "Update profile picture visibility setting\nImplement controller method with 1 parameters.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-CHECKPOINT-schema"
       ],
@@ -3246,7 +3401,9 @@
       "related_requirements": [
         "WA-SET-003"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-082"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -3257,10 +3414,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "NestJS controller with correct decorators, DTOs, and route paths; User can: die Sichtbarkeit meines Profilbildes konfigurieren",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-API-PUT-api_v1_users_userId_settings_profile-picture-visibility-service",
@@ -3268,7 +3424,7 @@
       "type": "api_service",
       "title": "Service: PUT /api/v1/users/{userId}/settings/profile-picture-visibility",
       "description": "Business logic for Update profile picture visibility setting",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-API-PUT-api_v1_users_userId_settings_profile-picture-visibility-controller"
       ],
@@ -3281,7 +3437,9 @@
       "related_requirements": [
         "WA-SET-003"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-082"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -3292,10 +3450,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Service with Prisma CRUD operations, error handling, and proper return types; User can: die Sichtbarkeit meines Profilbildes konfigurieren",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-API-PUT-api_v1_users_userId_settings_profile-picture-visibility-dto",
@@ -3303,7 +3460,7 @@
       "type": "api_dto",
       "title": "DTO: UpdateProfilePictureVisibilityRequest",
       "description": "Request/Response DTO for PUT /api/v1/users/{userId}/settings/profile-picture-visibility",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-API-PUT-api_v1_users_userId_settings_profile-picture-visibility-controller"
       ],
@@ -3316,7 +3473,9 @@
       "related_requirements": [
         "WA-SET-003"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-082"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -3327,10 +3486,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "DTOs with class-validator decorators matching OpenAPI schema; User can: die Sichtbarkeit meines Profilbildes konfigurieren",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-API-PUT-api_v1_users_userId_settings_profile-picture-visibility-guard",
@@ -3338,7 +3496,7 @@
       "type": "api_guard",
       "title": "Auth Guard: /api/v1/users/{userId}/settings/profile-picture-visibility",
       "description": "JWT authentication guard for PUT /api/v1/users/{userId}/settings/profile-picture-visibility",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-API-PUT-api_v1_users_userId_settings_profile-picture-visibility-controller"
       ],
@@ -3351,7 +3509,9 @@
       "related_requirements": [
         "WA-SET-003"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-082"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -3362,10 +3522,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Guard with JWT validation and role-based access control; User can: die Sichtbarkeit meines Profilbildes konfigurieren",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-API-PUT-api_v1_users_userId_settings_profile-picture-visibility-validation",
@@ -3373,7 +3532,7 @@
       "type": "api_validation",
       "title": "Validation: PUT /api/v1/users/{userId}/settings/profile-picture-visibility",
       "description": "Input validation for 1 parameters",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-API-PUT-api_v1_users_userId_settings_profile-picture-visibility-dto"
       ],
@@ -3386,7 +3545,9 @@
       "related_requirements": [
         "WA-SET-003"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-082"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -3397,10 +3558,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Validation pipe with all input constraints from the DTO; User can: die Sichtbarkeit meines Profilbildes konfigurieren",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-API-GET-api_v1_users_userId_privacy_infoVisibility-controller",
@@ -3408,7 +3568,7 @@
       "type": "api_controller",
       "title": "Controller: GET /api/v1/users/{userId}/privacy/infoVisibility",
       "description": "Get info/status text visibility settings\nImplement controller method with 1 parameters.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-CHECKPOINT-schema"
       ],
@@ -3421,7 +3581,9 @@
       "related_requirements": [
         "WA-SET-004"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-083"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -3432,10 +3594,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "NestJS controller with correct decorators, DTOs, and route paths; User can: die Sichtbarkeit von Info- und Status-Texten f\u00fcr definierte Nutzergruppen konfigurieren",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-API-GET-api_v1_users_userId_privacy_infoVisibility-service",
@@ -3443,7 +3604,7 @@
       "type": "api_service",
       "title": "Service: GET /api/v1/users/{userId}/privacy/infoVisibility",
       "description": "Business logic for Get info/status text visibility settings",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-API-GET-api_v1_users_userId_privacy_infoVisibility-controller"
       ],
@@ -3456,7 +3617,9 @@
       "related_requirements": [
         "WA-SET-004"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-083"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -3467,10 +3630,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Service with Prisma CRUD operations, error handling, and proper return types; User can: die Sichtbarkeit von Info- und Status-Texten f\u00fcr definierte Nutzergruppen konfigurieren",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-API-GET-api_v1_users_userId_privacy_infoVisibility-dto",
@@ -3478,7 +3640,7 @@
       "type": "api_dto",
       "title": "DTO: GetInfoVisibilitySettingsRequest",
       "description": "Request/Response DTO for GET /api/v1/users/{userId}/privacy/infoVisibility",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-API-GET-api_v1_users_userId_privacy_infoVisibility-controller"
       ],
@@ -3491,7 +3653,9 @@
       "related_requirements": [
         "WA-SET-004"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-083"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -3502,10 +3666,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "DTOs with class-validator decorators matching OpenAPI schema; User can: die Sichtbarkeit von Info- und Status-Texten f\u00fcr definierte Nutzergruppen konfigurieren",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-API-GET-api_v1_users_userId_privacy_infoVisibility-guard",
@@ -3513,7 +3676,7 @@
       "type": "api_guard",
       "title": "Auth Guard: /api/v1/users/{userId}/privacy/infoVisibility",
       "description": "JWT authentication guard for GET /api/v1/users/{userId}/privacy/infoVisibility",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-API-GET-api_v1_users_userId_privacy_infoVisibility-controller"
       ],
@@ -3526,7 +3689,9 @@
       "related_requirements": [
         "WA-SET-004"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-083"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -3537,10 +3702,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Guard with JWT validation and role-based access control; User can: die Sichtbarkeit von Info- und Status-Texten f\u00fcr definierte Nutzergruppen konfigurieren",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-API-GET-api_v1_users_userId_privacy_infoVisibility-validation",
@@ -3548,7 +3712,7 @@
       "type": "api_validation",
       "title": "Validation: GET /api/v1/users/{userId}/privacy/infoVisibility",
       "description": "Input validation for 1 parameters",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-API-GET-api_v1_users_userId_privacy_infoVisibility-dto"
       ],
@@ -3561,7 +3725,9 @@
       "related_requirements": [
         "WA-SET-004"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-083"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -3572,10 +3738,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Validation pipe with all input constraints from the DTO; User can: die Sichtbarkeit von Info- und Status-Texten f\u00fcr definierte Nutzergruppen konfigurieren",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-API-PUT-api_v1_users_userId_privacy_infoVisibility-controller",
@@ -3583,7 +3748,7 @@
       "type": "api_controller",
       "title": "Controller: PUT /api/v1/users/{userId}/privacy/infoVisibility",
       "description": "Update info/status text visibility settings\nImplement controller method with 1 parameters.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-CHECKPOINT-schema"
       ],
@@ -3596,7 +3761,9 @@
       "related_requirements": [
         "WA-SET-004"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-083"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -3607,10 +3774,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "NestJS controller with correct decorators, DTOs, and route paths; User can: die Sichtbarkeit von Info- und Status-Texten f\u00fcr definierte Nutzergruppen konfigurieren",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-API-PUT-api_v1_users_userId_privacy_infoVisibility-service",
@@ -3618,7 +3784,7 @@
       "type": "api_service",
       "title": "Service: PUT /api/v1/users/{userId}/privacy/infoVisibility",
       "description": "Business logic for Update info/status text visibility settings",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-API-PUT-api_v1_users_userId_privacy_infoVisibility-controller"
       ],
@@ -3631,7 +3797,9 @@
       "related_requirements": [
         "WA-SET-004"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-083"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -3642,10 +3810,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Service with Prisma CRUD operations, error handling, and proper return types; User can: die Sichtbarkeit von Info- und Status-Texten f\u00fcr definierte Nutzergruppen konfigurieren",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-API-PUT-api_v1_users_userId_privacy_infoVisibility-dto",
@@ -3653,7 +3820,7 @@
       "type": "api_dto",
       "title": "DTO: UpdateInfoVisibilitySettingsRequest",
       "description": "Request/Response DTO for PUT /api/v1/users/{userId}/privacy/infoVisibility",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-API-PUT-api_v1_users_userId_privacy_infoVisibility-controller"
       ],
@@ -3666,7 +3833,9 @@
       "related_requirements": [
         "WA-SET-004"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-083"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -3677,10 +3846,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "DTOs with class-validator decorators matching OpenAPI schema; User can: die Sichtbarkeit von Info- und Status-Texten f\u00fcr definierte Nutzergruppen konfigurieren",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-API-PUT-api_v1_users_userId_privacy_infoVisibility-guard",
@@ -3688,7 +3856,7 @@
       "type": "api_guard",
       "title": "Auth Guard: /api/v1/users/{userId}/privacy/infoVisibility",
       "description": "JWT authentication guard for PUT /api/v1/users/{userId}/privacy/infoVisibility",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-API-PUT-api_v1_users_userId_privacy_infoVisibility-controller"
       ],
@@ -3701,7 +3869,9 @@
       "related_requirements": [
         "WA-SET-004"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-083"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -3712,10 +3882,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Guard with JWT validation and role-based access control; User can: die Sichtbarkeit von Info- und Status-Texten f\u00fcr definierte Nutzergruppen konfigurieren",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-API-PUT-api_v1_users_userId_privacy_infoVisibility-validation",
@@ -3723,7 +3892,7 @@
       "type": "api_validation",
       "title": "Validation: PUT /api/v1/users/{userId}/privacy/infoVisibility",
       "description": "Input validation for 1 parameters",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-API-PUT-api_v1_users_userId_privacy_infoVisibility-dto"
       ],
@@ -3736,7 +3905,9 @@
       "related_requirements": [
         "WA-SET-004"
       ],
-      "related_user_stories": [],
+      "related_user_stories": [
+        "US-083"
+      ],
       "requires_user_input": false,
       "user_prompt": null,
       "user_response": null,
@@ -3747,10 +3918,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Validation pipe with all input constraints from the DTO; User can: die Sichtbarkeit von Info- und Status-Texten f\u00fcr definierte Nutzergruppen konfigurieren",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-VERIFY-build-api",
@@ -3758,7 +3928,7 @@
       "type": "verify_build",
       "title": "Build backend",
       "description": "Run npm run build for NestJS backend.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-API-PUT-api_v1_users_userId_privacy_infoVisibility-controller",
         "EPIC-002-API-PUT-api_v1_users_userId_privacy_infoVisibility-service",
@@ -3784,8 +3954,7 @@
       "command": "npm run build",
       "success_criteria": "Build completes without errors",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-VERIFY-typecheck-api",
@@ -3793,7 +3962,7 @@
       "type": "verify_typecheck",
       "title": "TypeScript type check (API)",
       "description": "Run tsc --noEmit to verify TypeScript types.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-VERIFY-build-api"
       ],
@@ -3815,8 +3984,7 @@
       "command": "npx tsc --noEmit",
       "success_criteria": "No TypeScript errors",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-VERIFY-integration",
@@ -3824,7 +3992,7 @@
       "type": "verify_integration",
       "title": "Run API integration tests",
       "description": "Execute integration tests against API endpoints.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-VERIFY-typecheck-api"
       ],
@@ -3846,8 +4014,7 @@
       "command": "npm run test:integration",
       "success_criteria": "All integration tests pass",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-DOCKER-build-api",
@@ -3855,7 +4022,7 @@
       "type": "docker_build",
       "title": "Build API Docker image",
       "description": "Build Docker image for NestJS backend.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-VERIFY-typecheck-api",
         "EPIC-002-VERIFY-integration"
@@ -3878,8 +4045,7 @@
       "command": "docker-compose build api",
       "success_criteria": "Docker image built successfully",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-DOCKER-start-api",
@@ -3887,7 +4053,7 @@
       "type": "docker_start",
       "title": "Start API container",
       "description": "Start backend container with docker-compose.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-DOCKER-build-api"
       ],
@@ -3909,8 +4075,7 @@
       "command": "docker-compose up -d api",
       "success_criteria": "API container running",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-DOCKER-health-api",
@@ -3918,7 +4083,7 @@
       "type": "docker_health",
       "title": "API health check",
       "description": "Verify API container is healthy via /health endpoint.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-DOCKER-start-api"
       ],
@@ -3940,8 +4105,7 @@
       "command": "curl -f http://localhost:3000/health",
       "success_criteria": "Health endpoint returns 200 OK",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-CHECKPOINT-api",
@@ -3949,7 +4113,7 @@
       "type": "checkpoint_api",
       "title": "Checkpoint: Review Api",
       "description": "User approval required before continuing. Review the api phase results.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-DOCKER-build-api",
         "EPIC-002-DOCKER-start-api",
@@ -3973,8 +4137,7 @@
       "command": null,
       "success_criteria": "User approved checkpoint",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-FE-EPIC002Page-page",
@@ -3982,7 +4145,7 @@
       "type": "fe_page",
       "title": "Page: EPIC002Page",
       "description": "Create EPIC002Page page component implementing 9 user stories.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-CHECKPOINT-api"
       ],
@@ -4014,10 +4177,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "React page component with routing, state management, and error boundaries",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-FE-EPIC002Page-components",
@@ -4025,7 +4187,7 @@
       "type": "fe_component",
       "title": "Components: EPIC002Page",
       "description": "Create reusable components for EPIC002Page",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-FE-EPIC002Page-page"
       ],
@@ -4047,10 +4209,9 @@
       "timeout_seconds": 300,
       "phase": "code",
       "command": null,
-      "success_criteria": null,
+      "success_criteria": "Reusable React component with typed props interface",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-FE-EPIC002Page-hook",
@@ -4058,7 +4219,7 @@
       "type": "fe_hook",
       "title": "Hook: useEPIC002Page",
       "description": "Create custom hook for EPIC002Page state and logic",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-FE-EPIC002Page-page"
       ],
@@ -4082,8 +4243,7 @@
       "command": null,
       "success_criteria": null,
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-FE-EPIC002Page-api",
@@ -4091,7 +4251,7 @@
       "type": "fe_api_client",
       "title": "API Client: EPIC002Page",
       "description": "Create API client functions for EPIC002Page",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-FE-EPIC002Page-hook"
       ],
@@ -4115,8 +4275,7 @@
       "command": null,
       "success_criteria": null,
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-VERIFY-build-fe",
@@ -4124,7 +4283,7 @@
       "type": "verify_build",
       "title": "Build frontend",
       "description": "Run npm run build for React frontend.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-FE-EPIC002Page-page",
         "EPIC-002-FE-EPIC002Page-components",
@@ -4149,8 +4308,7 @@
       "command": "npm run build",
       "success_criteria": "Frontend build completes without errors",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-VERIFY-lint",
@@ -4158,7 +4316,7 @@
       "type": "verify_lint",
       "title": "Run ESLint",
       "description": "Check code quality with ESLint.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-VERIFY-build-fe"
       ],
@@ -4180,8 +4338,7 @@
       "command": "npm run lint",
       "success_criteria": "No linting errors",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-VERIFY-typecheck-fe",
@@ -4189,7 +4346,7 @@
       "type": "verify_typecheck",
       "title": "TypeScript type check (Frontend)",
       "description": "Run tsc --noEmit for frontend.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-VERIFY-lint"
       ],
@@ -4211,8 +4368,7 @@
       "command": "npx tsc --noEmit",
       "success_criteria": "No TypeScript errors",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-VERIFY-unit",
@@ -4220,7 +4376,7 @@
       "type": "verify_unit",
       "title": "Run unit tests",
       "description": "Execute vitest unit tests.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-VERIFY-typecheck-fe"
       ],
@@ -4242,8 +4398,7 @@
       "command": "npm run test:unit",
       "success_criteria": "All unit tests pass",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-CHECKPOINT-frontend",
@@ -4251,7 +4406,7 @@
       "type": "checkpoint_fe",
       "title": "Checkpoint: Review Frontend",
       "description": "User approval required before continuing. Review the frontend phase results.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-VERIFY-lint",
         "EPIC-002-VERIFY-typecheck-fe",
@@ -4275,8 +4430,7 @@
       "command": null,
       "success_criteria": "User approved checkpoint",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-TEST-unit",
@@ -4284,7 +4438,7 @@
       "type": "test",
       "title": "Generate unit tests for EPIC-002",
       "description": "Create Vitest unit tests for all EPIC-002 services and utilities. NO MOCKS - use real implementations.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-CHECKPOINT-frontend"
       ],
@@ -4308,8 +4462,7 @@
       "command": null,
       "success_criteria": null,
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-TEST-integration",
@@ -4317,7 +4470,7 @@
       "type": "test",
       "title": "Generate integration tests for EPIC-002",
       "description": "Create Vitest integration tests for EPIC-002 API endpoints with real database.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-TEST-unit"
       ],
@@ -4341,8 +4494,7 @@
       "command": null,
       "success_criteria": null,
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-TEST-e2e",
@@ -4350,7 +4502,7 @@
       "type": "test",
       "title": "Generate E2E tests for EPIC-002",
       "description": "Create Playwright E2E tests for 9 user stories in EPIC-002.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-TEST-integration"
       ],
@@ -4384,8 +4536,7 @@
       "command": null,
       "success_criteria": null,
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-VERIFY-e2e",
@@ -4393,7 +4544,7 @@
       "type": "verify_e2e",
       "title": "Run E2E tests",
       "description": "Execute Playwright E2E test suite.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-TEST-unit",
         "EPIC-002-TEST-integration",
@@ -4417,8 +4568,7 @@
       "command": "npm run test:e2e",
       "success_criteria": "All E2E tests pass",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-DOCKER-build-prod",
@@ -4426,7 +4576,7 @@
       "type": "docker_build",
       "title": "Build production image",
       "description": "Build optimized production Docker image.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-VERIFY-e2e"
       ],
@@ -4448,8 +4598,7 @@
       "command": "docker-compose -f docker-compose.prod.yml build",
       "success_criteria": "Production image built",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-DOCKER-start-prod",
@@ -4457,7 +4606,7 @@
       "type": "docker_start",
       "title": "Start production container",
       "description": "Start full stack in production mode.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-DOCKER-build-prod"
       ],
@@ -4479,8 +4628,7 @@
       "command": "docker-compose -f docker-compose.prod.yml up -d",
       "success_criteria": "All containers running",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-DOCKER-health-prod",
@@ -4488,7 +4636,7 @@
       "type": "docker_health",
       "title": "Production health check",
       "description": "Verify all services are healthy.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-DOCKER-start-prod"
       ],
@@ -4510,8 +4658,7 @@
       "command": "docker-compose -f docker-compose.prod.yml ps",
       "success_criteria": "All containers healthy",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-DOCKER-logs-prod",
@@ -4519,7 +4666,7 @@
       "type": "docker_logs",
       "title": "Collect production logs",
       "description": "Collect logs from all production containers.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-DOCKER-health-prod"
       ],
@@ -4541,8 +4688,7 @@
       "command": "docker-compose -f docker-compose.prod.yml logs --tail=100",
       "success_criteria": "Logs collected, no critical errors",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-CHECKPOINT-deploy",
@@ -4550,7 +4696,7 @@
       "type": "checkpoint_deploy",
       "title": "Checkpoint: Review Deploy",
       "description": "User approval required before continuing. Review the deploy phase results.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-DOCKER-start-prod",
         "EPIC-002-DOCKER-health-prod",
@@ -4574,8 +4720,7 @@
       "command": null,
       "success_criteria": "User approved checkpoint",
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     },
     {
       "id": "EPIC-002-INTEGRATION",
@@ -4583,7 +4728,7 @@
       "type": "integration",
       "title": "Validate and integrate EPIC-002",
       "description": "Run all EPIC-002 tests, validate build, and verify all 9 user stories are implemented.",
-      "status": "pending",
+      "status": "skipped",
       "dependencies": [
         "EPIC-002-CHECKPOINT-deploy"
       ],
@@ -4605,16 +4750,15 @@
       "command": null,
       "success_criteria": null,
       "tested": false,
-      "user_fix_instructions": null,
-      "enrichment_context": null
+      "user_fix_instructions": null
     }
   ],
   "total_tasks": 134,
   "completed_tasks": 0,
-  "failed_tasks": 0,
+  "failed_tasks": 2,
   "progress_percent": 0.0,
-  "run_count": 0,
-  "last_run_at": null,
-  "created_at": "2026-02-18T14:56:29.400223",
-  "estimated_total_minutes": 885
+  "run_count": 1,
+  "last_run_at": "2026-03-17T09:23:14.755733",
+  "created_at": "2026-03-02T10:39:05.582933",
+  "estimated_total_minutes": 0
 }

@@ -1,0 +1,93 @@
+{
+  "route": "/calls/video/:callId/onboarding",
+  "screen_name": "Anruf-Onboarding",
+  "description": "",
+  "user_stories": [
+    "US-040",
+    "US-137"
+  ],
+  "components": [
+    {
+      "component_id": "COMP-020",
+      "component_name": "VideoTile",
+      "props": {
+        "variant": "self",
+        "muted": true,
+        "preview": true
+      },
+      "position": "main",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-013",
+      "component_name": "CallControls",
+      "props": {
+        "variant": "video",
+        "micEnabled": true,
+        "cameraEnabled": true,
+        "showSettings": true
+      },
+      "position": "main",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-001",
+      "component_name": "Button",
+      "props": {
+        "variant": "primary",
+        "text": "Anruf beitreten",
+        "size": "large"
+      },
+      "position": "footer",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-001",
+      "component_name": "Button",
+      "props": {
+        "variant": "outline",
+        "text": "Ablehnen",
+        "size": "medium"
+      },
+      "position": "footer",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-026",
+      "component_name": "ToastNotification",
+      "props": {
+        "variant": "info",
+        "message": "Überprüfe deine Kamera und Mikrofon Einstellungen"
+      },
+      "position": "modal",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    }
+  ],
+  "layout": "flex column, centered, max-width 600px, padding 24px",
+  "data_sources": [
+    "GET /api/v1/devices"
+  ],
+  "state_shape": {
+    "callId": "string",
+    "micEnabled": "boolean",
+    "cameraEnabled": "boolean",
+    "devicePermissions": "object",
+    "isJoining": "boolean",
+    "previewStream": "MediaStream"
+  }
+}

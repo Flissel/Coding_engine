@@ -1,0 +1,21 @@
+sequenceDiagram
+    participant User
+    participant MessagingService
+    participant AuthenticationService
+    participant GroupService
+    participant MonitoringSystem
+
+    User->>MessagingService: Send message
+    MessagingService-->>User: Acknowledge message receipt
+    MessagingService->>MonitoringSystem: Check uptime status
+    MonitoringSystem-->>MessagingService: Uptime is within SLA
+
+    User->>AuthenticationService: Request authentication
+    AuthenticationService-->>User: Provide authentication token
+    AuthenticationService->>MonitoringSystem: Check uptime status
+    MonitoringSystem-->>AuthenticationService: Uptime is within SLA
+
+    User->>GroupService: Join group
+    GroupService-->>User: Confirm group membership
+    GroupService->>MonitoringSystem: Check uptime status
+    MonitoringSystem-->>GroupService: Uptime is within SLA

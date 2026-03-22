@@ -1,0 +1,15 @@
+%%{ init : { "theme" : "default" } }%%
+C4Context
+    title Lokale Sticker System Context Diagram
+
+    Person(customer, "Kunde", "Nutzer, der Sticker-Packs anfordert")
+    System(system, "Lokale Sticker", "Bietet regionalspezifische Sticker-Packs an")
+
+    Person(designer, "Designer", "Erstellt Sticker-Designs")
+    System_Ext(database, "Datenbank", "Speichert Sticker-Packs und Benutzerinformationen")
+    System_Ext(api, "Sticker API", "Stellt Sticker-Packs für externe Anwendungen bereit")
+
+    Rel(customer, system, "Fordert Sticker-Packs an")
+    Rel(system, database, "Speichert und ruft Sticker-Packs ab")
+    Rel(designer, system, "Erstellt und aktualisiert Sticker")
+    Rel(system, api, "Bietet Sticker-Packs für externe Anwendungen an")

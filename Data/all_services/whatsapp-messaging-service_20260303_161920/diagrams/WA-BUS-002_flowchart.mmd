@@ -1,0 +1,14 @@
+flowchart TD
+    A[Start] --> B{Ist das Business verifiziert?}
+    B -->|Ja| C[Business ist verifiziert]
+    B -->|Nein| D[Verifizierungsprozess starten]
+    D --> E[Dokumente sammeln]
+    E --> F[Dokumente einreichen]
+    F --> G{Dokumente geprüft?}
+    G -->|Ja| H[Business verifiziert]
+    G -->|Nein| I[Fehler bei der Prüfung]
+    I --> J[Dokumente erneut einreichen]
+    J --> E
+    H --> K[Verifizierung abgeschlossen]
+    C --> K
+    K --> L[Ende]

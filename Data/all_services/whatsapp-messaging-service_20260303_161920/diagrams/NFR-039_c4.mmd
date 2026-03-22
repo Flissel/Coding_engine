@@ -1,0 +1,12 @@
+%%{init: {"theme": "default"}}%%
+C4Context
+    title Message Delivery Reliability System Architecture
+
+    Person(user, "User", "A person who sends and receives messages.")
+    System(system, "Message Delivery System", "Ensures reliable message delivery across intermittent networks.")
+    System_Ext(network, "Intermittent Network", "Network that may have connectivity issues.")
+    System_Ext(messageService, "Message Service", "External service for message storage and retrieval.")
+
+    Rel(user, system, "Uses")
+    Rel(system, network, "Sends and receives messages through")
+    Rel(system, messageService, "Stores and retrieves messages from")

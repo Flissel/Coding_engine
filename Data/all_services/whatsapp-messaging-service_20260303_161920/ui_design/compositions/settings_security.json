@@ -1,0 +1,155 @@
+{
+  "route": "/settings/security",
+  "screen_name": "Konto & Sicherheit",
+  "description": "",
+  "user_stories": [],
+  "components": [
+    {
+      "component_id": "COMP-023",
+      "component_name": "ProfileHeader",
+      "props": {
+        "variant": "default",
+        "title": "Konto & Sicherheit",
+        "showBackButton": true
+      },
+      "position": "header",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-022",
+      "component_name": "SettingsListItem",
+      "props": {
+        "variant": "default",
+        "title": "Passwort ändern",
+        "icon": "key",
+        "hasChevron": true
+      },
+      "position": "main",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-022",
+      "component_name": "SettingsListItem",
+      "props": {
+        "variant": "default",
+        "title": "Zwei-Faktor-Authentifizierung",
+        "subtitle": "Zusätzliche Sicherheit",
+        "icon": "shield",
+        "hasChevron": true
+      },
+      "position": "main",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-022",
+      "component_name": "SettingsListItem",
+      "props": {
+        "variant": "default",
+        "title": "Passkeys verwalten",
+        "subtitle": "Biometrische Anmeldung",
+        "icon": "fingerprint",
+        "hasChevron": true
+      },
+      "position": "main",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-024",
+      "component_name": "DeviceListItem",
+      "props": {
+        "variant": "active",
+        "deviceName": "iPhone 15 Pro",
+        "lastSeen": "Jetzt aktiv",
+        "location": "München, Deutschland"
+      },
+      "position": "main",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-024",
+      "component_name": "DeviceListItem",
+      "props": {
+        "variant": "inactive",
+        "deviceName": "MacBook Pro",
+        "lastSeen": "vor 2 Stunden",
+        "location": "München, Deutschland"
+      },
+      "position": "main",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-022",
+      "component_name": "SettingsListItem",
+      "props": {
+        "variant": "default",
+        "title": "Anmeldeaktivitäten",
+        "subtitle": "Letzte Anmeldungen anzeigen",
+        "icon": "history",
+        "hasChevron": true
+      },
+      "position": "main",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-021",
+      "component_name": "EncryptionBadge",
+      "props": {
+        "variant": "secure",
+        "text": "Ende-zu-Ende verschlüsselt"
+      },
+      "position": "main",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-022",
+      "component_name": "SettingsListItem",
+      "props": {
+        "variant": "danger",
+        "title": "Konto löschen",
+        "icon": "trash",
+        "hasChevron": true
+      },
+      "position": "main",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    }
+  ],
+  "layout": "flex column, full-width, padding 16px, gap 8px",
+  "data_sources": [
+    "GET /api/v1/passkeys",
+    "GET /api/v1/devices"
+  ],
+  "state_shape": {
+    "passkeys": "array",
+    "devices": "array",
+    "userProfile": "object",
+    "securitySettings": "object",
+    "loading": "boolean"
+  }
+}

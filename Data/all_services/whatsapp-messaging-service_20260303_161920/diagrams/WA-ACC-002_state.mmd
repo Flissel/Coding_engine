@@ -1,0 +1,8 @@
+stateDiagram-v2
+    [*] --> DefaultSize
+    DefaultSize --> SmallSize : Change to Small
+    DefaultSize --> MediumSize : Change to Medium
+    DefaultSize --> LargeSize : Change to Large
+    SmallSize --> DefaultSize : Reset to Default
+    MediumSize --> DefaultSize : Reset to Default
+    LargeSize --> DefaultSize : Reset to Default

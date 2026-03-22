@@ -1,0 +1,43 @@
+flowchart TD
+    Start([Start: End-to-End Encryption Onboarding und sichere Nachrichten])
+    S1[User oeffnet die App und startet das Onboarding]
+    Start --> S1
+    E1[/App startet nicht oder laeuft in einen Crash-Loop/]
+    S1 -.-> E1
+    S2{User bestaetigt E2EE-Einrichtung und startet Schluesselgenerierung}
+    S1 --> S2
+    E2[/Schluesselgenerierung fehlgeschlagen oder kein Zugriff auf sicheren Speicher/]
+    S2 -.-> E2
+    S3{System prueft Netzwerkverbindung und synchronisiert Public Key mit Server}
+    S2 --> S3
+    E3[/Keine Verbindung: Upload wird in Warteschlange gesetzt/]
+    S3 -.-> E3
+    S4[User oeffnet einen Chat und tippt eine Nachricht oder waehlt Medien]
+    S3 --> S4
+    E4[/Medienzugriff verweigert oder Anhang zu gross/]
+    S4 -.-> E4
+    S5{User tippt auf Senden; System verschluesselt Nachricht mit Empfaenger-Public-Key}
+    S4 --> S5
+    E5[/Empfaenger-Key fehlt/ungueltig, Senden wird blockiert/]
+    S5 -.-> E5
+    S6{System versucht Nachricht zu senden; bei Offline-Modus wird sie gepuffert}
+    S5 --> S6
+    E6[/Verlorene Verbindung oder Versand fehlgeschlagen/]
+    S6 -.-> E6
+    S7{Empfaenger erhaelt Nachricht; System validiert Sender-Key}
+    S6 --> S7
+    E7[/Unverifizierter/mismatch Key: Entschluesselung blockiert und Warnung angezeigt/]
+    S7 -.-> E7
+    S8{System startet automatische Schluesselrotation bei Ablauf}
+    S7 --> S8
+    E8[/Rotation scheitert: alte Schluessel bleiben aktiv, Hinweis wird angezeigt/]
+    S8 -.-> E8
+    S9{User wechselt Geraet und startet Wiederherstellung}
+    S8 --> S9
+    E9[/Verifizierung fehlgeschlagen oder Backup nicht verfuegbar/]
+    S9 -.-> E9
+    S10{User bestaetigt Sicherheitswarnung bei Key-Mismatch oder verifiziert Kontakt}
+    S9 --> S10
+    E10[/User ignoriert Warnung: Nachricht bleibt gesperrt/]
+    S10 -.-> E10
+    S10 --> End([End])

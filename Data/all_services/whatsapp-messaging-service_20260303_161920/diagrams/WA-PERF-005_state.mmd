@@ -1,0 +1,7 @@
+stateDiagram-v2
+    [*] --> Speichereffizient
+    Speichereffizient --> Optimierung : Optimierungsprozess gestartet
+    Optimierung --> Speichereffizient : Optimierung abgeschlossen
+    Speichereffizient --> Ineffizient : Speicherverbrauch zu hoch
+    Ineffizient --> Speichereffizient : Anpassungen vorgenommen
+    Ineffizient --> [*] : System beendet

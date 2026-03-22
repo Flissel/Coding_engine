@@ -1,0 +1,12 @@
+flowchart TD
+    A[Melden von Nachrichten/Kontakten] --> B{Nachricht/Kontakt auswählen}
+    B -->|Nachricht| C[Nachricht eingeben]
+    B -->|Kontakt| D[Kontaktinformationen eingeben]
+    C --> E[Nachricht überprüfen]
+    D --> E
+    E --> F{Bestätigen?}
+    F -->|Ja| G[Meldung absenden]
+    F -->|Nein| H[Zurück zur Eingabe]
+    H --> B
+    G --> I[Bestätigung anzeigen]
+    I --> J[Prozess abgeschlossen]

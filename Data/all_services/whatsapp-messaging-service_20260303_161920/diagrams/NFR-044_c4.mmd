@@ -1,0 +1,13 @@
+%%{init: {"theme": "default"}}%%
+C4Context
+    title Metrics and Alerting System Architecture
+
+    Person(customer, "Customer", "A user who interacts with the system.")
+    Person(admin, "Admin", "An administrator who manages the system.")
+
+    System(metricsSystem, "Metrics and Alerting System", "Monitors key metrics and triggers alerts for incidents.")
+    System_Ext(externalService, "External Monitoring Service", "Third-party service for additional metrics and alerting.")
+
+    Rel(customer, metricsSystem, "Uses")
+    Rel(admin, metricsSystem, "Manages")
+    Rel(metricsSystem, externalService, "Integrates with")

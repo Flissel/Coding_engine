@@ -1,0 +1,10 @@
+{
+  "route": "/settings/security/group-admin",
+  "screen_name": "Gruppenadministration",
+  "linked_user_stories": [
+    "US-084"
+  ],
+  "user_stories": [
+    "US-084"
+  ]
+}

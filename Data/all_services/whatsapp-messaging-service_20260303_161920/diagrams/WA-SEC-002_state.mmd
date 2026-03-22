@@ -1,0 +1,7 @@
+stateDiagram-v2
+    [*] --> Eingabe_Sicherheitscode
+    Eingabe_Sicherheitscode --> Verifizierung_in_Bearbeitung: Sicherheitscode_eingeben
+    Verifizierung_in_Bearbeitung --> Verifizierung_erfolgreich: Sicherheitscode_korrekt
+    Verifizierung_in_Bearbeitung --> Verifizierung_fehlgeschlagen: Sicherheitscode_falsch
+    Verifizierung_erfolgreich --> [*]
+    Verifizierung_fehlgeschlagen --> Eingabe_Sicherheitscode: Neuer_Versuch

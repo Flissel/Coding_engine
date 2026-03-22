@@ -1,0 +1,11 @@
+sequenceDiagram
+    participant User as Benutzer
+    participant System as System
+
+    User->>System: Anfrage zum Exportieren eines Chats
+    System-->>User: Bestätigung der Anfrage
+    User->>System: Wählt den Chat aus
+    System-->>User: Zeigt ausgewählten Chat an
+    User->>System: Bestätigt den Export
+    System-->>User: Exportiert den Chat
+    System-->>User: Sendet exportierte Datei

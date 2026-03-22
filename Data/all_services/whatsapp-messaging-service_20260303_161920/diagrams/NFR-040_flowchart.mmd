@@ -1,0 +1,9 @@
+flowchart TD
+    A[Define Reliability Targets] --> B[Establish Error Budget]
+    B --> C[Monitor System Performance]
+    C --> D{Is Performance Within Budget?}
+    D -- Yes --> E[Continue Monitoring]
+    D -- No --> F[Identify Issues]
+    F --> G[Implement Fixes]
+    G --> H[Review Changes]
+    H --> C

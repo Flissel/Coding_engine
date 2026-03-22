@@ -1,0 +1,18 @@
+%%{ init : { "theme" : "default" } }%%
+C4Context
+    title Data Growth Scalability Context Diagram
+
+    Person(user, "User", "A user interacting with the system")
+    
+    System_Boundary(s1, "Data Growth Scalability System") {
+        System(db, "Database", "Stores messages and media")
+        System(index, "Indexing Service", "Indexes messages and media for quick retrieval")
+        System(storage, "Storage Service", "Handles storage of messages and media")
+        System(messaging, "Messaging Service", "Facilitates message delivery and processing")
+    }
+
+    Rel(user, messaging, "Uses")
+    Rel(messaging, db, "Stores messages in")
+    Rel(messaging, storage, "Stores media in")
+    Rel(db, index, "Indexes data for")
+    Rel(storage, index, "Indexes media for")

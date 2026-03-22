@@ -1,0 +1,14 @@
+sequenceDiagram
+    participant Developer as Dev
+    participant API as External API
+    participant Internal as Internal API
+    participant Standards as API Standards
+
+    Dev->>Standards: Request API standards
+    Standards-->>Dev: Provide guidelines
+    Dev->>API: Implement external API
+    API-->>Standards: Validate against standards
+    Standards-->>API: Confirm compliance
+    Dev->>Internal: Implement internal API
+    Internal-->>Standards: Validate against standards
+    Standards-->>Internal: Confirm compliance

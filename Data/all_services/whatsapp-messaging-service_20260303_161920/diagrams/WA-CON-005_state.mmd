@@ -1,0 +1,9 @@
+stateDiagram-v2
+    [*] --> UnbekannterAbsender
+    UnbekannterAbsender --> NachrichtEmpfangen : Nachricht erhalten
+    NachrichtEmpfangen --> NachrichtPrüfen : Nachricht prüfen
+    NachrichtPrüfen --> VerdachtErkannt : Verdacht erkannt
+    NachrichtPrüfen --> KeinVerdacht : Kein Verdacht
+    VerdachtErkannt --> MaßnahmenErgreifen : Maßnahmen ergreifen
+    KeinVerdacht --> [*] : Nachricht ignorieren
+    MaßnahmenErgreifen --> [*] : Maßnahmen abgeschlossen

@@ -1,0 +1,17 @@
+erDiagram
+    USER {
+        int id PK
+        string username
+        int storage_limit
+        int storage_used
+    }
+    
+    STORAGE {
+        int id PK
+        int user_id FK
+        string file_name
+        int file_size
+        date upload_date
+    }
+
+    USER ||--o{ STORAGE : owns

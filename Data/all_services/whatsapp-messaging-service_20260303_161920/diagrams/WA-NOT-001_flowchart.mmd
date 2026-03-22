@@ -1,0 +1,11 @@
+flowchart TD
+    A[Start] --> B{Benachrichtigung erforderlich?}
+    B -- Ja --> C[Push-Benachrichtigung erstellen]
+    B -- Nein --> D[Prozess beenden]
+    C --> E{Zuverlässigkeit prüfen}
+    E -- Ja --> F[Benachrichtigung senden]
+    E -- Nein --> G[Fehlerbehandlung]
+    G --> H[Benachrichtigung erneut versuchen]
+    H --> E
+    F --> I[Prozess beenden]
+    D --> I

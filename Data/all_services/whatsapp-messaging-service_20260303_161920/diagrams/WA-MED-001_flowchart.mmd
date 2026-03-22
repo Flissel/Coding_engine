@@ -1,0 +1,11 @@
+flowchart TD
+    A[Start] --> B{Bilder vorhanden?}
+    B -- Ja --> C[Benutzer wählt Bilder aus]
+    B -- Nein --> D[Fehlermeldung anzeigen]
+    C --> E[Übertragung starten]
+    E --> F{Übertragung erfolgreich?}
+    F -- Ja --> G[Bilder erfolgreich gesendet]
+    F -- Nein --> H[Fehlerbehandlung]
+    H --> E
+    G --> I[Prozess beenden]
+    D --> I

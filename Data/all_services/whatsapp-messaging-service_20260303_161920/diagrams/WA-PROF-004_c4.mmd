@@ -1,0 +1,11 @@
+%%{ init : { "theme" : "default" } }%%
+C4Context
+    title Telefonnummer anzeigen - Systemarchitektur
+
+    Person(personUser, "Benutzer", "Ein Benutzer, der seine Telefonnummer anzeigen möchte.")
+    System(systemPhoneDisplay, "Telefonnummer anzeigen", "Ein System, das die Telefonnummer im Profil anzeigt.")
+
+    Rel(personUser, systemPhoneDisplay, "zeigt seine Telefonnummer an")
+
+    System_Ext(systemDatabase, "Datenbank", "Speichert die Benutzerdaten einschließlich Telefonnummer.")
+    Rel(systemPhoneDisplay, systemDatabase, "liest und zeigt die Telefonnummer aus")

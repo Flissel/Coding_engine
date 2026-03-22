@@ -113,7 +113,7 @@
       ],
       "estimated_minutes": 3,
       "actual_minutes": null,
-      "error_message": "npm warn exec The following package was not found and will be installed: prisma@7.4.0\nError: Could not find Prisma Schema that is required for this command.\nYou can either provide it with `--schema` argument,\nset it in your Prisma Config file (e.g., `prisma.config.ts`),\nset it as `prisma.schema` in your package.json,\nor put it into the default location (`./prisma/schema.prisma`, or `./schema.prisma`.\nChecked following paths:\n\nschema.prisma: file not found\nprisma\\schema.prisma: file not found\n\nSee also https://pris.ly/d/prisma-schema-location\n",
+      "error_message": "npm warn exec The following package was not found and will be installed: prisma@7.4.2\nError: Could not find Prisma Schema that is required for this command.\nYou can either provide it with `--schema` argument,\nset it in your Prisma Config file (e.g., `prisma.config.ts`),\nset it as `prisma.schema` in your package.json,\nor put it into the default location (`./prisma/schema.prisma`, or `./schema.prisma`.\nChecked following paths:\n\nschema.prisma: file not found\nprisma\\schema.prisma: file not found\n\nSee also https://pris.ly/d/prisma-schema-location\n",
       "output_files": [
         "prisma/schema.prisma"
       ],
@@ -211,7 +211,7 @@
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": "CLI_SILENT_FAILURE: Exit code 1 with no stderr. This often indicates missing authentication. Check ANTHROPIC_API_KEY or run 'claude login'.",
+      "error_message": "KiloCLI.execute() got an unexpected keyword argument 'agent_name'",
       "output_files": [
         "prisma/schema.prisma#auth_credential"
       ],
@@ -244,7 +244,7 @@
       ],
       "estimated_minutes": 3,
       "actual_minutes": null,
-      "error_message": "CLI_SILENT_FAILURE: Exit code 1 with no stderr. This often indicates missing authentication. Check ANTHROPIC_API_KEY or run 'claude login'.",
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "prisma/schema.prisma#auth_credential_relations"
       ],
@@ -277,7 +277,7 @@
       ],
       "estimated_minutes": 2,
       "actual_minutes": null,
-      "error_message": "no such service: db\n",
+      "error_message": "time=\"2026-03-03T10:12:42+01:00\" level=warning msg=\"The \\\"ANTHROPIC_API_KEY\\\" variable is not set. Defaulting to a blank string.\"\ntime=\"2026-03-03T10:12:42+01:00\" level=warning msg=\"The \\\"ANTHROPIC_API_KEY\\\" variable is not set. Defaulting to a blank string.\"\nno such service: db\n",
       "output_files": [
         "prisma/migrations/*_auth_credential/"
       ],
@@ -310,7 +310,7 @@
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": "CLI_SILENT_FAILURE: Exit code 1 with no stderr. This often indicates missing authentication. Check ANTHROPIC_API_KEY or run 'claude login'.",
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "prisma/schema.prisma#encryption_session"
       ],
@@ -343,7 +343,7 @@
       ],
       "estimated_minutes": 3,
       "actual_minutes": null,
-      "error_message": "CLI_SILENT_FAILURE: Exit code 1 with no stderr. This often indicates missing authentication. Check ANTHROPIC_API_KEY or run 'claude login'.",
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "prisma/schema.prisma#encryption_session_relations"
       ],
@@ -376,7 +376,7 @@
       ],
       "estimated_minutes": 2,
       "actual_minutes": null,
-      "error_message": "no such service: db\n",
+      "error_message": "time=\"2026-03-03T10:12:42+01:00\" level=warning msg=\"The \\\"ANTHROPIC_API_KEY\\\" variable is not set. Defaulting to a blank string.\"\ntime=\"2026-03-03T10:12:42+01:00\" level=warning msg=\"The \\\"ANTHROPIC_API_KEY\\\" variable is not set. Defaulting to a blank string.\"\nno such service: db\n",
       "output_files": [
         "prisma/migrations/*_encryption_session/"
       ],
@@ -409,7 +409,7 @@
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": "CLI_SILENT_FAILURE: Exit code 1 with no stderr. This often indicates missing authentication. Check ANTHROPIC_API_KEY or run 'claude login'.",
+      "error_message": "KiloCLI.execute() got an unexpected keyword argument 'agent_name'",
       "output_files": [
         "prisma/schema.prisma#user"
       ],
@@ -442,7 +442,7 @@
       ],
       "estimated_minutes": 3,
       "actual_minutes": null,
-      "error_message": "CLI_SILENT_FAILURE: Exit code 1 with no stderr. This often indicates missing authentication. Check ANTHROPIC_API_KEY or run 'claude login'.",
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "prisma/schema.prisma#user_relations"
       ],
@@ -475,7 +475,7 @@
       ],
       "estimated_minutes": 2,
       "actual_minutes": null,
-      "error_message": "no such service: db\n",
+      "error_message": "time=\"2026-03-03T10:12:42+01:00\" level=warning msg=\"The \\\"ANTHROPIC_API_KEY\\\" variable is not set. Defaulting to a blank string.\"\ntime=\"2026-03-03T10:12:42+01:00\" level=warning msg=\"The \\\"ANTHROPIC_API_KEY\\\" variable is not set. Defaulting to a blank string.\"\nno such service: db\n",
       "output_files": [
         "prisma/migrations/*_user/"
       ],
@@ -508,7 +508,7 @@
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": "CLI_SILENT_FAILURE: Exit code 1 with no stderr. This often indicates missing authentication. Check ANTHROPIC_API_KEY or run 'claude login'.",
+      "error_message": "KiloCLI.execute() got an unexpected keyword argument 'agent_name'",
       "output_files": [
         "prisma/schema.prisma#user_device"
       ],
@@ -541,7 +541,7 @@
       ],
       "estimated_minutes": 3,
       "actual_minutes": null,
-      "error_message": "CLI_SILENT_FAILURE: Exit code 1 with no stderr. This often indicates missing authentication. Check ANTHROPIC_API_KEY or run 'claude login'.",
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "prisma/schema.prisma#user_device_relations"
       ],
@@ -574,7 +574,7 @@
       ],
       "estimated_minutes": 2,
       "actual_minutes": null,
-      "error_message": "no such service: db\n",
+      "error_message": "time=\"2026-03-03T10:12:42+01:00\" level=warning msg=\"The \\\"ANTHROPIC_API_KEY\\\" variable is not set. Defaulting to a blank string.\"\ntime=\"2026-03-03T10:12:42+01:00\" level=warning msg=\"The \\\"ANTHROPIC_API_KEY\\\" variable is not set. Defaulting to a blank string.\"\nno such service: db\n",
       "output_files": [
         "prisma/migrations/*_user_device/"
       ],
@@ -671,7 +671,7 @@
       ],
       "estimated_minutes": 10,
       "actual_minutes": null,
-      "error_message": "CLI_SILENT_FAILURE: Exit code 1 with no stderr. This often indicates missing authentication. Check ANTHROPIC_API_KEY or run 'claude login'.",
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/phone-registrations/phone-registrations.controller.ts"
       ],
@@ -706,7 +706,7 @@
       ],
       "estimated_minutes": 8,
       "actual_minutes": null,
-      "error_message": "CLI_SILENT_FAILURE: Exit code 1 with no stderr. This often indicates missing authentication. Check ANTHROPIC_API_KEY or run 'claude login'.",
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/phone-registrations/phone-registrations.service.ts"
       ],
@@ -741,7 +741,7 @@
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": "CLI_SILENT_FAILURE: Exit code 1 with no stderr. This often indicates missing authentication. Check ANTHROPIC_API_KEY or run 'claude login'.",
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/phone-registrations/dto/createphoneregistrationrequest.dto.ts"
       ],
@@ -770,13 +770,13 @@
       "type": "api_controller",
       "title": "Controller: POST /api/v1/phone-registrations/{registrationId}/verify",
       "description": "Verify phone registration\nImplement controller method with 1 parameters.",
-      "status": "completed",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-CHECKPOINT-schema"
       ],
       "estimated_minutes": 10,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/phone-registrations/phone-registrations.controller.ts"
       ],
@@ -805,13 +805,13 @@
       "type": "api_service",
       "title": "Service: POST /api/v1/phone-registrations/{registrationId}/verify",
       "description": "Business logic for Verify phone registration",
-      "status": "completed",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-API-POST-api_v1_phone-registrations_registrationId_verify-controller"
       ],
       "estimated_minutes": 8,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/phone-registrations/phone-registrations.service.ts"
       ],
@@ -840,13 +840,13 @@
       "type": "api_dto",
       "title": "DTO: VerifyPhoneRegistrationRequest",
       "description": "Request/Response DTO for POST /api/v1/phone-registrations/{registrationId}/verify",
-      "status": "completed",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-API-POST-api_v1_phone-registrations_registrationId_verify-controller"
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/phone-registrations/dto/verifyphoneregistrationrequest.dto.ts"
       ],
@@ -875,13 +875,13 @@
       "type": "api_validation",
       "title": "Validation: POST /api/v1/phone-registrations/{registrationId}/verify",
       "description": "Input validation for 1 parameters",
-      "status": "completed",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-API-POST-api_v1_phone-registrations_registrationId_verify-dto"
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/phone-registrations/validators/"
       ],
@@ -916,7 +916,7 @@
       ],
       "estimated_minutes": 10,
       "actual_minutes": null,
-      "error_message": "CLI_SILENT_FAILURE: Exit code 1 with no stderr. This often indicates missing authentication. Check ANTHROPIC_API_KEY or run 'claude login'.",
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/phone-registrations/phone-registrations.controller.ts"
       ],
@@ -951,7 +951,7 @@
       ],
       "estimated_minutes": 8,
       "actual_minutes": null,
-      "error_message": "CLI_SILENT_FAILURE: Exit code 1 with no stderr. This often indicates missing authentication. Check ANTHROPIC_API_KEY or run 'claude login'.",
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/phone-registrations/phone-registrations.service.ts"
       ],
@@ -986,7 +986,7 @@
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": "CLI_SILENT_FAILURE: Exit code 1 with no stderr. This often indicates missing authentication. Check ANTHROPIC_API_KEY or run 'claude login'.",
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/phone-registrations/dto/resendphoneregistrationotprequest.dto.ts"
       ],
@@ -1021,7 +1021,7 @@
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": "CLI_SILENT_FAILURE: Exit code 1 with no stderr. This often indicates missing authentication. Check ANTHROPIC_API_KEY or run 'claude login'.",
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/phone-registrations/validators/"
       ],
@@ -1056,7 +1056,7 @@
       ],
       "estimated_minutes": 10,
       "actual_minutes": null,
-      "error_message": "CLI_SILENT_FAILURE: Exit code 1 with no stderr. This often indicates missing authentication. Check ANTHROPIC_API_KEY or run 'claude login'.",
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/auth/auth.controller.ts"
       ],
@@ -1091,7 +1091,7 @@
       ],
       "estimated_minutes": 8,
       "actual_minutes": null,
-      "error_message": "CLI_SILENT_FAILURE: Exit code 1 with no stderr. This often indicates missing authentication. Check ANTHROPIC_API_KEY or run 'claude login'.",
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/auth/auth.service.ts"
       ],
@@ -1126,7 +1126,7 @@
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": "CLI_SILENT_FAILURE: Exit code 1 with no stderr. This often indicates missing authentication. Check ANTHROPIC_API_KEY or run 'claude login'.",
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/auth/dto/verifytwofactorrequest.dto.ts"
       ],
@@ -1161,7 +1161,7 @@
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": "CLI_SILENT_FAILURE: Exit code 1 with no stderr. This often indicates missing authentication. Check ANTHROPIC_API_KEY or run 'claude login'.",
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/guards/jwt-auth.guard.ts"
       ],
@@ -1190,13 +1190,13 @@
       "type": "api_controller",
       "title": "Controller: POST /api/v1/users/{userId}/2fa",
       "description": "Enable 2FA with 6-digit PIN\nImplement controller method with 1 parameters.",
-      "status": "completed",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-CHECKPOINT-schema"
       ],
       "estimated_minutes": 10,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/users/users.controller.ts"
       ],
@@ -1225,13 +1225,13 @@
       "type": "api_service",
       "title": "Service: POST /api/v1/users/{userId}/2fa",
       "description": "Business logic for Enable 2FA with 6-digit PIN",
-      "status": "completed",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-API-POST-api_v1_users_userId_2fa-controller"
       ],
       "estimated_minutes": 8,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/users/users.service.ts"
       ],
@@ -1260,13 +1260,13 @@
       "type": "api_dto",
       "title": "DTO: EnableTwoFactorRequest",
       "description": "Request/Response DTO for POST /api/v1/users/{userId}/2fa",
-      "status": "completed",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-API-POST-api_v1_users_userId_2fa-controller"
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/users/dto/enabletwofactorrequest.dto.ts"
       ],
@@ -1295,13 +1295,13 @@
       "type": "api_guard",
       "title": "Auth Guard: /api/v1/users/{userId}/2fa",
       "description": "JWT authentication guard for POST /api/v1/users/{userId}/2fa",
-      "status": "completed",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-API-POST-api_v1_users_userId_2fa-controller"
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/guards/jwt-auth.guard.ts"
       ],
@@ -1330,13 +1330,13 @@
       "type": "api_validation",
       "title": "Validation: POST /api/v1/users/{userId}/2fa",
       "description": "Input validation for 1 parameters",
-      "status": "completed",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-API-POST-api_v1_users_userId_2fa-dto"
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/users/validators/"
       ],
@@ -1371,7 +1371,7 @@
       ],
       "estimated_minutes": 10,
       "actual_minutes": null,
-      "error_message": "CLI_SILENT_FAILURE: Exit code 1 with no stderr. This often indicates missing authentication. Check ANTHROPIC_API_KEY or run 'claude login'.",
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/users/users.controller.ts"
       ],
@@ -1406,7 +1406,7 @@
       ],
       "estimated_minutes": 8,
       "actual_minutes": null,
-      "error_message": "CLI_SILENT_FAILURE: Exit code 1 with no stderr. This often indicates missing authentication. Check ANTHROPIC_API_KEY or run 'claude login'.",
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/users/users.service.ts"
       ],
@@ -1435,13 +1435,13 @@
       "type": "api_dto",
       "title": "DTO: DisableTwoFactorRequest",
       "description": "Request/Response DTO for DELETE /api/v1/users/{userId}/2fa",
-      "status": "pending",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-API-DELETE-api_v1_users_userId_2fa-controller"
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/users/dto/disabletwofactorrequest.dto.ts"
       ],
@@ -1470,13 +1470,13 @@
       "type": "api_guard",
       "title": "Auth Guard: /api/v1/users/{userId}/2fa",
       "description": "JWT authentication guard for DELETE /api/v1/users/{userId}/2fa",
-      "status": "running",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-API-DELETE-api_v1_users_userId_2fa-controller"
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/guards/jwt-auth.guard.ts"
       ],
@@ -1505,13 +1505,13 @@
       "type": "api_validation",
       "title": "Validation: DELETE /api/v1/users/{userId}/2fa",
       "description": "Input validation for 1 parameters",
-      "status": "pending",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-API-DELETE-api_v1_users_userId_2fa-dto"
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/users/validators/"
       ],
@@ -1546,7 +1546,7 @@
       ],
       "estimated_minutes": 10,
       "actual_minutes": null,
-      "error_message": "CLI_SILENT_FAILURE: Exit code 1 with no stderr. This often indicates missing authentication. Check ANTHROPIC_API_KEY or run 'claude login'.",
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/users/users.controller.ts"
       ],
@@ -1581,7 +1581,7 @@
       ],
       "estimated_minutes": 8,
       "actual_minutes": null,
-      "error_message": "CLI_SILENT_FAILURE: Exit code 1 with no stderr. This often indicates missing authentication. Check ANTHROPIC_API_KEY or run 'claude login'.",
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/users/users.service.ts"
       ],
@@ -1610,13 +1610,13 @@
       "type": "api_dto",
       "title": "DTO: GetTwoFactorStatusRequest",
       "description": "Request/Response DTO for GET /api/v1/users/{userId}/2fa",
-      "status": "pending",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-API-GET-api_v1_users_userId_2fa-controller"
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/users/dto/gettwofactorstatusrequest.dto.ts"
       ],
@@ -1645,13 +1645,13 @@
       "type": "api_guard",
       "title": "Auth Guard: /api/v1/users/{userId}/2fa",
       "description": "JWT authentication guard for GET /api/v1/users/{userId}/2fa",
-      "status": "pending",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-API-GET-api_v1_users_userId_2fa-controller"
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/guards/jwt-auth.guard.ts"
       ],
@@ -1680,13 +1680,13 @@
       "type": "api_validation",
       "title": "Validation: GET /api/v1/users/{userId}/2fa",
       "description": "Input validation for 1 parameters",
-      "status": "pending",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-API-GET-api_v1_users_userId_2fa-dto"
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/users/validators/"
       ],
@@ -1721,7 +1721,7 @@
       ],
       "estimated_minutes": 10,
       "actual_minutes": null,
-      "error_message": "CLI_SILENT_FAILURE: Exit code 1 with no stderr. This often indicates missing authentication. Check ANTHROPIC_API_KEY or run 'claude login'.",
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/biometric/biometric.controller.ts"
       ],
@@ -1750,13 +1750,13 @@
       "type": "api_service",
       "title": "Service: POST /api/v1/biometric/registration-options",
       "description": "Business logic for Create biometric registration challenge",
-      "status": "pending",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-API-POST-api_v1_biometric_registration-options-controller"
       ],
       "estimated_minutes": 8,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/biometric/biometric.service.ts"
       ],
@@ -1791,7 +1791,7 @@
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": "CLI_SILENT_FAILURE: Exit code 1 with no stderr. This often indicates missing authentication. Check ANTHROPIC_API_KEY or run 'claude login'.",
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/biometric/dto/biometricregistrationoptionsrequest.dto.ts"
       ],
@@ -1820,13 +1820,13 @@
       "type": "api_guard",
       "title": "Auth Guard: /api/v1/biometric/registration-options",
       "description": "JWT authentication guard for POST /api/v1/biometric/registration-options",
-      "status": "pending",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-API-POST-api_v1_biometric_registration-options-controller"
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/guards/jwt-auth.guard.ts"
       ],
@@ -1861,7 +1861,7 @@
       ],
       "estimated_minutes": 10,
       "actual_minutes": null,
-      "error_message": "CLI_SILENT_FAILURE: Exit code 1 with no stderr. This often indicates missing authentication. Check ANTHROPIC_API_KEY or run 'claude login'.",
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/biometric/biometric.controller.ts"
       ],
@@ -1896,7 +1896,7 @@
       ],
       "estimated_minutes": 8,
       "actual_minutes": null,
-      "error_message": "CLI_SILENT_FAILURE: Exit code 1 with no stderr. This often indicates missing authentication. Check ANTHROPIC_API_KEY or run 'claude login'.",
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/biometric/biometric.service.ts"
       ],
@@ -1931,7 +1931,7 @@
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": "CLI_SILENT_FAILURE: Exit code 1 with no stderr. This often indicates missing authentication. Check ANTHROPIC_API_KEY or run 'claude login'.",
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/biometric/dto/createbiometriccredentialrequest.dto.ts"
       ],
@@ -1960,13 +1960,13 @@
       "type": "api_guard",
       "title": "Auth Guard: /api/v1/biometric/credentials",
       "description": "JWT authentication guard for POST /api/v1/biometric/credentials",
-      "status": "pending",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-API-POST-api_v1_biometric_credentials-controller"
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/guards/jwt-auth.guard.ts"
       ],
@@ -1995,13 +1995,13 @@
       "type": "api_controller",
       "title": "Controller: GET /api/v1/biometric/credentials",
       "description": "List biometric credentials\nImplement controller method with 2 parameters.",
-      "status": "completed",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-CHECKPOINT-schema"
       ],
       "estimated_minutes": 10,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/biometric/biometric.controller.ts"
       ],
@@ -2030,13 +2030,13 @@
       "type": "api_service",
       "title": "Service: GET /api/v1/biometric/credentials",
       "description": "Business logic for List biometric credentials",
-      "status": "completed",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-API-GET-api_v1_biometric_credentials-controller"
       ],
       "estimated_minutes": 8,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/biometric/biometric.service.ts"
       ],
@@ -2065,13 +2065,13 @@
       "type": "api_dto",
       "title": "DTO: ListBiometricCredentialsRequest",
       "description": "Request/Response DTO for GET /api/v1/biometric/credentials",
-      "status": "completed",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-API-GET-api_v1_biometric_credentials-controller"
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/biometric/dto/listbiometriccredentialsrequest.dto.ts"
       ],
@@ -2100,13 +2100,13 @@
       "type": "api_guard",
       "title": "Auth Guard: /api/v1/biometric/credentials",
       "description": "JWT authentication guard for GET /api/v1/biometric/credentials",
-      "status": "completed",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-API-GET-api_v1_biometric_credentials-controller"
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/guards/jwt-auth.guard.ts"
       ],
@@ -2135,13 +2135,13 @@
       "type": "api_validation",
       "title": "Validation: GET /api/v1/biometric/credentials",
       "description": "Input validation for 2 parameters",
-      "status": "completed",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-API-GET-api_v1_biometric_credentials-dto"
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/biometric/validators/"
       ],
@@ -2176,7 +2176,7 @@
       ],
       "estimated_minutes": 10,
       "actual_minutes": null,
-      "error_message": "CLI_SILENT_FAILURE: Exit code 1 with no stderr. This often indicates missing authentication. Check ANTHROPIC_API_KEY or run 'claude login'.",
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/biometric/biometric.controller.ts"
       ],
@@ -2211,7 +2211,7 @@
       ],
       "estimated_minutes": 8,
       "actual_minutes": null,
-      "error_message": "CLI_SILENT_FAILURE: Exit code 1 with no stderr. This often indicates missing authentication. Check ANTHROPIC_API_KEY or run 'claude login'.",
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/biometric/biometric.service.ts"
       ],
@@ -2246,7 +2246,7 @@
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": "CLI_SILENT_FAILURE: Exit code 1 with no stderr. This often indicates missing authentication. Check ANTHROPIC_API_KEY or run 'claude login'.",
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/biometric/dto/deletebiometriccredentialrequest.dto.ts"
       ],
@@ -2281,7 +2281,7 @@
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": "CLI_SILENT_FAILURE: Exit code 1 with no stderr. This often indicates missing authentication. Check ANTHROPIC_API_KEY or run 'claude login'.",
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/guards/jwt-auth.guard.ts"
       ],
@@ -2316,7 +2316,7 @@
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": "CLI_SILENT_FAILURE: Exit code 1 with no stderr. This often indicates missing authentication. Check ANTHROPIC_API_KEY or run 'claude login'.",
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/biometric/validators/"
       ],
@@ -2345,13 +2345,13 @@
       "type": "api_controller",
       "title": "Controller: POST /api/v1/biometric/authentication-options",
       "description": "Create biometric authentication challenge\nImplement controller method with 0 parameters.",
-      "status": "completed",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-CHECKPOINT-schema"
       ],
       "estimated_minutes": 10,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/biometric/biometric.controller.ts"
       ],
@@ -2380,13 +2380,13 @@
       "type": "api_service",
       "title": "Service: POST /api/v1/biometric/authentication-options",
       "description": "Business logic for Create biometric authentication challenge",
-      "status": "completed",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-API-POST-api_v1_biometric_authentication-options-controller"
       ],
       "estimated_minutes": 8,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/biometric/biometric.service.ts"
       ],
@@ -2415,13 +2415,13 @@
       "type": "api_dto",
       "title": "DTO: BiometricAuthenticationOptionsRequest",
       "description": "Request/Response DTO for POST /api/v1/biometric/authentication-options",
-      "status": "completed",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-API-POST-api_v1_biometric_authentication-options-controller"
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/biometric/dto/biometricauthenticationoptionsrequest.dto.ts"
       ],
@@ -2456,7 +2456,7 @@
       ],
       "estimated_minutes": 10,
       "actual_minutes": null,
-      "error_message": "CLI_SILENT_FAILURE: Exit code 1 with no stderr. This often indicates missing authentication. Check ANTHROPIC_API_KEY or run 'claude login'.",
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/biometric/biometric.controller.ts"
       ],
@@ -2485,13 +2485,13 @@
       "type": "api_service",
       "title": "Service: POST /api/v1/biometric/authenticate",
       "description": "Business logic for Authenticate with biometrics",
-      "status": "pending",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-API-POST-api_v1_biometric_authenticate-controller"
       ],
       "estimated_minutes": 8,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/biometric/biometric.service.ts"
       ],
@@ -2520,13 +2520,13 @@
       "type": "api_dto",
       "title": "DTO: BiometricAuthenticateRequest",
       "description": "Request/Response DTO for POST /api/v1/biometric/authenticate",
-      "status": "pending",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-API-POST-api_v1_biometric_authenticate-controller"
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/biometric/dto/biometricauthenticaterequest.dto.ts"
       ],
@@ -2555,13 +2555,13 @@
       "type": "api_guard",
       "title": "Auth Guard: /api/v1/biometric/authenticate",
       "description": "JWT authentication guard for POST /api/v1/biometric/authenticate",
-      "status": "pending",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-API-POST-api_v1_biometric_authenticate-controller"
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/guards/jwt-auth.guard.ts"
       ],
@@ -2596,7 +2596,7 @@
       ],
       "estimated_minutes": 10,
       "actual_minutes": null,
-      "error_message": "CLI_SILENT_FAILURE: Exit code 1 with no stderr. This often indicates missing authentication. Check ANTHROPIC_API_KEY or run 'claude login'.",
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/devices/devices.controller.ts"
       ],
@@ -2631,7 +2631,7 @@
       ],
       "estimated_minutes": 8,
       "actual_minutes": null,
-      "error_message": "CLI_SILENT_FAILURE: Exit code 1 with no stderr. This often indicates missing authentication. Check ANTHROPIC_API_KEY or run 'claude login'.",
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/devices/devices.service.ts"
       ],
@@ -2660,13 +2660,13 @@
       "type": "api_dto",
       "title": "DTO: RegisterDeviceRequest",
       "description": "Request/Response DTO for POST /api/v1/devices",
-      "status": "running",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-API-POST-api_v1_devices-controller"
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/devices/dto/registerdevicerequest.dto.ts"
       ],
@@ -2695,13 +2695,13 @@
       "type": "api_guard",
       "title": "Auth Guard: /api/v1/devices",
       "description": "JWT authentication guard for POST /api/v1/devices",
-      "status": "pending",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-API-POST-api_v1_devices-controller"
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/guards/jwt-auth.guard.ts"
       ],
@@ -2730,13 +2730,13 @@
       "type": "api_controller",
       "title": "Controller: GET /api/v1/devices",
       "description": "List registered devices\nImplement controller method with 2 parameters.",
-      "status": "completed",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-CHECKPOINT-schema"
       ],
       "estimated_minutes": 10,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/devices/devices.controller.ts"
       ],
@@ -2765,13 +2765,13 @@
       "type": "api_service",
       "title": "Service: GET /api/v1/devices",
       "description": "Business logic for List registered devices",
-      "status": "completed",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-API-GET-api_v1_devices-controller"
       ],
       "estimated_minutes": 8,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/devices/devices.service.ts"
       ],
@@ -2800,13 +2800,13 @@
       "type": "api_dto",
       "title": "DTO: ListDevicesRequest",
       "description": "Request/Response DTO for GET /api/v1/devices",
-      "status": "completed",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-API-GET-api_v1_devices-controller"
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/devices/dto/listdevicesrequest.dto.ts"
       ],
@@ -2835,13 +2835,13 @@
       "type": "api_guard",
       "title": "Auth Guard: /api/v1/devices",
       "description": "JWT authentication guard for GET /api/v1/devices",
-      "status": "completed",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-API-GET-api_v1_devices-controller"
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/guards/jwt-auth.guard.ts"
       ],
@@ -2870,13 +2870,13 @@
       "type": "api_validation",
       "title": "Validation: GET /api/v1/devices",
       "description": "Input validation for 2 parameters",
-      "status": "completed",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-API-GET-api_v1_devices-dto"
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/devices/validators/"
       ],
@@ -2911,7 +2911,7 @@
       ],
       "estimated_minutes": 10,
       "actual_minutes": null,
-      "error_message": "CLI_SILENT_FAILURE: Exit code 1 with no stderr. This often indicates missing authentication. Check ANTHROPIC_API_KEY or run 'claude login'.",
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/devices/devices.controller.ts"
       ],
@@ -2946,7 +2946,7 @@
       ],
       "estimated_minutes": 8,
       "actual_minutes": null,
-      "error_message": "CLI_SILENT_FAILURE: Exit code 1 with no stderr. This often indicates missing authentication. Check ANTHROPIC_API_KEY or run 'claude login'.",
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/devices/devices.service.ts"
       ],
@@ -2981,7 +2981,7 @@
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": "CLI_SILENT_FAILURE: Exit code 1 with no stderr. This often indicates missing authentication. Check ANTHROPIC_API_KEY or run 'claude login'.",
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/devices/dto/getdevicerequest.dto.ts"
       ],
@@ -3016,7 +3016,7 @@
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": "CLI_SILENT_FAILURE: Exit code 1 with no stderr. This often indicates missing authentication. Check ANTHROPIC_API_KEY or run 'claude login'.",
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/guards/jwt-auth.guard.ts"
       ],
@@ -3051,7 +3051,7 @@
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": "CLI_SILENT_FAILURE: Exit code 1 with no stderr. This often indicates missing authentication. Check ANTHROPIC_API_KEY or run 'claude login'.",
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/devices/validators/"
       ],
@@ -3080,13 +3080,13 @@
       "type": "api_controller",
       "title": "Controller: PUT /api/v1/devices/{deviceId}",
       "description": "Update device metadata\nImplement controller method with 1 parameters.",
-      "status": "completed",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-CHECKPOINT-schema"
       ],
       "estimated_minutes": 10,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/devices/devices.controller.ts"
       ],
@@ -3115,13 +3115,13 @@
       "type": "api_service",
       "title": "Service: PUT /api/v1/devices/{deviceId}",
       "description": "Business logic for Update device metadata",
-      "status": "completed",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-API-PUT-api_v1_devices_deviceId-controller"
       ],
       "estimated_minutes": 8,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/devices/devices.service.ts"
       ],
@@ -3150,13 +3150,13 @@
       "type": "api_dto",
       "title": "DTO: UpdateDeviceRequest",
       "description": "Request/Response DTO for PUT /api/v1/devices/{deviceId}",
-      "status": "completed",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-API-PUT-api_v1_devices_deviceId-controller"
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/devices/dto/updatedevicerequest.dto.ts"
       ],
@@ -3185,13 +3185,13 @@
       "type": "api_guard",
       "title": "Auth Guard: /api/v1/devices/{deviceId}",
       "description": "JWT authentication guard for PUT /api/v1/devices/{deviceId}",
-      "status": "completed",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-API-PUT-api_v1_devices_deviceId-controller"
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/guards/jwt-auth.guard.ts"
       ],
@@ -3220,13 +3220,13 @@
       "type": "api_validation",
       "title": "Validation: PUT /api/v1/devices/{deviceId}",
       "description": "Input validation for 1 parameters",
-      "status": "completed",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-API-PUT-api_v1_devices_deviceId-dto"
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/devices/validators/"
       ],
@@ -3255,13 +3255,13 @@
       "type": "api_controller",
       "title": "Controller: DELETE /api/v1/devices/{deviceId}",
       "description": "Revoke a device\nImplement controller method with 1 parameters.",
-      "status": "completed",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-CHECKPOINT-schema"
       ],
       "estimated_minutes": 10,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/devices/devices.controller.ts"
       ],
@@ -3290,13 +3290,13 @@
       "type": "api_service",
       "title": "Service: DELETE /api/v1/devices/{deviceId}",
       "description": "Business logic for Revoke a device",
-      "status": "completed",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-API-DELETE-api_v1_devices_deviceId-controller"
       ],
       "estimated_minutes": 8,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/devices/devices.service.ts"
       ],
@@ -3325,13 +3325,13 @@
       "type": "api_dto",
       "title": "DTO: RevokeDeviceRequest",
       "description": "Request/Response DTO for DELETE /api/v1/devices/{deviceId}",
-      "status": "completed",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-API-DELETE-api_v1_devices_deviceId-controller"
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/devices/dto/revokedevicerequest.dto.ts"
       ],
@@ -3360,13 +3360,13 @@
       "type": "api_guard",
       "title": "Auth Guard: /api/v1/devices/{deviceId}",
       "description": "JWT authentication guard for DELETE /api/v1/devices/{deviceId}",
-      "status": "completed",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-API-DELETE-api_v1_devices_deviceId-controller"
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/guards/jwt-auth.guard.ts"
       ],
@@ -3395,13 +3395,13 @@
       "type": "api_validation",
       "title": "Validation: DELETE /api/v1/devices/{deviceId}",
       "description": "Input validation for 1 parameters",
-      "status": "completed",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-API-DELETE-api_v1_devices_deviceId-dto"
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/devices/validators/"
       ],
@@ -3436,7 +3436,7 @@
       ],
       "estimated_minutes": 10,
       "actual_minutes": null,
-      "error_message": "CLI_SILENT_FAILURE: Exit code 1 with no stderr. This often indicates missing authentication. Check ANTHROPIC_API_KEY or run 'claude login'.",
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/devices/devices.controller.ts"
       ],
@@ -3471,7 +3471,7 @@
       ],
       "estimated_minutes": 8,
       "actual_minutes": null,
-      "error_message": "CLI_SILENT_FAILURE: Exit code 1 with no stderr. This often indicates missing authentication. Check ANTHROPIC_API_KEY or run 'claude login'.",
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/devices/devices.service.ts"
       ],
@@ -3506,7 +3506,7 @@
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": "CLI_SILENT_FAILURE: Exit code 1 with no stderr. This often indicates missing authentication. Check ANTHROPIC_API_KEY or run 'claude login'.",
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/devices/dto/uploadprekeysrequest.dto.ts"
       ],
@@ -3541,7 +3541,7 @@
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": "CLI_SILENT_FAILURE: Exit code 1 with no stderr. This often indicates missing authentication. Check ANTHROPIC_API_KEY or run 'claude login'.",
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/guards/jwt-auth.guard.ts"
       ],
@@ -3576,7 +3576,7 @@
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": "CLI_SILENT_FAILURE: Exit code 1 with no stderr. This often indicates missing authentication. Check ANTHROPIC_API_KEY or run 'claude login'.",
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/devices/validators/"
       ],
@@ -3611,7 +3611,7 @@
       ],
       "estimated_minutes": 10,
       "actual_minutes": null,
-      "error_message": "CLI_SILENT_FAILURE: Exit code 1 with no stderr. This often indicates missing authentication. Check ANTHROPIC_API_KEY or run 'claude login'.",
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/auth/auth.controller.ts"
       ],
@@ -3646,7 +3646,7 @@
       ],
       "estimated_minutes": 8,
       "actual_minutes": null,
-      "error_message": "CLI_SILENT_FAILURE: Exit code 1 with no stderr. This often indicates missing authentication. Check ANTHROPIC_API_KEY or run 'claude login'.",
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/auth/auth.service.ts"
       ],
@@ -3681,7 +3681,7 @@
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": "CLI_SILENT_FAILURE: Exit code 1 with no stderr. This often indicates missing authentication. Check ANTHROPIC_API_KEY or run 'claude login'.",
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/auth/dto/passkeyregistrationoptionsrequest.dto.ts"
       ],
@@ -3710,13 +3710,13 @@
       "type": "api_controller",
       "title": "Controller: POST /api/v1/auth/passkeys/registration/verify",
       "description": "Verify passkey registration\nImplement controller method with 0 parameters.",
-      "status": "completed",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-CHECKPOINT-schema"
       ],
       "estimated_minutes": 10,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/auth/auth.controller.ts"
       ],
@@ -3745,13 +3745,13 @@
       "type": "api_service",
       "title": "Service: POST /api/v1/auth/passkeys/registration/verify",
       "description": "Business logic for Verify passkey registration",
-      "status": "completed",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-API-POST-api_v1_auth_passkeys_registration_verify-controller"
       ],
       "estimated_minutes": 8,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/auth/auth.service.ts"
       ],
@@ -3780,13 +3780,13 @@
       "type": "api_dto",
       "title": "DTO: PasskeyRegistrationVerifyRequest",
       "description": "Request/Response DTO for POST /api/v1/auth/passkeys/registration/verify",
-      "status": "completed",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-API-POST-api_v1_auth_passkeys_registration_verify-controller"
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/auth/dto/passkeyregistrationverifyrequest.dto.ts"
       ],
@@ -3821,7 +3821,7 @@
       ],
       "estimated_minutes": 10,
       "actual_minutes": null,
-      "error_message": "CLI_SILENT_FAILURE: Exit code 1 with no stderr. This often indicates missing authentication. Check ANTHROPIC_API_KEY or run 'claude login'.",
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/auth/auth.controller.ts"
       ],
@@ -3856,7 +3856,7 @@
       ],
       "estimated_minutes": 8,
       "actual_minutes": null,
-      "error_message": "CLI_SILENT_FAILURE: Exit code 1 with no stderr. This often indicates missing authentication. Check ANTHROPIC_API_KEY or run 'claude login'.",
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/auth/auth.service.ts"
       ],
@@ -3885,13 +3885,13 @@
       "type": "api_dto",
       "title": "DTO: PasskeyAuthenticationOptionsRequest",
       "description": "Request/Response DTO for POST /api/v1/auth/passkeys/authentication/options",
-      "status": "pending",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-API-POST-api_v1_auth_passkeys_authentication_options-controller"
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/auth/dto/passkeyauthenticationoptionsrequest.dto.ts"
       ],
@@ -3926,7 +3926,7 @@
       ],
       "estimated_minutes": 10,
       "actual_minutes": null,
-      "error_message": "CLI_SILENT_FAILURE: Exit code 1 with no stderr. This often indicates missing authentication. Check ANTHROPIC_API_KEY or run 'claude login'.",
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/auth/auth.controller.ts"
       ],
@@ -3961,7 +3961,7 @@
       ],
       "estimated_minutes": 8,
       "actual_minutes": null,
-      "error_message": "CLI_SILENT_FAILURE: Exit code 1 with no stderr. This often indicates missing authentication. Check ANTHROPIC_API_KEY or run 'claude login'.",
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/auth/auth.service.ts"
       ],
@@ -3990,13 +3990,13 @@
       "type": "api_dto",
       "title": "DTO: PasskeyAuthenticationVerifyRequest",
       "description": "Request/Response DTO for POST /api/v1/auth/passkeys/authentication/verify",
-      "status": "pending",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-API-POST-api_v1_auth_passkeys_authentication_verify-controller"
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/auth/dto/passkeyauthenticationverifyrequest.dto.ts"
       ],
@@ -4031,7 +4031,7 @@
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": "CLI_SILENT_FAILURE: Exit code 1 with no stderr. This often indicates missing authentication. Check ANTHROPIC_API_KEY or run 'claude login'.",
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/guards/jwt-auth.guard.ts"
       ],
@@ -4066,7 +4066,7 @@
       ],
       "estimated_minutes": 10,
       "actual_minutes": null,
-      "error_message": "CLI_SILENT_FAILURE: Exit code 1 with no stderr. This often indicates missing authentication. Check ANTHROPIC_API_KEY or run 'claude login'.",
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/users/users.controller.ts"
       ],
@@ -4095,13 +4095,13 @@
       "type": "api_service",
       "title": "Service: GET /api/v1/users/{userId}/passkeys",
       "description": "Business logic for List user's passkeys",
-      "status": "pending",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-API-GET-api_v1_users_userId_passkeys-controller"
       ],
       "estimated_minutes": 8,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/users/users.service.ts"
       ],
@@ -4136,7 +4136,7 @@
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": "CLI_SILENT_FAILURE: Exit code 1 with no stderr. This often indicates missing authentication. Check ANTHROPIC_API_KEY or run 'claude login'.",
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/users/dto/listuserpasskeysrequest.dto.ts"
       ],
@@ -4165,13 +4165,13 @@
       "type": "api_guard",
       "title": "Auth Guard: /api/v1/users/{userId}/passkeys",
       "description": "JWT authentication guard for GET /api/v1/users/{userId}/passkeys",
-      "status": "pending",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-API-GET-api_v1_users_userId_passkeys-controller"
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/guards/jwt-auth.guard.ts"
       ],
@@ -4200,13 +4200,13 @@
       "type": "api_validation",
       "title": "Validation: GET /api/v1/users/{userId}/passkeys",
       "description": "Input validation for 3 parameters",
-      "status": "pending",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-API-GET-api_v1_users_userId_passkeys-dto"
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/users/validators/"
       ],
@@ -4241,7 +4241,7 @@
       ],
       "estimated_minutes": 10,
       "actual_minutes": null,
-      "error_message": "CLI_SILENT_FAILURE: Exit code 1 with no stderr. This often indicates missing authentication. Check ANTHROPIC_API_KEY or run 'claude login'.",
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/users/users.controller.ts"
       ],
@@ -4276,7 +4276,7 @@
       ],
       "estimated_minutes": 8,
       "actual_minutes": null,
-      "error_message": "CLI_SILENT_FAILURE: Exit code 1 with no stderr. This often indicates missing authentication. Check ANTHROPIC_API_KEY or run 'claude login'.",
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/users/users.service.ts"
       ],
@@ -4311,7 +4311,7 @@
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": "CLI_SILENT_FAILURE: Exit code 1 with no stderr. This often indicates missing authentication. Check ANTHROPIC_API_KEY or run 'claude login'.",
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/users/dto/deleteuserpasskeyrequest.dto.ts"
       ],
@@ -4340,13 +4340,13 @@
       "type": "api_guard",
       "title": "Auth Guard: /api/v1/users/{userId}/passkeys/{credentialId}",
       "description": "JWT authentication guard for DELETE /api/v1/users/{userId}/passkeys/{credentialId}",
-      "status": "pending",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-API-DELETE-api_v1_users_userId_passkeys_credentialId-controller"
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/guards/jwt-auth.guard.ts"
       ],
@@ -4381,7 +4381,7 @@
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": "CLI_SILENT_FAILURE: Exit code 1 with no stderr. This often indicates missing authentication. Check ANTHROPIC_API_KEY or run 'claude login'.",
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/users/validators/"
       ],
@@ -4416,7 +4416,7 @@
       ],
       "estimated_minutes": 10,
       "actual_minutes": null,
-      "error_message": "CLI_SILENT_FAILURE: Exit code 1 with no stderr. This often indicates missing authentication. Check ANTHROPIC_API_KEY or run 'claude login'.",
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/crypto/crypto.controller.ts"
       ],
@@ -4445,13 +4445,13 @@
       "type": "api_service",
       "title": "Service: POST /api/v1/crypto/keys",
       "description": "Business logic for Register or update client encryption keys",
-      "status": "pending",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-API-POST-api_v1_crypto_keys-controller"
       ],
       "estimated_minutes": 8,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/crypto/crypto.service.ts"
       ],
@@ -4486,7 +4486,7 @@
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": "CLI_SILENT_FAILURE: Exit code 1 with no stderr. This often indicates missing authentication. Check ANTHROPIC_API_KEY or run 'claude login'.",
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/crypto/dto/registerencryptionkeysrequest.dto.ts"
       ],
@@ -4521,7 +4521,7 @@
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": "CLI_SILENT_FAILURE: Exit code 1 with no stderr. This often indicates missing authentication. Check ANTHROPIC_API_KEY or run 'claude login'.",
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/guards/jwt-auth.guard.ts"
       ],
@@ -4550,13 +4550,13 @@
       "type": "api_controller",
       "title": "Controller: GET /api/v1/crypto/prekeys/{recipientId}",
       "description": "Fetch recipient prekeys\nImplement controller method with 1 parameters.",
-      "status": "completed",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-CHECKPOINT-schema"
       ],
       "estimated_minutes": 10,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/crypto/crypto.controller.ts"
       ],
@@ -4585,13 +4585,13 @@
       "type": "api_service",
       "title": "Service: GET /api/v1/crypto/prekeys/{recipientId}",
       "description": "Business logic for Fetch recipient prekeys",
-      "status": "completed",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-API-GET-api_v1_crypto_prekeys_recipientId-controller"
       ],
       "estimated_minutes": 8,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/crypto/crypto.service.ts"
       ],
@@ -4620,13 +4620,13 @@
       "type": "api_dto",
       "title": "DTO: GetRecipientPreKeysRequest",
       "description": "Request/Response DTO for GET /api/v1/crypto/prekeys/{recipientId}",
-      "status": "completed",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-API-GET-api_v1_crypto_prekeys_recipientId-controller"
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/crypto/dto/getrecipientprekeysrequest.dto.ts"
       ],
@@ -4655,13 +4655,13 @@
       "type": "api_guard",
       "title": "Auth Guard: /api/v1/crypto/prekeys/{recipientId}",
       "description": "JWT authentication guard for GET /api/v1/crypto/prekeys/{recipientId}",
-      "status": "completed",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-API-GET-api_v1_crypto_prekeys_recipientId-controller"
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/guards/jwt-auth.guard.ts"
       ],
@@ -4690,13 +4690,13 @@
       "type": "api_validation",
       "title": "Validation: GET /api/v1/crypto/prekeys/{recipientId}",
       "description": "Input validation for 1 parameters",
-      "status": "completed",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-API-GET-api_v1_crypto_prekeys_recipientId-dto"
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/crypto/validators/"
       ],
@@ -4731,7 +4731,7 @@
       ],
       "estimated_minutes": 10,
       "actual_minutes": null,
-      "error_message": "CLI_SILENT_FAILURE: Exit code 1 with no stderr. This often indicates missing authentication. Check ANTHROPIC_API_KEY or run 'claude login'.",
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/messages/messages.controller.ts"
       ],
@@ -4760,13 +4760,13 @@
       "type": "api_service",
       "title": "Service: POST /api/v1/messages",
       "description": "Business logic for Send encrypted message",
-      "status": "pending",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-API-POST-api_v1_messages-controller"
       ],
       "estimated_minutes": 8,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/messages/messages.service.ts"
       ],
@@ -4795,13 +4795,13 @@
       "type": "api_dto",
       "title": "DTO: SendEncryptedMessageRequest",
       "description": "Request/Response DTO for POST /api/v1/messages",
-      "status": "pending",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-API-POST-api_v1_messages-controller"
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/messages/dto/sendencryptedmessagerequest.dto.ts"
       ],
@@ -4836,7 +4836,7 @@
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": "CLI_SILENT_FAILURE: Exit code 1 with no stderr. This often indicates missing authentication. Check ANTHROPIC_API_KEY or run 'claude login'.",
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/guards/jwt-auth.guard.ts"
       ],
@@ -4865,13 +4865,13 @@
       "type": "api_controller",
       "title": "Controller: GET /api/v1/messages",
       "description": "Fetch encrypted message queue\nImplement controller method with 2 parameters.",
-      "status": "completed",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-CHECKPOINT-schema"
       ],
       "estimated_minutes": 10,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/messages/messages.controller.ts"
       ],
@@ -4900,13 +4900,13 @@
       "type": "api_service",
       "title": "Service: GET /api/v1/messages",
       "description": "Business logic for Fetch encrypted message queue",
-      "status": "completed",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-API-GET-api_v1_messages-controller"
       ],
       "estimated_minutes": 8,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/messages/messages.service.ts"
       ],
@@ -4935,13 +4935,13 @@
       "type": "api_dto",
       "title": "DTO: ListQueuedMessagesRequest",
       "description": "Request/Response DTO for GET /api/v1/messages",
-      "status": "completed",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-API-GET-api_v1_messages-controller"
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/messages/dto/listqueuedmessagesrequest.dto.ts"
       ],
@@ -4970,13 +4970,13 @@
       "type": "api_guard",
       "title": "Auth Guard: /api/v1/messages",
       "description": "JWT authentication guard for GET /api/v1/messages",
-      "status": "completed",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-API-GET-api_v1_messages-controller"
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/guards/jwt-auth.guard.ts"
       ],
@@ -5005,13 +5005,13 @@
       "type": "api_validation",
       "title": "Validation: GET /api/v1/messages",
       "description": "Input validation for 2 parameters",
-      "status": "completed",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-API-GET-api_v1_messages-dto"
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/messages/validators/"
       ],
@@ -5046,7 +5046,7 @@
       ],
       "estimated_minutes": 10,
       "actual_minutes": null,
-      "error_message": "CLI_SILENT_FAILURE: Exit code 1 with no stderr. This often indicates missing authentication. Check ANTHROPIC_API_KEY or run 'claude login'.",
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/messages/messages.controller.ts"
       ],
@@ -5075,13 +5075,13 @@
       "type": "api_service",
       "title": "Service: POST /api/v1/messages/{messageId}/ack",
       "description": "Business logic for Acknowledge message delivery",
-      "status": "pending",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-API-POST-api_v1_messages_messageId_ack-controller"
       ],
       "estimated_minutes": 8,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/messages/messages.service.ts"
       ],
@@ -5116,7 +5116,7 @@
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": "CLI_SILENT_FAILURE: Exit code 1 with no stderr. This often indicates missing authentication. Check ANTHROPIC_API_KEY or run 'claude login'.",
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/messages/dto/acknowledgemessagerequest.dto.ts"
       ],
@@ -5145,13 +5145,13 @@
       "type": "api_guard",
       "title": "Auth Guard: /api/v1/messages/{messageId}/ack",
       "description": "JWT authentication guard for POST /api/v1/messages/{messageId}/ack",
-      "status": "pending",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-API-POST-api_v1_messages_messageId_ack-controller"
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/guards/jwt-auth.guard.ts"
       ],
@@ -5180,13 +5180,13 @@
       "type": "api_validation",
       "title": "Validation: POST /api/v1/messages/{messageId}/ack",
       "description": "Input validation for 1 parameters",
-      "status": "pending",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-API-POST-api_v1_messages_messageId_ack-dto"
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/messages/validators/"
       ],
@@ -5221,7 +5221,7 @@
       ],
       "estimated_minutes": 10,
       "actual_minutes": null,
-      "error_message": "CLI_SILENT_FAILURE: Exit code 1 with no stderr. This often indicates missing authentication. Check ANTHROPIC_API_KEY or run 'claude login'.",
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/security-code-verifications/security-code-verifications.controller.ts"
       ],
@@ -5250,13 +5250,13 @@
       "type": "api_service",
       "title": "Service: POST /api/v1/security-code-verifications",
       "description": "Business logic for Initiate manual security code verification",
-      "status": "pending",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-API-POST-api_v1_security-code-verifications-controller"
       ],
       "estimated_minutes": 8,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/security-code-verifications/security-code-verifications.service.ts"
       ],
@@ -5285,13 +5285,13 @@
       "type": "api_dto",
       "title": "DTO: CreateSecurityCodeVerificationRequest",
       "description": "Request/Response DTO for POST /api/v1/security-code-verifications",
-      "status": "pending",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-API-POST-api_v1_security-code-verifications-controller"
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/security-code-verifications/dto/createsecuritycodeverificationrequest.dto.ts"
       ],
@@ -5326,7 +5326,7 @@
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": "CLI_SILENT_FAILURE: Exit code 1 with no stderr. This often indicates missing authentication. Check ANTHROPIC_API_KEY or run 'claude login'.",
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/guards/jwt-auth.guard.ts"
       ],
@@ -5355,13 +5355,13 @@
       "type": "api_controller",
       "title": "Controller: GET /api/v1/security-code-verifications/{verificationId}",
       "description": "Get verification session details\nImplement controller method with 1 parameters.",
-      "status": "completed",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-CHECKPOINT-schema"
       ],
       "estimated_minutes": 10,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/security-code-verifications/security-code-verifications.controller.ts"
       ],
@@ -5390,13 +5390,13 @@
       "type": "api_service",
       "title": "Service: GET /api/v1/security-code-verifications/{verificationId}",
       "description": "Business logic for Get verification session details",
-      "status": "completed",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-API-GET-api_v1_security-code-verifications_verificationId-controller"
       ],
       "estimated_minutes": 8,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/security-code-verifications/security-code-verifications.service.ts"
       ],
@@ -5425,13 +5425,13 @@
       "type": "api_dto",
       "title": "DTO: GetSecurityCodeVerificationRequest",
       "description": "Request/Response DTO for GET /api/v1/security-code-verifications/{verificationId}",
-      "status": "completed",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-API-GET-api_v1_security-code-verifications_verificationId-controller"
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/security-code-verifications/dto/getsecuritycodeverificationrequest.dto.ts"
       ],
@@ -5460,13 +5460,13 @@
       "type": "api_guard",
       "title": "Auth Guard: /api/v1/security-code-verifications/{verificationId}",
       "description": "JWT authentication guard for GET /api/v1/security-code-verifications/{verificationId}",
-      "status": "completed",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-API-GET-api_v1_security-code-verifications_verificationId-controller"
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/guards/jwt-auth.guard.ts"
       ],
@@ -5495,13 +5495,13 @@
       "type": "api_validation",
       "title": "Validation: GET /api/v1/security-code-verifications/{verificationId}",
       "description": "Input validation for 1 parameters",
-      "status": "completed",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-API-GET-api_v1_security-code-verifications_verificationId-dto"
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/security-code-verifications/validators/"
       ],
@@ -5530,13 +5530,13 @@
       "type": "api_controller",
       "title": "Controller: POST /api/v1/security-code-verifications/{verificationId}/confirm",
       "description": "Confirm verification result\nImplement controller method with 1 parameters.",
-      "status": "completed",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-CHECKPOINT-schema"
       ],
       "estimated_minutes": 10,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/security-code-verifications/security-code-verifications.controller.ts"
       ],
@@ -5565,13 +5565,13 @@
       "type": "api_service",
       "title": "Service: POST /api/v1/security-code-verifications/{verificationId}/confirm",
       "description": "Business logic for Confirm verification result",
-      "status": "completed",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-API-POST-api_v1_security-code-verifications_verificationId_confirm-controller"
       ],
       "estimated_minutes": 8,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/security-code-verifications/security-code-verifications.service.ts"
       ],
@@ -5600,13 +5600,13 @@
       "type": "api_dto",
       "title": "DTO: ConfirmSecurityCodeVerificationRequest",
       "description": "Request/Response DTO for POST /api/v1/security-code-verifications/{verificationId}/confirm",
-      "status": "completed",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-API-POST-api_v1_security-code-verifications_verificationId_confirm-controller"
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/security-code-verifications/dto/confirmsecuritycodeverificationrequest.dto.ts"
       ],
@@ -5635,13 +5635,13 @@
       "type": "api_guard",
       "title": "Auth Guard: /api/v1/security-code-verifications/{verificationId}/confirm",
       "description": "JWT authentication guard for POST /api/v1/security-code-verifications/{verificationId}/confirm",
-      "status": "completed",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-API-POST-api_v1_security-code-verifications_verificationId_confirm-controller"
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/guards/jwt-auth.guard.ts"
       ],
@@ -5670,13 +5670,13 @@
       "type": "api_validation",
       "title": "Validation: POST /api/v1/security-code-verifications/{verificationId}/confirm",
       "description": "Input validation for 1 parameters",
-      "status": "completed",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-API-POST-api_v1_security-code-verifications_verificationId_confirm-dto"
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/security-code-verifications/validators/"
       ],
@@ -5705,13 +5705,13 @@
       "type": "api_controller",
       "title": "Controller: GET /api/v1/security-code-verifications",
       "description": "List verification sessions\nImplement controller method with 3 parameters.",
-      "status": "completed",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-CHECKPOINT-schema"
       ],
       "estimated_minutes": 10,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/security-code-verifications/security-code-verifications.controller.ts"
       ],
@@ -5740,13 +5740,13 @@
       "type": "api_service",
       "title": "Service: GET /api/v1/security-code-verifications",
       "description": "Business logic for List verification sessions",
-      "status": "completed",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-API-GET-api_v1_security-code-verifications-controller"
       ],
       "estimated_minutes": 8,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/security-code-verifications/security-code-verifications.service.ts"
       ],
@@ -5775,13 +5775,13 @@
       "type": "api_dto",
       "title": "DTO: ListSecurityCodeVerificationsRequest",
       "description": "Request/Response DTO for GET /api/v1/security-code-verifications",
-      "status": "completed",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-API-GET-api_v1_security-code-verifications-controller"
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/security-code-verifications/dto/listsecuritycodeverificationsrequest.dto.ts"
       ],
@@ -5810,13 +5810,13 @@
       "type": "api_guard",
       "title": "Auth Guard: /api/v1/security-code-verifications",
       "description": "JWT authentication guard for GET /api/v1/security-code-verifications",
-      "status": "completed",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-API-GET-api_v1_security-code-verifications-controller"
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/guards/jwt-auth.guard.ts"
       ],
@@ -5845,13 +5845,13 @@
       "type": "api_validation",
       "title": "Validation: GET /api/v1/security-code-verifications",
       "description": "Input validation for 3 parameters",
-      "status": "completed",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-API-GET-api_v1_security-code-verifications-dto"
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/security-code-verifications/validators/"
       ],
@@ -5880,13 +5880,13 @@
       "type": "api_controller",
       "title": "Controller: GET /api/v1/app-lock",
       "description": "Get app lock status\nImplement controller method with 0 parameters.",
-      "status": "completed",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-CHECKPOINT-schema"
       ],
       "estimated_minutes": 10,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/app-lock/app-lock.controller.ts"
       ],
@@ -5915,13 +5915,13 @@
       "type": "api_service",
       "title": "Service: GET /api/v1/app-lock",
       "description": "Business logic for Get app lock status",
-      "status": "completed",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-API-GET-api_v1_app-lock-controller"
       ],
       "estimated_minutes": 8,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/app-lock/app-lock.service.ts"
       ],
@@ -5950,13 +5950,13 @@
       "type": "api_guard",
       "title": "Auth Guard: /api/v1/app-lock",
       "description": "JWT authentication guard for GET /api/v1/app-lock",
-      "status": "completed",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-API-GET-api_v1_app-lock-controller"
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/guards/jwt-auth.guard.ts"
       ],
@@ -5991,7 +5991,7 @@
       ],
       "estimated_minutes": 10,
       "actual_minutes": null,
-      "error_message": "CLI_SILENT_FAILURE: Exit code 1 with no stderr. This often indicates missing authentication. Check ANTHROPIC_API_KEY or run 'claude login'.",
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/app-lock/app-lock.controller.ts"
       ],
@@ -6026,7 +6026,7 @@
       ],
       "estimated_minutes": 8,
       "actual_minutes": null,
-      "error_message": "CLI_SILENT_FAILURE: Exit code 1 with no stderr. This often indicates missing authentication. Check ANTHROPIC_API_KEY or run 'claude login'.",
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/app-lock/app-lock.service.ts"
       ],
@@ -6061,7 +6061,7 @@
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": "CLI_SILENT_FAILURE: Exit code 1 with no stderr. This often indicates missing authentication. Check ANTHROPIC_API_KEY or run 'claude login'.",
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/app-lock/dto/updateapplockrequest.dto.ts"
       ],
@@ -6096,7 +6096,7 @@
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": "CLI_SILENT_FAILURE: Exit code 1 with no stderr. This often indicates missing authentication. Check ANTHROPIC_API_KEY or run 'claude login'.",
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/guards/jwt-auth.guard.ts"
       ],
@@ -6131,7 +6131,7 @@
       ],
       "estimated_minutes": 10,
       "actual_minutes": null,
-      "error_message": "CLI_SILENT_FAILURE: Exit code 1 with no stderr. This often indicates missing authentication. Check ANTHROPIC_API_KEY or run 'claude login'.",
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/app-lock/app-lock.controller.ts"
       ],
@@ -6166,7 +6166,7 @@
       ],
       "estimated_minutes": 8,
       "actual_minutes": null,
-      "error_message": "CLI_SILENT_FAILURE: Exit code 1 with no stderr. This often indicates missing authentication. Check ANTHROPIC_API_KEY or run 'claude login'.",
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/app-lock/app-lock.service.ts"
       ],
@@ -6201,7 +6201,7 @@
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": "CLI_SILENT_FAILURE: Exit code 1 with no stderr. This often indicates missing authentication. Check ANTHROPIC_API_KEY or run 'claude login'.",
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/app-lock/dto/verifyapplockrequest.dto.ts"
       ],
@@ -6230,13 +6230,13 @@
       "type": "api_guard",
       "title": "Auth Guard: /api/v1/app-lock/verify",
       "description": "JWT authentication guard for POST /api/v1/app-lock/verify",
-      "status": "pending",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-API-POST-api_v1_app-lock_verify-controller"
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/guards/jwt-auth.guard.ts"
       ],
@@ -6265,13 +6265,13 @@
       "type": "api_controller",
       "title": "Controller: POST /api/v1/auth/pin/verify",
       "description": "Verify PIN during two-step verification\nImplement controller method with 0 parameters.",
-      "status": "running",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-CHECKPOINT-schema"
       ],
       "estimated_minutes": 10,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/auth/auth.controller.ts"
       ],
@@ -6300,13 +6300,13 @@
       "type": "api_service",
       "title": "Service: POST /api/v1/auth/pin/verify",
       "description": "Business logic for Verify PIN during two-step verification",
-      "status": "pending",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-API-POST-api_v1_auth_pin_verify-controller"
       ],
       "estimated_minutes": 8,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/auth/auth.service.ts"
       ],
@@ -6335,13 +6335,13 @@
       "type": "api_dto",
       "title": "DTO: VerifyPinRequest",
       "description": "Request/Response DTO for POST /api/v1/auth/pin/verify",
-      "status": "pending",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-API-POST-api_v1_auth_pin_verify-controller"
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/auth/dto/verifypinrequest.dto.ts"
       ],
@@ -6370,13 +6370,13 @@
       "type": "api_guard",
       "title": "Auth Guard: /api/v1/auth/pin/verify",
       "description": "JWT authentication guard for POST /api/v1/auth/pin/verify",
-      "status": "pending",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-API-POST-api_v1_auth_pin_verify-controller"
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/guards/jwt-auth.guard.ts"
       ],
@@ -6411,7 +6411,7 @@
       ],
       "estimated_minutes": 10,
       "actual_minutes": null,
-      "error_message": "CLI_SILENT_FAILURE: Exit code 1 with no stderr. This often indicates missing authentication. Check ANTHROPIC_API_KEY or run 'claude login'.",
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/users/users.controller.ts"
       ],
@@ -6446,7 +6446,7 @@
       ],
       "estimated_minutes": 8,
       "actual_minutes": null,
-      "error_message": "CLI_SILENT_FAILURE: Exit code 1 with no stderr. This often indicates missing authentication. Check ANTHROPIC_API_KEY or run 'claude login'.",
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/users/users.service.ts"
       ],
@@ -6475,13 +6475,13 @@
       "type": "api_dto",
       "title": "DTO: EnablePinRequest",
       "description": "Request/Response DTO for POST /api/v1/users/{userId}/pin",
-      "status": "pending",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-API-POST-api_v1_users_userId_pin-controller"
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/users/dto/enablepinrequest.dto.ts"
       ],
@@ -6516,7 +6516,7 @@
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": "CLI_SILENT_FAILURE: Exit code 1 with no stderr. This often indicates missing authentication. Check ANTHROPIC_API_KEY or run 'claude login'.",
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/guards/jwt-auth.guard.ts"
       ],
@@ -6545,13 +6545,13 @@
       "type": "api_validation",
       "title": "Validation: POST /api/v1/users/{userId}/pin",
       "description": "Input validation for 1 parameters",
-      "status": "pending",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-API-POST-api_v1_users_userId_pin-dto"
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/users/validators/"
       ],
@@ -6586,7 +6586,7 @@
       ],
       "estimated_minutes": 10,
       "actual_minutes": null,
-      "error_message": "CLI_SILENT_FAILURE: Exit code 1 with no stderr. This often indicates missing authentication. Check ANTHROPIC_API_KEY or run 'claude login'.",
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/users/users.controller.ts"
       ],
@@ -6621,7 +6621,7 @@
       ],
       "estimated_minutes": 8,
       "actual_minutes": null,
-      "error_message": "CLI_SILENT_FAILURE: Exit code 1 with no stderr. This often indicates missing authentication. Check ANTHROPIC_API_KEY or run 'claude login'.",
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/users/users.service.ts"
       ],
@@ -6656,7 +6656,7 @@
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": "CLI_SILENT_FAILURE: Exit code 1 with no stderr. This often indicates missing authentication. Check ANTHROPIC_API_KEY or run 'claude login'.",
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/users/dto/updatepinrequest.dto.ts"
       ],
@@ -6691,7 +6691,7 @@
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": "CLI_SILENT_FAILURE: Exit code 1 with no stderr. This often indicates missing authentication. Check ANTHROPIC_API_KEY or run 'claude login'.",
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/guards/jwt-auth.guard.ts"
       ],
@@ -6720,13 +6720,13 @@
       "type": "api_validation",
       "title": "Validation: PUT /api/v1/users/{userId}/pin",
       "description": "Input validation for 1 parameters",
-      "status": "pending",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-API-PUT-api_v1_users_userId_pin-dto"
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/users/validators/"
       ],
@@ -6761,7 +6761,7 @@
       ],
       "estimated_minutes": 10,
       "actual_minutes": null,
-      "error_message": "CLI_SILENT_FAILURE: Exit code 1 with no stderr. This often indicates missing authentication. Check ANTHROPIC_API_KEY or run 'claude login'.",
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/users/users.controller.ts"
       ],
@@ -6790,13 +6790,13 @@
       "type": "api_service",
       "title": "Service: DELETE /api/v1/users/{userId}/pin",
       "description": "Business logic for Disable additional PIN security",
-      "status": "pending",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-API-DELETE-api_v1_users_userId_pin-controller"
       ],
       "estimated_minutes": 8,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/users/users.service.ts"
       ],
@@ -6831,7 +6831,7 @@
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": "CLI_SILENT_FAILURE: Exit code 1 with no stderr. This often indicates missing authentication. Check ANTHROPIC_API_KEY or run 'claude login'.",
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/users/dto/disablepinrequest.dto.ts"
       ],
@@ -6866,7 +6866,7 @@
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": "CLI_SILENT_FAILURE: Exit code 1 with no stderr. This often indicates missing authentication. Check ANTHROPIC_API_KEY or run 'claude login'.",
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/guards/jwt-auth.guard.ts"
       ],
@@ -6901,7 +6901,7 @@
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": "CLI_SILENT_FAILURE: Exit code 1 with no stderr. This often indicates missing authentication. Check ANTHROPIC_API_KEY or run 'claude login'.",
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/users/validators/"
       ],
@@ -6936,7 +6936,7 @@
       ],
       "estimated_minutes": 10,
       "actual_minutes": null,
-      "error_message": "CLI_SILENT_FAILURE: Exit code 1 with no stderr. This often indicates missing authentication. Check ANTHROPIC_API_KEY or run 'claude login'.",
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/users/users.controller.ts"
       ],
@@ -6971,7 +6971,7 @@
       ],
       "estimated_minutes": 8,
       "actual_minutes": null,
-      "error_message": "CLI_SILENT_FAILURE: Exit code 1 with no stderr. This often indicates missing authentication. Check ANTHROPIC_API_KEY or run 'claude login'.",
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/users/users.service.ts"
       ],
@@ -7000,13 +7000,13 @@
       "type": "api_dto",
       "title": "DTO: GetPinStatusRequest",
       "description": "Request/Response DTO for GET /api/v1/users/{userId}/pin",
-      "status": "pending",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-API-GET-api_v1_users_userId_pin-controller"
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/users/dto/getpinstatusrequest.dto.ts"
       ],
@@ -7041,7 +7041,7 @@
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": "CLI_SILENT_FAILURE: Exit code 1 with no stderr. This often indicates missing authentication. Check ANTHROPIC_API_KEY or run 'claude login'.",
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/guards/jwt-auth.guard.ts"
       ],
@@ -7070,13 +7070,13 @@
       "type": "api_validation",
       "title": "Validation: GET /api/v1/users/{userId}/pin",
       "description": "Input validation for 1 parameters",
-      "status": "pending",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-API-GET-api_v1_users_userId_pin-dto"
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/users/validators/"
       ],
@@ -7111,7 +7111,7 @@
       ],
       "estimated_minutes": 10,
       "actual_minutes": null,
-      "error_message": "CLI_SILENT_FAILURE: Exit code 1 with no stderr. This often indicates missing authentication. Check ANTHROPIC_API_KEY or run 'claude login'.",
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/spam-checks/spam-checks.controller.ts"
       ],
@@ -7146,7 +7146,7 @@
       ],
       "estimated_minutes": 8,
       "actual_minutes": null,
-      "error_message": "CLI_SILENT_FAILURE: Exit code 1 with no stderr. This often indicates missing authentication. Check ANTHROPIC_API_KEY or run 'claude login'.",
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/spam-checks/spam-checks.service.ts"
       ],
@@ -7181,7 +7181,7 @@
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": "CLI_SILENT_FAILURE: Exit code 1 with no stderr. This often indicates missing authentication. Check ANTHROPIC_API_KEY or run 'claude login'.",
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/spam-checks/dto/createspamcheckrequest.dto.ts"
       ],
@@ -7210,13 +7210,13 @@
       "type": "api_guard",
       "title": "Auth Guard: /api/v1/spam-checks",
       "description": "JWT authentication guard for POST /api/v1/spam-checks",
-      "status": "pending",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-API-POST-api_v1_spam-checks-controller"
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/guards/jwt-auth.guard.ts"
       ],
@@ -7245,13 +7245,13 @@
       "type": "api_controller",
       "title": "Controller: GET /api/v1/spam-checks/{spamCheckId}",
       "description": "Get spam detection result\nImplement controller method with 1 parameters.",
-      "status": "completed",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-CHECKPOINT-schema"
       ],
       "estimated_minutes": 10,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/spam-checks/spam-checks.controller.ts"
       ],
@@ -7280,13 +7280,13 @@
       "type": "api_service",
       "title": "Service: GET /api/v1/spam-checks/{spamCheckId}",
       "description": "Business logic for Get spam detection result",
-      "status": "running",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-API-GET-api_v1_spam-checks_spamCheckId-controller"
       ],
       "estimated_minutes": 8,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/spam-checks/spam-checks.service.ts"
       ],
@@ -7315,13 +7315,13 @@
       "type": "api_dto",
       "title": "DTO: GetSpamCheckRequest",
       "description": "Request/Response DTO for GET /api/v1/spam-checks/{spamCheckId}",
-      "status": "running",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-API-GET-api_v1_spam-checks_spamCheckId-controller"
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/spam-checks/dto/getspamcheckrequest.dto.ts"
       ],
@@ -7350,13 +7350,13 @@
       "type": "api_guard",
       "title": "Auth Guard: /api/v1/spam-checks/{spamCheckId}",
       "description": "JWT authentication guard for GET /api/v1/spam-checks/{spamCheckId}",
-      "status": "running",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-API-GET-api_v1_spam-checks_spamCheckId-controller"
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/guards/jwt-auth.guard.ts"
       ],
@@ -7385,13 +7385,13 @@
       "type": "api_validation",
       "title": "Validation: GET /api/v1/spam-checks/{spamCheckId}",
       "description": "Input validation for 1 parameters",
-      "status": "pending",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-API-GET-api_v1_spam-checks_spamCheckId-dto"
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/spam-checks/validators/"
       ],
@@ -7420,13 +7420,13 @@
       "type": "api_controller",
       "title": "Controller: GET /api/v1/users/{userId}/call-privacy-settings",
       "description": "Get call privacy settings\nImplement controller method with 1 parameters.",
-      "status": "completed",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-CHECKPOINT-schema"
       ],
       "estimated_minutes": 10,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/users/users.controller.ts"
       ],
@@ -7455,13 +7455,13 @@
       "type": "api_service",
       "title": "Service: GET /api/v1/users/{userId}/call-privacy-settings",
       "description": "Business logic for Get call privacy settings",
-      "status": "completed",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-API-GET-api_v1_users_userId_call-privacy-settings-controller"
       ],
       "estimated_minutes": 8,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/users/users.service.ts"
       ],
@@ -7490,13 +7490,13 @@
       "type": "api_dto",
       "title": "DTO: GetCallPrivacySettingsRequest",
       "description": "Request/Response DTO for GET /api/v1/users/{userId}/call-privacy-settings",
-      "status": "completed",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-API-GET-api_v1_users_userId_call-privacy-settings-controller"
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/users/dto/getcallprivacysettingsrequest.dto.ts"
       ],
@@ -7525,13 +7525,13 @@
       "type": "api_guard",
       "title": "Auth Guard: /api/v1/users/{userId}/call-privacy-settings",
       "description": "JWT authentication guard for GET /api/v1/users/{userId}/call-privacy-settings",
-      "status": "completed",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-API-GET-api_v1_users_userId_call-privacy-settings-controller"
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/guards/jwt-auth.guard.ts"
       ],
@@ -7560,13 +7560,13 @@
       "type": "api_validation",
       "title": "Validation: GET /api/v1/users/{userId}/call-privacy-settings",
       "description": "Input validation for 1 parameters",
-      "status": "completed",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-API-GET-api_v1_users_userId_call-privacy-settings-dto"
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/users/validators/"
       ],
@@ -7601,7 +7601,7 @@
       ],
       "estimated_minutes": 10,
       "actual_minutes": null,
-      "error_message": "CLI_SILENT_FAILURE: Exit code 1 with no stderr. This often indicates missing authentication. Check ANTHROPIC_API_KEY or run 'claude login'.",
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/users/users.controller.ts"
       ],
@@ -7630,13 +7630,13 @@
       "type": "api_service",
       "title": "Service: PUT /api/v1/users/{userId}/call-privacy-settings",
       "description": "Business logic for Update call privacy settings",
-      "status": "pending",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-API-PUT-api_v1_users_userId_call-privacy-settings-controller"
       ],
       "estimated_minutes": 8,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/users/users.service.ts"
       ],
@@ -7671,7 +7671,7 @@
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": "CLI_SILENT_FAILURE: Exit code 1 with no stderr. This often indicates missing authentication. Check ANTHROPIC_API_KEY or run 'claude login'.",
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/users/dto/updatecallprivacysettingsrequest.dto.ts"
       ],
@@ -7700,13 +7700,13 @@
       "type": "api_guard",
       "title": "Auth Guard: /api/v1/users/{userId}/call-privacy-settings",
       "description": "JWT authentication guard for PUT /api/v1/users/{userId}/call-privacy-settings",
-      "status": "pending",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-API-PUT-api_v1_users_userId_call-privacy-settings-controller"
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/guards/jwt-auth.guard.ts"
       ],
@@ -7735,13 +7735,13 @@
       "type": "api_validation",
       "title": "Validation: PUT /api/v1/users/{userId}/call-privacy-settings",
       "description": "Input validation for 1 parameters",
-      "status": "pending",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-API-PUT-api_v1_users_userId_call-privacy-settings-dto"
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/users/validators/"
       ],
@@ -7770,13 +7770,13 @@
       "type": "api_controller",
       "title": "Controller: POST /api/v1/call-sessions",
       "description": "Create call session with IP masking\nImplement controller method with 0 parameters.",
-      "status": "completed",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-CHECKPOINT-schema"
       ],
       "estimated_minutes": 10,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/call-sessions/call-sessions.controller.ts"
       ],
@@ -7805,13 +7805,13 @@
       "type": "api_service",
       "title": "Service: POST /api/v1/call-sessions",
       "description": "Business logic for Create call session with IP masking",
-      "status": "completed",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-API-POST-api_v1_call-sessions-controller"
       ],
       "estimated_minutes": 8,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/call-sessions/call-sessions.service.ts"
       ],
@@ -7840,13 +7840,13 @@
       "type": "api_dto",
       "title": "DTO: CreateCallSessionRequest",
       "description": "Request/Response DTO for POST /api/v1/call-sessions",
-      "status": "completed",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-API-POST-api_v1_call-sessions-controller"
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/modules/call-sessions/dto/createcallsessionrequest.dto.ts"
       ],
@@ -7875,13 +7875,13 @@
       "type": "api_guard",
       "title": "Auth Guard: /api/v1/call-sessions",
       "description": "JWT authentication guard for POST /api/v1/call-sessions",
-      "status": "completed",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-API-POST-api_v1_call-sessions-controller"
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/guards/jwt-auth.guard.ts"
       ],
@@ -7910,7 +7910,7 @@
       "type": "verify_build",
       "title": "Build backend",
       "description": "Run npm run build for NestJS backend.",
-      "status": "pending",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-API-PUT-api_v1_users_userId_call-privacy-settings-validation",
         "EPIC-001-API-POST-api_v1_call-sessions-controller",
@@ -7920,7 +7920,7 @@
       ],
       "estimated_minutes": 3,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "npm error Missing script: \"build\"\nnpm error\nnpm error To see a list of scripts, run:\nnpm error   npm run\nnpm error A complete log of this run can be found in: C:\\Users\\User\\AppData\\Local\\npm-cache\\_logs\\2026-03-03T09_12_56_455Z-debug-0.log\n",
       "output_files": [],
       "related_requirements": [],
       "related_user_stories": [],
@@ -7945,7 +7945,7 @@
       "type": "verify_typecheck",
       "title": "TypeScript type check (API)",
       "description": "Run tsc --noEmit to verify TypeScript types.",
-      "status": "pending",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-VERIFY-build-api"
       ],
@@ -7976,13 +7976,13 @@
       "type": "verify_integration",
       "title": "Run API integration tests",
       "description": "Execute integration tests against API endpoints.",
-      "status": "pending",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-VERIFY-typecheck-api"
       ],
       "estimated_minutes": 10,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "npm error Missing script: \"test:integration\"\nnpm error\nnpm error To see a list of scripts, run:\nnpm error   npm run\nnpm error A complete log of this run can be found in: C:\\Users\\User\\AppData\\Local\\npm-cache\\_logs\\2026-03-03T09_12_57_189Z-debug-0.log\n",
       "output_files": [],
       "related_requirements": [],
       "related_user_stories": [],
@@ -8007,7 +8007,7 @@
       "type": "docker_build",
       "title": "Build API Docker image",
       "description": "Build Docker image for NestJS backend.",
-      "status": "pending",
+      "status": "completed",
       "dependencies": [
         "EPIC-001-VERIFY-typecheck-api",
         "EPIC-001-VERIFY-integration"
@@ -8039,13 +8039,13 @@
       "type": "docker_start",
       "title": "Start API container",
       "description": "Start backend container with docker-compose.",
-      "status": "pending",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-DOCKER-build-api"
       ],
       "estimated_minutes": 2,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "time=\"2026-03-03T10:13:02+01:00\" level=warning msg=\"The \\\"ANTHROPIC_API_KEY\\\" variable is not set. Defaulting to a blank string.\"\ntime=\"2026-03-03T10:13:02+01:00\" level=warning msg=\"The \\\"ANTHROPIC_API_KEY\\\" variable is not set. Defaulting to a blank string.\"\n Network coding_engine_default  Creating\n Network coding_engine_default  Created\n Volume coding_engine_redis_data  Creating\n Volume coding_engine_redis_data  Created\n Volume coding_engine_artifact_data  Creating\n Volume coding_engine_artifact_data  Created\n Volume coding_engine_postgres_data  Creating\n Volume coding_engine_postgres_data  Created\n Container coding-engine-postgres  Creating\n Container coding-engine-redis  Creating\n Container coding-engine-postgres  Error response from daemon: Conflict. The container name \"/coding-engine-postgres\" is already in use by container \"891101b5aa1fec0e2ca7332a428c886cec89abcab94afe5a2aa502127de45165\". You have to remove (or rename) that container to be able to reuse that name.\nError response from daemon: Conflict. The container name \"/coding-engine-postgres\" is already in use by container \"891101b5aa1fec0e2ca7332a428c886cec89abcab94afe5a2aa502127de45165\". You have to remove (or rename) that container to be able to reuse that name.\n",
       "output_files": [],
       "related_requirements": [],
       "related_user_stories": [],
@@ -8070,13 +8070,13 @@
       "type": "docker_health",
       "title": "API health check",
       "description": "Verify API container is healthy via /health endpoint.",
-      "status": "pending",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-DOCKER-start-api"
       ],
       "estimated_minutes": 1,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "  % Total    % Received % Xferd  Average Speed  Time    Time    Time   Current\r\n                                 Dload  Upload  Total   Spent   Left   Speed\r\n\r  0      0   0      0   0      0      0      0                              0\r\ncurl: (22) The requested URL returned error: 404\r\n",
       "output_files": [],
       "related_requirements": [],
       "related_user_stories": [],
@@ -8101,7 +8101,7 @@
       "type": "checkpoint_api",
       "title": "Checkpoint: Review Api",
       "description": "User approval required before continuing. Review the api phase results.",
-      "status": "pending",
+      "status": "completed",
       "dependencies": [
         "EPIC-001-DOCKER-build-api",
         "EPIC-001-DOCKER-start-api",
@@ -8134,13 +8134,13 @@
       "type": "fe_page",
       "title": "Page: LoginPage",
       "description": "Create LoginPage page component implementing 3 user stories.",
-      "status": "pending",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-CHECKPOINT-api"
       ],
       "estimated_minutes": 20,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/pages/LoginPage/LoginPage.tsx"
       ],
@@ -8171,13 +8171,13 @@
       "type": "fe_component",
       "title": "Components: LoginPage",
       "description": "Create reusable components for LoginPage",
-      "status": "pending",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-FE-LoginPage-page"
       ],
       "estimated_minutes": 15,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/components/LoginPage/"
       ],
@@ -8204,13 +8204,13 @@
       "type": "fe_hook",
       "title": "Hook: useLoginPage",
       "description": "Create custom hook for LoginPage state and logic",
-      "status": "pending",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-FE-LoginPage-page"
       ],
       "estimated_minutes": 10,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/hooks/useLoginPage.ts"
       ],
@@ -8237,13 +8237,13 @@
       "type": "fe_api_client",
       "title": "API Client: LoginPage",
       "description": "Create API client functions for LoginPage",
-      "status": "pending",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-FE-LoginPage-hook"
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/api/loginpageAPI.ts"
       ],
@@ -8270,13 +8270,13 @@
       "type": "fe_form",
       "title": "Form: LoginPageForm",
       "description": "Create form component with validation for LoginPage",
-      "status": "pending",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-FE-LoginPage-components"
       ],
       "estimated_minutes": 15,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/components/LoginPage/LoginPageForm.tsx"
       ],
@@ -8303,13 +8303,13 @@
       "type": "fe_page",
       "title": "Page: RegisterPage",
       "description": "Create RegisterPage page component implementing 3 user stories.",
-      "status": "pending",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-CHECKPOINT-api"
       ],
       "estimated_minutes": 20,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/pages/RegisterPage/RegisterPage.tsx"
       ],
@@ -8340,13 +8340,13 @@
       "type": "fe_component",
       "title": "Components: RegisterPage",
       "description": "Create reusable components for RegisterPage",
-      "status": "pending",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-FE-RegisterPage-page"
       ],
       "estimated_minutes": 15,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/components/RegisterPage/"
       ],
@@ -8373,13 +8373,13 @@
       "type": "fe_hook",
       "title": "Hook: useRegisterPage",
       "description": "Create custom hook for RegisterPage state and logic",
-      "status": "pending",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-FE-RegisterPage-page"
       ],
       "estimated_minutes": 10,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/hooks/useRegisterPage.ts"
       ],
@@ -8406,13 +8406,13 @@
       "type": "fe_api_client",
       "title": "API Client: RegisterPage",
       "description": "Create API client functions for RegisterPage",
-      "status": "pending",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-FE-RegisterPage-hook"
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/api/registerpageAPI.ts"
       ],
@@ -8439,13 +8439,13 @@
       "type": "fe_form",
       "title": "Form: RegisterPageForm",
       "description": "Create form component with validation for RegisterPage",
-      "status": "pending",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-FE-RegisterPage-components"
       ],
       "estimated_minutes": 15,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/components/RegisterPage/RegisterPageForm.tsx"
       ],
@@ -8472,13 +8472,13 @@
       "type": "fe_page",
       "title": "Page: TwoFactorAuth",
       "description": "Create TwoFactorAuth page component implementing 3 user stories.",
-      "status": "pending",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-CHECKPOINT-api"
       ],
       "estimated_minutes": 20,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/pages/TwoFactorAuth/TwoFactorAuth.tsx"
       ],
@@ -8509,13 +8509,13 @@
       "type": "fe_component",
       "title": "Components: TwoFactorAuth",
       "description": "Create reusable components for TwoFactorAuth",
-      "status": "pending",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-FE-TwoFactorAuth-page"
       ],
       "estimated_minutes": 15,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/components/TwoFactorAuth/"
       ],
@@ -8542,13 +8542,13 @@
       "type": "fe_hook",
       "title": "Hook: useTwoFactorAuth",
       "description": "Create custom hook for TwoFactorAuth state and logic",
-      "status": "pending",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-FE-TwoFactorAuth-page"
       ],
       "estimated_minutes": 10,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/hooks/useTwoFactorAuth.ts"
       ],
@@ -8575,13 +8575,13 @@
       "type": "fe_api_client",
       "title": "API Client: TwoFactorAuth",
       "description": "Create API client functions for TwoFactorAuth",
-      "status": "pending",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-FE-TwoFactorAuth-hook"
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "src/api/twofactorauthAPI.ts"
       ],
@@ -8608,7 +8608,7 @@
       "type": "verify_build",
       "title": "Build frontend",
       "description": "Run npm run build for React frontend.",
-      "status": "pending",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-FE-RegisterPage-form",
         "EPIC-001-FE-TwoFactorAuth-page",
@@ -8618,7 +8618,7 @@
       ],
       "estimated_minutes": 3,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "npm error Missing script: \"build\"\nnpm error\nnpm error To see a list of scripts, run:\nnpm error   npm run\nnpm error A complete log of this run can be found in: C:\\Users\\User\\AppData\\Local\\npm-cache\\_logs\\2026-03-03T09_13_03_726Z-debug-0.log\n",
       "output_files": [],
       "related_requirements": [],
       "related_user_stories": [],
@@ -8643,13 +8643,13 @@
       "type": "verify_lint",
       "title": "Run ESLint",
       "description": "Check code quality with ESLint.",
-      "status": "pending",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-VERIFY-build-fe"
       ],
       "estimated_minutes": 2,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "npm error Missing script: \"lint\"\nnpm error\nnpm error Did you mean this?\nnpm error   npm link # Symlink a package folder\nnpm error\nnpm error To see a list of scripts, run:\nnpm error   npm run\nnpm error A complete log of this run can be found in: C:\\Users\\User\\AppData\\Local\\npm-cache\\_logs\\2026-03-03T09_13_03_946Z-debug-0.log\n",
       "output_files": [],
       "related_requirements": [],
       "related_user_stories": [],
@@ -8674,7 +8674,7 @@
       "type": "verify_typecheck",
       "title": "TypeScript type check (Frontend)",
       "description": "Run tsc --noEmit for frontend.",
-      "status": "pending",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-VERIFY-lint"
       ],
@@ -8705,13 +8705,13 @@
       "type": "verify_unit",
       "title": "Run unit tests",
       "description": "Execute vitest unit tests.",
-      "status": "pending",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-VERIFY-typecheck-fe"
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "npm error Missing script: \"test:unit\"\nnpm error\nnpm error To see a list of scripts, run:\nnpm error   npm run\nnpm error A complete log of this run can be found in: C:\\Users\\User\\AppData\\Local\\npm-cache\\_logs\\2026-03-03T09_13_04_763Z-debug-0.log\n",
       "output_files": [],
       "related_requirements": [],
       "related_user_stories": [],
@@ -8736,7 +8736,7 @@
       "type": "checkpoint_fe",
       "title": "Checkpoint: Review Frontend",
       "description": "User approval required before continuing. Review the frontend phase results.",
-      "status": "pending",
+      "status": "completed",
       "dependencies": [
         "EPIC-001-VERIFY-lint",
         "EPIC-001-VERIFY-typecheck-fe",
@@ -8769,13 +8769,13 @@
       "type": "test",
       "title": "Generate unit tests for EPIC-001",
       "description": "Create Vitest unit tests for all EPIC-001 services and utilities. NO MOCKS - use real implementations.",
-      "status": "pending",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-CHECKPOINT-frontend"
       ],
       "estimated_minutes": 10,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "__tests__/unit/epic_001/"
       ],
@@ -8802,13 +8802,13 @@
       "type": "test",
       "title": "Generate integration tests for EPIC-001",
       "description": "Create Vitest integration tests for EPIC-001 API endpoints with real database.",
-      "status": "pending",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-TEST-unit"
       ],
       "estimated_minutes": 15,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "__tests__/integration/epic_001/"
       ],
@@ -8835,13 +8835,13 @@
       "type": "test",
       "title": "Generate E2E tests for EPIC-001",
       "description": "Create Playwright E2E tests for 11 user stories in EPIC-001.",
-      "status": "pending",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-TEST-integration"
       ],
       "estimated_minutes": 20,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [
         "e2e/epic_001.spec.ts"
       ],
@@ -8880,7 +8880,7 @@
       "type": "verify_e2e",
       "title": "Run E2E tests",
       "description": "Execute Playwright E2E test suite.",
-      "status": "pending",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-TEST-unit",
         "EPIC-001-TEST-integration",
@@ -8888,7 +8888,7 @@
       ],
       "estimated_minutes": 15,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "npm error Missing script: \"test:e2e\"\nnpm error\nnpm error To see a list of scripts, run:\nnpm error   npm run\nnpm error A complete log of this run can be found in: C:\\Users\\User\\AppData\\Local\\npm-cache\\_logs\\2026-03-03T09_13_05_104Z-debug-0.log\n",
       "output_files": [],
       "related_requirements": [],
       "related_user_stories": [],
@@ -8913,13 +8913,13 @@
       "type": "docker_build",
       "title": "Build production image",
       "description": "Build optimized production Docker image.",
-      "status": "pending",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-VERIFY-e2e"
       ],
       "estimated_minutes": 5,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "open C:\\Users\\User\\Desktop\\Voice_dialog_vibemind\\VibeMind-VoiceDialog\\python\\spaces\\coding\\Coding_engine\\Data\\all_services\\whatsapp-messaging-service_20260211_025459\\output\\docker-compose.prod.yml: The system cannot find the file specified.\n",
       "output_files": [],
       "related_requirements": [],
       "related_user_stories": [],
@@ -8944,13 +8944,13 @@
       "type": "docker_start",
       "title": "Start production container",
       "description": "Start full stack in production mode.",
-      "status": "pending",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-DOCKER-build-prod"
       ],
       "estimated_minutes": 2,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "open C:\\Users\\User\\Desktop\\Voice_dialog_vibemind\\VibeMind-VoiceDialog\\python\\spaces\\coding\\Coding_engine\\Data\\all_services\\whatsapp-messaging-service_20260211_025459\\output\\docker-compose.prod.yml: The system cannot find the file specified.\n",
       "output_files": [],
       "related_requirements": [],
       "related_user_stories": [],
@@ -8975,13 +8975,13 @@
       "type": "docker_health",
       "title": "Production health check",
       "description": "Verify all services are healthy.",
-      "status": "pending",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-DOCKER-start-prod"
       ],
       "estimated_minutes": 1,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "open C:\\Users\\User\\Desktop\\Voice_dialog_vibemind\\VibeMind-VoiceDialog\\python\\spaces\\coding\\Coding_engine\\Data\\all_services\\whatsapp-messaging-service_20260211_025459\\output\\docker-compose.prod.yml: The system cannot find the file specified.\n",
       "output_files": [],
       "related_requirements": [],
       "related_user_stories": [],
@@ -9006,13 +9006,13 @@
       "type": "docker_logs",
       "title": "Collect production logs",
       "description": "Collect logs from all production containers.",
-      "status": "pending",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-DOCKER-health-prod"
       ],
       "estimated_minutes": 1,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "open C:\\Users\\User\\Desktop\\Voice_dialog_vibemind\\VibeMind-VoiceDialog\\python\\spaces\\coding\\Coding_engine\\Data\\all_services\\whatsapp-messaging-service_20260211_025459\\output\\docker-compose.prod.yml: The system cannot find the file specified.\n",
       "output_files": [],
       "related_requirements": [],
       "related_user_stories": [],
@@ -9037,7 +9037,7 @@
       "type": "checkpoint_deploy",
       "title": "Checkpoint: Review Deploy",
       "description": "User approval required before continuing. Review the deploy phase results.",
-      "status": "pending",
+      "status": "completed",
       "dependencies": [
         "EPIC-001-DOCKER-start-prod",
         "EPIC-001-DOCKER-health-prod",
@@ -9070,13 +9070,13 @@
       "type": "integration",
       "title": "Validate and integrate EPIC-001",
       "description": "Run all EPIC-001 tests, validate build, and verify all 11 user stories are implemented.",
-      "status": "pending",
+      "status": "failed",
       "dependencies": [
         "EPIC-001-CHECKPOINT-deploy"
       ],
       "estimated_minutes": 15,
       "actual_minutes": null,
-      "error_message": null,
+      "error_message": "[Errno 22] Invalid argument",
       "output_files": [],
       "related_requirements": [],
       "related_user_stories": [],
@@ -9097,11 +9097,11 @@
     }
   ],
   "total_tasks": 263,
-  "completed_tasks": 79,
-  "failed_tasks": 101,
-  "progress_percent": 30.038022813688215,
+  "completed_tasks": 10,
+  "failed_tasks": 253,
+  "progress_percent": 3.802281368821293,
   "run_count": 0,
-  "last_run_at": "2026-02-18T19:54:15.355820",
-  "created_at": "2026-02-18T14:56:04.832335",
+  "last_run_at": "2026-03-03T10:13:05.652013",
+  "created_at": "2026-03-02T10:39:05.553262",
   "estimated_total_minutes": 1819
 }

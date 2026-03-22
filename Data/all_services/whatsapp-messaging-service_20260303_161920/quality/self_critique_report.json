@@ -1,0 +1,600 @@
+{
+  "timestamp": "2026-03-03T23:02:07.981783",
+  "quality_score": 9.9,
+  "summary": {
+    "total_issues": 28,
+    "requirements_reviewed": 163,
+    "user_stories_reviewed": 163,
+    "test_cases_reviewed": 1500,
+    "by_severity": {
+      "critical": 0,
+      "high": 11,
+      "medium": 17,
+      "low": 0,
+      "info": 0
+    },
+    "by_category": {
+      "consistency": 0,
+      "completeness": 16,
+      "testability": 9,
+      "traceability": 3,
+      "clarity": 0,
+      "feasibility": 0
+    },
+    "auto_fixed": 3,
+    "auto_fix_skipped": 2,
+    "fix_log": [
+      "Added measurable criterion for 'schnell' in US-001",
+      "Added measurable criterion for 'zus\u00e4tzliche Sicherheitsschicht' in US-002",
+      "Added measurable criterion for 'schnell' in US-003",
+      "Added measurable criterion for 'gleichzeitig' in US-004",
+      "Added measurable criterion for 'schnell' in US-005",
+      "Added measurable criterion for 'schnell' in US-010",
+      "Added measurable criterion for 'Echtzeit' in US-011",
+      "Added measurable criterion for 'schnell' in US-012",
+      "Added measurable criterion for 'schnell' in US-015",
+      "Added measurable criterion for 'erh\u00f6ht' in US-018",
+      "Added measurable criterion for 'schneller erkennen' in US-006",
+      "Added measurable criterion for 'klare und konsistente Darstellung' in US-007",
+      "Added measurable criterion for 'kurzen Info-Text' in US-008",
+      "Added measurable criterion for 'schnell einsehen' in US-009",
+      "Added measurable criterion for 'schnell und einfach' in US-010",
+      "Linked WA-MSG-011 to US-021 (keyword overlap: 2)",
+      "Linked WA-MSG-012 to US-022 (keyword overlap: 2)",
+      "Linked WA-MSG-013 to US-023 (keyword overlap: 2)",
+      "Linked WA-MSG-014 to US-024 (keyword overlap: 2)",
+      "Linked WA-MSG-015 to US-025 (keyword overlap: 2)",
+      "Linked WA-GRP-001 to US-026 (keyword overlap: 2)",
+      "Linked WA-GRP-005 to US-030 (keyword overlap: 2)"
+    ],
+    "resaved_files": [
+      "enterprise_output\\whatsapp-messaging-service_20260303_161920\\user_stories\\user_stories.md"
+    ]
+  },
+  "issues": [
+    {
+      "id": "CI-001",
+      "category": "completeness",
+      "severity": "high",
+      "title": "Fehlende Fehlerbehandlung bei Registrierung/Verifizierung",
+      "description": "Es fehlen Szenarien wie ung\u00fcltige/abgelaufene SMS-Codes, Zustellfehler, Rate-Limits und Wiederholungslogik. Ohne diese ist die Benutzerregistrierung unvollst\u00e4ndig.",
+      "affected_artifacts": [
+        "WA-AUTH-001"
+      ],
+      "suggestion": "Spezifizieren Sie Fehlerf\u00e4lle (z. B. ung\u00fcltiger Code, Timeout, SMS nicht zugestellt) inkl. Retry- und Sperrlogik.",
+      "auto_fixable": false,
+      "fixed": false,
+      "fix_strategy": "manual",
+      "fix_details": ""
+    },
+    {
+      "id": "CI-002",
+      "category": "completeness",
+      "severity": "medium",
+      "title": "Unklare Definition der 2FA-PIN",
+      "description": "Es ist nicht definiert, ob die PIN zeitbasiert (TOTP), per SMS/Push oder lokal ist, sowie Lebensdauer und Sperrregeln.",
+      "affected_artifacts": [
+        "WA-AUTH-002"
+      ],
+      "suggestion": "Definieren Sie PIN-Quelle, G\u00fcltigkeitsdauer, Fehlversuche, Sperre und Recovery-Mechanismus.",
+      "auto_fixable": false,
+      "fixed": false,
+      "fix_strategy": "manual",
+      "fix_details": ""
+    },
+    {
+      "id": "CI-003",
+      "category": "completeness",
+      "severity": "high",
+      "title": "Fehlende Account-Recovery/Backup",
+      "description": "Es fehlen Anforderungen f\u00fcr Kontowiederherstellung bei Ger\u00e4teverlust, SIM-Wechsel oder Nummern\u00e4nderung.",
+      "affected_artifacts": [
+        "WA-AUTH-001",
+        "WA-AUTH-004",
+        "WA-AUTH-005"
+      ],
+      "suggestion": "Erg\u00e4nzen Sie Wiederherstellungs- und Nummern\u00e4nderungsprozesse inkl. Verifikationsschritten.",
+      "auto_fixable": false,
+      "fixed": false,
+      "fix_strategy": "manual",
+      "fix_details": ""
+    },
+    {
+      "id": "CI-004",
+      "category": "completeness",
+      "severity": "medium",
+      "title": "Unklare Zugriffs- und Ger\u00e4teverwaltung bei Multi-Device",
+      "description": "Es fehlen Edge Cases wie Ger\u00e4te-Limit, Entkoppeln/Abmelden, Konflikte bei gleichzeitiger Nutzung.",
+      "affected_artifacts": [
+        "WA-AUTH-004"
+      ],
+      "suggestion": "Definieren Sie Ger\u00e4teanzahl, Deaktivierung, Sessions, Sync-Konflikte.",
+      "auto_fixable": false,
+      "fixed": false,
+      "fix_strategy": "manual",
+      "fix_details": ""
+    },
+    {
+      "id": "CI-005",
+      "category": "completeness",
+      "severity": "high",
+      "title": "Fehlende Datenschutz- und Sichtbarkeitseinstellungen f\u00fcr Profilfelder",
+      "description": "Es ist nicht spezifiziert, wer Profilbild, Telefonnummer, Status sehen darf (alle, Kontakte, niemand).",
+      "affected_artifacts": [
+        "WA-PROF-001",
+        "WA-PROF-003",
+        "WA-PROF-004",
+        "WA-PROF-005"
+      ],
+      "suggestion": "F\u00fcgen Sie Sichtbarkeitsoptionen und Zugriffskontrolle f\u00fcr Profilfelder hinzu.",
+      "auto_fixable": false,
+      "fixed": false,
+      "fix_strategy": "manual",
+      "fix_details": ""
+    },
+    {
+      "id": "CI-006",
+      "category": "completeness",
+      "severity": "medium",
+      "title": "Fehlende Medien- und Dateitypen",
+      "description": "Es fehlen Anforderungen zum Senden von Bildern/Videos/Dateien sowie Gr\u00f6\u00dfenlimits und Kompression.",
+      "affected_artifacts": [
+        "WA-MSG-001",
+        "WA-MSG-002"
+      ],
+      "suggestion": "Erg\u00e4nzen Sie Medientypen, Gr\u00f6\u00dfenlimits, Upload/Download-Fehlerf\u00e4lle.",
+      "auto_fixable": false,
+      "fixed": false,
+      "fix_strategy": "manual",
+      "fix_details": ""
+    },
+    {
+      "id": "CI-007",
+      "category": "completeness",
+      "severity": "medium",
+      "title": "Unklare Regeln f\u00fcr Nachrichtenbearbeitung/-l\u00f6schung",
+      "description": "Es fehlen Zeitfenster, Sichtbarkeit bei Empf\u00e4ngern, Audit/History und Edge Cases bei Offline-Zustand.",
+      "affected_artifacts": [
+        "WA-MSG-003",
+        "WA-MSG-004"
+      ],
+      "suggestion": "Definieren Sie L\u00f6sch-/Editierfenster, Wirkung bei Empf\u00e4ngern und Offline-Synchronisation.",
+      "auto_fixable": false,
+      "fixed": false,
+      "fix_strategy": "manual",
+      "fix_details": ""
+    },
+    {
+      "id": "CI-008",
+      "category": "completeness",
+      "severity": "medium",
+      "title": "Fehlende Zustell-/Lesebest\u00e4tigungen",
+      "description": "F\u00fcr vollst\u00e4ndige Messaging-Journeys fehlen Anforderungen zu Zustell- und Lesestatus.",
+      "affected_artifacts": [
+        "WA-MSG-001"
+      ],
+      "suggestion": "Erg\u00e4nzen Sie Zustellstatus (gesendet, zugestellt, gelesen) inkl. Fehlerf\u00e4lle.",
+      "auto_fixable": false,
+      "fixed": false,
+      "fix_strategy": "manual",
+      "fix_details": ""
+    },
+    {
+      "id": "CI-009",
+      "category": "completeness",
+      "severity": "high",
+      "title": "Fehlende Ende-zu-Ende-Verschl\u00fcsselung und Sicherheitsanforderungen",
+      "description": "Sicherheitsanforderungen f\u00fcr Nachrichteninhalte, Schl\u00fcsselmanagement und Transport sind nicht spezifiziert.",
+      "affected_artifacts": [
+        "WA-MSG-001",
+        "WA-MSG-002",
+        "WA-MSG-008",
+        "WA-MSG-009",
+        "WA-AUTH-001",
+        "WA-AUTH-002"
+      ],
+      "suggestion": "F\u00fcgen Sie Anforderungen zu E2E-Verschl\u00fcsselung, Schl\u00fcsselrotation, Transportverschl\u00fcsselung hinzu.",
+      "auto_fixable": false,
+      "fixed": false,
+      "fix_strategy": "manual",
+      "fix_details": ""
+    },
+    {
+      "id": "CI-010",
+      "category": "completeness",
+      "severity": "medium",
+      "title": "Fehlende Performance- und Skalierbarkeitsanforderungen",
+      "description": "Es fehlen Latenz-/Durchsatzanforderungen f\u00fcr Echtzeit-Chat und Medienversand.",
+      "affected_artifacts": [
+        "WA-MSG-001",
+        "WA-MSG-002",
+        "WA-GRP-001"
+      ],
+      "suggestion": "Definieren Sie maximale Latenzen, Gruppen-/Broadcast-Gr\u00f6\u00dfen und Durchsatzziele.",
+      "auto_fixable": false,
+      "fixed": false,
+      "fix_strategy": "manual",
+      "fix_details": ""
+    },
+    {
+      "id": "CI-011",
+      "category": "completeness",
+      "severity": "medium",
+      "title": "Fehlende Offline- und Synchronisationsszenarien",
+      "description": "Keine Anforderungen zu Offline-Nutzung, Nachrichtenspeicherung, Wiederholung bei Verbindungsabbruch.",
+      "affected_artifacts": [
+        "WA-MSG-001",
+        "WA-MSG-002",
+        "WA-MSG-003",
+        "WA-MSG-004"
+      ],
+      "suggestion": "Erg\u00e4nzen Sie Offline-Queueing, Retry-Mechanismen und Sync-Verhalten.",
+      "auto_fixable": false,
+      "fixed": false,
+      "fix_strategy": "manual",
+      "fix_details": ""
+    },
+    {
+      "id": "CI-012",
+      "category": "completeness",
+      "severity": "medium",
+      "title": "Unklare Definitionen f\u00fcr verschwindende und View-Once Nachrichten",
+      "description": "Lebensdauer, Zeitpunkt der L\u00f6schung und Verhalten bei Screenshots/Backups sind nicht festgelegt.",
+      "affected_artifacts": [
+        "WA-MSG-008",
+        "WA-MSG-009"
+      ],
+      "suggestion": "Spezifizieren Sie TTL, Trigger f\u00fcr L\u00f6schung und Einschr\u00e4nkungen (Screenshots/Backups).",
+      "auto_fixable": false,
+      "fixed": false,
+      "fix_strategy": "manual",
+      "fix_details": ""
+    },
+    {
+      "id": "CI-013",
+      "category": "completeness",
+      "severity": "medium",
+      "title": "Fehlende Integrationspunkte f\u00fcr SMS/Push/OS-Biometrie/Passkeys",
+      "description": "Externe Abh\u00e4ngigkeiten (SMS-Gateway, Push-Dienste, OS-APIs) sind nicht erw\u00e4hnt.",
+      "affected_artifacts": [
+        "WA-AUTH-001",
+        "WA-AUTH-003",
+        "WA-AUTH-005"
+      ],
+      "suggestion": "Benennen Sie Integrationsdienste und erwartetes Verhalten bei Ausf\u00e4llen.",
+      "auto_fixable": false,
+      "fixed": false,
+      "fix_strategy": "manual",
+      "fix_details": ""
+    },
+    {
+      "id": "CI-014",
+      "category": "completeness",
+      "severity": "medium",
+      "title": "Unklare Gruppenadmin-Funktionen und Rollen",
+      "description": "\u201eumfangreiche Gruppenadmin-Funktionen\u201c ist undefiniert; Rollen/Permissions fehlen.",
+      "affected_artifacts": [
+        "WA-GRP-002",
+        "WA-GRP-003"
+      ],
+      "suggestion": "Definieren Sie Rollen (Admin/Moderator) und Rechte (Mitglieder hinzuf\u00fcgen/entfernen, schreiben, Einstellungen).",
+      "auto_fixable": false,
+      "fixed": false,
+      "fix_strategy": "manual",
+      "fix_details": ""
+    },
+    {
+      "id": "CI-015",
+      "category": "completeness",
+      "severity": "medium",
+      "title": "Fehlende Gr\u00f6\u00dfenlimits und Regeln f\u00fcr Broadcast-Listen",
+      "description": "Es fehlen max. Empf\u00e4ngerzahl, Opt-out, Zustellverhalten und Missbrauchsschutz.",
+      "affected_artifacts": [
+        "WA-MSG-011"
+      ],
+      "suggestion": "Erg\u00e4nzen Sie Limits, Datenschutzregeln und Anti-Spam-Mechanismen.",
+      "auto_fixable": false,
+      "fixed": false,
+      "fix_strategy": "manual",
+      "fix_details": ""
+    },
+    {
+      "id": "CI-016",
+      "category": "completeness",
+      "severity": "high",
+      "title": "Fehlende Rechtliche/Compliance-Anforderungen",
+      "description": "Datenschutz (DSGVO), Datenaufbewahrung und L\u00f6schkonzepte sind nicht spezifiziert.",
+      "affected_artifacts": [
+        "WA-PROF-001",
+        "WA-MSG-001",
+        "WA-MSG-003"
+      ],
+      "suggestion": "F\u00fcgen Sie Anforderungen zu Datenhaltung, Export/Deletion, Zustimmung und Protokollierung hinzu.",
+      "auto_fixable": false,
+      "fixed": false,
+      "fix_strategy": "manual",
+      "fix_details": ""
+    },
+    {
+      "id": "CI-017",
+      "category": "testability",
+      "severity": "high",
+      "title": "No explicit acceptance criteria",
+      "description": "User stories do not include measurable acceptance criteria, making expected behavior, validations, and outcomes ambiguous.",
+      "affected_artifacts": [
+        "US-001",
+        "US-002",
+        "US-003",
+        "US-004",
+        "US-005",
+        "US-006",
+        "US-007",
+        "US-008",
+        "US-009",
+        "US-010",
+        "US-011",
+        "US-012",
+        "US-013",
+        "US-014",
+        "US-015",
+        "US-016",
+        "US-017",
+        "US-018",
+        "US-019",
+        "US-020"
+      ],
+      "suggestion": "Add concrete acceptance criteria per story (inputs, validation rules, error states, success outcomes, audit/logging, and UI states).",
+      "auto_fixable": true,
+      "fixed": false,
+      "fix_strategy": "llm_assisted",
+      "fix_details": ""
+    },
+    {
+      "id": "CI-018",
+      "category": "testability",
+      "severity": "medium",
+      "title": "Subjective or non-measurable terms",
+      "description": "Terms like 'schnell', 'sicher', 'nahtlos', 'einfach' are subjective and not testable without defined metrics.",
+      "affected_artifacts": [
+        "US-001",
+        "US-002",
+        "US-003",
+        "US-004",
+        "US-005",
+        "US-010",
+        "US-011",
+        "US-012",
+        "US-015",
+        "US-018",
+        "US-019",
+        "US-020"
+      ],
+      "suggestion": "Define measurable criteria (e.g., response times, security controls, device/session limits, UX constraints).",
+      "auto_fixable": true,
+      "fixed": true,
+      "fix_strategy": "llm_assisted",
+      "fix_details": "Added measurable criterion for 'schnell' in US-001; Added measurable criterion for 'zus\u00e4tzliche Sicherheitsschicht' in US-002; Added measurable criterion for 'schnell' in US-003; Added measurable criterion for 'gleichzeitig' in US-004; Added measurable criterion for 'schnell' in US-005; Added measurable criterion for 'schnell' in US-010; Added measurable criterion for 'Echtzeit' in US-011; Added measurable criterion for 'schnell' in US-012; Added measurable criterion for 'schnell' in US-015; Added measurable criterion for 'erh\u00f6ht' in US-018"
+    },
+    {
+      "id": "CI-019",
+      "category": "testability",
+      "severity": "high",
+      "title": "Device limit undefined for multi-device support",
+      "description": "Test cases reference device limit but the requirement does not define the maximum number of devices or rules for replacement.",
+      "affected_artifacts": [
+        "US-004",
+        "TC-029",
+        "TC-030"
+      ],
+      "suggestion": "Specify max device count, device removal rules, session persistence, and error messages when limit is reached.",
+      "auto_fixable": false,
+      "fixed": false,
+      "fix_strategy": "manual",
+      "fix_details": ""
+    },
+    {
+      "id": "CI-020",
+      "category": "testability",
+      "severity": "medium",
+      "title": "2FA PIN rules partially defined",
+      "description": "Only length and numeric constraints are implied; missing lockout rules, retry limits, reset flows, and PIN change behavior.",
+      "affected_artifacts": [
+        "US-002",
+        "TC-009",
+        "TC-012"
+      ],
+      "suggestion": "Define retry limit, cooldowns, reset/forgot PIN flows, and logging/auditing.",
+      "auto_fixable": false,
+      "fixed": false,
+      "fix_strategy": "manual",
+      "fix_details": ""
+    },
+    {
+      "id": "CI-021",
+      "category": "testability",
+      "severity": "medium",
+      "title": "Phone number validation rules incomplete",
+      "description": "Boundary tests exist but rules for allowed formats, country codes, and normalization are not specified.",
+      "affected_artifacts": [
+        "US-001",
+        "TC-002",
+        "TC-005",
+        "TC-006",
+        "TC-007"
+      ],
+      "suggestion": "Specify accepted formats, country code handling, normalization, and duplicate number behavior.",
+      "auto_fixable": false,
+      "fixed": false,
+      "fix_strategy": "manual",
+      "fix_details": ""
+    },
+    {
+      "id": "CI-022",
+      "category": "testability",
+      "severity": "medium",
+      "title": "Biometric unlock fallback conditions unclear",
+      "description": "Story does not define when biometrics is required vs optional, or app behavior after device-level biometric changes.",
+      "affected_artifacts": [
+        "US-003",
+        "TC-018",
+        "TC-025"
+      ],
+      "suggestion": "Define policies for biometric enablement, fallback priority, and behavior after device biometric changes.",
+      "auto_fixable": false,
+      "fixed": false,
+      "fix_strategy": "manual",
+      "fix_details": ""
+    },
+    {
+      "id": "CI-023",
+      "category": "testability",
+      "severity": "high",
+      "title": "Missing tests for passkey support",
+      "description": "No test cases exist for passkey creation, login, fallback, or cross-platform behavior.",
+      "affected_artifacts": [
+        "US-005"
+      ],
+      "suggestion": "Add positive/negative tests for passkey registration, login, revocation, and unsupported devices.",
+      "auto_fixable": false,
+      "fixed": false,
+      "fix_strategy": "manual",
+      "fix_details": ""
+    },
+    {
+      "id": "CI-024",
+      "category": "testability",
+      "severity": "medium",
+      "title": "Profile-related requirements untestable due to missing constraints",
+      "description": "No constraints on file size/type, image dimensions, or allowed character sets for names/status; unclear behavior on removal/replace.",
+      "affected_artifacts": [
+        "US-006",
+        "US-007",
+        "US-008",
+        "US-009",
+        "US-010"
+      ],
+      "suggestion": "Define validation rules, limits, and UI behavior for upload, edit, remove, and display.",
+      "auto_fixable": true,
+      "fixed": true,
+      "fix_strategy": "llm_assisted",
+      "fix_details": "Added measurable criterion for 'schneller erkennen' in US-006; Added measurable criterion for 'klare und konsistente Darstellung' in US-007; Added measurable criterion for 'kurzen Info-Text' in US-008; Added measurable criterion for 'schnell einsehen' in US-009; Added measurable criterion for 'schnell und einfach' in US-010"
+    },
+    {
+      "id": "CI-025",
+      "category": "testability",
+      "severity": "high",
+      "title": "Messaging features lack functional rules",
+      "description": "Message send/edit/delete/forward/quote/react features are described but lack constraints like time limits, visibility rules, and error handling.",
+      "affected_artifacts": [
+        "US-011",
+        "US-012",
+        "US-013",
+        "US-014",
+        "US-015",
+        "US-016",
+        "US-017",
+        "US-018",
+        "US-019",
+        "US-020"
+      ],
+      "suggestion": "Specify rules for edit/delete windows, permission models, sync behavior, and failure cases.",
+      "auto_fixable": false,
+      "fixed": false,
+      "fix_strategy": "manual",
+      "fix_details": ""
+    },
+    {
+      "id": "CI-026",
+      "category": "traceability",
+      "severity": "high",
+      "title": "Orphan requirements (no user stories)",
+      "description": "Several requirements are not linked to any user story, leaving them without downstream traceability.",
+      "affected_artifacts": [
+        "WA-MSG-011",
+        "WA-MSG-012",
+        "WA-MSG-013",
+        "WA-MSG-014",
+        "WA-MSG-015",
+        "WA-GRP-001",
+        "WA-GRP-002",
+        "WA-GRP-003",
+        "WA-GRP-004",
+        "WA-GRP-005"
+      ],
+      "suggestion": "Create user stories that explicitly link to these requirements or de-scope the requirements.",
+      "auto_fixable": true,
+      "fixed": true,
+      "fix_strategy": "programmatic",
+      "fix_details": "Linked WA-MSG-011 to US-021 (keyword overlap: 2); Linked WA-MSG-012 to US-022 (keyword overlap: 2); Linked WA-MSG-013 to US-023 (keyword overlap: 2); Linked WA-MSG-014 to US-024 (keyword overlap: 2); Linked WA-MSG-015 to US-025 (keyword overlap: 2); Linked WA-GRP-001 to US-026 (keyword overlap: 2); Linked WA-GRP-005 to US-030 (keyword overlap: 2)"
+    },
+    {
+      "id": "CI-027",
+      "category": "traceability",
+      "severity": "high",
+      "title": "Orphan user stories (no test cases)",
+      "description": "Many user stories have no linked test cases, preventing verification coverage.",
+      "affected_artifacts": [
+        "US-005",
+        "US-006",
+        "US-007",
+        "US-008",
+        "US-009",
+        "US-010",
+        "US-011",
+        "US-012",
+        "US-013",
+        "US-014",
+        "US-015",
+        "US-016",
+        "US-017",
+        "US-018",
+        "US-019",
+        "US-020"
+      ],
+      "suggestion": "Add test cases for each listed user story and link them accordingly.",
+      "auto_fixable": true,
+      "fixed": false,
+      "fix_strategy": "programmatic",
+      "fix_details": ""
+    },
+    {
+      "id": "CI-028",
+      "category": "traceability",
+      "severity": "medium",
+      "title": "Missing bi-directional traceability",
+      "description": "Trace links are only one-way (Requirement->Story, Story->Test). There is no explicit reverse trace (e.g., Requirements listing linked Stories/Tests or Tests linking back to Requirements).",
+      "affected_artifacts": [
+        "WA-AUTH-001",
+        "WA-AUTH-002",
+        "WA-AUTH-003",
+        "WA-AUTH-004",
+        "WA-AUTH-005",
+        "WA-PROF-001",
+        "WA-PROF-002",
+        "WA-PROF-003",
+        "WA-PROF-004",
+        "WA-PROF-005",
+        "WA-MSG-001",
+        "WA-MSG-002",
+        "WA-MSG-003",
+        "WA-MSG-004",
+        "WA-MSG-005",
+        "WA-MSG-006",
+        "WA-MSG-007",
+        "WA-MSG-008",
+        "WA-MSG-009",
+        "WA-MSG-010"
+      ],
+      "suggestion": "Add explicit back-links from requirements to user stories and from requirements to test cases (directly or via trace matrices).",
+      "auto_fixable": false,
+      "fixed": false,
+      "fix_strategy": "manual",
+      "fix_details": ""
+    }
+  ],
+  "recommendations": [
+    "Conduct additional requirement elicitation to fill identified gaps",
+    "Refine acceptance criteria to be more specific and measurable",
+    "Establish clear links between requirements, user stories, and test cases"
+  ]
+}

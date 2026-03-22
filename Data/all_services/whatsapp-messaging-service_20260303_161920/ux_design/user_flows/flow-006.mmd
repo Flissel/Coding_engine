@@ -1,0 +1,39 @@
+flowchart TD
+    Start([Start: Kontakt blockieren])
+    S1{User oeffnet die App und sieht den Startbildschirm}
+    Start --> S1
+    E1[/Offline-Modus: Chatliste kann nicht geladen werden, Hinweis 'Keine Verbindung'/]
+    S1 -.-> E1
+    S2{System prueft, ob dies die erste Nutzung der Blockierfunktion ist}
+    S1 --> S2
+    E2[/Onboarding-Overlay laesst sich nicht laden; Funktion bleibt dennoch zugaenglich/]
+    S2 -.-> E2
+    S3{User oeffnet einen bestehenden Kontakt oder Chat}
+    S2 --> S3
+    E3[/Kontakt existiert nicht (z.B. geloescht): Fehlermeldung 'Kontakt nicht gefunden'/]
+    S3 -.-> E3
+    S4[User tippt auf 'Mehr' und waehlt 'Blockieren']
+    S3 --> S4
+    E4[/Button deaktiviert, wenn keine Berechtigung oder Contact-Status unbekannt/]
+    S4 -.-> E4
+    S5{User bestaetigt die Blockierung}
+    S4 --> S5
+    E5[/Verlorene Verbindung: Anfrage wird in Warteschlange gestellt und Retry angeboten/]
+    S5 -.-> E5
+    S6{System verarbeitet die Blockierung}
+    S5 --> S6
+    E6[/Serverfehler oder fehlgeschlagener Versand: Meldung 'Blockierung fehlgeschlagen' mit Retry/]
+    S6 -.-> E6
+    S7[UI aktualisiert den Kontaktstatus]
+    S6 --> S7
+    E7[/Status-Refresh fehlgeschlagen: Hinweis 'Status konnte nicht aktualisiert werden'/]
+    S7 -.-> E7
+    S8[Blockierter Kontakt versucht eine Nachricht zu senden]
+    S7 --> S8
+    E8[/Absender-Client kann Rueckmeldung nicht anzeigen: Nachricht bleibt im 'Nicht zugestellt'-Status/]
+    S8 -.-> E8
+    S9{Edge-Case: User wechselt Geraet oder stellt Account wieder her}
+    S8 --> S9
+    E9[/Sync fehlgeschlagen: Blockierliste nicht aktuell, Hinweis 'Bitte erneut synchronisieren'/]
+    S9 -.-> E9
+    S9 --> End([End])

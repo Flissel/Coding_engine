@@ -1,0 +1,153 @@
+{
+  "route": "/settings/security/2fa",
+  "screen_name": "Zwei-Faktor-Authentifizierung",
+  "description": "",
+  "user_stories": [
+    "US-002",
+    "US-062"
+  ],
+  "components": [
+    {
+      "component_id": "COMP-022",
+      "component_name": "SettingsListItem",
+      "props": {
+        "title": "Zwei-Faktor-Authentifizierung",
+        "description": "Zusätzliche Sicherheit für Ihr Konto",
+        "variant": "default",
+        "hasToggle": true,
+        "isEnabled": false
+      },
+      "position": "main",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-022",
+      "component_name": "SettingsListItem",
+      "props": {
+        "title": "Authenticator-App",
+        "description": "Google Authenticator, Authy oder ähnliche Apps",
+        "variant": "default",
+        "hasAction": true,
+        "actionText": "Einrichten"
+      },
+      "position": "main",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-022",
+      "component_name": "SettingsListItem",
+      "props": {
+        "title": "Passkeys",
+        "description": "Biometrische Authentifizierung oder Hardware-Schlüssel",
+        "variant": "default",
+        "hasAction": true,
+        "actionText": "Verwalten"
+      },
+      "position": "main",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-024",
+      "component_name": "DeviceListItem",
+      "props": {
+        "deviceName": "iPhone 15 Pro",
+        "deviceType": "mobile",
+        "lastSeen": "Jetzt aktiv",
+        "variant": "active",
+        "hasRemoveAction": true
+      },
+      "position": "main",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-024",
+      "component_name": "DeviceListItem",
+      "props": {
+        "deviceName": "MacBook Pro",
+        "deviceType": "desktop",
+        "lastSeen": "Vor 2 Stunden",
+        "variant": "inactive",
+        "hasRemoveAction": true
+      },
+      "position": "main",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-001",
+      "component_name": "Button",
+      "props": {
+        "text": "Backup-Codes generieren",
+        "variant": "outline",
+        "fullWidth": true
+      },
+      "position": "main",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-001",
+      "component_name": "Button",
+      "props": {
+        "text": "2FA deaktivieren",
+        "variant": "danger",
+        "fullWidth": true
+      },
+      "position": "main",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-026",
+      "component_name": "ToastNotification",
+      "props": {
+        "message": "2FA erfolgreich aktiviert",
+        "variant": "success",
+        "autoHide": true
+      },
+      "position": "modal",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    }
+  ],
+  "layout": "flex column, gap-16, max-width 600px, padding 24px",
+  "data_sources": [
+    "GET /api/v1/passkeys",
+    "POST /api/v1/passkeys",
+    "DELETE /api/v1/passkeys/{id}",
+    "GET /api/v1/devices",
+    "DELETE /api/v1/devices/{id}",
+    "POST /api/v1/auth/passkeys/registration/options",
+    "POST /api/v1/auth/passkeys/registration/verify"
+  ],
+  "state_shape": {
+    "is2FAEnabled": "boolean",
+    "passkeys": "array",
+    "devices": "array",
+    "isLoading": "boolean",
+    "showBackupCodes": "boolean",
+    "backupCodes": "array",
+    "qrCode": "string",
+    "totpSecret": "string"
+  }
+}

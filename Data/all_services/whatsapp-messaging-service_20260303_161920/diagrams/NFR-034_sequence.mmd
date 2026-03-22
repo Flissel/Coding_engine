@@ -1,0 +1,19 @@
+sequenceDiagram
+    participant User
+    participant LoadBalancer
+    participant NodeA
+    participant NodeB
+    participant MonitoringSystem
+
+    User->>LoadBalancer: Request Service
+    LoadBalancer->>NodeA: Forward Request
+    NodeA-->>LoadBalancer: Response
+    LoadBalancer-->>User: Deliver Response
+
+    Note over NodeA, MonitoringSystem: NodeA fails
+    MonitoringSystem->>LoadBalancer: Alert NodeA Failure
+    LoadBalancer->>NodeB: Forward Request
+    NodeB-->>LoadBalancer: Response
+    LoadBalancer-->>User: Deliver Response
+
+    Note over User: Minimal impact during failover

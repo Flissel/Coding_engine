@@ -1,0 +1,28 @@
+classDiagram
+    class Media {
+        +String mediaType
+        +String fileName
+        +int fileSize
+        +String preview
+        +send()
+        +receive()
+    }
+
+    class Image {
+        +String resolution
+        +String format
+    }
+
+    class Video {
+        +int duration
+        +String format
+    }
+
+    class Document {
+        +String format
+        +int pageCount
+    }
+
+    Media <|-- Image
+    Media <|-- Video
+    Media <|-- Document

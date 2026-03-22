@@ -1,0 +1,14 @@
+flowchart TD
+    A[Start] --> B{Benutzer wählt App}
+    B -->|Ja| C[App auf Smartwatch starten]
+    B -->|Nein| D[App auf Smartphone starten]
+    C --> E[Verbindung zur Smartwatch herstellen]
+    D --> E
+    E --> F{Verbindung erfolgreich?}
+    F -->|Ja| G[App-Funktionen anzeigen]
+    F -->|Nein| H[Fehlermeldung anzeigen]
+    G --> I[Benutzerinteraktion]
+    H --> J[Verbindung erneut versuchen]
+    J --> E
+    I --> K[App schließen]
+    K --> L[Ende]

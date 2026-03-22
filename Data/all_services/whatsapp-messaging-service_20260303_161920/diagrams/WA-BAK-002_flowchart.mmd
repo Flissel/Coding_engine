@@ -1,0 +1,10 @@
+flowchart TD
+    A[Start] --> B[Backup-Anfrage erhalten]
+    B --> C{Ist der Backup-Vorgang aktiviert?}
+    C -->|Ja| D[Backup-Daten sammeln]
+    C -->|Nein| E[Backup-Vorgang aktivieren]
+    E --> D
+    D --> F[Backup-Daten verschlüsseln]
+    F --> G[Backup speichern]
+    G --> H[Backup-Bestätigung senden]
+    H --> I[Ende]

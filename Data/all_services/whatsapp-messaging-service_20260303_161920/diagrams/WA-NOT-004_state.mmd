@@ -1,0 +1,9 @@
+stateDiagram-v2
+    [*] --> Aktiv
+    [*] --> Deaktiviert
+
+    Aktiv --> Deaktiviert : Deaktivieren
+    Deaktiviert --> Aktiv : Aktivieren
+
+    Aktiv : "Nicht-Stoeren-Modus aktiv"
+    Deaktiviert : "Nicht-Stoeren-Modus inaktiv"

@@ -1,0 +1,15 @@
+%%{init: {"theme": "default"}}%%
+C4Context
+    title Media and File Attachments System Context Diagram
+
+    Person(user, "User", "A person who sends and receives media and file attachments.")
+    System(system, "Media and File Attachments System", "Allows users to send and receive images, videos, documents, and other file types with size limits and previews.")
+
+    System_Ext(emailService, "Email Service", "External service for sending and receiving files via email.")
+    System_Ext(cloudStorage, "Cloud Storage", "External storage service for storing and retrieving media files.")
+    System_Ext(previewService, "Preview Service", "External service for generating previews of media files.")
+
+    Rel(user, system, "Uses")
+    Rel(system, emailService, "Sends/Receives files")
+    Rel(system, cloudStorage, "Stores/Retrieves files")
+    Rel(system, previewService, "Requests previews for media files")

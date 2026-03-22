@@ -1,0 +1,18 @@
+%%{ init : { "theme" : "default" } }%%
+C4Context
+    title Concurrent User Scaling System Architecture
+
+    Person(user, "User", "A user of the system")
+    
+    System_Boundary(s1, "Concurrent User Scaling System") {
+        Container(webApp, "Web Application", "Handles user requests and interactions", "Java, Spring Boot")
+        Container(database, "Database", "Stores user data and application state", "PostgreSQL")
+        Container(loadBalancer, "Load Balancer", "Distributes incoming traffic across multiple instances", "Nginx")
+        Container(microservice, "Microservice", "Handles business logic and processing", "Node.js")
+    }
+
+    Rel(user, webApp, "Uses")
+    Rel(webApp, loadBalancer, "Routes requests to")
+    Rel(loadBalancer, webApp, "Distributes load to")
+    Rel(webApp, microservice, "Calls for processing")
+    Rel(microservice, database, "Reads/Writes data to")

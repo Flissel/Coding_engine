@@ -1,0 +1,10 @@
+%%{ init : { "theme" : "default" } }%%
+C4Context
+    title Watch-App System Context Diagram
+
+    Person(user, "User", "A user of the smartwatch app")
+    System(watchApp, "Watch-App", "A smartwatch application providing integration features")
+    System(externalSystem, "External System", "An external service for data synchronization")
+
+    Rel(user, watchApp, "Uses")
+    Rel(watchApp, externalSystem, "Integrates with", "REST API")

@@ -1,0 +1,12 @@
+flowchart TD
+    A[Start Call] --> B{Is it a one-to-one or group call?}
+    B -->|One-to-One| C[Establish Connection]
+    B -->|Group Call| D[Create Conference Room]
+    C --> E[Initiate Call Controls]
+    D --> E
+    E --> F{Is Quality Adequate?}
+    F -->|Yes| G[Continue Call]
+    F -->|No| H[Adapt Quality]
+    H --> F
+    G --> I[End Call]
+    I --> J[Disconnect]

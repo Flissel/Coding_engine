@@ -1,0 +1,10 @@
+sequenceDiagram
+    participant User as Benutzer
+    participant System as System
+    participant Contact as Kontakt
+
+    User->>System: Anfrage zum Blockieren eines Kontakts
+    System->>Contact: Überprüfen, ob Kontakt blockiert werden kann
+    Contact-->>System: Kontakt ist blockierbar
+    System->>Contact: Blockiere Kontakt
+    System-->>User: Bestätigung der Blockierung

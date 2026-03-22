@@ -1,0 +1,21 @@
+%%{init: {'theme': 'default'}}%%
+C4Context
+    title Error Budget System Architecture
+
+    Person(customer, "Customer", "A user of the system who expects reliability.")
+    Person(devTeam, "Development Team", "The team responsible for building and maintaining the system.")
+    Person(opTeam, "Operations Team", "The team responsible for deploying and monitoring the system.")
+
+    System(errorBudgetSystem, "Error Budget System", "A system that enforces reliability targets with explicit error budgets.")
+
+    System_Ext(monitoringTool, "Monitoring Tool", "A tool that tracks system performance and error rates.")
+    System_Ext(alertingSystem, "Alerting System", "A system that notifies teams when error budgets are exceeded.")
+
+    Rel(customer, errorBudgetSystem, "Uses")
+    Rel(devTeam, errorBudgetSystem, "Develops and maintains")
+    Rel(opTeam, errorBudgetSystem, "Monitors and enforces error budgets")
+    Rel(opTeam, monitoringTool, "Uses for performance tracking")
+    Rel(monitoringTool, errorBudgetSystem, "Provides performance data")
+    Rel(errorBudgetSystem, alertingSystem, "Sends alerts when budgets are exceeded")
+    Rel(alertingSystem, devTeam, "Notifies when error budgets are exceeded")
+    Rel(alertingSystem, opTeam, "Notifies when error budgets are exceeded")

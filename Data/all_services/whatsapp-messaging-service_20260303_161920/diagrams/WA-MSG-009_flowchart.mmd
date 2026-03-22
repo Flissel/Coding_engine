@@ -1,0 +1,10 @@
+flowchart TD
+    A[Start] --> B{Unterstützt View-Once Medien?}
+    B -- Ja --> C[Medien anzeigen]
+    B -- Nein --> D[Fehler: Unterstützung erforderlich]
+    C --> E[Benutzer interagiert mit Medien]
+    E --> F{Interaktion abgeschlossen?}
+    F -- Ja --> G[Medien löschen]
+    F -- Nein --> E
+    G --> H[Ende]
+    D --> H

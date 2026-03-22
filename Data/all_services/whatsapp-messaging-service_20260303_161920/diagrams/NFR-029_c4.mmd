@@ -1,0 +1,21 @@
+%%{ init: { 'theme': 'default' } }%%
+C4Context
+    title Message Send Latency System Architecture
+
+    Person(user, "User", "A user sending text messages")
+    System(system, "Messaging System", "Handles sending and receiving text messages")
+
+    System_Ext(externalService, "External SMS Gateway", "Third-party service for SMS delivery")
+    
+    Rel(user, system, "Sends text messages")
+    Rel(system, externalService, "Sends messages to")
+    Rel(externalService, system, "Acknowledges message delivery")
+    
+    System_Boundary(systemBoundary, "Messaging System") {
+        Container(database, "Message Database", "Stores messages and delivery status")
+        Container(api, "Messaging API", "Handles incoming message requests")
+        Container(latencyMonitor, "Latency Monitoring Service", "Monitors message send latency")
+        
+        Rel(api, database, "Reads/Writes messages")
+        Rel(api, latencyMonitor, "Sends latency data for analysis")
+    }

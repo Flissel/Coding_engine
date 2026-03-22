@@ -1,0 +1,15 @@
+flowchart TD
+    A[Start] --> B{Datenverbrauch kontrollieren?}
+    B -- Ja --> C[Kontrolle aktivieren]
+    B -- Nein --> D[Systemeinstellungen überprüfen]
+    C --> E[Datennutzung überwachen]
+    E --> F{Datenverbrauch innerhalb der Limits?}
+    F -- Ja --> G[Normalbetrieb]
+    F -- Nein --> H[Warnung ausgeben]
+    H --> I[Benutzer informieren]
+    I --> J[Maßnahmen ergreifen]
+    J --> K[Datennutzung anpassen]
+    K --> G
+    D --> L[Systemkonfiguration anpassen]
+    L --> B
+    G --> M[Ende]

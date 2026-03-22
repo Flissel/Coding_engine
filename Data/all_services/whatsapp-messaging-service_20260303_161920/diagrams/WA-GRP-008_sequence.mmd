@@ -1,0 +1,17 @@
+sequenceDiagram
+    participant User as Benutzer
+    participant GroupChat as Gruppenchat
+    participant IndividualChat as Einzelchat
+    participant System as System
+
+    User->>System: Umfrage erstellen
+    System->>GroupChat: Umfrage in Gruppenchat senden
+    GroupChat->>User: Umfrage angezeigt
+    User->>GroupChat: Antwort auf Umfrage
+    GroupChat->>System: Antwort sammeln
+
+    User->>System: Umfrage erstellen
+    System->>IndividualChat: Umfrage in Einzelchat senden
+    IndividualChat->>User: Umfrage angezeigt
+    User->>IndividualChat: Antwort auf Umfrage
+    IndividualChat->>System: Antwort sammeln

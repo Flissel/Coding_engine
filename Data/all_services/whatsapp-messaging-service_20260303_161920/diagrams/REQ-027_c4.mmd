@@ -1,0 +1,16 @@
+%%{ init : { "theme" : "default" } }%%
+C4Context
+    title Enterprise/Admin Analytics and Audit Logs Context Diagram
+
+    Person(admin, "Admin", "User responsible for managing and analyzing system data.")
+    Person(auditor, "Auditor", "User responsible for compliance and auditing.")
+
+    System(system, "Enterprise/Admin Analytics and Audit Logs", "System for analytics, message throughput metrics, and audit logging.")
+
+    System_Ext(dataSource, "Data Sources", "External systems providing data for analytics.")
+    System_Ext(complianceSystem, "Compliance Management System", "External system for compliance checks and reporting.")
+
+    Rel(admin, system, "Uses")
+    Rel(auditor, system, "Accesses for compliance checks")
+    Rel(system, dataSource, "Collects data from")
+    Rel(system, complianceSystem, "Sends audit logs to")

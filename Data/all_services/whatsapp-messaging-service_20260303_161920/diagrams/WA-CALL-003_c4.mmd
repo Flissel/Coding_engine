@@ -1,0 +1,12 @@
+%%{ init : { "theme" : "default" } }%%
+C4Context
+    title Gruppenanruf System Context Diagram
+
+    Person(user, "Benutzer", "Nutzer, der Gruppenanrufe tätigt.")
+    System(groepenanruf, "Gruppenanruf", "System zur Unterstützung von Gruppen-Sprach/Videoanrufen.")
+    System_Ext(videoService, "Video Service", "Externer Dienst zur Bereitstellung von Videoanruf-Funktionalitäten.")
+    System_Ext(audioService, "Audio Service", "Externer Dienst zur Bereitstellung von Sprachkommunikations-Funktionalitäten.")
+
+    Rel(user, groepenanruf, "Nutzt")
+    Rel(groepenanruf, videoService, "Integriert mit")
+    Rel(groepenanruf, audioService, "Integriert mit")

@@ -1,0 +1,13 @@
+%%{ init : { "theme" : "default" } }%%
+C4Context
+    title API-Zugang System Context Diagram
+
+    Person(customer, "Kunde", "Benutzer der Business-API")
+    System(system, "Business-API", "Bietet Integrationen für externe Systeme")
+
+    System_Ext(externalSystem1, "Externes System 1", "Ein externes System, das die API nutzt")
+    System_Ext(externalSystem2, "Externes System 2", "Ein weiteres externes System, das die API nutzt")
+
+    Rel(customer, system, "Nutzt")
+    Rel(system, externalSystem1, "Bietet API-Zugang zu")
+    Rel(system, externalSystem2, "Bietet API-Zugang zu")

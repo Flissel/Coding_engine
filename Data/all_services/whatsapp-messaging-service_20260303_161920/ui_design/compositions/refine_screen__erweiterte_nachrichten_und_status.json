@@ -1,0 +1,11 @@
+{
+  "route": "/erweiterte_nachrichten_und",
+  "screen_name": "Screen: Erweiterte Nachrichten und Status",
+  "description": "Auto-generated composition for 1 stories",
+  "linked_user_stories": [
+    "US-023"
+  ],
+  "user_stories": [
+    "US-023"
+  ]
+}

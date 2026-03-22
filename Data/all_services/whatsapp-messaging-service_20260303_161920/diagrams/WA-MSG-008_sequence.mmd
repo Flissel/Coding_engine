@@ -1,0 +1,12 @@
+sequenceDiagram
+    participant User as User
+    participant System as System
+    participant Recipient as Recipient
+
+    User->>System: Send self-destructing message
+    System->>Recipient: Deliver message
+    Recipient->>System: Read message
+    System->>Recipient: Start timer for self-destruction
+    Note right of System: Timer expires
+    System->>Recipient: Delete message
+    System->>User: Confirm message deletion

@@ -1,0 +1,16 @@
+classDiagram
+    class Favoriten {
+        +List<Kontakt> kontakte
+        +addKontakt(Kontakt kontakt)
+        +removeKontakt(Kontakt kontakt)
+        +getFavoriten() List<Kontakt>
+    }
+
+    class Kontakt {
+        +String name
+        +String telefonnummer
+        +String email
+        +String adresse
+    }
+
+    Favoriten "1" -- "*" Kontakt : enthält

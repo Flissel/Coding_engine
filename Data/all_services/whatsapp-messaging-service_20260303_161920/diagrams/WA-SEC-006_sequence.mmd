@@ -1,0 +1,22 @@
+sequenceDiagram
+    participant User
+    participant System
+    participant PINService
+
+    User->>System: Request login
+    System->>User: Prompt for password
+    User->>System: Enter password
+    System->>User: Validate password
+    alt Password valid
+        System->>User: Prompt for optional PIN
+        User->>System: Choose to use PIN
+        System->>PINService: Request PIN verification
+        PINService->>User: Send PIN request
+        User->>PINService: Enter PIN
+        PINService->>System: Validate PIN
+        System->>User: Access granted
+    else Password valid, but no PIN
+        System->>User: Access granted
+    else Password invalid
+        System->>User: Access denied
+    end

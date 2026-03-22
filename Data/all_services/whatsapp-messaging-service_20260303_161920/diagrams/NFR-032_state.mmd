@@ -1,0 +1,9 @@
+stateDiagram-v2
+    [*] --> Initial
+    Initial --> ScalingUp : Data growth detected
+    ScalingUp --> StorageOptimized : Storage optimization applied
+    ScalingUp --> IndexingOptimized : Indexing optimization applied
+    StorageOptimized --> Stable : Performance stable
+    IndexingOptimized --> Stable : Performance stable
+    Stable --> ScalingDown : Data growth decreases
+    ScalingDown --> [*] : System returns to normal

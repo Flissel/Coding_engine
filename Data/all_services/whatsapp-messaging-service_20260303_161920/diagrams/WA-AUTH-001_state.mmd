@@ -1,0 +1,11 @@
+stateDiagram-v2
+    [*] --> Registrierung
+    Registrierung --> Eingabe_Telefonnummer
+    Eingabe_Telefonnummer --> Telefonnummer_Eingereicht
+    Telefonnummer_Eingereicht --> Warten_auf_Verifizierung
+    Warten_auf_Verifizierung --> Verifizierung_Gesendet
+    Verifizierung_Gesendet --> Eingabe_Verifizierungscode
+    Eingabe_Verifizierungscode --> Verifizierung_Erfolgreich
+    Eingabe_Verifizierungscode --> Verifizierung_Fehlerhaft
+    Verifizierung_Erfolgreich --> [*]
+    Verifizierung_Fehlerhaft --> Warten_auf_Verifizierung

@@ -1,0 +1,24 @@
+classDiagram
+    class Kontakt {
+        +String name
+        +String telefonnummer
+        +String email
+        +String adresse
+        +teilen()
+    }
+
+    class Benutzer {
+        +String benutzername
+        +String passwort
+        +String email
+        +kontakte: List<Kontakt>
+        +teilenKontakt(kontakt: Kontakt)
+    }
+
+    class System {
+        +benutzer: List<Benutzer>
+        +teilenKontakte(besitzer: Benutzer, empfaenger: Benutzer, kontakt: Kontakt)
+    }
+
+    Benutzer "1" -- "*" Kontakt : besitzt >
+    System "1" -- "*" Benutzer : verwaltet >

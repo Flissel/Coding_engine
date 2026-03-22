@@ -1,0 +1,8 @@
+sequenceDiagram
+    participant User as Benutzer
+    participant System as System
+
+    User->>System: Video senden
+    System-->>User: Bestätigung des Sendens
+    System->>System: Video verarbeiten
+    System-->>User: Video erfolgreich gesendet

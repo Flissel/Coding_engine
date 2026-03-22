@@ -1,0 +1,109 @@
+{
+  "id": "SCREEN-004",
+  "name": "Notification Settings",
+  "route": "/settings/notifications",
+  "layout": "stack",
+  "description": "Konfiguration von Push-Benachrichtigungen mit globalen Einstellungen, per-Chat und per-Typ Steuerung fuer neue Nachrichten",
+  "components": [
+    "COMP-001",
+    "COMP-002",
+    "COMP-003",
+    "COMP-010"
+  ],
+  "component_layout": [
+    {
+      "id": "COMP-001",
+      "name": "BackButton & SaveButton",
+      "x": 0,
+      "y": 0,
+      "w": 60,
+      "h": 4
+    },
+    {
+      "id": "COMP-010",
+      "name": "GlobalNotificationStatus",
+      "x": 2,
+      "y": 4,
+      "w": 56,
+      "h": 3
+    },
+    {
+      "id": "COMP-001-toggles",
+      "name": "NotificationTypeToggles",
+      "x": 2,
+      "y": 8,
+      "w": 56,
+      "h": 12
+    },
+    {
+      "id": "COMP-002",
+      "name": "ChatSearchBar",
+      "x": 2,
+      "y": 21,
+      "w": 56,
+      "h": 3
+    },
+    {
+      "id": "COMP-003",
+      "name": "PerChatNotificationList",
+      "x": 2,
+      "y": 24,
+      "w": 56,
+      "h": 18
+    }
+  ],
+  "data_requirements": [
+    "GET /api/settings/notifications",
+    "PUT /api/settings/notifications",
+    "GET /api/settings/notifications/chats",
+    "PUT /api/settings/notifications/chats/{chatId}",
+    "GET /api/chats"
+  ],
+  "parent_user_story": "US-129",
+  "wireframe_mermaid": "flowchart TD\n    subgraph Notification_Settings\n        Header[Header / Navigation]\n        Main[Main Content Area]\n        Sidebar[Sidebar / Filters]\n        Footer[Footer / Actions]\n    end\n\n    Header --> Main\n    Sidebar --> Main\n    Main --> Footer\n\n    %% \n",
+  "wireframe_ascii": "     0    5   10   15   20   25   30   35   40   45   50   55   60\n   0 +------------------------------------------------------------+\n     | [< Back]     Notification Settings          [Save]        |\n   2 |  COMP-001 (BackButton)                COMP-001 (SaveBtn)  |\n     +------------------------------------------------------------+\n   4 | +--------------------------------------------------------+ |\n     | | COMP-010 (StatusIndicator)                              | |\n   6 | | [●] Push Notifications:  ENABLED        [Master Toggle] | |\n     | +--------------------------------------------------------+ |\n   8 | +--------------------------------------------------------+ |\n     | |  NOTIFICATION TYPE CONTROLS                            | |\n  10 | |  ┌──────────────────────────────────────────────────┐  | |\n     | |  │ [Toggle] Private Messages          [====ON ]     │  | |\n  12 | |  │ [Toggle] Group Messages             [====ON ]     │  | |\n     | |  │ [Toggle] Media Messages             [====ON ]     │  | |\n  14 | |  │ [Toggle] Voice Messages             [  OFF==]     │  | |\n     | |  │ [Toggle] Status Updates             [  OFF==]     │  | |\n  16 | |  │ [Toggle] Sound                      [====ON ]     │  | |\n     | |  │ [Toggle] Vibration                  [====ON ]     │  | |\n  18 | |  └──────────────────────────────────────────────────┘  | |\n     | |  COMP-001 (Toggle Buttons per Type)                    | |\n  20 | +--------------------------------------------------------+ |\n  21 | +--------------------------------------------------------+ |\n     | | [🔍 Search chats...]                                   | |\n  23 | |  COMP-002 (ChatSearchBar)                              | |\n     | +--------------------------------------------------------+ |\n  24 | +--------------------------------------------------------+ |\n     | |  PER-CHAT NOTIFICATION CONTROLS                        | |\n  26 | |  ┌────────────────────────────────────────────────────┐| |\n     | |  │ [Avatar] John Doe          [●Online] [====ON ]     │| |\n  28 | |  │  COMP-003    COMP-010(status) COMP-001(toggle)     │| |\n     | |  ├────────────────────────────────────────────────────┤| |\n  30 | |  │ [Avatar] Family Group       [        ] [====ON ]   │| |\n     | |  │  COMP-003                     COMP-001(toggle)     │| |\n  32 | |  ├────────────────────────────────────────────────────┤| |\n     | |  │ [Avatar] Work Team          [●Online] [  OFF==]    │| |\n  34 | |  │  COMP-003    COMP-010(status) COMP-001(toggle)     │| |\n     | |  ├────────────────────────────────────────────────────┤| |\n  36 | |  │ [Avatar] Alice Smith         [        ] [====ON ]   │| |\n     | |  │  COMP-003                     COMP-001(toggle)     │| |\n  38 | |  ├────────────────────────────────────────────────────┤| |\n     | |  │ [Avatar] Project Alpha      [●Online] [  OFF==]    │| |\n  40 | |  │  COMP-003    COMP-010(status) COMP-001(toggle)     │| |\n     | |  └────────────────────────────────────────────────────┘| |\n  42 | +--------------------------------------------------------+ |\n     +------------------------------------------------------------+",
+  "state_bindings": {
+    "COMP-010": "notifications.globalStatus",
+    "COMP-001": "notifications.toggles",
+    "COMP-002": "notifications.chatSearch",
+    "COMP-003": "notifications.perChatList"
+  },
+  "navigation_rules": [
+    {
+      "trigger": "back_btn_click",
+      "target": "/settings",
+      "condition": ""
+    },
+    {
+      "trigger": "save_btn_click",
+      "target": "/settings/notifications",
+      "condition": "notifications.isDirty"
+    },
+    {
+      "trigger": "chat_item_click",
+      "target": "/settings/notifications/chat/{chatId}",
+      "condition": ""
+    },
+    {
+      "trigger": "master_toggle_off",
+      "target": "",
+      "condition": "disables_all_sub_toggles"
+    }
+  ],
+  "responsive": {
+    "mobile": {
+      "layout": "stack",
+      "hidden_components": [],
+      "notes": "Full width toggles, scrollable chat list, sticky header with back/save buttons"
+    },
+    "tablet": {
+      "layout": "stack",
+      "notes": "Centered content with max-width 600px, larger toggle hit areas"
+    },
+    "desktop": {
+      "layout": "stack",
+      "notes": "Embedded within settings sidebar layout at /settings, max-width 640px centered"
+    }
+  },
+  "auth_required": true
+}

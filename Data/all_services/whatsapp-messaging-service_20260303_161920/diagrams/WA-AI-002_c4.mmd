@@ -1,0 +1,14 @@
+%%{init: {'theme': 'default'}}%%
+%%{ c4: { "title": "Smart Reply System Context", "version": "1.0" } }%%
+C4Context
+    title Smart Reply System Context
+    Person(user, "User", "A user who interacts with the Smart Reply system.")
+    System(smartReplySystem, "Smart Reply System", "Provides intelligent reply suggestions.")
+    System_Ext(emailClient, "Email Client", "The application where users compose and send emails.")
+    System_Ext(aiService, "AI Service", "External service that provides AI capabilities for generating replies.")
+
+    Rel(user, emailClient, "Uses")
+    Rel(emailClient, smartReplySystem, "Sends email content for reply suggestions")
+    Rel(smartReplySystem, aiService, "Requests reply suggestions from")
+    Rel(aiService, smartReplySystem, "Returns generated reply suggestions")
+    Rel(smartReplySystem, emailClient, "Provides reply suggestions to")

@@ -1,0 +1,88 @@
+{
+  "route": "/settings/profile/display-name",
+  "screen_name": "Anzeigename",
+  "description": "",
+  "user_stories": [
+    "US-007"
+  ],
+  "components": [
+    {
+      "component_id": "COMP-023",
+      "component_name": "ProfileHeader",
+      "props": {
+        "variant": "editable",
+        "title": "Anzeigename",
+        "showBackButton": true
+      },
+      "position": "header",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-001",
+      "component_name": "Button",
+      "props": {
+        "variant": "primary",
+        "text": "Speichern",
+        "disabled": false
+      },
+      "position": "main",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-001",
+      "component_name": "Button",
+      "props": {
+        "variant": "secondary",
+        "text": "Abbrechen"
+      },
+      "position": "main",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-026",
+      "component_name": "ToastNotification",
+      "props": {
+        "variant": "success",
+        "message": "Anzeigename erfolgreich gespeichert",
+        "visible": false
+      },
+      "position": "modal",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-026",
+      "component_name": "ToastNotification",
+      "props": {
+        "variant": "error",
+        "message": "Fehler beim Speichern",
+        "visible": false
+      },
+      "position": "modal",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    }
+  ],
+  "layout": "flex column, centered, max-width 400px, padding 16px",
+  "data_sources": [],
+  "state_shape": {
+    "displayName": "string",
+    "originalDisplayName": "string",
+    "isLoading": "boolean",
+    "error": "string|null",
+    "isDirty": "boolean"
+  }
+}

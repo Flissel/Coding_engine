@@ -1,0 +1,8 @@
+stateDiagram-v2
+    [*] --> Idle
+    Idle --> Sending : Send Nachricht
+    Sending --> Sent : Nachricht gesendet
+    Sent --> Viewing : Nachricht wird angesehen
+    Viewing --> SelfDestructing : Zeitablauf
+    SelfDestructing --> [*] : Nachricht gelöscht
+    Viewing --> [*] : Nachricht verlassen

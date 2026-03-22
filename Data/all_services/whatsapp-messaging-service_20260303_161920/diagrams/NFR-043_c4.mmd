@@ -1,0 +1,21 @@
+%%{init: {'theme': 'default'}}%%
+C4Context
+    title Centralized Logging System Architecture
+
+    Person(admin, "Administrator", "Manages the logging system and analyzes logs")
+    Person(developer, "Developer", "Develops services that emit logs")
+
+    System_Boundary(logging_system, "Centralized Logging System") {
+        System(log_service, "Log Service", "Collects and stores structured logs from services")
+        System(database, "Log Database", "Stores logs in a structured format for querying")
+    }
+
+    System_Ext(service1, "Service 1", "A microservice that emits logs")
+    System_Ext(service2, "Service 2", "Another microservice that emits logs")
+
+    Rel(admin, log_service, "Manages and analyzes logs")
+    Rel(developer, service1, "Develops and configures logging")
+    Rel(developer, service2, "Develops and configures logging")
+    Rel(service1, log_service, "Emits structured logs")
+    Rel(service2, log_service, "Emits structured logs")
+    Rel(log_service, database, "Stores logs")

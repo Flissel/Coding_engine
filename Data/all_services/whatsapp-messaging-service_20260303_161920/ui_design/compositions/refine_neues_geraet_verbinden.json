@@ -1,0 +1,10 @@
+{
+  "route": "/settings/devices/link",
+  "screen_name": "Neues Geraet verbinden",
+  "linked_user_stories": [
+    "US-038"
+  ],
+  "user_stories": [
+    "US-038"
+  ]
+}

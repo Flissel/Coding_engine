@@ -1,0 +1,10 @@
+{
+  "route": "/dashboard",
+  "screen_name": "Dashboard mit Anzeigename-Konfiguration",
+  "linked_user_stories": [
+    "US-028"
+  ],
+  "user_stories": [
+    "US-028"
+  ]
+}

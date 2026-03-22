@@ -1,0 +1,16 @@
+%%{ init: { "theme": "default" } }%%
+C4Context
+    title Device Interoperability System Architecture
+
+    Person(user, "User", "A user who interacts with multiple devices.")
+    
+    System(system, "Device Interoperability System", "Supports multi-device interaction across major OS versions.")
+    
+    System_Ext(os1, "Operating System 1", "Major OS version 1")
+    System_Ext(os2, "Operating System 2", "Major OS version 2")
+    System_Ext(os3, "Operating System 3", "Major OS version 3")
+    
+    Rel(user, system, "Uses")
+    Rel(system, os1, "Integrates with")
+    Rel(system, os2, "Integrates with")
+    Rel(system, os3, "Integrates with")

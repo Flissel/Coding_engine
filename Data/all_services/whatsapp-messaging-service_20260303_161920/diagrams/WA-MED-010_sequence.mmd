@@ -1,0 +1,10 @@
+sequenceDiagram
+    participant User as Benutzer
+    participant System as HD-Medien System
+    participant Media as Medienquelle
+
+    User->>System: Anfrage zum Senden von Medien in HD-Qualität
+    System->>Media: Anfrage für HD-Medien
+    Media-->>System: Bereitstellung der HD-Medien
+    System-->>User: Übertragung der HD-Medien
+    User->>System: Bestätigung des Empfangs

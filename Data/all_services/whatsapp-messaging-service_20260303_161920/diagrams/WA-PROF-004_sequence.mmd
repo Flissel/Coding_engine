@@ -1,0 +1,8 @@
+sequenceDiagram
+    participant User as Benutzer
+    participant System as System
+
+    User->>System: Anfrage zur Anzeige der Telefonnummer
+    System->>System: Überprüfen der Benutzerberechtigungen
+    System->>System: Telefonnummer aus dem Profil abrufen
+    System-->>User: Telefonnummer anzeigen

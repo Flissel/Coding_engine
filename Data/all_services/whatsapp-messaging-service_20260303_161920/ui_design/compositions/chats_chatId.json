@@ -1,0 +1,241 @@
+{
+  "route": "/chats/:chatId",
+  "screen_name": "Chat-Detail",
+  "description": "",
+  "user_stories": [
+    "US-020",
+    "US-078",
+    "US-087",
+    "US-092",
+    "US-094",
+    "US-095",
+    "US-121",
+    "US-131"
+  ],
+  "components": [
+    {
+      "component_id": "COMP-023",
+      "component_name": "ProfileHeader",
+      "props": {
+        "variant": "default",
+        "showBackButton": true,
+        "showMenuButton": true
+      },
+      "position": "header",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-010",
+      "component_name": "StatusIndicator",
+      "props": {
+        "variant": "online",
+        "size": "small"
+      },
+      "position": "header",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-013",
+      "component_name": "CallControls",
+      "props": {
+        "variant": "compact",
+        "showAudio": true,
+        "showVideo": true
+      },
+      "position": "header",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-004",
+      "component_name": "ChatBubble",
+      "props": {
+        "variant": "sent"
+      },
+      "position": "main",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-004",
+      "component_name": "ChatBubble",
+      "props": {
+        "variant": "received"
+      },
+      "position": "main",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-004",
+      "component_name": "ChatBubble",
+      "props": {
+        "variant": "system"
+      },
+      "position": "main",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-012",
+      "component_name": "ReadReceipts",
+      "props": {
+        "variant": "read"
+      },
+      "position": "main",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-011",
+      "component_name": "TypingIndicator",
+      "props": {
+        "variant": "default"
+      },
+      "position": "main",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-015",
+      "component_name": "LinkPreview",
+      "props": {
+        "variant": "default"
+      },
+      "position": "main",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-021",
+      "component_name": "EncryptionBadge",
+      "props": {
+        "variant": "secure"
+      },
+      "position": "main",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-005",
+      "component_name": "MessageInput",
+      "props": {
+        "variant": "default",
+        "placeholder": "Type a message..."
+      },
+      "position": "footer",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-006",
+      "component_name": "VoiceRecorder",
+      "props": {
+        "variant": "idle"
+      },
+      "position": "footer",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-008",
+      "component_name": "EmojiPicker",
+      "props": {
+        "variant": "compact"
+      },
+      "position": "footer",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-016",
+      "component_name": "ReactionPicker",
+      "props": {
+        "variant": "default"
+      },
+      "position": "modal",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-017",
+      "component_name": "ForwardDialog",
+      "props": {
+        "variant": "default"
+      },
+      "position": "modal",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-007",
+      "component_name": "MediaViewer",
+      "props": {
+        "variant": "image"
+      },
+      "position": "modal",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-026",
+      "component_name": "ToastNotification",
+      "props": {
+        "variant": "info"
+      },
+      "position": "modal",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    }
+  ],
+  "layout": "flex column, full height, header fixed top, main scrollable, footer fixed bottom",
+  "data_sources": [],
+  "state_shape": {
+    "chatId": "string",
+    "messages": "array",
+    "chatInfo": "object",
+    "isTyping": "boolean",
+    "selectedMessage": "object",
+    "showEmojiPicker": "boolean",
+    "showReactionPicker": "boolean",
+    "isRecording": "boolean",
+    "mediaToView": "object",
+    "forwardDialogOpen": "boolean"
+  }
+}

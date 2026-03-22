@@ -1,0 +1,10 @@
+flowchart TD
+    A[Start] --> B{Wahl der Methode}
+    B -->|Manuell| C[Manuelle Eingabe]
+    B -->|Import| D[Import von CSV]
+    B -->|Synchronisation| E[Synchronisation mit externem Dienst]
+    C --> F[Kontakt speichern]
+    D --> F
+    E --> F
+    F --> G[Bestätigung anzeigen]
+    G --> H[Ende]

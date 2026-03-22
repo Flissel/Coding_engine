@@ -1,0 +1,24 @@
+classDiagram
+    class Gruppenadministration {
+        +createGroup(name: String)
+        +deleteGroup(groupId: String)
+        +addMember(groupId: String, memberId: String)
+        +removeMember(groupId: String, memberId: String)
+        +listGroups(): List<Group>
+        +getGroupDetails(groupId: String): Group
+    }
+
+    class Group {
+        +groupId: String
+        +name: String
+        +members: List<Member>
+    }
+
+    class Member {
+        +memberId: String
+        +name: String
+        +email: String
+    }
+
+    Gruppenadministration --> Group : manages
+    Group --> Member : contains

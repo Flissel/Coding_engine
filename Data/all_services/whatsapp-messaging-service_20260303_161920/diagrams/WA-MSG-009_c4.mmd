@@ -1,0 +1,8 @@
+%%{ init : { "theme" : "default" } }%%
+C4Context
+    title Einmal-Ansicht Medien System Architecture
+
+    Person(customer, "Kunde", "Nutzt das System, um View-Once Medien anzusehen.")
+    System(system, "Einmal-Ansicht Medien System", "Unterstützt die Anzeige von View-Once Medien.")
+
+    Rel(customer, system, "Zugriff auf View-Once Medien")

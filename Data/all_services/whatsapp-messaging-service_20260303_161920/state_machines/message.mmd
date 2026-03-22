@@ -1,0 +1,27 @@
+stateDiagram-v2
+    [*] --> draft
+    draft --> sending : send_message [recipient_available] / initiate_transmission
+    sending --> sent : transmission_completed / update_sender_status
+    sending --> send_failed : transmission_failed / log_error
+    send_failed --> sending : retry_send [retry_attempts_available] / increment_retry_counter
+    send_failed --> deleted_by_sender : abandon_send / cleanup_message
+    sent --> delivered : delivery_confirmed / update_delivery_status
+    delivered --> read : message_opened / update_read_status
+    sent --> edited : edit_message [edit_time_window_valid] / update_message_content
+    delivered --> edited : edit_message [edit_time_window_valid] / update_message_content
+    read --> edited : edit_message [edit_time_window_valid] / update_message_content
+    edited --> delivered : edit_completed [recipient_not_read_edit] / notify_edit
+    edited --> read : edit_completed [recipient_already_read] / notify_edit
+    sent --> deleted_by_sender : delete_for_everyone [delete_time_window_valid] / remove_message_content
+    delivered --> deleted_by_sender : delete_for_everyone [delete_time_window_valid] / remove_message_content
+    read --> deleted_by_sender : delete_for_everyone [delete_time_window_valid] / remove_message_content
+    edited --> deleted_by_sender : delete_for_everyone [delete_time_window_valid] / remove_message_content
+    delivered --> deleted_by_recipient : delete_for_me / hide_from_recipient
+    read --> deleted_by_recipient : delete_for_me / hide_from_recipient
+    sent --> expired : expiration_timer_elapsed [is_disappearing_message] / auto_delete_message
+    delivered --> expired : expiration_timer_elapsed [is_disappearing_message] / auto_delete_message
+    read --> expired : expiration_timer_elapsed [is_disappearing_message] / auto_delete_message
+    edited --> expired : expiration_timer_elapsed [is_disappearing_message] / auto_delete_message
+    deleted_by_sender --> [*]
+    deleted_by_recipient --> [*]
+    expired --> [*]

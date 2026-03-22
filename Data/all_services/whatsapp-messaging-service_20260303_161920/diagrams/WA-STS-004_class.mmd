@@ -1,0 +1,15 @@
+classDiagram
+    class Status {
+        +String name
+        +Boolean isVisible
+        +void toggleVisibility()
+    }
+
+    class Datenschutz {
+        +List<Status> statuses
+        +void addStatus(Status status)
+        +void removeStatus(Status status)
+        +List<Status> getVisibleStatuses()
+    }
+
+    Datenschutz "1" -- "0..*" Status : contains

@@ -1,0 +1,16 @@
+flowchart TD
+    A[Start] --> B{Benutzer möchte sich anmelden?}
+    B -- Ja --> C[Benutzer gibt Anmeldedaten ein]
+    C --> D{Sind Anmeldedaten korrekt?}
+    D -- Ja --> E{Aktiviert der Benutzer 2FA?}
+    D -- Nein --> F[Anmeldung fehlgeschlagen]
+    E -- Ja --> G[System sendet 6-stellige PIN]
+    E -- Nein --> H[Anmeldung erfolgreich ohne 2FA]
+    G --> I[Benutzer gibt 6-stellige PIN ein]
+    I --> J{Ist die PIN korrekt?}
+    J -- Ja --> K[Anmeldung erfolgreich]
+    J -- Nein --> L[Anmeldung fehlgeschlagen]
+    F --> M[Ende]
+    H --> M
+    K --> M
+    L --> M

@@ -1,0 +1,15 @@
+sequenceDiagram
+    participant User as User
+    participant Bot as Bot
+    participant API as Third-Party API
+    participant Webhook as Webhook Service
+
+    User->>Bot: Initiate interaction
+    Bot->>API: Send request for data
+    API-->>Bot: Return data
+    Bot->>User: Display data
+
+    User->>Bot: Trigger webhook event
+    Bot->>Webhook: Send webhook notification
+    Webhook-->>Bot: Acknowledge receipt
+    Bot->>User: Confirm webhook event processed

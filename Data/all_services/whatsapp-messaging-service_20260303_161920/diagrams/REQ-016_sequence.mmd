@@ -1,0 +1,25 @@
+sequenceDiagram
+    participant User
+    participant App
+    participant KeyManager
+    participant Storage
+
+    User->>App: Send message/media
+    App->>KeyManager: Generate encryption key
+    KeyManager-->>App: Return encryption key
+    App->>App: Encrypt message/media with key
+    App->>Storage: Store encrypted message/media
+    Storage-->>App: Confirm storage
+
+    User->>App: Request message/media
+    App->>Storage: Retrieve encrypted message/media
+    Storage-->>App: Return encrypted message/media
+    App->>KeyManager: Retrieve decryption key
+    KeyManager-->>App: Return decryption key
+    App->>App: Decrypt message/media with key
+    App-->>User: Deliver decrypted message/media
+
+    Note over User, App: Key rotation and verification processes occur periodically
+    KeyManager->>KeyManager: Rotate encryption keys
+    KeyManager->>Storage: Update stored keys
+    KeyManager-->>App: Confirm key rotation

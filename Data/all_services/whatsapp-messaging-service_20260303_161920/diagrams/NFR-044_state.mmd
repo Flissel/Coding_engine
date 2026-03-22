@@ -1,0 +1,9 @@
+stateDiagram-v2
+    [*] --> Monitoring
+    Monitoring --> Metrics_Collection : Start Metrics Collection
+    Metrics_Collection --> Metrics_Analyzed : Analyze Metrics
+    Metrics_Analyzed --> Alert_Generation : Generate Alerts
+    Alert_Generation --> Incident_Detected : Incident Detected
+    Incident_Detected --> [*] : Resolve Incident
+    Incident_Detected --> Monitoring : Continue Monitoring
+    Metrics_Analyzed --> Monitoring : Metrics Normal

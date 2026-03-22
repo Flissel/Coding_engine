@@ -1,0 +1,26 @@
+sequenceDiagram
+    participant User
+    participant System
+    participant EmailService
+    participant SMSService
+    participant Support
+
+    User->>System: Request Account Recovery
+    System->>User: Send recovery options (email/SMS)
+    User->>EmailService: Request recovery email
+    EmailService-->>User: Send recovery link
+    User->>System: Click recovery link
+    System->>User: Verify identity (security questions)
+    User->>System: Provide answers
+    System->>User: Identity verified
+
+    User->>System: Request Number Change
+    System->>User: Send verification code via SMS
+    User->>SMSService: Request verification code
+    SMSService-->>User: Send verification code
+    User->>System: Enter verification code
+    System->>User: Verify code
+    User->>System: Confirm new number
+    System->>User: Update number and notify
+    User->>Support: Report device loss
+    Support-->>User: Provide recovery steps

@@ -1,0 +1,11 @@
+flowchart TD
+    A[Start] --> B[Benutzer gibt Sicherheitscode ein]
+    B --> C{Ist der Sicherheitscode korrekt?}
+    C -->|Ja| D[Zugriff gewährt]
+    C -->|Nein| E[Manuelle Verifizierung anfordern]
+    E --> F[Verifizierung durch Administrator]
+    F --> G{Ist die Verifizierung erfolgreich?}
+    G -->|Ja| D
+    G -->|Nein| H[Zugriff verweigert]
+    D --> I[Ende]
+    H --> I

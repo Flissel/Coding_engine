@@ -1,0 +1,15 @@
+stateDiagram-v2
+    [*] --> unlocked
+    unlocked --> lock_pending : lock_requested [user_authorized] / initiate_authentication
+    lock_pending --> locked : authentication_successful [credentials_valid] / apply_lock
+    lock_pending --> authentication_failed : authentication_failed / log_failed_attempt
+    lock_pending --> lock_error : system_error / log_error
+    authentication_failed --> unlocked : retry_timeout / reset_authentication
+    authentication_failed --> lock_pending : retry_authentication [retry_allowed] / initiate_authentication
+    lock_error --> unlocked : error_resolved / clear_error_state
+    locked --> unlock_pending : unlock_requested [user_authorized] / initiate_authentication
+    unlock_pending --> unlocked : authentication_successful [credentials_valid] / remove_lock
+    unlock_pending --> authentication_failed : authentication_failed / log_failed_attempt
+    unlock_pending --> lock_error : system_error / log_error
+    unlocked --> [*]
+    locked --> [*]

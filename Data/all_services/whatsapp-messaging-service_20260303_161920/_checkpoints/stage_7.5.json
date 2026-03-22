@@ -1,0 +1,465 @@
+{
+  "arch_spec": {
+    "project_name": "whatsapp-messaging-service",
+    "services": [
+      {
+        "name": "api-gateway",
+        "type": "gateway",
+        "technology": "Kong 3.6.0",
+        "responsibilities": [
+          "Request routing",
+          "Rate limiting",
+          "Authentication",
+          "API versioning"
+        ],
+        "dependencies": [],
+        "ports": [
+          8080,
+          8443
+        ]
+      },
+      {
+        "name": "auth-service",
+        "type": "api",
+        "technology": "NestJS 10.3.2",
+        "responsibilities": [
+          "Phone number registration",
+          "2FA management",
+          "Biometric auth",
+          "Multi-device support",
+          "Passkey authentication"
+        ],
+        "dependencies": [
+          "user-db",
+          "redis-cache",
+          "kafka-broker"
+        ],
+        "ports": [
+          3001
+        ]
+      },
+      {
+        "name": "user-service",
+        "type": "api",
+        "technology": "NestJS 10.3.2",
+        "responsibilities": [
+          "Profile management",
+          "Display name",
+          "Status text",
+          "Profile picture",
+          "QR code generation"
+        ],
+        "dependencies": [
+          "user-db",
+          "s3-storage",
+          "redis-cache"
+        ],
+        "ports": [
+          3002
+        ]
+      },
+      {
+        "name": "messaging-service",
+        "type": "api",
+        "technology": "NestJS 10.3.2",
+        "responsibilities": [
+          "Text messaging",
+          "Voice messages",
+          "Message editing",
+          "Message deletion",
+          "Message forwarding",
+          "Quote replies",
+          "Reactions"
+        ],
+        "dependencies": [
+          "message-db",
+          "kafka-broker",
+          "redis-cache",
+          "s3-storage"
+        ],
+        "ports": [
+          3003
+        ]
+      },
+      {
+        "name": "group-service",
+        "type": "api",
+        "technology": "NestJS 10.3.2",
+        "responsibilities": [
+          "Group creation",
+          "Group administration",
+          "Invitation links",
+          "Communities",
+          "Channels",
+          "Polls",
+          "Events"
+        ],
+        "dependencies": [
+          "group-db",
+          "kafka-broker",
+          "redis-cache"
+        ],
+        "ports": [
+          3004
+        ]
+      },
+      {
+        "name": "call-service",
+        "type": "api",
+        "technology": "NestJS 10.3.2",
+        "responsibilities": [
+          "Voice calls",
+          "Video calls",
+          "Group calls",
+          "Screen sharing",
+          "Call links",
+          "Call rejection messages"
+        ],
+        "dependencies": [
+          "call-db",
+          "webrtc-signaling",
+          "kafka-broker"
+        ],
+        "ports": [
+          3005
+        ]
+      },
+      {
+        "name": "notification-service",
+        "type": "worker",
+        "technology": "NestJS 10.3.2",
+        "responsibilities": [
+          "Push notifications",
+          "Email notifications",
+          "SMS notifications",
+          "Notification preferences"
+        ],
+        "dependencies": [
+          "kafka-broker",
+          "redis-cache"
+        ],
+        "ports": [
+          3006
+        ]
+      },
+      {
+        "name": "media-service",
+        "type": "api",
+        "technology": "NestJS 10.3.2",
+        "responsibilities": [
+          "Media upload",
+          "Media processing",
+          "Thumbnail generation",
+          "Media encryption",
+          "View-once media"
+        ],
+        "dependencies": [
+          "s3-storage",
+          "redis-cache",
+          "kafka-broker"
+        ],
+        "ports": [
+          3007
+        ]
+      },
+      {
+        "name": "encryption-service",
+        "type": "api",
+        "technology": "NestJS 10.3.2",
+        "responsibilities": [
+          "End-to-end encryption",
+          "Key management",
+          "Signal protocol implementation",
+          "Message encryption/decryption"
+        ],
+        "dependencies": [
+          "vault",
+          "redis-cache"
+        ],
+        "ports": [
+          3008
+        ]
+      },
+      {
+        "name": "search-service",
+        "type": "api",
+        "technology": "NestJS 10.3.2",
+        "responsibilities": [
+          "Message search",
+          "Contact search",
+          "Group search",
+          "Search indexing"
+        ],
+        "dependencies": [
+          "elasticsearch",
+          "kafka-broker"
+        ],
+        "ports": [
+          3009
+        ]
+      },
+      {
+        "name": "websocket-gateway",
+        "type": "api",
+        "technology": "NestJS 10.3.2",
+        "responsibilities": [
+          "Real-time messaging",
+          "Presence status",
+          "Typing indicators",
+          "Message delivery status"
+        ],
+        "dependencies": [
+          "redis-cache",
+          "kafka-broker"
+        ],
+        "ports": [
+          3010
+        ]
+      },
+      {
+        "name": "user-db",
+        "type": "database",
+        "technology": "PostgreSQL 16.2",
+        "responsibilities": [
+          "User data persistence",
+          "Profile storage",
+          "Authentication data"
+        ],
+        "dependencies": [],
+        "ports": [
+          5432
+        ]
+      },
+      {
+        "name": "message-db",
+        "type": "database",
+        "technology": "PostgreSQL 16.2",
+        "responsibilities": [
+          "Message persistence",
+          "Chat history",
+          "Message metadata"
+        ],
+        "dependencies": [],
+        "ports": [
+          5433
+        ]
+      },
+      {
+        "name": "group-db",
+        "type": "database",
+        "technology": "PostgreSQL 16.2",
+        "responsibilities": [
+          "Group data",
+          "Community data",
+          "Channel data",
+          "Membership data"
+        ],
+        "dependencies": [],
+        "ports": [
+          5434
+        ]
+      },
+      {
+        "name": "call-db",
+        "type": "database",
+        "technology": "PostgreSQL 16.2",
+        "responsibilities": [
+          "Call history",
+          "Call metadata",
+          "Call recordings"
+        ],
+        "dependencies": [],
+        "ports": [
+          5435
+        ]
+      },
+      {
+        "name": "redis-cache",
+        "type": "cache",
+        "technology": "Redis 7.2.4",
+        "responsibilities": [
+          "Session storage",
+          "Caching",
+          "Rate limiting",
+          "Presence data"
+        ],
+        "dependencies": [],
+        "ports": [
+          6379
+        ]
+      },
+      {
+        "name": "kafka-broker",
+        "type": "queue",
+        "technology": "Kafka 3.6.1",
+        "responsibilities": [
+          "Event streaming",
+          "Message queuing",
+          "Event sourcing",
+          "Service communication"
+        ],
+        "dependencies": [],
+        "ports": [
+          9092
+        ]
+      },
+      {
+        "name": "elasticsearch",
+        "type": "search_engine",
+        "technology": "Elasticsearch 8.12.2",
+        "responsibilities": [
+          "Search indexing",
+          "Full-text search",
+          "Analytics",
+          "Logging"
+        ],
+        "dependencies": [],
+        "ports": [
+          9200
+        ]
+      },
+      {
+        "name": "s3-storage",
+        "type": "storage",
+        "technology": "AWS S3",
+        "responsibilities": [
+          "Media storage",
+          "File storage",
+          "Backup storage",
+          "Profile pictures"
+        ],
+        "dependencies": [],
+        "ports": [
+          443
+        ]
+      },
+      {
+        "name": "cdn",
+        "type": "cdn",
+        "technology": "AWS CloudFront",
+        "responsibilities": [
+          "Content delivery",
+          "Media caching",
+          "Global distribution",
+          "DDoS protection"
+        ],
+        "dependencies": [
+          "s3-storage"
+        ],
+        "ports": [
+          80,
+          443
+        ]
+      },
+      {
+        "name": "istio-mesh",
+        "type": "mesh",
+        "technology": "Istio 1.20",
+        "responsibilities": [
+          "Service mesh",
+          "Traffic management",
+          "Security policies",
+          "Observability"
+        ],
+        "dependencies": [],
+        "ports": [
+          15000,
+          15001
+        ]
+      },
+      {
+        "name": "vault",
+        "type": "storage",
+        "technology": "HashiCorp Vault",
+        "responsibilities": [
+          "Secret management",
+          "Key storage",
+          "Certificate management",
+          "Encryption keys"
+        ],
+        "dependencies": [],
+        "ports": [
+          8200
+        ]
+      },
+      {
+        "name": "prometheus",
+        "type": "api",
+        "technology": "Prometheus 2.50",
+        "responsibilities": [
+          "Metrics collection",
+          "Alerting",
+          "Monitoring",
+          "Time series data"
+        ],
+        "dependencies": [],
+        "ports": [
+          9090
+        ]
+      },
+      {
+        "name": "grafana",
+        "type": "api",
+        "technology": "Grafana 10.3",
+        "responsibilities": [
+          "Metrics visualization",
+          "Dashboards",
+          "Alerting UI",
+          "Monitoring UI"
+        ],
+        "dependencies": [
+          "prometheus"
+        ],
+        "ports": [
+          3000
+        ]
+      },
+      {
+        "name": "jaeger",
+        "type": "api",
+        "technology": "Jaeger 1.54",
+        "responsibilities": [
+          "Distributed tracing",
+          "Request tracking",
+          "Performance monitoring",
+          "Trace analysis"
+        ],
+        "dependencies": [
+          "elasticsearch"
+        ],
+        "ports": [
+          16686,
+          14268
+        ]
+      },
+      {
+        "name": "webrtc-signaling",
+        "type": "api",
+        "technology": "Node.js 20.11.1",
+        "responsibilities": [
+          "WebRTC signaling",
+          "Peer connection",
+          "Media negotiation",
+          "TURN/STUN server"
+        ],
+        "dependencies": [
+          "redis-cache"
+        ],
+        "ports": [
+          3011
+        ]
+      }
+    ],
+    "c4_context_diagram": "C4Context\n    title System Context - WhatsApp Messaging Service\n    Person(user, \"User\", \"Mobile/Web user sending messages\")\n    Person(contact, \"Contact\", \"Message recipient\")\n    System(whatsapp, \"WhatsApp Messaging Service\", \"Secure messaging platform\")\n    System_Ext(push, \"Push Notification Service\", \"APNs/FCM\")\n    System_Ext(telecom, \"Telecom Provider\", \"SMS verification\")\n    System_Ext(webrtc, \"WebRTC Infrastructure\", \"TURN/STUN servers\")\n    \n    Rel(user, whatsapp, \"Sends/receives messages\")\n    Rel(contact, whatsapp, \"Sends/receives messages\")\n    Rel(whatsapp, push, \"Sends push notifications\")\n    Rel(whatsapp, telecom, \"Phone verification\")\n    Rel(whatsapp, webrtc, \"Voice/video calls\")",
+    "c4_container_diagram": "graph TB\n    subgraph \"WhatsApp Messaging Service\"\n        A[React Native App]\n        B[API Gateway]\n        C[Auth Service]\n        D[Messaging Service]\n        E[Group Service]\n        F[Call Service]\n        G[Media Service]\n        H[WebSocket Gateway]\n        I[User Database]\n        J[Message Database]\n        K[Redis Cache]\n        L[Kafka Broker]\n        M[S3 Storage]\n        N[Elasticsearch]\n    end\n    \n    A --> B\n    B --> C\n    B --> D\n    B --> E\n    B --> F\n    B --> G\n    A --> H\n    C --> I\n    D --> J\n    D --> L\n    E --> I\n    F --> I\n    G --> M\n    H --> K\n    D --> N",
+    "deployment_diagram": "graph TB\n    subgraph \"AWS EU-West-1 (Primary)\"\n        subgraph \"EKS Cluster\"\n            A1[API Gateway]\n            A2[Auth Service]\n            A3[Messaging Service]\n            A4[Group Service]\n            A5[Call Service]\n        end\n        B1[RDS PostgreSQL]\n        B2[ElastiCache Redis]\n        B3[MSK Kafka]\n        B4[S3 Bucket]\n        B5[CloudFront CDN]\n    end\n    \n    subgraph \"AWS US-East-1 (Failover)\"\n        subgraph \"EKS Cluster Standby\"\n            C1[API Gateway]\n            C2[Auth Service]\n            C3[Messaging Service]\n        end\n        D1[RDS Read Replica]\n        D2[S3 Cross-Region Replication]\n    end\n    \n    E[Route 53] --> B5\n    B5 --> A1\n    A1 --> A2\n    A1 --> A3",
+    "data_flow_diagram": "flowchart LR\n    A[Mobile Client] --> B[CDN]\n    A --> C[API Gateway]\n    C --> D[Auth Service]\n    C --> E[Messaging Service]\n    C --> F[WebSocket Gateway]\n    \n    D --> G[User DB]\n    E --> H[Message DB]\n    E --> I[Kafka]\n    F --> J[Redis]\n    \n    I --> K[Notification Service]\n    I --> L[Search Service]\n    L --> M[Elasticsearch]\n    \n    E --> N[Encryption Service]\n    N --> O[Vault]\n    \n    P[Media Service] --> Q[S3 Storage]\n    Q --> B",
+    "architecture_pattern": "Microservices",
+    "communication_patterns": [
+      "REST",
+      "WebSocket",
+      "Event-Driven",
+      "gRPC"
+    ]
+  }
+}

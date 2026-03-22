@@ -1,0 +1,155 @@
+{
+  "route": "/settings",
+  "screen_name": "Einstellungen",
+  "description": "",
+  "user_stories": [],
+  "components": [
+    {
+      "component_id": "COMP-023",
+      "component_name": "ProfileHeader",
+      "props": {
+        "variant": "editable"
+      },
+      "position": "header",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-022",
+      "component_name": "SettingsListItem",
+      "props": {
+        "variant": "default",
+        "title": "Account",
+        "icon": "user"
+      },
+      "position": "main",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-022",
+      "component_name": "SettingsListItem",
+      "props": {
+        "variant": "default",
+        "title": "Privacy & Security",
+        "icon": "shield"
+      },
+      "position": "main",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-022",
+      "component_name": "SettingsListItem",
+      "props": {
+        "variant": "default",
+        "title": "Notifications",
+        "icon": "bell"
+      },
+      "position": "main",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-022",
+      "component_name": "SettingsListItem",
+      "props": {
+        "variant": "default",
+        "title": "Devices",
+        "icon": "device"
+      },
+      "position": "main",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-024",
+      "component_name": "DeviceListItem",
+      "props": {
+        "variant": "active"
+      },
+      "position": "main",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-022",
+      "component_name": "SettingsListItem",
+      "props": {
+        "variant": "default",
+        "title": "Passkeys",
+        "icon": "key"
+      },
+      "position": "main",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-022",
+      "component_name": "SettingsListItem",
+      "props": {
+        "variant": "default",
+        "title": "Help & Support",
+        "icon": "help"
+      },
+      "position": "main",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-022",
+      "component_name": "SettingsListItem",
+      "props": {
+        "variant": "danger",
+        "title": "Sign Out",
+        "icon": "logout"
+      },
+      "position": "main",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-001",
+      "component_name": "Button",
+      "props": {
+        "variant": "primary",
+        "text": "Add Passkey"
+      },
+      "position": "main",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    }
+  ],
+  "layout": "flex column, full-width, padding 16px",
+  "data_sources": [
+    "GET /api/v1/passkeys",
+    "GET /api/v1/devices"
+  ],
+  "state_shape": {
+    "userProfile": "object",
+    "passkeys": "array",
+    "devices": "array",
+    "isLoading": "boolean",
+    "error": "string"
+  }
+}

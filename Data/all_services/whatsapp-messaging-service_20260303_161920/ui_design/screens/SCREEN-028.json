@@ -1,0 +1,98 @@
+{
+  "id": "SCREEN-028",
+  "name": "SMS/Anruf-Verifizierung",
+  "route": "/auth/phone/verify",
+  "layout": "centered",
+  "description": "Verifizierungsscreen für SMS/Anruf-OTP-Eingabe mit Timer und Resend-Funktion, im Kontext des Dokumentenversands über den WhatsApp Messaging Service",
+  "components": [
+    "COMP-001",
+    "COMP-010"
+  ],
+  "component_layout": [
+    {
+      "id": "OTP-INPUT",
+      "name": "OTP Input Fields",
+      "x": 12,
+      "y": 10,
+      "w": 36,
+      "h": 4
+    },
+    {
+      "id": "COMP-010",
+      "name": "StatusIndicator (Timer)",
+      "x": 20,
+      "y": 15,
+      "w": 20,
+      "h": 2
+    },
+    {
+      "id": "COMP-001-VERIFY",
+      "name": "Button (Verify)",
+      "x": 15,
+      "y": 18,
+      "w": 30,
+      "h": 3
+    },
+    {
+      "id": "COMP-001-RESEND",
+      "name": "Button (Resend Code)",
+      "x": 18,
+      "y": 22,
+      "w": 24,
+      "h": 3
+    }
+  ],
+  "data_requirements": [
+    "POST /api/auth/phone/verify",
+    "POST /api/auth/phone/resend"
+  ],
+  "parent_user_story": "US-049",
+  "wireframe_mermaid": "flowchart TD\n    subgraph SMS/Anruf-Verifizierung\n        Header[Header / Navigation]\n        Main[Main Content Area]\n        Sidebar[Sidebar / Filters]\n        Footer[Footer / Actions]\n    end\n\n    Header --> Main\n    Sidebar --> Main\n    Main --> Footer\n\n    %% \n",
+  "wireframe_ascii": "     0    5   10   15   20   25   30   35   40   45   50   55   60\n   0 +------------------------------------------------------------+\n     |                                                            |\n   2 |                                                            |\n     |                                                            |\n   4 |                    +--------------------+                  |\n     |                    |   [WhatsApp Logo]  |                  |\n   6 |                    +--------------------+                  |\n     |                                                            |\n   8 |              Bitte geben Sie den Verifizierungscode        |\n     |              ein, den wir Ihnen gesendet haben.            |\n  10 |                                                            |\n     |            +--------------------------------------+        |\n  12 |            | [ ___ ] [ ___ ] [ ___ ] [ ___ ] [ ___] |      |\n     |            |          OTP-INPUT (6-stellig)         |      |\n  14 |            +--------------------------------------+        |\n     |                                                            |\n  16 |                  +--------------------+                    |\n     |                  | COMP-010           |                    |\n  18 |                  | ⏱ Code gültig:    |                    |\n     |                  |     01:47          |                    |\n  20 |                  | StatusIndicator    |                    |\n     |                  +--------------------+                    |\n  22 |                                                            |\n     |               +----------------------------+               |\n  24 |               |    ✓  Verifizieren         |               |\n     |               |    COMP-001 (Verify Btn)   |               |\n  26 |               +----------------------------+               |\n     |                                                            |\n  28 |                  +----------------------+                  |\n     |                  | ↻ Code erneut senden |                  |\n  30 |                  | COMP-001 (Resend Btn)|                  |\n     |                  +----------------------+                  |\n  32 |                                                            |\n     |              ──────── oder ────────                        |\n  34 |                                                            |\n     |                  +----------------------+                  |\n  36 |                  | 📞 Per Anruf erhalten|                  |\n     |                  | COMP-001 (Call Btn)  |                  |\n  38 |                  +----------------------+                  |\n     |                                                            |\n  40 +------------------------------------------------------------+",
+  "state_bindings": {
+    "OTP-INPUT": "auth.otpCode",
+    "COMP-010": "auth.timer",
+    "COMP-001-VERIFY": "auth.verifyAction",
+    "COMP-001-RESEND": "auth.resendAction"
+  },
+  "navigation_rules": [
+    {
+      "trigger": "verify_success",
+      "target": "/chat/documents/send",
+      "condition": "auth.otpValid === true"
+    },
+    {
+      "trigger": "verify_fail",
+      "target": "/auth/phone/verify",
+      "condition": "auth.otpValid === false"
+    },
+    {
+      "trigger": "resend_click",
+      "target": "",
+      "condition": "auth.timer === 0"
+    },
+    {
+      "trigger": "call_click",
+      "target": "",
+      "condition": "auth.timer === 0"
+    },
+    {
+      "trigger": "back_click",
+      "target": "/auth/phone",
+      "condition": ""
+    }
+  ],
+  "responsive": {
+    "mobile": {
+      "layout": "stack-fullwidth",
+      "hidden_components": []
+    },
+    "tablet": {
+      "layout": "centered-narrow"
+    },
+    "desktop": {
+      "layout": "centered"
+    }
+  },
+  "auth_required": false
+}

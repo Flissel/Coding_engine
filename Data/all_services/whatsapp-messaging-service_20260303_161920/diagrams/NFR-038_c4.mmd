@@ -1,0 +1,13 @@
+%%{ init : { "theme" : "default" } }%%
+C4Context
+    title Compliance Reporting System Context Diagram
+    Person(admin, "Compliance Admin", "Responsible for managing compliance reports.")
+    Person(auditor, "External Auditor", "Reviews compliance reports for regulatory adherence.")
+    System(system, "Compliance Reporting System", "Generates reports to ensure alignment with GDPR and CCPA.")
+    System_Ext(gdpr, "GDPR Regulations", "Regulatory framework for data protection.")
+    System_Ext(ccpa, "CCPA Regulations", "California Consumer Privacy Act regulations.")
+
+    Rel(admin, system, "Uses")
+    Rel(system, gdpr, "Aligns with")
+    Rel(system, ccpa, "Aligns with")
+    Rel(system, auditor, "Provides reports to")

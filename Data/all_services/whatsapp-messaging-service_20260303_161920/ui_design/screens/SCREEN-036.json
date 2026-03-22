@@ -1,0 +1,115 @@
+{
+  "id": "SCREEN-036",
+  "name": "Dashboard - QR-Code Profil",
+  "route": "/dashboard",
+  "layout": "sidebar",
+  "description": "Dashboard-Screen mit QR-Code Profil-Generierung. Der Nutzer kann seinen persönlichen QR-Code generieren, anzeigen und teilen lassen, damit andere sein Profil scannen können.",
+  "components": [
+    "COMP-001",
+    "COMP-002",
+    "COMP-003",
+    "COMP-009",
+    "COMP-010"
+  ],
+  "component_layout": [
+    {
+      "id": "COMP-002",
+      "name": "SearchBar",
+      "x": 0,
+      "y": 0,
+      "w": 15,
+      "h": 3
+    },
+    {
+      "id": "COMP-003",
+      "name": "ChatListItem",
+      "x": 0,
+      "y": 3,
+      "w": 15,
+      "h": 17
+    },
+    {
+      "id": "COMP-010",
+      "name": "StatusIndicator",
+      "x": 0,
+      "y": 20,
+      "w": 15,
+      "h": 2
+    },
+    {
+      "id": "COMP-009",
+      "name": "ContactCard (Profil + QR)",
+      "x": 16,
+      "y": 0,
+      "w": 44,
+      "h": 16
+    },
+    {
+      "id": "COMP-001",
+      "name": "Button (QR Actions)",
+      "x": 16,
+      "y": 16,
+      "w": 44,
+      "h": 6
+    }
+  ],
+  "data_requirements": [
+    "GET /api/profile",
+    "GET /api/profile/qr-code",
+    "POST /api/profile/qr-code/generate",
+    "GET /api/chats"
+  ],
+  "parent_user_story": "US-010",
+  "wireframe_mermaid": "flowchart TD\n    subgraph Dashboard_-_QR-Code_Profil\n        Header[Header / Navigation]\n        Main[Main Content Area]\n        Sidebar[Sidebar / Filters]\n        Footer[Footer / Actions]\n    end\n\n    Header --> Main\n    Sidebar --> Main\n    Main --> Footer\n\n    %% \n",
+  "wireframe_ascii": "     0    5   10   15   20   25   30   35   40   45   50   55   60\n   0 +---------------+--------------------------------------------+\n     | [SearchBar]   |                                            |\n   1 |  COMP-002     |        Mein QR-Code Profil                 |\n   2 | [___________] |   +----------------------------------+     |\n     +---------------+   |                                  |     |\n   3 | [ChatList]    |   |    +------------------------+    |     |\n     |  COMP-003     |   |    |                        |    |     |\n   5 | +----------+  |   |    |    ██████████████████   |    |     |\n     | | Max M.   |  |   |    |    ██              ██   |    |     |\n   7 | | Letzte.. |  |   |    |    ██  ██████████  ██   |    |     |\n     | +----------+  |   |    |    ██  ██      ██  ██   |    |     |\n   9 | +----------+  |   |    |    ██  ██  QR  ██  ██   |    |     |\n     | | Anna K.  |  |   |    |    ██  ██      ██  ██   |    |     |\n  11 | | Hallo!.. |  |   |    |    ██  ██████████  ██   |    |     |\n     | +----------+  |   |    |    ██              ██   |    |     |\n  13 | +----------+  |   |    |    ██████████████████   |    |     |\n     | | Tom S.   |  |   |    |                        |    |     |\n  15 | | Ok, bis..|  |   |    +------------------------+    |     |\n     | +----------+  |   |  COMP-009 (ContactCard + QR)     |     |\n  16 |               |   +----------------------------------+     |\n     |               |                                            |\n  17 |               |   +------------+  +----------+  +-------+ |\n     |               |   | [Generate] |  |  [Share] |  | [Save]| |\n  18 |               |   | COMP-001   |  | COMP-001 |  |COMP-001 |\n     |               |   | QR-Code    |  |  Teilen  |  | Speich| |\n  19 |               |   | generieren |  |          |  |  ern  | |\n     |               |   +------------+  +----------+  +-------+ |\n  20 +---------------+                                            |\n     | [●Online]     |   Scanne diesen Code, um mein Profil       |\n  21 | COMP-010      |   zu öffnen und mir eine Nachricht          |\n     | StatusIndicat.|   zu senden.                                |\n  22 +---------------+--------------------------------------------+",
+  "state_bindings": {
+    "COMP-002": "dashboard.searchQuery",
+    "COMP-003": "dashboard.chatList",
+    "COMP-009": "profile.userData",
+    "COMP-001": "profile.qrActions",
+    "COMP-010": "profile.onlineStatus"
+  },
+  "navigation_rules": [
+    {
+      "trigger": "chat_item_click",
+      "target": "/chat/{chatId}",
+      "condition": ""
+    },
+    {
+      "trigger": "generate_qr_click",
+      "target": "",
+      "condition": "user.isAuthenticated"
+    },
+    {
+      "trigger": "share_qr_click",
+      "target": "",
+      "condition": "profile.qrCode !== null"
+    },
+    {
+      "trigger": "save_qr_click",
+      "target": "",
+      "condition": "profile.qrCode !== null"
+    },
+    {
+      "trigger": "search_submit",
+      "target": "/dashboard?q={query}",
+      "condition": ""
+    }
+  ],
+  "responsive": {
+    "mobile": {
+      "layout": "stack",
+      "hidden_components": [
+        "COMP-003",
+        "COMP-002"
+      ]
+    },
+    "tablet": {
+      "layout": "sidebar-collapsed"
+    },
+    "desktop": {
+      "layout": "sidebar"
+    }
+  },
+  "auth_required": true
+}

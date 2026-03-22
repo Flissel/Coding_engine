@@ -1,0 +1,9 @@
+sequenceDiagram
+    participant User as Benutzer
+    participant System as System
+    participant BackupService as Backup-Dienst
+
+    User->>System: Anforderung für Backup
+    System->>BackupService: Backup erstellen
+    BackupService->>System: Verschlüsseltes Backup bereitstellen
+    System->>User: Backup erfolgreich erstellt

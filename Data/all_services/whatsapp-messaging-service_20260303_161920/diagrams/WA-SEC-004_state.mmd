@@ -1,0 +1,6 @@
+stateDiagram-v2
+    [*] --> Unblocked
+    Unblocked --> Blocking : Request to block contact
+    Blocking --> Blocked : Contact blocked
+    Blocked --> Unblocking : Request to unblock contact
+    Unblocking --> Unblocked : Contact unblocked

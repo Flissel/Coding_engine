@@ -1,0 +1,11 @@
+%%{init: {"theme": "default"}}%%
+C4Context
+    title System Context Diagram for Einladungslink
+
+    Person(user, "Benutzer", "Ein Benutzer, der Gruppeneinladungen erstellen und annehmen kann.")
+    System(system, "Einladungslink", "Ein System zur Verwaltung von Gruppeneinladungen per Link.")
+
+    Person(admin, "Administrator", "Ein Administrator, der das System verwaltet.")
+
+    Rel(user, system, "Erstellt und akzeptiert Gruppeneinladungen über Links")
+    Rel(admin, system, "Verwaltet das System")

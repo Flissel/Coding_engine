@@ -1,0 +1,14 @@
+classDiagram
+    class UserProfile {
+        +String name
+        +String email
+        +String phoneNumber
+        +displayPhoneNumber()
+    }
+
+    class PhoneNumber {
+        +String number
+        +String type
+    }
+
+    UserProfile --> PhoneNumber : has

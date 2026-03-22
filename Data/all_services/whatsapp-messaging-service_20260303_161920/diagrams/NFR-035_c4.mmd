@@ -1,0 +1,13 @@
+%%{ init : { "theme" : "default" } }%%
+C4Context
+    title Transport and At-Rest Encryption System Architecture
+
+    Person(user, "User", "A user who interacts with the system.")
+    System(system, "Encryption System", "Handles encryption of data in transit and at rest.")
+
+    System_Ext(database, "Database", "Stores user data and encrypted information.")
+    System_Ext(transportLayer, "Transport Layer", "Handles data transmission over the network.")
+
+    Rel(user, system, "Uses")
+    Rel(system, transportLayer, "Encrypts data in transit")
+    Rel(system, database, "Encrypts data at rest")

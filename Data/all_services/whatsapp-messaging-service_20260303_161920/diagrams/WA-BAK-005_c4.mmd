@@ -1,0 +1,13 @@
+%%{ init : { "theme" : "default" } }%%
+C4Context
+    title Chat Archivieren System Architecture
+
+    Person(user, "User", "A user who wants to archive chats.")
+    System(chatArchivingSystem, "Chat Archivieren System", "System that enables chat archiving.")
+
+    System_Ext(chatService, "Chat Service", "External service for managing chats.")
+    System_Ext(storageService, "Storage Service", "External service for storing archived chats.")
+
+    Rel(user, chatArchivingSystem, "Uses")
+    Rel(chatArchivingSystem, chatService, "Fetches chat data from")
+    Rel(chatArchivingSystem, storageService, "Stores archived chats in")

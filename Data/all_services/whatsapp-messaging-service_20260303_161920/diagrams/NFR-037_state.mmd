@@ -1,0 +1,14 @@
+stateDiagram-v2
+    [*] --> Data_Collection
+    Data_Collection --> Data_Storage
+    Data_Storage --> Data_Review
+    Data_Review --> Data_Minimization
+    Data_Minimization --> Data_Retention
+    Data_Retention --> Deletion_Request
+    Deletion_Request --> Data_Deletion
+    Data_Deletion --> [*]
+
+    Data_Storage -->|Review Period| Data_Review
+    Data_Review -->|Data No Longer Needed| Data_Minimization
+    Data_Minimization -->|Retention Period Exceeded| Data_Deletion
+    Data_Minimization -->|Data Still Needed| Data_Retention

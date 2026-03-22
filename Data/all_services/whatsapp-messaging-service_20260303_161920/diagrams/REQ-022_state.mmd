@@ -1,0 +1,24 @@
+stateDiagram-v2
+    [*] --> AccountRecovery
+    AccountRecovery --> VerifyIdentity: Start Recovery
+    VerifyIdentity --> IdentityVerified: Identity Verified
+    VerifyIdentity --> IdentityFailed: Identity Verification Failed
+    IdentityVerified --> SelectRecoveryMethod: Choose Recovery Method
+    SelectRecoveryMethod --> RecoveryViaEmail: Email Recovery
+    SelectRecoveryMethod --> RecoveryViaSMS: SMS Recovery
+    RecoveryViaEmail --> EmailSent: Recovery Email Sent
+    RecoveryViaSMS --> SMSSent: Recovery SMS Sent
+    EmailSent --> ResetPassword: Reset Password
+    SMSSent --> ResetPassword: Reset Password
+    ResetPassword --> [*]: Password Reset Complete
+    IdentityFailed --> [*]: Recovery Failed
+
+    [*] --> NumberChange
+    NumberChange --> VerifyIdentityForNumberChange: Verify Identity
+    VerifyIdentityForNumberChange --> IdentityVerifiedForNumberChange: Identity Verified
+    VerifyIdentityForNumberChange --> IdentityFailedForNumberChange: Identity Verification Failed
+    IdentityVerifiedForNumberChange --> EnterNewNumber: Enter New Phone Number
+    EnterNewNumber --> ConfirmNewNumber: Confirm New Phone Number
+    ConfirmNewNumber --> NumberChanged: Phone Number Changed
+    NumberChanged --> [*]: Change Complete
+    IdentityFailedForNumberChange --> [*]: Number Change Failed

@@ -1,0 +1,123 @@
+{
+  "id": "SCREEN-007",
+  "name": "Profile - Audio Attachment",
+  "route": "/settings/profile",
+  "layout": "single-column",
+  "description": "Profilseite mit Avatar, QR-Code und Formular. Ermoeglicht das Senden von Audio-Dateien ueber den VoiceRecorder und die Vorschau via MediaViewer. Audio-Dateien koennen aufgenommen oder aus dem Speicher ausgewaehlt und als Nachricht versendet werden.",
+  "components": [
+    "COMP-001",
+    "COMP-005",
+    "COMP-006",
+    "COMP-007",
+    "COMP-010"
+  ],
+  "component_layout": [
+    {
+      "id": "COMP-001",
+      "name": "BackButton",
+      "x": 0,
+      "y": 0,
+      "w": 8,
+      "h": 3
+    },
+    {
+      "id": "COMP-001-2",
+      "name": "SaveButton",
+      "x": 50,
+      "y": 0,
+      "w": 10,
+      "h": 3
+    },
+    {
+      "id": "COMP-010",
+      "name": "StatusIndicator",
+      "x": 22,
+      "y": 4,
+      "w": 16,
+      "h": 2
+    },
+    {
+      "id": "COMP-007",
+      "name": "MediaViewer",
+      "x": 5,
+      "y": 10,
+      "w": 50,
+      "h": 12
+    },
+    {
+      "id": "COMP-006",
+      "name": "VoiceRecorder",
+      "x": 10,
+      "y": 23,
+      "w": 40,
+      "h": 4
+    },
+    {
+      "id": "COMP-005",
+      "name": "MessageInput",
+      "x": 5,
+      "y": 28,
+      "w": 42,
+      "h": 4
+    },
+    {
+      "id": "COMP-001-3",
+      "name": "SendAudioButton",
+      "x": 48,
+      "y": 28,
+      "w": 10,
+      "h": 4
+    }
+  ],
+  "data_requirements": [
+    "GET /api/settings/profile",
+    "PUT /api/settings/profile",
+    "POST /api/messages/audio",
+    "GET /api/media/audio/{id}",
+    "POST /api/media/upload"
+  ],
+  "parent_user_story": "US-054",
+  "wireframe_mermaid": "flowchart TD\n    subgraph Profile_-_Audio_Attachment\n        Header[Header / Navigation]\n        Main[Main Content Area]\n        Sidebar[Sidebar / Filters]\n        Footer[Footer / Actions]\n    end\n\n    Header --> Main\n    Sidebar --> Main\n    Main --> Footer\n\n    %% \n",
+  "wireframe_ascii": "     0    5   10   15   20   25   30   35   40   45   50   55   60\n   0 +------------------------------------------------------------+\n     | [< Back]                                      [Save]      |\n   2 | COMP-001                                      COMP-001    |\n     +------------------------------------------------------------+\n   4 |                  +------------------+                      |\n     |   +--------+     | COMP-010         |                      |\n   6 |   | Avatar |     | Status: Online   |     +----------+    |\n     |   | (Foto) |     +------------------+     | QR-Code  |    |\n   8 |   +--------+                              |          |    |\n     |   Profilname: Max Mustermann               +----------+    |\n  10 +------------------------------------------------------------+\n     |    +--------------------------------------------------+    |\n  12 |    |                                                  |    |\n     |    |          COMP-007 (MediaViewer)                   |    |\n  14 |    |                                                  |    |\n     |    |   +------------------------------------------+   |    |\n  16 |    |   |  [>]  audio_message.mp3                  |   |    |\n     |    |   |  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~     |   |    |\n  18 |    |   |  00:00 ======|============= 02:34        |   |    |\n     |    |   +------------------------------------------+   |    |\n  20 |    |                                                  |    |\n     |    +--------------------------------------------------+    |\n  22 +------------------------------------------------------------+\n     |         +----------------------------------------+         |\n  24 |         |  COMP-006 (VoiceRecorder)              |         |\n     |         |  [ O Rec ]  00:00:00  [ || ] [ [] ]    |         |\n  26 |         +----------------------------------------+         |\n     +------------------------------------------------------------+\n  28 |    +------------------------------------------+ +--------+ |\n     |    | COMP-005 (MessageInput)                  | | Send   | |\n  30 |    | [Nachricht oder Audiobeschreibung...]     | |COMP-001| |\n     |    +------------------------------------------+ +--------+ |\n  32 +------------------------------------------------------------+",
+  "state_bindings": {
+    "COMP-010": "profile.status",
+    "COMP-006": "audio.recording",
+    "COMP-007": "audio.preview",
+    "COMP-005": "audio.caption"
+  },
+  "navigation_rules": [
+    {
+      "trigger": "back_btn_click",
+      "target": "/settings",
+      "condition": ""
+    },
+    {
+      "trigger": "save_btn_click",
+      "target": "/settings/profile",
+      "condition": "profile.isDirty"
+    },
+    {
+      "trigger": "send_audio_click",
+      "target": "/chat/{chatId}",
+      "condition": "audio.isReady"
+    },
+    {
+      "trigger": "record_complete",
+      "target": "",
+      "condition": "audio.duration > 0"
+    }
+  ],
+  "responsive": {
+    "mobile": {
+      "layout": "stack",
+      "hidden_components": []
+    },
+    "tablet": {
+      "layout": "single-column"
+    },
+    "desktop": {
+      "layout": "single-column"
+    }
+  },
+  "auth_required": true
+}

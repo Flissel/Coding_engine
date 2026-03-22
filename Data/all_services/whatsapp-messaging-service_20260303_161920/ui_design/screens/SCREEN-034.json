@@ -1,0 +1,116 @@
+{
+  "id": "SCREEN-034",
+  "name": "Dashboard - Chat-Suche",
+  "route": "/dashboard",
+  "layout": "split",
+  "description": "Dashboard mit Chat-Suchfunktion zum Finden von Chats und Kontakten. Die Suchleiste filtert in Echtzeit die Chat-Liste und zeigt passende Kontakte an.",
+  "components": [
+    "COMP-002",
+    "COMP-003",
+    "COMP-009",
+    "COMP-010",
+    "COMP-001"
+  ],
+  "component_layout": [
+    {
+      "id": "COMP-002",
+      "name": "SearchBar",
+      "x": 0,
+      "y": 0,
+      "w": 24,
+      "h": 3
+    },
+    {
+      "id": "COMP-001",
+      "name": "ClearSearchButton",
+      "x": 20,
+      "y": 1,
+      "w": 4,
+      "h": 1
+    },
+    {
+      "id": "COMP-003",
+      "name": "ChatListItem",
+      "x": 0,
+      "y": 3,
+      "w": 24,
+      "h": 18
+    },
+    {
+      "id": "COMP-010",
+      "name": "StatusIndicator",
+      "x": 1,
+      "y": 5,
+      "w": 2,
+      "h": 1
+    },
+    {
+      "id": "COMP-009",
+      "name": "ContactCard",
+      "x": 25,
+      "y": 0,
+      "w": 35,
+      "h": 21
+    }
+  ],
+  "data_requirements": [
+    "GET /api/chats?q={searchTerm}",
+    "GET /api/contacts?q={searchTerm}",
+    "GET /api/chats",
+    "GET /api/contacts/{id}"
+  ],
+  "parent_user_story": "US-078",
+  "wireframe_mermaid": "flowchart TD\n    subgraph Dashboard_-_Chat-Suche\n        Header[Header / Navigation]\n        Main[Main Content Area]\n        Sidebar[Sidebar / Filters]\n        Footer[Footer / Actions]\n    end\n\n    Header --> Main\n    Sidebar --> Main\n    Main --> Footer\n\n    %% \n",
+  "wireframe_ascii": "     0    5   10   15   20   25   30   35   40   45   50   55   60\n   0 +------------------------+------------------------------------+\n     | [SearchBar]            |  [Kontakt-Details / Suchergebnis]  |\n   1 | COMP-002               |                                    |\n     | +------------------[X]-|  COMP-009 (ContactCard)            |\n   2 | | 🔍 Suche Chats... |CB||                                    |\n     | +--------------------+-|  +--------------------------------+|\n   3 | COMP-001 (ClearBtn)    |  |  [Avatar]  Max Mustermann      ||\n     |------------------------|  |            +49 170 1234567     ||\n   4 | [Chat-Liste]           |  |  COMP-010  ● Online            ||\n     | COMP-003               |  |  (StatusIndicator)             ||\n   5 | +--------------------+ |  +--------------------------------+|\n     | | 🟢 Max Mustermann  | |                                    |\n   6 | | COMP-010  Letzte.. | |  +--------------------------------+|\n     | |--------------------| |  |  Letzte Nachricht:              ||\n   7 | | ⚪ Anna Schmidt    | |  |  \"Hey, wie geht's dir?\"        ||\n     | |   Gestern 18:30   | |  |  Gestern 18:45                  ||\n   8 | |--------------------| |  +--------------------------------+|\n     | | 🟢 Gruppe: Team    | |                                    |\n   9 | |   Heute 09:15     | |  +--------------------------------+|\n     | |--------------------| |  |  [Nachricht senden]  COMP-001  ||\n  10 | | ⚪ Lisa Weber      | |  |  [Chat öffnen]       (Button)  ||\n     | |   Mo 14:22        | |  +--------------------------------+|\n  11 | |--------------------| |                                    |\n     | | 🟢 Peter König    | |                                    |\n  12 | |   So 20:10        | |                                    |\n     | |--------------------| |                                    |\n  13 | |                    | |                                    |\n     | | (weitere Ergebnis- | |                                    |\n  14 | |  se werden beim    | |                                    |\n     | |  Scrollen geladen) | |                                    |\n  15 | |                    | |                                    |\n     | +--------------------+ |                                    |\n  16 |------------------------|                                    |\n     | Ergebnisse: 12 Chats,  |                                    |\n  17 | 5 Kontakte gefunden    |                                    |\n     +------------------------+------------------------------------+",
+  "state_bindings": {
+    "COMP-002": "search.query",
+    "COMP-003": "search.filteredChatList",
+    "COMP-009": "search.selectedContact",
+    "COMP-010": "contacts.onlineStatus",
+    "COMP-001": "search.clearAction"
+  },
+  "navigation_rules": [
+    {
+      "trigger": "chatlist_item_click",
+      "target": "/chat/{chatId}",
+      "condition": ""
+    },
+    {
+      "trigger": "contact_card_open_chat",
+      "target": "/chat/{chatId}",
+      "condition": "contact.hasExistingChat"
+    },
+    {
+      "trigger": "contact_card_new_chat",
+      "target": "/chat/new?contactId={contactId}",
+      "condition": "!contact.hasExistingChat"
+    },
+    {
+      "trigger": "search_submit",
+      "target": "/dashboard?q={searchTerm}",
+      "condition": "searchTerm.length >= 1"
+    },
+    {
+      "trigger": "clear_search_click",
+      "target": "/dashboard",
+      "condition": ""
+    }
+  ],
+  "responsive": {
+    "mobile": {
+      "layout": "stack",
+      "hidden_components": [
+        "COMP-009"
+      ],
+      "notes": "ContactCard wird als Overlay/Modal angezeigt bei Tap auf Chat-Item"
+    },
+    "tablet": {
+      "layout": "split-narrow",
+      "notes": "Chat-Liste nimmt 35% ein, Kontakt-Details 65%"
+    },
+    "desktop": {
+      "layout": "split"
+    }
+  },
+  "auth_required": true
+}

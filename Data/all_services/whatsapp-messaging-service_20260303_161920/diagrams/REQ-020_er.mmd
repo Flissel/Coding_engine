@@ -1,0 +1,26 @@
+erDiagram
+    USER {
+        string id PK "Primary Key"
+        string name
+        string email
+    }
+    
+    CHAT {
+        string id PK "Primary Key"
+        string title
+        string created_at
+        string updated_at
+    }
+    
+    MESSAGE {
+        string id PK "Primary Key"
+        string content
+        string timestamp
+        string media_type
+        string chat_id FK "Foreign Key"
+        string user_id FK "Foreign Key"
+    }
+    
+    CHAT ||--o{ MESSAGE : contains
+    USER ||--o{ MESSAGE : sends
+    USER ||--o{ CHAT : participates

@@ -1,0 +1,9 @@
+sequenceDiagram
+    participant User as Benutzer
+    participant System as System
+    participant Notification as Benachrichtigungssystem
+
+    User->>System: Sendet eigene Nachricht
+    System->>User: Bestätigt Nachricht gesendet
+    System->>Notification: Reaktion auf eigene Nachricht erkannt
+    Notification->>User: Benachrichtigung über Reaktion senden

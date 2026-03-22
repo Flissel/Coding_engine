@@ -1,0 +1,17 @@
+%%{ init : { "theme" : "default" } }%%
+C4Context
+    title Payments and P2P Transfers System Architecture
+
+    Person(customer, "Customer", "A user who makes payments and transfers.")
+    Person(merchant, "Merchant", "A business that receives payments.")
+    System(p2pSystem, "Payments and P2P Transfers System", "Enables secure in-app payments, transaction history, and compliance flows.")
+
+    System_Ext(paymentGateway, "Payment Gateway", "Handles payment processing.")
+    System_Ext(transactionHistoryDB, "Transaction History Database", "Stores transaction records.")
+    System_Ext(complianceService, "Compliance Service", "Ensures compliance with regulations.")
+
+    Rel(customer, p2pSystem, "Uses")
+    Rel(merchant, p2pSystem, "Receives payments through")
+    Rel(p2pSystem, paymentGateway, "Processes payments via")
+    Rel(p2pSystem, transactionHistoryDB, "Stores transaction records in")
+    Rel(p2pSystem, complianceService, "Checks compliance with")

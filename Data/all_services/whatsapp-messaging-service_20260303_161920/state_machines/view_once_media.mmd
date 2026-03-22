@@ -1,0 +1,14 @@
+stateDiagram-v2
+    [*] --> created
+    created --> uploaded : upload_completed [media_valid] / store_media_metadata
+    created --> failed : upload_failed / log_upload_error
+    uploaded --> sent : message_sent [recipient_available] / mark_as_view_once
+    uploaded --> failed : send_failed / cleanup_uploaded_media
+    sent --> delivered : delivery_confirmed / start_expiry_timer
+    sent --> expired : delivery_timeout [max_delivery_time_exceeded] / auto_delete_media
+    delivered --> viewed : media_opened [recipient_authenticated] / track_view_event
+    delivered --> expired : expiry_timeout [max_view_time_exceeded] / auto_delete_media
+    viewed --> deleted : view_completed / permanent_delete_media
+    viewed --> deleted : view_interrupted [partial_view_detected] / permanent_delete_media
+    deleted --> [*]
+    expired --> [*]

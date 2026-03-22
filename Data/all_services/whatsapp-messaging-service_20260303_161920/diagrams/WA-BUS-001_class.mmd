@@ -1,0 +1,32 @@
+classDiagram
+    class BusinessProfile {
+        +String name
+        +String description
+        +List<String> services
+        +List<String> industries
+        +List<String> locations
+        +void addService(String service)
+        +void removeService(String service)
+        +void addIndustry(String industry)
+        +void removeIndustry(String industry)
+        +void addLocation(String location)
+        +void removeLocation(String location)
+    }
+
+    class User {
+        +String username
+        +String email
+        +String password
+        +BusinessProfile businessProfile
+        +void createBusinessProfile(BusinessProfile profile)
+        +void updateBusinessProfile(BusinessProfile profile)
+    }
+
+    class Admin {
+        +String adminId
+        +void approveBusinessProfile(BusinessProfile profile)
+        +void rejectBusinessProfile(BusinessProfile profile)
+    }
+
+    User "1" -- "1" BusinessProfile : owns
+    Admin "1" -- "0..*" BusinessProfile : manages

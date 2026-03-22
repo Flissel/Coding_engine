@@ -1,0 +1,14 @@
+%%{ init : { "theme" : "default" } }%%
+C4Context
+    title Message and Media Size Limits System Architecture
+
+    Person(user, "User", "A user who sends messages and media.")
+    System(system, "Message and Media Size Limits System", "Enforces size constraints for performance and stability.")
+
+    Rel(user, system, "Sends messages and media")
+    
+    System_Ext(storage, "Storage Service", "Stores messages and media.")
+    System_Ext(notification, "Notification Service", "Notifies users about size limits.")
+
+    Rel(system, storage, "Stores messages and media")
+    Rel(system, notification, "Sends notifications about size constraints")

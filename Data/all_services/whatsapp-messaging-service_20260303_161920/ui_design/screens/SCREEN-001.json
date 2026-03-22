@@ -1,0 +1,177 @@
+{
+  "id": "SCREEN-001",
+  "name": "Start - Dashboard mit 2FA",
+  "route": "/",
+  "layout": "stack",
+  "description": "Startseite mit Dashboard, Quick-Actions und Recent-Chats. Enthält 2FA-Aktivierung und PIN-Eingabe für die Zwei-Faktor-Authentifizierung mit 6-stelliger PIN.",
+  "components": [
+    "COMP-001",
+    "COMP-002",
+    "COMP-003",
+    "COMP-010"
+  ],
+  "component_layout": [
+    {
+      "id": "COMP-010",
+      "name": "2FA-StatusIndicator",
+      "x": 0,
+      "y": 0,
+      "w": 60,
+      "h": 3
+    },
+    {
+      "id": "COMP-001-lock",
+      "name": "2FA-Aktivieren-Button",
+      "x": 38,
+      "y": 0,
+      "w": 20,
+      "h": 3
+    },
+    {
+      "id": "COMP-001-pin1",
+      "name": "PIN-Digit-1",
+      "x": 10,
+      "y": 5,
+      "w": 6,
+      "h": 3
+    },
+    {
+      "id": "COMP-001-pin2",
+      "name": "PIN-Digit-2",
+      "x": 17,
+      "y": 5,
+      "w": 6,
+      "h": 3
+    },
+    {
+      "id": "COMP-001-pin3",
+      "name": "PIN-Digit-3",
+      "x": 24,
+      "y": 5,
+      "w": 6,
+      "h": 3
+    },
+    {
+      "id": "COMP-001-pin4",
+      "name": "PIN-Digit-4",
+      "x": 31,
+      "y": 5,
+      "w": 6,
+      "h": 3
+    },
+    {
+      "id": "COMP-001-pin5",
+      "name": "PIN-Digit-5",
+      "x": 38,
+      "y": 5,
+      "w": 6,
+      "h": 3
+    },
+    {
+      "id": "COMP-001-pin6",
+      "name": "PIN-Digit-6",
+      "x": 45,
+      "y": 5,
+      "w": 6,
+      "h": 3
+    },
+    {
+      "id": "COMP-001-verify",
+      "name": "PIN-Bestätigen-Button",
+      "x": 18,
+      "y": 9,
+      "w": 24,
+      "h": 3
+    },
+    {
+      "id": "COMP-002",
+      "name": "SearchBar",
+      "x": 0,
+      "y": 13,
+      "w": 60,
+      "h": 3
+    },
+    {
+      "id": "COMP-003",
+      "name": "RecentChatsList",
+      "x": 0,
+      "y": 16,
+      "w": 60,
+      "h": 12
+    }
+  ],
+  "data_requirements": [
+    "GET /api/auth/2fa/status",
+    "POST /api/auth/2fa/enable",
+    "POST /api/auth/2fa/verify",
+    "POST /api/auth/2fa/disable",
+    "GET /api/chats/recent",
+    "GET /api/dashboard/quick-actions"
+  ],
+  "parent_user_story": "US-002",
+  "wireframe_mermaid": "flowchart TD\n    subgraph Start_-_Dashboard_mit_2FA\n        Header[Header / Navigation]\n        Main[Main Content Area]\n        Sidebar[Sidebar / Filters]\n        Footer[Footer / Actions]\n    end\n\n    Header --> Main\n    Sidebar --> Main\n    Main --> Footer\n\n    %% \n",
+  "wireframe_ascii": "     0    5   10   15   20   25   30   35   40   45   50   55   60\n   0 +------------------------------------------------------------+\n     | 🔒 Zwei-Faktor-Authentifizierung                          |\n   1 |  COMP-010 (StatusIndicator)           [2FA Aktivieren]    |\n   2 |  Status: ● Aktiv / ○ Inaktiv          COMP-001 (Button)   |\n   3 +------------------------------------------------------------+\n     |                                                            |\n   4 |        Bitte 6-stellige PIN eingeben:                      |\n   5 |        +-----+ +-----+ +-----+ +-----+ +-----+ +-----+   |\n     |        |  _  | |  _  | |  _  | |  _  | |  _  | |  _  |   |\n   6 |        | [1] | | [2] | | [3] | | [4] | | [5] | | [6] |   |\n   7 |        +-----+ +-----+ +-----+ +-----+ +-----+ +-----+   |\n     |         PIN-Digit Inputs (6x COMP-001 styled)              |\n   8 |                                                            |\n   9 |             +------------------------+                     |\n     |             |   PIN Bestätigen ✓     |                     |\n  10 |             |   COMP-001 (Button)    |                     |\n  11 |             +------------------------+                     |\n     |                                                            |\n  12 +------------------------------------------------------------+\n  13 | 🔍 [Chats durchsuchen...                              ]   |\n     |    COMP-002 (SearchBar)                                    |\n  15 +------------------------------------------------------------+\n  16 | Recent Chats            COMP-003 (ChatListItem)            |\n     +------------------------------------------------------------+\n  17 | [Avatar] Max Mustermann           ● online    14:32        |\n     |          Letzte Nachricht...        COMP-010               |\n  19 |------------------------------------------------------------|\n  20 | [Avatar] Anna Schmidt             ● online    13:15        |\n     |          Okay, bis dann!            COMP-010               |\n  22 |------------------------------------------------------------|\n  23 | [Avatar] Team Gruppe              ○ offline   gestern      |\n     |          Peter: Neues Update...     COMP-010               |\n  25 |------------------------------------------------------------|\n  26 | [Avatar] Lisa Weber               ○ offline   gestern      |\n     |          Bild gesendet 📷           COMP-010               |\n  28 +------------------------------------------------------------+",
+  "state_bindings": {
+    "COMP-010": "auth.twoFactor.status",
+    "COMP-001-lock": "auth.twoFactor.enabled",
+    "COMP-001-pin1": "auth.twoFactor.pin[0]",
+    "COMP-001-pin2": "auth.twoFactor.pin[1]",
+    "COMP-001-pin3": "auth.twoFactor.pin[2]",
+    "COMP-001-pin4": "auth.twoFactor.pin[3]",
+    "COMP-001-pin5": "auth.twoFactor.pin[4]",
+    "COMP-001-pin6": "auth.twoFactor.pin[5]",
+    "COMP-001-verify": "auth.twoFactor.submitAction",
+    "COMP-002": "dashboard.searchQuery",
+    "COMP-003": "dashboard.recentChats"
+  },
+  "navigation_rules": [
+    {
+      "trigger": "2fa_activate_click",
+      "target": "/settings/2fa/setup",
+      "condition": "!auth.twoFactor.enabled"
+    },
+    {
+      "trigger": "pin_verify_success",
+      "target": "/",
+      "condition": "auth.twoFactor.pinValid === true"
+    },
+    {
+      "trigger": "pin_verify_fail",
+      "target": "/",
+      "condition": "auth.twoFactor.attempts < 3"
+    },
+    {
+      "trigger": "pin_verify_locked",
+      "target": "/auth/locked",
+      "condition": "auth.twoFactor.attempts >= 3"
+    },
+    {
+      "trigger": "chat_item_click",
+      "target": "/chat/{chatId}",
+      "condition": "auth.twoFactor.verified"
+    },
+    {
+      "trigger": "search_submit",
+      "target": "/search?q={query}",
+      "condition": ""
+    }
+  ],
+  "responsive": {
+    "mobile": {
+      "layout": "stack",
+      "hidden_components": [],
+      "notes": "PIN-Eingabefelder werden grösser dargestellt für Touch-Eingabe. Numpad-Keyboard wird automatisch geöffnet."
+    },
+    "tablet": {
+      "layout": "stack",
+      "hidden_components": [],
+      "notes": "2FA-Bereich und Chat-Liste untereinander, PIN-Felder zentriert."
+    },
+    "desktop": {
+      "layout": "stack",
+      "hidden_components": [],
+      "notes": "Volle Breite, PIN-Eingabe zentriert im oberen Bereich, Chat-Liste darunter."
+    }
+  },
+  "auth_required": true
+}

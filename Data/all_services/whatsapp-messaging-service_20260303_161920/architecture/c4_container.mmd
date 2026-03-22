@@ -1,0 +1,33 @@
+graph TB
+    subgraph "WhatsApp Messaging Service"
+        A[React Native App]
+        B[API Gateway]
+        C[Auth Service]
+        D[Messaging Service]
+        E[Group Service]
+        F[Call Service]
+        G[Media Service]
+        H[WebSocket Gateway]
+        I[User Database]
+        J[Message Database]
+        K[Redis Cache]
+        L[Kafka Broker]
+        M[S3 Storage]
+        N[Elasticsearch]
+    end
+    
+    A --> B
+    B --> C
+    B --> D
+    B --> E
+    B --> F
+    B --> G
+    A --> H
+    C --> I
+    D --> J
+    D --> L
+    E --> I
+    F --> I
+    G --> M
+    H --> K
+    D --> N

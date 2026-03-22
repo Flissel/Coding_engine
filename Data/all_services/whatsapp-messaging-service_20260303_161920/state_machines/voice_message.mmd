@@ -1,0 +1,21 @@
+stateDiagram-v2
+    [*] --> idle
+    idle --> recording : start_recording [microphone_available] / initialize_audio_capture
+    recording --> recorded : stop_recording [min_duration_reached] / save_audio_data
+    recording --> cancelled : cancel_recording / discard_audio_data
+    recording --> failed : recording_error / log_error
+    recorded --> processing : start_processing [audio_data_valid] / begin_audio_encoding
+    recorded --> cancelled : discard_message / delete_audio_file
+    processing --> processed : processing_complete [encoding_successful] / generate_audio_metadata
+    processing --> failed : processing_error / log_processing_error
+    processed --> sending : send_message [network_available] / upload_to_server
+    processed --> cancelled : cancel_send / delete_processed_file
+    sending --> sent : upload_complete [server_acknowledged] / update_message_status
+    sending --> failed : upload_failed / retry_or_mark_failed
+    sent --> delivered : delivery_confirmed / notify_sender
+    sent --> failed : delivery_failed [max_retries_exceeded] / mark_as_undeliverable
+    failed --> processing : retry_processing [retry_count_valid] / reset_processing_state
+    failed --> sending : retry_sending [retry_count_valid] / reset_upload_state
+    delivered --> [*]
+    failed --> [*]
+    cancelled --> [*]

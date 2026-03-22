@@ -1,0 +1,10 @@
+sequenceDiagram
+    participant User as User
+    participant System as System
+    participant Message as Message
+
+    User->>Message: Sends a message
+    Message->>System: Message received
+    User->>System: Adds emoji reaction
+    System->>Message: Updates message with emoji reaction
+    System->>User: Confirms emoji reaction added

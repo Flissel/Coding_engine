@@ -1,0 +1,12 @@
+%%{ init : { "theme" : "default" } }%%
+C4Context
+    title Bildschirmfreigabe System Context Diagram
+
+    Person(user, "Benutzer", "Nutzt die Bildschirmfreigabe während Anrufen")
+    System(bildschirmfreigabe, "Bildschirmfreigabe System", "Unterstützt Bildschirmfreigabe während Anrufen")
+    System_Ext(telefonieSystem, "Telefonie System", "Verwaltet Anrufe und Kommunikation")
+    System_Ext(externeDienste, "Externe Dienste", "Dienste für Bildschirmfreigabe und Datenübertragung")
+
+    Rel(user, bildschirmfreigabe, "Nutzt")
+    Rel(bildschirmfreigabe, telefonieSystem, "Kommuniziert mit")
+    Rel(bildschirmfreigabe, externeDienste, "Verwendet für Bildschirmfreigabe")

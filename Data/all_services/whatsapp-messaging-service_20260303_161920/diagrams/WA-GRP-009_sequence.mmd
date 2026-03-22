@@ -1,0 +1,13 @@
+sequenceDiagram
+    participant User as Benutzer
+    participant System as Event-Planungssystem
+    participant Group as Gruppe
+
+    User->>System: Event erstellen
+    System->>Group: Einladung zur Gruppe senden
+    Group->>System: Teilnahmebestätigung
+    System->>User: Bestätigung der Teilnehmer
+    User->>System: Eventdetails aktualisieren
+    System->>Group: Aktualisierte Informationen senden
+    Group->>System: Rückmeldung zu Änderungen
+    System->>User: Rückmeldung der Gruppe

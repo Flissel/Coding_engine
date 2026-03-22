@@ -1,0 +1,7 @@
+stateDiagram-v2
+    [*] --> StatusErstellen
+    StatusErstellen --> StatusInBearbeitung: Start Status erstellen
+    StatusInBearbeitung --> StatusFertig: Status aktualisiert
+    StatusFertig --> [*]: Status abgeschlossen
+    StatusInBearbeitung --> StatusAbbrechen: Abbrechen
+    StatusAbbrechen --> [*]: Status abgebrochen

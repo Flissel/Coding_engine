@@ -1,0 +1,52 @@
+flowchart LR
+    subgraph Tasks
+        TASK-001((CI/CD Pipeline für C))
+        TASK-002((Docker & Kubernetes ))
+        TASK-003[Backend API: Telefon]
+        TASK-004[Backend: 2FA, Passke]
+        TASK-005[Mobile UI: Registrie]
+        TASK-006[Cross-Cutting: Loggi]
+        TASK-007([End-to-End Tests für])
+        TASK-008((Monitoring-Dashboard))
+        TASK-009[Auth-Service Grundge]
+        TASK-010[Telefonnummer-Regist]
+        TASK-011[Zwei-Faktor-Authenti]
+        TASK-012[Multi-Device & Passk]
+        TASK-013[Biometrische Entsper]
+        TASK-014([End-to-End Tests fue])
+        TASK-015((CI/CD, Docker & Moni))
+        TASK-016((Dokumentation: API, ))
+        TASK-017[Auth-Logging, Validi]
+        TASK-018[Telefonnummer-Regist]
+        TASK-019[Zwei-Faktor-Authenti]
+        TASK-020[Biometrische Entsper]
+    end
+
+    TASK-001 --> TASK-002
+    TASK-001 --> TASK-003
+    TASK-003 --> TASK-004
+    TASK-003 --> TASK-005
+    TASK-003 --> TASK-006
+    TASK-004 --> TASK-006
+    TASK-004 --> TASK-007
+    TASK-005 --> TASK-007
+    TASK-001 --> TASK-007
+    TASK-002 --> TASK-008
+    TASK-006 --> TASK-008
+    TASK-001 --> TASK-010
+    TASK-002 --> TASK-011
+    TASK-001 --> TASK-012
+    TASK-003 --> TASK-012
+    TASK-003 --> TASK-013
+    TASK-002 --> TASK-014
+    TASK-003 --> TASK-014
+    TASK-004 --> TASK-014
+    TASK-005 --> TASK-014
+    TASK-001 --> TASK-015
+    TASK-002 --> TASK-016
+    TASK-003 --> TASK-016
+    TASK-004 --> TASK-016
+    TASK-007 --> TASK-016
+    TASK-001 --> TASK-018
+    TASK-002 --> TASK-019
+    TASK-002 --> TASK-020

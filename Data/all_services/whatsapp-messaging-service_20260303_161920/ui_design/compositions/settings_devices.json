@@ -1,0 +1,102 @@
+{
+  "route": "/settings/devices",
+  "screen_name": "Geraete",
+  "description": "",
+  "user_stories": [],
+  "components": [
+    {
+      "component_id": "COMP-023",
+      "component_name": "ProfileHeader",
+      "props": {
+        "title": "Geräte",
+        "variant": "default",
+        "showBackButton": true
+      },
+      "position": "header",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-002",
+      "component_name": "SearchBar",
+      "props": {
+        "variant": "default",
+        "placeholder": "Geräte durchsuchen..."
+      },
+      "position": "main",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-024",
+      "component_name": "DeviceListItem",
+      "props": {
+        "variant": "active",
+        "showActions": true
+      },
+      "position": "main",
+      "responsive": {
+        "mobile": "stacked",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-001",
+      "component_name": "Button",
+      "props": {
+        "variant": "primary",
+        "text": "Neues Gerät hinzufügen"
+      },
+      "position": "main",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-001",
+      "component_name": "Button",
+      "props": {
+        "variant": "danger",
+        "text": "Gerät entfernen"
+      },
+      "position": "main",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-026",
+      "component_name": "ToastNotification",
+      "props": {
+        "variant": "success",
+        "message": "Gerät erfolgreich hinzugefügt"
+      },
+      "position": "modal",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    }
+  ],
+  "layout": "flex column, padding 16px, max-width 800px, centered",
+  "data_sources": [
+    "GET /api/v1/devices",
+    "POST /api/v1/devices",
+    "PUT /api/v1/devices/{id}",
+    "DELETE /api/v1/devices/{id}"
+  ],
+  "state_shape": {
+    "devices": "array",
+    "selectedDevice": "object|null",
+    "searchQuery": "string",
+    "isLoading": "boolean",
+    "error": "string|null",
+    "showDeleteConfirm": "boolean"
+  }
+}

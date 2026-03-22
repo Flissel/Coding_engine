@@ -1,0 +1,9 @@
+%%{init: {'theme': 'default'}}%%
+%%{ c4: { "title": "Effiziente Synchronisation", "description": "Systemarchitektur für effiziente Nachrichtensynchronisation" } }%%
+C4Context
+    Person(customer, "Kunde", "Ein Benutzer, der Nachrichten synchronisieren möchte.")
+    System(system, "Effiziente Synchronisation", "Ein System zur effizienten Nachrichtensynchronisation.")
+    System_Ext(externalSystem, "Externer Dienst", "Ein externer Dienst, der zur Synchronisation von Nachrichten verwendet wird.")
+
+    Rel(customer, system, "Verwendet")
+    Rel(system, externalSystem, "Synchronisiert Nachrichten mit")

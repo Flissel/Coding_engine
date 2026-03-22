@@ -1,0 +1,15 @@
+sequenceDiagram
+    participant User
+    participant System
+    participant Admin
+
+    User->>System: Upload message/media
+    System->>System: Check size constraints
+    alt Size within limits
+        System->>User: Upload successful
+    else Size exceeds limits
+        System->>User: Error: Size limit exceeded
+        User->>System: Retry with smaller size
+    end
+    Admin->>System: Update size limits
+    System->>Admin: Size limits updated

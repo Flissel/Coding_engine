@@ -1,0 +1,16 @@
+%%{init: {'theme': 'default'}}%%
+C4Context
+    title Authentication Hardening System Architecture
+
+    Person(admin, "Administrator", "Manages authentication settings and audits")
+    Person(user, "User", "Interacts with the system")
+
+    System(system, "Authentication System", "Handles user authentication and audit logging")
+
+    System_Ext(auditLog, "Audit Log Service", "Stores audit logs for authentication events")
+    System_Ext(identityProvider, "Identity Provider", "External service for identity verification")
+
+    Rel(admin, system, "Configures and audits")
+    Rel(user, system, "Authenticates")
+    Rel(system, auditLog, "Logs authentication events")
+    Rel(system, identityProvider, "Verifies user identity")

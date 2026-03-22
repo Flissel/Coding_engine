@@ -1,0 +1,130 @@
+{
+  "id": "SCREEN-040",
+  "name": "Dashboard - Nachricht loeschen",
+  "route": "/dashboard",
+  "layout": "split",
+  "description": "Dashboard mit Chat-Liste und Chat-Ansicht. Ermoeglicht das Loeschen gesendeter oder empfangener Nachrichten ueber ein Kontextmenue an jeder ChatBubble.",
+  "components": [
+    "COMP-001",
+    "COMP-002",
+    "COMP-003",
+    "COMP-004",
+    "COMP-005",
+    "COMP-010"
+  ],
+  "component_layout": [
+    {
+      "id": "COMP-002",
+      "name": "SearchBar",
+      "x": 0,
+      "y": 0,
+      "w": 18,
+      "h": 3
+    },
+    {
+      "id": "COMP-003",
+      "name": "ChatListItem",
+      "x": 0,
+      "y": 3,
+      "w": 18,
+      "h": 21
+    },
+    {
+      "id": "COMP-010",
+      "name": "StatusIndicator",
+      "x": 19,
+      "y": 0,
+      "w": 41,
+      "h": 3
+    },
+    {
+      "id": "COMP-004",
+      "name": "ChatBubble",
+      "x": 19,
+      "y": 3,
+      "w": 41,
+      "h": 18
+    },
+    {
+      "id": "COMP-005",
+      "name": "MessageInput",
+      "x": 19,
+      "y": 21,
+      "w": 41,
+      "h": 3
+    },
+    {
+      "id": "COMP-001",
+      "name": "DeleteButton",
+      "x": 30,
+      "y": 9,
+      "w": 14,
+      "h": 5
+    }
+  ],
+  "data_requirements": [
+    "GET /api/chats",
+    "GET /api/chats/{chatId}/messages",
+    "DELETE /api/messages/{messageId}",
+    "DELETE /api/messages/{messageId}?forEveryone=true"
+  ],
+  "parent_user_story": "US-013",
+  "wireframe_mermaid": "flowchart TD\n    subgraph Dashboard_-_Nachricht_loeschen\n        Header[Header / Navigation]\n        Main[Main Content Area]\n        Sidebar[Sidebar / Filters]\n        Footer[Footer / Actions]\n    end\n\n    Header --> Main\n    Sidebar --> Main\n    Main --> Footer\n\n    %% \n",
+  "wireframe_ascii": "     0    5   10   15   20   25   30   35   40   45   50   55   60\n   0 +------------------+------------------------------------------+\n     | [SearchBar]      | [ContactName]   [StatusIndicator] Online |\n   2 |  COMP-002        |  COMP-010                                |\n     +------------------+------------------------------------------+\n   3 | [ChatListItem]   |                                          |\n     |  COMP-003        |  +--------------------------------------+|\n   5 | +==============+ |  |  [Hallo, wie geht's?]     10:01  <- ||\n     | | Anna Mueller | |  |        COMP-004 (received)           ||\n   7 | | Letzte Nachr.| |  |                                      ||\n     | | 10:05        | |  |  -> 10:03  [Mir geht es gut!]        ||\n   9 | +==============+ |  |        COMP-004 (sent)                ||\n     | +--------------+ |  |        +--------------------+        ||\n  11 | | Max Schmidt  | |  |        | [Nachricht loeschen] |       ||\n     | | Hey!         | |  |        |  COMP-001            |       ||\n  13 | | 09:45        | |  |        | [Fuer mich loeschen] |       ||\n     | +--------------+ |  |        | [Fuer alle loeschen] |       ||\n  15 | +--------------+ |  |        +--------------------+        ||\n     | | Gruppe Dev   | |  |                                      ||\n  17 | | Meeting...   | |  |  -> 10:05  [Bis spaeter!]            ||\n     | | 09:30        | |  |        COMP-004 (sent)                ||\n  19 | +--------------+ |  |                                      ||\n     |                  |  +--------------------------------------+|\n  21 +------------------+------------------------------------------+\n     |                  | [MessageInput: Nachricht eingeben] [Send]|\n  23 |                  |  COMP-005                                |\n  24 +------------------+------------------------------------------+",
+  "state_bindings": {
+    "COMP-002": "chats.searchQuery",
+    "COMP-003": "chats.list",
+    "COMP-004": "chats.activeChat.messages",
+    "COMP-005": "chats.activeChat.newMessage",
+    "COMP-010": "chats.activeChat.contact.status",
+    "COMP-001": "chats.activeChat.deleteAction"
+  },
+  "navigation_rules": [
+    {
+      "trigger": "chat_list_item_click",
+      "target": "/dashboard/chat/{chatId}",
+      "condition": ""
+    },
+    {
+      "trigger": "message_long_press",
+      "target": "",
+      "condition": "message.selected === true",
+      "action": "show_delete_context_menu"
+    },
+    {
+      "trigger": "delete_for_me_click",
+      "target": "",
+      "condition": "",
+      "action": "DELETE /api/messages/{messageId}"
+    },
+    {
+      "trigger": "delete_for_everyone_click",
+      "target": "",
+      "condition": "message.sender === currentUser && message.age < 3600",
+      "action": "DELETE /api/messages/{messageId}?forEveryone=true"
+    },
+    {
+      "trigger": "delete_confirm",
+      "target": "/dashboard/chat/{chatId}",
+      "condition": "deleteResult.success === true"
+    }
+  ],
+  "responsive": {
+    "mobile": {
+      "layout": "stack",
+      "hidden_components": [
+        "COMP-003"
+      ],
+      "notes": "Chat-Liste und Chat-Ansicht als separate Screens. Loeschen via Swipe-Geste oder Long-Press."
+    },
+    "tablet": {
+      "layout": "split-collapsed",
+      "notes": "Schmale Chat-Liste links, Chat-Ansicht rechts."
+    },
+    "desktop": {
+      "layout": "split",
+      "notes": "Volle Split-Ansicht mit Chat-Liste und Chat-Bereich nebeneinander."
+    }
+  },
+  "auth_required": true
+}

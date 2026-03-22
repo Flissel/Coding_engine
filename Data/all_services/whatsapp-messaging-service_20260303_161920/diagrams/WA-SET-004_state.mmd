@@ -1,0 +1,7 @@
+stateDiagram-v2
+    [*] --> Hidden
+    Hidden --> Visible : Show Info/Status
+    Visible --> Hidden : Hide Info/Status
+    Visible --> Configured : Configure Visibility
+    Configured --> Visible : Apply Configuration
+    Configured --> Hidden : Revert Configuration

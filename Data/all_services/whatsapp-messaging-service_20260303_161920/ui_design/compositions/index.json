@@ -1,0 +1,63 @@
+{
+  "route": "/",
+  "screen_name": "Start",
+  "description": "",
+  "user_stories": [
+    "US-111"
+  ],
+  "components": [
+    {
+      "component_id": "COMP-001",
+      "component_name": "Button",
+      "props": {
+        "variant": "primary",
+        "text": "Mit Passkey anmelden"
+      },
+      "position": "main",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-001",
+      "component_name": "Button",
+      "props": {
+        "variant": "secondary",
+        "text": "Neuen Passkey erstellen"
+      },
+      "position": "main",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-026",
+      "component_name": "ToastNotification",
+      "props": {
+        "variant": "error",
+        "message": "Anmeldung fehlgeschlagen"
+      },
+      "position": "modal",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    }
+  ],
+  "layout": "flex column, centered, max-width 400px, gap-4, padding-6",
+  "data_sources": [
+    "POST /api/v1/auth/passkeys/authentication/options",
+    "POST /api/v1/auth/passkeys/authentication/verify",
+    "POST /api/v1/auth/passkeys/registration/options",
+    "POST /api/v1/auth/passkeys/registration/verify"
+  ],
+  "state_shape": {
+    "isLoading": "boolean",
+    "authenticationOptions": "object",
+    "registrationOptions": "object",
+    "error": "string",
+    "isAuthenticated": "boolean"
+  }
+}

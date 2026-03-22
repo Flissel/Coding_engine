@@ -1,0 +1,11 @@
+flowchart TD
+    A[Start] --> B[Importiere Bild]
+    B --> C{Bildbearbeitung notwendig?}
+    C -->|Ja| D[Wende grundlegende Bearbeitung an]
+    C -->|Nein| E[Gehe zu Senden]
+    D --> F[Anpassung von Helligkeit]
+    F --> G[Anpassung von Kontrast]
+    G --> H[Zuschneiden des Bildes]
+    H --> E
+    E --> I[Sende Bild]
+    I --> J[Ende]

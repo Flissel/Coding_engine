@@ -1,0 +1,121 @@
+{
+  "id": "SCREEN-022",
+  "name": "Zwei-Faktor-Authentifizierung",
+  "route": "/settings/security/2fa",
+  "layout": "single-column",
+  "description": "Einstellungsseite zur Aktivierung und Konfiguration der Zwei-Faktor-Authentifizierung (2FA) mit Toggle und PIN-Setup, um Multi-Device Support abzusichern",
+  "components": [
+    "COMP-001",
+    "COMP-010"
+  ],
+  "component_layout": [
+    {
+      "id": "header-bar",
+      "name": "HeaderBar (Back + Title)",
+      "x": 0,
+      "y": 0,
+      "w": 60,
+      "h": 4
+    },
+    {
+      "id": "COMP-010",
+      "name": "StatusIndicator (2FA Status)",
+      "x": 4,
+      "y": 6,
+      "w": 52,
+      "h": 4
+    },
+    {
+      "id": "toggle-2fa",
+      "name": "2FA Toggle Switch",
+      "x": 4,
+      "y": 10,
+      "w": 52,
+      "h": 4
+    },
+    {
+      "id": "pin-input-1",
+      "name": "PIN Input Field",
+      "x": 4,
+      "y": 16,
+      "w": 52,
+      "h": 3
+    },
+    {
+      "id": "pin-input-2",
+      "name": "PIN Confirm Field",
+      "x": 4,
+      "y": 20,
+      "w": 52,
+      "h": 3
+    },
+    {
+      "id": "device-list",
+      "name": "Connected Devices List",
+      "x": 4,
+      "y": 25,
+      "w": 52,
+      "h": 8
+    },
+    {
+      "id": "COMP-001",
+      "name": "Button (Save / Activate)",
+      "x": 16,
+      "y": 35,
+      "w": 28,
+      "h": 3
+    }
+  ],
+  "data_requirements": [
+    "GET /api/settings/security/2fa",
+    "PUT /api/settings/security/2fa",
+    "POST /api/settings/security/2fa/verify-pin",
+    "GET /api/devices"
+  ],
+  "parent_user_story": "US-004",
+  "wireframe_mermaid": "flowchart TD\n    subgraph Zwei-Faktor-Authentifizierung\n        Header[Header / Navigation]\n        Main[Main Content Area]\n        Sidebar[Sidebar / Filters]\n        Footer[Footer / Actions]\n    end\n\n    Header --> Main\n    Sidebar --> Main\n    Main --> Footer\n\n    %% \n",
+  "wireframe_ascii": "     0    5   10   15   20   25   30   35   40   45   50   55   60\n   0 +------------------------------------------------------------+\n     |  [<Back]     Zwei-Faktor-Authentifizierung                 |\n   2 |                    Header Bar                              |\n     +------------------------------------------------------------+\n   4 |                                                            |\n     |                                                            |\n   6 |    +--------------------------------------------------+    |\n     |    | COMP-010  StatusIndicator                         |    |\n   8 |    | Status: [●] 2FA ist aktiv    Sicher seit 12.03.25 |    |\n     |    +--------------------------------------------------+    |\n  10 |    +--------------------------------------------------+    |\n     |    |  Zwei-Faktor-Authentifizierung aktivieren         |    |\n  12 |    |                                  [ ○===ON ]       |    |\n     |    +--------------------------------------------------+    |\n  14 |                                                            |\n     |    - - - - - - PIN Setup - - - - - - - - - - - - - -       |\n  16 |    +--------------------------------------------------+    |\n     |    |  6-stellige PIN eingeben:                        |    |\n  18 |    |  [ _ ] [ _ ] [ _ ] [ _ ] [ _ ] [ _ ]             |    |\n     |    +--------------------------------------------------+    |\n  20 |    +--------------------------------------------------+    |\n     |    |  PIN bestaetigen:                                |    |\n  22 |    |  [ _ ] [ _ ] [ _ ] [ _ ] [ _ ] [ _ ]             |    |\n     |    +--------------------------------------------------+    |\n  24 |                                                            |\n     |    - - - - - Verbundene Geraete - - - - - - - - - -        |\n  26 |    +--------------------------------------------------+    |\n     |    | 📱 iPhone 14 Pro      aktiv jetzt    [Entfernen] |    |\n  28 |    |--------------------------------------------------|    |\n     |    | 💻 MacBook Pro        aktiv vor 2h   [Entfernen] |    |\n  30 |    |--------------------------------------------------|    |\n     |    | 🖥  Web Browser        aktiv vor 1d   [Entfernen] |    |\n  32 |    +--------------------------------------------------+    |\n     |                                                            |\n  34 |                                                            |\n  35 |              +----------------------------+                |\n     |              |  COMP-001  Button           |                |\n  37 |              |  [ 2FA Aktivieren & Sichern ]|                |\n     |              +----------------------------+                |\n  39 |                                                            |\n  40 +------------------------------------------------------------+",
+  "state_bindings": {
+    "COMP-010": "security.twoFactorStatus",
+    "toggle-2fa": "security.twoFactorEnabled",
+    "pin-input-1": "security.pinInput",
+    "pin-input-2": "security.pinConfirm",
+    "device-list": "devices.connectedDevices",
+    "COMP-001": "security.saveAction"
+  },
+  "navigation_rules": [
+    {
+      "trigger": "back_click",
+      "target": "/settings/security",
+      "condition": ""
+    },
+    {
+      "trigger": "save_click",
+      "target": "/settings/security/2fa",
+      "condition": "security.pinInput === security.pinConfirm && security.pinInput.length === 6"
+    },
+    {
+      "trigger": "remove_device_click",
+      "target": "/settings/security/2fa",
+      "condition": "devices.connectedDevices.length > 1"
+    },
+    {
+      "trigger": "toggle_off",
+      "target": "/settings/security/2fa/confirm-disable",
+      "condition": "security.twoFactorEnabled === true"
+    }
+  ],
+  "responsive": {
+    "mobile": {
+      "layout": "stack",
+      "hidden_components": []
+    },
+    "tablet": {
+      "layout": "single-column-centered"
+    },
+    "desktop": {
+      "layout": "single-column-centered"
+    }
+  },
+  "auth_required": true
+}

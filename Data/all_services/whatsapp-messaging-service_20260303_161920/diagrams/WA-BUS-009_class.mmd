@@ -1,0 +1,19 @@
+classDiagram
+    class Business {
+        +String name
+        +String id
+        +List<MessageStatistic> messageStatistics
+        +addMessageStatistic(MessageStatistic statistic)
+        +getMessageStatistics() List<MessageStatistic>
+    }
+
+    class MessageStatistic {
+        +String type
+        +int count
+        +DateTime timestamp
+        +getType() String
+        +getCount() int
+        +getTimestamp() DateTime
+    }
+
+    Business "1" -- "*" MessageStatistic : contains

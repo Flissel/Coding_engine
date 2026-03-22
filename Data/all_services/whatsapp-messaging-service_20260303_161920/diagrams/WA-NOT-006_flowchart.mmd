@@ -1,0 +1,12 @@
+flowchart TD
+    A[Start] --> B{Sind Anrufbenachrichtigungen aktiviert?}
+    B -- Ja --> C[Benutzerdefinierte Einstellungen anzeigen]
+    B -- Nein --> D[Standardbenachrichtigungen verwenden]
+    C --> E{Möchte der Benutzer Änderungen vornehmen?}
+    E -- Ja --> F[Einstellungen anpassen]
+    E -- Nein --> G[Benachrichtigungen aktivieren]
+    F --> G
+    D --> H[Benachrichtigungen aktivieren]
+    G --> I[Anrufbenachrichtigungen aktiv]
+    H --> I
+    I --> J[Ende]

@@ -1,0 +1,13 @@
+sequenceDiagram
+    participant User
+    participant ShareExtension
+    participant System
+
+    User->>ShareExtension: Initiate share
+    ShareExtension->>System: Request sharing options
+    System-->>ShareExtension: Provide sharing options
+    ShareExtension-->>User: Display sharing options
+    User->>ShareExtension: Select sharing option
+    ShareExtension->>System: Send shared content
+    System-->>ShareExtension: Confirm receipt
+    ShareExtension-->>User: Notify sharing success

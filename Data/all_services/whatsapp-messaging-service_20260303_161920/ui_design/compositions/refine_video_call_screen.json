@@ -1,0 +1,10 @@
+{
+  "route": "/chats/:chatId/video-call",
+  "screen_name": "Video Call Screen",
+  "linked_user_stories": [
+    "US-037"
+  ],
+  "user_stories": [
+    "US-037"
+  ]
+}

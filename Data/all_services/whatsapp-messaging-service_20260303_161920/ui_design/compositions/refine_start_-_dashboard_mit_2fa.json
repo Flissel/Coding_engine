@@ -1,0 +1,10 @@
+{
+  "route": "/",
+  "screen_name": "Start - Dashboard mit 2FA",
+  "linked_user_stories": [
+    "US-086"
+  ],
+  "user_stories": [
+    "US-086"
+  ]
+}

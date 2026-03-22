@@ -1,0 +1,13 @@
+%%{ init : { "theme" : "default" } }%%
+C4Context
+    title Spam-Erkennung System Context Diagram
+
+    Person(user, "Benutzer", "Interagiert mit dem Spam-Erkennungssystem.")
+    System(spamErkennung, "Spam-Erkennung", "Automatisches System zur Erkennung von Spam.")
+
+    System_Ext(emailService, "E-Mail-Dienst", "Dient als Quelle für eingehende E-Mails.")
+    System_Ext(database, "Datenbank", "Speichert die Spam-Erkennungsdaten und -Muster.")
+
+    Rel(user, spamErkennung, "Verwendet")
+    Rel(spamErkennung, emailService, "Empfängt E-Mails von")
+    Rel(spamErkennung, database, "Speichert und ruft Daten von")

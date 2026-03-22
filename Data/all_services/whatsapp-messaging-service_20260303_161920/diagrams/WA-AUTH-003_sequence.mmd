@@ -1,0 +1,12 @@
+sequenceDiagram
+    participant User as Benutzer
+    participant System as System
+    participant BiometricDevice as Biometrisches Gerät
+
+    User->>BiometricDevice: Authentifizierung anfordern
+    BiometricDevice->>User: Fingerabdruck/Face ID scannen
+    User->>BiometricDevice: Fingerabdruck/Face ID bereitstellen
+    BiometricDevice->>System: Authentifizierungsdaten senden
+    System->>BiometricDevice: Authentifizierung überprüfen
+    BiometricDevice->>User: Authentifizierungsergebnis zurückgeben
+    User->>System: Zugriff gewähren

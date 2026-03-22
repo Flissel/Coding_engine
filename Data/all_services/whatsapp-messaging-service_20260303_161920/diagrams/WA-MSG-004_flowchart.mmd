@@ -1,0 +1,10 @@
+flowchart TD
+    A[Nachricht auswählen] --> B{Nachricht bearbeiten?}
+    B -- Ja --> C[Nachricht im Editor öffnen]
+    C --> D[Änderungen vornehmen]
+    D --> E{Änderungen speichern?}
+    E -- Ja --> F[Nachricht speichern]
+    F --> G[Bestätigung anzeigen]
+    E -- Nein --> H[Bearbeitung abbrechen]
+    H --> G
+    B -- Nein --> I[Zurück zur Nachrichtenliste]

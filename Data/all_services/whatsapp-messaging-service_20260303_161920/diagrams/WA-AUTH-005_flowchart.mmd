@@ -1,0 +1,13 @@
+flowchart TD
+    A[Start] --> B{Benutzer wählt Anmeldung}
+    B -->|Passkey| C[Passkey generieren]
+    B -->|Passwort| D[Passwortanmeldung]
+    C --> E[Passkey speichern]
+    D --> F[Authentifizierung]
+    E --> G[Benutzer authentifizieren]
+    F --> H{Erfolgreich?}
+    G --> H
+    H -->|Ja| I[Zugriff gewähren]
+    H -->|Nein| J[Fehlermeldung anzeigen]
+    I --> K[Ende]
+    J --> K

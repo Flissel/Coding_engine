@@ -1,0 +1,132 @@
+{
+  "id": "SCREEN-031",
+  "name": "Unknown Senders Dashboard",
+  "route": "/dashboard/unknown-senders",
+  "layout": "sidebar",
+  "description": "Dashboard-Ansicht zur separaten Anzeige und Verwaltung von Nachrichten unbekannter Absender. Ermöglicht das Filtern, Durchsuchen, Blockieren und Hinzufügen zu Kontakten.",
+  "components": [
+    "COMP-001",
+    "COMP-002",
+    "COMP-003",
+    "COMP-009",
+    "COMP-010"
+  ],
+  "component_layout": [
+    {
+      "id": "header-bar",
+      "name": "HeaderBar",
+      "x": 0,
+      "y": 0,
+      "w": 60,
+      "h": 4
+    },
+    {
+      "id": "COMP-002",
+      "name": "SearchBar",
+      "x": 0,
+      "y": 4,
+      "w": 20,
+      "h": 3
+    },
+    {
+      "id": "COMP-010",
+      "name": "StatusFilter",
+      "x": 0,
+      "y": 7,
+      "w": 20,
+      "h": 5
+    },
+    {
+      "id": "COMP-001",
+      "name": "ActionButtons",
+      "x": 0,
+      "y": 12,
+      "w": 20,
+      "h": 4
+    },
+    {
+      "id": "COMP-003",
+      "name": "UnknownSenderList",
+      "x": 21,
+      "y": 4,
+      "w": 39,
+      "h": 12
+    },
+    {
+      "id": "COMP-009",
+      "name": "ContactCard",
+      "x": 21,
+      "y": 16,
+      "w": 39,
+      "h": 8
+    }
+  ],
+  "data_requirements": [
+    "GET /api/messages/unknown-senders",
+    "GET /api/messages/unknown-senders?search={query}",
+    "GET /api/messages/unknown-senders/{senderId}",
+    "POST /api/contacts (add unknown sender to contacts)",
+    "POST /api/messages/unknown-senders/{senderId}/block",
+    "DELETE /api/messages/unknown-senders/{senderId}"
+  ],
+  "parent_user_story": "US-075",
+  "wireframe_mermaid": "flowchart TD\n    subgraph Unknown_Senders_Dashboard\n        Header[Header / Navigation]\n        Main[Main Content Area]\n        Sidebar[Sidebar / Filters]\n        Footer[Footer / Actions]\n    end\n\n    Header --> Main\n    Sidebar --> Main\n    Main --> Footer\n\n    %% \n",
+  "wireframe_ascii": "     0    5   10   15   20   25   30   35   40   45   50   55   60\n   0 +------------------------------------------------------------+\n     | [Logo]   Unbekannte Absender          [Badge: 12 neu]    |\n   2 |  Dashboard > Unbekannte Absender                          |\n     |  COMP-001 [Alle markieren] [Blockieren] [Löschen]        |\n   3 +------------------------------------------------------------+\n   4 +-------------------+|+--------------------------------------+\n     | [🔍 Suche...]     ||  Unbekannte Absender (24)             |\n   5 |  COMP-002         ||                                      |\n     | SearchBar         ||  +----------------------------------+ |\n   6 |                   ||  | 📱 +49 176 xxx  COMP-010 [●neu] | |\n   7 +-------------------+|  | \"Hallo, ich bins...\"    14:32   | |\n     | Filter  COMP-010   ||  | COMP-003 (ChatListItem)         | |\n   8 | +-----------------+||  +----------------------------------+ |\n     | | [●] Alle    (24)||  +----------------------------------+ |\n   9 | | [●] Neu     (12)||  | 📱 +49 151 xxx  COMP-010 [●]   | |\n     | | [○] Gelesen  (8)||  | \"Können wir reden?\"     12:05   | |\n  10 | | [○] Blockiert(4)||  | COMP-003 (ChatListItem)         | |\n     | +-----------------+|  +----------------------------------+ |\n  11 | StatusIndicator    ||  +----------------------------------+ |\n  12 +-------------------+|  | 📱 +44 20 xxx   [blockiert]     | |\n     | Aktionen COMP-001  ||  | \"Buy now...\"            09:11   | |\n  13 | +-------+ +------+||  | COMP-003 (ChatListItem)         | |\n     | |+Kontakt| |Block |||  +----------------------------------+ |\n  14 | |hinzu  | |ieren |||  | 📱 +49 170 xxx  COMP-010 [●neu] | |\n     | +-------+ +------+||  | \"Treffen morgen?\"       gestern | |\n  15 | +----------------+||  | COMP-003 (ChatListItem)         | |\n     | |Alle löschen    |||  +----------------------------------+ |\n  16 | +----------------++|+--------------------------------------+\n     +-------------------+|+--------------------------------------+\n  17 |                    || Absender-Details   COMP-009           |\n     |                    || +------------------------------------+|\n  18 |                    || | 📱 +49 176 xxx xx xx              ||\n     |                    || | Land: Deutschland                 ||\n  19 |                    || | Erste Nachricht: 01.12.2024       ||\n     |                    || | Nachrichten: 3                    ||\n  20 |                    || | Status: Unbekannt  COMP-010       ||\n     |                    || +------------------------------------+|\n  21 |                    || | [+Zu Kontakten] [Blockieren] [🗑] ||\n     |                    || |      COMP-001 (ActionButtons)     ||\n  22 |                    || +------------------------------------+|\n  23 +-------------------++---------------------------------------+\n     |          [< Zurück zum Dashboard]    [Seite 1/3  < 1 2 3 >]|\n  24 +------------------------------------------------------------+",
+  "state_bindings": {
+    "COMP-002": "unknownSenders.searchQuery",
+    "COMP-003": "unknownSenders.list",
+    "COMP-009": "unknownSenders.selectedSenderDetail",
+    "COMP-010": "unknownSenders.statusFilter",
+    "COMP-001": "unknownSenders.actions"
+  },
+  "navigation_rules": [
+    {
+      "trigger": "list_item_click",
+      "target": "/dashboard/unknown-senders/{senderId}",
+      "condition": ""
+    },
+    {
+      "trigger": "add_contact_click",
+      "target": "/contacts/new?phone={senderPhone}",
+      "condition": ""
+    },
+    {
+      "trigger": "block_click",
+      "target": "",
+      "condition": "confirm('Absender blockieren?')"
+    },
+    {
+      "trigger": "delete_click",
+      "target": "",
+      "condition": "confirm('Nachrichten löschen?')"
+    },
+    {
+      "trigger": "back_click",
+      "target": "/dashboard",
+      "condition": ""
+    },
+    {
+      "trigger": "open_chat_click",
+      "target": "/chat/{senderId}",
+      "condition": "sender.isNotBlocked"
+    }
+  ],
+  "responsive": {
+    "mobile": {
+      "layout": "stack",
+      "hidden_components": [
+        "COMP-009"
+      ],
+      "notes": "Liste nimmt volle Breite ein, ContactCard öffnet als Bottom-Sheet bei Tap"
+    },
+    "tablet": {
+      "layout": "sidebar-collapsed",
+      "notes": "Sidebar als Overlay, Liste und Detail nebeneinander"
+    },
+    "desktop": {
+      "layout": "sidebar",
+      "notes": "Volle Drei-Spalten-Ansicht mit Filter, Liste und Detail"
+    }
+  },
+  "auth_required": true
+}

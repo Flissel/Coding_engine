@@ -75,7 +75,7 @@ class EpicParser:
     # Regex Patterns fuer das Parsen
     EPIC_HEADER_PATTERN = r"^# (EPIC-\d{3}): (.+)$"
     EPIC_STATUS_PATTERN = r"\*\*Status:\*\* (\w+)"
-    REQUIREMENTS_PATTERN = r"^- (WA-[A-Z]+-\d{3})$"
+    REQUIREMENTS_PATTERN = r"^- ([A-Z]+-(?:[A-Z]+-)?\d{3,})$"
     USER_STORY_PATTERN = r"^- (US-\d{3})$"
     ENTITY_REQ_PATTERN = r"\*Source Requirements:\* (.+)"
     API_ENDPOINT_PATTERN = r"((?:GET|POST|PUT|DELETE|PATCH)\s+)?(/[a-z0-9/{}_-]+)"
@@ -232,7 +232,7 @@ class EpicParser:
     def _parse_user_stories(self, content: str):
         """Parst User Story Details aus dem Markdown"""
         # Pattern fuer User Story Bloecke
-        us_pattern = r"## (US-\d{3}): (.+?)\n\n\*\*Priority:\*\* (\w+)\n\*\*Linked Requirement:\*\* (WA-[A-Z]+-\d{3})"
+        us_pattern = r"## (US-\d{3}): (.+?)\n\n\*\*Priority:\*\* (\w+)\n\*\*Linked Requirement:\*\* ([A-Z]+-(?:[A-Z]+-)?\d{3,})"
 
         for match in re.finditer(us_pattern, content):
             us_id = match.group(1)

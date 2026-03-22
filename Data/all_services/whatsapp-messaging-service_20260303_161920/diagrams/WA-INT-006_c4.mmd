@@ -1,0 +1,12 @@
+%%{init: {'theme': 'default'}}%%
+C4Context
+    title Web-Version System Architecture
+
+    Person(user, "User", "A user accessing the web version of the system.")
+    
+    System(system, "Web-Version System", "The system providing the web version.")
+    
+    System_Ext(externalSystem, "External Services", "Various external services used by the web version.")
+
+    Rel(user, system, "Uses")
+    Rel(system, externalSystem, "Integrates with")

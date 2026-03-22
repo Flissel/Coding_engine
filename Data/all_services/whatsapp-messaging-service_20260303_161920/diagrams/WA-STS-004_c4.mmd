@@ -1,0 +1,11 @@
+%%{ init : { "theme" : "default" } }%%
+C4Context
+    title System Context Diagram for Status-Datenschutz
+
+    Person(user, "User", "A user who interacts with the system")
+    System(statusDatenschutz, "Status-Datenschutz", "A system that provides configurable status visibility")
+
+    Rel(user, statusDatenschutz, "Uses")
+
+    System_Ext(externalSystem, "External System", "An external system that may interact with Status-Datenschutz")
+    Rel(statusDatenschutz, externalSystem, "Sends and receives status visibility data")

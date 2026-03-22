@@ -1,0 +1,19 @@
+sequenceDiagram
+    participant User
+    participant DeviceA
+    participant DeviceB
+    participant Cloud
+
+    User->>DeviceA: Initiate Backup
+    DeviceA->>Cloud: Upload Backup Data
+    Cloud-->>DeviceA: Confirm Backup Completion
+
+    User->>DeviceA: Initiate Restore
+    DeviceA->>Cloud: Request Backup Data
+    Cloud-->>DeviceA: Send Backup Data
+    DeviceA-->>User: Restore Complete
+
+    User->>DeviceA: Enable Cross-Device Sync
+    DeviceA->>Cloud: Sync Settings
+    Cloud-->>DeviceB: Sync Data
+    DeviceB-->>User: Sync Complete

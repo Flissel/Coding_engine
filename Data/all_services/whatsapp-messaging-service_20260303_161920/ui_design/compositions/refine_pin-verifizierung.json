@@ -1,0 +1,10 @@
+{
+  "route": "/settings/security/2fa/verify",
+  "screen_name": "PIN-Verifizierung",
+  "linked_user_stories": [
+    "US-163"
+  ],
+  "user_stories": [
+    "US-163"
+  ]
+}

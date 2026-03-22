@@ -1,0 +1,11 @@
+%%{ init : { "theme" : "default" } }%%
+C4Context
+    title Lesebestaetigung System Context Diagram
+
+    Person(user, "User", "A user who requires a read confirmation.")
+    System(system, "Lesebestaetigung System", "A system that provides configurable read confirmation.")
+
+    System_Ext(externalSystem, "External System", "An external system that interacts with the Lesebestaetigung System.")
+
+    Rel(user, system, "Uses")
+    Rel(system, externalSystem, "Interacts with")

@@ -1,0 +1,7 @@
+%%{ init : { "theme" : "default" } }%%
+C4Context
+    title System Context Diagram for Desktop-App
+    Person(user, "User", "A user of the Desktop Application")
+    System(desktopApp, "Desktop Application", "A native application for desktop environments")
+
+    Rel(user, desktopApp, "Uses")

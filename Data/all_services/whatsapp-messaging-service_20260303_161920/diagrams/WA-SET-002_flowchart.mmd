@@ -1,0 +1,7 @@
+flowchart TD
+    A[Start] --> B{System konfigurierbar?}
+    B -- Ja --> C[Lesebestaetigung aktivieren]
+    B -- Nein --> D[Konfiguration anpassen]
+    D --> B
+    C --> E[Lesebestaetigung bereit]
+    E --> F[Ende]

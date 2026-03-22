@@ -1,0 +1,10 @@
+{
+  "route": "/settings/help",
+  "screen_name": "Hilfe & Support",
+  "linked_user_stories": [
+    "US-097"
+  ],
+  "user_stories": [
+    "US-097"
+  ]
+}

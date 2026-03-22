@@ -1,0 +1,35 @@
+flowchart TD
+    Start([Start: Verify Authentication Hardening])
+    S1[Jonas oeffnet das Security-Dashboard]
+    Start --> S1
+    E1[/Dashboard laedt nicht wegen fehlender Verbindung/]
+    S1 -.-> E1
+    S2[Jonas waehlt den Bereich 'Authentication Hardening Review']
+    S1 --> S2
+    E2[/Zugriff verweigert wegen fehlender Admin-Rechte/]
+    S2 -.-> E2
+    S3[Jonas startet den MFA-Enforcement-Test fuer privilegierte und Standard-Accounts]
+    S2 --> S3
+    E3[/Test-Accounts fehlen oder sind deaktiviert/]
+    S3 -.-> E3
+    S4{Jonas vergleicht die MFA-Enforcement-Rate mit den Zielwerten}
+    S3 --> S4
+    E4[/Ergebnis unter Zielwerten/]
+    S4 -.-> E4
+    S5[Jonas startet den Lockout-Test mit 5 Fehlversuchen in 10 Minuten]
+    S4 --> S5
+    E5[/Lockout greift nicht oder erst spaeter/]
+    S5 -.-> E5
+    S6{Jonas prueft Audit-Logs gegen Test-Events (Login, Logout, Failure, Passwortwechsel)}
+    S5 --> S6
+    E6[/Einzelne Events fehlen oder Felder unvollstaendig/]
+    S6 -.-> E6
+    S7{Jonas prueft Log-Retention und Tamper-Evidence-Konfiguration}
+    S6 --> S7
+    E7[/Retention unter 365 Tagen oder Tamper-Protection deaktiviert/]
+    S7 -.-> E7
+    S8[Jonas generiert den Compliance-Report]
+    S7 --> S8
+    E8[/Report-Generierung fehlgeschlagen/]
+    S8 -.-> E8
+    S8 --> End([End])

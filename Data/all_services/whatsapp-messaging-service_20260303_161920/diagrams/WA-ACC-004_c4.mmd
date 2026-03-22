@@ -1,0 +1,12 @@
+%%{init: {'theme': 'default'}}%%
+graph TD
+    A[Sprachnachrichten Transkriptionssystem] 
+
+    B[Benutzer] -->|sendet Sprachnachricht| A
+    A -->|liefert Transkription| B
+
+    C[Sprachnachrichten Speicher] -->|stellt Sprachnachrichten bereit| A
+    A -->|speichert Transkription| C
+
+    D[Externer Dienst für Spracherkennung] -->|verarbeitet Sprachnachricht| A
+    A -->|sendet Anfrage zur Transkription| D

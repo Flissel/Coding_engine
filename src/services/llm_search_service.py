@@ -76,15 +76,15 @@ class LLMSearchService:
     def __init__(
         self,
         working_dir: str,
-        qdrant_url: str = "http://localhost:6333",
+        qdrant_url: str = None,
         haiku_model: str = None,
         sonnet_model: str = None,
     ):
-        from src.llm_config import get_model
+        from src.llm_config import get_openrouter_model
         self.working_dir = working_dir
-        self.qdrant_url = qdrant_url
-        self.haiku_model = haiku_model or get_model("judge")
-        self.sonnet_model = sonnet_model or get_model("mcp_standard")
+        self.qdrant_url = qdrant_url or os.environ.get("QDRANT_URL", "http://localhost:6340")
+        self.haiku_model = haiku_model or get_openrouter_model("judge")
+        self.sonnet_model = sonnet_model or get_openrouter_model("mcp_standard")
 
         self._qdrant_client = None
         self._embedder = None
@@ -374,12 +374,13 @@ Rules:
             return []
 
         try:
-            # Get collection name (matches FungusContextAgent naming)
+            # Get collection name (must match FungusContextAgent's fungus_ prefix
+            # because both use OpenAI text-embedding-3-small → 1536 dims)
             if not self._collection_name:
                 from pathlib import Path
                 project_name = Path(self.working_dir).name
                 # Sanitize: replace hyphens with underscores for Qdrant compatibility
-                self._collection_name = f"project_{project_name.replace('-', '_')}"
+                self._collection_name = f"fungus_{project_name.replace('-', '_')}"
 
             # Embed query
             query_embedding = self._embedder.encode([query])[0]

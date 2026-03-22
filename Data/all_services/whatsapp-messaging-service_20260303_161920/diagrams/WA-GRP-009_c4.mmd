@@ -1,0 +1,16 @@
+%%{init: {"theme": "default"}}%%
+C4Context
+    title Event Planen System Context Diagram
+
+    Person(user, "Benutzer", "Person, die an der Event-Planung teilnimmt.")
+    System(system, "Event Planen", "System zur Unterstützung der Event-Planung in Gruppen.")
+
+    Person(admin, "Administrator", "Verwaltet das System und die Benutzer.")
+
+    System_Ext(externalSystem1, "Kalender System", "Externes System zur Verwaltung von Terminen.")
+    System_Ext(externalSystem2, "Benachrichtigungsdienst", "Externes System zur Versendung von Benachrichtigungen.")
+
+    Rel(user, system, "Nutzt")
+    Rel(admin, system, "Verwaltet")
+    Rel(system, externalSystem1, "Synchronisiert Termine")
+    Rel(system, externalSystem2, "Sendet Benachrichtigungen")

@@ -1,0 +1,12 @@
+sequenceDiagram
+    participant User as User
+    participant Watch as Smartwatch
+    participant App as Watch-App
+    participant Server as Backend Server
+
+    User->>Watch: Open Watch-App
+    Watch->>App: Send user request
+    App->>Server: Fetch user data
+    Server-->>App: Return user data
+    App-->>Watch: Display user data
+    Watch-->>User: Show data on screen

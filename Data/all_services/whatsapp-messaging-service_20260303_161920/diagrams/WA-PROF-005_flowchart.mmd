@@ -1,0 +1,10 @@
+flowchart TD
+    A[Start] --> B[Benutzer wählt QR-Code Generierung]
+    B --> C[System prüft Eingaben]
+    C -->|Eingaben gültig| D[QR-Code wird generiert]
+    C -->|Eingaben ungültig| E[Fehlermeldung anzeigen]
+    D --> F[QR-Code wird angezeigt]
+    F --> G[Benutzer scannt QR-Code]
+    G --> H[QR-Code wird hinzugefügt]
+    H --> I[Prozess abgeschlossen]
+    E --> B

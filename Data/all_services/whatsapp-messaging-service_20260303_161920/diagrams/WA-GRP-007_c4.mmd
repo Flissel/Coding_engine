@@ -1,0 +1,8 @@
+%%{ init : { "theme" : "default" } }%%
+C4Context
+    title Kanaele System Context Diagram
+
+    Person(user, "User", "A user who interacts with the Kanaele system.")
+    System(kanaele, "Kanaele System", "A system that supports one-way broadcast channels.")
+
+    Rel(user, kanaele, "Uses")

@@ -1,0 +1,8 @@
+sequenceDiagram
+    participant User as Benutzer
+    participant System as System
+
+    User->>System: Sprachnachricht senden
+    System-->>User: Bestätigung des Sendens
+    System->>System: Sprachnachricht verarbeiten
+    System-->>User: Sprachnachricht erfolgreich gesendet

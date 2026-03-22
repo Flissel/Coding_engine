@@ -1,0 +1,51 @@
+flowchart TD
+    Start([Start: Media-Upload-Throughput verifizieren])
+    S1{User oeffnet das Performance QA Portal zum ersten Mal und startet Onboarding}
+    Start --> S1
+    E1[/Onboarding kann nicht geladen werden bei Offline-Modus; User bekommt Hinweis und Option 'Offline-Demo'/]
+    S1 -.-> E1
+    S2{User meldet sich an oder stellt Account wieder her}
+    S1 --> S2
+    E2[/Account gesperrt oder Passwort vergessen; Recovery-Flow wird gestartet/]
+    S2 -.-> E2
+    S3{User wechselt Geraet und verknuepft neues Testgeraet fuer Instrumentierung}
+    S2 --> S3
+    E3[/Geraetewechsel fehlgeschlagen wegen fehlender Berechtigung; Support-Request wird erzeugt/]
+    S3 -.-> E3
+    S4{User erstellt eine neue Test-Session und waehlt Lastprofil 'Expected' und 'Peak'}
+    S3 --> S4
+    E4[/Konfiguration unvollstaendig; Pflichtfelder fuer Dateigroesse oder Lastprofil fehlen/]
+    S4 -.-> E4
+    S5{User fordert Testressourcen/Cloud-Credits an}
+    S4 --> S5
+    E5[/Zahlung/Abrechnung abgelehnt; User sieht Hinweis und kann andere Kostenstelle waehlen/]
+    S5 -.-> E5
+    S6{User startet Instrumentierung und fuehrt einen Netzwerk-Check durch}
+    S5 --> S6
+    E6[/Netzwerkinstrumentierung fehlgeschlagen oder Verbindung verloren; Retry und Diagnosen werden angeboten/]
+    S6 -.-> E6
+    S7{User startet Upload-Tests (Expected Load) und misst Durchschnitts-Throughput}
+    S6 --> S7
+    E7[/Upload fehlgeschlagen; automatische Wiederholung und Log-Anhang starten/]
+    S7 -.-> E7
+    S8{User startet Upload-Tests (Peak Load) und misst Durchschnitts-Throughput}
+    S7 --> S8
+    E8[/Verlorene Verbindung im Peak Test; Test wird pausiert und nach Wiederverbindung fortgesetzt/]
+    S8 -.-> E8
+    S9{User fuehrt timed Uploads fuer 10 MB aus und berechnet 95. Perzentil Completion Time}
+    S8 --> S9
+    E9[/Ausreisser oder unvollstaendige Daten; User kann Test erneut ausfuehren/]
+    S9 -.-> E9
+    S10{User fuehrt Stress-Tests mit hoher Konkurrenz aus und berechnet 99. Perzentil Completion Time}
+    S9 --> S10
+    E10[/Queue Overload; System empfiehlt Reduktion der Parallelitaet oder Split der Runs/]
+    S10 -.-> E10
+    S11{User startet 1-stuendigen Sustained Concurrency Test und misst Erfolgsrate}
+    S10 --> S11
+    E11[/Fehlgeschlagene Uploads > 0.5%; Alarm wird ausgeloest und Root-Cause-Analyse gestartet/]
+    S11 -.-> E11
+    S12[User exportiert Bericht und teilt ihn mit Stakeholdern]
+    S11 --> S12
+    E12[/Export fehlgeschlagen; Alternative 'CSV herunterladen' oder erneuter Versuch/]
+    S12 -.-> E12
+    S12 --> End([End])

@@ -1,0 +1,24 @@
+sequenceDiagram
+    actor User
+    participant App
+    participant NotificationService
+    participant ChatService
+
+    User->>App: Enable push notifications
+    App->>NotificationService: Register for notifications
+    NotificationService-->>App: Confirmation
+
+    User->>App: Send a new message
+    App->>ChatService: Deliver message
+    ChatService-->>App: Message delivered
+
+    App->>NotificationService: Send push notification for new message
+    NotificationService-->>User: Push notification received
+
+    User->>App: Adjust notification settings for chat
+    App->>NotificationService: Update notification preferences
+    NotificationService-->>App: Preferences updated
+
+    User->>App: Disable push notifications for specific chat
+    App->>NotificationService: Update notification settings
+    NotificationService-->>App: Settings updated

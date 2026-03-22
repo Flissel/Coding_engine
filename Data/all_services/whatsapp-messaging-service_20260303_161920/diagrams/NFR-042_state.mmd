@@ -1,0 +1,47 @@
+stateDiagram-v2
+    [*] --> Planning
+    Planning --> Development
+    Development --> Testing
+    Testing --> Staging
+    Staging --> Production
+    Production --> Monitoring
+    Monitoring --> Feedback
+    Feedback --> Planning
+
+    state Planning {
+        [*] --> Requirements
+        Requirements --> Design
+    }
+
+    state Development {
+        [*] --> Coding
+        Coding --> CodeReview
+        CodeReview --> Integration
+    }
+
+    state Testing {
+        [*] --> UnitTests
+        UnitTests --> IntegrationTests
+        IntegrationTests --> UserAcceptance
+    }
+
+    state Staging {
+        [*] --> PreProduction
+        PreProduction --> FinalChecks
+    }
+
+    state Production {
+        [*] --> Live
+        Live --> Rollback
+        Rollback --> Live
+    }
+
+    state Monitoring {
+        [*] --> PerformanceMonitoring
+        PerformanceMonitoring --> ErrorTracking
+    }
+
+    state Feedback {
+        [*] --> UserFeedback
+        UserFeedback --> Improvement
+    }

@@ -1,0 +1,145 @@
+{
+  "route": "/settings/devices/overview",
+  "screen_name": "Multi-Device Uebersicht",
+  "description": "",
+  "user_stories": [
+    "US-004",
+    "US-132",
+    "US-159"
+  ],
+  "components": [
+    {
+      "component_id": "COMP-023",
+      "component_name": "ProfileHeader",
+      "props": {
+        "title": "Geräte-Übersicht",
+        "variant": "default"
+      },
+      "position": "header",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-002",
+      "component_name": "SearchBar",
+      "props": {
+        "placeholder": "Geräte durchsuchen...",
+        "variant": "default"
+      },
+      "position": "main",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-024",
+      "component_name": "DeviceListItem",
+      "props": {
+        "variant": "active",
+        "showStatus": true,
+        "showLastSeen": true
+      },
+      "position": "main",
+      "responsive": {
+        "mobile": "stacked",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-024",
+      "component_name": "DeviceListItem",
+      "props": {
+        "variant": "inactive",
+        "showStatus": true,
+        "showLastSeen": true
+      },
+      "position": "main",
+      "responsive": {
+        "mobile": "stacked",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-021",
+      "component_name": "EncryptionBadge",
+      "props": {
+        "variant": "secure"
+      },
+      "position": "main",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-001",
+      "component_name": "Button",
+      "props": {
+        "variant": "primary",
+        "text": "Neues Gerät hinzufügen"
+      },
+      "position": "main",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-001",
+      "component_name": "Button",
+      "props": {
+        "variant": "outline",
+        "text": "Alle Geräte synchronisieren"
+      },
+      "position": "main",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-001",
+      "component_name": "Button",
+      "props": {
+        "variant": "danger",
+        "text": "Gerät entfernen"
+      },
+      "position": "main",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-026",
+      "component_name": "ToastNotification",
+      "props": {
+        "variant": "success",
+        "message": "Gerät erfolgreich hinzugefügt"
+      },
+      "position": "modal",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    }
+  ],
+  "layout": "flex column, gap-4, max-width 800px, padding 16px",
+  "data_sources": [
+    "GET /api/v1/devices",
+    "POST /api/v1/devices",
+    "PUT /api/v1/devices/{id}",
+    "DELETE /api/v1/devices/{id}"
+  ],
+  "state_shape": {
+    "devices": "Device[]",
+    "searchQuery": "string",
+    "selectedDevice": "Device | null",
+    "isLoading": "boolean",
+    "error": "string | null",
+    "showAddDeviceDialog": "boolean"
+  }
+}

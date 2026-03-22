@@ -1,0 +1,19 @@
+sequenceDiagram
+    participant User as User
+    participant System as System
+    participant Media as Media Service
+
+    User->>System: Upload file (image/video/document)
+    System->>Media: Send file for processing
+    Media-->>System: Return file preview
+    System-->>User: Display file preview
+
+    User->>System: Send file
+    System->>Media: Store file
+    Media-->>System: Confirm storage
+    System-->>User: Confirm file sent
+
+    User->>System: Request file
+    System->>Media: Retrieve file
+    Media-->>System: Return file
+    System-->>User: Deliver file

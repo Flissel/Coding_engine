@@ -1,0 +1,16 @@
+%%{ init : { "theme" : "default" } }%%
+C4Context
+    title System Context Diagram for Backup, Restore, and Cross-Device Sync
+
+    Person(user, "User", "A user who interacts with the system.")
+    
+    System(system, "Backup and Sync System", "Handles backup, restore, and synchronization of data across devices.")
+    
+    System_Ext(cloudStorage, "Cloud Storage", "Remote storage for backups.")
+    System_Ext(localStorage, "Local Storage", "Local device storage for backups.")
+    
+    Rel(user, system, "Uses")
+    Rel(system, cloudStorage, "Backs up data to")
+    Rel(system, localStorage, "Backs up data to")
+    Rel(system, user, "Restores data from")
+    Rel(system, user, "Syncs data across devices")

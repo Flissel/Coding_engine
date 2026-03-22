@@ -23,9 +23,12 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy source code and entry scripts
 COPY src/ ./src/
+COPY mcp_plugins/ ./mcp_plugins/
+COPY workers/ ./workers/
 COPY run_society_hybrid.py ./
 COPY run_hybrid.py ./
 COPY run_job.py ./
+COPY run_workers.py ./
 
 # Create data directories
 RUN mkdir -p /data/projects /data/logs

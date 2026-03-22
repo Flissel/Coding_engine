@@ -1,0 +1,13 @@
+flowchart TD
+    A[Start] --> B{Status wählen}
+    B -->|Kontakt 1| C[Stumm schalten Kontakt 1]
+    B -->|Kontakt 2| D[Stumm schalten Kontakt 2]
+    B -->|Kontakt 3| E[Stumm schalten Kontakt 3]
+    C --> F[Status aktualisieren]
+    D --> F
+    E --> F
+    F --> G{Erfolg?}
+    G -->|Ja| H[Bestätigung anzeigen]
+    G -->|Nein| I[Fehler anzeigen]
+    H --> J[Ende]
+    I --> J

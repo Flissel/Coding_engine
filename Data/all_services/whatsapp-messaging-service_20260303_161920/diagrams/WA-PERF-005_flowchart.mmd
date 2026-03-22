@@ -1,0 +1,11 @@
+flowchart TD
+    A[Start] --> B{Ist das System speichereffizient?}
+    B -- Ja --> C[System läuft optimal]
+    B -- Nein --> D[Optimierung der Speichereffizienz]
+    D --> E{Wurden Änderungen implementiert?}
+    E -- Ja --> F[Testen der Effizienz]
+    E -- Nein --> G[Weitere Optimierungen erforderlich]
+    F --> H{Erfüllt das System die Anforderungen?}
+    H -- Ja --> C
+    H -- Nein --> D
+    G --> D

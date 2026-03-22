@@ -1,0 +1,140 @@
+{
+  "id": "SCREEN-037",
+  "name": "Chat Background Settings",
+  "route": "/dashboard/chat-background",
+  "layout": "split",
+  "description": "Screen zum individuellen Auswählen und Speichern des Chat-Hintergrunds mit Live-Vorschau im Chat-Bereich",
+  "components": [
+    "COMP-001",
+    "COMP-004",
+    "COMP-005",
+    "COMP-010"
+  ],
+  "component_layout": [
+    {
+      "id": "COMP-010",
+      "name": "StatusIndicator (Save Status)",
+      "x": 0,
+      "y": 0,
+      "w": 60,
+      "h": 3
+    },
+    {
+      "id": "COMP-001-back",
+      "name": "Button (Back to Dashboard)",
+      "x": 0,
+      "y": 0,
+      "w": 10,
+      "h": 3
+    },
+    {
+      "id": "COMP-001-colors",
+      "name": "Button (Color Swatches)",
+      "x": 0,
+      "y": 3,
+      "w": 20,
+      "h": 10
+    },
+    {
+      "id": "COMP-001-upload",
+      "name": "Button (Upload Image)",
+      "x": 0,
+      "y": 13,
+      "w": 20,
+      "h": 3
+    },
+    {
+      "id": "COMP-001-default",
+      "name": "Button (Reset Default)",
+      "x": 0,
+      "y": 16,
+      "w": 20,
+      "h": 3
+    },
+    {
+      "id": "COMP-001-save",
+      "name": "Button (Save)",
+      "x": 0,
+      "y": 19,
+      "w": 20,
+      "h": 3
+    },
+    {
+      "id": "COMP-004",
+      "name": "ChatBubble (Preview Messages)",
+      "x": 21,
+      "y": 5,
+      "w": 39,
+      "h": 14
+    },
+    {
+      "id": "COMP-005",
+      "name": "MessageInput (Preview Input)",
+      "x": 21,
+      "y": 19,
+      "w": 39,
+      "h": 3
+    }
+  ],
+  "data_requirements": [
+    "GET /api/settings/chat-background",
+    "GET /api/settings/chat-background/presets",
+    "PUT /api/settings/chat-background",
+    "POST /api/settings/chat-background/upload"
+  ],
+  "parent_user_story": "US-087",
+  "wireframe_mermaid": "flowchart TD\n    subgraph Chat_Background_Settings\n        Header[Header / Navigation]\n        Main[Main Content Area]\n        Sidebar[Sidebar / Filters]\n        Footer[Footer / Actions]\n    end\n\n    Header --> Main\n    Sidebar --> Main\n    Main --> Footer\n\n    %% \n",
+  "wireframe_ascii": "     0    5   10   15   20   25   30   35   40   45   50   55   60\n   0 +------------------------------------------------------------+\n     | [< Back]  Chat-Hintergrund anpassen    [Saved ✓] COMP-010 |\n   2 |  COMP-001                                                  |\n     +-------------------+----------------------------------------+\n   3 | HINTERGRUND       |   LIVE-VORSCHAU                        |\n     | AUSWAHL           |  +------------------------------------+|\n   5 |                   |  | ::::::::::::::::::::::::::::::::::::||\n     | [■] Dunkelgrün    |  |  +-------------+                   ||\n   7 | [■] Hellblau      |  |  | Hallo!      |  COMP-004         ||\n     | [■] Beige         |  |  +-------------+                   ||\n   9 | [■] Dunkelblau    |  |                  +----------------+||\n     | [■] Rosa          |  |                  | Hey, wie gehts |||\n  11 | [■] Grau          |  |                  +----------------+||\n     |  COMP-001         |  |  +-------------+                   ||\n  13 | (Color Swatches)  |  |  | Super! 😊   |                   ||\n     +-------------------+  |  +-------------+                   ||\n  14 | [📁 Bild hochladen]|  |                                   ||\n     |  COMP-001 (Upload)|  |                                   ||\n  16 +-------------------+  |::::::::::::::::::::::::::::::::::::||\n     | [↺ Standard       ]|  +------------------------------------+|\n  18 |  COMP-001 (Default)|                                       |\n     +-------------------+----------------------------------------+\n  19 | [💾 Speichern    ] | [MessageInput COMP-005 (Preview)]     |\n     |  COMP-001 (Save)  | [Nachricht eingeben...        ] [>]   |\n  21 +-------------------+----------------------------------------+\n     |              Dashboard Footer                              |\n  23 +------------------------------------------------------------+",
+  "state_bindings": {
+    "COMP-001-colors": "chatBackground.selectedColor",
+    "COMP-001-upload": "chatBackground.customImage",
+    "COMP-001-save": "chatBackground.saveAction",
+    "COMP-001-default": "chatBackground.resetAction",
+    "COMP-004": "chatBackground.previewMessages",
+    "COMP-005": "chatBackground.previewInput",
+    "COMP-010": "chatBackground.saveStatus"
+  },
+  "navigation_rules": [
+    {
+      "trigger": "back_btn_click",
+      "target": "/dashboard",
+      "condition": ""
+    },
+    {
+      "trigger": "save_btn_click",
+      "target": "/dashboard",
+      "condition": "chatBackground.hasChanges"
+    },
+    {
+      "trigger": "upload_btn_click",
+      "target": "modal:file-picker",
+      "condition": ""
+    },
+    {
+      "trigger": "color_swatch_click",
+      "target": "",
+      "condition": "updates chatBackground.selectedColor and refreshes preview"
+    },
+    {
+      "trigger": "reset_btn_click",
+      "target": "",
+      "condition": "resets chatBackground to default values"
+    }
+  ],
+  "responsive": {
+    "mobile": {
+      "layout": "stack",
+      "hidden_components": [
+        "COMP-005"
+      ],
+      "notes": "Preview above, color selection below as horizontal scroll"
+    },
+    "tablet": {
+      "layout": "split-40-60"
+    },
+    "desktop": {
+      "layout": "split-33-67"
+    }
+  },
+  "auth_required": true
+}

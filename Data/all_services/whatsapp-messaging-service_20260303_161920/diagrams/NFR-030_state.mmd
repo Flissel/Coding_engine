@@ -1,0 +1,10 @@
+stateDiagram-v2
+    [*] --> Idle
+    Idle --> Uploading : Start Upload
+    Uploading --> InProgress : Media Upload Initiated
+    InProgress --> Completed : Upload Successful
+    InProgress --> Failed : Upload Error
+    Failed --> Retry : Retry Upload
+    Retry --> Uploading : Retry Initiated
+    Completed --> [*]
+    Failed --> [*]

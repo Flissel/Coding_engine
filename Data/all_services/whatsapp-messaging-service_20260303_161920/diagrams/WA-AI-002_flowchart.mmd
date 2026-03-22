@@ -1,0 +1,10 @@
+flowchart TD
+    A[Start] --> B[User receives message]
+    B --> C[Analyze message content]
+    C --> D[Generate response suggestions]
+    D --> E[Display suggestions to user]
+    E --> F{User selects suggestion?}
+    F -->|Yes| G[Send selected response]
+    F -->|No| H[User types response]
+    G --> I[End]
+    H --> G

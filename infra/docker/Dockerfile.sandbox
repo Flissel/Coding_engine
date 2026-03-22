@@ -83,13 +83,18 @@ RUN pip3 install --no-cache-dir --break-system-packages \
     gunicorn \
     flask
 
-# Install Node.js global packages
+# Install Node.js global packages + KiloCLI v0.26.x for auto-fix
+# Must match host version for config compatibility
 RUN npm install -g \
     typescript \
     prettier \
     eslint \
     serve \
-    @types/node
+    @types/node \
+    @kilocode/cli@0.26.1
+
+# Prepare KiloCLI config directory (config injected at runtime via volume/env)
+RUN mkdir -p /root/.kilocode/cli
 
 # Set display for Xvfb (Electron headless)
 ENV DISPLAY=:99
@@ -106,13 +111,15 @@ EXPOSE 5900 6080
 
 WORKDIR /app
 
-# Copy entrypoint script
-COPY sandbox-entrypoint.sh /usr/local/bin/sandbox-entrypoint.sh
-RUN chmod +x /usr/local/bin/sandbox-entrypoint.sh
+# Copy entrypoint + continuous debug loop scripts
+COPY infra/docker/sandbox-entrypoint.sh /usr/local/bin/sandbox-entrypoint.sh
+COPY infra/docker/continuous-debug-loop.sh /usr/local/bin/continuous-debug-loop.sh
+RUN sed -i 's/\r//' /usr/local/bin/sandbox-entrypoint.sh && chmod +x /usr/local/bin/sandbox-entrypoint.sh \
+ && sed -i 's/\r//' /usr/local/bin/continuous-debug-loop.sh && chmod +x /usr/local/bin/continuous-debug-loop.sh
 
-# Healthcheck tries multiple common ports
-HEALTHCHECK --interval=5s --timeout=3s --start-period=15s --retries=5 \
-    CMD curl -sf http://localhost:5173/ || curl -sf http://localhost:3000/ || curl -sf http://localhost:4173/ || curl -sf http://localhost:8000/ || curl -sf http://localhost:5000/ || exit 1
+# Healthcheck: accept ANY http response (even 404 means server is alive)
+HEALTHCHECK --interval=10s --timeout=5s --start-period=60s --retries=3 \
+    CMD curl -so /dev/null -w '' http://localhost:5173/ 2>/dev/null || curl -so /dev/null -w '' http://localhost:3000/ 2>/dev/null || curl -so /dev/null -w '' http://localhost:8000/ 2>/dev/null || exit 1
 
 ENTRYPOINT ["/usr/local/bin/sandbox-entrypoint.sh"]
 CMD ["test"]

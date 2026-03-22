@@ -1,0 +1,9 @@
+stateDiagram-v2
+    [*] --> Normal
+    Normal --> Exceeding : Usage exceeds limit
+    Exceeding --> Normal : Usage within limit
+    Exceeding --> Restricted : Usage continues to exceed limit
+    Restricted --> Normal : Usage within limit
+    Restricted --> Warning : Warning issued
+    Warning --> Normal : User resolves issue
+    Warning --> Restricted : User does not resolve issue

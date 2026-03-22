@@ -1,0 +1,8 @@
+sequenceDiagram
+    participant User as Benutzer
+    participant System as System
+
+    User->>System: Anfrage zum Löschen der Nachricht
+    System-->>User: Bestätigung der Löschanfrage
+    User->>System: Bestätigen des Löschens
+    System-->>User: Nachricht erfolgreich gelöscht

@@ -1,0 +1,14 @@
+%%{init: {'theme': 'default'}}%%
+graph TD
+    A[User] -->|Interacts with| B[Gruppeneinstellungen System]
+    B -->|Sends configuration| C[Database]
+    B -->|Fetches settings| D[External API]
+    
+    subgraph "External Systems"
+        C
+        D
+    end
+    
+    subgraph "Gruppeneinstellungen System"
+        B
+    end

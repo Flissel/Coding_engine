@@ -1,0 +1,11 @@
+stateDiagram-v2
+    [*] --> Define_RPO_RTO
+    Define_RPO_RTO --> Set_Targets
+    Set_Targets --> Review_Targets
+    Review_Targets --> Finalize_Targets
+    Finalize_Targets --> [*]
+
+    Finalize_Targets --> Implement_Measures
+    Implement_Measures --> Monitor_Performance
+    Monitor_Performance --> Adjust_Targets
+    Adjust_Targets --> Review_Targets

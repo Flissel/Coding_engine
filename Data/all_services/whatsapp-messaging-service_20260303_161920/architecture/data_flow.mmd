@@ -1,0 +1,21 @@
+flowchart LR
+    A[Mobile Client] --> B[CDN]
+    A --> C[API Gateway]
+    C --> D[Auth Service]
+    C --> E[Messaging Service]
+    C --> F[WebSocket Gateway]
+    
+    D --> G[User DB]
+    E --> H[Message DB]
+    E --> I[Kafka]
+    F --> J[Redis]
+    
+    I --> K[Notification Service]
+    I --> L[Search Service]
+    L --> M[Elasticsearch]
+    
+    E --> N[Encryption Service]
+    N --> O[Vault]
+    
+    P[Media Service] --> Q[S3 Storage]
+    Q --> B

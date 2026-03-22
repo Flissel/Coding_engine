@@ -1,0 +1,9 @@
+flowchart TD
+    A[Start] --> B{Is personal data necessary?}
+    B -- Yes --> C[Retain personal data]
+    B -- No --> D[Delete personal data]
+    C --> E{Is there a deletion request?}
+    E -- Yes --> D
+    E -- No --> F[Continue retention]
+    D --> G[End]
+    F --> G

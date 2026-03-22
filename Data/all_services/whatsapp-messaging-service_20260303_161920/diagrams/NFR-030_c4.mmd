@@ -1,0 +1,13 @@
+%%{ init : { "theme" : "default" } }%%
+C4Context
+    title Media Upload Throughput System Architecture
+
+    Person(user, "User", "A user who uploads voice and media files.")
+    System(mediaUploadService, "Media Upload Service", "Handles the uploading of media files and ensures throughput.")
+    System(database, "Database", "Stores uploaded media files and metadata.")
+    System(externalService, "External Processing Service", "Processes media files after upload.")
+
+    Rel(user, mediaUploadService, "Uploads voice and media files")
+    Rel(mediaUploadService, database, "Stores media files and metadata")
+    Rel(mediaUploadService, externalService, "Sends files for processing")
+    Rel(externalService, database, "Updates processing status and results")

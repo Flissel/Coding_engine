@@ -1,0 +1,20 @@
+stateDiagram-v2
+    [*] --> disconnected
+    disconnected --> authenticating : login_attempt [device_registered] / start_authentication
+    authenticating --> authenticated : authentication_success [credentials_valid] / create_session_token
+    authenticating --> disconnected : authentication_failed / log_failed_attempt
+    authenticated --> synchronizing : sync_required [multi_device_enabled] / start_device_sync
+    authenticated --> active : session_established / notify_other_devices
+    synchronizing --> active : sync_completed / update_device_state
+    synchronizing --> suspended : sync_failed [max_retries_exceeded] / suspend_session
+    active --> inactive : inactivity_timeout [no_user_activity] / reduce_session_priority
+    active --> synchronizing : device_state_changed [other_device_active] / start_state_sync
+    active --> terminated : logout / cleanup_session
+    inactive --> active : user_activity [session_valid] / restore_session_priority
+    inactive --> expired : session_timeout [max_inactive_time_reached] / mark_session_expired
+    inactive --> terminated : force_logout / cleanup_session
+    suspended --> authenticating : retry_connection [retry_allowed] / reset_sync_state
+    suspended --> terminated : session_abandoned [max_suspend_time_reached] / cleanup_session
+    expired --> disconnected : session_cleanup / remove_expired_session
+    expired --> authenticating : reauth_attempt [device_still_registered] / start_reauthentication
+    terminated --> [*]

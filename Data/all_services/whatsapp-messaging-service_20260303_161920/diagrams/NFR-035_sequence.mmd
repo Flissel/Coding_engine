@@ -1,0 +1,19 @@
+sequenceDiagram
+    participant User
+    participant Application
+    participant Database
+    participant EncryptionService
+
+    User->>Application: Send data
+    Application->>EncryptionService: Encrypt data in transit
+    EncryptionService-->>Application: Return encrypted data
+    Application->>Database: Store encrypted data
+    Database-->>Application: Acknowledge storage
+    Application->>User: Confirm data stored securely
+
+    User->>Application: Request data
+    Application->>Database: Retrieve encrypted data
+    Database-->>Application: Return encrypted data
+    Application->>EncryptionService: Decrypt data at rest
+    EncryptionService-->>Application: Return decrypted data
+    Application->>User: Send decrypted data

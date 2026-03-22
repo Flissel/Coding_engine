@@ -1,0 +1,14 @@
+%%{ init : { "theme" : "default" } }%%
+C4Context
+    title System Context Diagram for Kontakt-Labels System
+
+    Person(customer, "Kunde", "Nutzt das System zur Verwaltung von Kontakt-Labels.")
+    Person(employee, "Mitarbeiter", "Verwaltet die Kontakt-Labels im System.")
+    
+    System(system, "Kontakt-Labels System", "Unterstützt die Verwaltung von Kontakt-Labels für das Business.")
+
+    System_Ext(externalSystem, "Externe Datenquelle", "Liefert zusätzliche Informationen für die Labels.")
+
+    Rel(customer, system, "Verwendet")
+    Rel(employee, system, "Verwaltet")
+    Rel(system, externalSystem, "Zugriff auf")

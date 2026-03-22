@@ -1,0 +1,10 @@
+flowchart TD
+    A[Start] --> B[Speichernutzung Übersicht]
+    B --> C{Verwaltung der Speichernutzung}
+    C -->|Ja| D[Speicherstatus anzeigen]
+    C -->|Nein| E[Speicheranfrage bearbeiten]
+    D --> F[Speicheroptimierung vorschlagen]
+    E --> F
+    F --> G[Benutzeraktionen durchführen]
+    G --> H[Speichernutzung aktualisieren]
+    H --> I[Ende]

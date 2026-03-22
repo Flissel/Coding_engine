@@ -1,0 +1,17 @@
+stateDiagram-v2
+    [*] --> DataInTransit
+    [*] --> DataAtRest
+
+    state DataInTransit {
+        [*] --> Encrypted
+        Encrypted --> Decrypted : "Receive unencrypted data"
+        Decrypted --> Encrypted : "Encrypt data"
+        Encrypted --> [*] : "Data sent securely"
+    }
+
+    state DataAtRest {
+        [*] --> Encrypted
+        Encrypted --> Decrypted : "Access unencrypted data"
+        Decrypted --> Encrypted : "Encrypt data"
+        Encrypted --> [*] : "Data stored securely"
+    }

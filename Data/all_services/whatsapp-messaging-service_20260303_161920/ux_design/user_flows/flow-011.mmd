@@ -1,0 +1,43 @@
+flowchart TD
+    Start([Start: Passkey-Login])
+    S1[User oeffnet Login-Screen]
+    Start --> S1
+    E1[/Screen laedt nicht bei Verbindungsproblemen/]
+    S1 -.-> E1
+    S2{User klickt 'Mit Passkey anmelden'}
+    S1 --> S2
+    E2[/Pruefung scheitert bei Servertimeout/]
+    S2 -.-> E2
+    S3{If Passkey vorhanden: System startet Passkey-Dialog}
+    S2 --> S3
+    E3[/Dialog erscheint nicht bei Geraetekompatibilitaet/Offline-Modus/]
+    S3 -.-> E3
+    S4{User bestaetigt Passkey (Biometrie/PIN)}
+    S3 --> S4
+    E4[/Authentifizierung fehlgeschlagen oder abgebrochen/]
+    S4 -.-> E4
+    S5[System erstellt Session und leitet ins Dashboard]
+    S4 --> S5
+    E5[/Session-Erstellung scheitert bei Serverfehler/]
+    S5 -.-> E5
+    S6{If kein Passkey vorhanden: System zeigt Hinweis und bietet Alternativen}
+    S5 --> S6
+    E6[/Hinweis wird nicht angezeigt oder CTA ist nicht klickbar/]
+    S6 -.-> E6
+    S7{Onboarding: User waehlt 'Passkey einrichten'}
+    S6 --> S7
+    E7[/Setup wird unterbrochen bei Geraetewechsel/Session-Timeout/]
+    S7 -.-> E7
+    S8{Edge-Case: User ist offline waehrend Passkey-Login}
+    S7 --> S8
+    E8[/Kein Offline-Hinweis, Login haengt/]
+    S8 -.-> E8
+    S9{Error-Recovery: Passkey-Authentifizierung fehlgeschlagen}
+    S8 --> S9
+    E9[/Keine erneute Versuchsmöglichkeit/]
+    S9 -.-> E9
+    S10{Edge-Case: User wechselt Geraet ohne Passkey}
+    S9 --> S10
+    E10[/Recovery-Link kommt nicht an oder OTP abgelaufen/]
+    S10 -.-> E10
+    S10 --> End([End])

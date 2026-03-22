@@ -194,7 +194,7 @@ export const useEngineStore = create<EngineState>((set, get) => ({
   vncPort: null,
   projectProfile: null,
   toasts: [],
-  apiUrl: 'http://localhost:8000',
+  apiUrl: 'http://localhost:8321',
 
   // Check engine status via IPC
   checkEngineStatus: async () => {
@@ -910,3 +910,52 @@ export const useEngineStore = create<EngineState>((set, get) => ({
     }))
   },
 }))
+
+// =============================================================================
+// IPC Log Stream (Electron main process → dashboard renderer)
+// Receives real-time engine log lines forwarded by docker-manager.js
+// =============================================================================
+if (typeof window !== 'undefined') {
+  const vibemind = (window as any).vibemind
+  if (vibemind?.onEngineLog) {
+    vibemind.onEngineLog((logLine: string) => {
+      if (logLine) {
+        useEngineStore.setState((state) => ({
+          logs: [...state.logs.slice(-999), logLine],
+        }))
+      }
+    })
+  }
+
+  // Receives structured progress data from run_engine.py via docker-manager.js IPC
+  if (vibemind?.onEngineProgress) {
+    vibemind.onEngineProgress((data: any) => {
+      if (!data) return
+      const { status, progress, phase, completed_tasks, total_tasks, failed_tasks } = data
+      const updates: any = {}
+
+      // Map status to generationPhase
+      if (phase) updates.generationPhase = phase
+      if (typeof progress === 'number') updates.generationProgress = Math.round(progress)
+
+      // Update task counts if available
+      if (typeof total_tasks === 'number' && total_tasks > 0) {
+        const completed = completed_tasks || 0
+        const failed = failed_tasks || 0
+        const running = Math.min(5, total_tasks - completed - failed) // max_parallel estimate
+        updates.taskProgress = {
+          completed,
+          running: status === 'generating' ? running : 0,
+          failed,
+          pending: Math.max(0, total_tasks - completed - failed - running),
+          total: total_tasks,
+          percent_complete: Math.round((completed / total_tasks) * 100),
+        }
+      }
+
+      if (Object.keys(updates).length > 0) {
+        useEngineStore.setState(updates)
+      }
+    })
+  }
+}

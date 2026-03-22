@@ -1,0 +1,19 @@
+sequenceDiagram
+    participant User1 as Nutzer 1
+    participant User2 as Nutzer 2
+    participant User3 as Nutzer 3
+    participant System as System
+
+    User1->>System: Gruppenanruf starten
+    System-->>User1: Anruf gestartet
+    System-->>User2: Einladung zum Anruf senden
+    System-->>User3: Einladung zum Anruf senden
+    User2->>System: Anruf annehmen
+    User3->>System: Anruf annehmen
+    System-->>User1: Teilnehmer beigetreten
+    System-->>User2: Teilnehmer beigetreten
+    System-->>User3: Teilnehmer beigetreten
+    User1->>User2: Hallo, wie geht's?
+    User2->>User1: Mir geht's gut, danke!
+    User1->>User3: Was ist mit dir?
+    User3->>User1: Alles bestens!

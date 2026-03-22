@@ -1,0 +1,7 @@
+stateDiagram-v2
+    [*] --> Sprache_auswaehlen
+    Sprache_auswaehlen --> Sprache_ausgewaehlt: Sprache waehlen
+    Sprache_ausgewaehlt --> Sprache_wechseln: Sprache wechseln
+    Sprache_ausgewaehlt --> Sprache_bestaetigen: Sprache bestaetigen
+    Sprache_bestaetigen --> [*]
+    Sprache_wechseln --> Sprache_auswaehlen

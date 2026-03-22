@@ -1,0 +1,11 @@
+%%{ init : { "theme" : "default" } }%%
+C4Context
+    title Schnellantworten System Context Diagram
+
+    Person(customer, "Business User", "A user from a business seeking quick responses.")
+    System(schnellantworten, "Schnellantworten", "A system providing predefined quick responses for businesses.")
+
+    Rel(customer, schnellantworten, "Uses")
+
+    System_Ext(externalSystem, "External Data Source", "Provides additional data for responses.")
+    Rel(schnellantworten, externalSystem, "Fetches data from")

@@ -1,0 +1,19 @@
+stateDiagram-v2
+    [*] --> draft
+    draft --> validating : submit [has_recipients_and_content] / validate_broadcast_list
+    draft --> cancelled : cancel / cleanup_draft
+    validating --> scheduled : validation_success [all_recipients_valid] / schedule_distribution
+    validating --> failed : validation_failed [critical_validation_errors] / log_validation_errors
+    scheduled --> distributing : distribution_time_reached [system_ready] / start_distribution
+    scheduled --> cancelled : cancel / cancel_scheduled_distribution
+    scheduled --> expired : schedule_expired [past_max_delivery_time] / mark_as_expired
+    distributing --> partially_delivered : partial_delivery_complete [some_deliveries_failed] / update_delivery_status
+    distributing --> delivered : all_delivered [all_recipients_reached] / mark_complete
+    distributing --> failed : distribution_failed [critical_system_error] / log_distribution_error
+    partially_delivered --> distributing : retry_failed_deliveries [retry_attempts_available] / restart_failed_deliveries
+    partially_delivered --> delivered : remaining_delivered [all_retries_successful] / mark_complete
+    partially_delivered --> failed : max_retries_exceeded [no_more_retry_attempts] / mark_partially_failed
+    delivered --> [*]
+    failed --> [*]
+    cancelled --> [*]
+    expired --> [*]

@@ -1,0 +1,10 @@
+flowchart TD
+    A[Start] --> B{Daten erfassen}
+    B -->|Ja| C[Nachrichten analysieren]
+    B -->|Nein| D[Fehlermeldung]
+    C --> E{Statistiken generieren}
+    E -->|Ja| F[Statistiken anzeigen]
+    E -->|Nein| G[Fehlermeldung]
+    F --> H[Ende]
+    D --> H
+    G --> H

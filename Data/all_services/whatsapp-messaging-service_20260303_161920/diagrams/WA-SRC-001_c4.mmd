@@ -1,0 +1,14 @@
+%%{ init : { "theme" : "default" } }%%
+C4Context
+    title Nachrichtensuche System Context Diagram
+
+    Person(user, "User", "A person searching for news articles")
+    
+    System(nachrichtensuche, "Nachrichtensuche", "A system that provides full-text search in news articles")
+
+    System_Ext(searchEngine, "Search Engine", "External search engine used for indexing and searching news articles")
+    System_Ext(newsDatabase, "News Database", "Database containing news articles")
+
+    Rel(user, nachrichtensuche, "Uses")
+    Rel(nachrichtensuche, searchEngine, "Queries for search results")
+    Rel(searchEngine, newsDatabase, "Indexes and retrieves news articles")

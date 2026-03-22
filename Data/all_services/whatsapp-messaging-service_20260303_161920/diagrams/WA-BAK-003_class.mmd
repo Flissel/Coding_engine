@@ -1,0 +1,23 @@
+classDiagram
+    class Chat {
+        +String chatId
+        +String chatName
+        +List<Message> messages
+        +exportChat(): File
+    }
+
+    class Message {
+        +String messageId
+        +String senderId
+        +String content
+        +Date timestamp
+    }
+
+    class User {
+        +String userId
+        +String userName
+        +List<Chat> chats
+    }
+
+    Chat "1" -- "*" Message : contains
+    User "1" -- "*" Chat : participates in

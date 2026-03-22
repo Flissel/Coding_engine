@@ -1,0 +1,144 @@
+# Dockerfile.claude-runner - Persistent Claude Code CLI runner with VNC
+#
+# A Docker container that:
+#   - Runs Claude Code CLI autonomously
+#   - Watches a git repo for new branches (update/*, pr/*, feature/*)
+#   - Applies changes, builds, and tests via Claude Code
+#   - Streams terminal output via VNC (tmux in xterm)
+#   - Comes fully loaded with dev toolchains (Node, Python, Rust, Go)
+#
+# Build:
+#   docker build -t claude-runner:latest -f infra/docker/Dockerfile.claude-runner .
+#
+# Run:
+#   docker run -d --name claude-runner \
+#     -v /path/to/repo:/repo \
+#     -v /tmp/claude-runner-status:/status \
+#     -p 6090:6080 \
+#     -e ANTHROPIC_API_KEY=sk-ant-... \
+#     claude-runner:latest
+
+FROM node:20-slim
+
+# ==========================================================================
+# Layer 1: System packages — VNC stack, terminal tools, build essentials
+# ==========================================================================
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    # Core build tools
+    build-essential cmake pkg-config autoconf automake libtool \
+    # Python full stack
+    python3 python3-pip python3-venv python3-dev python3-setuptools \
+    # Network & fetch
+    curl wget ca-certificates gnupg \
+    # Version control
+    git git-lfs openssh-client \
+    # Data tools
+    jq sqlite3 \
+    # VNC stack
+    xvfb x11vnc novnc websockify \
+    # GUI libs for Xvfb
+    libgtk-3-0 libnss3 libxss1 libasound2 libxtst6 \
+    libdrm2 libgbm1 libxkbcommon0 \
+    # Terminal for VNC display
+    tmux xterm \
+    # Native module build deps (node-gyp, sharp, canvas, etc.)
+    libcairo2-dev libjpeg-dev libpango1.0-dev libgif-dev librsvg2-dev \
+    libpixman-1-dev libffi-dev libssl-dev \
+    # Fonts for readability
+    fonts-dejavu-core \
+    # Process management
+    procps sudo \
+    && rm -rf /var/lib/apt/lists/*
+
+# ==========================================================================
+# Layer 2: Node.js ecosystem — pnpm, yarn, common global tools
+# ==========================================================================
+RUN npm install -g pnpm yarn typescript ts-node tsx \
+    @anthropic-ai/claude-code
+
+# ==========================================================================
+# Layer 3: Python ecosystem — common build/test/format tools
+# ==========================================================================
+RUN pip3 install --no-cache-dir --break-system-packages \
+    pytest pytest-asyncio pytest-cov \
+    black ruff mypy \
+    setuptools wheel \
+    requests httpx aiohttp \
+    fastapi uvicorn flask \
+    sqlalchemy alembic \
+    pydantic \
+    python-dotenv \
+    rich click typer
+
+# ==========================================================================
+# Layer 4: Rust toolchain (optional, useful for many modern CLI tools)
+# ==========================================================================
+ENV RUSTUP_HOME=/usr/local/rustup \
+    CARGO_HOME=/usr/local/cargo \
+    PATH="/usr/local/cargo/bin:$PATH"
+RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --default-toolchain stable --profile minimal \
+    && rustup component add rustfmt clippy \
+    && chmod -R a+rw $RUSTUP_HOME $CARGO_HOME
+
+# ==========================================================================
+# Layer 5: Go toolchain
+# ==========================================================================
+ENV GOPATH=/usr/local/go-workspace \
+    PATH="/usr/local/go/bin:/usr/local/go-workspace/bin:$PATH"
+RUN ARCH=$(dpkg --print-architecture) \
+    && curl -fsSL "https://go.dev/dl/go1.22.5.linux-${ARCH}.tar.gz" | tar -C /usr/local -xz \
+    && mkdir -p $GOPATH
+
+# ==========================================================================
+# Layer 6: Git configuration for autonomous operation
+# ==========================================================================
+RUN git config --system user.name "Claude Runner" \
+    && git config --system user.email "claude-runner@vibemind.local" \
+    && git config --system core.autocrlf input \
+    && git config --system init.defaultBranch main \
+    && git config --system pull.rebase false \
+    && git config --system safe.directory "*"
+
+# ==========================================================================
+# Layer 7: Claude Code configuration
+# ==========================================================================
+# Create global Claude Code settings that allow autonomous operation
+RUN mkdir -p /root/.claude && cat > /root/.claude/settings.json << 'SETTINGS'
+{
+  "permissions": {
+    "allow": [
+      "Bash(*)",
+      "Read(*)",
+      "Write(*)",
+      "Edit(*)",
+      "Glob(*)",
+      "Grep(*)"
+    ]
+  }
+}
+SETTINGS
+
+# ==========================================================================
+# Environment
+# ==========================================================================
+ENV DISPLAY=:99
+ENV ENABLE_VNC=true
+ENV VNC_PORT=5900
+ENV NOVNC_PORT=6080
+ENV POLL_INTERVAL=30
+ENV WATCH_REPO=/repo
+ENV BRANCH_PREFIX=update/,pr/,feature/
+ENV TERM=xterm-256color
+# Ensure pip-installed binaries are on PATH
+ENV PATH="/root/.local/bin:$PATH"
+
+EXPOSE 5900 6080
+
+WORKDIR /runner
+
+# Copy entrypoint
+COPY infra/docker/claude-runner-entrypoint.sh /usr/local/bin/claude-runner-entrypoint.sh
+RUN sed -i 's/\r//' /usr/local/bin/claude-runner-entrypoint.sh \
+    && chmod +x /usr/local/bin/claude-runner-entrypoint.sh
+
+ENTRYPOINT ["/usr/local/bin/claude-runner-entrypoint.sh"]

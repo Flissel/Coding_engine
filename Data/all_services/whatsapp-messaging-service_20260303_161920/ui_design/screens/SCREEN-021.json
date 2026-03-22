@@ -1,0 +1,113 @@
+{
+  "id": "SCREEN-021",
+  "name": "Enterprise Analytics & Audit Logs - Phone Registration",
+  "route": "/auth/phone",
+  "layout": "single-column",
+  "description": "Telefonnummer-Registrierung für Enterprise/Admin-Zugang zu System-Analytics und Audit Logs. Enthält Formular zur Telefonnummereingabe, Verifizierungscode-Eingabe und Statusanzeigen für den Registrierungsprozess.",
+  "components": [
+    "COMP-001",
+    "COMP-002",
+    "COMP-005",
+    "COMP-009",
+    "COMP-010"
+  ],
+  "component_layout": [
+    {
+      "id": "COMP-010",
+      "name": "RegistrationStatusIndicator",
+      "x": 20,
+      "y": 0,
+      "w": 20,
+      "h": 3
+    },
+    {
+      "id": "COMP-009",
+      "name": "EnterpriseInfoCard",
+      "x": 10,
+      "y": 4,
+      "w": 40,
+      "h": 6
+    },
+    {
+      "id": "COMP-002",
+      "name": "PhoneSearchInput",
+      "x": 10,
+      "y": 11,
+      "w": 40,
+      "h": 4
+    },
+    {
+      "id": "COMP-005",
+      "name": "VerificationCodeInput",
+      "x": 10,
+      "y": 16,
+      "w": 40,
+      "h": 4
+    },
+    {
+      "id": "COMP-001",
+      "name": "SubmitButton",
+      "x": 20,
+      "y": 21,
+      "w": 20,
+      "h": 3
+    }
+  ],
+  "data_requirements": [
+    "POST /api/auth/phone/register",
+    "POST /api/auth/phone/verify",
+    "GET /api/auth/phone/status",
+    "GET /api/enterprise/config",
+    "POST /api/audit/log-event"
+  ],
+  "parent_user_story": "US-138",
+  "wireframe_mermaid": "flowchart TD\n    subgraph Enterprise_Analytics_&_Audit_Logs_-_Phone_Registration\n        Header[Header / Navigation]\n        Main[Main Content Area]\n        Sidebar[Sidebar / Filters]\n        Footer[Footer / Actions]\n    end\n\n    Header --> Main\n    Sidebar --> Main\n    Main --> Footer\n\n    %% \n",
+  "wireframe_ascii": "     0    5   10   15   20   25   30   35   40   45   50   55   60\n   0 +------------------------------------------------------------+\n     |                    [Step 1 of 3]                          |\n   1 |              COMP-010 (RegistrationStatusIndicator)       |\n   2 |              [●━━━━━━━○━━━━━━━○] Telefon > Code > Fertig  |\n   3 +------------------------------------------------------------+\n   4 |    +------------------------------------------+           |\n   5 |    |  [🏢]  Enterprise Admin Registration     |           |\n   6 |    |        COMP-009 (EnterpriseInfoCard)     |           |\n   7 |    |  Organisation: ________________________  |           |\n   8 |    |  Admin-Rolle:  [Enterprise Analytics]    |           |\n   9 |    |  Zugang zu:    Audit Logs & Compliance   |           |\n  10 |    +------------------------------------------+           |\n  11 |    +------------------------------------------+           |\n  12 |    |  🔍 Telefonnummer eingeben                |           |\n  13 |    |  [+49 |  ______________________________ ] |           |\n  14 |    |  COMP-002 (PhoneSearchInput)              |           |\n  15 |    +------------------------------------------+           |\n  16 |    +------------------------------------------+           |\n  17 |    |  Verifizierungscode (6-stellig)           |           |\n  18 |    |  [ ___ ] [ ___ ] [ ___ ] [ ___ ] [ ___ ] [ ___ ]     |\n  19 |    |  COMP-005 (VerificationCodeInput)         |           |\n  20 |    +------------------------------------------+           |\n  21 |              +------------------------+                   |\n  22 |              | [Code senden / Prüfen] |                   |\n  23 |              |  COMP-001 (SubmitButton)|                   |\n  24 |              +------------------------+                   |\n  25 |    ------------------------------------------------       |\n  26 |    Hinweis: Nach Verifizierung erhalten Sie Zugang        |\n  27 |    zu System-Analytics, Message Throughput und             |\n  28 |    Compliance Audit Logs.                                 |\n  29 +------------------------------------------------------------+",
+  "state_bindings": {
+    "COMP-010": "auth.registrationStep",
+    "COMP-009": "auth.enterpriseInfo",
+    "COMP-002": "auth.phoneNumber",
+    "COMP-005": "auth.verificationCode",
+    "COMP-001": "auth.submitAction"
+  },
+  "navigation_rules": [
+    {
+      "trigger": "submit_phone",
+      "target": "/auth/phone",
+      "condition": "auth.phoneNumber.isValid && auth.registrationStep === 1"
+    },
+    {
+      "trigger": "submit_verification",
+      "target": "/admin/analytics",
+      "condition": "auth.verificationCode.isValid && auth.verified === true"
+    },
+    {
+      "trigger": "resend_code",
+      "target": "/auth/phone",
+      "condition": "auth.resendCooldown === 0"
+    },
+    {
+      "trigger": "back_click",
+      "target": "/",
+      "condition": ""
+    },
+    {
+      "trigger": "verification_success",
+      "target": "/admin/analytics",
+      "condition": "auth.role === 'enterprise_admin'"
+    }
+  ],
+  "responsive": {
+    "mobile": {
+      "layout": "stack",
+      "hidden_components": []
+    },
+    "tablet": {
+      "layout": "single-column-centered"
+    },
+    "desktop": {
+      "layout": "single-column-centered"
+    }
+  },
+  "auth_required": false
+}

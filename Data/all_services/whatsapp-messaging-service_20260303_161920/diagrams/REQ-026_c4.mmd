@@ -1,0 +1,14 @@
+%%{ init : { "theme" : "default" } }%%
+C4Context
+    title Voice and Video Calling System Architecture
+
+    Person(user, "User", "A person using the voice and video calling application.")
+    System(system, "Voice and Video Calling System", "Allows one-to-one and group calling with call controls and quality adaptation.")
+
+    Person(admin, "Administrator", "Manages the voice and video calling system.")
+
+    System_Ext(externalService, "External Communication Services", "Third-party services for call handling and quality adaptation.")
+
+    Rel(user, system, "Uses")
+    Rel(admin, system, "Manages")
+    Rel(system, externalService, "Integrates with")

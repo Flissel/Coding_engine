@@ -1,0 +1,110 @@
+{
+  "id": "SCREEN-010",
+  "name": "Hilfe & Support",
+  "route": "/settings/help",
+  "layout": "stack",
+  "description": "Hilfe-Screen mit FAQ-Bereich, Support-Kontakt und Passkey-Anmeldehilfe. Nutzer koennen haeufig gestellte Fragen durchsuchen, Anleitungen zur Passkey-Einrichtung finden und den Support kontaktieren.",
+  "components": [
+    "COMP-001",
+    "COMP-002",
+    "COMP-003",
+    "COMP-010"
+  ],
+  "component_layout": [
+    {
+      "id": "COMP-001",
+      "name": "BackButton",
+      "x": 0,
+      "y": 0,
+      "w": 6,
+      "h": 3
+    },
+    {
+      "id": "COMP-001-2",
+      "name": "ContactSupportBtn",
+      "x": 36,
+      "y": 22,
+      "w": 24,
+      "h": 3
+    },
+    {
+      "id": "COMP-002",
+      "name": "FAQSearchBar",
+      "x": 0,
+      "y": 3,
+      "w": 60,
+      "h": 3
+    },
+    {
+      "id": "COMP-003",
+      "name": "FAQListItem",
+      "x": 0,
+      "y": 7,
+      "w": 60,
+      "h": 15
+    },
+    {
+      "id": "COMP-010",
+      "name": "PasskeyStatusIndicator",
+      "x": 0,
+      "y": 22,
+      "w": 34,
+      "h": 3
+    }
+  ],
+  "data_requirements": [
+    "GET /api/help/faq",
+    "GET /api/help/faq?q={searchTerm}",
+    "GET /api/help/faq/passkey",
+    "GET /api/auth/passkey/status",
+    "POST /api/help/support/ticket"
+  ],
+  "parent_user_story": "US-005",
+  "wireframe_mermaid": "flowchart TD\n    subgraph Hilfe_&_Support\n        Header[Header / Navigation]\n        Main[Main Content Area]\n        Sidebar[Sidebar / Filters]\n        Footer[Footer / Actions]\n    end\n\n    Header --> Main\n    Sidebar --> Main\n    Main --> Footer\n\n    %% \n",
+  "wireframe_ascii": "     0    5   10   15   20   25   30   35   40   45   50   55   60\n   0 +------------------------------------------------------------+\n     | [<Back]   Hilfe & Support                                  |\n   2 | COMP-001                                                   |\n     +------------------------------------------------------------+\n   3 | [🔍 FAQ durchsuchen...                                   ] |\n     |  COMP-002 (FAQSearchBar)                                   |\n   5 +------------------------------------------------------------+\n     |  Haeufig gestellte Fragen                                  |\n   7 +------------------------------------------------------------+\n     | +--------------------------------------------------------+ |\n   8 | | ▶ Was ist ein Passkey und wie richte ich ihn ein?       | |\n     | |   COMP-003 (FAQListItem)                               | |\n   9 | +--------------------------------------------------------+ |\n     | +--------------------------------------------------------+ |\n  10 | | ▶ Passkey-Anmeldung funktioniert nicht – was tun?       | |\n     | |   COMP-003 (FAQListItem)                               | |\n  11 | +--------------------------------------------------------+ |\n     | +--------------------------------------------------------+ |\n  12 | | ▶ Kann ich mehrere Passkeys registrieren?               | |\n     | |   COMP-003 (FAQListItem)                               | |\n  13 | +--------------------------------------------------------+ |\n     | +--------------------------------------------------------+ |\n  14 | | ▶ Wie loesche ich einen gespeicherten Passkey?          | |\n     | |   COMP-003 (FAQListItem)                               | |\n  15 | +--------------------------------------------------------+ |\n     | +--------------------------------------------------------+ |\n  16 | | ▶ Welche Geraete unterstuetzen Passkeys?                | |\n     | |   COMP-003 (FAQListItem)                               | |\n  17 | +--------------------------------------------------------+ |\n     | +--------------------------------------------------------+ |\n  18 | | ▶ Wie aendere ich mein Passwort?                        | |\n     | |   COMP-003 (FAQListItem)                               | |\n  19 | +--------------------------------------------------------+ |\n     | +--------------------------------------------------------+ |\n  20 | | ▶ Nachrichten werden nicht zugestellt                    | |\n     | |   COMP-003 (FAQListItem)                               | |\n  21 | +--------------------------------------------------------+ |\n  22 +------------------------------------------------------------+\n     | 🔑 Passkey: ● Aktiv        |  [  Support kontaktieren   ] |\n     | COMP-010 (StatusIndicator)  |  COMP-001-2 (Button)        |\n  24 +------------------------------------------------------------+",
+  "state_bindings": {
+    "COMP-002": "help.searchQuery",
+    "COMP-003": "help.faqList",
+    "COMP-010": "auth.passkeyStatus"
+  },
+  "navigation_rules": [
+    {
+      "trigger": "back_btn_click",
+      "target": "/settings",
+      "condition": ""
+    },
+    {
+      "trigger": "faq_item_click",
+      "target": "/settings/help/faq/{faqId}",
+      "condition": ""
+    },
+    {
+      "trigger": "support_btn_click",
+      "target": "/settings/help/support",
+      "condition": ""
+    },
+    {
+      "trigger": "search_submit",
+      "target": "",
+      "condition": "searchQuery.length >= 2"
+    },
+    {
+      "trigger": "passkey_status_click",
+      "target": "/settings/security/passkey",
+      "condition": ""
+    }
+  ],
+  "responsive": {
+    "mobile": {
+      "layout": "stack",
+      "hidden_components": []
+    },
+    "tablet": {
+      "layout": "stack"
+    },
+    "desktop": {
+      "layout": "stack"
+    }
+  },
+  "auth_required": true
+}

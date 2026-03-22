@@ -1,0 +1,14 @@
+%%{init: {"theme": "default"}}%%
+C4Context
+    title API Standards Context Diagram
+
+    Person(user, "User", "An individual or system that interacts with the APIs.")
+    System(system, "API Standards", "A set of guidelines and rules for API integration.")
+
+    System_Ext(externalAPI, "External API", "APIs provided by third-party services.")
+    System_Ext(internalAPI, "Internal API", "APIs developed and maintained within the organization.")
+
+    Rel(user, externalAPI, "Uses")
+    Rel(user, internalAPI, "Uses")
+    Rel(externalAPI, system, "Follows")
+    Rel(internalAPI, system, "Follows")

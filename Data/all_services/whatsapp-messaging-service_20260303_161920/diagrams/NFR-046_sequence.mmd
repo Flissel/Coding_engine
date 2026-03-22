@@ -1,0 +1,17 @@
+sequenceDiagram
+    participant User as User
+    participant ScreenReader as Screen Reader
+    participant Application as Application
+    participant Keyboard as Keyboard Navigation
+    participant Support as Support Team
+
+    User->>ScreenReader: Activate screen reader
+    ScreenReader->>Application: Request content
+    Application->>ScreenReader: Provide accessible content
+    User->>Keyboard: Navigate using keyboard
+    Keyboard->>Application: Send navigation commands
+    Application->>Keyboard: Respond with focus updates
+    User->>Support: Report issues with navigation
+    Support->>Application: Investigate reported issues
+    Application->>Support: Provide feedback on fixes
+    Support->>User: Communicate resolution

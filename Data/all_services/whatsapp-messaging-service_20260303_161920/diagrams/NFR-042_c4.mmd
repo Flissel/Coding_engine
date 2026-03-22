@@ -1,0 +1,17 @@
+%%{ init : { "theme" : "default" } }%%
+C4Context
+    title Deployment Frequency System Context Diagram
+
+    Person(admin, "Administrator", "Manages the deployment process")
+    Person(dev, "Developer", "Develops and deploys code")
+    System(system, "Deployment System", "Supports frequent, low-risk deployments")
+
+    System_Ext(cloud, "Cloud Provider", "Provides infrastructure for deployment")
+    System_Ext(versionControl, "Version Control System", "Stores and manages code versions")
+    System_Ext(ciCd, "CI/CD Pipeline", "Automates the deployment process")
+
+    Rel(admin, system, "Uses")
+    Rel(dev, system, "Deploys code to")
+    Rel(system, cloud, "Deploys applications to")
+    Rel(system, versionControl, "Fetches code from")
+    Rel(system, ciCd, "Triggers deployment through")

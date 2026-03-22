@@ -1,0 +1,11 @@
+%%{ init: { "theme": "default" } }%%
+C4Context
+    title Benachrichtigungsvorschau System Architecture
+
+    Person(user, "Benutzer", "Interagiert mit dem System zur Anzeige von Benachrichtigungen.")
+    System(bvSystem, "Benachrichtigungsvorschau", "Bietet konfigurierbare Benachrichtigungsvorschauen.")
+
+    Rel(user, bvSystem, "Verwendet")
+
+    System_Ext(externalSystem, "Externes Benachrichtigungssystem", "Lieferant von Benachrichtigungsdaten.")
+    Rel(bvSystem, externalSystem, "Erhält Benachrichtigungsdaten von")

@@ -1,0 +1,17 @@
+sequenceDiagram
+    participant User1 as User 1
+    participant User2 as User 2
+    participant Server as Server
+
+    User1->>Server: Change online status to "Online"
+    Server-->>User2: Notify User 1 is online
+    User2->>Server: Change online status to "Online"
+    Server-->>User1: Notify User 2 is online
+
+    User1->>Server: Start typing
+    Server-->>User2: Notify User 1 is typing
+    User2->>Server: Set privacy controls (hide typing indicators)
+    Server-->>User1: Notify User 2 has hidden typing indicators
+
+    User1->>Server: Stop typing
+    Server-->>User2: Notify User 1 has stopped typing

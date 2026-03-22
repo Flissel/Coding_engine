@@ -1,0 +1,8 @@
+flowchart TD
+    A[Start] --> B[Medien auswählen]
+    B --> C{HD-Qualität verfügbar?}
+    C -- Ja --> D[Medien in HD-Qualität senden]
+    C -- Nein --> E[Medien in Standard-Qualität senden]
+    D --> F[Übertragung bestätigen]
+    E --> F
+    F --> G[Ende]

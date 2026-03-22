@@ -1,0 +1,22 @@
+stateDiagram-v2
+    [*] --> Sent
+    Sent --> Delivered : Message delivered
+    Delivered --> Read : Message read
+    Read --> [*]
+
+    state Group {
+        [*] --> Sent
+        Sent --> Delivered : Message delivered
+        Delivered --> Read : Message read
+        Read --> [*]
+    }
+
+    state Recipient {
+        [*] --> Pending
+        Pending --> Sent : Message sent
+        Sent --> Delivered : Message delivered
+        Delivered --> Read : Message read
+        Read --> [*]
+    }
+
+    Group --> Recipient : Group message status

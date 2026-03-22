@@ -1,0 +1,9 @@
+stateDiagram-v2
+    [*] --> UnderLimit
+    [*] --> OverLimit
+
+    UnderLimit --> Processing : Message/Media Size <= Limit
+    OverLimit --> Reject : Message/Media Size > Limit
+
+    Processing --> [*] : Process Successfully
+    Reject --> [*] : Notify User

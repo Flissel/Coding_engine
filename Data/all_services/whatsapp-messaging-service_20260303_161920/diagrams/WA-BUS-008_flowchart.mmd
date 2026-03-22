@@ -1,0 +1,13 @@
+flowchart TD
+    A[Start] --> B{Ausgewählte Märkte?}
+    B -- Ja --> C[In-App-Zahlungen aktivieren]
+    B -- Nein --> D[Zahlungsoption nicht verfügbar]
+    C --> E[Benutzer wählt Betrag]
+    E --> F[Benutzer wählt Zahlungsmethode]
+    F --> G[Transaktion verarbeiten]
+    G --> H{Transaktion erfolgreich?}
+    H -- Ja --> I[Bestätigung senden]
+    H -- Nein --> J[Fehlerbehandlung]
+    I --> K[Ende]
+    J --> K
+    D --> K

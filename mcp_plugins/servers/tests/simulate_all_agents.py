@@ -190,10 +190,10 @@ def check_requirements(requires: List[str]) -> tuple[bool, str]:
                 import socket
                 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
                 s.settimeout(1)
-                s.connect(("localhost", 6333))
+                s.connect(("localhost", 6340))
                 s.close()
             except:
-                missing.append("qdrant (localhost:6333)")
+                missing.append("qdrant (localhost:6340)")
         elif req == "redis":
             try:
                 import socket

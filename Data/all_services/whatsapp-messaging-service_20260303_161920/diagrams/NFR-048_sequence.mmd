@@ -1,0 +1,13 @@
+sequenceDiagram
+    participant User as User
+    participant DeviceA as Device A (OS Version 1)
+    participant DeviceB as Device B (OS Version 2)
+    participant Server as Server
+
+    User->>DeviceA: Initiate connection
+    DeviceA->>Server: Request compatibility info
+    Server-->>DeviceA: Provide compatibility data
+    DeviceA->>DeviceB: Send connection request
+    DeviceB-->>DeviceA: Acknowledge connection
+    DeviceA->>User: Connection established
+    DeviceB->>User: Connection established

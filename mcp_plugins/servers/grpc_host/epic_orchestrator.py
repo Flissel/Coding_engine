@@ -29,7 +29,7 @@ if sys.platform == 'win32':
         sys.stderr.reconfigure(encoding='utf-8', errors='replace')
     except Exception:
         pass  # Older Python versions may not support reconfigure
-from typing import Optional, List, Dict, Any, Set
+from typing import Optional, List, Dict, Any, Set, Callable
 from dataclasses import dataclass, field, asdict
 from datetime import datetime
 from collections import defaultdict, deque
@@ -132,6 +132,7 @@ class EpicOrchestrator:
         two_stage: bool = True,
         enable_som: bool = False,
         som_config: Optional[Any] = None,
+        on_progress: Optional[Callable] = None,
     ):
         """
         Args:
@@ -147,6 +148,8 @@ class EpicOrchestrator:
             enable_som: If True, activate Society of Mind bridge for autonomous
                         debugging, live preview, dependency management etc.
             som_config: Optional SoMBridgeConfig for fine-tuning SoM behavior.
+            on_progress: Optional callback(completed, total, failed, current_task)
+                         called after each task completes for real-time progress.
         """
         self.project_path = Path(project_path)
         self.output_dir = Path(output_dir) if output_dir else self.project_path / "output"
@@ -157,6 +160,7 @@ class EpicOrchestrator:
         self.enable_som = enable_som
         self.som_config = som_config
         self.som_bridge = None  # Initialized in run_epic() if enable_som=True
+        self.on_progress = on_progress
 
         # Parallelism configuration
         self.max_parallel_tasks = min(
@@ -275,6 +279,12 @@ class EpicOrchestrator:
                     f"vnc={self.som_bridge.get_vnc_url()}"
                 )
 
+            # 0. Normalize input format if needed (new pipeline → canonical)
+            from input_normalizer import InputNormalizer
+            normalizer = InputNormalizer(self.project_path)
+            if normalizer.normalize():
+                logger.info("Input data normalized to canonical format")
+
             # 1. Load or generate tasks
             task_list = self._load_or_generate_tasks(epic_id)
 
@@ -354,7 +364,7 @@ class EpicOrchestrator:
             return result
 
         except Exception as e:
-            logger.error(f"Epic execution failed: {e}", epic_id=epic_id)
+            logger.error(f"Epic execution failed: {e} | epic_id={epic_id}")
             return EpicExecutionResult(
                 epic_id=epic_id,
                 success=False,
@@ -630,6 +640,15 @@ class EpicOrchestrator:
                         logger.warning(
                             f"Task {task.id} failed, continuing with independent tasks"
                         )
+                    # Notify progress
+                    if self.on_progress:
+                        try:
+                            self.on_progress(
+                                completed=completed, total=len(tasks_to_execute),
+                                failed=failed, current_task=task.title,
+                            )
+                        except Exception:
+                            pass
             else:
                 # Sequential execution
                 for task in ready_tasks:
@@ -658,6 +677,15 @@ class EpicOrchestrator:
                         logger.warning(
                             f"Task {task.id} failed, continuing with independent tasks"
                         )
+                    # Notify progress
+                    if self.on_progress:
+                        try:
+                            self.on_progress(
+                                completed=completed, total=len(tasks_to_execute),
+                                failed=failed, current_task=task.title,
+                            )
+                        except Exception:
+                            pass
 
         # Calculate final result
         all_successful = failed == 0 and skipped == 0 and len(pending_ids) == 0
@@ -1079,8 +1107,17 @@ class EpicOrchestrator:
         # Build task lookup
         task_map: Dict[str, Task] = {t.id: t for t in all_tasks}
         pending_ids: Set[str] = {t.id for t in tasks_to_execute}
-        completed_ids: Set[str] = set()
-        failed_ids: Set[str] = set()
+        # Pre-populate completed/failed sets from tasks already in those states
+        # (e.g. from a previous run). Without this, skip_failed_deps cannot
+        # unblock downstream tasks whose dependencies failed in an earlier run.
+        completed_ids: Set[str] = {
+            t.id for t in all_tasks
+            if t.status == "completed" and t.id not in pending_ids
+        }
+        failed_ids: Set[str] = {
+            t.id for t in all_tasks
+            if t.status == "failed" and t.id not in pending_ids
+        }
 
         # Build file conflict map
         task_file_map = self._build_task_file_map(tasks_to_execute)
@@ -1173,6 +1210,17 @@ class EpicOrchestrator:
                             logger.warning(
                                 f"[Pipeline] Failed {task_id}: {result.error}"
                             )
+                        # Notify progress
+                        if self.on_progress:
+                            try:
+                                self.on_progress(
+                                    completed=completed_count,
+                                    total=len(tasks_to_execute),
+                                    failed=failed_count,
+                                    current_task=task.title,
+                                )
+                            except Exception:
+                                pass
                             await self._publish_log(
                                 f"FAILED {task_id}: {result.error or 'Unknown error'}",
                                 level="ERROR"

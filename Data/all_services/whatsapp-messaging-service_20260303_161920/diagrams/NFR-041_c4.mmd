@@ -1,0 +1,13 @@
+%%{init: {"theme": "default"}}%%
+C4Context
+    title Code Quality and Coverage System Architecture
+
+    Person(user, "Developer", "A developer who writes and maintains code.")
+    System(system, "Code Quality and Coverage System", "A system that ensures maintainable codebase with automated testing thresholds.")
+
+    System_Ext(testingTool, "Automated Testing Tool", "Tool for running automated tests and measuring code coverage.")
+    System_Ext(codeReviewTool, "Code Review Tool", "Tool for conducting code reviews and ensuring code quality.")
+
+    Rel(user, system, "Uses")
+    Rel(system, testingTool, "Integrates with")
+    Rel(system, codeReviewTool, "Integrates with")

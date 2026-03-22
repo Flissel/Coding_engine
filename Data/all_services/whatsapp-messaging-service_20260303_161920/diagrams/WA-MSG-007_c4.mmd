@@ -1,0 +1,13 @@
+%%{init: {'theme': 'default'}}%%
+C4Context
+    title Reaktionen System Context Diagram
+
+    Person(user, "User", "A user who sends and receives messages.")
+    System(reactionsSystem, "Reaktionen System", "A system that supports emoji reactions on messages.")
+
+    System_Ext(messagingSystem, "Messaging System", "The system that handles message sending and receiving.")
+    System_Ext(database, "Database", "Stores messages and emoji reactions.")
+
+    Rel(user, reactionsSystem, "Uses")
+    Rel(reactionsSystem, messagingSystem, "Integrates with")
+    Rel(reactionsSystem, database, "Stores and retrieves reactions")

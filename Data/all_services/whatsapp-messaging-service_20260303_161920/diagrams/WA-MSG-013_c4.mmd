@@ -1,0 +1,14 @@
+%%{ init : { "theme" : "default" } }%%
+C4Context
+    title System Context Diagram for Erwaehnung (@mention)
+
+    Person(user, "User", "A user who participates in group chats and uses @mentions.")
+    System(system, "Erwaehnung System", "A system that supports @mentions in group chats.")
+
+    System_Ext(chatApp, "Chat Application", "An external chat application where group chats take place.")
+    System_Ext(database, "Database", "Stores user data and chat messages.")
+
+    Rel(user, chatApp, "Uses")
+    Rel(chatApp, system, "Integrates with")
+    Rel(system, database, "Reads from and writes to")
+    Rel(system, user, "Sends notifications for @mentions")

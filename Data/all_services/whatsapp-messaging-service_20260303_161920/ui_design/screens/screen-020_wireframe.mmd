@@ -1,0 +1,13 @@
+flowchart TD
+    subgraph QR-Code_Profil
+        Header[Header / Navigation]
+        Main[Main Content Area]
+        Sidebar[Sidebar / Filters]
+        Footer[Footer / Actions]
+    end
+
+    Header --> Main
+    Sidebar --> Main
+    Main --> Footer
+
+    %% 

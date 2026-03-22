@@ -1,0 +1,11 @@
+flowchart TD
+    A[Start] --> B{Ist das System online?}
+    B -- Ja --> C[Online-Funktionalität nutzen]
+    B -- Nein --> D[Offline-Funktionalität aktivieren]
+    D --> E[Grundlegende Funktionen bereitstellen]
+    E --> F{Funktionalität verfügbar?}
+    F -- Ja --> G[Benutzer kann offline arbeiten]
+    F -- Nein --> H[Fehlermeldung anzeigen]
+    G --> I[Ende]
+    H --> I
+    C --> I

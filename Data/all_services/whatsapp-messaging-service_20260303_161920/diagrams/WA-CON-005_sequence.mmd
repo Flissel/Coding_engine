@@ -1,0 +1,12 @@
+sequenceDiagram
+    participant User as Unbekannter Absender
+    participant System as System
+
+    User->>System: Nachricht senden
+    System->>System: Überprüfen auf unbekannten Absender
+    alt Unbekannter Absender
+        System->>User: Nachricht abgelehnt
+        System->>System: Protokolliere unbekannten Absender
+    else Bekannter Absender
+        System->>User: Nachricht akzeptiert
+    end

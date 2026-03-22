@@ -1,0 +1,39 @@
+flowchart TD
+    Start([Start: Bild in bestehendem Chat senden])
+    S1{User öffnet App und prüft, ob er angemeldet ist}
+    Start --> S1
+    E1[/Session abgelaufen -> Weiterleitung zum Login/]
+    S1 -.-> E1
+    S2{First-Time-User Onboarding für Medienzugriff wird angezeigt (Berechtigungen)}
+    S1 --> S2
+    E2[/Berechtigung verweigert -> Hinweis mit Anleitung zur Aktivierung in Einstellungen/]
+    S2 -.-> E2
+    S3[User öffnet einen bestehenden Chat]
+    S2 --> S3
+    E3[/Chat nicht ladbar wegen Offline-Modus -> Offline-Banner mit Retry/]
+    S3 -.-> E3
+    S4{User tippt auf Attachment-Icon und wählt Bildquelle (Galerie/Kamera)}
+    S3 --> S4
+    E4[/Kein Zugriff auf Kamera/Galerie -> Fehlermeldung und Verlinkung zu Einstellungen/]
+    S4 -.-> E4
+    S5{User wählt eine Bilddatei}
+    S4 --> S5
+    E5[/Nicht unterstütztes Dateiformat -> Senden verhindert, Fehlermeldung angezeigt/]
+    S5 -.-> E5
+    S6{System prüft Dateigröße gegen Maximalgröße}
+    S5 --> S6
+    E6[/Datei zu groß -> Hinweis zur Größenbegrenzung und Option zur Neuauswahl/]
+    S6 -.-> E6
+    S7{User tippt auf „Senden“}
+    S6 --> S7
+    E7[/Instabile Verbindung -> Upload fehlgeschlagen, Retry-Option angezeigt/]
+    S7 -.-> E7
+    S8[System bestätigt Versand und zeigt Bild im Chat für Sender]
+    S7 --> S8
+    E8[/Serverfehler -> Status „nicht gesendet“ mit erneuter Senden-Option/]
+    S8 -.-> E8
+    S9[Empfänger erhält Bildnachricht]
+    S8 --> S9
+    E9[/Gerätewechsel/Account-Recovery beim Empfänger -> Nachricht wird nach Re-Login synchronisiert/]
+    S9 -.-> E9
+    S9 --> End([End])

@@ -1,0 +1,11 @@
+stateDiagram-v2
+    [*] --> Offline
+    [*] --> Online
+    Online --> Typing
+    Online --> Idle
+    Typing --> Online : Stop Typing
+    Idle --> Online : Start Typing
+    Online --> PrivacyEnabled : Enable Privacy
+    PrivacyEnabled --> Online : Disable Privacy
+    PrivacyEnabled --> Offline : Logout
+    Offline --> PrivacyEnabled : Login

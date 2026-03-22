@@ -1,0 +1,13 @@
+flowchart TD
+    A[Start] --> B{Ist die Sprache rechts-nach-links?}
+    B -- Ja --> C[Textfluss anpassen]
+    B -- Nein --> D[Standard Textfluss beibehalten]
+    C --> E[Layout anpassen]
+    D --> E
+    E --> F[Schriftarten und -größen überprüfen]
+    F --> G[Benutzeroberfläche testen]
+    G --> H{Fehler gefunden?}
+    H -- Ja --> I[Fehler beheben]
+    H -- Nein --> J[System bereit für den Einsatz]
+    I --> G
+    J --> K[Ende]

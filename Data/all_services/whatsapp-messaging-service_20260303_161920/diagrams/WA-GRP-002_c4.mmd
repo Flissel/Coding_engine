@@ -1,0 +1,14 @@
+%%{ init : { "theme" : "default" } }%%
+C4Context
+    title Gruppenadministration System Context
+
+    Person(admin, "Administrator", "Verwaltet Gruppen und Benutzer")
+    Person(user, "Benutzer", "Nutzt die Gruppenfunktionen")
+
+    System(groepenAdminSystem, "Gruppenadministration System", "Bietet umfangreiche Gruppenadmin-Funktionen")
+
+    System_Ext(externalSystem, "Externes System", "Interagiert mit dem Gruppenadministration System")
+
+    Rel(admin, groepenAdminSystem, "Verwaltet")
+    Rel(user, groepenAdminSystem, "Nutzt")
+    Rel(groepenAdminSystem, externalSystem, "Kommuniziert mit")

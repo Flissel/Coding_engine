@@ -1,0 +1,14 @@
+C4Context
+    title System Context - WhatsApp Messaging Service
+    Person(user, "User", "Mobile/Web user sending messages")
+    Person(contact, "Contact", "Message recipient")
+    System(whatsapp, "WhatsApp Messaging Service", "Secure messaging platform")
+    System_Ext(push, "Push Notification Service", "APNs/FCM")
+    System_Ext(telecom, "Telecom Provider", "SMS verification")
+    System_Ext(webrtc, "WebRTC Infrastructure", "TURN/STUN servers")
+    
+    Rel(user, whatsapp, "Sends/receives messages")
+    Rel(contact, whatsapp, "Sends/receives messages")
+    Rel(whatsapp, push, "Sends push notifications")
+    Rel(whatsapp, telecom, "Phone verification")
+    Rel(whatsapp, webrtc, "Voice/video calls")

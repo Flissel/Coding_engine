@@ -1,0 +1,8 @@
+flowchart TD
+    A[Anruf erhalten] --> B{Anruf ablehnen?}
+    B -- Ja --> C[Nachricht auswählen]
+    C --> D[Nachricht senden]
+    D --> E[Anruf abgelehnt]
+    B -- Nein --> F[Anruf annehmen]
+    E --> G[System bietet schnelle Antworten]
+    F --> G

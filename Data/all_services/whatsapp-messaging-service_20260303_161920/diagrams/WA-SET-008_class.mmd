@@ -1,0 +1,24 @@
+classDiagram
+    class ChatBackground {
+        +String color
+        +String image
+        +String pattern
+        +setCustomization()
+        +getCustomization()
+    }
+
+    class User {
+        +String username
+        +String userId
+        +setChatBackground()
+        +getChatBackground()
+    }
+
+    class Customization {
+        +String backgroundType
+        +String backgroundValue
+        +applyCustomization()
+    }
+
+    User --> ChatBackground : uses
+    ChatBackground --> Customization : has

@@ -1,0 +1,8 @@
+%%{ init : { "theme" : "default" } }%%
+C4Context
+    title End-to-End Verschlüsselung System Architecture
+
+    Person(user, "User", "A user who sends and receives messages.")
+    System(system, "End-to-End Verschlüsselung System", "System that encrypts messages end-to-end.")
+
+    Rel(user, system, "Sends and receives encrypted messages")

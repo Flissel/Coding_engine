@@ -1,0 +1,20 @@
+sequenceDiagram
+    participant User
+    participant Client
+    participant Server
+    participant Network
+
+    User->>Client: Send Message
+    Client->>Network: Attempt to send message
+    alt Network is available
+        Network->>Server: Deliver message
+        Server-->>Client: Acknowledge receipt
+        Client-->>User: Confirm delivery
+    else Network is intermittent
+        Network-->>Client: Delivery failed
+        Client-->>User: Notify delivery failure
+        Client->>Network: Retry sending message
+        Network->>Server: Deliver message
+        Server-->>Client: Acknowledge receipt
+        Client-->>User: Confirm delivery
+    end

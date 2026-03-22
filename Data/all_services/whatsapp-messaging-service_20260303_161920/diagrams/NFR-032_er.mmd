@@ -1,0 +1,31 @@
+erDiagram
+    MESSAGE {
+        string id PK
+        string content
+        datetime timestamp
+    }
+    
+    MEDIA {
+        string id PK
+        string type
+        string url
+        datetime created_at
+    }
+    
+    STORAGE {
+        string id PK
+        string type
+        int capacity
+        int used_space
+    }
+    
+    INDEXING {
+        string id PK
+        string strategy
+        int index_size
+    }
+    
+    MESSAGE ||--o{ STORAGE : stores
+    MEDIA ||--o{ STORAGE : stores
+    MESSAGE ||--o{ INDEXING : indexed_by
+    MEDIA ||--o{ INDEXING : indexed_by

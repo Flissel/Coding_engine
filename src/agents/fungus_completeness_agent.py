@@ -27,7 +27,7 @@ from .autonomous_base import AutonomousAgent
 from ..mind.event_bus import EventBus, Event, EventType
 from ..mind.shared_state import SharedState
 from ..services.mcmp_background import SimulationConfig
-from src.llm_config import get_model
+from src.llm_config import get_model, get_openrouter_model
 
 logger = structlog.get_logger(__name__)
 
@@ -39,7 +39,7 @@ class MCMPSemanticValidator:
 
     def __init__(self, project_path: Path, model: str = None, enable_supermemory: bool = True):
         self.project_path = project_path
-        self.model = model or get_model("judge")
+        self.model = model or get_openrouter_model("judge")
         self._embedder = None
         self._client = None
         self._enable_supermemory = enable_supermemory
@@ -382,7 +382,7 @@ class FungusCompletenessAgent(AutonomousAgent):
         self._check_count = 0
 
         # Initialize MCMP semantic validator
-        llm_model = llm_model or get_model("judge")
+        llm_model = llm_model or get_openrouter_model("judge")
         self._validator = MCMPSemanticValidator(
             project_path=Path(working_dir),
             model=llm_model,

@@ -1,0 +1,51 @@
+flowchart TD
+    Start([Start: Verschlüsselten Videoanruf starten und empfangen])
+    S1{User öffnet die App}
+    Start --> S1
+    E1[/App kann nicht geladen werden wegen fehlender Netzwerkverbindung/]
+    S1 -.-> E1
+    S2{Wenn First-Time-User: Onboarding wird angezeigt und erklärt Videoanruf-Funktionen}
+    S1 --> S2
+    E2[/Onboarding kann nicht geladen werden, Fallback auf Hilfe-Seite/]
+    S2 -.-> E2
+    S3{User erteilt Kamera- und Mikrofonberechtigungen}
+    S2 --> S3
+    E3[/User verweigert Berechtigungen, Hinweis auf Einstellungen mit Abbruchoption/]
+    S3 -.-> E3
+    S4{System prüft Kontostatus und Session-Gültigkeit}
+    S3 --> S4
+    E4[/Session abgelaufen → Account-Recovery-Flow wird angeboten/]
+    S4 -.-> E4
+    S5{System prüft Netzwerkstatus}
+    S4 --> S5
+    E5[/Offline-Modus erkannt → Hinweis 'Videoanruf nicht verfügbar'/]
+    S5 -.-> E5
+    S6[User öffnet einen Chat und tippt auf Videoanruf-Icon]
+    S5 --> S6
+    E6[/Button deaktiviert bei gesperrtem Kontakt oder fehlenden Berechtigungen/]
+    S6 -.-> E6
+    S7{System prüft Verfügbarkeit des Empfängers}
+    S6 --> S7
+    E7[/Empfänger offline/nicht verfügbar → Benachrichtigung 'nicht erreichbar'/]
+    S7 -.-> E7
+    S8{Empfänger nimmt den Videoanruf an}
+    S7 --> S8
+    E8[/Empfänger lehnt ab oder verpasst → Hinweis 'Anruf nicht angenommen'/]
+    S8 -.-> E8
+    S9[System baut E2E-verschlüsselten Videoanruf auf]
+    S8 --> S9
+    E9[/Schlüssel-Austausch fehlgeschlagen → Verbindung wird abgebrochen/]
+    S9 -.-> E9
+    S10{Während des Anrufs überwacht das System die Netzwerkqualität}
+    S9 --> S10
+    E10[/Instabile Verbindung → Reconnect-Versuch mit Statusanzeige/]
+    S10 -.-> E10
+    S11{Wenn Reconnect fehlschlägt, informiert das System und beendet den Anruf}
+    S10 --> S11
+    E11[/Mehrfache Fehlschläge → automatische Beendigung und Protokollierung/]
+    S11 -.-> E11
+    S12{Edge-Case: User wechselt Gerät während des aktiven Anrufs}
+    S11 --> S12
+    E12[/Gerätewechsel wird abgebrochen → Anruf bleibt auf Ursprungsgerät/]
+    S12 -.-> E12
+    S12 --> End([End])

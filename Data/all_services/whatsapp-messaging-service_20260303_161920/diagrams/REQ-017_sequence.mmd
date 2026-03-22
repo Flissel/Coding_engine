@@ -1,0 +1,18 @@
+sequenceDiagram
+    participant User as User
+    participant Server as Server
+    participant Recipient1 as Recipient 1
+    participant Recipient2 as Recipient 2
+    participant Group as Group
+
+    User->>Server: Send Message
+    Server-->>User: Acknowledge Message Sent
+    Server->>Group: Deliver Message to Recipients
+    Group->>Recipient1: Deliver Message
+    Group->>Recipient2: Deliver Message
+    Group-->>Server: Acknowledge Message Delivered
+
+    Recipient1->>Group: Read Message
+    Recipient2->>Group: Read Message
+    Group-->>Server: Update Read Status for Recipients
+    Server-->>User: Notify Read Receipts

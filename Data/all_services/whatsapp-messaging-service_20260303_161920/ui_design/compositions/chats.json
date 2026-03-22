@@ -1,0 +1,102 @@
+{
+  "route": "/chats",
+  "screen_name": "Chats",
+  "description": "",
+  "user_stories": [],
+  "components": [
+    {
+      "component_id": "COMP-002",
+      "component_name": "SearchBar",
+      "props": {
+        "variant": "default",
+        "placeholder": "Chats durchsuchen"
+      },
+      "position": "header",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-001",
+      "component_name": "Button",
+      "props": {
+        "variant": "primary",
+        "text": "Neuer Chat"
+      },
+      "position": "header",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-003",
+      "component_name": "ChatListItem",
+      "props": {
+        "variant": "default"
+      },
+      "position": "main",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-003",
+      "component_name": "ChatListItem",
+      "props": {
+        "variant": "unread"
+      },
+      "position": "main",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-003",
+      "component_name": "ChatListItem",
+      "props": {
+        "variant": "muted"
+      },
+      "position": "main",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-010",
+      "component_name": "StatusIndicator",
+      "props": {
+        "variant": "online"
+      },
+      "position": "main",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-014",
+      "component_name": "GroupAvatar",
+      "props": {
+        "variant": "3-users"
+      },
+      "position": "main",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    }
+  ],
+  "layout": "flex column, full-height, header fixed, main scrollable",
+  "data_sources": [],
+  "state_shape": {
+    "chats": "array",
+    "searchQuery": "string",
+    "selectedChat": "object|null",
+    "loading": "boolean"
+  }
+}

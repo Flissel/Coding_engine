@@ -1,0 +1,16 @@
+sequenceDiagram
+    participant User
+    participant System
+    participant Admin
+
+    User->>System: Block User
+    System-->>User: User Blocked Confirmation
+
+    User->>System: Report Abuse
+    System-->>User: Report Submitted Confirmation
+
+    Admin->>System: Review Reports
+    System-->>Admin: Display Reported Content
+
+    Admin->>System: Take Action on Report
+    System-->>Admin: Action Taken Confirmation

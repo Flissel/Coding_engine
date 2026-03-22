@@ -1,0 +1,134 @@
+{
+  "route": "/calls/video/:callId/edge-cases",
+  "screen_name": "Edge-Case Handling",
+  "description": "",
+  "user_stories": [
+    "US-137"
+  ],
+  "components": [
+    {
+      "component_id": "COMP-019",
+      "component_name": "CallScreen",
+      "props": {
+        "variant": "video",
+        "callId": ":callId"
+      },
+      "position": "main",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-020",
+      "component_name": "VideoTile",
+      "props": {
+        "variant": "remote"
+      },
+      "position": "main",
+      "responsive": {
+        "mobile": "stacked",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-020",
+      "component_name": "VideoTile",
+      "props": {
+        "variant": "self"
+      },
+      "position": "main",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-013",
+      "component_name": "CallControls",
+      "props": {
+        "variant": "video"
+      },
+      "position": "footer",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-026",
+      "component_name": "ToastNotification",
+      "props": {
+        "variant": "error",
+        "message": "Connection lost"
+      },
+      "position": "modal",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-026",
+      "component_name": "ToastNotification",
+      "props": {
+        "variant": "warning",
+        "message": "Poor network quality"
+      },
+      "position": "modal",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-001",
+      "component_name": "Button",
+      "props": {
+        "variant": "primary",
+        "text": "Retry Connection"
+      },
+      "position": "modal",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-001",
+      "component_name": "Button",
+      "props": {
+        "variant": "secondary",
+        "text": "Switch to Audio"
+      },
+      "position": "modal",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-001",
+      "component_name": "Button",
+      "props": {
+        "variant": "danger",
+        "text": "End Call"
+      },
+      "position": "modal",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    }
+  ],
+  "layout": "flex column, full-height, video overlay layout",
+  "data_sources": [],
+  "state_shape": {
+    "callId": "string",
+    "connectionStatus": "string",
+    "networkQuality": "string",
+    "errorState": "object",
+    "retryAttempts": "number",
+    "fallbackOptions": "array"
+  }
+}

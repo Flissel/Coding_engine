@@ -1,0 +1,11 @@
+sequenceDiagram
+    participant User as Benutzer
+    participant System as System
+    participant SMS as SMS-Dienst
+
+    User->>System: Registrierungsanfrage mit Telefonnummer
+    System->>User: Bestätigungs-SMS senden
+    SMS->>User: SMS mit Bestätigungscode
+    User->>System: Bestätigungscode eingeben
+    System->>System: Bestätigungscode verifizieren
+    System->>User: Registrierung erfolgreich

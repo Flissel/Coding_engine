@@ -1,0 +1,121 @@
+{
+  "id": "SCREEN-018",
+  "name": "Image Send Screen",
+  "route": "/chat/{chatId}/send-image",
+  "layout": "stack",
+  "description": "Screen zum Auswählen, Vorschauen und Senden eines Bildes in einem Chat. Der Nutzer kann ein Bild aus der Galerie wählen oder aufnehmen, es in der Vorschau betrachten, eine optionale Bildunterschrift hinzufügen und absenden.",
+  "components": [
+    "COMP-001",
+    "COMP-004",
+    "COMP-005",
+    "COMP-007",
+    "COMP-008",
+    "COMP-010"
+  ],
+  "component_layout": [
+    {
+      "id": "COMP-010",
+      "name": "StatusIndicator",
+      "x": 0,
+      "y": 0,
+      "w": 60,
+      "h": 4
+    },
+    {
+      "id": "COMP-004",
+      "name": "ChatBubble (Preview)",
+      "x": 0,
+      "y": 4,
+      "w": 60,
+      "h": 4
+    },
+    {
+      "id": "COMP-007",
+      "name": "MediaViewer",
+      "x": 2,
+      "y": 8,
+      "w": 56,
+      "h": 16
+    },
+    {
+      "id": "COMP-008",
+      "name": "EmojiPicker",
+      "x": 0,
+      "y": 24,
+      "w": 10,
+      "h": 3
+    },
+    {
+      "id": "COMP-005",
+      "name": "MessageInput (Caption)",
+      "x": 10,
+      "y": 24,
+      "w": 40,
+      "h": 3
+    },
+    {
+      "id": "COMP-001",
+      "name": "Button (Send)",
+      "x": 50,
+      "y": 24,
+      "w": 10,
+      "h": 3
+    }
+  ],
+  "data_requirements": [
+    "GET /api/chats/{chatId}",
+    "POST /api/chats/{chatId}/messages (multipart/form-data: image, caption)",
+    "GET /api/chats/{chatId}/messages"
+  ],
+  "parent_user_story": "US-047",
+  "wireframe_mermaid": "flowchart TD\n    subgraph Image_Send_Screen\n        Header[Header / Navigation]\n        Main[Main Content Area]\n        Sidebar[Sidebar / Filters]\n        Footer[Footer / Actions]\n    end\n\n    Header --> Main\n    Sidebar --> Main\n    Main --> Footer\n\n    %% \n",
+  "wireframe_ascii": "     0    5   10   15   20   25   30   35   40   45   50   55   60\n   0 +------------------------------------------------------------+\n     | [<Back]  Kontaktname        [Online/Offline] COMP-010     |\n   2 |          StatusIndicator                                  |\n     +------------------------------------------------------------+\n   4 | [ChatBubble Preview - letzte Nachricht im Chat]           |\n     |  COMP-004                                                 |\n   6 |  \"Hier ist das Bild...\"                                   |\n     +------------------------------------------------------------+\n   8 | +--------------------------------------------------------+ |\n     | |                                                        | |\n  10 | |                                                        | |\n     | |                                                        | |\n  12 | |            +------------------+                        | |\n     | |            |   [Bild-        ]|                        | |\n  14 | |            |   [Vorschau     ]|                        | |\n     | |            |   [COMP-007     ]|                        | |\n  16 | |            |   [MediaViewer  ]|                        | |\n     | |            +------------------+                        | |\n  18 | |                                                        | |\n     | |                                                        | |\n  20 | |  [Rotate]  [Crop]  [Filter]                            | |\n     | |                                                        | |\n  22 | +--------------------------------------------------------+ |\n     +------------------------------------------------------------+\n  24 | [😀]     | [Bildunterschrift eingeben...]  | [  Senden  ] |\n     | COMP-008 |  COMP-005 (Caption Input)      | COMP-001     |\n  26 |          |  char-limit: 1024               | [    ➤    ]  |\n     +----------+--------------------------------+--------------+",
+  "state_bindings": {
+    "COMP-010": "chat.contact.status",
+    "COMP-004": "chat.messages.last",
+    "COMP-007": "imageSend.selectedImage",
+    "COMP-005": "imageSend.caption",
+    "COMP-008": "imageSend.emojiPickerOpen",
+    "COMP-001": "imageSend.sendEnabled"
+  },
+  "navigation_rules": [
+    {
+      "trigger": "back_btn_click",
+      "target": "/chat/{chatId}",
+      "condition": ""
+    },
+    {
+      "trigger": "send_btn_click",
+      "target": "/chat/{chatId}",
+      "condition": "imageSend.selectedImage != null"
+    },
+    {
+      "trigger": "image_sent_success",
+      "target": "/chat/{chatId}",
+      "condition": ""
+    },
+    {
+      "trigger": "media_viewer_tap",
+      "target": "/chat/{chatId}/send-image/fullscreen",
+      "condition": "imageSend.selectedImage != null"
+    }
+  ],
+  "responsive": {
+    "mobile": {
+      "layout": "stack",
+      "hidden_components": [],
+      "notes": "MediaViewer nimmt volle Breite ein, Caption-Input und Send-Button fixiert am unteren Rand"
+    },
+    "tablet": {
+      "layout": "stack",
+      "hidden_components": [],
+      "notes": "MediaViewer zentriert mit max-width 480px"
+    },
+    "desktop": {
+      "layout": "stack",
+      "hidden_components": [],
+      "notes": "MediaViewer zentriert mit max-width 600px, Sidebar mit Chatliste sichtbar"
+    }
+  },
+  "auth_required": true
+}

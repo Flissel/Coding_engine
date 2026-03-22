@@ -1,0 +1,15 @@
+%%{ init : { "theme" : "default" } }%%
+C4Context
+    title Backup Strategy Context Diagram
+
+    Person(customer, "Customer", "A user who relies on the backup system.")
+    System(system, "Backup System", "A system that manages backups across regions.")
+
+    System_Ext(cloudStorage, "Cloud Storage", "External cloud storage service for backup.")
+    System_Ext(regionA, "Region A Data Center", "Data center in Region A.")
+    System_Ext(regionB, "Region B Data Center", "Data center in Region B.")
+
+    Rel(customer, system, "Uses")
+    Rel(system, cloudStorage, "Stores backups in")
+    Rel(system, regionA, "Performs backups to")
+    Rel(system, regionB, "Performs backups to")

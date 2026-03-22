@@ -1,0 +1,10 @@
+stateDiagram-v2
+    [*] --> Idle
+    Idle --> Sending : Send Message
+    Sending --> AwaitingAck : Await Acknowledgment
+    AwaitingAck --> Delivered : Acknowledgment Received
+    AwaitingAck --> Resending : No Acknowledgment
+    Resending --> Sending : Resend Message
+    Delivered --> [*]
+    Resending --> AwaitingAck : Await Acknowledgment
+    Resending --> Idle : Max Retries Exceeded

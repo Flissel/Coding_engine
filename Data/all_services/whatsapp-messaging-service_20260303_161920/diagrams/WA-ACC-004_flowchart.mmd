@@ -1,0 +1,11 @@
+flowchart TD
+    A[Start] --> B[Sprachnachricht empfangen]
+    B --> C[Audioanalyse durchführen]
+    C --> D[Sprachnachricht in Text umwandeln]
+    D --> E[Text überprüfen]
+    E --> F{Fehler gefunden?}
+    F -->|Ja| G[Text korrigieren]
+    F -->|Nein| H[Transkription speichern]
+    G --> H
+    H --> I[Transkription bereitstellen]
+    I --> J[Ende]

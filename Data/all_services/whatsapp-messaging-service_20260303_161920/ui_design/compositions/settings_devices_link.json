@@ -1,0 +1,105 @@
+{
+  "route": "/settings/devices/link",
+  "screen_name": "Neues Geraet verbinden",
+  "description": "",
+  "user_stories": [],
+  "components": [
+    {
+      "component_id": "COMP-001",
+      "component_name": "Button",
+      "props": {
+        "variant": "ghost",
+        "text": "Zurück",
+        "icon": "arrow-left"
+      },
+      "position": "header",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-001",
+      "component_name": "Button",
+      "props": {
+        "variant": "primary",
+        "text": "QR-Code scannen",
+        "icon": "qr-code"
+      },
+      "position": "main",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-001",
+      "component_name": "Button",
+      "props": {
+        "variant": "outline",
+        "text": "Manuell verbinden",
+        "icon": "link"
+      },
+      "position": "main",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-001",
+      "component_name": "Button",
+      "props": {
+        "variant": "secondary",
+        "text": "Passkey verwenden",
+        "icon": "key"
+      },
+      "position": "main",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-021",
+      "component_name": "EncryptionBadge",
+      "props": {
+        "variant": "secure",
+        "text": "Ende-zu-Ende verschlüsselt"
+      },
+      "position": "main",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-026",
+      "component_name": "ToastNotification",
+      "props": {
+        "variant": "error",
+        "message": "Verbindung fehlgeschlagen"
+      },
+      "position": "modal",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    }
+  ],
+  "layout": "flex column, centered, max-width 400px, padding 24px, gap 16px",
+  "data_sources": [
+    "GET /api/v1/devices",
+    "POST /api/v1/devices",
+    "POST /api/v1/auth/passkeys/registration/options",
+    "POST /api/v1/auth/passkeys/registration/verify"
+  ],
+  "state_shape": {
+    "connectionMethod": "string",
+    "isConnecting": "boolean",
+    "qrCodeData": "string",
+    "manualCode": "string",
+    "error": "string",
+    "devices": "array"
+  }
+}

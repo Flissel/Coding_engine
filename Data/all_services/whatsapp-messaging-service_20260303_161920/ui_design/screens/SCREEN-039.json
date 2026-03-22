@@ -1,0 +1,115 @@
+{
+  "id": "SCREEN-039",
+  "name": "Dashboard - Chat Export",
+  "route": "/dashboard",
+  "layout": "sidebar",
+  "description": "Dashboard-Ansicht mit Chat-Liste, Chat-Vorschau und Export-Funktionalität. Ermöglicht dem Nutzer einen einzelnen Chat auszuwählen und zu exportieren.",
+  "components": [
+    "COMP-001",
+    "COMP-002",
+    "COMP-003",
+    "COMP-009",
+    "COMP-010"
+  ],
+  "component_layout": [
+    {
+      "id": "COMP-002",
+      "name": "SearchBar",
+      "x": 0,
+      "y": 0,
+      "w": 20,
+      "h": 3
+    },
+    {
+      "id": "COMP-003",
+      "name": "ChatListItem",
+      "x": 0,
+      "y": 3,
+      "w": 20,
+      "h": 18
+    },
+    {
+      "id": "COMP-010",
+      "name": "StatusIndicator",
+      "x": 16,
+      "y": 4,
+      "w": 4,
+      "h": 1
+    },
+    {
+      "id": "COMP-009",
+      "name": "ContactCard",
+      "x": 21,
+      "y": 0,
+      "w": 39,
+      "h": 5
+    },
+    {
+      "id": "COMP-001",
+      "name": "ExportButton",
+      "x": 50,
+      "y": 1,
+      "w": 10,
+      "h": 2
+    }
+  ],
+  "data_requirements": [
+    "GET /api/chats",
+    "GET /api/chats/{id}",
+    "GET /api/chats/{id}/messages",
+    "POST /api/chats/{id}/export",
+    "GET /api/contacts/{id}"
+  ],
+  "parent_user_story": "US-092",
+  "wireframe_mermaid": "flowchart TD\n    subgraph Dashboard_-_Chat_Export\n        Header[Header / Navigation]\n        Main[Main Content Area]\n        Sidebar[Sidebar / Filters]\n        Footer[Footer / Actions]\n    end\n\n    Header --> Main\n    Sidebar --> Main\n    Main --> Footer\n\n    %% \n",
+  "wireframe_ascii": "     0    5   10   15   20   25   30   35   40   45   50   55   60\n   0 +-------------------+----------------------------------------+\n     | [SearchBar]       | [ContactCard]                          |\n   1 | COMP-002          |  Avatar  Name: Max Mustermann          |\n     | [🔍 Chat suchen] |  COMP-009                              |\n   2 |                   |                    [Export Chat]       |\n     +-------------------+                    COMP-001 (Button)   |\n   3 |                   +----------------------------------------+\n     | [ChatListItem]    |                                        |\n   4 | COMP-003          |  +----------------------------------+  |\n     | +---------------+ |  | Export-Vorschau                  |  |\n   5 | | Max Mustermann| |  |                                  |  |\n     | | Letzte Nachri.| |  | Format:  (•) TXT  ( ) PDF       |  |\n   6 | | 14:32 ● COMP- | |  |          ( ) CSV  ( ) HTML       |  |\n     | |       010     | |  |                                  |  |\n   7 | +---------------+ |  | Zeitraum:                        |  |\n     | +---------------+ |  | [Gesamter Chat        ▼]        |  |\n   8 | | Anna Schmidt  | |  |                                  |  |\n     | | Hey, wie geht.| |  | Medien einschliessen:            |  |\n   9 | | 13:10         | |  | [✓] Bilder                       |  |\n     | +---------------+ |  | [✓] Videos                       |  |\n  10 | +---------------+ |  | [✓] Dokumente                    |  |\n     | | Team Gruppe   | |  | [ ] Sprachnachrichten            |  |\n  11 | | Peter: Morgen.| |  |                                  |  |\n     | | 12:45         | |  | Geschaetzte Groesse: 4.2 MB      |  |\n  12 | +---------------+ |  |                                  |  |\n     | +---------------+ |  | +------------------------------+ |  |\n  13 | | Lisa Weber    | |  | | Vorschau: 1.247 Nachrichten  | |  |\n     | | Dokument gese.| |  | | Zeitraum: 01.01 - 15.06.2024| |  |\n  14 | | 11:30         | |  | | Teilnehmer: 2                | |  |\n     | +---------------+ |  | +------------------------------+ |  |\n  15 |                   |  |                                  |  |\n     |                   |  |  [Abbrechen]    [✓ Exportieren]  |  |\n  16 |                   |  |                  COMP-001         |  |\n     |                   |  +----------------------------------+  |\n  17 |                   |                                        |\n     +-------------------+----------------------------------------+\n  18 | [Status: Online]  |  Letzter Export: 14.06.2024, 10:30     |\n     | COMP-010          |                                        |\n  19 +-------------------+----------------------------------------+",
+  "state_bindings": {
+    "COMP-002": "dashboard.chatSearch",
+    "COMP-003": "dashboard.chatList",
+    "COMP-009": "dashboard.selectedContact",
+    "COMP-010": "dashboard.connectionStatus",
+    "COMP-001": "dashboard.exportAction"
+  },
+  "navigation_rules": [
+    {
+      "trigger": "chat_list_item_click",
+      "target": "/dashboard?chat={id}",
+      "condition": ""
+    },
+    {
+      "trigger": "export_btn_click",
+      "target": "",
+      "condition": "chat.selected"
+    },
+    {
+      "trigger": "export_confirm_click",
+      "target": "",
+      "condition": "export.formatSelected"
+    },
+    {
+      "trigger": "export_complete",
+      "target": "/dashboard?exported={id}",
+      "condition": "export.success"
+    },
+    {
+      "trigger": "cancel_btn_click",
+      "target": "/dashboard",
+      "condition": ""
+    }
+  ],
+  "responsive": {
+    "mobile": {
+      "layout": "stack",
+      "hidden_components": [
+        "COMP-009"
+      ]
+    },
+    "tablet": {
+      "layout": "sidebar-collapsed"
+    },
+    "desktop": {
+      "layout": "sidebar"
+    }
+  },
+  "auth_required": true
+}

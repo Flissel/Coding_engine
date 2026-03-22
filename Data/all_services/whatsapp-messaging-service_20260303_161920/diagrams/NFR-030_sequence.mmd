@@ -1,0 +1,14 @@
+sequenceDiagram
+    participant User as User
+    participant MediaServer as Media Server
+    participant Storage as Storage System
+    participant Monitoring as Monitoring System
+
+    User->>MediaServer: Upload media file
+    MediaServer->>Storage: Store media file
+    Storage-->>MediaServer: Confirm storage success
+    MediaServer-->>User: Confirm upload completion
+
+    Monitoring->>MediaServer: Check upload throughput
+    MediaServer-->>Monitoring: Provide throughput metrics
+    Monitoring->>User: Report upload status and completion time

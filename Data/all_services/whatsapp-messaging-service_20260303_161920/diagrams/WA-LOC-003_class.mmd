@@ -1,0 +1,24 @@
+classDiagram
+    class StickerPack {
+        +String name
+        +String region
+        +List<Sticker> stickers
+        +addSticker(Sticker sticker)
+        +removeSticker(Sticker sticker)
+    }
+
+    class Sticker {
+        +String id
+        +String description
+        +String imageUrl
+    }
+
+    class User {
+        +String username
+        +List<StickerPack> ownedStickerPacks
+        +addStickerPack(StickerPack stickerPack)
+        +removeStickerPack(StickerPack stickerPack)
+    }
+
+    StickerPack "1" -- "*" Sticker : contains
+    User "1" -- "*" StickerPack : owns

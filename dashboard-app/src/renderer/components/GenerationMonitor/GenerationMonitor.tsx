@@ -1,18 +1,16 @@
 import { useEngineStore } from '../../stores/engineStore'
 import { useProjectStore } from '../../stores/projectStore'
-import { Activity, Terminal, CheckCircle, XCircle, Clock, Loader2, ListChecks, Layers, Cpu, BookOpen, GitBranch, Zap } from 'lucide-react'
+import { Activity, Terminal, CheckCircle, XCircle, Clock, Loader2, ListChecks, Layers, Cpu, BookOpen, GitBranch } from 'lucide-react'
 import { useState, useEffect, useRef } from 'react'
 import { TaskList } from './TaskList'
 import { EpicSelector } from './EpicSelector'
 import { LLMConfigEditor } from '../Settings/LLMConfigEditor'
 import { EnrichmentView } from '../Enrichment/EnrichmentView'
 import { TaskDependencyBoard } from '../TaskBoard/TaskDependencyBoard'
-import { VibeChat } from '../VibeChat'
-
 export function GenerationMonitor() {
   const { generationProgress, agentActivity, logs, epics, runEpic, rerunEpic, generateAllTaskLists, loadEpics, currentProjectPath, wsConnected, taskProgress, epicTaskLists, selectedEpic } = useEngineStore()
   const { activeProjectId, getProject } = useProjectStore()
-  const [activeTab, setActiveTab] = useState<'progress' | 'agents' | 'epics' | 'tasks' | 'deps' | 'logs' | 'enrichment' | 'llm-config' | 'vibe'>('progress')
+  const [activeTab, setActiveTab] = useState<'progress' | 'agents' | 'epics' | 'tasks' | 'deps' | 'logs' | 'enrichment' | 'llm-config'>('progress')
   const logsEndRef = useRef<HTMLDivElement>(null)
 
   const activeProject = activeProjectId ? getProject(activeProjectId) : null
@@ -149,23 +147,10 @@ export function GenerationMonitor() {
           icon={<Cpu className="w-4 h-4" />}
           label="LLM Config"
         />
-        <TabButton
-          active={activeTab === 'vibe'}
-          onClick={() => setActiveTab('vibe')}
-          icon={<Zap className="w-4 h-4" />}
-          label="Vibe"
-        />
       </div>
 
       {/* Content */}
-      {activeTab === 'vibe' ? (
-        <div className="flex-1 overflow-hidden">
-          <VibeChat
-            projectId={activeProject?.id || 'default'}
-            outputDir={activeProject?.outputDir || '.'}
-          />
-        </div>
-      ) : activeTab === 'llm-config' ? (
+      {activeTab === 'llm-config' ? (
         <div className="flex-1 overflow-hidden">
           <LLMConfigEditor />
         </div>

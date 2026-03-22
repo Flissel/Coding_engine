@@ -29,7 +29,7 @@ from .autonomous_base import AutonomousAgent
 from ..mind.event_bus import EventBus, Event, EventType
 from ..mind.shared_state import SharedState
 from ..services.project_indexer import ProjectIndexer
-from src.llm_config import get_model
+from src.llm_config import get_model, get_openrouter_model
 
 logger = structlog.get_logger(__name__)
 
@@ -152,7 +152,7 @@ class FungusContextAgent(AutonomousAgent):
         event_bus: EventBus,
         shared_state: SharedState,
         working_dir: str,
-        qdrant_url: str = "http://localhost:6333",
+        qdrant_url: str = None,
         embedding_model: str = "all-MiniLM-L6-v2",  # Default to model that works on Windows
         num_agents: int = 200,
         max_iterations: int = 50,
@@ -172,7 +172,7 @@ class FungusContextAgent(AutonomousAgent):
             **kwargs,
         )
 
-        self.qdrant_url = qdrant_url
+        self.qdrant_url = qdrant_url or os.environ.get("QDRANT_URL", "http://localhost:6340")
         self.embedding_model = embedding_model
 
         # Use mcmp_config values if provided, otherwise use direct parameters
@@ -185,7 +185,7 @@ class FungusContextAgent(AutonomousAgent):
             self.num_agents = num_agents
             self.max_iterations = max_iterations
             self.judge_provider = judge_provider
-            self.judge_model = judge_model or get_model("judge")
+            self.judge_model = judge_model or get_openrouter_model("judge")
 
         self.enable_mcmp = enable_mcmp
         self.enable_indexing = enable_indexing
@@ -214,7 +214,7 @@ class FungusContextAgent(AutonomousAgent):
             return self._collection_name
         # Use working directory name as collection identifier
         project_name = Path(self.working_dir).name
-        self._collection_name = f"project_{project_name.replace('-', '_')}"
+        self._collection_name = f"fungus_{project_name.replace('-', '_')}"
         return self._collection_name
 
     def _compute_content_hash(self, content: str) -> str:

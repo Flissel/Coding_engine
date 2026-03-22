@@ -1,0 +1,15 @@
+{
+  "route": "/einstellungen,_barrierefreiheit_und",
+  "screen_name": "Screen: Einstellungen, Barrierefreiheit und Lokalisierung",
+  "description": "Auto-generated composition for 3 stories",
+  "linked_user_stories": [
+    "US-109",
+    "US-156",
+    "US-106"
+  ],
+  "user_stories": [
+    "US-109",
+    "US-156",
+    "US-106"
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "tech_stack": {
+    "project_name": "whatsapp-messaging-service",
+    "frontend_framework": "React Native 0.74.1",
+    "frontend_languages": [
+      "TypeScript 5.7.2",
+      "JavaScript 2024.1"
+    ],
+    "ui_library": "React Native Paper 5.12.3",
+    "state_management": "Zustand 4.5.2",
+    "backend_language": "Node.js 20.11.1",
+    "backend_framework": "NestJS 10.3.2",
+    "api_style": "REST",
+    "primary_database": "PostgreSQL 16.2",
+    "cache_layer": "Redis 7.2.4",
+    "search_engine": "Elasticsearch 8.12.2",
+    "cloud_provider": "AWS 2024.02",
+    "container_runtime": "Docker 25.0.3",
+    "orchestration": "Kubernetes 1.29.2",
+    "ci_cd": "GitHub Actions 2024.02",
+    "message_queue": "Kafka 3.6.1",
+    "api_gateway": "Kong 3.6.0",
+    "rationale": {
+      "frontend_framework": "React Native ermoeglicht Mobile-First (iOS/Android) mit hoher Wiederverwendbarkeit, nativer Performance und guter WebRTC/biometrischer SDK-Unterstuetzung.",
+      "backend_framework": "NestJS bietet modulare Microservices, starke TypeScript-Typisierung, integrierte WebSocket-Unterstuetzung und gute Skalierung fuer Echtzeit-Messaging.",
+      "primary_database": "PostgreSQL bietet ACID-Transaktionen, starke Konsistenz fuer Chats/Profiles/Devices und DSGVO-konforme Self-Hosting-Optionen."
+    },
+    "alternatives": {
+      "frontend_framework": [
+        "Flutter 3.19.0",
+        "Kotlin Multiplatform 1.9.22"
+      ],
+      "backend_framework": [
+        "Fastify 4.26.2",
+        "Spring Boot 3.2.3"
+      ]
+    },
+    "architecture_pattern": "Microservices",
+    "deployment_model": "Cloud-native",
+    "versions": {
+      "React Native": "0.74.1",
+      "TypeScript": "5.7.2",
+      "JavaScript": "2024.1",
+      "React Native Paper": "5.12.3",
+      "Zustand": "4.5.2",
+      "Node.js": "20.11.1",
+      "NestJS": "10.3.2",
+      "PostgreSQL": "16.2",
+      "Redis": "7.2.4",
+      "Elasticsearch": "8.12.2",
+      "AWS": "2024.02",
+      "Docker": "25.0.3",
+      "Kubernetes": "1.29.2",
+      "GitHub Actions": "2024.02",
+      "Kafka": "3.6.1",
+      "Kong": "3.6.0",
+      "Socket.IO": "4.7.5",
+      "Signal Protocol (libsignal)": "0.50.0",
+      "Keycloak": "24.0.4",
+      "MinIO": "2024-02-29T20-00-00Z",
+      "PostHog": "1.115.0",
+      "WebAuthn": "3.2.1",
+      "OpenTelemetry": "1.23.0"
+    },
+    "package_names": {
+      "React Native": "react-native",
+      "TypeScript": "typescript",
+      "React Native Paper": "react-native-paper",
+      "Zustand": "zustand",
+      "NestJS": "@nestjs/core",
+      "Socket.IO": "socket.io",
+      "Signal Protocol (libsignal)": "libsignal-protocol",
+      "WebAuthn": "@simplewebauthn/server",
+      "PostgreSQL": "pg",
+      "Redis": "ioredis",
+      "Kafka": "kafkajs",
+      "Elasticsearch": "@elastic/elasticsearch",
+      "OpenTelemetry": "@opentelemetry/sdk-node"
+    }
+  }
+}

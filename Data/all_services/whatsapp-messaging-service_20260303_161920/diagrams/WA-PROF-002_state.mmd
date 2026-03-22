@@ -1,0 +1,8 @@
+stateDiagram-v2
+    [*] --> Initialisierung
+    Initialisierung --> Konfiguration : Konfiguration starten
+    Konfiguration --> Aktiv : Anzeigename konfiguriert
+    Aktiv --> Inaktiv : Anzeigename deaktiviert
+    Inaktiv --> Aktiv : Anzeigename aktiviert
+    Aktiv --> Konfiguration : Anzeigename ändern
+    Konfiguration --> [*] : Konfiguration abgeschlossen

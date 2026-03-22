@@ -1,0 +1,10 @@
+{
+  "route": "/settings/notifications",
+  "screen_name": "Notification Settings",
+  "linked_user_stories": [
+    "US-118"
+  ],
+  "user_stories": [
+    "US-118"
+  ]
+}

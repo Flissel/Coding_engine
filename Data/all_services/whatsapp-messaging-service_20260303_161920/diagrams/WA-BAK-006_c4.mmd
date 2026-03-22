@@ -1,0 +1,12 @@
+%%{ init : { "theme" : "default" } }%%
+C4Context
+    title Chat anpinnen System Context Diagram
+
+    Person(user, "Benutzer", "Ein Benutzer, der Chats anpinnt.")
+    
+    System(chatApp, "Chat App", "Eine Anwendung, die das Anpinnen von Chats ermöglicht.")
+    
+    System_Ext(externalService, "Externer Dienst", "Ein externer Dienst zur Authentifizierung und Benachrichtigung.")
+
+    Rel(user, chatApp, "Benutzt")
+    Rel(chatApp, externalService, "Kommuniziert mit", "HTTP")

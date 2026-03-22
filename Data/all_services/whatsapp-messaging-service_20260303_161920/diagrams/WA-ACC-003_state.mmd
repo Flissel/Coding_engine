@@ -1,0 +1,6 @@
+stateDiagram-v2
+    [*] --> LowContrast: Initial State
+    LowContrast --> HighContrast: Increase Contrast
+    HighContrast --> LowContrast: Decrease Contrast
+    HighContrast --> [*]: Sufficient Contrast Achieved
+    LowContrast --> [*]: Insufficient Contrast

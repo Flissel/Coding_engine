@@ -1,0 +1,10 @@
+%%{ init : { "theme" : "default" } }%%
+C4Context
+    title Cloud-Backup System Context Diagram
+
+    Person(user, "User", "A user who wants to backup their chat data.")
+    System(cloudBackup, "Cloud Backup System", "A system that enables chat backup in the cloud.")
+    System_Ext(cloudStorage, "Cloud Storage Service", "A third-party service for storing backup data.")
+
+    Rel(user, cloudBackup, "Uses")
+    Rel(cloudBackup, cloudStorage, "Stores backup data in")

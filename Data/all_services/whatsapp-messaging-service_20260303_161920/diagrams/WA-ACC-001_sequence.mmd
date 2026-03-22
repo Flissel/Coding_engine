@@ -1,0 +1,13 @@
+sequenceDiagram
+    participant User as Screenreader User
+    participant System as System
+    participant Screenreader as Screenreader Software
+
+    User->>Screenreader: Request to access the application
+    Screenreader->>System: Send request for content
+    System->>Screenreader: Provide accessible content
+    Screenreader->>User: Read out content
+    User->>System: Navigate through application
+    Screenreader->>System: Send navigation commands
+    System->>Screenreader: Update content based on navigation
+    Screenreader->>User: Read out updated content

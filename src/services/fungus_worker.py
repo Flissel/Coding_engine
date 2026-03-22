@@ -33,7 +33,7 @@ from src.services.mcmp_background import (
     SimulationConfig,
     JudgeMode,
 )
-from src.llm_config import get_model
+from src.llm_config import get_openrouter_model
 
 # Import EventBus for agent notification
 from src.mind.event_bus import EventBus, Event, EventType
@@ -71,7 +71,7 @@ class ArchitectSteering:
     """
 
     def __init__(self, model: str = None):
-        self.model = model or get_model("judge")
+        self.model = model or get_openrouter_model("judge")
         self._client = None
         self.logger = logger.bind(component="ArchitectSteering")
 

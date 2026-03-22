@@ -1,0 +1,9 @@
+sequenceDiagram
+    participant User as User
+    participant System as System
+    participant Channel as One-Way-Broadcast-Kanaele
+
+    User->>System: Request to create One-Way-Broadcast-Kanaele
+    System->>Channel: Initialize One-Way-Broadcast-Kanaele
+    Channel-->>System: Confirmation of creation
+    System-->>User: Confirmation of One-Way-Broadcast-Kanaele

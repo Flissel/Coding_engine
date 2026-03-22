@@ -1,0 +1,2917 @@
+[
+  {
+    "entity_name": "User",
+    "table_name": "user",
+    "fields": [
+      {
+        "name": "id",
+        "data_type": "uuid",
+        "faker_method": "factory.LazyFunction(uuid4)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "phone_number",
+        "data_type": "string",
+        "faker_method": "factory.Faker('phone_number')",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "phone_verified_at",
+        "data_type": "datetime",
+        "faker_method": "factory.Faker('date_time')",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "is_2fa_enabled",
+        "data_type": "boolean",
+        "faker_method": "factory.Faker('boolean')",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "created_at",
+        "data_type": "datetime",
+        "faker_method": "factory.Faker('date_time')",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "updated_at",
+        "data_type": "datetime",
+        "faker_method": "factory.Faker('date_time')",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "deleted_at",
+        "data_type": "datetime",
+        "faker_method": "None",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "version",
+        "data_type": "integer",
+        "faker_method": "factory.Faker('random_int', min=0, max=10000)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      }
+    ],
+    "dependencies": []
+  },
+  {
+    "entity_name": "UserProfile",
+    "table_name": "user_profile",
+    "fields": [
+      {
+        "name": "id",
+        "data_type": "uuid",
+        "faker_method": "factory.LazyFunction(uuid4)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "user_id",
+        "data_type": "uuid",
+        "faker_method": "factory.SubFactory(UserFactory)",
+        "default_value": "",
+        "is_fk": true,
+        "fk_factory": "UserFactory"
+      },
+      {
+        "name": "display_name",
+        "data_type": "string",
+        "faker_method": "factory.Faker('name')",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "info_text",
+        "data_type": "text",
+        "faker_method": "factory.Faker('paragraph')",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "profile_image_url",
+        "data_type": "string",
+        "faker_method": "factory.Faker('text', max_nb_chars=50)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "qr_code_value",
+        "data_type": "string",
+        "faker_method": "factory.Faker('text', max_nb_chars=50)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "show_phone",
+        "data_type": "boolean",
+        "faker_method": "factory.Faker('boolean')",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "created_at",
+        "data_type": "datetime",
+        "faker_method": "factory.Faker('date_time')",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "updated_at",
+        "data_type": "datetime",
+        "faker_method": "factory.Faker('date_time')",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "deleted_at",
+        "data_type": "datetime",
+        "faker_method": "None",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "version",
+        "data_type": "integer",
+        "faker_method": "factory.Faker('random_int', min=0, max=10000)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      }
+    ],
+    "dependencies": [
+      "User"
+    ]
+  },
+  {
+    "entity_name": "UserAuthMethod",
+    "table_name": "user_auth_method",
+    "fields": [
+      {
+        "name": "id",
+        "data_type": "uuid",
+        "faker_method": "factory.LazyFunction(uuid4)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "user_id",
+        "data_type": "uuid",
+        "faker_method": "factory.SubFactory(UserFactory)",
+        "default_value": "",
+        "is_fk": true,
+        "fk_factory": "UserFactory"
+      },
+      {
+        "name": "method_type",
+        "data_type": "enum",
+        "faker_method": "factory.Faker('random_element', elements=['phone', 'pin_2fa', 'biometric', 'passkey'])",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "secret_hash",
+        "data_type": "string",
+        "faker_method": "factory.Faker('text', max_nb_chars=50)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "is_enabled",
+        "data_type": "boolean",
+        "faker_method": "factory.Faker('boolean')",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "last_used_at",
+        "data_type": "datetime",
+        "faker_method": "factory.Faker('date_time')",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "metadata",
+        "data_type": "jsonb",
+        "faker_method": "factory.LazyFunction(dict)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "created_at",
+        "data_type": "datetime",
+        "faker_method": "factory.Faker('date_time')",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "updated_at",
+        "data_type": "datetime",
+        "faker_method": "factory.Faker('date_time')",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "deleted_at",
+        "data_type": "datetime",
+        "faker_method": "None",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "version",
+        "data_type": "integer",
+        "faker_method": "factory.Faker('random_int', min=0, max=10000)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      }
+    ],
+    "dependencies": [
+      "User"
+    ]
+  },
+  {
+    "entity_name": "Device",
+    "table_name": "device",
+    "fields": [
+      {
+        "name": "id",
+        "data_type": "uuid",
+        "faker_method": "factory.LazyFunction(uuid4)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "user_id",
+        "data_type": "uuid",
+        "faker_method": "factory.SubFactory(UserFactory)",
+        "default_value": "",
+        "is_fk": true,
+        "fk_factory": "UserFactory"
+      },
+      {
+        "name": "device_name",
+        "data_type": "string",
+        "faker_method": "factory.Faker('text', max_nb_chars=50)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "platform",
+        "data_type": "enum",
+        "faker_method": "factory.Faker('random_element', elements=['ios', 'android', 'web', 'desktop'])",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "device_identifier",
+        "data_type": "string",
+        "faker_method": "factory.Faker('text', max_nb_chars=50)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "session_token_hash",
+        "data_type": "string",
+        "faker_method": "factory.Faker('text', max_nb_chars=50)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "last_seen_at",
+        "data_type": "datetime",
+        "faker_method": "factory.Faker('date_time')",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "created_at",
+        "data_type": "datetime",
+        "faker_method": "factory.Faker('date_time')",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "updated_at",
+        "data_type": "datetime",
+        "faker_method": "factory.Faker('date_time')",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "deleted_at",
+        "data_type": "datetime",
+        "faker_method": "None",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "version",
+        "data_type": "integer",
+        "faker_method": "factory.Faker('random_int', min=0, max=10000)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      }
+    ],
+    "dependencies": [
+      "User"
+    ]
+  },
+  {
+    "entity_name": "EncryptionKey",
+    "table_name": "encryption_key",
+    "fields": [
+      {
+        "name": "id",
+        "data_type": "uuid",
+        "faker_method": "factory.LazyFunction(uuid4)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "user_id",
+        "data_type": "uuid",
+        "faker_method": "factory.SubFactory(UserFactory)",
+        "default_value": "",
+        "is_fk": true,
+        "fk_factory": "UserFactory"
+      },
+      {
+        "name": "public_key",
+        "data_type": "text",
+        "faker_method": "factory.Faker('paragraph')",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "key_version",
+        "data_type": "integer",
+        "faker_method": "factory.Faker('random_int', min=0, max=10000)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "algorithm",
+        "data_type": "enum",
+        "faker_method": "factory.Faker('random_element', elements=['ed25519', 'rsa', 'p256'])",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "is_active",
+        "data_type": "boolean",
+        "faker_method": "factory.Faker('boolean')",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "created_at",
+        "data_type": "datetime",
+        "faker_method": "factory.Faker('date_time')",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "updated_at",
+        "data_type": "datetime",
+        "faker_method": "factory.Faker('date_time')",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "deleted_at",
+        "data_type": "datetime",
+        "faker_method": "None",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "version",
+        "data_type": "integer",
+        "faker_method": "factory.Faker('random_int', min=0, max=10000)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      }
+    ],
+    "dependencies": [
+      "User"
+    ]
+  },
+  {
+    "entity_name": "DeliveryReceipt",
+    "table_name": "delivery_receipt",
+    "fields": [
+      {
+        "name": "id",
+        "data_type": "uuid",
+        "faker_method": "factory.LazyFunction(uuid4)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "message_id",
+        "data_type": "uuid",
+        "faker_method": "factory.LazyFunction(uuid4)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "recipient_user_id",
+        "data_type": "uuid",
+        "faker_method": "factory.SubFactory(UserFactory)",
+        "default_value": "",
+        "is_fk": true,
+        "fk_factory": "UserFactory"
+      },
+      {
+        "name": "status",
+        "data_type": "enum",
+        "faker_method": "factory.Faker('random_element', elements=['sent', 'delivered', 'read', 'failed'])",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "status_at",
+        "data_type": "datetime",
+        "faker_method": "factory.Faker('date_time')",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "created_at",
+        "data_type": "datetime",
+        "faker_method": "factory.Faker('date_time')",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "updated_at",
+        "data_type": "datetime",
+        "faker_method": "factory.Faker('date_time')",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "deleted_at",
+        "data_type": "datetime",
+        "faker_method": "None",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "version",
+        "data_type": "integer",
+        "faker_method": "factory.Faker('random_int', min=0, max=10000)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      }
+    ],
+    "dependencies": [
+      "User"
+    ]
+  },
+  {
+    "entity_name": "LinkPreview",
+    "table_name": "link_preview",
+    "fields": [
+      {
+        "name": "id",
+        "data_type": "uuid",
+        "faker_method": "factory.LazyFunction(uuid4)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "user_id",
+        "data_type": "uuid",
+        "faker_method": "factory.SubFactory(UserFactory)",
+        "default_value": "",
+        "is_fk": true,
+        "fk_factory": "UserFactory"
+      },
+      {
+        "name": "url",
+        "data_type": "string",
+        "faker_method": "factory.Faker('url')",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "title",
+        "data_type": "string",
+        "faker_method": "factory.Faker('sentence', nb_words=4)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "description_text",
+        "data_type": "text",
+        "faker_method": "factory.Faker('paragraph')",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "image_url",
+        "data_type": "string",
+        "faker_method": "factory.Faker('text', max_nb_chars=50)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "media_type",
+        "data_type": "enum",
+        "faker_method": "factory.Faker('random_element', elements=['link', 'image', 'video', 'audio'])",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "fetched_at",
+        "data_type": "datetime",
+        "faker_method": "factory.Faker('date_time')",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "created_at",
+        "data_type": "datetime",
+        "faker_method": "factory.Faker('date_time')",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "updated_at",
+        "data_type": "datetime",
+        "faker_method": "factory.Faker('date_time')",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "deleted_at",
+        "data_type": "datetime",
+        "faker_method": "None",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "version",
+        "data_type": "integer",
+        "faker_method": "factory.Faker('random_int', min=0, max=10000)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      }
+    ],
+    "dependencies": [
+      "User"
+    ]
+  },
+  {
+    "entity_name": "AuditLog",
+    "table_name": "audit_log",
+    "fields": [
+      {
+        "name": "id",
+        "data_type": "uuid",
+        "faker_method": "factory.LazyFunction(uuid4)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "entity_type",
+        "data_type": "string",
+        "faker_method": "factory.Faker('text', max_nb_chars=50)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "entity_id",
+        "data_type": "uuid",
+        "faker_method": "factory.LazyFunction(uuid4)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "action",
+        "data_type": "enum",
+        "faker_method": "factory.Faker('random_element', elements=['create', 'update', 'delete'])",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "old_value",
+        "data_type": "jsonb",
+        "faker_method": "factory.LazyFunction(dict)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "new_value",
+        "data_type": "jsonb",
+        "faker_method": "factory.LazyFunction(dict)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "actor_id",
+        "data_type": "uuid",
+        "faker_method": "factory.SubFactory(UserFactory)",
+        "default_value": "",
+        "is_fk": true,
+        "fk_factory": "UserFactory"
+      },
+      {
+        "name": "timestamp",
+        "data_type": "datetime",
+        "faker_method": "factory.Faker('date_time')",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "created_at",
+        "data_type": "datetime",
+        "faker_method": "factory.Faker('date_time')",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "updated_at",
+        "data_type": "datetime",
+        "faker_method": "factory.Faker('date_time')",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      }
+    ],
+    "dependencies": [
+      "User"
+    ]
+  },
+  {
+    "entity_name": "DeviceSession",
+    "table_name": "device_session",
+    "fields": [
+      {
+        "name": "id",
+        "data_type": "uuid",
+        "faker_method": "factory.LazyFunction(uuid4)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "user_id",
+        "data_type": "uuid",
+        "faker_method": "factory.SubFactory(UserFactory)",
+        "default_value": "",
+        "is_fk": true,
+        "fk_factory": "UserFactory"
+      },
+      {
+        "name": "device_id",
+        "data_type": "string",
+        "faker_method": "factory.Faker('text', max_nb_chars=50)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "session_token",
+        "data_type": "string",
+        "faker_method": "factory.Faker('text', max_nb_chars=50)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "last_active_at",
+        "data_type": "datetime",
+        "faker_method": "factory.Faker('date_time')",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "deleted_at",
+        "data_type": "datetime",
+        "faker_method": "None",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "created_at",
+        "data_type": "datetime",
+        "faker_method": "factory.Faker('date_time')",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "updated_at",
+        "data_type": "datetime",
+        "faker_method": "factory.Faker('date_time')",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      }
+    ],
+    "dependencies": [
+      "User"
+    ]
+  },
+  {
+    "entity_name": "Chat",
+    "table_name": "chat",
+    "fields": [
+      {
+        "name": "id",
+        "data_type": "uuid",
+        "faker_method": "factory.LazyFunction(uuid4)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "user_id",
+        "data_type": "uuid",
+        "faker_method": "factory.SubFactory(UserFactory)",
+        "default_value": "",
+        "is_fk": true,
+        "fk_factory": "UserFactory"
+      },
+      {
+        "name": "chat_type",
+        "data_type": "enum",
+        "faker_method": "factory.Faker('random_element', elements=['direct', 'group'])",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "title",
+        "data_type": "string",
+        "faker_method": "factory.Faker('sentence', nb_words=4)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "is_locked",
+        "data_type": "boolean",
+        "faker_method": "factory.Faker('boolean')",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "lock_auth_method",
+        "data_type": "enum",
+        "faker_method": "factory.Faker('random_element', elements=['pin', 'biometric', 'password'])",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "version",
+        "data_type": "integer",
+        "faker_method": "factory.Faker('random_int', min=0, max=10000)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "deleted_at",
+        "data_type": "datetime",
+        "faker_method": "None",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "created_at",
+        "data_type": "datetime",
+        "faker_method": "factory.Faker('date_time')",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "updated_at",
+        "data_type": "datetime",
+        "faker_method": "factory.Faker('date_time')",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      }
+    ],
+    "dependencies": [
+      "User"
+    ]
+  },
+  {
+    "entity_name": "Message",
+    "table_name": "message",
+    "fields": [
+      {
+        "name": "id",
+        "data_type": "uuid",
+        "faker_method": "factory.LazyFunction(uuid4)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "chat_id",
+        "data_type": "uuid",
+        "faker_method": "factory.SubFactory(ChatFactory)",
+        "default_value": "",
+        "is_fk": true,
+        "fk_factory": "ChatFactory"
+      },
+      {
+        "name": "user_id",
+        "data_type": "uuid",
+        "faker_method": "factory.SubFactory(UserFactory)",
+        "default_value": "",
+        "is_fk": true,
+        "fk_factory": "UserFactory"
+      },
+      {
+        "name": "message_type",
+        "data_type": "enum",
+        "faker_method": "factory.Faker('random_element', elements=['text', 'voice', 'media', 'system'])",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "content",
+        "data_type": "text",
+        "faker_method": "factory.Faker('paragraph')",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "quoted_message_id",
+        "data_type": "uuid",
+        "faker_method": "factory.SubFactory(MessageFactory)",
+        "default_value": "",
+        "is_fk": true,
+        "fk_factory": "MessageFactory"
+      },
+      {
+        "name": "forwarded_from_message_id",
+        "data_type": "uuid",
+        "faker_method": "factory.SubFactory(MessageFactory)",
+        "default_value": "",
+        "is_fk": true,
+        "fk_factory": "MessageFactory"
+      },
+      {
+        "name": "is_ephemeral",
+        "data_type": "boolean",
+        "faker_method": "factory.Faker('boolean')",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "expires_at",
+        "data_type": "datetime",
+        "faker_method": "factory.Faker('date_time')",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "version",
+        "data_type": "integer",
+        "faker_method": "factory.Faker('random_int', min=0, max=10000)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "deleted_at",
+        "data_type": "datetime",
+        "faker_method": "None",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "created_at",
+        "data_type": "datetime",
+        "faker_method": "factory.Faker('date_time')",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "updated_at",
+        "data_type": "datetime",
+        "faker_method": "factory.Faker('date_time')",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      }
+    ],
+    "dependencies": [
+      "Chat",
+      "User"
+    ]
+  },
+  {
+    "entity_name": "MessageReaction",
+    "table_name": "message_reaction",
+    "fields": [
+      {
+        "name": "id",
+        "data_type": "uuid",
+        "faker_method": "factory.LazyFunction(uuid4)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "message_id",
+        "data_type": "uuid",
+        "faker_method": "factory.SubFactory(MessageFactory)",
+        "default_value": "",
+        "is_fk": true,
+        "fk_factory": "MessageFactory"
+      },
+      {
+        "name": "user_id",
+        "data_type": "uuid",
+        "faker_method": "factory.SubFactory(UserFactory)",
+        "default_value": "",
+        "is_fk": true,
+        "fk_factory": "UserFactory"
+      },
+      {
+        "name": "emoji",
+        "data_type": "string",
+        "faker_method": "factory.Faker('emoji')",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "version",
+        "data_type": "integer",
+        "faker_method": "factory.Faker('random_int', min=0, max=10000)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "deleted_at",
+        "data_type": "datetime",
+        "faker_method": "None",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "created_at",
+        "data_type": "datetime",
+        "faker_method": "factory.Faker('date_time')",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "updated_at",
+        "data_type": "datetime",
+        "faker_method": "factory.Faker('date_time')",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      }
+    ],
+    "dependencies": [
+      "Message",
+      "User"
+    ]
+  },
+  {
+    "entity_name": "MediaMetadata",
+    "table_name": "media_metadata",
+    "fields": [
+      {
+        "name": "id",
+        "data_type": "uuid",
+        "faker_method": "factory.LazyFunction(uuid4)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "message_id",
+        "data_type": "uuid",
+        "faker_method": "factory.SubFactory(MessageFactory)",
+        "default_value": "",
+        "is_fk": true,
+        "fk_factory": "MessageFactory"
+      },
+      {
+        "name": "media_type",
+        "data_type": "enum",
+        "faker_method": "factory.Faker('random_element', elements=['image', 'video', 'audio', 'document', 'link_preview', 'voice'])",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "url",
+        "data_type": "string",
+        "faker_method": "factory.Faker('url')",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "mime_type",
+        "data_type": "string",
+        "faker_method": "factory.Faker('text', max_nb_chars=50)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "size_bytes",
+        "data_type": "integer",
+        "faker_method": "factory.Faker('random_int', min=0, max=10000)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "duration_seconds",
+        "data_type": "integer",
+        "faker_method": "factory.Faker('random_int', min=0, max=10000)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "preview_title",
+        "data_type": "string",
+        "faker_method": "factory.Faker('text', max_nb_chars=50)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "preview_description",
+        "data_type": "text",
+        "faker_method": "factory.Faker('paragraph')",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "view_once",
+        "data_type": "boolean",
+        "faker_method": "factory.Faker('boolean')",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "deleted_at",
+        "data_type": "datetime",
+        "faker_method": "None",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "created_at",
+        "data_type": "datetime",
+        "faker_method": "factory.Faker('date_time')",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "updated_at",
+        "data_type": "datetime",
+        "faker_method": "factory.Faker('date_time')",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      }
+    ],
+    "dependencies": [
+      "Message"
+    ]
+  },
+  {
+    "entity_name": "Group",
+    "table_name": "group",
+    "fields": [
+      {
+        "name": "id",
+        "data_type": "uuid",
+        "faker_method": "factory.LazyFunction(uuid4)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "user_id",
+        "data_type": "uuid",
+        "faker_method": "factory.SubFactory(UserFactory)",
+        "default_value": "",
+        "is_fk": true,
+        "fk_factory": "UserFactory"
+      },
+      {
+        "name": "group_name",
+        "data_type": "string",
+        "faker_method": "factory.Faker('text', max_nb_chars=50)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "settings",
+        "data_type": "jsonb",
+        "faker_method": "factory.LazyFunction(dict)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "invite_link",
+        "data_type": "string",
+        "faker_method": "factory.Faker('text', max_nb_chars=50)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "allow_silent_leave",
+        "data_type": "boolean",
+        "faker_method": "factory.Faker('boolean')",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "created_at",
+        "data_type": "datetime",
+        "faker_method": "factory.Faker('date_time')",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "updated_at",
+        "data_type": "datetime",
+        "faker_method": "factory.Faker('date_time')",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "deleted_at",
+        "data_type": "datetime",
+        "faker_method": "None",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "version",
+        "data_type": "integer",
+        "faker_method": "factory.Faker('random_int', min=0, max=10000)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      }
+    ],
+    "dependencies": [
+      "User"
+    ]
+  },
+  {
+    "entity_name": "GroupMember",
+    "table_name": "group_member",
+    "fields": [
+      {
+        "name": "id",
+        "data_type": "uuid",
+        "faker_method": "factory.LazyFunction(uuid4)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "group_id",
+        "data_type": "uuid",
+        "faker_method": "factory.SubFactory(GroupFactory)",
+        "default_value": "",
+        "is_fk": true,
+        "fk_factory": "GroupFactory"
+      },
+      {
+        "name": "user_id",
+        "data_type": "uuid",
+        "faker_method": "factory.SubFactory(UserFactory)",
+        "default_value": "",
+        "is_fk": true,
+        "fk_factory": "UserFactory"
+      },
+      {
+        "name": "role",
+        "data_type": "enum",
+        "faker_method": "factory.Faker('random_element', elements=['member', 'admin', 'owner'])",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "left_silently",
+        "data_type": "boolean",
+        "faker_method": "factory.Faker('boolean')",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "created_at",
+        "data_type": "datetime",
+        "faker_method": "factory.Faker('date_time')",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "updated_at",
+        "data_type": "datetime",
+        "faker_method": "factory.Faker('date_time')",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "deleted_at",
+        "data_type": "datetime",
+        "faker_method": "None",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "version",
+        "data_type": "integer",
+        "faker_method": "factory.Faker('random_int', min=0, max=10000)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      }
+    ],
+    "dependencies": [
+      "User",
+      "Group"
+    ]
+  },
+  {
+    "entity_name": "MessageReceipt",
+    "table_name": "message_receipt",
+    "fields": [
+      {
+        "name": "id",
+        "data_type": "uuid",
+        "faker_method": "factory.LazyFunction(uuid4)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "message_id",
+        "data_type": "uuid",
+        "faker_method": "factory.SubFactory(MessageFactory)",
+        "default_value": "",
+        "is_fk": true,
+        "fk_factory": "MessageFactory"
+      },
+      {
+        "name": "user_id",
+        "data_type": "uuid",
+        "faker_method": "factory.SubFactory(UserFactory)",
+        "default_value": "",
+        "is_fk": true,
+        "fk_factory": "UserFactory"
+      },
+      {
+        "name": "status",
+        "data_type": "enum",
+        "faker_method": "factory.Faker('random_element', elements=['sent', 'delivered', 'read', 'failed'])",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "status_at",
+        "data_type": "datetime",
+        "faker_method": "factory.Faker('date_time')",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "created_at",
+        "data_type": "datetime",
+        "faker_method": "factory.Faker('date_time')",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "updated_at",
+        "data_type": "datetime",
+        "faker_method": "factory.Faker('date_time')",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "deleted_at",
+        "data_type": "datetime",
+        "faker_method": "None",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "version",
+        "data_type": "integer",
+        "faker_method": "factory.Faker('random_int', min=0, max=10000)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      }
+    ],
+    "dependencies": [
+      "Message",
+      "User"
+    ]
+  },
+  {
+    "entity_name": "device_session",
+    "table_name": "device_session",
+    "fields": [
+      {
+        "name": "id",
+        "data_type": "uuid",
+        "faker_method": "factory.LazyFunction(uuid4)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "user_id",
+        "data_type": "uuid",
+        "faker_method": "factory.SubFactory(UserFactory)",
+        "default_value": "",
+        "is_fk": true,
+        "fk_factory": "UserFactory"
+      },
+      {
+        "name": "device_name",
+        "data_type": "string",
+        "faker_method": "factory.Faker('text', max_nb_chars=50)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "app_lock_enabled",
+        "data_type": "boolean",
+        "faker_method": "factory.Faker('boolean')",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "auth_method",
+        "data_type": "enum",
+        "faker_method": "factory.Faker('random_element', elements=['none', 'pin', 'password', 'biometric'])",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "last_active_at",
+        "data_type": "datetime",
+        "faker_method": "factory.Faker('date_time')",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "created_at",
+        "data_type": "datetime",
+        "faker_method": "factory.Faker('date_time')",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "updated_at",
+        "data_type": "datetime",
+        "faker_method": "factory.Faker('date_time')",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "deleted_at",
+        "data_type": "datetime",
+        "faker_method": "None",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "version",
+        "data_type": "integer",
+        "faker_method": "factory.Faker('random_int', min=0, max=10000)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      }
+    ],
+    "dependencies": [
+      "user"
+    ]
+  },
+  {
+    "entity_name": "encryption_key",
+    "table_name": "encryption_key",
+    "fields": [
+      {
+        "name": "id",
+        "data_type": "uuid",
+        "faker_method": "factory.LazyFunction(uuid4)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "user_id",
+        "data_type": "uuid",
+        "faker_method": "factory.SubFactory(UserFactory)",
+        "default_value": "",
+        "is_fk": true,
+        "fk_factory": "UserFactory"
+      },
+      {
+        "name": "public_key",
+        "data_type": "text",
+        "faker_method": "factory.Faker('paragraph')",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "key_version",
+        "data_type": "integer",
+        "faker_method": "factory.Faker('random_int', min=0, max=10000)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "algorithm",
+        "data_type": "string",
+        "faker_method": "factory.Faker('text', max_nb_chars=50)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "verification_status",
+        "data_type": "enum",
+        "faker_method": "factory.Faker('random_element', elements=['unverified', 'verified'])",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "verification_fingerprint",
+        "data_type": "string",
+        "faker_method": "factory.Faker('text', max_nb_chars=50)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "created_at",
+        "data_type": "datetime",
+        "faker_method": "factory.Faker('date_time')",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "updated_at",
+        "data_type": "datetime",
+        "faker_method": "factory.Faker('date_time')",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "deleted_at",
+        "data_type": "datetime",
+        "faker_method": "None",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "version",
+        "data_type": "integer",
+        "faker_method": "factory.Faker('random_int', min=0, max=10000)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      }
+    ],
+    "dependencies": [
+      "user"
+    ]
+  },
+  {
+    "entity_name": "message_receipt",
+    "table_name": "message_receipt",
+    "fields": [
+      {
+        "name": "id",
+        "data_type": "uuid",
+        "faker_method": "factory.LazyFunction(uuid4)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "message_id",
+        "data_type": "uuid",
+        "faker_method": "factory.SubFactory(MessageFactory)",
+        "default_value": "",
+        "is_fk": true,
+        "fk_factory": "MessageFactory"
+      },
+      {
+        "name": "recipient_user_id",
+        "data_type": "uuid",
+        "faker_method": "factory.SubFactory(UserFactory)",
+        "default_value": "",
+        "is_fk": true,
+        "fk_factory": "UserFactory"
+      },
+      {
+        "name": "status",
+        "data_type": "enum",
+        "faker_method": "factory.Faker('random_element', elements=['sent', 'delivered', 'read', 'failed'])",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "status_at",
+        "data_type": "datetime",
+        "faker_method": "factory.Faker('date_time')",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "created_at",
+        "data_type": "datetime",
+        "faker_method": "factory.Faker('date_time')",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "updated_at",
+        "data_type": "datetime",
+        "faker_method": "factory.Faker('date_time')",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      }
+    ],
+    "dependencies": [
+      "message",
+      "user"
+    ]
+  },
+  {
+    "entity_name": "media_asset",
+    "table_name": "media_asset",
+    "fields": [
+      {
+        "name": "id",
+        "data_type": "uuid",
+        "faker_method": "factory.LazyFunction(uuid4)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "user_id",
+        "data_type": "uuid",
+        "faker_method": "factory.SubFactory(UserFactory)",
+        "default_value": "",
+        "is_fk": true,
+        "fk_factory": "UserFactory"
+      },
+      {
+        "name": "message_id",
+        "data_type": "uuid",
+        "faker_method": "factory.SubFactory(MessageFactory)",
+        "default_value": "",
+        "is_fk": true,
+        "fk_factory": "MessageFactory"
+      },
+      {
+        "name": "media_type",
+        "data_type": "enum",
+        "faker_method": "factory.Faker('random_element', elements=['sticker', 'gif', 'audio', 'image', 'video', 'link_preview'])",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "source",
+        "data_type": "enum",
+        "faker_method": "factory.Faker('random_element', elements=['camera', 'gallery', 'upload', 'search', 'link'])",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "is_hd",
+        "data_type": "boolean",
+        "faker_method": "factory.Faker('boolean')",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "file_url",
+        "data_type": "string",
+        "faker_method": "factory.Faker('text', max_nb_chars=50)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "mime_type",
+        "data_type": "string",
+        "faker_method": "factory.Faker('text', max_nb_chars=50)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "duration_seconds",
+        "data_type": "integer",
+        "faker_method": "factory.Faker('random_int', min=0, max=10000)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "preview_title",
+        "data_type": "string",
+        "faker_method": "factory.Faker('text', max_nb_chars=50)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "preview_description",
+        "data_type": "string",
+        "faker_method": "factory.Faker('text', max_nb_chars=50)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "preview_image_url",
+        "data_type": "string",
+        "faker_method": "factory.Faker('text', max_nb_chars=50)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "target_url",
+        "data_type": "string",
+        "faker_method": "factory.Faker('text', max_nb_chars=50)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "metadata",
+        "data_type": "jsonb",
+        "faker_method": "factory.LazyFunction(dict)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "created_at",
+        "data_type": "datetime",
+        "faker_method": "factory.Faker('date_time')",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "updated_at",
+        "data_type": "datetime",
+        "faker_method": "factory.Faker('date_time')",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "deleted_at",
+        "data_type": "datetime",
+        "faker_method": "None",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "version",
+        "data_type": "integer",
+        "faker_method": "factory.Faker('random_int', min=0, max=10000)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      }
+    ],
+    "dependencies": [
+      "user",
+      "message"
+    ]
+  },
+  {
+    "entity_name": "contact_block",
+    "table_name": "contact_block",
+    "fields": [
+      {
+        "name": "id",
+        "data_type": "uuid",
+        "faker_method": "factory.LazyFunction(uuid4)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "blocker_user_id",
+        "data_type": "uuid",
+        "faker_method": "factory.SubFactory(UserFactory)",
+        "default_value": "",
+        "is_fk": true,
+        "fk_factory": "UserFactory"
+      },
+      {
+        "name": "blocked_user_id",
+        "data_type": "uuid",
+        "faker_method": "factory.SubFactory(UserFactory)",
+        "default_value": "",
+        "is_fk": true,
+        "fk_factory": "UserFactory"
+      },
+      {
+        "name": "reason",
+        "data_type": "string",
+        "faker_method": "factory.Faker('text', max_nb_chars=50)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "created_at",
+        "data_type": "datetime",
+        "faker_method": "factory.Faker('date_time')",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "updated_at",
+        "data_type": "datetime",
+        "faker_method": "factory.Faker('date_time')",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "deleted_at",
+        "data_type": "datetime",
+        "faker_method": "None",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "version",
+        "data_type": "integer",
+        "faker_method": "factory.Faker('random_int', min=0, max=10000)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      }
+    ],
+    "dependencies": [
+      "user"
+    ]
+  },
+  {
+    "entity_name": "audit_log",
+    "table_name": "audit_log",
+    "fields": [
+      {
+        "name": "id",
+        "data_type": "uuid",
+        "faker_method": "factory.LazyFunction(uuid4)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "entity_type",
+        "data_type": "string",
+        "faker_method": "factory.Faker('text', max_nb_chars=50)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "entity_id",
+        "data_type": "uuid",
+        "faker_method": "factory.LazyFunction(uuid4)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "action",
+        "data_type": "enum",
+        "faker_method": "factory.Faker('random_element', elements=['create', 'update', 'delete'])",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "old_value",
+        "data_type": "jsonb",
+        "faker_method": "factory.LazyFunction(dict)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "new_value",
+        "data_type": "jsonb",
+        "faker_method": "factory.LazyFunction(dict)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "actor_id",
+        "data_type": "uuid",
+        "faker_method": "factory.SubFactory(UserFactory)",
+        "default_value": "",
+        "is_fk": true,
+        "fk_factory": "UserFactory"
+      },
+      {
+        "name": "timestamp",
+        "data_type": "datetime",
+        "faker_method": "factory.Faker('date_time')",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "created_at",
+        "data_type": "datetime",
+        "faker_method": "factory.Faker('date_time')",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "updated_at",
+        "data_type": "datetime",
+        "faker_method": "factory.Faker('date_time')",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      }
+    ],
+    "dependencies": [
+      "user"
+    ]
+  },
+  {
+    "entity_name": "contact",
+    "table_name": "contact",
+    "fields": [
+      {
+        "name": "id",
+        "data_type": "uuid",
+        "faker_method": "factory.LazyFunction(uuid4)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "user_id",
+        "data_type": "uuid",
+        "faker_method": "factory.SubFactory(UserFactory)",
+        "default_value": "",
+        "is_fk": true,
+        "fk_factory": "UserFactory"
+      },
+      {
+        "name": "display_name",
+        "data_type": "string",
+        "faker_method": "factory.Faker('name')",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "phone_number",
+        "data_type": "string",
+        "faker_method": "factory.Faker('phone_number')",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "whatsapp_user_id",
+        "data_type": "string",
+        "faker_method": "factory.Faker('text', max_nb_chars=50)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "is_favorite",
+        "data_type": "boolean",
+        "faker_method": "factory.Faker('boolean')",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "is_unknown_sender",
+        "data_type": "boolean",
+        "faker_method": "factory.Faker('boolean')",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "tags",
+        "data_type": "jsonb",
+        "faker_method": "factory.LazyFunction(dict)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "version",
+        "data_type": "integer",
+        "faker_method": "factory.Faker('random_int', min=0, max=10000)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "created_at",
+        "data_type": "datetime",
+        "faker_method": "factory.Faker('date_time')",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "updated_at",
+        "data_type": "datetime",
+        "faker_method": "factory.Faker('date_time')",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "deleted_at",
+        "data_type": "datetime",
+        "faker_method": "None",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      }
+    ],
+    "dependencies": [
+      "user"
+    ]
+  },
+  {
+    "entity_name": "delivery_receipt",
+    "table_name": "delivery_receipt",
+    "fields": [
+      {
+        "name": "id",
+        "data_type": "uuid",
+        "faker_method": "factory.LazyFunction(uuid4)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "message_id",
+        "data_type": "uuid",
+        "faker_method": "factory.SubFactory(MessageFactory)",
+        "default_value": "",
+        "is_fk": true,
+        "fk_factory": "MessageFactory"
+      },
+      {
+        "name": "status",
+        "data_type": "enum",
+        "faker_method": "factory.Faker('random_element', elements=['sent', 'delivered', 'read', 'failed'])",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "status_at",
+        "data_type": "datetime",
+        "faker_method": "factory.Faker('date_time')",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "created_at",
+        "data_type": "datetime",
+        "faker_method": "factory.Faker('date_time')",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "updated_at",
+        "data_type": "datetime",
+        "faker_method": "factory.Faker('date_time')",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      }
+    ],
+    "dependencies": [
+      "message"
+    ]
+  },
+  {
+    "entity_name": "link_preview",
+    "table_name": "link_preview",
+    "fields": [
+      {
+        "name": "id",
+        "data_type": "uuid",
+        "faker_method": "factory.LazyFunction(uuid4)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "message_id",
+        "data_type": "uuid",
+        "faker_method": "factory.SubFactory(MessageFactory)",
+        "default_value": "",
+        "is_fk": true,
+        "fk_factory": "MessageFactory"
+      },
+      {
+        "name": "url",
+        "data_type": "string",
+        "faker_method": "factory.Faker('url')",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "title",
+        "data_type": "string",
+        "faker_method": "factory.Faker('sentence', nb_words=4)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "description",
+        "data_type": "string",
+        "faker_method": "factory.Faker('paragraph')",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "image_url",
+        "data_type": "string",
+        "faker_method": "factory.Faker('text', max_nb_chars=50)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "media_type",
+        "data_type": "enum",
+        "faker_method": "factory.Faker('random_element', elements=['image', 'video', 'audio', 'document', 'link'])",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "created_at",
+        "data_type": "datetime",
+        "faker_method": "factory.Faker('date_time')",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "updated_at",
+        "data_type": "datetime",
+        "faker_method": "factory.Faker('date_time')",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      }
+    ],
+    "dependencies": [
+      "message"
+    ]
+  },
+  {
+    "entity_name": "privacy_setting",
+    "table_name": "privacy_setting",
+    "fields": [
+      {
+        "name": "id",
+        "data_type": "uuid",
+        "faker_method": "factory.LazyFunction(uuid4)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "user_id",
+        "data_type": "uuid",
+        "faker_method": "factory.SubFactory(UserFactory)",
+        "default_value": "",
+        "is_fk": true,
+        "fk_factory": "UserFactory"
+      },
+      {
+        "name": "online_status_visibility",
+        "data_type": "enum",
+        "faker_method": "factory.Faker('random_element', elements=['everyone', 'contacts', 'nobody'])",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "version",
+        "data_type": "integer",
+        "faker_method": "factory.Faker('random_int', min=0, max=10000)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "created_at",
+        "data_type": "datetime",
+        "faker_method": "factory.Faker('date_time')",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "updated_at",
+        "data_type": "datetime",
+        "faker_method": "factory.Faker('date_time')",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "deleted_at",
+        "data_type": "datetime",
+        "faker_method": "None",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      }
+    ],
+    "dependencies": [
+      "user"
+    ]
+  },
+  {
+    "entity_name": "media_attachment",
+    "table_name": "media_attachment",
+    "fields": [
+      {
+        "name": "id",
+        "data_type": "uuid",
+        "faker_method": "factory.LazyFunction(uuid4)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "message_id",
+        "data_type": "uuid",
+        "faker_method": "factory.SubFactory(MessageFactory)",
+        "default_value": "",
+        "is_fk": true,
+        "fk_factory": "MessageFactory"
+      },
+      {
+        "name": "user_id",
+        "data_type": "uuid",
+        "faker_method": "factory.SubFactory(UserFactory)",
+        "default_value": "",
+        "is_fk": true,
+        "fk_factory": "UserFactory"
+      },
+      {
+        "name": "media_type",
+        "data_type": "enum",
+        "faker_method": "factory.Faker('random_element', elements=['image', 'video', 'document', 'audio', 'other'])",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "file_name",
+        "data_type": "string",
+        "faker_method": "factory.Faker('text', max_nb_chars=50)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "file_size_bytes",
+        "data_type": "integer",
+        "faker_method": "factory.Faker('random_int', min=0, max=10000)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "mime_type",
+        "data_type": "string",
+        "faker_method": "factory.Faker('text', max_nb_chars=50)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "storage_url",
+        "data_type": "string",
+        "faker_method": "factory.Faker('text', max_nb_chars=50)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "preview_url",
+        "data_type": "string",
+        "faker_method": "factory.Faker('text', max_nb_chars=50)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "checksum",
+        "data_type": "string",
+        "faker_method": "factory.Faker('text', max_nb_chars=50)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "created_at",
+        "data_type": "datetime",
+        "faker_method": "factory.Faker('date_time')",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "updated_at",
+        "data_type": "datetime",
+        "faker_method": "factory.Faker('date_time')",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "deleted_at",
+        "data_type": "datetime",
+        "faker_method": "None",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "version",
+        "data_type": "integer",
+        "faker_method": "factory.Faker('random_int', min=0, max=10000)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      }
+    ],
+    "dependencies": [
+      "message",
+      "user"
+    ]
+  },
+  {
+    "entity_name": "media",
+    "table_name": "media",
+    "fields": [
+      {
+        "name": "id",
+        "data_type": "uuid",
+        "faker_method": "factory.LazyFunction(uuid4)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "message_id",
+        "data_type": "uuid",
+        "faker_method": "factory.SubFactory(MessageFactory)",
+        "default_value": "",
+        "is_fk": true,
+        "fk_factory": "MessageFactory"
+      },
+      {
+        "name": "user_id",
+        "data_type": "uuid",
+        "faker_method": "factory.SubFactory(UserFactory)",
+        "default_value": "",
+        "is_fk": true,
+        "fk_factory": "UserFactory"
+      },
+      {
+        "name": "media_type",
+        "data_type": "enum",
+        "faker_method": "factory.Faker('random_element', elements=['image', 'video', 'audio', 'file'])",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "size_bytes",
+        "data_type": "integer",
+        "faker_method": "factory.Faker('random_int', min=0, max=10000)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "storage_url",
+        "data_type": "string",
+        "faker_method": "factory.Faker('text', max_nb_chars=50)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "created_at",
+        "data_type": "datetime",
+        "faker_method": "factory.Faker('date_time')",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "updated_at",
+        "data_type": "datetime",
+        "faker_method": "factory.Faker('date_time')",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "deleted_at",
+        "data_type": "datetime",
+        "faker_method": "None",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "version",
+        "data_type": "integer",
+        "faker_method": "factory.Faker('random_int', min=0, max=10000)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      }
+    ],
+    "dependencies": [
+      "message",
+      "user"
+    ]
+  },
+  {
+    "entity_name": "session",
+    "table_name": "session",
+    "fields": [
+      {
+        "name": "id",
+        "data_type": "uuid",
+        "faker_method": "factory.LazyFunction(uuid4)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "user_id",
+        "data_type": "uuid",
+        "faker_method": "factory.SubFactory(UserFactory)",
+        "default_value": "",
+        "is_fk": true,
+        "fk_factory": "UserFactory"
+      },
+      {
+        "name": "device_id",
+        "data_type": "uuid",
+        "faker_method": "factory.SubFactory(DeviceFactory)",
+        "default_value": "",
+        "is_fk": true,
+        "fk_factory": "DeviceFactory"
+      },
+      {
+        "name": "session_token",
+        "data_type": "string",
+        "faker_method": "factory.Faker('text', max_nb_chars=50)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "started_at",
+        "data_type": "datetime",
+        "faker_method": "factory.Faker('date_time')",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "ended_at",
+        "data_type": "datetime",
+        "faker_method": "factory.Faker('date_time')",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "ip_address",
+        "data_type": "string",
+        "faker_method": "factory.Faker('ipv4')",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "created_at",
+        "data_type": "datetime",
+        "faker_method": "factory.Faker('date_time')",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "updated_at",
+        "data_type": "datetime",
+        "faker_method": "factory.Faker('date_time')",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "deleted_at",
+        "data_type": "datetime",
+        "faker_method": "None",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "version",
+        "data_type": "integer",
+        "faker_method": "factory.Faker('random_int', min=0, max=10000)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      }
+    ],
+    "dependencies": [
+      "user",
+      "device"
+    ]
+  },
+  {
+    "entity_name": "user_storage_limit",
+    "table_name": "user_storage_limit",
+    "fields": [
+      {
+        "name": "id",
+        "data_type": "uuid",
+        "faker_method": "factory.LazyFunction(uuid4)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "user_id",
+        "data_type": "uuid",
+        "faker_method": "factory.SubFactory(UserFactory)",
+        "default_value": "",
+        "is_fk": true,
+        "fk_factory": "UserFactory"
+      },
+      {
+        "name": "storage_quota_mb",
+        "data_type": "integer",
+        "faker_method": "factory.Faker('random_int', min=0, max=10000)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "storage_used_mb",
+        "data_type": "integer",
+        "faker_method": "factory.Faker('random_int', min=0, max=10000)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "enforcement_status",
+        "data_type": "enum",
+        "faker_method": "factory.Faker('random_element', elements=['within_limit', 'near_limit', 'over_limit'])",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "last_calculated_at",
+        "data_type": "datetime",
+        "faker_method": "factory.Faker('date_time')",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "created_at",
+        "data_type": "datetime",
+        "faker_method": "factory.Faker('date_time')",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "updated_at",
+        "data_type": "datetime",
+        "faker_method": "factory.Faker('date_time')",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "deleted_at",
+        "data_type": "datetime",
+        "faker_method": "None",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "version",
+        "data_type": "integer",
+        "faker_method": "factory.Faker('random_int', min=0, max=10000)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      }
+    ],
+    "dependencies": [
+      "user"
+    ]
+  },
+  {
+    "entity_name": "reliability_policy",
+    "table_name": "reliability_policy",
+    "fields": [
+      {
+        "name": "id",
+        "data_type": "uuid",
+        "faker_method": "factory.LazyFunction(uuid4)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "error_budget_percent",
+        "data_type": "decimal",
+        "faker_method": "factory.Faker('pydecimal', left_digits=5, right_digits=2, positive=True)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "window_days",
+        "data_type": "integer",
+        "faker_method": "factory.Faker('random_int', min=0, max=10000)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "deployment_frequency_target",
+        "data_type": "enum",
+        "faker_method": "factory.Faker('random_element', elements=['daily', 'weekly', 'on_demand'])",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "logging_standard",
+        "data_type": "enum",
+        "faker_method": "factory.Faker('random_element', elements=['structured_json'])",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "metrics_thresholds",
+        "data_type": "jsonb",
+        "faker_method": "factory.LazyFunction(dict)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "accessibility_standard",
+        "data_type": "enum",
+        "faker_method": "factory.Faker('random_element', elements=['wcag_2_1_aa'])",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "api_standard_version",
+        "data_type": "string",
+        "faker_method": "factory.Faker('text', max_nb_chars=50)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "created_at",
+        "data_type": "datetime",
+        "faker_method": "factory.Faker('date_time')",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "updated_at",
+        "data_type": "datetime",
+        "faker_method": "factory.Faker('date_time')",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "version",
+        "data_type": "integer",
+        "faker_method": "factory.Faker('random_int', min=0, max=10000)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      }
+    ],
+    "dependencies": []
+  },
+  {
+    "entity_name": "resilience_policy",
+    "table_name": "resilience_policy",
+    "fields": [
+      {
+        "name": "id",
+        "data_type": "uuid",
+        "faker_method": "factory.LazyFunction(uuid4)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "scope",
+        "data_type": "enum",
+        "faker_method": "factory.Faker('random_element', elements=['system', 'region'])",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "backup_frequency_minutes",
+        "data_type": "integer",
+        "faker_method": "factory.Faker('random_int', min=0, max=10000)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "retention_days",
+        "data_type": "integer",
+        "faker_method": "factory.Faker('random_int', min=0, max=10000)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "replication_regions",
+        "data_type": "string",
+        "faker_method": "factory.Faker('text', max_nb_chars=50)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "rpo_minutes",
+        "data_type": "integer",
+        "faker_method": "factory.Faker('random_int', min=0, max=10000)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "rto_minutes",
+        "data_type": "integer",
+        "faker_method": "factory.Faker('random_int', min=0, max=10000)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "max_message_size_bytes",
+        "data_type": "integer",
+        "faker_method": "factory.Faker('random_int', min=0, max=10000)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "max_media_size_bytes",
+        "data_type": "integer",
+        "faker_method": "factory.Faker('random_int', min=0, max=10000)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "version",
+        "data_type": "integer",
+        "faker_method": "factory.Faker('random_int', min=0, max=10000)",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "created_at",
+        "data_type": "datetime",
+        "faker_method": "factory.Faker('date_time')",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      },
+      {
+        "name": "updated_at",
+        "data_type": "datetime",
+        "faker_method": "factory.Faker('date_time')",
+        "default_value": "",
+        "is_fk": false,
+        "fk_factory": ""
+      }
+    ],
+    "dependencies": []
+  }
+]

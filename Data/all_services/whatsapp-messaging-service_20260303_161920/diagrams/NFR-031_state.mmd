@@ -1,0 +1,10 @@
+stateDiagram-v2
+    [*] --> Idle
+    Idle --> Scaling : High concurrency detected
+    Scaling --> Active : Resources provisioned
+    Active --> Idle : Load decreases
+    Active --> Scaling : New high concurrency detected
+    Scaling --> Active : Scaling complete
+    Active --> LatencyImpact : Latency threshold exceeded
+    LatencyImpact --> Scaling : Initiate scaling
+    LatencyImpact --> Active : Latency resolved

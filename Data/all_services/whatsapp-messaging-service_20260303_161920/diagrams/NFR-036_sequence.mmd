@@ -1,0 +1,18 @@
+sequenceDiagram
+    participant User
+    participant AuthenticationService
+    participant AuditLog
+
+    User->>AuthenticationService: Request login with credentials
+    AuthenticationService->>AuthenticationService: Validate credentials
+    AuthenticationService-->>User: Return success or failure
+
+    alt Successful authentication
+        AuthenticationService->>AuditLog: Log successful login attempt
+        AuditLog-->>AuthenticationService: Confirm log entry
+    else Failed authentication
+        AuthenticationService->>AuditLog: Log failed login attempt
+        AuditLog-->>AuthenticationService: Confirm log entry
+    end
+
+    AuthenticationService->>User: Provide access or error message

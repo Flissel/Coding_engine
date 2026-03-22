@@ -1,0 +1,109 @@
+{
+  "id": "SCREEN-033",
+  "name": "Dashboard",
+  "route": "/dashboard",
+  "layout": "sidebar",
+  "description": "Dashboard-Übersicht mit Chat-Liste, Suchfunktion und Profil-Bereich, in dem die hinterlegte Telefonnummer des Nutzers angezeigt wird.",
+  "components": [
+    "COMP-002",
+    "COMP-003",
+    "COMP-009",
+    "COMP-010",
+    "COMP-001"
+  ],
+  "component_layout": [
+    {
+      "id": "COMP-009",
+      "name": "ProfileContactCard",
+      "x": 0,
+      "y": 0,
+      "w": 15,
+      "h": 8
+    },
+    {
+      "id": "COMP-010",
+      "name": "StatusIndicator",
+      "x": 1,
+      "y": 1,
+      "w": 4,
+      "h": 1
+    },
+    {
+      "id": "COMP-002",
+      "name": "SearchBar",
+      "x": 16,
+      "y": 0,
+      "w": 44,
+      "h": 3
+    },
+    {
+      "id": "COMP-003",
+      "name": "ChatListItem",
+      "x": 16,
+      "y": 3,
+      "w": 44,
+      "h": 17
+    },
+    {
+      "id": "COMP-001",
+      "name": "NewChatButton",
+      "x": 50,
+      "y": 21,
+      "w": 10,
+      "h": 3
+    }
+  ],
+  "data_requirements": [
+    "GET /api/profile",
+    "GET /api/profile/phone",
+    "GET /api/chats",
+    "GET /api/chats?search={query}"
+  ],
+  "parent_user_story": "US-009",
+  "wireframe_mermaid": "flowchart TD\n    subgraph Dashboard\n        Header[Header / Navigation]\n        Main[Main Content Area]\n        Sidebar[Sidebar / Filters]\n        Footer[Footer / Actions]\n    end\n\n    Header --> Main\n    Sidebar --> Main\n    Main --> Footer\n\n    %% \n",
+  "wireframe_ascii": "     0    5   10   15   20   25   30   35   40   45   50   55   60\n   0 +--------------+--------------------------------------------+\n     | [ProfileCard]|  [SearchBar]                               |\n   2 | COMP-009     |  COMP-002                                  |\n     |              |  [🔍 Chats durchsuchen...]                 |\n   3 | +----------+ +--------------------------------------------+\n     | | [Avatar]  | |  +----------------------------------------+\n   4 | | COMP-010  | |  | [ChatListItem]  COMP-003               |\n     | | 🟢 Online | |  | +------------------------------------+|\n   5 | +----------+ |  | | 👤 Max Müller        14:32  🟢      ||\n     |              |  | |    Letzte Nachricht...               ||\n   6 | Nutzername   |  | +------------------------------------+||\n     | Max Musterman|  | +------------------------------------+||\n   7 | ------------ |  | | 👤 Anna Schmidt      13:15  ⚪      ||\n     | 📞 Telefon:  |  | |    Okay, bis dann!                 ||\n   8 | +49 170 1234 |  | +------------------------------------+||\n     | 5678         |  | +------------------------------------+||\n   9 |              |  | | 👤 Firma ABC         gestern 🟢    ||\n     | [Profil      |  | |    Dokument gesendet ✓✓            ||\n  10 |  bearbeiten] |  | +------------------------------------+||\n     |              |  | +------------------------------------+||\n  12 |              |  | | 👤 Julia Weber       Mo     ⚪      ||\n     |              |  | |    Foto 📷                          ||\n  14 |              |  | +------------------------------------+||\n     |              |  | +------------------------------------+||\n  16 |              |  | | 👤 Support Team      25.05  🟢     ||\n     |              |  | |    Vielen Dank!                     ||\n  18 |              |  | +------------------------------------+||\n     |              |  |                                        |\n  20 |              |  +----------------------------------------+\n     +--------------+--------------------------------------------+\n  21 |              |                          [+ Neuer Chat]    |\n     |              |                           COMP-001         |\n  23 +--------------+--------------------------------------------+",
+  "state_bindings": {
+    "COMP-009": "profile.user",
+    "COMP-010": "profile.user.status",
+    "COMP-002": "chats.searchQuery",
+    "COMP-003": "chats.list",
+    "COMP-001": "chats.actions.newChat"
+  },
+  "navigation_rules": [
+    {
+      "trigger": "chat_item_click",
+      "target": "/chat/{chatId}",
+      "condition": ""
+    },
+    {
+      "trigger": "new_chat_click",
+      "target": "/chat/new",
+      "condition": "user.isAuthenticated"
+    },
+    {
+      "trigger": "profile_edit_click",
+      "target": "/profile/edit",
+      "condition": ""
+    },
+    {
+      "trigger": "search_submit",
+      "target": "/dashboard?search={query}",
+      "condition": ""
+    }
+  ],
+  "responsive": {
+    "mobile": {
+      "layout": "stack",
+      "hidden_components": [
+        "COMP-009"
+      ]
+    },
+    "tablet": {
+      "layout": "sidebar-collapsed"
+    },
+    "desktop": {
+      "layout": "sidebar"
+    }
+  },
+  "auth_required": true
+}

@@ -1,0 +1,10 @@
+flowchart TD
+    A[Start] --> B{Status erstellen?}
+    B -- Ja --> C[24-Stunden-Status-Update erstellen]
+    C --> D{Status erfolgreich?}
+    D -- Ja --> E[Status speichern]
+    E --> F[Benachrichtigung senden]
+    F --> G[Ende]
+    D -- Nein --> H[Fehlerbehandlung]
+    H --> G
+    B -- Nein --> G

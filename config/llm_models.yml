@@ -31,10 +31,10 @@ models:
     description: "Anthropic SDK direct — base agent, vision analysis, monitor"
 
   cli:
-    provider: "anthropic"
-    model: "claude-sonnet-4-6"
+    provider: "openrouter"
+    model: "anthropic/claude-opus-4-6"
     max_tokens: 16384
-    description: "Claude CLI --model flag (must be Anthropic-native name, not OpenRouter format)"
+    description: "Kilo CLI --model flag (OpenRouter format for Opus 4.6)"
 
   mcp_standard:
     provider: "anthropic"

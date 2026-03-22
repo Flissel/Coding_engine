@@ -1,0 +1,7 @@
+stateDiagram-v2
+    [*] --> Idle
+    Idle --> CallInitiated : Start Call
+    CallInitiated --> InCall : Call Connected
+    InCall --> CallEnded : End Call
+    CallEnded --> Idle : Reset
+    CallEnded --> CallInitiated : Redial

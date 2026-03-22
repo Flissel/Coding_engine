@@ -1,0 +1,153 @@
+{
+  "id": "SCREEN-014",
+  "name": "Call Recovery - User Moderation",
+  "route": "/calls/video/:callId/recovery",
+  "layout": "single-column-centered",
+  "description": "Fehlerbehebungs-Screen für Videoanrufe mit integrierten Moderationstools zum Überprüfen gemeldeter Nutzer, Blockieren oder Ablehnen von Meldungen. Zeigt Fehlerstatus, Retry-Optionen und Troubleshooting-Hinweise an.",
+  "components": [
+    "COMP-001",
+    "COMP-002",
+    "COMP-009",
+    "COMP-010",
+    "COMP-003"
+  ],
+  "component_layout": [
+    {
+      "id": "COMP-010",
+      "name": "ErrorStatusIndicator",
+      "x": 10,
+      "y": 0,
+      "w": 40,
+      "h": 4
+    },
+    {
+      "id": "COMP-001",
+      "name": "RetryButton",
+      "x": 20,
+      "y": 4,
+      "w": 20,
+      "h": 3
+    },
+    {
+      "id": "COMP-002",
+      "name": "UserSearchBar",
+      "x": 2,
+      "y": 8,
+      "w": 56,
+      "h": 3
+    },
+    {
+      "id": "COMP-003",
+      "name": "ReportedUserListItem",
+      "x": 2,
+      "y": 11,
+      "w": 56,
+      "h": 12
+    },
+    {
+      "id": "COMP-009",
+      "name": "ReportedUserDetailCard",
+      "x": 2,
+      "y": 23,
+      "w": 36,
+      "h": 8
+    },
+    {
+      "id": "COMP-001-block",
+      "name": "BlockUserButton",
+      "x": 40,
+      "y": 24,
+      "w": 18,
+      "h": 3
+    },
+    {
+      "id": "COMP-001-dismiss",
+      "name": "DismissReportButton",
+      "x": 40,
+      "y": 28,
+      "w": 18,
+      "h": 3
+    }
+  ],
+  "data_requirements": [
+    "GET /api/calls/video/{callId}/status",
+    "POST /api/calls/video/{callId}/retry",
+    "GET /api/calls/video/{callId}/troubleshooting",
+    "GET /api/moderation/reports?status=pending",
+    "GET /api/moderation/reports/{reportId}",
+    "POST /api/moderation/reports/{reportId}/block",
+    "POST /api/moderation/reports/{reportId}/dismiss",
+    "GET /api/users/{userId}/profile"
+  ],
+  "parent_user_story": "US-134",
+  "wireframe_mermaid": "flowchart TD\n    subgraph Call_Recovery_-_User_Moderation\n        Header[Header / Navigation]\n        Main[Main Content Area]\n        Sidebar[Sidebar / Filters]\n        Footer[Footer / Actions]\n    end\n\n    Header --> Main\n    Sidebar --> Main\n    Main --> Footer\n\n    %% \n",
+  "wireframe_ascii": "     0    5   10   15   20   25   30   35   40   45   50   55   60\n   0 +------------------------------------------------------------+\n     |          +----------------------------------------+        |\n   1 |          |  ⚠  CALL CONNECTION ERROR               |        |\n     |          |  COMP-010 (ErrorStatusIndicator)        |        |\n   3 |          |  Status: Connection Lost · Code 5003   |        |\n     |          +----------------------------------------+        |\n   4 |                    +--------------------+                  |\n     |                    | 🔄 Retry Call      |                  |\n   5 |                    | COMP-001 (Retry)   |                  |\n     |                    +--------------------+                  |\n   6 |          Troubleshooting: Check network, restart app       |\n     |------------------------------------------------------------|\n   7 |  ── MODERATION: REPORTED USERS ──────────────────────────  |\n     |                                                            |\n   8 |  +------------------------------------------------------+  |\n     |  | 🔍 Search reported users...                          |  |\n   9 |  | COMP-002 (UserSearchBar)                             |  |\n     |  +------------------------------------------------------+  |\n  10 |                                                            |\n  11 |  +------------------------------------------------------+  |\n     |  | 👤 @john_doe    | Reason: Harassment  | ⏱ 2h ago    |  |\n  12 |  |  COMP-003 (ReportedUserListItem)        [●pending]   |  |\n     |  |------------------------------------------------------|  |\n  13 |  | 👤 @toxic_user  | Reason: Spam         | ⏱ 5h ago    |  |\n     |  |  COMP-003                                [●pending]   |  |\n  14 |  |------------------------------------------------------|  |\n     |  | 👤 @bad_actor   | Reason: Threats       | ⏱ 1d ago    |  |\n  15 |  |  COMP-003                                [●pending]   |  |\n     |  |------------------------------------------------------|  |\n  16 |  | 👤 @spammer99   | Reason: Spam         | ⏱ 1d ago    |  |\n     |  |  COMP-003                                [●review]   |  |\n  17 |  +------------------------------------------------------+  |\n     |                                                            |\n  18 |  ── SELECTED REPORT DETAIL ──────────────────────────────  |\n     |                                                            |\n  19 |  +------------------------------------+ +----------------+ |\n     |  | 👤 @john_doe                       | |                | |\n  20 |  |  Name: John Doe                    | | [🚫 Block User]| |\n     |  |  Phone: +49 170 ***1234             | | COMP-001       | |\n  21 |  |  Reports: 3 total (2 harassment)   | | (BlockButton)  | |\n     |  |  Status: Active                    | |                | |\n  22 |  |  Last seen: 10 min ago             | +----------------+ |\n     |  |  COMP-009 (ReportedUserDetailCard) | +----------------+ |\n  23 |  |                                    | | [✓ Dismiss    ]| |\n     |  |  Report Details:                   | | COMP-001       | |\n  24 |  |  \"Sent threatening messages in     | | (DismissBtn)   | |\n     |  |   group chat on 2024-01-15\"        | |                | |\n  25 |  +------------------------------------+ +----------------+ |\n     |                                                            |\n  26 +------------------------------------------------------------+",
+  "state_bindings": {
+    "COMP-010": "call.recovery.errorStatus",
+    "COMP-001": "call.recovery.retryAction",
+    "COMP-002": "moderation.searchQuery",
+    "COMP-003": "moderation.reportedUsersList",
+    "COMP-009": "moderation.selectedReport.userDetail",
+    "COMP-001-block": "moderation.actions.block",
+    "COMP-001-dismiss": "moderation.actions.dismiss"
+  },
+  "navigation_rules": [
+    {
+      "trigger": "retry_btn_click",
+      "target": "/calls/video/:callId",
+      "condition": "call.errorState !== 'permanent'"
+    },
+    {
+      "trigger": "reported_user_click",
+      "target": "",
+      "condition": "user.hasModeratorRole",
+      "action": "loadReportDetail(reportId)"
+    },
+    {
+      "trigger": "block_btn_click",
+      "target": "",
+      "condition": "user.hasModeratorRole && moderation.selectedReport !== null",
+      "action": "blockUser(userId)"
+    },
+    {
+      "trigger": "dismiss_btn_click",
+      "target": "",
+      "condition": "user.hasModeratorRole && moderation.selectedReport !== null",
+      "action": "dismissReport(reportId)"
+    },
+    {
+      "trigger": "search_submit",
+      "target": "",
+      "condition": "",
+      "action": "filterReportedUsers(query)"
+    },
+    {
+      "trigger": "block_success",
+      "target": "/calls/video/:callId/recovery",
+      "condition": "",
+      "action": "showConfirmation('User blocked successfully')"
+    },
+    {
+      "trigger": "dismiss_success",
+      "target": "/calls/video/:callId/recovery",
+      "condition": "",
+      "action": "showConfirmation('Report dismissed')"
+    }
+  ],
+  "responsive": {
+    "mobile": {
+      "layout": "stack",
+      "hidden_components": [],
+      "notes": "Error status and retry stacked on top; reported users list scrollable; detail card and action buttons stacked below list; block/dismiss buttons full-width"
+    },
+    "tablet": {
+      "layout": "single-column-centered",
+      "notes": "Same as desktop but narrower margins; detail card and action buttons side by side"
+    },
+    "desktop": {
+      "layout": "single-column-centered",
+      "notes": "Full layout as shown in wireframe; max-width 720px centered; error recovery section on top, moderation tools below"
+    }
+  },
+  "auth_required": true
+}

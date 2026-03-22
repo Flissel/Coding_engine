@@ -1,0 +1,121 @@
+{
+  "id": "SCREEN-026",
+  "name": "Neues Geraet verbinden",
+  "route": "/settings/devices/link",
+  "layout": "single-column-centered",
+  "description": "Screen zum Verbinden eines neuen Geraets via QR-Code-Scan und Pairing. Enthaelt Compliance- und Datenschutzhinweise gemaess GDPR/CCPA fuer die Geraeteverknuepfung, sowie Status-Anzeige des Pairing-Vorgangs.",
+  "components": [
+    "COMP-001",
+    "COMP-010",
+    "COMP-009"
+  ],
+  "component_layout": [
+    {
+      "id": "COMP-010",
+      "name": "PairingStatus",
+      "x": 18,
+      "y": 2,
+      "w": 24,
+      "h": 3
+    },
+    {
+      "id": "COMP-009",
+      "name": "ComplianceInfoCard",
+      "x": 10,
+      "y": 6,
+      "w": 40,
+      "h": 6
+    },
+    {
+      "id": "COMP-001",
+      "name": "StartPairingBtn",
+      "x": 18,
+      "y": 13,
+      "w": 24,
+      "h": 3
+    },
+    {
+      "id": "COMP-001_2",
+      "name": "CancelBtn",
+      "x": 18,
+      "y": 17,
+      "w": 24,
+      "h": 3
+    },
+    {
+      "id": "COMP-001_3",
+      "name": "PrivacyPolicyLink",
+      "x": 18,
+      "y": 21,
+      "w": 24,
+      "h": 2
+    }
+  ],
+  "data_requirements": [
+    "GET /api/settings/devices",
+    "POST /api/settings/devices/link",
+    "GET /api/settings/devices/qr-code",
+    "GET /api/compliance/consent-status",
+    "POST /api/compliance/consent",
+    "GET /api/compliance/privacy-policy"
+  ],
+  "parent_user_story": "US-149",
+  "wireframe_mermaid": "flowchart TD\n    subgraph Neues_Geraet_verbinden\n        Header[Header / Navigation]\n        Main[Main Content Area]\n        Sidebar[Sidebar / Filters]\n        Footer[Footer / Actions]\n    end\n\n    Header --> Main\n    Sidebar --> Main\n    Main --> Footer\n\n    %% \n",
+  "wireframe_ascii": "     0    5   10   15   20   25   30   35   40   45   50   55   60\n   0 +------------------------------------------------------------+\n     |  [<- Zurueck]       Neues Geraet verbinden                 |\n   2 +------------------------------------------------------------+\n     |                                                            |\n   3 |            +------------------------+                      |\n     |            | COMP-010 (PairingStatus)|                      |\n   5 |            | Status: Warte auf Scan |                      |\n     |            +------------------------+                      |\n   6 |                                                            |\n     |     +------------------------------------------+           |\n   7 |     |  COMP-009 (ComplianceInfoCard)            |           |\n     |     |                                          |           |\n   8 |     |  +------------------------------------+  |           |\n     |     |  |  +------+                          |  |           |\n   9 |     |  |  | QR   |  Scannen Sie diesen      |  |           |\n     |     |  |  | CODE |  QR-Code mit Ihrem       |  |           |\n  10 |     |  |  |      |  neuen Geraet.           |  |           |\n     |     |  |  +------+                          |  |           |\n  11 |     |  +------------------------------------+  |           |\n     |     |  GDPR/CCPA: Daten werden Ende-zu-Ende   |           |\n  12 |     |  verschluesselt. Geraetedaten werden     |           |\n     |     |  gemaess Datenschutzrichtlinie verarbeitet|           |\n  13 |     +------------------------------------------+           |\n     |                                                            |\n  14 |            +------------------------+                      |\n     |            | [Pairing starten]      |                      |\n  15 |            |  COMP-001              |                      |\n     |            | (StartPairingBtn)      |                      |\n  16 |            +------------------------+                      |\n     |                                                            |\n  17 |            +------------------------+                      |\n     |            | [Abbrechen]            |                      |\n  18 |            |  COMP-001              |                      |\n     |            | (CancelBtn)            |                      |\n  19 |            +------------------------+                      |\n     |                                                            |\n  20 |            +------------------------+                      |\n     |            | [Datenschutzerklaerung] |                      |\n  21 |            |  COMP-001              |                      |\n     |            | (PrivacyPolicyLink)    |                      |\n  22 |            +------------------------+                      |\n     |                                                            |\n  23 |  [ ] Ich stimme der Verarbeitung meiner Geraetedaten zu    |\n     |      gemaess GDPR/CCPA (Einwilligung erforderlich)         |\n  24 +------------------------------------------------------------+",
+  "state_bindings": {
+    "COMP-010": "devices.pairingStatus",
+    "COMP-009": "devices.qrCode, compliance.consentInfo",
+    "COMP-001": "devices.pairingAction",
+    "COMP-001_2": "devices.cancelAction",
+    "COMP-001_3": "compliance.privacyPolicyUrl"
+  },
+  "navigation_rules": [
+    {
+      "trigger": "back_click",
+      "target": "/settings/devices",
+      "condition": ""
+    },
+    {
+      "trigger": "start_pairing_click",
+      "target": "",
+      "condition": "compliance.consentGiven === true"
+    },
+    {
+      "trigger": "cancel_click",
+      "target": "/settings/devices",
+      "condition": ""
+    },
+    {
+      "trigger": "privacy_link_click",
+      "target": "/settings/privacy-policy",
+      "condition": ""
+    },
+    {
+      "trigger": "pairing_success",
+      "target": "/settings/devices",
+      "condition": "devices.pairingStatus === 'connected'"
+    },
+    {
+      "trigger": "consent_not_given",
+      "target": "",
+      "condition": "compliance.consentGiven === false",
+      "action": "show_consent_required_error"
+    }
+  ],
+  "responsive": {
+    "mobile": {
+      "layout": "stack",
+      "hidden_components": [],
+      "notes": "QR-Code wird groesser dargestellt, alle Elemente gestapelt"
+    },
+    "tablet": {
+      "layout": "single-column-centered",
+      "notes": "Zentrierte Darstellung mit mittlerer QR-Code-Groesse"
+    },
+    "desktop": {
+      "layout": "single-column-centered",
+      "notes": "Volle Darstellung mit Compliance-Informationen sichtbar"
+    }
+  },
+  "auth_required": true
+}

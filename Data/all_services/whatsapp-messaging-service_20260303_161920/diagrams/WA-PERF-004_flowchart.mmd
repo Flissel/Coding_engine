@@ -1,0 +1,11 @@
+flowchart TD
+    A[Start] --> B{Ist das System batterieeffizient?}
+    B -- Ja --> C[System läuft optimal]
+    B -- Nein --> D[Optimierung der Batterieeffizienz]
+    D --> E{Wurden alle Optimierungen durchgeführt?}
+    E -- Ja --> F[System testen]
+    E -- Nein --> D
+    F --> G{Test erfolgreich?}
+    G -- Ja --> H[System implementieren]
+    G -- Nein --> D
+    H --> I[Ende]

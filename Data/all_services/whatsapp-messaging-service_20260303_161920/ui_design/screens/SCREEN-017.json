@@ -1,0 +1,109 @@
+{
+  "id": "SCREEN-017",
+  "name": "Display Name Settings",
+  "route": "/settings/profile/display-name",
+  "layout": "single-column",
+  "description": "Formular zum Ändern des Anzeigenamens mit Validierung, Authentication-Hardening-konform mit Audit-Logging und Session-Verifizierung",
+  "components": [
+    "COMP-001",
+    "COMP-010",
+    "COMP-005"
+  ],
+  "component_layout": [
+    {
+      "id": "COMP-010",
+      "name": "AuthStatusIndicator",
+      "x": 0,
+      "y": 0,
+      "w": 60,
+      "h": 3
+    },
+    {
+      "id": "COMP-005",
+      "name": "DisplayNameInput",
+      "x": 8,
+      "y": 8,
+      "w": 44,
+      "h": 4
+    },
+    {
+      "id": "COMP-001",
+      "name": "SaveButton",
+      "x": 20,
+      "y": 18,
+      "w": 20,
+      "h": 3
+    },
+    {
+      "id": "COMP-001",
+      "name": "CancelButton",
+      "x": 8,
+      "y": 18,
+      "w": 12,
+      "h": 3
+    },
+    {
+      "id": "COMP-010",
+      "name": "ValidationStatus",
+      "x": 8,
+      "y": 12,
+      "w": 44,
+      "h": 3
+    }
+  ],
+  "data_requirements": [
+    "GET /api/settings/profile/display-name",
+    "PUT /api/settings/profile/display-name",
+    "GET /api/auth/session/verify",
+    "POST /api/audit/log",
+    "GET /api/auth/hardening-status"
+  ],
+  "parent_user_story": "US-147",
+  "wireframe_mermaid": "flowchart TD\n    subgraph Display_Name_Settings\n        Header[Header / Navigation]\n        Main[Main Content Area]\n        Sidebar[Sidebar / Filters]\n        Footer[Footer / Actions]\n    end\n\n    Header --> Main\n    Sidebar --> Main\n    Main --> Footer\n\n    %% \n",
+  "wireframe_ascii": "     0    5   10   15   20   25   30   35   40   45   50   55   60\n   0 +------------------------------------------------------------+\n     | [🔒 Authenticated] Session: active | Last: 2m ago         |\n   2 |  COMP-010 (AuthStatusIndicator)                            |\n     +------------------------------------------------------------+\n   4 |                                                            |\n     |        ← Back to Profile Settings                         |\n   6 |                                                            |\n     |        +------------------------------------------+        |\n   8 |        | Display Name                             |        |\n     |        |  COMP-005 (DisplayNameInput)              |        |\n  10 |        | [John Doe________________________]       |        |\n     |        +------------------------------------------+        |\n  12 |        +------------------------------------------+        |\n     |        | COMP-010 (ValidationStatus)               |        |\n  14 |        | ✓ 3-25 chars | ✓ No special chars | ✓ OK |        |\n     |        +------------------------------------------+        |\n  16 |                                                            |\n     |        ⚠ Changing your name will be logged for audit      |\n  18 |        [Cancel]       [     Save Name     ]               |\n     |        COMP-001       COMP-001 (SaveButton)               |\n  20 |        (CancelButton)                                     |\n     |                                                            |\n  22 +------------------------------------------------------------+\n     | Audit Trail: Last changed 2024-01-15 by session #a8f3     |\n  24 +------------------------------------------------------------+",
+  "state_bindings": {
+    "COMP-005": "profile.displayName",
+    "COMP-010": "auth.sessionStatus",
+    "COMP-001": "profile.formActions"
+  },
+  "navigation_rules": [
+    {
+      "trigger": "cancel_click",
+      "target": "/settings/profile",
+      "condition": ""
+    },
+    {
+      "trigger": "save_success",
+      "target": "/settings/profile",
+      "condition": "form.isValid && auth.sessionVerified"
+    },
+    {
+      "trigger": "back_click",
+      "target": "/settings/profile",
+      "condition": ""
+    },
+    {
+      "trigger": "session_expired",
+      "target": "/auth/re-authenticate",
+      "condition": "!auth.sessionVerified"
+    },
+    {
+      "trigger": "save_click",
+      "target": "",
+      "condition": "auth.requireReauth && session.age > 300"
+    }
+  ],
+  "responsive": {
+    "mobile": {
+      "layout": "stack",
+      "hidden_components": []
+    },
+    "tablet": {
+      "layout": "single-column-centered"
+    },
+    "desktop": {
+      "layout": "single-column-centered"
+    }
+  },
+  "auth_required": true
+}

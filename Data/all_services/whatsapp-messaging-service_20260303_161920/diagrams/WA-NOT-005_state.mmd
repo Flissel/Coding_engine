@@ -1,0 +1,6 @@
+stateDiagram-v2
+    [*] --> Idle
+    Idle --> NewMessage : Receive Message
+    NewMessage --> NotifyReaction : Reaction Detected
+    NotifyReaction --> Idle : Notify User
+    NotifyReaction --> Idle : No Reaction

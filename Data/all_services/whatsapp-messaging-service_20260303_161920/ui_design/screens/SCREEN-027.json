@@ -1,0 +1,161 @@
+{
+  "id": "SCREEN-027",
+  "name": "Support kontaktieren - Profilbild",
+  "route": "/settings/help/support",
+  "layout": "stack",
+  "description": "Support-Kontaktformular mit Profilbild-Upload-Funktion. Nutzer können ein Profilbild hochladen, anzeigen, ersetzen oder entfernen und bei Problemen den Support kontaktieren.",
+  "components": [
+    "COMP-001",
+    "COMP-007",
+    "COMP-005",
+    "COMP-010"
+  ],
+  "component_layout": [
+    {
+      "id": "header_bar",
+      "name": "HeaderBar",
+      "x": 0,
+      "y": 0,
+      "w": 60,
+      "h": 4
+    },
+    {
+      "id": "COMP-010",
+      "name": "StatusIndicator",
+      "x": 2,
+      "y": 5,
+      "w": 56,
+      "h": 2
+    },
+    {
+      "id": "COMP-007",
+      "name": "MediaViewer (Profilbild)",
+      "x": 15,
+      "y": 8,
+      "w": 30,
+      "h": 12
+    },
+    {
+      "id": "COMP-001-upload",
+      "name": "Button (Hochladen)",
+      "x": 4,
+      "y": 21,
+      "w": 16,
+      "h": 3
+    },
+    {
+      "id": "COMP-001-replace",
+      "name": "Button (Ersetzen)",
+      "x": 22,
+      "y": 21,
+      "w": 16,
+      "h": 3
+    },
+    {
+      "id": "COMP-001-remove",
+      "name": "Button (Entfernen)",
+      "x": 40,
+      "y": 21,
+      "w": 16,
+      "h": 3
+    },
+    {
+      "id": "COMP-005",
+      "name": "MessageInput (Nachricht)",
+      "x": 2,
+      "y": 26,
+      "w": 56,
+      "h": 6
+    },
+    {
+      "id": "COMP-001-attach",
+      "name": "Button (Anhang)",
+      "x": 2,
+      "y": 33,
+      "w": 18,
+      "h": 3
+    },
+    {
+      "id": "COMP-001-send",
+      "name": "Button (Absenden)",
+      "x": 38,
+      "y": 33,
+      "w": 20,
+      "h": 3
+    }
+  ],
+  "data_requirements": [
+    "GET /api/user/profile-picture",
+    "POST /api/user/profile-picture",
+    "PUT /api/user/profile-picture",
+    "DELETE /api/user/profile-picture",
+    "POST /api/support/contact",
+    "POST /api/support/contact/attachments"
+  ],
+  "parent_user_story": "US-006",
+  "wireframe_mermaid": "flowchart TD\n    subgraph Support_kontaktieren_-_Profilbild\n        Header[Header / Navigation]\n        Main[Main Content Area]\n        Sidebar[Sidebar / Filters]\n        Footer[Footer / Actions]\n    end\n\n    Header --> Main\n    Sidebar --> Main\n    Main --> Footer\n\n    %% \n",
+  "wireframe_ascii": "     0    5   10   15   20   25   30   35   40   45   50   55   60\n   0 +------------------------------------------------------------+\n     |  [<- Zurück]    Support kontaktieren        [X Schließen] |\n   2 |                     Profilbild                             |\n     |  Header Bar                                               |\n   4 +------------------------------------------------------------+\n   5 |  COMP-010 [StatusIndicator: ● Online / Upload-Status]     |\n     |  \"Profilbild aktiv\" / \"Kein Profilbild gesetzt\"           |\n   7 +------------------------------------------------------------+\n   8 |               +----------------------------+               |\n     |               |                            |               |\n  10 |               |                            |               |\n     |               |    [Profilbild-Vorschau]    |               |\n  12 |               |     COMP-007 MediaViewer    |               |\n     |               |                            |               |\n  14 |               |      +------------+        |               |\n     |               |      | 👤 Bild    |        |               |\n  16 |               |      | oder       |        |               |\n     |               |      | Platzhalter|        |               |\n  18 |               |      +------------+        |               |\n     |               +----------------------------+               |\n  20 +------------------------------------------------------------+\n  21 |  +---------------+ +---------------+ +----------------+    |\n     |  | 📤 Hochladen  | | 🔄 Ersetzen  | | 🗑️ Entfernen   |    |\n  23 |  |  COMP-001     | |  COMP-001     | |  COMP-001      |    |\n     |  +---------------+ +---------------+ +----------------+    |\n  25 +------------------------------------------------------------+\n  26 |  Support-Nachricht:                                        |\n     |  +------------------------------------------------------+  |\n  28 |  |                                                      |  |\n     |  |  COMP-005 MessageInput                               |  |\n  30 |  |  Beschreiben Sie Ihr Anliegen zum Profilbild...      |  |\n     |  +------------------------------------------------------+  |\n  32 +------------------------------------------------------------+\n  33 |  +----------------+                  +------------------+  |\n     |  | 📎 Anhang      |                  | ✉️ Absenden      |  |\n  35 |  |  COMP-001      |                  |  COMP-001        |  |\n     |  +----------------+                  +------------------+  |\n  37 +------------------------------------------------------------+",
+  "state_bindings": {
+    "COMP-007": "profile.picture.currentImage",
+    "COMP-010": "profile.picture.uploadStatus",
+    "COMP-005": "support.message.text",
+    "COMP-001-upload": "profile.picture.uploadAction",
+    "COMP-001-replace": "profile.picture.replaceAction",
+    "COMP-001-remove": "profile.picture.removeAction",
+    "COMP-001-attach": "support.attachments",
+    "COMP-001-send": "support.submitAction"
+  },
+  "navigation_rules": [
+    {
+      "trigger": "back_btn_click",
+      "target": "/settings/help",
+      "condition": ""
+    },
+    {
+      "trigger": "close_btn_click",
+      "target": "/settings",
+      "condition": ""
+    },
+    {
+      "trigger": "upload_btn_click",
+      "target": "",
+      "condition": "profile.picture.currentImage === null"
+    },
+    {
+      "trigger": "replace_btn_click",
+      "target": "",
+      "condition": "profile.picture.currentImage !== null"
+    },
+    {
+      "trigger": "remove_btn_click",
+      "target": "",
+      "condition": "profile.picture.currentImage !== null"
+    },
+    {
+      "trigger": "send_btn_click",
+      "target": "/settings/help/support/confirmation",
+      "condition": "support.message.text.length > 0"
+    },
+    {
+      "trigger": "image_click",
+      "target": "",
+      "condition": "profile.picture.currentImage !== null"
+    }
+  ],
+  "responsive": {
+    "mobile": {
+      "layout": "stack",
+      "hidden_components": [],
+      "notes": "Buttons werden vertikal gestapelt, MediaViewer nimmt volle Breite ein"
+    },
+    "tablet": {
+      "layout": "stack",
+      "notes": "Profilbild-Vorschau zentriert, Buttons nebeneinander"
+    },
+    "desktop": {
+      "layout": "stack",
+      "notes": "Volle Darstellung mit allen Buttons in einer Reihe"
+    }
+  },
+  "auth_required": true
+}

@@ -1,0 +1,10 @@
+stateDiagram-v2
+    [*] --> Idle
+    Idle --> ScheduledBackup : Start Backup
+    ScheduledBackup --> InProgress : Backup in Progress
+    InProgress --> Completed : Backup Successful
+    InProgress --> Failed : Backup Failed
+    Completed --> Idle : Next Scheduled Backup
+    Failed --> Retry : Retry Backup
+    Retry --> InProgress : Backup in Progress
+    Retry --> Idle : Abort Backup

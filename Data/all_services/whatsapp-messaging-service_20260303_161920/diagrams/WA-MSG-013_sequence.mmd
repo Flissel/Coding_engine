@@ -1,0 +1,9 @@
+sequenceDiagram
+    participant User as User
+    participant GroupChat as Group Chat
+    participant System as System
+
+    User->>GroupChat: @mention User
+    GroupChat->>System: Notify @mention
+    System-->>GroupChat: Acknowledge @mention
+    GroupChat-->>User: Notify @mention received

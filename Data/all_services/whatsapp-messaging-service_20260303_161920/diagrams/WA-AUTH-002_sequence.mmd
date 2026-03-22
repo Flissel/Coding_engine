@@ -1,0 +1,18 @@
+sequenceDiagram
+    participant User
+    participant System
+    participant Authenticator
+
+    User->>System: Request login
+    System->>User: Prompt for password
+    User->>System: Enter password
+    System->>User: Send 2FA request
+    User->>Authenticator: Generate 6-digit PIN
+    Authenticator-->>User: Provide 6-digit PIN
+    User->>System: Enter 6-digit PIN
+    System->>User: Verify 6-digit PIN
+    alt PIN valid
+        System->>User: Grant access
+    else PIN invalid
+        System->>User: Deny access
+    end

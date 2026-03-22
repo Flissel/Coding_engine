@@ -1,0 +1,13 @@
+sequenceDiagram
+    participant User
+    participant ClientApp
+    participant EncryptionService
+    participant Server
+
+    User->>ClientApp: Send message
+    ClientApp->>EncryptionService: Encrypt message
+    EncryptionService-->>ClientApp: Return encrypted message
+    ClientApp->>Server: Send encrypted message
+    Server->>EncryptionService: Decrypt message
+    EncryptionService-->>Server: Return decrypted message
+    Server->>User: Deliver decrypted message

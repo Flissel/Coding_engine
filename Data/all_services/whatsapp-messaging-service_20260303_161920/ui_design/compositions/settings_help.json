@@ -1,0 +1,97 @@
+{
+  "route": "/settings/help",
+  "screen_name": "Hilfe",
+  "description": "",
+  "user_stories": [],
+  "components": [
+    {
+      "component_id": "COMP-002",
+      "component_name": "SearchBar",
+      "props": {
+        "variant": "default",
+        "placeholder": "Hilfe durchsuchen..."
+      },
+      "position": "header",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-025",
+      "component_name": "HelpArticleCard",
+      "props": {
+        "variant": "default",
+        "title": "Erste Schritte",
+        "description": "Grundlagen der App kennenlernen"
+      },
+      "position": "main",
+      "responsive": {
+        "mobile": "stacked",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-025",
+      "component_name": "HelpArticleCard",
+      "props": {
+        "variant": "default",
+        "title": "Sicherheit & Verschlüsselung",
+        "description": "Ihre Privatsphäre schützen"
+      },
+      "position": "main",
+      "responsive": {
+        "mobile": "stacked",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-025",
+      "component_name": "HelpArticleCard",
+      "props": {
+        "variant": "default",
+        "title": "Passkeys verwalten",
+        "description": "Sichere Anmeldung einrichten"
+      },
+      "position": "main",
+      "responsive": {
+        "mobile": "stacked",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-025",
+      "component_name": "HelpArticleCard",
+      "props": {
+        "variant": "default",
+        "title": "Geräte verwalten",
+        "description": "Verbundene Geräte überwachen"
+      },
+      "position": "main",
+      "responsive": {
+        "mobile": "stacked",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-001",
+      "component_name": "Button",
+      "props": {
+        "variant": "outline",
+        "text": "Support kontaktieren"
+      },
+      "position": "footer",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    }
+  ],
+  "layout": "flex column, gap-4, max-width 600px, padding 16px",
+  "data_sources": [],
+  "state_shape": {
+    "searchQuery": "string",
+    "filteredArticles": "array",
+    "selectedCategory": "string"
+  }
+}

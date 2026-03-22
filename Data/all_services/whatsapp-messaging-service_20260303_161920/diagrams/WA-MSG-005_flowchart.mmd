@@ -1,0 +1,7 @@
+flowchart TD
+    A[Nachricht erhalten] --> B{Nachricht weiterleiten?}
+    B -->|Ja| C[Empfänger auswählen]
+    B -->|Nein| D[Prozess beenden]
+    C --> E[Nachricht weiterleiten]
+    E --> F[Bestätigung erhalten]
+    F --> G[Prozess beenden]

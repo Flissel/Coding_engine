@@ -1,0 +1,24 @@
+flowchart TD
+    A[Start Account Recovery] --> B{Is the user verified?}
+    B -- Yes --> C[Proceed to Account Recovery]
+    B -- No --> D[Send Verification Code]
+    D --> E{Code Entered Correctly?}
+    E -- Yes --> C
+    E -- No --> F[Resend Verification Code]
+    F --> E
+
+    C --> G{Is the user requesting a number change?}
+    G -- Yes --> H[Verify New Phone Number]
+    H --> I{Is the new number verified?}
+    I -- Yes --> J[Update Account with New Number]
+    I -- No --> K[Notify User of Verification Failure]
+    K --> H
+
+    G -- No --> L[Handle Device Loss]
+    L --> M[Verify Identity]
+    M --> N{Identity Verified?}
+    N -- Yes --> O[Secure Account Access]
+    N -- No --> P[Notify User of Verification Failure]
+
+    J --> Q[End Process]
+    O --> Q

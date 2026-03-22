@@ -70,7 +70,7 @@ class SoMBridgeConfig:
 
     # Docker settings
     sandbox_image: str = "coding-engine/sandbox:latest"
-    vnc_port: int = 6081
+    vnc_port: int = 6200
     app_port: int = 3001
 
     # Timeouts
@@ -121,7 +121,7 @@ AGENT_REGISTRY: Dict[str, Dict[str, Any]] = {
         "universal": True,
     },
     "preview_monitor": {
-        "class": "src.monitoring.preview_monitor.PreviewMonitor",
+        "class": "src.monitoring.preview_monitor.PreviewHealthMonitor",
         "config_flag": "enable_preview_monitor",
         "universal": True,
     },
@@ -421,6 +421,10 @@ class SoMBridge:
         # 2. Start Docker sandbox with VNC (skip if DeploymentTeam manages its own)
         if self.config.enable_docker_sandbox and not self.config.enable_deployment_team:
             await self._start_docker_sandbox()
+        elif self.config.enable_vnc_preview and self.config.vnc_port:
+            # External sandbox: container managed by docker-manager.js / Electron
+            self.vnc_port = self.config.vnc_port
+            logger.info(f"Using external sandbox | vnc_port={self.vnc_port}")
 
         # 3. Initialize SoM agents (Autogen + Claude CLI)
         await self._init_agents()
@@ -439,15 +443,16 @@ class SoMBridge:
             data={
                 "project_profile": self.project_profile.to_dict(),
                 "agents_active": list(self.agents.keys()),
-                "sandbox_running": self.container_id is not None,
+                "sandbox_running": self.container_id is not None or self.vnc_port is not None,
                 "vnc_port": self.vnc_port,
             },
         ))
 
         self._started = True
+        sandbox_status = 'running' if self.container_id else ('external' if self.vnc_port else 'disabled')
         logger.info(
             f"SoMBridge started | agents={len(self.agents)} | "
-            f"sandbox={'running' if self.container_id else 'disabled'}"
+            f"sandbox={sandbox_status} | vnc_port={self.vnc_port}"
         )
 
     async def stop(self):
@@ -813,6 +818,15 @@ class SoMBridge:
                     kwargs["num_agents"] = self.config.fungus_num_agents
                     kwargs["max_iterations"] = self.config.fungus_max_iterations
 
+                # Filter kwargs to only what the constructor accepts
+                import inspect
+                sig = inspect.signature(agent_class.__init__)
+                valid_params = set(sig.parameters.keys()) - {"self"}
+                if "kwargs" not in str(sig) and not any(
+                    p.kind == inspect.Parameter.VAR_KEYWORD for p in sig.parameters.values()
+                ):
+                    kwargs = {k: v for k, v in kwargs.items() if k in valid_params}
+
                 agent = agent_class(**kwargs)
 
                 # Inject project profile for universal behavior
@@ -872,16 +886,26 @@ class SoMBridge:
             f"vnc_port={self.config.vnc_port} | app_port={self.config.app_port}"
         )
 
+        # KiloCLI config for auto-fix inside the container (writable copy)
+        kilo_config_dir = Path.home() / ".kilocode" / "cli"
+        database_url = os.environ.get(
+            "DATABASE_URL",
+            "postgresql://engine:engine_secret@coding-engine-postgres:5432/coding_engine",
+        )
+
         cmd = [
             "docker", "run", "-d",
             "--name", container_name,
+            "--network", "coding-engine-network",
             "-v", f"{self.output_dir}:/app",
+            "-v", f"{kilo_config_dir}:/root/.kilocode/cli",
             "-p", f"{self.config.vnc_port}:6080",
             "-p", f"{self.config.app_port}:5173",
             "-p", f"{self.config.app_port + 1}:8000",
             "-e", "ENABLE_VNC=true",
             "-e", f"PROJECT_TYPE={project_type}",
             "-e", "ENGINE_API_URL=http://host.docker.internal:8000",
+            "-e", f"DATABASE_URL={database_url}",
             self.config.sandbox_image,
             "//bin/bash", "-c",
             "//usr/local/bin/sandbox-entrypoint.sh",

@@ -1,0 +1,27 @@
+classDiagram
+    class Anrufbenachrichtigung {
+        +String id
+        +String benachrichtigungsTyp
+        +Boolean aktiv
+        +String zeitpunkt
+        +String kanal
+        +void aktivieren()
+        +void deaktivieren()
+    }
+
+    class Benutzer {
+        +String benutzerId
+        +String name
+        +Anrufbenachrichtigung[] benachrichtigungen
+        +void benachrichtigungHinzufuegen(Anrufbenachrichtigung benachrichtigung)
+        +void benachrichtigungEntfernen(Anrufbenachrichtigung benachrichtigung)
+    }
+
+    class Einstellungen {
+        +Benutzer benutzer
+        +void speichereEinstellungen()
+        +void ladeEinstellungen()
+    }
+
+    Benutzer "1" -- "*" Anrufbenachrichtigung : hat
+    Benutzer "1" -- "1" Einstellungen : hat

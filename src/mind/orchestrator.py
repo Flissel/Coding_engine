@@ -28,7 +28,7 @@ from .convergence import (
 from .agent_monitor import AgentMonitor, create_monitor
 from .message_protocols import TopicType, EventTask, AgentResponse
 from ..registry.document_registry import DocumentRegistry
-from src.llm_config import get_model
+from src.llm_config import get_model, get_openrouter_model
 
 # Lazy import SkillRegistry to avoid circular dependencies
 def _get_skill_registry():
@@ -394,7 +394,7 @@ class Orchestrator:
         self.fungus_num_agents = fungus_num_agents
         self.fungus_max_iterations = fungus_max_iterations
         self.fungus_judge_provider = fungus_judge_provider
-        self.fungus_judge_model = fungus_judge_model or get_model("judge")
+        self.fungus_judge_model = fungus_judge_model or get_openrouter_model("judge")
 
         # Phase 17: Fungus Validation
         self.enable_fungus_validation = enable_fungus_validation

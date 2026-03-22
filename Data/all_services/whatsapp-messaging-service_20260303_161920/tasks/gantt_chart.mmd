@@ -1,0 +1,92 @@
+gantt
+    title Project Tasks - Project Schedule
+    dateFormat  YYYY-MM-DD
+    excludes    weekends
+
+    section FEAT-001
+    CI/CD Pipeline für Core Featur :TASK-001, , 1d
+    Docker & Kubernetes Basis-Konf :TASK-002, after TASK-001, 1d
+    Backend API: Telefonnummer-Reg :TASK-003, after TASK-001, 1d
+    Backend: 2FA, Passkey & Multi- :TASK-004, after TASK-003, 1d
+    Mobile UI: Registrierung, 2FA  :TASK-005, after TASK-003, 1d
+    section FEAT-002
+    Auth-Service Grundgeruest & Da :TASK-009, , 1d
+    Telefonnummer-Registrierung +  :TASK-010, after TASK-001, 1d
+    Zwei-Faktor-Authentifizierung  :TASK-011, after TASK-002, 1d
+    Multi-Device & Passkey Managem :TASK-012, after TASK-001, 1d
+    Biometrische Entsperrung im Cl :TASK-013, after TASK-003, 1d
+    section FEAT-003
+    Auth-Logging, Validierung & Er :TASK-017, , 1d
+    Telefonnummer-Registrierung im :TASK-018, after TASK-001, 1d
+    Zwei-Faktor-Authentifizierung  :TASK-019, after TASK-002, 1d
+    Biometrische Entsperrung clien :TASK-020, after TASK-002, 1d
+    Passkey-Unterstützung & Multi- :TASK-021, after TASK-001, 1d
+    section FEAT-004
+    Gemeinsame Auth-Datenmodelle & :TASK-025, , 1d
+    Telefonnummer-Registrierung AP :TASK-026, after TASK-001, 1d
+    Biometrische Entsperrung & Pas :TASK-028, after TASK-001, 1d
+    Multi-Device Support für Sessi :TASK-029, after TASK-001, 1d
+    section FEAT-005
+    Auth-Datenmodell & Service-Ske :TASK-033, , 1d
+    Telefonnummer-Registrierung &  :TASK-035, after TASK-001, 1d
+    2FA-Setup/Verifikation & Multi :TASK-036, after TASK-001, 1d
+    Frontend-Flow für Registrierun :TASK-037, after TASK-003, 1d
+    Biometrische Entsperrung & Pas :TASK-038, after TASK-004, 1d
+    section FEAT-006
+    Auth-Datenbankschema erweitern :TASK-041, , 1d
+    Multi-Device Support umsetzen :TASK-044, after TASK-001, 1d
+    Biometrische Entsperrung & Pas :TASK-045, after TASK-001, 1d
+    CI/CD, Docker & K8s für Auth-S :TASK-047, after TASK-001, 1d
+    API-Dokumentation & Runbook er :TASK-048, after TASK-002, 1d
+    section FEAT-007
+    Performance-Budgets und NFR-Zi :TASK-049, , 1d
+    Backend-Optimierung kritischer :TASK-050, after TASK-001, 1d
+    Frontend-Performance für Auth- :TASK-051, after TASK-001, 1d
+    Load- und Performance-Testscri :TASK-052, after TASK-001, 1d
+    Performance-Tests in CI/CD int :TASK-053, after TASK-004, 1d
+    section EPIC-001
+    Auth-Service Grundsetup und Da :TASK-056, , 1d
+    Cross-Cutting Auth Middleware  :TASK-057, after TASK-001, 1d
+    Telefon-Registrierung und 2FA  :TASK-058, after TASK-001, 1d
+    Passkey/WebAuthn und Multi-Dev :TASK-059, after TASK-001, 1d
+    E2E Tests fuer Auth-Flows :TASK-061, after TASK-003, 1d
+    section EPIC-002
+    Auth-Backend: Telefonnummer, 2 :TASK-064, , 1d
+    Client-Auth-Flows inkl. Biomet :TASK-065, after TASK-001, 2d
+    Profil & Kontaktabgleich (Back :TASK-066, after TASK-001, 2d
+    Such-Backend: Indexierung & Qu :TASK-067, after TASK-001, 2d
+    Such-UI: Ergebnisse & Filter :TASK-068, after TASK-004, 1d
+    section EPIC-003
+    UX/UI-Design fuer Einstellunge :TASK-072, , 1d
+    Backend-Modelle und API fuer E :TASK-073, after TASK-001, 1d
+    Einstellungen-UI mit Lokalisie :TASK-074, after TASK-001, 1d
+    Integration der Sicherheits- u :TASK-075, after TASK-002, 1d
+    Barrierefreiheit-Optimierung u :TASK-076, after TASK-003, 1d
+    section EPIC-004
+    API- und Datenmodell-Design fü :TASK-080, , 1d
+    Backend: Messaging-API mit Zus :TASK-081, after TASK-001, 1d
+    Backend: Präsenz- und Typing-I :TASK-082, after TASK-001, 1d
+    Benachrichtigungsdienst mit KI :TASK-083, after TASK-001, 1d
+    Frontend: Messaging UI inkl. Z :TASK-084, after TASK-002, 2d
+    section EPIC-005
+    CI/CD Pipeline fuer Auth-Servi :TASK-088, , 1d
+    Backend: Telefonnummer-Registr :TASK-090, after TASK-001, 1d
+    Frontend: UI fuer Telefonnumme :TASK-091, after TASK-003, 1d
+    Client: Biometrische Entsperru :TASK-092, after TASK-004, 1d
+    Multi-Device Support fuer Auth :TASK-093, after TASK-003, 1d
+    section EPIC-006
+    Telefonnummer-Registrierung &  :TASK-096, , 1d
+    Biometrische Entsperrung, Pass :TASK-097, after TASK-001, 1d
+    Backend-Modelle & APIs für Gru :TASK-098, after TASK-001, 1d
+    UI für Gruppen/Communities/Kan :TASK-099, after TASK-003, 1d
+    Umfragen & Events (Backend + B :TASK-100, after TASK-003, 2d
+    section EPIC-007
+    Medien-Datenmodell & Speichers :TASK-104, , 1d
+    Backend API für Medien-Upload  :TASK-105, after TASK-001, 1d
+    Frontend UI für Upload und Med :TASK-106, after TASK-001, 1d
+    End-to-End Tests für Medien-Wo :TASK-107, after TASK-002, 1d
+    Containerisierung & Kubernetes :TASK-108, after TASK-002, 1d
+    section DATABASE
+    Create User model and migratio :TASK-111, , 1d
+    section API
+    Implement api API endpoints :TASK-143, , 1d

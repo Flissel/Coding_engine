@@ -1,0 +1,10 @@
+{
+  "route": "/settings/profile/qr",
+  "screen_name": "QR-Code Profil",
+  "linked_user_stories": [
+    "US-039"
+  ],
+  "user_stories": [
+    "US-039"
+  ]
+}

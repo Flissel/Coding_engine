@@ -1,0 +1,11 @@
+%%{ init : { "theme" : "default" } }%%
+C4Context
+    title System Context Diagram for Info-Sichtbarkeit
+
+    Person(user, "User", "A user who interacts with the Info-Sichtbarkeit system")
+    System(infoSichtbarkeit, "Info-Sichtbarkeit", "A system that provides configurable info/status text visibility")
+
+    Rel(user, infoSichtbarkeit, "Uses", "Interacts with the system to configure and view info/status texts")
+
+    System_Ext(externalSystem, "External System", "An external system that may provide data for info/status texts")
+    Rel(infoSichtbarkeit, externalSystem, "Fetches data from", "Retrieves information to display")

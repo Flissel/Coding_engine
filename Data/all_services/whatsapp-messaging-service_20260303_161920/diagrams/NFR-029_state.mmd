@@ -1,0 +1,7 @@
+stateDiagram-v2
+    [*] --> Idle
+    Idle --> Sending : Send Message
+    Sending --> Acknowledged : Message Delivered
+    Sending --> Timeout : Latency Exceeded
+    Acknowledged --> Idle : Acknowledgment Received
+    Timeout --> Idle : Retry or Cancel

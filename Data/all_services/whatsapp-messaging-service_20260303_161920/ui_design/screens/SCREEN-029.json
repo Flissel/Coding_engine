@@ -1,0 +1,100 @@
+{
+  "id": "SCREEN-029",
+  "name": "PIN-Verifizierung",
+  "route": "/settings/security/2fa/verify",
+  "layout": "centered",
+  "description": "PIN-Eingabe zur Zwei-Faktor-Authentifizierung mit Recovery-Option, um Zugang zu sicherheitsrelevanten Einstellungen wie der Status-Datenschutz-Konfiguration zu erhalten",
+  "components": [
+    "COMP-001",
+    "COMP-002",
+    "COMP-010"
+  ],
+  "component_layout": [
+    {
+      "id": "COMP-010",
+      "name": "SecurityStatusIndicator",
+      "x": 22,
+      "y": 2,
+      "w": 16,
+      "h": 3
+    },
+    {
+      "id": "COMP-002",
+      "name": "PinInput",
+      "x": 12,
+      "y": 8,
+      "w": 36,
+      "h": 4
+    },
+    {
+      "id": "COMP-001-verify",
+      "name": "VerifyButton",
+      "x": 17,
+      "y": 14,
+      "w": 26,
+      "h": 3
+    },
+    {
+      "id": "COMP-001-recovery",
+      "name": "RecoveryLink",
+      "x": 17,
+      "y": 18,
+      "w": 26,
+      "h": 2
+    }
+  ],
+  "data_requirements": [
+    "POST /api/settings/security/2fa/verify",
+    "POST /api/settings/security/2fa/recovery",
+    "GET /api/settings/security/2fa/status"
+  ],
+  "parent_user_story": "US-045",
+  "wireframe_mermaid": "flowchart TD\n    subgraph PIN-Verifizierung\n        Header[Header / Navigation]\n        Main[Main Content Area]\n        Sidebar[Sidebar / Filters]\n        Footer[Footer / Actions]\n    end\n\n    Header --> Main\n    Sidebar --> Main\n    Main --> Footer\n\n    %% \n",
+  "wireframe_ascii": "     0    5   10   15   20   25   30   35   40   45   50   55   60\n   0 +------------------------------------------------------------+\n     |  [<- Zurueck]           Sicherheit                        |\n   2 +------------------------------------------------------------+\n     |                                                            |\n   4 |                    +----------------+                      |\n     |                    |   [LockIcon]   |                      |\n   6 |                    | COMP-010       |                      |\n     |                    | SecurityStatus |                      |\n   8 |                    +----------------+                      |\n     |                                                            |\n  10 |         Bitte gib deine 6-stellige PIN ein                 |\n     |                                                            |\n  12 |        +------------------------------------+              |\n     |        |  [ _ ] [ _ ] [ _ ] [ _ ] [ _ ] [ _ ]|             |\n  14 |        |         COMP-002 (PinInput)        |              |\n     |        +------------------------------------+              |\n  16 |                                                            |\n     |              +----------------------------+                |\n  18 |              |      PIN bestaetigen       |                |\n     |              |   COMP-001 (VerifyButton)  |                |\n  20 |              +----------------------------+                |\n     |                                                            |\n  22 |              +----------------------------+                |\n     |              |    PIN vergessen?          |                |\n  24 |              | COMP-001 (RecoveryLink)    |                |\n     |              +----------------------------+                |\n  26 |                                                            |\n     |         Du kannst deinen Account auch per                  |\n  28 |         E-Mail-Adresse wiederherstellen.                   |\n     |                                                            |\n  30 +------------------------------------------------------------+",
+  "state_bindings": {
+    "COMP-002": "security.pinInput",
+    "COMP-010": "security.twoFactorStatus",
+    "COMP-001-verify": "security.verifyAction",
+    "COMP-001-recovery": "security.recoveryAction"
+  },
+  "navigation_rules": [
+    {
+      "trigger": "verify_success",
+      "target": "/settings/privacy/status",
+      "condition": "pin.isValid"
+    },
+    {
+      "trigger": "verify_fail",
+      "target": "/settings/security/2fa/verify",
+      "condition": "pin.attempts < 3"
+    },
+    {
+      "trigger": "verify_fail_locked",
+      "target": "/settings/security/2fa/locked",
+      "condition": "pin.attempts >= 3"
+    },
+    {
+      "trigger": "recovery_click",
+      "target": "/settings/security/2fa/recovery",
+      "condition": ""
+    },
+    {
+      "trigger": "back_click",
+      "target": "/settings/security",
+      "condition": ""
+    }
+  ],
+  "responsive": {
+    "mobile": {
+      "layout": "stack",
+      "hidden_components": []
+    },
+    "tablet": {
+      "layout": "centered"
+    },
+    "desktop": {
+      "layout": "centered"
+    }
+  },
+  "auth_required": true
+}

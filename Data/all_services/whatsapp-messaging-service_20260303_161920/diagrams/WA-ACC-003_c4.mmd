@@ -1,0 +1,12 @@
+%%{ init : { "theme" : "default" } }%%
+C4Context
+    title Kontrast System Context Diagram
+
+    Person(user, "User", "A user who interacts with the system to ensure sufficient color contrast.")
+    
+    System(kontrastSystem, "Kontrast System", "A system that provides sufficient color contrast for accessibility.")
+
+    System_Ext(website, "Website", "The website where the system is implemented.")
+
+    Rel(user, kontrastSystem, "Uses")
+    Rel(kontrastSystem, website, "Provides color contrast features to")

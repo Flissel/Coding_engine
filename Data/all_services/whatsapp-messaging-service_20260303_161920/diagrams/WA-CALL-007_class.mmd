@@ -1,0 +1,15 @@
+classDiagram
+    class Anrufverlauf {
+        +List<Anruf> anrufe
+        +addAnruf(Anruf anruf)
+        +getAnrufe() List<Anruf>
+    }
+
+    class Anruf {
+        +String telefonnummer
+        +Date zeitpunkt
+        +boolean eingehend
+        +boolean ausgehend
+    }
+
+    Anrufverlauf "1" --> "*" Anruf : enthält

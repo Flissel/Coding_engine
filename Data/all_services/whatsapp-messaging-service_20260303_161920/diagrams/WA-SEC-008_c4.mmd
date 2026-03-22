@@ -1,0 +1,8 @@
+%%{ init: { "theme": "default" } }%%
+C4Context
+    title System Context Diagram for IP-Adresse schuetzen
+
+    Person(customer, "Kunde", "Der Benutzer, der Anrufe tätigt.")
+    System(system, "IP-Adresse schuetzen", "Ein System, das IP-Adressen bei Anrufen verschleiern kann.")
+
+    Rel(customer, system, "Benutzt")

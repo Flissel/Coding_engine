@@ -17,7 +17,7 @@ from .shared_state import SharedState, ConvergenceMetrics
 from .orchestrator import Orchestrator
 from .event_bus import EventBus
 from .live_preview import LivePreviewSystem
-from src.llm_config import get_model
+from src.llm_config import get_model, get_openrouter_model
 # Note: GeneratorAgent imported lazily to avoid circular imports
 from typing import TYPE_CHECKING
 if TYPE_CHECKING:
@@ -133,7 +133,7 @@ class HybridSocietyConfig:
     fungus_num_agents: int = 200  # Number of MCMP agents for simulation
     fungus_max_iterations: int = 50  # Max iterations for MCMP simulation
     fungus_judge_provider: str = "openrouter"  # LLM provider for judge (openrouter, ollama, etc.)
-    fungus_judge_model: str = field(default_factory=lambda: get_model("judge"))  # Model for Judge LLM
+    fungus_judge_model: str = field(default_factory=lambda: get_openrouter_model("judge"))  # Model for Judge LLM
     # Phase 11: Advanced Fungus parameters for completeness checking
     fungus_top_k: int = 20  # Number of top results per query
     fungus_steering_every: int = 3  # LLM steering frequency (every N rounds)

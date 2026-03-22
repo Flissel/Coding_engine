@@ -1,0 +1,19 @@
+%%{init: {'theme': 'default'}}%%
+graph TD
+    A[User] -->|Initiates call| B[Sprachanruf System]
+    B -->|Encrypts call| C[Encryption Service]
+    B -->|Manages call| D[Call Management Service]
+    B -->|Handles user data| E[User Data Service]
+    B -->|Connects to| F[Telephony Network]
+
+    %% External Systems
+    G[External User] -->|Receives call| B
+    H[External Telephony Service] -->|Provides connectivity| F
+
+    %% System Boundaries
+    subgraph System_Boundary["Sprachanruf System"]
+        B
+        C
+        D
+        E
+    end

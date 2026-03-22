@@ -1,0 +1,78 @@
+{
+  "route": "/calls",
+  "screen_name": "Anrufe",
+  "description": "",
+  "user_stories": [],
+  "components": [
+    {
+      "component_id": "COMP-002",
+      "component_name": "SearchBar",
+      "props": {
+        "variant": "default",
+        "placeholder": "Anrufe durchsuchen"
+      },
+      "position": "header",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-018",
+      "component_name": "CallListItem",
+      "props": {
+        "variant": "incoming"
+      },
+      "position": "main",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-018",
+      "component_name": "CallListItem",
+      "props": {
+        "variant": "outgoing"
+      },
+      "position": "main",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-018",
+      "component_name": "CallListItem",
+      "props": {
+        "variant": "missed"
+      },
+      "position": "main",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    },
+    {
+      "component_id": "COMP-001",
+      "component_name": "Button",
+      "props": {
+        "variant": "primary",
+        "text": "Neuer Anruf"
+      },
+      "position": "footer",
+      "responsive": {
+        "mobile": "visible",
+        "desktop": "visible"
+      }
+    }
+  ],
+  "layout": "flex column, full height, header fixed, main scrollable, footer fixed",
+  "data_sources": [],
+  "state_shape": {
+    "calls": "array",
+    "searchQuery": "string",
+    "filteredCalls": "array",
+    "isLoading": "boolean"
+  }
+}

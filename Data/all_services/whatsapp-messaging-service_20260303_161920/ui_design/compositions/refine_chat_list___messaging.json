@@ -1,0 +1,10 @@
+{
+  "route": "/chats",
+  "screen_name": "Chat List & Messaging",
+  "linked_user_stories": [
+    "US-019"
+  ],
+  "user_stories": [
+    "US-019"
+  ]
+}

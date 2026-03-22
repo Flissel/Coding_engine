@@ -1,0 +1,8 @@
+flowchart TD
+    A[Start] --> B{Chat auswählen}
+    B -->|Ja| C[Chat in Archiv verschieben]
+    B -->|Nein| D[Keine Aktion]
+    C --> E[Archiv bestätigen]
+    E --> F[Chat erfolgreich archiviert]
+    F --> G[Ende]
+    D --> G

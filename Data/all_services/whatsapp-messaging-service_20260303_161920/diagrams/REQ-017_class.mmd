@@ -1,0 +1,31 @@
+classDiagram
+    class Message {
+        +String content
+        +DateTime sentTime
+        +DateTime deliveredTime
+        +DateTime readTime
+        +List<RecipientStatus> recipientStatuses
+    }
+
+    class RecipientStatus {
+        +String recipientId
+        +Boolean isDelivered
+        +Boolean isRead
+        +DateTime deliveredTime
+        +DateTime readTime
+    }
+
+    class Group {
+        +String groupId
+        +List<Message> messages
+        +List<Recipient> recipients
+    }
+
+    class Recipient {
+        +String recipientId
+        +String name
+    }
+
+    Message "1" --> "*" RecipientStatus : has
+    Group "1" --> "*" Message : contains
+    Group "1" --> "*" Recipient : includes

@@ -1,0 +1,10 @@
+flowchart TD
+    A[Start] --> B[System Initialization]
+    B --> C{One-Way-Broadcast-Kanaele Supported?}
+    C -->|Yes| D[Proceed with Implementation]
+    C -->|No| E[Error: Support Required]
+    D --> F[System Configuration]
+    F --> G[Testing Phase]
+    G --> H[Deployment]
+    H --> I[End]
+    E --> I

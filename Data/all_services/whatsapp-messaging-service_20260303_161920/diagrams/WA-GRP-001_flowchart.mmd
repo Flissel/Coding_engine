@@ -1,0 +1,10 @@
+flowchart TD
+    A[Start] --> B{Benutzer wählt "Gruppe erstellen"}
+    B --> C[System fordert Gruppennamen an]
+    C --> D[Benutzer gibt Gruppennamen ein]
+    D --> E[System überprüft Eingabe]
+    E -->|gültig| F[System erstellt Gruppenchats]
+    E -->|ungültig| G[System zeigt Fehlermeldung]
+    G --> C
+    F --> H[System sendet Benachrichtigung an Benutzer]
+    H --> I[Ende]

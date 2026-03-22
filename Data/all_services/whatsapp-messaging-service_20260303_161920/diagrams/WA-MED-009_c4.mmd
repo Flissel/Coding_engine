@@ -1,0 +1,9 @@
+%%{ init : { "theme" : "default" } }%%
+%%{ c4: { "title": "Galerie-Zugriff System Context", "layout": "auto" } }%%
+C4Context
+    Person(customer, "Kunde", "Ein Benutzer, der auf die Geraete-Galerie zugreift.")
+    System(galerieZugriff, "Galerie-Zugriff", "Ein System, das Zugriff auf die Geraete-Galerie bietet.")
+    System_Ext(geraeteGalerie, "Geraete-Galerie", "Eine Sammlung von Geräten, auf die zugegriffen werden kann.")
+    
+    Rel(customer, galerieZugriff, "Zugriff auf")
+    Rel(galerieZugriff, geraeteGalerie, "Bietet Zugriff auf")

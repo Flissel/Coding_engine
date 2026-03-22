@@ -1,0 +1,15 @@
+stateDiagram-v2
+    [*] --> Übersicht
+    [*] --> Verwaltung
+
+    Übersicht --> Speicherstatus
+    Übersicht --> Speicherdetails
+    Verwaltung --> Speicherhinzufügen
+    Verwaltung --> Speicherentfernen
+    Verwaltung --> Speicheranpassen
+
+    Speicherstatus --> Übersicht
+    Speicherdetails --> Übersicht
+    Speicherhinzufügen --> Verwaltung
+    Speicherentfernen --> Verwaltung
+    Speicheranpassen --> Verwaltung

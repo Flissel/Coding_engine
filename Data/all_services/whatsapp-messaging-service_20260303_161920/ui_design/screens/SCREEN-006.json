@@ -1,0 +1,134 @@
+{
+  "id": "SCREEN-006",
+  "name": "Verschlüsselter Videoanruf - Kontakt blockieren",
+  "route": "/calls/video/:callId",
+  "layout": "fullscreen-overlay",
+  "description": "Verschlüsselter Videoanruf-Screen mit der Möglichkeit, den aktuellen Kontakt zu blockieren. Zeigt Video-UI, Anrufstatus, Kontaktinformationen und einen Blockieren-Dialog.",
+  "components": [
+    "COMP-001",
+    "COMP-009",
+    "COMP-010"
+  ],
+  "component_layout": [
+    {
+      "id": "COMP-010",
+      "name": "CallStatusIndicator",
+      "x": 20,
+      "y": 1,
+      "w": 20,
+      "h": 2
+    },
+    {
+      "id": "COMP-009",
+      "name": "ContactCard",
+      "x": 15,
+      "y": 4,
+      "w": 30,
+      "h": 6
+    },
+    {
+      "id": "COMP-001-end",
+      "name": "EndCallButton",
+      "x": 14,
+      "y": 20,
+      "w": 10,
+      "h": 3
+    },
+    {
+      "id": "COMP-001-mute",
+      "name": "MuteButton",
+      "x": 25,
+      "y": 20,
+      "w": 10,
+      "h": 3
+    },
+    {
+      "id": "COMP-001-block",
+      "name": "BlockButton",
+      "x": 36,
+      "y": 20,
+      "w": 10,
+      "h": 3
+    },
+    {
+      "id": "COMP-001-confirm",
+      "name": "ConfirmBlockButton",
+      "x": 16,
+      "y": 15,
+      "w": 12,
+      "h": 2
+    },
+    {
+      "id": "COMP-001-cancel",
+      "name": "CancelBlockButton",
+      "x": 32,
+      "y": 15,
+      "w": 12,
+      "h": 2
+    }
+  ],
+  "data_requirements": [
+    "GET /api/calls/video/{callId}",
+    "GET /api/contacts/{contactId}",
+    "POST /api/contacts/{contactId}/block",
+    "DELETE /api/calls/video/{callId}"
+  ],
+  "parent_user_story": "US-060",
+  "wireframe_mermaid": "flowchart TD\n    subgraph Verschlüsselter_Videoanruf_-_Kontakt_blockieren\n        Header[Header / Navigation]\n        Main[Main Content Area]\n        Sidebar[Sidebar / Filters]\n        Footer[Footer / Actions]\n    end\n\n    Header --> Main\n    Sidebar --> Main\n    Main --> Footer\n\n    %% \n",
+  "wireframe_ascii": "     0    5   10   15   20   25   30   35   40   45   50   55   60\n   0 +------------------------------------------------------------+\n     | [Video Feed - Vollbild Hintergrund]                        |\n   1 |            +--------------------+                          |\n     |            | 🔒 Verschlüsselt   |                          |\n   2 |            |  COMP-010 (Status) |                          |\n     |            +--------------------+                          |\n   3 |                                                            |\n   4 |         +-------------------------------+                  |\n     |         |  [Avatar]                      |                  |\n   5 |         |   👤  Max Mustermann           |                  |\n     |         |   +49 170 1234567              |                  |\n   6 |         |   COMP-009 (ContactCard)       |                  |\n     |         |   Status: Verbunden            |                  |\n   7 |         |   Dauer: 03:24                 |                  |\n     |         +-------------------------------+                  |\n   8 |                                                            |\n   9 |  +------------------------------------------------------+  |\n     |  |        Blockieren-Dialog (modal overlay)              |  |\n  10 |  |  +--------------------------------------------------+|  |\n     |  |  |                                                    ||  |\n  11 |  |  |   ⚠️  Kontakt blockieren?                         ||  |\n     |  |  |                                                    ||  |\n  12 |  |  |   Dieser Kontakt kann Sie nicht mehr               ||  |\n     |  |  |   anrufen oder Nachrichten senden.                 ||  |\n  13 |  |  |   Der aktive Anruf wird beendet.                   ||  |\n     |  |  |                                                    ||  |\n  14 |  |  |                                                    ||  |\n  15 |  |  |  [🚫 Blockieren]     [Abbrechen]                  ||  |\n     |  |  |   COMP-001-confirm    COMP-001-cancel              ||  |\n  16 |  |  +--------------------------------------------------+|  |\n     |  +------------------------------------------------------+  |\n  17 |                                                            |\n  18 |  [Eigenes Video - klein]                                   |\n     |  +--------+                                                |\n  19 |  | 📷 PiP |                                                |\n     |  +--------+                                                |\n  20 |     +----------+ +----------+ +----------+                 |\n     |     | 📞 Ende  | | 🔇 Mute  | | 🚫 Block |                 |\n  21 |     | COMP-001 | | COMP-001 | | COMP-001 |                 |\n     |     | -end     | | -mute    | | -block   |                 |\n  22 |     +----------+ +----------+ +----------+                 |\n     |                                                            |\n  23 +------------------------------------------------------------+",
+  "state_bindings": {
+    "COMP-010": "call.status",
+    "COMP-009": "call.contact",
+    "COMP-001-end": "call.actions.end",
+    "COMP-001-mute": "call.actions.mute",
+    "COMP-001-block": "block.dialog.open",
+    "COMP-001-confirm": "block.actions.confirm",
+    "COMP-001-cancel": "block.actions.cancel"
+  },
+  "navigation_rules": [
+    {
+      "trigger": "block_btn_click",
+      "target": "",
+      "condition": "call.active === true",
+      "action": "openBlockDialog"
+    },
+    {
+      "trigger": "confirm_block_click",
+      "target": "/chats",
+      "condition": "block.dialog.open === true",
+      "action": "POST /api/contacts/{contactId}/block → endCall → navigate"
+    },
+    {
+      "trigger": "cancel_block_click",
+      "target": "",
+      "condition": "block.dialog.open === true",
+      "action": "closeBlockDialog"
+    },
+    {
+      "trigger": "end_call_click",
+      "target": "/calls",
+      "condition": ""
+    },
+    {
+      "trigger": "call_ended_remote",
+      "target": "/calls",
+      "condition": "call.active === false"
+    }
+  ],
+  "responsive": {
+    "mobile": {
+      "layout": "fullscreen",
+      "hidden_components": [],
+      "notes": "ContactCard wird kompakter dargestellt, Buttons am unteren Rand, Block-Dialog als Bottom-Sheet"
+    },
+    "tablet": {
+      "layout": "fullscreen",
+      "notes": "Wie Desktop, leicht verkleinerte Abstände"
+    },
+    "desktop": {
+      "layout": "fullscreen-overlay",
+      "notes": "Vollbild-Video mit zentriertem Block-Dialog als Modal"
+    }
+  },
+  "auth_required": true
+}

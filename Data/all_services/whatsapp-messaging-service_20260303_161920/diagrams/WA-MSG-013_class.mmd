@@ -1,0 +1,29 @@
+classDiagram
+    class Gruppenchats {
+        +String chatID
+        +List<Benutzer> teilnehmer
+        +List<Nachricht> nachrichten
+        +void hinzufuegenBenutzer(Benutzer benutzer)
+        +void entfernenBenutzer(Benutzer benutzer)
+        +void sendenNachricht(Nachricht nachricht)
+    }
+
+    class Benutzer {
+        +String benutzerID
+        +String name
+        +List<Nachricht> gesendeteNachrichten
+        +void sendenNachricht(Nachricht nachricht)
+        +void empfangenNachricht(Nachricht nachricht)
+    }
+
+    class Nachricht {
+        +String nachrichtID
+        +String inhalt
+        +Benutzer sender
+        +List<Benutzer> erwaehnungen
+        +void hinzufuegenErwaehnung(Benutzer benutzer)
+    }
+
+    Gruppenchats "1" -- "*" Benutzer : hat
+    Gruppenchats "1" -- "*" Nachricht : enthält
+    Nachricht "*" -- "0..*" Benutzer : erwähnt

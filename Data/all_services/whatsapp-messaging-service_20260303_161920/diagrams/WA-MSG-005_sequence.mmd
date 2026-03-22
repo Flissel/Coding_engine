@@ -1,0 +1,11 @@
+sequenceDiagram
+    participant User as Benutzer
+    participant System as System
+    participant Recipient as Empfänger
+
+    User->>System: Nachricht auswählen
+    System->>User: Bestätigung der Auswahl
+    User->>System: Nachricht weiterleiten
+    System->>Recipient: Nachricht gesendet
+    Recipient->>System: Empfangsbestätigung
+    System->>User: Nachricht erfolgreich weitergeleitet

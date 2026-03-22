@@ -1,0 +1,7 @@
+stateDiagram-v2
+    [*] --> Idle
+    Idle --> Active : Start
+    Active --> Sending : Send Abwesenheitsnachricht
+    Sending --> Idle : Nachricht gesendet
+    Active --> Idle : Abbrechen
+    Sending --> Idle : Fehler

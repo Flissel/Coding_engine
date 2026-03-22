@@ -1,0 +1,7 @@
+stateDiagram-v2
+    [*] --> Idle
+    Idle --> Active : Start
+    Active --> BatteryEfficient : Optimize
+    BatteryEfficient --> Idle : Complete
+    BatteryEfficient --> Active : Adjust
+    Active --> Idle : Stop

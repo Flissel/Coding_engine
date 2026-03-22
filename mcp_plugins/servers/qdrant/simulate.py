@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Simulate Qdrant MCP Agent with a realistic task.
 
-NOTE: Requires Qdrant running on localhost:6333
-Start with: docker run -d -p 6333:6333 qdrant/qdrant
+NOTE: Requires Qdrant running on localhost:6340
+Start with: docker run -d -p 6340:6340 qdrant/qdrant
 """
 import subprocess
 import sys
@@ -14,7 +14,7 @@ def check_qdrant():
     try:
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         s.settimeout(1)
-        s.connect(("localhost", 6333))
+        s.connect(("localhost", 6340))
         s.close()
         return True
     except:
@@ -31,8 +31,8 @@ def main():
     print()
 
     if not check_qdrant():
-        print("[SKIP] Qdrant not running on localhost:6333")
-        print("Start with: docker run -d -p 6333:6333 qdrant/qdrant")
+        print("[SKIP] Qdrant not running on localhost:6340")
+        print("Start with: docker run -d -p 6340:6340 qdrant/qdrant")
         return 2  # Skip exit code
 
     try:

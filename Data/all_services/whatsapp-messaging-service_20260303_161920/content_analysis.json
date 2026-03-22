@@ -1,0 +1,1956 @@
+{
+  "project_name": "whatsapp-messaging-service",
+  "total_artifacts": 630,
+  "artifact_summaries": {
+    "user_stories": {
+      "type": "user_stories",
+      "count": 170,
+      "items": [
+        {
+          "id": "US-001",
+          "title": "Telefonnummer-Registrierung",
+          "persona": "Endnutzer",
+          "action": "mich mit meiner Telefonnummer registrieren und verifizieren",
+          "benefit": "damit ich schnell und sicher Zugriff auf den Dienst erhalte",
+          "acceptance_criteria": [
+            {
+              "given": "ich bin nicht registriert und gebe eine gueltige Telefonnummer ein",
+              "when": "ich die Registrierung starte und den erhaltenen Verifizierungscode korrekt eingebe",
+              "then": "wird mein Konto erfolgreich erstellt und die Telefonnummer als verifiziert markiert"
+            },
+            {
+              "given": "ich gebe eine Telefonnummer in einem ungueltigen Format ein",
+              "when": "ich die Registrierung absende",
+              "then": "erhalte ich eine klare Fehlermeldung und die Registrierung wird nicht fortgesetzt"
+            },
+            {
+              "given": "ich habe einen Verifizierungscode erhalten",
+              "when": "ich einen falschen oder abgelaufenen Code eingebe",
+              "then": "wird die Verifizierung abgelehnt und ich kann einen neuen Code anfordern"
+            }
+          ],
+          "sub_stories": [],
+          "priority": "must",
+          "story_points": null,
+          "parent_requirement_id": "WA-AUTH-001",
+          "parent_epic_id": "EPIC-001",
+          "complexity": "simple",
+          "created_at": "2026-03-03T16:22:43.161978",
+          "linked_requirement_ids": [
+            "WA-AUTH-001"
+          ],
+          "is_merged": false,
+          "merge_count": 1
+        },
+        {
+          "id": "US-002",
+          "title": "Zwei-Faktor-Authentifizierung",
+          "persona": "registrierter Nutzer",
+          "action": "die Zwei-Faktor-Authentifizierung mit einer 6-stelligen PIN aktivieren und beim Login verwenden",
+          "benefit": "mein Konto durch eine zusätzliche Sicherheitsschicht vor unbefugtem Zugriff schützen",
+          "acceptance_criteria": [
+            {
+              "given": "ein registrierter Nutzer ist angemeldet und die 2FA-Funktion ist verfügbar",
+              "when": "der Nutzer die 2FA aktiviert und eine gültige 6-stellige PIN bestätigt",
+              "then": "wird 2FA für das Konto aktiviert und beim nächsten Login abgefragt"
+            },
+            {
+              "given": "2FA ist für das Konto aktiviert",
+              "when": "der Nutzer sich mit korrekten Zugangsdaten und der korrekten 6-stelligen PIN anmeldet",
+              "then": "wird der Login erfolgreich abgeschlossen"
+            },
+            {
+              "given": "2FA ist für das Konto aktiviert",
+              "when": "der Nutzer eine ungültige PIN (nicht 6-stellig oder falsch) eingibt",
+              "then": "wird der Login abgelehnt und der Nutzer erhält eine verständliche Fehlermeldung"
+            }
+          ],
+          "sub_stories": [],
+          "priority": "must",
+          "story_points": null,
+          "parent_requirement_id": "WA-AUTH-002",
+          "parent_epic_id": "EPIC-001",
+          "complexity": "simple",
+          "created_at": "2026-03-03T16:22:48.192437",
+          "linked_requirement_ids": [
+            "WA-AUTH-002"
+          ],
+          "is_merged": false,
+          "merge_count": 1
+        },
+        {
+          "id": "US-003",
+          "title": "Biometrische Entsperrung",
+          "persona": "registrierter Nutzer",
+          "action": "die App per Fingerabdruck oder Face ID entsperren",
+          "benefit": "damit ich schnell und sicher auf meine Nachrichten zugreifen kann, ohne ein Passwort eingeben zu muessen",
+          "acceptance_criteria": [
+            {
+              "given": "der Nutzer hat die biometrische Entsperrung in den Einstellungen aktiviert und das Geraet unterstuetzt Biometrics",
+              "when": "der Nutzer oeffnet die App",
+              "then": "die App entsperrt sich nach erfolgreicher biometrischer Authentifizierung und zeigt die Startansicht"
+            },
+            {
+              "given": "der Nutzer hat die biometrische Entsperrung aktiviert",
+              "when": "die biometrische Authentifizierung fehlschlaegt",
+              "then": "die App verweigert den Zugriff und bietet eine alternative Entsperrung per PIN/Passwort an"
+            },
+            {
+              "given": "das Geraet unterstuetzt keine Biometrics oder der Nutzer hat keine Biometrics eingerichtet",
+              "when": "der Nutzer oeffnet die App",
+              "then": "die App bietet keine biometrische Entsperrung an und fordert die Standardanmeldung"
+            }
+          ],
+          "sub_stories": [],
+          "priority": "should",
+          "story_points": null,
+          "parent_requirement_id": "WA-AUTH-003",
+          "parent_epic_id": "EPIC-001",
+          "complexity": "simple",
+          "created_at": "2026-03-03T16:22:54.324785",
+          "linked_requirement_ids": [
+            "WA-AUTH-003"
+          ],
+          "is_merged": false,
+          "merge_count": 1
+        },
+        {
+          "id": "US-004",
+          "title": "Multi-Device Support",
+          "persona": "registrierter Nutzer",
+          "action": "die Anwendung gleichzeitig auf mehreren Geräten nutzen",
+          "benefit": "um jederzeit nahtlos kommunizieren zu können und keine Nachrichten zu verpassen",
+          "acceptance_criteria": [
+            {
+              "given": "der Nutzer ist auf einem Smartphone angemeldet",
+              "when": "er sich zusätzlich auf einem zweiten Gerät anmeldet",
+              "then": "sind beide Sitzungen aktiv und Nachrichten werden in Echtzeit auf beiden Geräten synchronisiert"
+            },
+            {
+              "given": "der Nutzer verwendet zwei Geräte parallel",
+              "when": "er eine Nachricht auf Gerät A liest oder löscht",
+              "then": "wird der Status auf Gerät B innerhalb weniger Sekunden aktualisiert"
+            },
+            {
+              "given": "der Nutzer versucht, ein drittes Gerät anzumelden und ein festgelegtes Gerätelimit ist erreicht",
+              "when": "die Anmeldung erfolgt",
+              "then": "erhält der Nutzer eine klare Fehlermeldung und die Anmeldung wird abgelehnt"
+            }
+          ],
+          "sub_stories": [],
+          "priority": "must",
+          "story_points": null,
+          "parent_requirement_id": "WA-AUTH-004",
+          "parent_epic_id": "",
+          "complexity": "simple",
+          "created_at": "2026-03-03T16:22:59.418454",
+          "linked_requirement_ids": [
+            "WA-AUTH-004"
+          ],
+          "is_merged": false,
+          "merge_count": 1
+        },
+        {
+          "id": "US-005",
+          "title": "Passkey-Unterstuetzung",
+          "persona": "registrierter Nutzer",
+          "action": "mich mit einem Passkey anmelden",
+          "benefit": "um mich schnell, sicher und ohne Passwort auf allen Plattformen einzuloggen",
+          "acceptance_criteria": [
+            {
+              "given": "der Nutzer hat auf seinem Gerät einen Passkey für das Konto eingerichtet",
+              "when": "er die Anmeldung startet und den Passkey bestätigt",
+              "then": "wird er erfolgreich eingeloggt und eine Sitzung erstellt"
+            },
+            {
+              "given": "der Nutzer hat keinen Passkey für das Konto eingerichtet",
+              "when": "er die Passkey-Anmeldung auswählt",
+              "then": "wird eine verständliche Hinweismeldung angezeigt und ein alternativer Login angeboten"
+            },
+            {
+              "given": "die Passkey-Authentifizierung schlägt fehl oder wird abgebrochen",
+              "when": "die Anmeldung nicht abgeschlossen werden kann",
+              "then": "wird keine Sitzung erstellt und der Nutzer erhält eine klare Fehlermeldung mit erneuter Versuchsmöglichkeit"
+            }
+          ],
+          "sub_stories": [],
+          "priority": "should",
+          "story_points": null,
+          "parent_requirement_id": "WA-AUTH-005",
+          "parent_epic_id": "EPIC-001",
+          "complexity": "simple",
+          "created_at": "2026-03-03T16:23:04.997022",
+          "linked_requirement_ids": [
+            "WA-AUTH-005"
+          ],
+          "is_merged": false,
+          "merge_count": 1
+        },
+        {
+          "id": "US-006",
+          "title": "Profilbild",
+          "persona": "registrierter Benutzer",
+          "action": "ein Profilbild hochladen, anzeigen und bei Bedarf ersetzen oder entfernen",
+          "benefit": "damit mein Profil personalisiert ist und andere mich schneller erkennen",
+          "acceptance_criteria": [
+            {
+              "given": "ich bin angemeldet und befinde mich in den Profileinstellungen",
+              "when": "ich lade ein Bild im erlaubten Format und innerhalb der maximalen Dateigroesse hoch",
+              "then": "wird das Profilbild gespeichert und sofort im Profil angezeigt"
+            },
+            {
+              "given": "ich habe bereits ein Profilbild",
+              "when": "ich lade ein neues Bild hoch",
+              "then": "ersetzt das neue Bild das alte und das alte wird nicht mehr angezeigt"
+            },
+            {
+              "given": "ich bin angemeldet und versuche ein nicht unterstuetztes Format oder eine zu grosse Datei hochzuladen",
+              "when": "ich starte den Upload",
+              "then": "wird der Upload abgelehnt und eine verstaendliche Fehlermeldung angezeigt"
+            }
+          ],
+          "sub_stories": [],
+          "priority": "must",
+          "story_points": null,
+          "parent_requirement_id": "WA-PROF-001",
+          "parent_epic_id": "EPIC-002",
+          "complexity": "simple",
+          "created_at": "2026-03-03T16:23:09.377140",
+          "linked_requirement_ids": [
+            "WA-PROF-001"
+          ],
+          "is_merged": false,
+          "merge_count": 1
+        },
+        {
+          "id": "US-007",
+          "title": "Anzeigename",
+          "persona": "registrierter Nutzer",
+          "action": "einen konfigurierbaren Anzeigenamen im Profil festlegen und speichern",
+          "benefit": "eine klare und konsistente Darstellung im Chat zu erreichen, was die Kommunikation und Wiedererkennbarkeit verbessert",
+          "acceptance_criteria": [
+            {
+              "given": "der Nutzer ist angemeldet und befindet sich im Profilbereich",
+              "when": "er einen gültigen Anzeigenamen eingibt und speichert",
+              "then": "wird der Anzeigename gespeichert und in allen relevanten Ansichten angezeigt"
+            },
+            {
+              "given": "der Nutzer ist angemeldet",
+              "when": "er den Anzeigenamen auf leer setzt und speichert",
+              "then": "wird eine Validierungsmeldung angezeigt und der vorherige Anzeigename bleibt erhalten"
+            },
+            {
+              "given": "der Nutzer ist angemeldet",
+              "when": "er einen Anzeigenamen mit nicht erlaubten Zeichen oder über der maximalen Länge eingibt",
+              "then": "wird eine Fehlermeldung angezeigt und der Anzeigename nicht gespeichert"
+            }
+          ],
+          "sub_stories": [],
+          "priority": "must",
+          "story_points": null,
+          "parent_requirement_id": "WA-PROF-002",
+          "parent_epic_id": "EPIC-002",
+          "complexity": "simple",
+          "created_at": "2026-03-03T16:23:13.857506",
+          "linked_requirement_ids": [
+            "WA-PROF-002"
+          ],
+          "is_merged": false,
+          "merge_count": 1
+        },
+        {
+          "id": "US-008",
+          "title": "Info/Status Text",
+          "persona": "Profilinhaber",
+          "action": "einen kurzen Info-Text im Profil erstellen und speichern",
+          "benefit": "Besuchern schnell relevante Hinweise bereitzustellen und die Kommunikation zu verbessern",
+          "acceptance_criteria": [
+            {
+              "given": "der Profilinhaber befindet sich in der Profilbearbeitung",
+              "when": "er einen kurzen Info-Text eingibt und speichert",
+              "then": "der Text wird im Profil angezeigt und ist für Besucher sichtbar"
+            },
+            {
+              "given": "der Profilinhaber gibt einen Info-Text ein, der die maximale Zeichenanzahl überschreitet",
+              "when": "er versucht zu speichern",
+              "then": "das System verhindert das Speichern und zeigt eine verständliche Fehlermeldung zur Zeichenbegrenzung an"
+            },
+            {
+              "given": "der Profilinhaber entfernt den vorhandenen Info-Text",
+              "when": "er speichert die Änderungen",
+              "then": "im Profil wird kein Info-Text mehr angezeigt"
+            }
+          ],
+          "sub_stories": [],
+          "priority": "must",
+          "story_points": null,
+          "parent_requirement_id": "WA-PROF-003",
+          "parent_epic_id": "EPIC-002",
+          "complexity": "simple",
+          "created_at": "2026-03-03T16:23:18.622119",
+          "linked_requirement_ids": [
+            "WA-PROF-003"
+          ],
+          "is_merged": false,
+          "merge_count": 1
+        },
+        {
+          "id": "US-009",
+          "title": "Telefonnummer anzeigen",
+          "persona": "registrierter Nutzer",
+          "action": "im Profil die hinterlegte Telefonnummer anzeigen",
+          "benefit": "damit er Kontaktinformationen schnell einsehen und eine zuverlaessige Kommunikation sicherstellen kann",
+          "acceptance_criteria": [
+            {
+              "given": "der Nutzer ist eingeloggt und hat eine Telefonnummer im Profil gespeichert",
+              "when": "der Nutzer das Profil aufruft",
+              "then": "wird die Telefonnummer im Profil sichtbar angezeigt"
+            },
+            {
+              "given": "der Nutzer ist eingeloggt und hat keine Telefonnummer im Profil gespeichert",
+              "when": "der Nutzer das Profil aufruft",
+              "then": "wird eine neutrale Information angezeigt, dass keine Telefonnummer hinterlegt ist, und es wird keine leere oder fehlerhafte Nummer angezeigt"
+            },
+            {
+              "given": "das System kann die Profildaten aufgrund eines technischen Fehlers nicht laden",
+              "when": "der Nutzer das Profil aufruft",
+              "then": "wird eine Fehlermeldung angezeigt und die Telefonnummer wird nicht dargestellt"
+            }
+          ],
+          "sub_stories": [],
+          "priority": "must",
+          "story_points": null,
+          "parent_requirement_id": "WA-PROF-004",
+          "parent_epic_id": "EPIC-002",
+          "complexity": "simple",
+          "created_at": "2026-03-03T16:23:22.604239",
+          "linked_requirement_ids": [
+            "WA-PROF-004"
+          ],
+          "is_merged": false,
+          "merge_count": 1
+        },
+        {
+          "id": "US-010",
+          "title": "QR-Code Profil",
+          "persona": "Primärer Nutzer",
+          "action": "einen scanbaren QR-Code für sein Profil generieren und anzeigen lassen",
+          "benefit": "Kontakte schnell und einfach hinzufügen können, ohne manuelle Eingabe, bei gleichzeitiger einfacher Bedienung",
+          "acceptance_criteria": [
+            {
+              "given": "der Nutzer ist angemeldet und hat ein aktives Profil",
+              "when": "er die Funktion „QR-Code anzeigen“ auswählt",
+              "then": "wird ein scanbarer QR-Code für sein Profil angezeigt"
+            },
+            {
+              "given": "der QR-Code wurde angezeigt",
+              "when": "ein anderer Nutzer den QR-Code scannt",
+              "then": "wird das zugehörige Profil korrekt geöffnet und kann hinzugefügt werden"
+            },
+            {
+              "given": "der Nutzer ist nicht angemeldet oder hat kein aktives Profil",
+              "when": "er versucht, einen QR-Code zu generieren",
+              "then": "erhält er eine verständliche Fehlermeldung und es wird kein QR-Code angezeigt"
+            }
+          ],
+          "sub_stories": [],
+          "priority": "should",
+          "story_points": null,
+          "parent_requirement_id": "WA-PROF-005",
+          "parent_epic_id": "EPIC-002",
+          "complexity": "simple",
+          "created_at": "2026-03-03T16:23:29.390037",
+          "linked_requirement_ids": [
+            "WA-PROF-005"
+          ],
+          "is_merged": false,
+          "merge_count": 1
+        },
+        {
+          "id": "US-011",
+          "title": "Textnachricht senden",
+          "persona": "registrierter Nutzer",
+          "action": "Textnachrichten in Echtzeit an andere Nutzer senden",
+          "benefit": "schnell und zuverlässig kommunizieren zu können",
+          "acceptance_criteria": [
+            {
+              "given": "der Nutzer ist angemeldet und hat eine stabile Internetverbindung",
+              "when": "er eine Textnachricht an einen gültigen Empfänger sendet",
+              "then": "wird die Nachricht in Echtzeit zugestellt und als gesendet bestätigt"
+            },
+            {
+              "given": "der Nutzer ist angemeldet und der Empfänger ist offline",
+              "when": "er eine Textnachricht sendet",
+              "then": "wird die Nachricht serverseitig gespeichert und bei Verfügbarkeit zugestellt"
+            },
+            {
+              "given": "der Nutzer ist angemeldet",
+              "when": "er eine Textnachricht ohne Inhalt sendet",
+              "then": "wird der Versand verhindert und eine verständliche Fehlermeldung angezeigt"
+            }
+          ],
+          "sub_stories": [],
+          "priority": "must",
+          "story_points": null,
+          "parent_requirement_id": "WA-MSG-001",
+          "parent_epic_id": "EPIC-004",
+          "complexity": "simple",
+          "created_at": "2026-03-03T16:23:33.441495",
+          "linked_requirement_ids": [
+            "WA-MSG-001"
+          ],
+          "is_merged": false,
+          "merge_count": 1
+        },
+        {
+          "id": "US-012",
+          "title": "Sprachnachricht",
+          "persona": "Endnutzer",
+          "action": "eine Sprachnachricht aufnehmen und senden",
+          "benefit": "um schnell und intuitiv zu kommunizieren, auch wenn Tippen unpraktisch ist",
+          "acceptance_criteria": [
+            {
+              "given": "der Endnutzer ist in einem Chat und hat Mikrofonzugriff erteilt",
+              "when": "er eine Sprachnachricht aufnimmt und auf Senden tippt",
+              "then": "wird die Sprachnachricht verschluesselt uebertragen und dem Empfaenger zugestellt"
+            },
+            {
+              "given": "der Endnutzer ist in einem Chat",
+              "when": "er die Aufnahme startet und diese vor dem Senden abbricht",
+              "then": "wird keine Sprachnachricht gesendet und es bleibt keine unvollstaendige Nachricht im Verlauf"
+            },
+            {
+              "given": "der Endnutzer versucht eine Sprachnachricht zu senden und die Netzwerkverbindung ist unterbrochen",
+              "when": "er auf Senden tippt",
+              "then": "erhaelt er eine Fehlermeldung und die Nachricht wird lokal zwischengespeichert oder der erneute Sendeversuch wird angeboten"
+            }
+          ],
+          "sub_stories": [],
+          "priority": "must",
+          "story_points": null,
+          "parent_requirement_id": "WA-MSG-002",
+          "parent_epic_id": "EPIC-004",
+          "complexity": "simple",
+          "created_at": "2026-03-03T16:23:39.127190",
+          "linked_requirement_ids": [
+            "WA-MSG-002"
+          ],
+          "is_merged": false,
+          "merge_count": 1
+        },
+        {
+          "id": "US-013",
+          "title": "Nachricht loeschen",
+          "persona": "registrierter Nutzer",
+          "action": "eine gesendete oder empfangene Nachricht loeschen",
+          "benefit": "um Datenschutz zu wahren und den Nachrichtenverlauf uebersichtlich zu halten",
+          "acceptance_criteria": [
+            {
+              "given": "der Nutzer ist angemeldet und eine Nachricht ist im Chatverlauf sichtbar",
+              "when": "der Nutzer die Funktion 'Nachricht loeschen' auswaehlt und bestaetigt",
+              "then": "die Nachricht wird aus dem Chatverlauf des Nutzers entfernt und die Ansicht aktualisiert sich ohne Fehlermeldung"
+            },
+            {
+              "given": "der Nutzer oeffnet einen Chat mit einer bereits geloeschten Nachricht",
+              "when": "der Nutzer die Nachricht erneut loeschen moechte",
+              "then": "das System zeigt an, dass die Nachricht bereits geloescht ist und nimmt keine weitere Aktion vor"
+            },
+            {
+              "given": "es liegt ein technischer Fehler oder eine Verbindungsunterbrechung vor",
+              "when": "der Nutzer versucht, eine Nachricht zu loeschen",
+              "then": "das System zeigt eine verständliche Fehlermeldung an und die Nachricht bleibt unveraendert erhalten"
+            }
+          ],
+          "sub_stories": [],
+          "priority": "must",
+          "story_points": null,
+          "parent_requirement_id": "WA-MSG-003",
+          "parent_epic_id": "EPIC-004",
+          "complexity": "simple",
+          "created_at": "2026-03-03T16:23:44.796484",
+          "linked_requirement_ids": [
+            "WA-MSG-003"
+          ],
+          "is_merged": false,
+          "merge_count": 1
+        },
+        {
+          "id": "US-014",
+          "title": "Nachricht bearbeiten",
+          "persona": "Endnutzer",
+          "action": "eine bereits gesendete Nachricht bearbeiten",
+          "benefit": "Korrekturen vornehmen zu koennen und eine professionelle sowie fehlerfreie Kommunikation sicherzustellen",
+          "acceptance_criteria": [
+            {
+              "given": "eine gesendete Nachricht ist in einem bearbeitbaren Zustand und der Nutzer ist autorisiert",
+              "when": "der Nutzer den Bearbeiten-Dialog oeffnet, den Text aendert und speichert",
+              "then": "die Nachricht wird aktualisiert angezeigt und die Aenderung wird an den Empfaenger uebermittelt"
+            },
+            {
+              "given": "eine gesendete Nachricht ist nicht mehr bearbeitbar (z. B. Zeitfenster abgelaufen)",
+              "when": "der Nutzer versucht die Nachricht zu bearbeiten",
+              "then": "das System verhindert die Bearbeitung und zeigt eine eindeutige Meldung an"
+            },
+            {
+              "given": "die Nachricht enthaelt unzulaessige Inhalte oder ueberschreitet Laengenlimits",
+              "when": "der Nutzer speichert die Bearbeitung",
+              "then": "das System lehnt die Aenderung ab und zeigt die Validierungsfehler an"
+            }
+          ],
+          "sub_stories": [],
+          "priority": "must",
+          "story_points": null,
+          "parent_requirement_id": "WA-MSG-004",
+          "parent_epic_id": "EPIC-004",
+          "complexity": "simple",
+          "created_at": "2026-03-03T16:23:50.004525",
+          "linked_requirement_ids": [
+            "WA-MSG-004"
+          ],
+          "is_merged": false,
+          "merge_count": 1
+        },
+        {
+          "id": "US-015",
+          "title": "Nachricht weiterleiten",
+          "persona": "registrierter Nutzer",
+          "action": "eine empfangene Nachricht an einen oder mehrere Kontakte weiterleiten",
+          "benefit": "damit relevante Informationen schnell und zuverlässig geteilt werden können",
+          "acceptance_criteria": [
+            {
+              "given": "der Nutzer ist eingeloggt und hat eine empfangene Nachricht geöffnet",
+              "when": "der Nutzer die Weiterleitungsfunktion auswählt und einen oder mehrere Empfänger bestätigt",
+              "then": "die Nachricht wird an die ausgewählten Empfänger zugestellt und der Nutzer erhält eine Bestätigung"
+            },
+            {
+              "given": "der Nutzer ist eingeloggt und startet die Weiterleitung",
+              "when": "der Nutzer keinen Empfänger auswählt",
+              "then": "das System verhindert das Senden und zeigt einen Hinweis zur Empfängerauswahl"
+            },
+            {
+              "given": "der Nutzer ist eingeloggt und wählt einen Empfänger, der nicht erreichbar ist",
+              "when": "der Nutzer die Weiterleitung abschickt",
+              "then": "das System meldet den Zustellfehler und bietet eine erneute Zustellung an"
+            }
+          ],
+          "sub_stories": [],
+          "priority": "must",
+          "story_points": null,
+          "parent_requirement_id": "WA-MSG-005",
+          "parent_epic_id": "EPIC-004",
+          "complexity": "simple",
+          "created_at": "2026-03-03T16:23:55.272612",
+          "linked_requirement_ids": [
+            "WA-MSG-005"
+          ],
+          "is_merged": false,
+          "merge_count": 1
+        },
+        {
+          "id": "US-016",
+          "title": "Nachricht zitieren",
+          "persona": "registrierter Nutzer",
+          "action": "eine spezifische Nachricht zitieren und darauf antworten",
+          "benefit": "damit die Kommunikation klarer und kontextbezogen nachvollziehbar bleibt",
+          "acceptance_criteria": [
+            {
+              "given": "eine bestehende Unterhaltung mit mehreren Nachrichten",
+              "when": "der Nutzer eine Nachricht auswählt und die Zitier-/Antwort-Funktion nutzt",
+              "then": "wird die ausgewählte Nachricht im Antwortfeld als Zitat angezeigt und die Antwort wird mit Bezug auf diese Nachricht gesendet"
+            },
+            {
+              "given": "die zitierte Nachricht wurde gelöscht oder ist für den Nutzer nicht mehr sichtbar",
+              "when": "der Nutzer versucht, diese Nachricht zu zitieren",
+              "then": "wird eine verständliche Meldung angezeigt und das Zitieren verhindert"
+            },
+            {
+              "given": "der Nutzer antwortet mit Zitat in einer Unterhaltung",
+              "when": "die Nachricht zugestellt wird",
+              "then": "sehen alle berechtigten Empfänger die Antwort samt korrektem Zitat und Zeitstempel"
+            }
+          ],
+          "sub_stories": [],
+          "priority": "must",
+          "story_points": null,
+          "parent_requirement_id": "WA-MSG-006",
+          "parent_epic_id": "EPIC-004",
+          "complexity": "simple",
+          "created_at": "2026-03-03T16:24:00.481987",
+          "linked_requirement_ids": [
+            "WA-MSG-006"
+          ],
+          "is_merged": false,
+          "merge_count": 1
+        },
+        {
+          "id": "US-017",
+          "title": "Reaktionen",
+          "persona": "Primärnutzer",
+          "action": "auf Nachrichten mit Emoji reagieren",
+          "benefit": "um schnell und intuitiv Rückmeldung zu geben und die Kommunikation zu beschleunigen",
+          "acceptance_criteria": [
+            {
+              "given": "eine empfangene oder gesendete Nachricht im Chat",
+              "when": "der Nutzer eine Emoji-Reaktion auswählt und bestätigt",
+              "then": "wird die Reaktion an der Nachricht angezeigt und an alle Chatteilnehmer synchronisiert"
+            },
+            {
+              "given": "eine Nachricht mit bestehender Reaktion",
+              "when": "der Nutzer eine andere Emoji-Reaktion auswählt",
+              "then": "wird die vorherige Reaktion des Nutzers ersetzt und die Änderung für alle sichtbar aktualisiert"
+            },
+            {
+              "given": "eine Nachricht im Chat",
+              "when": "der Nutzer eine nicht unterstützte oder ungültige Emoji-Reaktion sendet",
+              "then": "weist das System die Reaktion zurück und zeigt eine verständliche Fehlermeldung an"
+            }
+          ],
+          "sub_stories": [],
+          "priority": "must",
+          "story_points": null,
+          "parent_requirement_id": "WA-MSG-007",
+          "parent_epic_id": "EPIC-004",
+          "complexity": "simple",
+          "created_at": "2026-03-03T16:24:05.007604",
+          "linked_requirement_ids": [
+            "WA-MSG-007"
+          ],
+          "is_merged": false,
+          "merge_count": 1
+        },
+        {
+          "id": "US-018",
+          "title": "Verschwindende Nachrichten",
+          "persona": "registrierter Nutzer",
+          "action": "eine Nachricht mit einer festgelegten Selbstloeschungszeit senden",
+          "benefit": "damit vertrauliche Inhalte automatisch entfernt werden und der Datenschutz erhoeht wird",
+          "acceptance_criteria": [
+            {
+              "given": "der Nutzer ist angemeldet und erstellt eine Nachricht",
+              "when": "er eine Selbstloeschungszeit auswählt und die Nachricht sendet",
+              "then": "die Nachricht wird zugestellt und nach Ablauf der Zeit automatisch entfernt"
+            },
+            {
+              "given": "eine Nachricht mit Selbstloeschungszeit ist zugestellt",
+              "when": "die festgelegte Zeit ablaeuft",
+              "then": "die Nachricht ist fuer Sender und Empfaenger nicht mehr sichtbar und nicht mehr abrufbar"
+            },
+            {
+              "given": "der Nutzer versucht eine ungültige oder nicht unterstützte Selbstloeschungszeit festzulegen",
+              "when": "er die Nachricht senden moechte",
+              "then": "das System zeigt eine Fehlermeldung und verhindert das Senden"
+            }
+          ],
+          "sub_stories": [],
+          "priority": "must",
+          "story_points": null,
+          "parent_requirement_id": "WA-MSG-008",
+          "parent_epic_id": "EPIC-005",
+          "complexity": "simple",
+          "created_at": "2026-03-03T16:24:10.413606",
+          "linked_requirement_ids": [
+            "WA-MSG-008"
+          ],
+          "is_merged": false,
+          "merge_count": 1
+        },
+        {
+          "id": "US-019",
+          "title": "Einmal-Ansicht Medien",
+          "persona": "registrierter Nutzer",
+          "action": "View-Once-Medien senden und empfangen",
+          "benefit": "dass vertrauliche Inhalte nur einmal angezeigt werden und dadurch Datenschutz und Sicherheit gewahrt bleiben",
+          "acceptance_criteria": [
+            {
+              "given": "der Nutzer hat ein View-Once-Medium ausgewählt und der Empfänger ist erreichbar",
+              "when": "der Nutzer das Medium sendet und der Empfänger es öffnet",
+              "then": "wird das Medium genau einmal angezeigt und danach als nicht erneut abrufbar markiert"
+            },
+            {
+              "given": "ein View-Once-Medium wurde bereits geöffnet",
+              "when": "der Empfänger versucht es erneut zu öffnen oder weiterzuleiten",
+              "then": "wird der Zugriff verweigert und eine Hinweisnachricht angezeigt"
+            },
+            {
+              "given": "die Nachrichtenzustellung ist fehlgeschlagen",
+              "when": "der Nutzer ein View-Once-Medium sendet",
+              "then": "erhält der Nutzer eine Fehlermeldung und das Medium wird nicht als geöffnet/verbrauchtes Medium markiert"
+            }
+          ],
+          "sub_stories": [],
+          "priority": "must",
+          "story_points": null,
+          "parent_requirement_id": "WA-MSG-009",
+          "parent_epic_id": "EPIC-005",
+          "complexity": "simple",
+          "created_at": "2026-03-03T16:24:16.085244",
+          "linked_requirement_ids": [
+            "WA-MSG-009"
+          ],
+          "is_merged": false,
+          "merge_count": 1
+        },
+        {
+          "id": "US-020",
+          "title": "Chat sperren",
+          "persona": "registrierter Nutzer",
+          "action": "einen einzelnen Chat mit zusaetzlicher Authentifizierung sperren",
+          "benefit": "meine privaten Gespraeche vor unbefugtem Zugriff zu schuetzen und die Datensicherheit zu erhoehen",
+          "acceptance_criteria": [
+            {
+              "given": "ein geoeffneter Chat und der Nutzer ist angemeldet",
+              "when": "der Nutzer die Option „Chat sperren“ waehlt und die zusaetzliche Authentifizierung erfolgreich abschliesst",
+              "then": "der Chat wird gesperrt und ist nur nach erneuter erfolgreicher Authentifizierung zugreifbar"
+            },
+            {
+              "given": "ein geoeffneter Chat und der Nutzer ist angemeldet",
+              "when": "der Nutzer die zusaetzliche Authentifizierung abbricht oder fehlschlaegt",
+              "then": "der Chat bleibt entsperrt und es wird eine klare Fehlermeldung angezeigt"
+            },
+            {
+              "given": "ein bereits gesperrter Chat",
+              "when": "der Nutzer versucht, den Chat zu oeffnen",
+              "then": "das System fordert zusaetzliche Authentifizierung an und blockiert den Zugriff bis zum Erfolg"
+            }
+          ],
+          "sub_stories": [],
+          "priority": "should",
+          "story_points": null,
+          "parent_requirement_id": "WA-MSG-010",
+          "parent_epic_id": "EPIC-005",
+          "complexity": "simple",
+          "created_at": "2026-03-03T16:24:22.226356",
+          "linked_requirement_ids": [
+            "WA-MSG-010"
+          ],
+          "is_merged": false,
+          "merge_count": 1
+        },
+        {
+          "id": "US-021",
+          "title": "Broadcast-Listen",
+          "persona": "Business-Kommunikationsverantwortlicher",
+          "action": "eine Broadcast-Liste erstellen und eine Massen-Nachricht an mehrere Empfänger senden",
+          "benefit": "damit Informationen schnell, zuverlässig und datenschutzkonform an viele Kontakte verteilt werden können",
+          "acceptance_criteria": [
+            {
+              "given": "eine gültige Broadcast-Liste mit mehreren Empfängern ist erstellt und der Nutzer ist berechtigt",
+              "when": "der Nutzer eine Nachricht an die Broadcast-Liste sendet",
+              "then": "wird die Nachricht zuverlässig an alle Empfänger zugestellt und der Versandstatus wird angezeigt"
+            },
+            {
+              "given": "eine Broadcast-Liste enthält keine gültigen Empfänger oder ist leer",
+              "when": "der Nutzer versucht eine Nachricht zu senden",
+              "then": "wird der Versand verhindert und eine verständliche Fehlermeldung angezeigt"
+            },
+            {
+              "given": "die Anzahl der Empfänger überschreitet das konfigurierte Rate-Limit",
+              "when": "der Nutzer den Versand startet",
+              "then": "wird der Versand gemäß Rate-Limiting verzögert oder blockiert und der Nutzer wird informiert"
+            }
+          ],
+          "sub_stories": [],
+          "priority": "must",
+          "story_points": null,
+          "parent_requirement_id": "WA-MSG-011",
+          "parent_epic_id": "EPIC-005",
+          "complexity": "simple",
+          "created_at": "2026-03-03T16:24:28.252654",
+          "linked_requirement_ids": [
+            "WA-MSG-011"
+          ],
+          "is_merged": false,
+          "merge_count": 1
+        },
+        {
+          "id": "US-022",
+          "title": "Formatierte Texte",
+          "persona": "Kundenservice-Mitarbeiter",
+          "action": "Nachrichten mit grundlegender Textformatierung (fett, kursiv, Aufzählungen) verfassen und senden",
+          "benefit": "um Informationen klar und professionell zu strukturieren und die Verständlichkeit für Kunden zu erhöhen",
+          "acceptance_criteria": [
+            {
+              "given": "der Nutzer befindet sich im Nachrichten-Editor",
+              "when": "er Text mit unterstützter Formatierung erstellt und die Nachricht sendet",
+              "then": "wird die Nachricht beim Empfänger mit korrekter Formatierung angezeigt"
+            },
+            {
+              "given": "der Nutzer formatiert einen Textabschnitt und entfernt die Formatierung",
+              "when": "er die Nachricht speichert oder sendet",
+              "then": "wird der Text ohne Formatierung dargestellt"
+            },
+            {
+              "given": "der Nutzer fügt nicht unterstützte Formatierungen ein",
+              "when": "er die Nachricht sendet",
+              "then": "werden nicht unterstützte Formatierungen entfernt oder in Klartext umgewandelt, ohne die Zustellung zu verhindern"
+            }
+          ],
+          "sub_stories": [],
+          "priority": "must",
+          "story_points": null,
+          "parent_requirement_id": "WA-MSG-012",
+          "parent_epic_id": "EPIC-004",
+          "complexity": "simple",
+          "created_at": "2026-03-03T16:24:33.087782",
+          "linked_requirement_ids": [
+            "WA-MSG-012"
+          ],
+          "is_merged": false,
+          "merge_count": 1
+        },
+        {
+          "id": "US-023",
+          "title": "Erwaehnung (@mention)",
+          "persona": "Gruppenchat-Nutzer",
+          "action": "andere Teilnehmer in einem Gruppenchchat per @-Erwähnung markieren",
+          "benefit": "um gezielt Aufmerksamkeit zu erzeugen und die Kommunikation effizienter zu gestalten",
+          "acceptance_criteria": [
+            {
+              "given": "ich befinde mich in einem Gruppenchchat mit mehreren Teilnehmern",
+              "when": "ich tippe @ und wähle einen gültigen Teilnehmer aus der Liste aus und sende die Nachricht",
+              "then": "die Nachricht wird zugestellt und der erwähnte Teilnehmer wird als @-Erwähnung hervorgehoben"
+            },
+            {
+              "given": "ich schreibe eine Nachricht in einem Gruppenchchat",
+              "when": "ich füge mehrere gültige @-Erwähnungen in derselben Nachricht hinzu und sende sie",
+              "then": "alle erwähnten Teilnehmer werden korrekt markiert und die Nachricht wird an alle zugestellt"
+            },
+            {
+              "given": "ich tippe @ gefolgt von einem Namen, der nicht im Gruppenchchat ist",
+              "when": "ich versuche die Nachricht zu senden",
+              "then": "das System verhindert die ungültige Erwähnung oder entfernt sie und informiert mich über den Fehler"
+            }
+          ],
+          "sub_stories": [],
+          "priority": "must",
+          "story_points": null,
+          "parent_requirement_id": "WA-MSG-013",
+          "parent_epic_id": "EPIC-005",
+          "complexity": "simple",
+          "created_at": "2026-03-03T16:24:39.035276",
+          "linked_requirement_ids": [
+            "WA-MSG-013"
+          ],
+          "is_merged": false,
+          "merge_count": 1
+        },
+        {
+          "id": "US-024",
+          "title": "Standort teilen",
+          "persona": "registrierter Nutzer",
+          "action": "einen aktuellen oder ausgewählten Standort in einem Chat teilen",
+          "benefit": "damit Empfänger den Ort zuverlässig finden und Absprachen schneller erfolgen",
+          "acceptance_criteria": [
+            {
+              "given": "der Nutzer befindet sich in einem geöffneten Chat und hat der Standortfreigabe zugestimmt",
+              "when": "er die Funktion „Standort teilen“ auswählt und den Standort sendet",
+              "then": "wird der Standort als Nachricht mit Kartenvorschau und Koordinaten an den Empfänger zugestellt"
+            },
+            {
+              "given": "der Nutzer befindet sich in einem geöffneten Chat",
+              "when": "er die Standortfreigabe ablehnt oder keine Berechtigung erteilt",
+              "then": "wird der Standort nicht geteilt und eine verständliche Aufforderung zur Freigabe angezeigt"
+            },
+            {
+              "given": "der Nutzer befindet sich in einem geöffneten Chat und die Netzwerkverbindung ist instabil",
+              "when": "er den Standort sendet",
+              "then": "erhält er eine Fehlermeldung mit der Möglichkeit, den Versand erneut zu versuchen"
+            }
+          ],
+          "sub_stories": [],
+          "priority": "must",
+          "story_points": null,
+          "parent_requirement_id": "WA-MSG-014",
+          "parent_epic_id": "EPIC-005",
+          "complexity": "simple",
+          "created_at": "2026-03-03T16:24:43.983932",
+          "linked_requirement_ids": [
+            "WA-MSG-014"
+          ],
+          "is_merged": false,
+          "merge_count": 1
+        },
+        {
+          "id": "US-025",
+          "title": "Kontakt teilen",
+          "persona": "registrierter Nutzer",
+          "action": "Kontaktdaten in einem Chat teilen",
+          "benefit": "um die Kommunikation schnell und einfach fortzusetzen",
+          "acceptance_criteria": [
+            {
+              "given": "der Nutzer befindet sich in einem bestehenden Chat und hat Zugriff auf seine Kontakte",
+              "when": "der Nutzer die Funktion „Kontakt teilen“ auswählt und einen Kontakt bestätigt",
+              "then": "wird der ausgewählte Kontakt als Nachricht im Chat angezeigt und an den Empfänger zugestellt"
+            },
+            {
+              "given": "der Nutzer befindet sich in einem Chat",
+              "when": "der Nutzer die Funktion „Kontakt teilen“ öffnet und die Auswahl abbricht",
+              "then": "wird kein Kontakt geteilt und der Chat bleibt unverändert"
+            },
+            {
+              "given": "der Nutzer versucht, einen Kontakt zu teilen, aber es besteht keine Netzwerkverbindung",
+              "when": "der Nutzer das Teilen bestätigt",
+              "then": "erhält der Nutzer eine Fehlermeldung und der Kontakt wird nicht gesendet"
+            }
+          ],
+          "sub_stories": [],
+          "priority": "must",
+          "story_points": null,
+          "parent_requirement_id": "WA-MSG-015",
+          "parent_epic_id": "EPIC-005",
+          "complexity": "simple",
+          "created_at": "2026-03-03T16:24:47.987202",
+          "linked_requirement_ids": [
+            "WA-MSG-015"
+          ],
+          "is_merged": false,
+          "merge_count": 1
+        },
+        {
+          "id": "US-026",
+          "title": "Gruppe erstellen",
+          "persona": "registrierter Nutzer",
+          "action": "einen Gruppenchats erstellen und Teilnehmer hinzufügen",
+          "benefit": "um schnell und einfach mit mehreren Kontakten zu kommunizieren und die Zusammenarbeit zu verbessern",
+          "acceptance_criteria": [
+            {
+              "given": "der Nutzer ist angemeldet und befindet sich in der Chat-Übersicht",
+              "when": "er einen Gruppennamen eingibt, mindestens zwei Kontakte auswählt und auf „Gruppe erstellen“ tippt",
+              "then": "wird der Gruppenchats erstellt, der Nutzer ist Gruppenadmin und der Chat erscheint in der Liste"
+            },
+            {
+              "given": "der Nutzer startet die Gruppenerstellung",
+              "when": "er weniger als zwei Kontakte auswählt",
+              "then": "wird die Erstellung verhindert und eine verständliche Hinweismeldung angezeigt"
+            },
+            {
+              "given": "der Nutzer erstellt eine Gruppe",
+              "when": "die Nachrichtenzustellung an einen oder mehrere Teilnehmer fehlschlägt",
+              "then": "wird der Nutzer informiert und der Gruppenchats wird trotzdem erstellt, mit Statushinweis zu fehlgeschlagenen Einladungen"
+            }
+          ],
+          "sub_stories": [],
+          "priority": "must",
+          "story_points": null,
+          "parent_requirement_id": "WA-GRP-001",
+          "parent_epic_id": "EPIC-006",
+          "complexity": "simple",
+          "created_at": "2026-03-03T16:24:52.864299",
+          "linked_requirement_ids": [
+            "WA-GRP-001"
+          ],
+          "is_merged": false,
+          "merge_count": 1
+        },
+        {
+          "id": "US-027",
+          "title": "Gruppenadministration",
+          "persona": "Gruppenadministrator",
+          "action": "Gruppenmitglieder verwalten und Gruppenrechte konfigurieren",
+          "benefit": "damit die Gruppenkommunikation sicher, effizient und konform gesteuert werden kann",
+          "acceptance_criteria": [
+            {
+              "given": "eine bestehende Gruppe mit Administratorrechten des Nutzers",
+              "when": "der Gruppenadministrator Mitglieder hinzufügt, entfernt oder Rollen ändert",
+              "then": "werden die Änderungen sofort wirksam angezeigt und in der Gruppe protokolliert"
+            },
+            {
+              "given": "eine Gruppe mit definierten Datenschutz- und Sicherheitsregeln",
+              "when": "der Gruppenadministrator versucht, eine Rolle zuzuweisen, die gegen Regeln verstößt",
+              "then": "blockiert das System die Aktion und zeigt eine verständliche Fehlermeldung an"
+            },
+            {
+              "given": "eine große Gruppe mit vielen Mitgliedern",
+              "when": "der Gruppenadministrator nach einem Mitglied sucht und dessen Rolle aktualisiert",
+              "then": "liefert das System die Ergebnisse performant und bestätigt die Änderung ohne Verzögerung"
+            }
+          ],
+          "sub_stories": [],
+          "priority": "must",
+          "story_points": null,
+          "parent_requirement_id": "WA-GRP-002",
+          "parent_epic_id": "EPIC-006",
+          "complexity": "simple",
+          "created_at": "2026-03-03T16:24:58.163088",
+          "linked_requirement_ids": [
+            "WA-GRP-002"
+          ],
+          "is_merged": false,
+          "merge_count": 1
+        },
+        {
+          "id": "US-028",
+          "title": "Gruppeneinstellungen",
+          "persona": "Gruppenadministrator",
+          "action": "Gruppeneinstellungen konfigurieren und speichern",
+          "benefit": "um die Nutzung der Gruppe sicher, effizient und an die Bedürfnisse der Mitglieder angepasst zu gestalten",
+          "acceptance_criteria": [
+            {
+              "given": "der Gruppenadministrator ist angemeldet und befindet sich in der Gruppenverwaltung",
+              "when": "er erlaubte Einstellungen ändert und speichert",
+              "then": "werden die neuen Gruppeneinstellungen gespeichert und sofort angewendet"
+            },
+            {
+              "given": "der Gruppenadministrator bearbeitet die Gruppeneinstellungen",
+              "when": "er Pflichtfelder leer lässt oder ungültige Werte eingibt",
+              "then": "zeigt das System eine verständliche Fehlermeldung an und verhindert das Speichern"
+            },
+            {
+              "given": "die Gruppeneinstellungen enthalten sicherheitsrelevante Optionen",
+              "when": "der Gruppenadministrator eine restriktive Option aktiviert",
+              "then": "werden die Zugriffsrechte entsprechend eingeschränkt und im System protokolliert"
+            }
+          ],
+          "sub_stories": [],
+          "priority": "must",
+          "story_points": null,
+          "parent_requirement_id": "WA-GRP-003",
+          "parent_epic_id": "EPIC-006",
+          "complexity": "simple",
+          "created_at": "2026-03-03T16:25:03.224650",
+          "linked_requirement_ids": [
+            "WA-GRP-003"
+          ],
+          "is_merged": false,
+          "merge_count": 1
+        },
+        {
+          "id": "US-029",
+          "title": "Einladungslink",
+          "persona": "Gruppenadministrator",
+          "action": "einen Einladungslink fuer eine Gruppe erzeugen und teilen",
+          "benefit": "damit neue Mitglieder einfach und sicher beitreten koennen",
+          "acceptance_criteria": [
+            {
+              "given": "der Gruppenadministrator ist angemeldet und besitzt Adminrechte in der Gruppe",
+              "when": "er einen Einladungslink fuer die Gruppe erstellt",
+              "then": "das System generiert einen eindeutigen Link, der fuer den Beitritt zur Gruppe verwendet werden kann"
+            },
+            {
+              "given": "ein gueltiger Einladungslink wurde erstellt",
+              "when": "ein Nutzer den Link oeffnet und den Beitritt bestaetigt",
+              "then": "der Nutzer wird der Gruppe hinzugefuegt und eine Bestaetigung wird angezeigt"
+            },
+            {
+              "given": "ein Einladungslink wurde widerrufen oder ist abgelaufen",
+              "when": "ein Nutzer den Link oeffnet",
+              "then": "das System verweigert den Beitritt und zeigt eine entsprechende Fehlermeldung an"
+            }
+          ],
+          "sub_stories": [],
+          "priority": "must",
+          "story_points": null,
+          "parent_requirement_id": "WA-GRP-004",
+          "parent_epic_id": "EPIC-006",
+          "complexity": "simple",
+          "created_at": "2026-03-03T16:25:09.027517",
+          "linked_requirement_ids": [
+            "WA-GRP-004"
+          ],
+          "is_merged": false,
+          "merge_count": 1
+        },
+        {
+          "id": "US-030",
+          "title": "Gruppe verlassen",
+          "persona": "Gruppenmitglied",
+          "action": "eine Gruppe verlassen, ohne andere Mitglieder zu benachrichtigen",
+          "benefit": "damit meine Privatsphaere geschuetzt wird und die Bedienung einfach bleibt",
+          "acceptance_criteria": [
+            {
+              "given": "ich bin Mitglied einer Gruppe",
+              "when": "ich waehle die Option 'Gruppe verlassen' und bestaetige",
+              "then": "ich werde aus der Gruppe entfernt und es wird keine Benachrichtigung an andere Mitglieder gesendet"
+            },
+            {
+              "given": "ich bin nicht Mitglied der ausgewaehlten Gruppe",
+              "when": "ich versuche, die Gruppe zu verlassen",
+              "then": "das System zeigt eine verständliche Meldung an und nimmt keine Aenderungen vor"
+            },
+            {
+              "given": "ein technischer Fehler tritt waehrend des Verlassens auf",
+              "when": "der Vorgang nicht abgeschlossen werden kann",
+              "then": "ich erhalte eine Fehlermeldung und bleibe weiterhin Mitglied der Gruppe"
+            }
+          ],
+          "sub_stories": [],
+          "priority": "must",
+          "story_points": null,
+          "parent_requirement_id": "WA-GRP-005",
+          "parent_epic_id": "EPIC-006",
+          "complexity": "simple",
+          "created_at": "2026-03-03T16:25:13.094482",
+          "linked_requirement_ids": [
+            "WA-GRP-005"
+          ],
+          "is_merged": false,
+          "merge_count": 1
+        },
+        {
+          "id": "US-031",
+          "title": "Community",
+          "persona": "Endnutzer",
+          "action": "eine Community mit mehreren Gruppen erstellen und verwalten",
+          "benefit": "damit unterschiedliche Themenbereiche getrennt organisiert und dennoch unter einem gemeinsamen Rahmen kommuniziert werden koennen",
+          "acceptance_criteria": [
+            {
+              "given": "ich bin als Endnutzer angemeldet und habe Berechtigung zur Community-Erstellung",
+              "when": "ich eine neue Community anlege und mehrere Gruppen hinzufuege",
+              "then": "wird die Community erstellt und alle Gruppen sind der Community eindeutig zugeordnet"
+            },
+            {
+              "given": "eine bestehende Community mit Gruppen existiert",
+              "when": "ich eine Gruppe aus der Community entferne",
+              "then": "wird nur die ausgewaehlte Gruppe entfernt und die uebrigen Gruppen bleiben unveraendert bestehen"
+            },
+            {
+              "given": "ich versuche eine Community zu speichern",
+              "when": "keine Gruppe hinzugefuegt wurde",
+              "then": "erhalte ich eine Fehlermeldung und die Community wird nicht erstellt"
+            }
+          ],
+          "sub_stories": [],
+          "priority": "must",
+          "story_points": null,
+          "parent_requirement_id": "WA-GRP-006",
+          "parent_epic_id": "EPIC-006",
+          "complexity": "simple",
+          "created_at": "2026-03-03T16:25:18.371556",
+          "linked_requirement_ids": [
+            "WA-GRP-006"
+          ],
+          "is_merged": false,
+          "merge_count": 1
+        },
+        {
+          "id": "US-032",
+          "title": "Kanaele",
+          "persona": "Business-Kommunikationsverantwortlicher",
+          "action": "einen One-Way-Broadcast-Kanal erstellen und Nachrichten an Abonnenten senden",
+          "benefit": "um Kundeninformationen zuverlässig und datenschutzkonform breit zu verbreiten",
+          "acceptance_criteria": [
+            {
+              "given": "der Nutzer ist als Business-Profil verifiziert und hat die Berechtigung zur Kanalverwaltung",
+              "when": "er einen One-Way-Broadcast-Kanal erstellt und eine Nachricht veröffentlicht",
+              "then": "wird die Nachricht erfolgreich an alle Abonnenten zugestellt und im Kanalverlauf angezeigt"
+            },
+            {
+              "given": "ein bestehender One-Way-Broadcast-Kanal mit Abonnenten",
+              "when": "ein Abonnent versucht, eine Nachricht in den Kanal zu posten",
+              "then": "wird die Aktion blockiert und der Abonnent erhält eine Meldung, dass nur der Kanalbetreiber senden darf"
+            },
+            {
+              "given": "der Nutzer versucht, eine Broadcast-Nachricht ohne ausreichende Berechtigung zu senden",
+              "when": "er die Nachricht veröffentlicht",
+              "then": "wird der Versand abgelehnt und ein Berechtigungsfehler protokolliert"
+            }
+          ],
+          "sub_stories": [],
+          "priority": "should",
+          "story_points": null,
+          "parent_requirement_id": "WA-GRP-007",
+          "parent_epic_id": "EPIC-006",
+          "complexity": "simple",
+          "created_at": "2026-03-03T16:25:23.941567",
+          "linked_requirement_ids": [
+            "WA-GRP-007"
+          ],
+          "is_merged": false,
+          "merge_count": 1
+        },
+        {
+          "id": "US-033",
+          "title": "Umfragen",
+          "persona": "registrierter Nutzer",
+          "action": "eine Umfrage in einem Gruppen- oder Einzelchat erstellen und senden",
+          "benefit": "schnell Feedback einzuholen und Entscheidungen effizient abzustimmen",
+          "acceptance_criteria": [
+            {
+              "given": "der Nutzer befindet sich in einem Gruppenchat",
+              "when": "er eine Umfrage mit mindestens zwei Antwortoptionen erstellt und sendet",
+              "then": "wird die Umfrage im Chat angezeigt und alle Gruppenmitglieder koennen abstimmen"
+            },
+            {
+              "given": "der Nutzer befindet sich in einem Einzelchat",
+              "when": "er eine Umfrage erstellt und sendet",
+              "then": "wird die Umfrage im Chat angezeigt und der Gegenueber kann abstimmen"
+            },
+            {
+              "given": "der Nutzer erstellt eine Umfrage ohne Antwortoptionen",
+              "when": "er versucht die Umfrage zu senden",
+              "then": "erhaelt er eine Fehlermeldung und die Umfrage wird nicht gesendet"
+            }
+          ],
+          "sub_stories": [],
+          "priority": "should",
+          "story_points": null,
+          "parent_requirement_id": "WA-GRP-008",
+          "parent_epic_id": "EPIC-006",
+          "complexity": "simple",
+          "created_at": "2026-03-03T16:25:27.663206",
+          "linked_requirement_ids": [
+            "WA-GRP-008"
+          ],
+          "is_merged": false,
+          "merge_count": 1
+        },
+        {
+          "id": "US-034",
+          "title": "Events planen",
+          "persona": "Gruppenmitglied",
+          "action": "ein Event in einer Gruppe planen und erstellen",
+          "benefit": "damit alle Gruppenmitglieder zuverlässig informiert werden und die Organisation einfacher wird",
+          "acceptance_criteria": [
+            {
+              "given": "das Gruppenmitglied ist in einer Gruppe angemeldet und hat Berechtigung zum Erstellen von Events",
+              "when": "es einen Titel, Datum/Uhrzeit, Ort und Beschreibung eingibt und das Event speichert",
+              "then": "wird das Event in der Gruppe angezeigt und eine Benachrichtigung an alle Gruppenmitglieder gesendet"
+            },
+            {
+              "given": "das Gruppenmitglied ist in einer Gruppe angemeldet",
+              "when": "es versucht, ein Event ohne erforderliche Pflichtfelder zu speichern",
+              "then": "wird eine verständliche Validierungsmeldung angezeigt und das Event nicht gespeichert"
+            },
+            {
+              "given": "das Gruppenmitglied ist in einer Gruppe angemeldet",
+              "when": "es ein Event mit einem Datum in der Vergangenheit plant",
+              "then": "wird das Speichern verhindert und eine Fehlermeldung angezeigt"
+            }
+          ],
+          "sub_stories": [],
+          "priority": "should",
+          "story_points": null,
+          "parent_requirement_id": "WA-GRP-009",
+          "parent_epic_id": "EPIC-006",
+          "complexity": "simple",
+          "created_at": "2026-03-03T16:25:33.667986",
+          "linked_requirement_ids": [
+            "WA-GRP-009"
+          ],
+          "is_merged": false,
+          "merge_count": 1
+        },
+        {
+          "id": "US-035",
+          "title": "Sprachanruf",
+          "persona": "Endnutzer",
+          "action": "einen verschlüsselten Sprachanruf starten und führen",
+          "benefit": "damit ich sicher und zuverlässig kommunizieren kann und meine Privatsphäre geschützt ist",
+          "acceptance_criteria": [
+            {
+              "given": "der Nutzer ist angemeldet und der Empfänger ist erreichbar",
+              "when": "der Nutzer einen Sprachanruf startet",
+              "then": "wird der Anruf aufgebaut und die Sprachübertragung ist durchgehend verschlüsselt"
+            },
+            {
+              "given": "der Empfänger lehnt den Anruf ab oder ist nicht erreichbar",
+              "when": "der Nutzer den Anruf startet",
+              "then": "erhält der Nutzer eine klare Benachrichtigung über den Status des Anrufs"
+            },
+            {
+              "given": "die Netzwerkverbindung ist instabil",
+              "when": "während eines verschlüsselten Sprachanrufs Paketverluste auftreten",
+              "then": "versucht das System die Verbindung zu stabilisieren und informiert den Nutzer bei Abbruch"
+            }
+          ],
+          "sub_stories": [],
+          "priority": "must",
+          "story_points": null,
+          "parent_requirement_id": "WA-CALL-001",
+          "parent_epic_id": "",
+          "complexity": "simple",
+          "created_at": "2026-03-03T16:25:40.929210",
+          "linked_requirement_ids": [
+            "WA-CALL-001"
+          ],
+          "is_merged": false,
+          "merge_count": 1
+        },
+        {
+          "id": "US-036",
+          "title": "Videoanruf",
+          "persona": "Endnutzer",
+          "action": "einen verschlüsselten Videoanruf starten und empfangen",
+          "benefit": "vertraulich und plattformübergreifend in hoher Qualität kommunizieren zu können",
+          "acceptance_criteria": [
+            {
+              "given": "zwei Endnutzer sind online und haben gültige Konten",
+              "when": "ein Nutzer einen Videoanruf startet und der andere annimmt",
+              "then": "der Videoanruf wird mit Ende-zu-Ende-Verschlüsselung aufgebaut und beide sehen und hören sich"
+            },
+            {
+              "given": "der Empfänger ist offline oder nicht verfügbar",
+              "when": "ein Nutzer einen Videoanruf startet",
+              "then": "das System zeigt eine nicht verfügbare Benachrichtigung an und der Anruf wird nicht gestartet"
+            },
+            {
+              "given": "die Netzwerkverbindung ist instabil oder unterbrochen",
+              "when": "ein Videoanruf aktiv ist",
+              "then": "das System versucht eine Wiederverbindung und informiert den Nutzer bei Fehlschlag verständlich"
+            }
+          ],
+          "sub_stories": [],
+          "priority": "must",
+          "story_points": null,
+          "parent_requirement_id": "WA-CALL-002",
+          "parent_epic_id": "",
+          "complexity": "simple",
+          "created_at": "2026-03-03T16:25:47.460439",
+          "linked_requirement_ids": [
+            "WA-CALL-002"
+          ],
+          "is_merged": false,
+          "merge_count": 1
+        },
+        {
+          "id": "US-037",
+          "title": "Gruppenanruf",
+          "persona": "registrierter Nutzer",
+          "action": "einen Gruppen-Sprach- oder Videoanruf mit mehreren Teilnehmern starten und beitreten",
+          "benefit": "um schnell und zuverlässig plattformübergreifend mit mehreren Personen zu kommunizieren",
+          "acceptance_criteria": [
+            {
+              "given": "der Nutzer ist angemeldet und hat Kontakte ausgewählt",
+              "when": "er einen Gruppen-Sprach- oder Videoanruf startet",
+              "then": "werden alle eingeladenen Teilnehmer benachrichtigt und der Anruf wird mit der vom Nutzer gewählten Medienart aufgebaut"
+            },
+            {
+              "given": "ein Gruppenanruf ist aktiv und ein weiterer Teilnehmer wird eingeladen",
+              "when": "der Teilnehmer die Einladung annimmt",
+              "then": "wird er dem laufenden Gruppenanruf ohne Unterbrechung für bestehende Teilnehmer hinzugefügt"
+            },
+            {
+              "given": "die Netzwerkverbindung eines Teilnehmers ist instabil oder bricht ab",
+              "when": "der Teilnehmer dem Gruppenanruf beitreten oder verbunden bleiben möchte",
+              "then": "versucht das System automatisch eine Wiederverbindung und zeigt bei Fehlschlag eine verständliche Fehlermeldung an"
+            }
+          ],
+          "sub_stories": [],
+          "priority": "must",
+          "story_points": null,
+          "parent_requirement_id": "WA-CALL-003",
+          "parent_epic_id": "",
+          "complexity": "simple",
+          "created_at": "2026-03-03T16:25:52.641631",
+          "linked_requirement_ids": [
+            "WA-CALL-003"
+          ],
+          "is_merged": false,
+          "merge_count": 1
+        },
+        {
+          "id": "US-038",
+          "title": "Bildschirmfreigabe",
+          "persona": "registrierter Nutzer",
+          "action": "während eines laufenden Anrufs die Bildschirmfreigabe starten und beenden",
+          "benefit": "um Inhalte klar zu erklären und die Kommunikation effizienter zu gestalten",
+          "acceptance_criteria": [
+            {
+              "given": "ein aktiver Anruf zwischen zwei Teilnehmern",
+              "when": "der Nutzer die Funktion „Bildschirmfreigabe starten“ auswählt und einen Bildschirm oder ein Fenster freigibt",
+              "then": "sehen alle Teilnehmer die geteilte Ansicht in Echtzeit"
+            },
+            {
+              "given": "eine aktive Bildschirmfreigabe",
+              "when": "der Nutzer die Freigabe beendet",
+              "then": "wird die Übertragung sofort gestoppt und alle Teilnehmer erhalten die Ansicht „Freigabe beendet“"
+            },
+            {
+              "given": "der Nutzer hat keine Berechtigung oder verweigert die Freigabe im Betriebssystem",
+              "when": "er die Bildschirmfreigabe starten möchte",
+              "then": "wird eine verständliche Fehlermeldung angezeigt und keine Freigabe gestartet"
+            }
+          ],
+          "sub_stories": [],
+          "priority": "should",
+          "story_points": null,
+          "parent_requirement_id": "WA-CALL-004",
+          "parent_epic_id": "",
+          "complexity": "simple",
+          "created_at": "2026-03-03T16:25:56.852674",
+          "linked_requirement_ids": [
+            "WA-CALL-004"
+          ],
+          "is_merged": false,
+          "merge_count": 1
+        },
+        {
+          "id": "US-039",
+          "title": "Anruflink",
+          "persona": "Kundenservice-Mitarbeiter",
+          "action": "einen Anruflink für einen geplanten Anruf erstellen und teilen",
+          "benefit": "Kunden den einfachen Beitritt zum geplanten Anruf ermöglichen und die professionelle Kommunikation verbessern",
+          "acceptance_criteria": [
+            {
+              "given": "ein geplanter Anruf mit gültigem Datum und Uhrzeit existiert",
+              "when": "der Nutzer den Anruflink erzeugt",
+              "then": "erstellt das System einen eindeutigen Anruflink und zeigt ihn zur sicheren Weitergabe an"
+            },
+            {
+              "given": "ein geplanter Anruf mit Startzeit liegt in der Vergangenheit",
+              "when": "der Nutzer versucht einen Anruflink zu erzeugen",
+              "then": "verhindert das System die Erstellung und zeigt eine verständliche Fehlermeldung"
+            },
+            {
+              "given": "der Nutzer teilt einen gültigen Anruflink mit einem Kunden",
+              "when": "der Kunde den Link auf einer unterstützten Plattform öffnet",
+              "then": "führt der Link den Kunden direkt zum vorgesehenen Anruf und informiert über den geplanten Zeitpunkt"
+            }
+          ],
+          "sub_stories": [],
+          "priority": "should",
+          "story_points": null,
+          "parent_requirement_id": "WA-CALL-005",
+          "parent_epic_id": "",
+          "complexity": "simple",
+          "created_at": "2026-03-03T16:26:03.283637",
+          "linked_requirement_ids": [
+            "WA-CALL-005"
+          ],
+          "is_merged": false,
+          "merge_count": 1
+        },
+        {
+          "id": "US-040",
+          "title": "Anruf ablehnen mit Nachricht",
+          "persona": "primärer Nutzer",
+          "action": "einen eingehenden Anruf ablehnen und eine schnelle Antwortnachricht senden",
+          "benefit": "damit der Anrufer sofort informiert wird und die Kommunikation zuverlässig und professionell bleibt",
+          "acceptance_criteria": [
+            {
+              "given": "ein eingehender Anruf wird angezeigt und der Nutzer ist online",
+              "when": "der Nutzer wählt eine vordefinierte Schnellantwort und lehnt den Anruf ab",
+              "then": "der Anruf wird abgelehnt und die gewählte Nachricht wird innerhalb von 2 Sekunden gesendet"
+            },
+            {
+              "given": "ein eingehender Anruf wird angezeigt und keine vordefinierten Schnellantworten sind verfügbar",
+              "when": "der Nutzer den Anruf ablehnt",
+              "then": "der Anruf wird abgelehnt und es wird eine Standardnachricht gesendet"
+            },
+            {
+              "given": "ein eingehender Anruf wird angezeigt und der Nachrichtendienst ist vorübergehend nicht verfügbar",
+              "when": "der Nutzer den Anruf ablehnt und eine Schnellantwort auswählt",
+              "then": "der Anruf wird abgelehnt und der Nutzer erhält eine Fehlermeldung zur fehlgeschlagenen Nachrichtenzustellung"
+            }
+          ],
+          "sub_stories": [],
+          "priority": "must",
+          "story_points": null,
+          "parent_requirement_id": "WA-CALL-006",
+          "parent_epic_id": "",
+          "complexity": "simple",
+          "created_at": "2026-03-03T16:26:08.452318",
+          "linked_requirement_ids": [
+            "WA-CALL-006"
+          ],
+          "is_merged": false,
+          "merge_count": 1
+        },
+        {
+          "id": "US-041",
+          "title": "Anrufverlauf",
+          "persona": "registrierter Nutzer",
+          "action": "den Anrufverlauf einsehen",
+          "benefit": "um vergangene Anrufe nachvollziehen und schnell wieder Kontakt aufnehmen zu koennen",
+          "acceptance_criteria": [
+            {
+              "given": "der Nutzer ist angemeldet und es existieren gespeicherte Anrufe",
+              "when": "er den Anrufverlauf oeffnet",
+              "then": "werden die Anrufe chronologisch mit Datum, Uhrzeit und Kontakt angezeigt"
+            },
+            {
+              "given": "der Nutzer ist angemeldet und es existieren keine gespeicherten Anrufe",
+              "when": "er den Anrufverlauf oeffnet",
+              "then": "wird eine leere Ansicht mit Hinweis angezeigt, dass kein Anrufverlauf vorhanden ist"
+            },
+            {
+              "given": "der Nutzer hat keine Berechtigung auf den Anrufverlauf",
+              "when": "er versucht den Anrufverlauf zu oeffnen",
+              "then": "wird der Zugriff verweigert und eine entsprechende Fehlermeldung angezeigt"
+            }
+          ],
+          "sub_stories": [],
+          "priority": "must",
+          "story_points": null,
+          "parent_requirement_id": "WA-CALL-007",
+          "parent_epic_id": "",
+          "complexity": "simple",
+          "created_at": "2026-03-03T16:26:13.892529",
+          "linked_requirement_ids": [
+            "WA-CALL-007"
+          ],
+          "is_merged": false,
+          "merge_count": 1
+        },
+        {
+          "id": "US-042",
+          "title": "Status erstellen",
+          "persona": "Endnutzer",
+          "action": "einen 24-Stunden-Status erstellen und veröffentlichen",
+          "benefit": "aktuelle Informationen schnell und zuverlässig mit Kontakten zu teilen",
+          "acceptance_criteria": [
+            {
+              "given": "der Nutzer ist angemeldet und hat eine gültige Internetverbindung",
+              "when": "der Nutzer einen neuen Status mit Inhalt erstellt und auf „Veröffentlichen“ tippt",
+              "then": "der Status wird gespeichert und ist für Kontakte 24 Stunden sichtbar"
+            },
+            {
+              "given": "der Nutzer erstellt einen Status ohne Inhalt",
+              "when": "der Nutzer auf „Veröffentlichen“ tippt",
+              "then": "das System verhindert die Veröffentlichung und zeigt eine verständliche Fehlermeldung an"
+            },
+            {
+              "given": "die Internetverbindung bricht während der Veröffentlichung ab",
+              "when": "der Nutzer den Status veröffentlicht",
+              "then": "das System zeigt einen Fehler an und bietet die Möglichkeit, den Vorgang zu wiederholen"
+            }
+          ],
+          "sub_stories": [],
+          "priority": "must",
+          "story_points": null,
+          "parent_requirement_id": "WA-STS-001",
+          "parent_epic_id": "EPIC-005",
+          "complexity": "simple",
+          "created_at": "2026-03-03T16:26:19.760663",
+          "linked_requirement_ids": [
+            "WA-STS-001"
+          ],
+          "is_merged": false,
+          "merge_count": 1
+        },
+        {
+          "id": "US-043",
+          "title": "Status anzeigen",
+          "persona": "Endnutzer",
+          "action": "den Status eines Kontakts anzeigen",
+          "benefit": "den Erreichbarkeitszustand schnell zu erkennen und die Kommunikation effizient zu planen",
+          "acceptance_criteria": [
+            {
+              "given": "der Endnutzer ist angemeldet und die Kontaktliste ist geladen",
+              "when": "der Endnutzer einen Kontakt in der Liste oder im Chat oeffnet",
+              "then": "zeigt das System den aktuellen Kontakt-Status klar und eindeutig an"
+            },
+            {
+              "given": "ein Kontakt hat keinen verfuegbaren oder freigegebenen Status",
+              "when": "der Endnutzer den Kontakt oeffnet",
+              "then": "zeigt das System einen neutralen Statusindikator oder den Hinweis 'Status nicht verfuegbar' an"
+            },
+            {
+              "given": "es besteht keine Netzwerkverbindung oder der Statusdienst ist nicht erreichbar",
+              "when": "der Endnutzer den Kontakt-Status anfordert",
+              "then": "informiert das System den Endnutzer ueber den Fehler und behaelt den zuletzt bekannten Status bei"
+            }
+          ],
+          "sub_stories": [],
+          "priority": "must",
+          "story_points": null,
+          "parent_requirement_id": "WA-STS-002",
+          "parent_epic_id": "EPIC-005",
+          "complexity": "simple",
+          "created_at": "2026-03-03T16:26:24.910092",
+          "linked_requirement_ids": [
+            "WA-STS-002"
+          ],
+          "is_merged": false,
+          "merge_count": 1
+        },
+        {
+          "id": "US-044",
+          "title": "Status-Antwort",
+          "persona": "Kundenservice-Mitarbeiter",
+          "action": "auf eine Statusnachricht mit einer Status-Antwort reagieren",
+          "benefit": "damit Kunden schnell und zuverlässig eine Rückmeldung erhalten und die Kommunikation professionell bleibt",
+          "acceptance_criteria": [
+            {
+              "given": "eine eingehende Statusnachricht liegt in einem Chat vor",
+              "when": "der Kundenservice-Mitarbeiter eine Status-Antwort sendet",
+              "then": "wird die Antwort zugestellt und im Chatverlauf als Status-Antwort gekennzeichnet angezeigt"
+            },
+            {
+              "given": "die Statusnachricht ist älter als das zulässige Antwortfenster",
+              "when": "der Kundenservice-Mitarbeiter versucht zu antworten",
+              "then": "wird das Senden verhindert und eine verständliche Meldung angezeigt"
+            },
+            {
+              "given": "die Verbindung ist während des Sendens unterbrochen",
+              "when": "die Status-Antwort gesendet werden soll",
+              "then": "wird eine Fehlermeldung angezeigt und das System bietet einen erneuten Sendeversuch an"
+            }
+          ],
+          "sub_stories": [],
+          "priority": "must",
+          "story_points": null,
+          "parent_requirement_id": "WA-STS-003",
+          "parent_epic_id": "EPIC-005",
+          "complexity": "simple",
+          "created_at": "2026-03-03T16:26:29.624199",
+          "linked_requirement_ids": [
+            "WA-STS-003"
+          ],
+          "is_merged": false,
+          "merge_count": 1
+        },
+        {
+          "id": "US-045",
+          "title": "Status-Datenschutz",
+          "persona": "registrierter Nutzer",
+          "action": "die Sichtbarkeit meines Status konfigurierbar einstellen",
+          "benefit": "meine Privatsphäre schützen und gleichzeitig eine einfache Bedienung beibehalten",
+          "acceptance_criteria": [
+            {
+              "given": "der Nutzer ist angemeldet und befindet sich in den Datenschutzeinstellungen",
+              "when": "er die Status-Sichtbarkeit auf „Niemand“ setzt und speichert",
+              "then": "ist sein Status für andere Nutzer nicht mehr sichtbar"
+            },
+            {
+              "given": "der Nutzer ist angemeldet und befindet sich in den Datenschutzeinstellungen",
+              "when": "er die Status-Sichtbarkeit auf „Nur Kontakte“ setzt und speichert",
+              "then": "ist sein Status ausschließlich für Kontakte sichtbar und nicht für andere Nutzer"
+            },
+            {
+              "given": "es besteht keine Netzwerkverbindung während der Speicherung",
+              "when": "der Nutzer versucht die Status-Sichtbarkeit zu speichern",
+              "then": "erhält er eine Fehlermeldung und die vorherige Einstellung bleibt unverändert"
+            }
+          ],
+          "sub_stories": [],
+          "priority": "must",
+          "story_points": null,
+          "parent_requirement_id": "WA-STS-004",
+          "parent_epic_id": "EPIC-005",
+          "complexity": "simple",
+          "created_at": "2026-03-03T16:26:34.784092",
+          "linked_requirement_ids": [
+            "WA-STS-004"
+          ],
+          "is_merged": false,
+          "merge_count": 1
+        },
+        {
+          "id": "US-046",
+          "title": "Status stumm schalten",
+          "persona": "registrierter Nutzer",
+          "action": "den Status eines Kontakts stumm schalten",
+          "benefit": "Benachrichtigungen gezielt zu steuern und die Kommunikation übersichtlich zu halten",
+          "acceptance_criteria": [
+            {
+              "given": "der Nutzer befindet sich in der Kontaktansicht eines aktiven Kontakts",
+              "when": "er die Option „Status stumm schalten“ auswählt",
+              "then": "werden Status-Benachrichtigungen dieses Kontakts nicht mehr angezeigt und der Stummschalt-Status ist sichtbar gesetzt"
+            },
+            {
+              "given": "ein Kontakt ist bereits stumm geschaltet",
+              "when": "der Nutzer erneut „Status stumm schalten“ auswählt",
+              "then": "zeigt das System an, dass der Kontakt bereits stumm geschaltet ist, ohne den bestehenden Zustand zu ändern"
+            },
+            {
+              "given": "die Netzwerkverbindung ist unterbrochen oder der Speichervorgang schlägt fehl",
+              "when": "der Nutzer versucht, einen Kontakt stumm zu schalten",
+              "then": "erhält er eine Fehlermeldung und der Status bleibt unverändert"
+            }
+          ],
+          "sub_stories": [],
+          "priority": "should",
+          "story_points": null,
+          "parent_requirement_id": "WA-STS-005",
+          "parent_epic_id": "EPIC-005",
+          "complexity": "simple",
+          "created_at": "2026-03-03T16:26:39.689583",
+          "linked_requirement_ids": [
+            "WA-STS-005"
+          ],
+          "is_merged": false,
+          "merge_count": 1
+        },
+        {
+          "id": "US-047",
+          "title": "Bilder senden",
+          "persona": "registrierter Nutzer",
+          "action": "ein Bild in einem Chat senden",
+          "benefit": "damit Informationen visuell schneller und klarer übermittelt werden können und die Kommunikation effizienter ist",
+          "acceptance_criteria": [
+            {
+              "given": "der Nutzer ist angemeldet und befindet sich in einem bestehenden Chat",
+              "when": "er ein gültiges Bildformat auswählt und auf „Senden“ tippt",
+              "then": "wird das Bild gesendet und im Chat für Sender und Empfänger angezeigt"
+            },
+            {
+              "given": "der Nutzer ist angemeldet und befindet sich in einem bestehenden Chat",
+              "when": "er versucht, ein nicht unterstütztes Dateiformat als Bild zu senden",
+              "then": "wird das Senden verhindert und eine verständliche Fehlermeldung angezeigt"
+            },
+            {
+              "given": "der Nutzer ist angemeldet und befindet sich in einem bestehenden Chat",
+              "when": "die Bilddatei die maximal zulässige Größe überschreitet",
+              "then": "wird das Senden abgelehnt und eine Meldung mit Hinweis zur Größenbegrenzung angezeigt"
+            },
+            {
+              "given": "der Nutzer ist angemeldet und die Netzwerkverbindung ist instabil",
+              "when": "er ein Bild sendet und die Übertragung fehlschlägt",
+              "then": "wird der Fehler angezeigt und der Nutzer kann den Versand erneut versuchen"
+            }
+          ],
+          "sub_stories": [],
+          "priority": "must",
+          "story_points": null,
+          "parent_requirement_id": "WA-MED-001",
+          "parent_epic_id": "EPIC-007",
+          "complexity": "simple",
+          "created_at": "2026-03-03T16:26:46.057125",
+          "linked_requirement_ids": [
+            "WA-MED-001"
+          ],
+          "is_merged": false,
+          "merge_count": 1
+        },
+        {
+          "id": "US-048",
+          "title": "Videos senden",
+          "persona": "Endnutzer",
+          "action": "ein Video in einer Nachricht senden",
+          "benefit": "damit ich Inhalte anschaulich teilen und schneller kommunizieren kann",
+          "acceptance_criteria": [
+            {
+              "given": "ich bin angemeldet und habe eine bestehende Unterhaltung geöffnet",
+              "when": "ich wähle ein unterstütztes Video aus und sende es",
+              "then": "das Video wird hochgeladen und als Nachricht mit Vorschau zugestellt"
+            },
+            {
+              "given": "ich wähle ein Video, das das maximale Dateilimit überschreitet",
+              "when": "ich versuche, es zu senden",
+              "then": "das System blockiert den Versand und zeigt eine verständliche Fehlermeldung mit den zulässigen Grenzen an"
+            },
+            {
+              "given": "meine Netzwerkverbindung bricht während des Uploads ab",
+              "when": "der Upload wird unterbrochen",
+              "then": "das System zeigt den fehlgeschlagenen Versand an und bietet eine Wiederholen-Option"
+            }
+          ],
+          "sub_stories": [],
+          "priority": "must",
+          "story_points": null,
+          "parent_requirement_id": "WA-MED-002",
+          "parent_epic_id": "EPIC-007",
+          "complexity": "simple",
+          "created_at": "2026-03-03T16:26:50.894420",
+          "linked_requirement_ids": [
+            "WA-MED-002"
+          ],
+          "is_merged": false,
+          "merge_count": 1
+        },
+        {
+          "id": "US-049",
+          "title": "Dokumente senden",
+          "persona": "Endnutzer",
+          "action": "beliebige Dokumente über den Dienst senden",
+          "benefit": "um schnell, sicher und plattformübergreifend Informationen mit anderen zu teilen",
+          "acceptance_criteria": [
+            {
+              "given": "der Nutzer ist angemeldet und ein Empfänger wurde ausgewählt",
+              "when": "der Nutzer ein unterstütztes Dokument auswählt und auf „Senden“ klickt",
+              "then": "wird das Dokument erfolgreich übertragen und eine Versandbestätigung angezeigt"
+            },
+            {
+              "given": "der Nutzer ist angemeldet und ein Empfänger wurde ausgewählt",
+              "when": "der Nutzer ein sehr großes Dokument auswählt",
+              "then": "wird der Nutzer über Größenbeschränkungen informiert und das Senden wird verhindert"
+            },
+            {
+              "given": "der Nutzer ist angemeldet und ein Empfänger wurde ausgewählt",
+              "when": "die Netzwerkverbindung während des Sendens abbricht",
+              "then": "erhält der Nutzer eine Fehlermeldung und kann den Versand erneut versuchen"
+            }
+          ],
+          "sub_stories": [],
+          "priority": "must",
+          "story_points": null,
+          "parent_requirement_id": "WA-MED-003",
+          "parent_epic_id": "EPIC-007",
+          "complexity": "simple",
+          "created_at": "2026-03-03T16:26:55.990973",
+          "linked_requirement_ids": [
+            "WA-MED-003"
+          ],
+          "is_merged": false,
+          "merge_count": 1
+        },
+        {
+          "id": "US-050",
+          "title": "Bildbearbeitung",
+          "persona": "App-Nutzer",
+          "action": "ein Bild vor dem Senden zuschneiden und drehen",
+          "benefit": "damit Inhalte schnell und datenschutzkonform optimiert werden und die Nachricht professionell wirkt",
+          "acceptance_criteria": [
+            {
+              "given": "ein Nutzer hat ein Bild in einer Nachricht ausgewählt",
+              "when": "der Nutzer das Bild zuschneidet und dreht",
+              "then": "wird eine Vorschau angezeigt und das bearbeitete Bild wird gesendet"
+            },
+            {
+              "given": "ein Nutzer hat ein Bild geöffnet und keine Bearbeitung vorgenommen",
+              "when": "der Nutzer die Bearbeitung bestätigt",
+              "then": "wird das Originalbild ohne Änderungen gesendet"
+            },
+            {
+              "given": "die Bearbeitungsschnittstelle ist geöffnet",
+              "when": "eine Bearbeitungsaktion fehlschlägt oder abgebrochen wird",
+              "then": "erhält der Nutzer eine Fehlermeldung und das Originalbild bleibt unverändert"
+            }
+          ],
+          "sub_stories": [],
+          "priority": "must",
+          "story_points": null,
+          "parent_requirement_id": "WA-MED-004",
+          "parent_epic_id": "EPIC-007",
+          "complexity": "simple",
+          "created_at": "2026-03-03T16:27:05.366789",
+          "linked_requirement_ids": [
+            "WA-MED-004"
+          ],
+          "is_merged": false,
+          "merge_count": 1
+        }
+      ],
+      "key_themes": [
+        "verify",
+        "chat",
+        "nachricht",
+        "senden",
+        "nachrichten",
+        "medien",
+        "status",
+        "message",
+        "suche",
+        "backup"
+      ],
+      "complexity_score": 0.1,
+      "completeness_score": 1.0
+    },
+    "diagrams": {
+      "type": "diagrams",
+      "count": 460,
+      "items": [
+        "%%{ init: { 'theme': 'default' } }%%\nC4Context\n    title Message Send Latency System Architecture\n\n    Person(user, \"User\", \"A user sending text messages\")\n    System(system, \"Messaging System\", \"Handles sending and receiving text messages\")\n\n    System_Ext(externalService, \"External SMS Gateway\", \"Third-party service for SMS delivery\")\n    \n    Rel(user, system, \"Sends text messages\")\n    Rel(system, externalService, \"Sends messages to\")\n    Rel(externalService, system, \"Acknowledges message delivery\")\n    \n    System_Boundary(systemBoundary, \"Messaging System\") {\n        Container(database, \"Message Database\", \"Stores messages and delivery status\")\n        Container(api, \"Messaging API\", \"Handles incoming message requests\")\n        Container(latencyMonitor, \"Latency Monitoring Service\", \"Monitors message send latency\")\n        \n        Rel(api, database, \"Reads/Writes messages\")\n        Rel(api, latencyMonitor, \"Sends latency data for analysis\")\n    }",
+        "sequenceDiagram\n    participant User as User\n    participant App as Messaging App\n    participant Server as Message Server\n    participant Recipient as Recipient User\n\n    User->>App: Send Message\n    App->>Server: Forward Message\n    Server->>Recipient: Deliver Message\n    Recipient-->>Server: Acknowledge Receipt\n    Server-->>App: Acknowledge Delivery\n    App-->>User: Confirm Delivery",
+        "stateDiagram-v2\n    [*] --> Idle\n    Idle --> Sending : Send Message\n    Sending --> Acknowledged : Message Delivered\n    Sending --> Timeout : Latency Exceeded\n    Acknowledged --> Idle : Acknowledgment Received\n    Timeout --> Idle : Retry or Cancel",
+        "%%{ init : { \"theme\" : \"default\" } }%%\nC4Context\n    title Media Upload Throughput System Architecture\n\n    Person(user, \"User\", \"A user who uploads voice and media files.\")\n    System(mediaUploadService, \"Media Upload Service\", \"Handles the uploading of media files and ensures throughput.\")\n    System(database, \"Database\", \"Stores uploaded media files and metadata.\")\n    System(externalService, \"External Processing Service\", \"Processes media files after upload.\")\n\n    Rel(user, mediaUploadService, \"Uploads voice and media files\")\n    Rel(mediaUploadService, database, \"Stores media files and metadata\")\n    Rel(mediaUploadService, externalService, \"Sends files for processing\")\n    Rel(externalService, database, \"Updates processing status and results\")",
+        "sequenceDiagram\n    participant User as User\n    participant MediaServer as Media Server\n    participant Storage as Storage System\n    participant Monitoring as Monitoring System\n\n    User->>MediaServer: Upload media file\n    MediaServer->>Storage: Store media file\n    Storage-->>MediaServer: Confirm storage success\n    MediaServer-->>User: Confirm upload completion\n\n    Monitoring->>MediaServer: Check upload throughput\n    MediaServer-->>Monitoring: Provide throughput metrics\n    Monitoring->>User: Report upload status and completion time",
+        "stateDiagram-v2\n    [*] --> Idle\n    Idle --> Uploading : Start Upload\n    Uploading --> InProgress : Media Upload Initiated\n    InProgress --> Completed : Upload Successful\n    InProgress --> Failed : Upload Error\n    Failed --> Retry : Retry Upload\n    Retry --> Uploading : Retry Initiated\n    Completed --> [*]\n    Failed --> [*]",
+        "%%{ init : { \"theme\" : \"default\" } }%%\nC4Context\n    title Concurrent User Scaling System Architecture\n\n    Person(user, \"User\", \"A user of the system\")\n    \n    System_Boundary(s1, \"Concurrent User Scaling System\") {\n        Container(webApp, \"Web Application\", \"Handles user requests and interactions\", \"Java, Spring Boot\")\n        Container(database, \"Database\", \"Stores user data and application state\", \"PostgreSQL\")\n        Container(loadBalancer, \"Load Balancer\", \"Distributes incoming traffic across multiple instances\", \"Nginx\")\n        Container(microservice, \"Microservice\", \"Handles business logic and processing\", \"Node.js\")\n    }\n\n    Rel(user, webApp, \"Uses\")\n    Rel(webApp, loadBalancer, \"Routes requests to\")\n    Rel(loadBalancer, webApp, \"Distributes load to\")\n    Rel(webApp, microservice, \"Calls for processing\")\n    Rel(microservice, database, \"Reads/Writes data to\")",
+        "sequenceDiagram\n    participant User as User\n    participant LoadBalancer as Load Balancer\n    participant Server1 as Server 1\n    participant Server2 as Server 2\n    participant Database as Database\n\n    User->>LoadBalancer: Request\n    LoadBalancer->>Server1: Forward request\n    Server1->>Database: Query data\n    Database-->>Server1: Return data\n    Server1-->>LoadBalancer: Response\n    LoadBalancer-->>User: Response\n\n    User->>LoadBalancer: Concurrent request\n    LoadBalancer->>Server2: Forward request\n    Server2->>Database: Query data\n    Database-->>Server2: Return data\n    Server2-->>LoadBalancer: Response\n    LoadBalancer-->>User: Response",
+        "stateDiagram-v2\n    [*] --> Idle\n    Idle --> Scaling : High concurrency detected\n    Scaling --> Active : Resources provisioned\n    Active --> Idle : Load decreases\n    Active --> Scaling : New high concurrency detected\n    Scaling --> Active : Scaling complete\n    Active --> LatencyImpact : Latency threshold exceeded\n    LatencyImpact --> Scaling : Initiate scaling\n    LatencyImpact --> Active : Latency resolved",
+        "%%{ init : { \"theme\" : \"default\" } }%%\nC4Context\n    title Data Growth Scalability Context Diagram\n\n    Person(user, \"User\", \"A user interacting with the system\")\n    \n    System_Boundary(s1, \"Data Growth Scalability System\") {\n        System(db, \"Database\", \"Stores messages and media\")\n        System(index, \"Indexing Service\", \"Indexes messages and media for quick retrieval\")\n        System(storage, \"Storage Service\", \"Handles storage of messages and media\")\n        System(messaging, \"Messaging Service\", \"Facilitates message delivery and processing\")\n    }\n\n    Rel(user, messaging, \"Uses\")\n    Rel(messaging, db, \"Stores messages in\")\n    Rel(messaging, storage, \"Stores media in\")\n    Rel(db, index, \"Indexes data for\")\n    Rel(storage, index, \"Indexes media for\")",
+        "erDiagram\n    MESSAGE {\n        string id PK\n        string content\n        datetime timestamp\n    }\n    \n    MEDIA {\n        string id PK\n        string type\n        string url\n        datetime created_at\n    }\n    \n    STORAGE {\n        string id PK\n        string type\n        int capacity\n        int used_space\n    }\n    \n    INDEXING {\n        string id PK\n        string strategy\n        int index_size\n    }\n    \n    MESSAGE ||--o{ STORAGE : stores\n    MEDIA ||--o{ STORAGE : stores\n    MESSAGE ||--o{ INDEXING : indexed_by\n    MEDIA ||--o{ INDEXING : indexed_by",
+        "stateDiagram-v2\n    [*] --> Initial\n    Initial --> ScalingUp : Data growth detected\n    ScalingUp --> StorageOptimized : Storage optimization applied\n    ScalingUp --> IndexingOptimized : Indexing optimization applied\n    StorageOptimized --> Stable : Performance stable\n    IndexingOptimized --> Stable : Performance stable\n    Stable --> ScalingDown : Data growth decreases\n    ScalingDown --> [*] : System returns to normal",
+        "%%{ init : { \"theme\" : \"default\" } }%%\nC4Context\n    title Service Uptime SLA Context Diagram\n\n    Person(admin, \"Administrator\", \"Manages the system and monitors uptime\")\n    Person(user, \"User\", \"Uses the messaging and group services\")\n\n    System(system, \"Service Uptime SLA System\", \"Ensures high availability for messaging, authentication, and group services\")\n\n    System_Ext(messaging, \"Messaging Service\", \"Handles messaging between users\")\n    System_Ext(auth, \"Authentication Service\", \"Manages user authentication and authorization\")\n    System_Ext(group, \"Group Service\", \"Facilitates group management and communication\")\n\n    Rel(admin, system, \"Monitors and manages\")\n    Rel(user, system, \"Uses\")\n    Rel(system, messaging, \"Integrates with\")\n    Rel(system, auth, \"Integrates with\")\n    Rel(system, group, \"Integrates with\")",
+        "sequenceDiagram\n    participant User\n    participant MessagingService\n    participant AuthenticationService\n    participant GroupService\n    participant MonitoringSystem\n\n    User->>MessagingService: Send message\n    MessagingService-->>User: Acknowledge message receipt\n    MessagingService->>MonitoringSystem: Check uptime status\n    MonitoringSystem-->>MessagingService: Uptime is within SLA\n\n    User->>AuthenticationService: Request authentication\n    AuthenticationService-->>User: Provide authentication token\n    AuthenticationService->>MonitoringSystem: Check uptime status\n    MonitoringSystem-->>AuthenticationService: Uptime is within SLA\n\n    User->>GroupService: Join group\n    GroupService-->>User: Confirm group membership\n    GroupService->>MonitoringSystem: Check uptime status\n    MonitoringSystem-->>GroupService: Uptime is within SLA",
+        "stateDiagram-v2\n    [*] --> Operational\n    Operational --> Degraded : Performance issues\n    Operational --> Outage : Critical failure\n    Degraded --> Operational : Issues resolved\n    Degraded --> Outage : Escalation\n    Outage --> Degraded : Recovery initiated\n    Outage --> [*] : Service restored",
+        "%%{init: {'theme': 'default'}}%%\nC4Context\n    title Failover Time System Architecture\n\n    Person(user, \"User\", \"A user of the system\")\n    \n    System_Boundary(s1, \"Failover System\") {\n        System(f1, \"Primary Node\", \"Handles user requests and data processing\")\n        System(f2, \"Secondary Node\", \"Backup node that takes over during failover\")\n        System(f3, \"Load Balancer\", \"Distributes requests between primary and secondary nodes\")\n        System(f4, \"Monitoring Service\", \"Monitors node health and triggers failover\")\n    }\n\n    Rel(user, f3, \"Uses\")\n    Rel(f3, f1, \"Routes requests to\")\n    Rel(f3, f2, \"Routes requests to\")\n    Rel(f4, f1, \"Monitors health of\")\n    Rel(f4, f2, \"Monitors health of\")\n    Rel(f1, f2, \"Replicates data to\")",
+        "sequenceDiagram\n    participant User\n    participant LoadBalancer\n    participant NodeA\n    participant NodeB\n    participant MonitoringSystem\n\n    User->>LoadBalancer: Request Service\n    LoadBalancer->>NodeA: Forward Request\n    NodeA-->>LoadBalancer: Response\n    LoadBalancer-->>User: Deliver Response\n\n    Note over NodeA, MonitoringSystem: NodeA fails\n    MonitoringSystem->>LoadBalancer: Alert NodeA Failure\n    LoadBalancer->>NodeB: Forward Request\n    NodeB-->>LoadBalancer: Response\n    LoadBalancer-->>User: Deliver Response\n\n    Note over User: Minimal impact during failover",
+        "stateDiagram-v2\n    [*] --> Normal\n    Normal --> FailoverInitiated : Node/Zone Failure Detected\n    FailoverInitiated --> Switching : Initiating Failover\n    Switching --> FailoverComplete : Failover Successful\n    FailoverComplete --> Normal : Return to Normal Operation\n    Switching --> FailoverFailed : Failover Unsuccessful\n    FailoverFailed --> Alerting : Alert Users\n    Alerting --> Normal : Issue Resolved",
+        "%%{ init : { \"theme\" : \"default\" } }%%\nC4Context\n    title Transport and At-Rest Encryption System Architecture\n\n    Person(user, \"User\", \"A user who interacts with the system.\")\n    System(system, \"Encryption System\", \"Handles encryption of data in transit and at rest.\")\n\n    System_Ext(database, \"Database\", \"Stores user data and encrypted information.\")\n    System_Ext(transportLayer, \"Transport Layer\", \"Handles data transmission over the network.\")\n\n    Rel(user, system, \"Uses\")\n    Rel(system, transportLayer, \"Encrypts data in transit\")\n    Rel(system, database, \"Encrypts data at rest\")",
+        "sequenceDiagram\n    participant User\n    participant Application\n    participant Database\n    participant EncryptionService\n\n    User->>Application: Send data\n    Application->>EncryptionService: Encrypt data in transit\n    EncryptionService-->>Application: Return encrypted data\n    Application->>Database: Store encrypted data\n    Database-->>Application: Acknowledge storage\n    Application->>User: Confirm data stored securely\n\n    User->>Application: Request data\n    Application->>Database: Retrieve encrypted data\n    Database-->>Application: Return encrypted data\n    Application->>EncryptionService: Decrypt data at rest\n    EncryptionService-->>Application: Return decrypted data\n    Application->>User: Send decrypted data",
+        "stateDiagram-v2\n    [*] --> DataInTransit\n    [*] --> DataAtRest\n\n    state DataInTransit {\n        [*] --> Encrypted\n        Encrypted --> Decrypted : \"Receive unencrypted data\"\n        Decrypted --> Encrypted : \"Encrypt data\"\n        Encrypted --> [*] : \"Data sent securely\"\n    }\n\n    state DataAtRest {\n        [*] --> Encrypted\n        Encrypted --> Decrypted : \"Access unencrypted data\"\n        Decrypted --> Encrypted : \"Encrypt data\"\n        Encrypted --> [*] : \"Data stored securely\"\n    }",
+        "%%{init: {'theme': 'default'}}%%\nC4Context\n    title Authentication Hardening System Architecture\n\n    Person(admin, \"Administrator\", \"Manages authentication settings and audits\")\n    Person(user, \"User\", \"Interacts with the system\")\n\n    System(system, \"Authentication System\", \"Handles user authentication and audit logging\")\n\n    System_Ext(auditLog, \"Audit Log Service\", \"Stores audit logs for authentication events\")\n    System_Ext(identityProvider, \"Identity Provider\", \"External service for identity verification\")\n\n    Rel(admin, system, \"Configures and audits\")\n    Rel(user, system, \"Authenticates\")\n    Rel(system, auditLog, \"Logs authentication events\")\n    Rel(system, identityProvider, \"Verifies user identity\")",
+        "flowchart TD\n    A[Start Authentication Hardening] --> B[Implement Strong Password Policies]\n    B --> C[Enforce Multi-Factor Authentication]\n    C --> D[Use Secure Protocols (e.g., HTTPS)]\n    D --> E[Limit Login Attempts]\n    E --> F[Implement Account Lockout Mechanisms]\n    F --> G[Enable Logging and Monitoring]\n    G --> H[Conduct Regular Security Audits]\n    H --> I[End Authentication Hardening]",
+        "sequenceDiagram\n    participant User\n    participant AuthenticationService\n    participant AuditLog\n\n    User->>AuthenticationService: Request login with credentials\n    AuthenticationService->>AuthenticationService: Validate credentials\n    AuthenticationService-->>User: Return success or failure\n\n    alt Successful authentication\n        AuthenticationService->>AuditLog: Log successful login attempt\n        AuditLog-->>AuthenticationService: Confirm log entry\n    else Failed authentication\n        AuthenticationService->>AuditLog: Log failed login attempt\n        AuditLog-->>AuthenticationService: Confirm log entry\n    end\n\n    AuthenticationService->>User: Provide access or error message",
+        "classDiagram\n    class PersonalData {\n        +String dataType\n        +String dataValue\n        +DateTime createdAt\n        +DateTime updatedAt\n        +Boolean isDeletable\n        +void retainData()\n        +void deleteData()\n    }\n\n    class DataRetentionPolicy {\n        +String policyName\n        +DateTime retentionPeriod\n        +Boolean isActive\n        +void applyPolicy()\n        +void reviewPolicy()\n    }\n\n    class UserRequest {\n        +String requestType\n        +DateTime requestDate\n        +void processRequest()\n    }\n\n    PersonalData \"1\" -- \"1\" DataRetentionPolicy : follows\n    PersonalData \"1\" -- \"0..*\" UserRequest : receives",
+        "flowchart TD\n    A[Start] --> B{Is personal data necessary?}\n    B -- Yes --> C[Retain personal data]\n    B -- No --> D[Delete personal data]\n    C --> E{Is there a deletion request?}\n    E -- Yes --> D\n    E -- No --> F[Continue retention]\n    D --> G[End]\n    F --> G",
+        "stateDiagram-v2\n    [*] --> Data_Collection\n    Data_Collection --> Data_Storage\n    Data_Storage --> Data_Review\n    Data_Review --> Data_Minimization\n    Data_Minimization --> Data_Retention\n    Data_Retention --> Deletion_Request\n    Deletion_Request --> Data_Deletion\n    Data_Deletion --> [*]\n\n    Data_Storage -->|Review Period| Data_Review\n    Data_Review -->|Data No Longer Needed| Data_Minimization\n    Data_Minimization -->|Retention Period Exceeded| Data_Deletion\n    Data_Minimization -->|Data Still Needed| Data_Retention",
+        "%%{ init : { \"theme\" : \"default\" } }%%\nC4Context\n    title Compliance Reporting System Context Diagram\n    Person(admin, \"Compliance Admin\", \"Responsible for managing compliance reports.\")\n    Person(auditor, \"External Auditor\", \"Reviews compliance reports for regulatory adherence.\")\n    System(system, \"Compliance Reporting System\", \"Generates reports to ensure alignment with GDPR and CCPA.\")\n    System_Ext(gdpr, \"GDPR Regulations\", \"Regulatory framework for data protection.\")\n    System_Ext(ccpa, \"CCPA Regulations\", \"California Consumer Privacy Act regulations.\")\n\n    Rel(admin, system, \"Uses\")\n    Rel(system, gdpr, \"Aligns with\")\n    Rel(system, ccpa, \"Aligns with\")\n    Rel(system, auditor, \"Provides reports to\")",
+        "classDiagram\n    class ComplianceReport {\n        +String reportID\n        +DateTime creationDate\n        +String status\n        +generateReport()\n        +validateCompliance()\n    }\n\n    class PrivacyControl {\n        +String controlID\n        +String description\n        +boolean isGDPRCompliant\n        +boolean isCCPACompliant\n        +assessCompliance()\n    }\n\n    class GDPR {\n        +String regulationID\n        +String requirements\n        +checkCompliance()\n    }\n\n    class CCPA {\n        +String regulationID\n        +String requirements\n        +checkCompliance()\n    }\n\n    ComplianceReport --> PrivacyControl : includes\n    PrivacyControl --> GDPR : aligns with\n    PrivacyControl --> CCPA : aligns with",
+        "flowchart TD\n    A[Start Compliance Reporting] --> B[Identify Privacy Controls]\n    B --> C[Assess GDPR Requirements]\n    C --> D[Assess CCPA Requirements]\n    D --> E{Are Controls Aligned?}\n    E -->|Yes| F[Document Compliance]\n    E -->|No| G[Implement Necessary Changes]\n    G --> B\n    F --> H[Prepare Compliance Report]\n    H --> I[Review and Approve Report]\n    I --> J[Submit Report]\n    J --> K[End Compliance Reporting]",
+        "%%{init: {\"theme\": \"default\"}}%%\nC4Context\n    title Message Delivery Reliability System Architecture\n\n    Person(user, \"User\", \"A person who sends and receives messages.\")\n    System(system, \"Message Delivery System\", \"Ensures reliable message delivery across intermittent networks.\")\n    System_Ext(network, \"Intermittent Network\", \"Network that may have connectivity issues.\")\n    System_Ext(messageService, \"Message Service\", \"External service for message storage and retrieval.\")\n\n    Rel(user, system, \"Uses\")\n    Rel(system, network, \"Sends and receives messages through\")\n    Rel(system, messageService, \"Stores and retrieves messages from\")",
+        "sequenceDiagram\n    participant User\n    participant Client\n    participant Server\n    participant Network\n\n    User->>Client: Send Message\n    Client->>Network: Attempt to send message\n    alt Network is available\n        Network->>Server: Deliver message\n        Server-->>Client: Acknowledge receipt\n        Client-->>User: Confirm delivery\n    else Network is intermittent\n        Network-->>Client: Delivery failed\n        Client-->>User: Notify delivery failure\n        Client->>Network: Retry sending message\n        Network->>Server: Deliver message\n        Server-->>Client: Acknowledge receipt\n        Client-->>User: Confirm delivery\n    end",
+        "stateDiagram-v2\n    [*] --> Idle\n    Idle --> Sending : Send Message\n    Sending --> AwaitingAck : Await Acknowledgment\n    AwaitingAck --> Delivered : Acknowledgment Received\n    AwaitingAck --> Resending : No Acknowledgment\n    Resending --> Sending : Resend Message\n    Delivered --> [*]\n    Resending --> AwaitingAck : Await Acknowledgment\n    Resending --> Idle : Max Retries Exceeded",
+        "%%{init: {'theme': 'default'}}%%\nC4Context\n    title Error Budget System Architecture\n\n    Person(customer, \"Customer\", \"A user of the system who expects reliability.\")\n    Person(devTeam, \"Development Team\", \"The team responsible for building and maintaining the system.\")\n    Person(opTeam, \"Operations Team\", \"The team responsible for deploying and monitoring the system.\")\n\n    System(errorBudgetSystem, \"Error Budget System\", \"A system that enforces reliability targets with explicit error budgets.\")\n\n    System_Ext(monitoringTool, \"Monitoring Tool\", \"A tool that tracks system performance and error rates.\")\n    System_Ext(alertingSystem, \"Alerting System\", \"A system that notifies teams when error budgets are exceeded.\")\n\n    Rel(customer, errorBudgetSystem, \"Uses\")\n    Rel(devTeam, errorBudgetSystem, \"Develops and maintains\")\n    Rel(opTeam, errorBudgetSystem, \"Monitors and enforces error budgets\")\n    Rel(opTeam, monitoringTool, \"Uses for performance tracking\")\n    Rel(monitoringTool, errorBudgetSystem, \"Provides performance data\")\n    Rel(errorBudgetSystem, alertingSystem, \"Sends alerts when budgets are exceeded\")\n    Rel(alertingSystem, devTeam, \"Notifies when error budgets are exceeded\")\n    Rel(alertingSystem, opTeam, \"Notifies when error budgets are exceeded\")",
+        "flowchart TD\n    A[Define Reliability Targets] --> B[Establish Error Budget]\n    B --> C[Monitor System Performance]\n    C --> D{Is Performance Within Budget?}\n    D -- Yes --> E[Continue Monitoring]\n    D -- No --> F[Identify Issues]\n    F --> G[Implement Fixes]\n    G --> H[Review Changes]\n    H --> C",
+        "stateDiagram-v2\n    [*] --> Satisfied\n    [*] --> Breached\n\n    Satisfied --> Breached : Error budget exceeded\n    Breached --> Satisfied : Error budget reset\n    Breached --> Breached : Monitor and report\n    Satisfied --> Satisfied : Continuous monitoring",
+        "%%{init: {\"theme\": \"default\"}}%%\nC4Context\n    title Code Quality and Coverage System Architecture\n\n    Person(user, \"Developer\", \"A developer who writes and maintains code.\")\n    System(system, \"Code Quality and Coverage System\", \"A system that ensures maintainable codebase with automated testing thresholds.\")\n\n    System_Ext(testingTool, \"Automated Testing Tool\", \"Tool for running automated tests and measuring code coverage.\")\n    System_Ext(codeReviewTool, \"Code Review Tool\", \"Tool for conducting code reviews and ensuring code quality.\")\n\n    Rel(user, system, \"Uses\")\n    Rel(system, testingTool, \"Integrates with\")\n    Rel(system, codeReviewTool, \"Integrates with\")",
+        "classDiagram\n    class Codebase {\n        +String name\n        +String language\n        +int linesOfCode\n        +boolean isMaintainable()\n    }\n\n    class TestSuite {\n        +String framework\n        +int testCount\n        +int coveragePercentage\n        +boolean meetsThreshold()\n    }\n\n    class CodeQuality {\n        +int cyclomaticComplexity\n        +int codeSmells\n        +boolean isHighQuality()\n    }\n\n    class CoverageThreshold {\n        +int minimumCoverage\n        +boolean isMet(int coverage)\n    }\n\n    Codebase \"1\" -- \"1..*\" TestSuite : contains\n    Codebase \"1\" -- \"1\" CodeQuality : assesses\n    TestSuite \"1\" -- \"1\" CoverageThreshold : checks",
+        "flowchart TD\n    A[Start] --> B[Write Code]\n    B --> C[Code Review]\n    C --> D{Is Code Approved?}\n    D -- Yes --> E[Run Automated Tests]\n    D -- No --> B\n    E --> F{Do Tests Pass?}\n    F -- Yes --> G[Check Code Coverage]\n    F -- No --> H[Fix Issues]\n    H --> E\n    G --> I{Is Coverage Above Threshold?}\n    I -- Yes --> J[Merge Code]\n    I -- No --> K[Increase Coverage]\n    K --> E\n    J --> L[Deploy to Production]\n    L --> M[Monitor Code Quality]\n    M --> N[End]",
+        "%%{ init : { \"theme\" : \"default\" } }%%\nC4Context\n    title Deployment Frequency System Context Diagram\n\n    Person(admin, \"Administrator\", \"Manages the deployment process\")\n    Person(dev, \"Developer\", \"Develops and deploys code\")\n    System(system, \"Deployment System\", \"Supports frequent, low-risk deployments\")\n\n    System_Ext(cloud, \"Cloud Provider\", \"Provides infrastructure for deployment\")\n    System_Ext(versionControl, \"Version Control System\", \"Stores and manages code versions\")\n    System_Ext(ciCd, \"CI/CD Pipeline\", \"Automates the deployment process\")\n\n    Rel(admin, system, \"Uses\")\n    Rel(dev, system, \"Deploys code to\")\n    Rel(system, cloud, \"Deploys applications to\")\n    Rel(system, versionControl, \"Fetches code from\")\n    Rel(system, ciCd, \"Triggers deployment through\")",
+        "stateDiagram-v2\n    [*] --> Planning\n    Planning --> Development\n    Development --> Testing\n    Testing --> Staging\n    Staging --> Production\n    Production --> Monitoring\n    Monitoring --> Feedback\n    Feedback --> Planning\n\n    state Planning {\n        [*] --> Requirements\n        Requirements --> Design\n    }\n\n    state Development {\n        [*] --> Coding\n        Coding --> CodeReview\n        CodeReview --> Integration\n    }\n\n    state Testing {\n        [*] --> UnitTests\n        UnitTests --> IntegrationTests\n        IntegrationTests --> UserAcceptance\n    }\n\n    state Staging {\n        [*] --> PreProduction\n        PreProduction --> FinalChecks\n    }\n\n    state Production {\n        [*] --> Live\n        Live --> Rollback\n        Rollback --> Live\n    }\n\n    state Monitoring {\n        [*] --> PerformanceMonitoring\n        PerformanceMonitoring --> ErrorTracking\n    }\n\n    state Feedback {\n        [*] --> UserFeedback\n        UserFeedback --> Improvement\n    }",
+        "%%{init: {'theme': 'default'}}%%\nC4Context\n    title Centralized Logging System Architecture\n\n    Person(admin, \"Administrator\", \"Manages the logging system and analyzes logs\")\n    Person(developer, \"Developer\", \"Develops services that emit logs\")\n\n    System_Boundary(logging_system, \"Centralized Logging System\") {\n        System(log_service, \"Log Service\", \"Collects and stores structured logs from services\")\n        System(database, \"Log Database\", \"Stores logs in a structured format for querying\")\n    }\n\n    System_Ext(service1, \"Service 1\", \"A microservice that emits logs\")\n    System_Ext(service2, \"Service 2\", \"Another microservice that emits logs\")\n\n    Rel(admin, log_service, \"Manages and analyzes logs\")\n    Rel(developer, service1, \"Develops and configures logging\")\n    Rel(developer, service2, \"Develops and configures logging\")\n    Rel(service1, log_service, \"Emits structured logs\")\n    Rel(service2, log_service, \"Emits structured logs\")\n    Rel(log_service, database, \"Stores logs\")",
+        "sequenceDiagram\n    participant User\n    participant ServiceA\n    participant ServiceB\n    participant LogAggregator\n\n    User->>ServiceA: Emit structured log\n    ServiceA->>LogAggregator: Send log data\n    LogAggregator-->>ServiceA: Acknowledge receipt\n\n    User->>ServiceB: Emit structured log\n    ServiceB->>LogAggregator: Send log data\n    LogAggregator-->>ServiceB: Acknowledge receipt",
+        "%%{init: {\"theme\": \"default\"}}%%\nC4Context\n    title Metrics and Alerting System Architecture\n\n    Person(customer, \"Customer\", \"A user who interacts with the system.\")\n    Person(admin, \"Admin\", \"An administrator who manages the system.\")\n\n    System(metricsSystem, \"Metrics and Alerting System\", \"Monitors key metrics and triggers alerts for incidents.\")\n    System_Ext(externalService, \"External Monitoring Service\", \"Third-party service for additional metrics and alerting.\")\n\n    Rel(customer, metricsSystem, \"Uses\")\n    Rel(admin, metricsSystem, \"Manages\")\n    Rel(metricsSystem, externalService, \"Integrates with\")",
+        "flowchart TD\n    A[Define Key Metrics] --> B[Set Up Monitoring Tools]\n    B --> C[Collect Data]\n    C --> D[Analyze Data]\n    D --> E[Establish Alert Thresholds]\n    E --> F[Configure Alerts]\n    F --> G[Incident Detection]\n    G --> H[Notify Response Team]\n    H --> I[Review and Adjust Metrics]\n    I --> A",
+        "stateDiagram-v2\n    [*] --> Monitoring\n    Monitoring --> Metrics_Collection : Start Metrics Collection\n    Metrics_Collection --> Metrics_Analyzed : Analyze Metrics\n    Metrics_Analyzed --> Alert_Generation : Generate Alerts\n    Alert_Generation --> Incident_Detected : Incident Detected\n    Incident_Detected --> [*] : Resolve Incident\n    Incident_Detected --> Monitoring : Continue Monitoring\n    Metrics_Analyzed --> Monitoring : Metrics Normal",
+        "%%{ init : { \"theme\" : \"default\" } }%%\nC4Context\n    title WCAG Compliance System Architecture\n\n    Person(user, \"User\", \"A user with disabilities accessing the system.\")\n    System(system, \"Web Application\", \"A web application that needs to be WCAG compliant.\")\n    System_Ext(thirdPartyService, \"Third-Party Accessibility Tools\", \"External tools to evaluate and enhance accessibility.\")\n\n    Rel(user, system, \"Uses\")\n    Rel(system, thirdPartyService, \"Integrates with\")",
+        "flowchart TD\n    A[Start] --> B{Identify User Needs}\n    B -->|Visual Impairments| C[Implement Screen Reader Support]\n    B -->|Hearing Impairments| D[Provide Captioning and Transcripts]\n    B -->|Motor Impairments| E[Ensure Keyboard Navigation]\n    B -->|Cognitive Impairments| F[Simplify Content and Navigation]\n    C --> G[Conduct Accessibility Testing]\n    D --> G\n    E --> G\n    F --> G\n    G --> H{Evaluate Compliance}\n    H -->|Compliant| I[Launch User Interface]\n    H -->|Non-Compliant| J[Revise and Improve]\n    J --> B\n    I --> K[Monitor and Update Regularly]\n    K --> L[End]",
+        "%%{ init : { \"theme\" : \"default\" } }%%\nC4Context\n    title Assistive Technology Support System Context Diagram\n\n    Person(user, \"User\", \"A user who relies on assistive technology for navigation.\")\n    System(assistiveTech, \"Assistive Technology Support\", \"System that supports screen readers and keyboard navigation.\")\n\n    System_Ext(screenReader, \"Screen Reader\", \"Software that converts text to speech for visually impaired users.\")\n    System_Ext(keyboardNav, \"Keyboard Navigation\", \"Allows users to navigate using keyboard shortcuts.\")\n\n    Rel(user, assistiveTech, \"Uses\")\n    Rel(assistiveTech, screenReader, \"Integrates with\")\n    Rel(assistiveTech, keyboardNav, \"Provides support for\")",
+        "flowchart TD\n    A[Start] --> B[Identify core flows]\n    B --> C[Assess accessibility needs]\n    C --> D[Implement screen reader support]\n    D --> E[Implement keyboard navigation]\n    E --> F[Test with assistive technology]\n    F --> G[Gather user feedback]\n    G --> H[Make necessary adjustments]\n    H --> I[Finalize support implementation]\n    I --> J[End]"
+      ],
+      "key_themes": [
+        "system",
+        "user",
+        "participant",
+        "string",
+        "systemuser",
+        "benutzer",
+        "usersystem",
+        "data",
+        "sequencediagram",
+        "default"
+      ],
+      "complexity_score": 0.0,
+      "completeness_score": 0.5
+    }
+  },
+  "key_themes": [
+    "chat",
+    "participant",
+    "nachricht",
+    "verify",
+    "user",
+    "system"
+  ],
+  "main_requirements": [],
+  "epics_overview": [],
+  "recommended_pages": [
+    {
+      "name": "index",
+      "title": "Overview",
+      "content_types": [
+        "summary"
+      ],
+      "priority": "high"
+    },
+    {
+      "name": "requirements",
+      "title": "Requirements",
+      "content_types": [
+        "requirements"
+      ],
+      "priority": "high"
+    },
+    {
+      "name": "user_stories",
+      "title": "User Stories",
+      "content_types": [
+        "user_stories"
+      ],
+      "priority": "medium"
+    },
+    {
+      "name": "diagrams",
+      "title": "Diagrams",
+      "content_types": [
+        "diagrams"
+      ],
+      "priority": "medium"
+    }
+  ],
+  "navigation_structure": {
+    "main_sections": [
+      "Overview",
+      "Requirements",
+      "User Stories"
+    ],
+    "sidebar_items": []
+  },
+  "diagram_count": 460,
+  "test_count": 0,
+  "stakeholder_count": 0
+}

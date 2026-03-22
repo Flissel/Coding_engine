@@ -1,0 +1,14 @@
+%%{ init : { "theme" : "default" } }%%
+C4Context
+    title HD-Medien System Context Diagram
+
+    Person(customer, "Kunde", "Ein Benutzer, der HD-Medien konsumiert.")
+    System(hdMedienSystem, "HD-Medien System", "Ein System, das das Senden von Medien in HD-Qualität unterstützt.")
+
+    Rel(customer, hdMedienSystem, "Verwendet", "Zugriff auf HD-Medien")
+
+    System_Ext(mediaSource, "Medienquelle", "Externe Quelle für Medieninhalte.")
+    Rel(hdMedienSystem, mediaSource, "Erhält Medieninhalte von", "HD-Qualität")
+
+    System_Ext(network, "Netzwerk", "Netzwerk zur Übertragung von Medien.")
+    Rel(hdMedienSystem, network, "Sendet Medien über", "HD-Streaming")

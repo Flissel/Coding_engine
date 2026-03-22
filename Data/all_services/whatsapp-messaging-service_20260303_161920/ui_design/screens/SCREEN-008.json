@@ -1,0 +1,177 @@
+{
+  "id": "SCREEN-008",
+  "name": "Gruppenadministration",
+  "route": "/settings/security/group-admin",
+  "layout": "single-column",
+  "description": "Verwaltung von Gruppenmitgliedern, Gruppenrechten und Sicherheitseinstellungen fuer WhatsApp-Gruppen. Ermoeglicht das Suchen, Hinzufuegen und Entfernen von Mitgliedern sowie die Konfiguration von Gruppenberechtigungen.",
+  "components": [
+    "COMP-001",
+    "COMP-002",
+    "COMP-009",
+    "COMP-010",
+    "COMP-003"
+  ],
+  "component_layout": [
+    {
+      "id": "header",
+      "name": "Header/Toolbar",
+      "x": 0,
+      "y": 0,
+      "w": 60,
+      "h": 4
+    },
+    {
+      "id": "COMP-002",
+      "name": "SearchBar",
+      "x": 1,
+      "y": 5,
+      "w": 58,
+      "h": 3
+    },
+    {
+      "id": "COMP-001",
+      "name": "AddMemberButton",
+      "x": 42,
+      "y": 9,
+      "w": 17,
+      "h": 2
+    },
+    {
+      "id": "COMP-001-2",
+      "name": "SecuritySettingsToggle",
+      "x": 1,
+      "y": 9,
+      "w": 20,
+      "h": 2
+    },
+    {
+      "id": "COMP-003",
+      "name": "MemberListItem1",
+      "x": 1,
+      "y": 12,
+      "w": 58,
+      "h": 4
+    },
+    {
+      "id": "COMP-009",
+      "name": "ContactCard",
+      "x": 2,
+      "y": 13,
+      "w": 30,
+      "h": 2
+    },
+    {
+      "id": "COMP-010",
+      "name": "StatusIndicator",
+      "x": 33,
+      "y": 13,
+      "w": 8,
+      "h": 2
+    },
+    {
+      "id": "COMP-003-2",
+      "name": "MemberListItem2",
+      "x": 1,
+      "y": 16,
+      "w": 58,
+      "h": 4
+    },
+    {
+      "id": "COMP-003-3",
+      "name": "MemberListItem3",
+      "x": 1,
+      "y": 20,
+      "w": 58,
+      "h": 4
+    },
+    {
+      "id": "COMP-001-3",
+      "name": "SaveButton",
+      "x": 1,
+      "y": 25,
+      "w": 28,
+      "h": 3
+    },
+    {
+      "id": "COMP-001-4",
+      "name": "CancelButton",
+      "x": 31,
+      "y": 25,
+      "w": 28,
+      "h": 3
+    }
+  ],
+  "data_requirements": [
+    "GET /api/groups/{groupId}",
+    "GET /api/groups/{groupId}/members",
+    "POST /api/groups/{groupId}/members",
+    "DELETE /api/groups/{groupId}/members/{memberId}",
+    "PUT /api/groups/{groupId}/members/{memberId}/role",
+    "GET /api/groups/{groupId}/settings",
+    "PUT /api/groups/{groupId}/settings",
+    "GET /api/contacts/search?q={query}"
+  ],
+  "parent_user_story": "US-027",
+  "wireframe_mermaid": "flowchart TD\n    subgraph Gruppenadministration\n        Header[Header / Navigation]\n        Main[Main Content Area]\n        Sidebar[Sidebar / Filters]\n        Footer[Footer / Actions]\n    end\n\n    Header --> Main\n    Sidebar --> Main\n    Main --> Footer\n\n    %% \n",
+  "wireframe_ascii": "     0    5   10   15   20   25   30   35   40   45   50   55   60\n   0 +------------------------------------------------------------+\n     |  [<Back]   Gruppenadministration          [MoreOptions ...]|\n   2 |  Gruppenname: \"Projekt-Team Alpha\"                         |\n     |  4 Mitglieder | Erstellt: 12.01.2024                      |\n   4 +------------------------------------------------------------+\n   5 | +----------------------------------------------------------+|\n     | | [🔍 Mitglied suchen...]                                  ||\n   7 | |  COMP-002 (SearchBar)                                   ||\n     | +----------------------------------------------------------+|\n   9 | [🔒 Sicherheit]          |           [+ Mitglied hinzufuegen]|\n     |  COMP-001 (Toggle)       |            COMP-001 (Button)    |\n  11 +------------------------------------------------------------+\n  12 | +----------------------------------------------------------+|\n     | | [👤 Avatar] Max Mustermann    [🟢Online]  Admin  [⚙][✕] ||\n  13 | |  COMP-009 (ContactCard)        COMP-010   Role   Actions ||\n     | |  +49 170 1234567              (Status)                   ||\n  15 | +----------------------------------------------------------+|\n  16 | +----------------------------------------------------------+|\n     | | [👤 Avatar] Anna Schmidt       [🟢Online]  Mitglied [⚙][✕]||\n  17 | |  COMP-003 (ChatListItem)       COMP-010                  ||\n     | |  +49 171 9876543                                        ||\n  19 | +----------------------------------------------------------+|\n  20 | +----------------------------------------------------------+|\n     | | [👤 Avatar] Tom Weber          [⚪Offline] Mitglied [⚙][✕]||\n  21 | |  COMP-003 (ChatListItem)       COMP-010                  ||\n     | |  +49 172 5551234                                        ||\n  23 | +----------------------------------------------------------+|\n     |                                                            |\n  24 | ---- Gruppenrechte-Konfiguration ----                      |\n  25 | +---------------------------+  +---------------------------+|\n     | | [Speichern]               |  | [Abbrechen]               ||\n  27 | |  COMP-001 (Button/Primary)|  |  COMP-001 (Button/Second) ||\n  28 | +---------------------------+  +---------------------------+|\n  29 +------------------------------------------------------------+",
+  "state_bindings": {
+    "COMP-002": "groupAdmin.searchQuery",
+    "COMP-009": "groupAdmin.selectedMember",
+    "COMP-010": "groupAdmin.memberStatus",
+    "COMP-003": "groupAdmin.memberList",
+    "COMP-001": "groupAdmin.actions"
+  },
+  "navigation_rules": [
+    {
+      "trigger": "back_btn_click",
+      "target": "/settings/security",
+      "condition": ""
+    },
+    {
+      "trigger": "member_click",
+      "target": "/settings/security/group-admin/member/{memberId}",
+      "condition": ""
+    },
+    {
+      "trigger": "add_member_click",
+      "target": "/settings/security/group-admin/add-member",
+      "condition": "user.isGroupAdmin"
+    },
+    {
+      "trigger": "remove_member_click",
+      "target": "",
+      "condition": "user.isGroupAdmin && member.role !== 'admin'"
+    },
+    {
+      "trigger": "security_toggle_click",
+      "target": "/settings/security/group-admin/permissions",
+      "condition": "user.isGroupAdmin"
+    },
+    {
+      "trigger": "save_btn_click",
+      "target": "/settings/security",
+      "condition": "groupAdmin.hasChanges"
+    },
+    {
+      "trigger": "cancel_btn_click",
+      "target": "/settings/security",
+      "condition": ""
+    }
+  ],
+  "responsive": {
+    "mobile": {
+      "layout": "stack",
+      "hidden_components": [],
+      "notes": "Mitgliederliste wird vollbreit, Buttons stacken vertikal, Rollen-Dropdown wird zu Bottom-Sheet"
+    },
+    "tablet": {
+      "layout": "single-column",
+      "notes": "Leicht komprimierte Darstellung, alle Elemente sichtbar"
+    },
+    "desktop": {
+      "layout": "single-column",
+      "notes": "Volle Breite mit allen Details inline dargestellt"
+    }
+  },
+  "auth_required": true
+}

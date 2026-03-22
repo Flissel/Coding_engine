@@ -1,0 +1,133 @@
+{
+  "id": "SCREEN-012",
+  "name": "Chat-Einstellungen mit Status erstellen",
+  "route": "/chats/:chatId/settings",
+  "layout": "stack",
+  "description": "Chat-Einstellungen Screen mit Toggles und Privacy-Optionen sowie der Möglichkeit, einen 24-Stunden-Status zu erstellen und zu veröffentlichen. Der Nutzer kann Text eingeben, Medien anhängen, eine Vorschau sehen und den Status publizieren.",
+  "components": [
+    "COMP-001",
+    "COMP-005",
+    "COMP-007",
+    "COMP-008",
+    "COMP-010"
+  ],
+  "component_layout": [
+    {
+      "id": "header",
+      "name": "HeaderBar",
+      "x": 0,
+      "y": 0,
+      "w": 60,
+      "h": 4
+    },
+    {
+      "id": "COMP-010",
+      "name": "StatusIndicator",
+      "x": 2,
+      "y": 5,
+      "w": 56,
+      "h": 3
+    },
+    {
+      "id": "COMP-007",
+      "name": "MediaViewer",
+      "x": 2,
+      "y": 9,
+      "w": 56,
+      "h": 12
+    },
+    {
+      "id": "COMP-005",
+      "name": "MessageInput",
+      "x": 2,
+      "y": 22,
+      "w": 44,
+      "h": 4
+    },
+    {
+      "id": "COMP-008",
+      "name": "EmojiPicker",
+      "x": 47,
+      "y": 22,
+      "w": 11,
+      "h": 4
+    },
+    {
+      "id": "toggles_privacy",
+      "name": "SettingsToggles",
+      "x": 2,
+      "y": 27,
+      "w": 56,
+      "h": 8
+    },
+    {
+      "id": "COMP-001",
+      "name": "PublishButton",
+      "x": 15,
+      "y": 36,
+      "w": 30,
+      "h": 3
+    }
+  ],
+  "data_requirements": [
+    "GET /api/chats/{chatId}/settings",
+    "PUT /api/chats/{chatId}/settings",
+    "POST /api/status",
+    "POST /api/status/media",
+    "GET /api/status/preview"
+  ],
+  "parent_user_story": "US-042",
+  "wireframe_mermaid": "flowchart TD\n    subgraph Chat-Einstellungen_mit_Status_erstellen\n        Header[Header / Navigation]\n        Main[Main Content Area]\n        Sidebar[Sidebar / Filters]\n        Footer[Footer / Actions]\n    end\n\n    Header --> Main\n    Sidebar --> Main\n    Main --> Footer\n\n    %% \n",
+  "wireframe_ascii": "     0    5   10   15   20   25   30   35   40   45   50   55   60\n   0 +------------------------------------------------------------+\n     |  [<Back]     Chat-Einstellungen          [⋮ Menu]         |\n   2 |                    Header                                  |\n     +------------------------------------------------------------+\n   4 |                                                            |\n   5 |  +------------------------------------------------------+  |\n     |  | COMP-010 (StatusIndicator)                            |  |\n   7 |  | ● Aktueller Status: Kein Status  |  Ablauf: 24h      |  |\n   8 |  +------------------------------------------------------+  |\n   9 |  +------------------------------------------------------+  |\n     |  |                                                      |  |\n  11 |  |          COMP-007 (MediaViewer)                      |  |\n     |  |                                                      |  |\n  13 |  |    +------------------------------------------+      |  |\n     |  |    |   [Bild/Video Vorschau hier]              |      |  |\n  15 |  |    |   Tippe um Medien hinzuzufuegen           |      |  |\n     |  |    |   [📷 Kamera]  [🖼 Galerie]  [📁 Datei]  |      |  |\n  17 |  |    +------------------------------------------+      |  |\n     |  |                                                      |  |\n  19 |  +------------------------------------------------------+  |\n  20 |                                                            |\n  21 |  STATUS-TEXT EINGABE:                                      |\n  22 |  +------------------------------------------+ +---------+  |\n     |  | COMP-005 (MessageInput)                  | | COMP-008|  |\n  24 |  | [Statustext eingeben...]                  | | [😀🎉] |  |\n     |  | Schreibe deinen Status...                 | |(Emoji   |  |\n  26 |  +------------------------------------------+ |Picker)  |  |\n     |                                               +---------+  |\n  27 |  EINSTELLUNGEN:                                            |\n  28 |  +------------------------------------------------------+  |\n     |  |  Sichtbarkeit          [Toggle: Alle Kontakte  ◉ ]   |  |\n  30 |  |  ------------------------------------------------   |  |\n     |  |  Lesebestaetigung      [Toggle:               ◉  ]   |  |\n  32 |  |  ------------------------------------------------   |  |\n     |  |  Stummschalten         [Toggle:              ○   ]   |  |\n  34 |  |  ------------------------------------------------   |  |\n     |  |  Kontakte ausschliessen [>]                           |  |\n  36 |  +------------------------------------------------------+  |\n     |                                                            |\n  37 |            +------------------------------+                |\n     |            | COMP-001 (Button)            |                |\n  39 |            | [  ✓ Status veroeffentlichen ]|                |\n     |            +------------------------------+                |\n  41 |                                                            |\n  42 +------------------------------------------------------------+",
+  "state_bindings": {
+    "COMP-010": "status.current",
+    "COMP-007": "status.mediaPreview",
+    "COMP-005": "status.textInput",
+    "COMP-008": "status.emojiSelection",
+    "COMP-001": "status.publishAction",
+    "toggles_privacy": "chatSettings.toggles"
+  },
+  "navigation_rules": [
+    {
+      "trigger": "back_btn_click",
+      "target": "/chats/:chatId",
+      "condition": ""
+    },
+    {
+      "trigger": "publish_btn_click",
+      "target": "/chats/:chatId",
+      "condition": "status.textInput || status.mediaPreview"
+    },
+    {
+      "trigger": "media_add_camera",
+      "target": "/camera",
+      "condition": "device.hasCamera"
+    },
+    {
+      "trigger": "media_add_gallery",
+      "target": "/gallery-picker",
+      "condition": ""
+    },
+    {
+      "trigger": "exclude_contacts_click",
+      "target": "/chats/:chatId/settings/privacy/exclude",
+      "condition": ""
+    }
+  ],
+  "responsive": {
+    "mobile": {
+      "layout": "stack",
+      "hidden_components": [],
+      "notes": "MediaViewer wird kompakter, EmojiPicker als Overlay"
+    },
+    "tablet": {
+      "layout": "stack",
+      "notes": "MediaViewer nimmt volle Breite ein"
+    },
+    "desktop": {
+      "layout": "split",
+      "notes": "Einstellungen links, Status-Vorschau rechts"
+    }
+  },
+  "auth_required": true
+}

@@ -1,0 +1,18 @@
+%%{ init : { "theme" : "default" } }%%
+C4Context
+    title Service Uptime SLA Context Diagram
+
+    Person(admin, "Administrator", "Manages the system and monitors uptime")
+    Person(user, "User", "Uses the messaging and group services")
+
+    System(system, "Service Uptime SLA System", "Ensures high availability for messaging, authentication, and group services")
+
+    System_Ext(messaging, "Messaging Service", "Handles messaging between users")
+    System_Ext(auth, "Authentication Service", "Manages user authentication and authorization")
+    System_Ext(group, "Group Service", "Facilitates group management and communication")
+
+    Rel(admin, system, "Monitors and manages")
+    Rel(user, system, "Uses")
+    Rel(system, messaging, "Integrates with")
+    Rel(system, auth, "Integrates with")
+    Rel(system, group, "Integrates with")

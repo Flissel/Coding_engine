@@ -1,0 +1,29 @@
+classDiagram
+    class Codebase {
+        +String name
+        +String language
+        +int linesOfCode
+        +boolean isMaintainable()
+    }
+
+    class TestSuite {
+        +String framework
+        +int testCount
+        +int coveragePercentage
+        +boolean meetsThreshold()
+    }
+
+    class CodeQuality {
+        +int cyclomaticComplexity
+        +int codeSmells
+        +boolean isHighQuality()
+    }
+
+    class CoverageThreshold {
+        +int minimumCoverage
+        +boolean isMet(int coverage)
+    }
+
+    Codebase "1" -- "1..*" TestSuite : contains
+    Codebase "1" -- "1" CodeQuality : assesses
+    TestSuite "1" -- "1" CoverageThreshold : checks

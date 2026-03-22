@@ -1,0 +1,39 @@
+{
+  "route": "/ungrouped",
+  "screen_name": "Screen: ungrouped",
+  "description": "Auto-generated composition for 15 stories",
+  "linked_user_stories": [
+    "US-112",
+    "US-151",
+    "US-139",
+    "US-154",
+    "US-158",
+    "US-160",
+    "US-064",
+    "US-150",
+    "US-099",
+    "US-153",
+    "US-110",
+    "US-148",
+    "US-041",
+    "US-162",
+    "US-136"
+  ],
+  "user_stories": [
+    "US-112",
+    "US-151",
+    "US-139",
+    "US-154",
+    "US-158",
+    "US-160",
+    "US-064",
+    "US-150",
+    "US-099",
+    "US-153",
+    "US-110",
+    "US-148",
+    "US-041",
+    "US-162",
+    "US-136"
+  ]
+}

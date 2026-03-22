@@ -1,0 +1,12 @@
+stateDiagram-v2
+    [*] --> Idle
+    Idle --> SendingNotification : New Message Received
+    SendingNotification --> NotificationSent : Notification Delivered
+    NotificationSent --> Idle : User Acknowledges
+    Idle --> NotificationControls : User Opens Notification Settings
+    NotificationControls --> PerChatSettings : User Selects Per-Chat Settings
+    PerChatSettings --> NotificationControls : User Adjusts Settings
+    NotificationControls --> PerTypeSettings : User Selects Per-Type Settings
+    PerTypeSettings --> NotificationControls : User Adjusts Settings
+    NotificationControls --> Idle : User Saves Changes
+    Idle --> [*]

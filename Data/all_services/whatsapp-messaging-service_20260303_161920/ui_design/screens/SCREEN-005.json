@@ -1,0 +1,149 @@
+{
+  "id": "SCREEN-005",
+  "name": "Video Call Screen",
+  "route": "/chats/:chatId/video-call",
+  "layout": "fullscreen-overlay",
+  "description": "Verschlüsselter Videoanruf-Screen mit Kameraansicht, Anrufsteuerung, Kontaktinfo und Verschlüsselungsstatus. Wird aus dem Chat-Detail heraus gestartet oder bei eingehendem Anruf als Overlay angezeigt.",
+  "components": [
+    "COMP-001",
+    "COMP-009",
+    "COMP-010",
+    "COMP-007"
+  ],
+  "component_layout": [
+    {
+      "id": "COMP-010",
+      "name": "EncryptionStatus",
+      "x": 22,
+      "y": 0,
+      "w": 16,
+      "h": 2
+    },
+    {
+      "id": "COMP-009",
+      "name": "ContactCard",
+      "x": 15,
+      "y": 2,
+      "w": 30,
+      "h": 5
+    },
+    {
+      "id": "COMP-007",
+      "name": "MediaViewer (RemoteVideo)",
+      "x": 2,
+      "y": 7,
+      "w": 56,
+      "h": 14
+    },
+    {
+      "id": "COMP-007-PIP",
+      "name": "MediaViewer (LocalVideo PiP)",
+      "x": 44,
+      "y": 8,
+      "w": 13,
+      "h": 7
+    },
+    {
+      "id": "COMP-001-MIC",
+      "name": "Button (Mute)",
+      "x": 10,
+      "y": 22,
+      "w": 8,
+      "h": 3
+    },
+    {
+      "id": "COMP-001-END",
+      "name": "Button (End Call)",
+      "x": 26,
+      "y": 22,
+      "w": 8,
+      "h": 3
+    },
+    {
+      "id": "COMP-001-CAM",
+      "name": "Button (Camera Toggle)",
+      "x": 42,
+      "y": 22,
+      "w": 8,
+      "h": 3
+    },
+    {
+      "id": "COMP-001-FLIP",
+      "name": "Button (Flip Camera)",
+      "x": 52,
+      "y": 22,
+      "w": 6,
+      "h": 3
+    }
+  ],
+  "data_requirements": [
+    "GET /api/chats/{chatId}/contact",
+    "POST /api/chats/{chatId}/video-call/start",
+    "POST /api/chats/{chatId}/video-call/accept",
+    "POST /api/chats/{chatId}/video-call/reject",
+    "POST /api/chats/{chatId}/video-call/end",
+    "WebSocket /ws/video-call/{callId}/signal",
+    "GET /api/chats/{chatId}/encryption-status"
+  ],
+  "parent_user_story": "US-036",
+  "wireframe_mermaid": "flowchart TD\n    subgraph Video_Call_Screen\n        Header[Header / Navigation]\n        Main[Main Content Area]\n        Sidebar[Sidebar / Filters]\n        Footer[Footer / Actions]\n    end\n\n    Header --> Main\n    Sidebar --> Main\n    Main --> Footer\n\n    %% \n",
+  "wireframe_ascii": "     0    5   10   15   20   25   30   35   40   45   50   55   60\n   0 +------------------------------------------------------------+\n     |                  [🔒 End-to-End Encrypted]                 |\n   2 |                   COMP-010 (EncryptionStatus)              |\n     |               +------------------------------+             |\n   3 |               | 👤  Contact Name             |             |\n     |               |    +49 170 *** (Mobile)       |             |\n   5 |               |    Calling... / 02:34          |             |\n     |               |    COMP-009 (ContactCard)     |             |\n   7 |               +------------------------------+             |\n     |  +--------------------------------------------------------+|\n   8 |  |                                          +-----------+ ||\n     |  |                                          |           | ||\n  10 |  |        REMOTE VIDEO STREAM               | LOCAL PiP | ||\n     |  |                                          | COMP-007  | ||\n  12 |  |        COMP-007 (MediaViewer)             | (self)    | ||\n     |  |                                          |           | ||\n  14 |  |                                          +-----------+ ||\n     |  |                                                        ||\n  16 |  |                                                        ||\n     |  |                                                        ||\n  18 |  |                                                        ||\n     |  |                                                        ||\n  20 |  +--------------------------------------------------------+|\n     |                                                            |\n  22 |    +------+          +------+          +------+  +----+    |\n     |    | 🎤   |          | 📞   |          | 📷   |  | 🔄 |    |\n  24 |    | Mute |          | End  |          | Cam  |  |Flip|    |\n     |    |COMP- |          |COMP- |          |COMP- |  |COMP|    |\n  25 |    |001   |          |001   |          |001   |  |001 |    |\n     |    +------+          +------+          +------+  +----+    |\n  26 +------------------------------------------------------------+",
+  "state_bindings": {
+    "COMP-010": "videoCall.encryptionStatus",
+    "COMP-009": "videoCall.remoteContact",
+    "COMP-007": "videoCall.remoteStream",
+    "COMP-007-PIP": "videoCall.localStream",
+    "COMP-001-MIC": "videoCall.isMuted",
+    "COMP-001-END": "videoCall.callActive",
+    "COMP-001-CAM": "videoCall.isCameraOn",
+    "COMP-001-FLIP": "videoCall.cameraFacing"
+  },
+  "navigation_rules": [
+    {
+      "trigger": "end_call_click",
+      "target": "/chats/:chatId",
+      "condition": "videoCall.callActive === true"
+    },
+    {
+      "trigger": "call_rejected",
+      "target": "/chats/:chatId",
+      "condition": ""
+    },
+    {
+      "trigger": "call_timeout",
+      "target": "/chats/:chatId",
+      "condition": "videoCall.duration === 0 && elapsed > 60s"
+    },
+    {
+      "trigger": "minimize_swipe_down",
+      "target": "/chats/:chatId",
+      "condition": "videoCall.callActive === true"
+    },
+    {
+      "trigger": "incoming_accept_click",
+      "target": "/chats/:chatId/video-call",
+      "condition": "videoCall.isIncoming === true"
+    },
+    {
+      "trigger": "incoming_reject_click",
+      "target": "/chats/:chatId",
+      "condition": "videoCall.isIncoming === true"
+    }
+  ],
+  "responsive": {
+    "mobile": {
+      "layout": "fullscreen",
+      "hidden_components": [],
+      "notes": "PiP-Fenster kleiner und draggable, Buttons am unteren Rand zentriert, Swipe-down zum Minimieren"
+    },
+    "tablet": {
+      "layout": "fullscreen",
+      "notes": "PiP-Fenster grösser, optionaler Split-View mit Chat möglich"
+    },
+    "desktop": {
+      "layout": "fullscreen-overlay",
+      "notes": "Schwebendes Fenster über Chat, resizable, PiP fest rechts unten"
+    }
+  },
+  "auth_required": true
+}

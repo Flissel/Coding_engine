@@ -1,0 +1,13 @@
+sequenceDiagram
+    participant User as User
+    participant System as System
+    participant Widget as Widget
+
+    User->>System: Request Home-Screen Widgets
+    System->>Widget: Fetch available widgets
+    Widget-->>System: Return widget list
+    System-->>User: Display available widgets
+    User->>Widget: Select a widget
+    Widget-->>User: Show widget details
+    User->>System: Add widget to home screen
+    System-->>User: Confirm widget addition
